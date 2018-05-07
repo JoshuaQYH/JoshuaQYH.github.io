@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-04T23:31:26.286Z</updated>
+  <updated>2018-05-07T16:16:04.340Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>操作系统第五章之CPU调度算法（重点）</title>
+    <link href="http://yoursite.com/2018/05/07/CPU%E8%B0%83%E5%BA%A6%E7%AE%97%E6%B3%95/"/>
+    <id>http://yoursite.com/2018/05/07/CPU调度算法/</id>
+    <published>2018-05-07T01:36:30.223Z</published>
+    <updated>2018-05-07T16:16:04.340Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="CPU调度算法"><a href="#CPU调度算法" class="headerlink" title="CPU调度算法"></a>CPU调度算法</h2><ul><li><p>先到先服务 fcfs    – CPU请求次序</p><ul><li>缺点：FCFS 算法对于分时系统(每个用户需要定<br>时地得到一定的CPU 时间)是特别麻烦的。允许一个进程保持CPU 时间过长将是个严重<br>错误。</li></ul></li><li><p>最短作业优先sjf  – 平均等待时间最短 | 最优</p></li><li><ul><li><p>存在抢占和非抢占</p></li><li><p>抢占（最短剩余时间优先）：由于CPU到达时间和CPU区间大小的差异，长作业可以优先处理，但出现短作业请求的时候，优先处理短作业</p><p>​</p></li></ul></li></ul><ul><li>优先级调度    – fcfs sjf都是特殊的优先级调度</li></ul><blockquote><p>每个进程都有一个优先级与其关联，具有最高优先级的进程会分配到CPU 。具有相同优先级<br>的进程按FCFS 顺序调度。</p></blockquote><ul><li><ul><li><p>同样存在抢占调度的情况</p></li><li><p>问题：存在阻塞或饥饿– 存在进程一直处于等待状态</p></li><li><p>解决方法：老化– 等待时间越长，优先级提高</p><blockquote><p>优先级可通过内部或外部方式来定义。内部定义优先级使用一些测量数据以计算进程<br>优先级。例如，时间极限、内存要求、打开文件的数量和平均I/O 区间与平均CPU 区间之<br>比都可以用于计算优先级。外部优先级是通过操作系统之外的准则来定义的，如进程重要<br>性、用于支付使用计算机的费用类型和数量、赞助工作的单位、其他(通常为政治)因素。</p></blockquote></li><li><p>​</p></li></ul></li><li><p>轮转法调度 – rr ( round robin</p></li><li><ul><li><p>为分时系统而设置的</p></li><li><p>平均等待时间较长，响应时间较长</p></li><li><p>定义较小的时间处理单元，时间片。时间片和周转时间有关，要考虑和上下文切换的时间比例</p></li><li><p>进程存储在一个fifo循环队列中</p><p>​</p></li></ul></li><li><p>多级队列调度</p><blockquote><p>多级队列 调度算法(multilevel queue      scheduling algorithm) 将就绪队列分成多个独立队列(见图5.6) 。根据进程的属性，如内存大小、进程优先级、进程类型，一个进程被<strong>永久</strong>地分配到一个队列。</p></blockquote></li><li><ul><li>根据进程的性质和属性对进程进行分组的方法，给不同的队列设立优先级。比如前台交互进程和后台批处理过程。前台交互进程较高。</li><li>每个队列可以采用不同的调度算法，前台交互需要等待时间较短的调度算法，通常选用rr调度，后台批处理可以选择fcfs,优先级调度算法。</li><li>缺点同样会产生阻塞的情况</li></ul></li><li><blockquote><p>队列之间必须有调度，通常采用固定优先级抢占调度。例如，前台队列可以比<br>后台队列具有绝对的优先级。<br>现在来研究一下具有5 个队列的多级队列调度算法的例子，按优先级来排列:<br>①系统进程。<br>②交互进程。<br>③交互编辑进程。<br>④批处理进程。<br>⑤学生进程。</p></blockquote></li></ul><ul><li>多级反馈队列调度</li></ul><blockquote><p>多级反馈队列调度算法(multilevel feedback queue scheduling algorithm) 允<br>许进程在队列之间移动。主要思想是根据<strong>不同CPU 区间</strong>的特点以区分进程。如果进程使用<br>过多CPU 时间，那么它会被转移到更低优先级队列。这种方案将νo 约束和交互进程留在<br>更高优先级队列。此外，在较低优先级队列中等待时间过长的进程会被转移到更高优先级<br>队列。这种形式的老化阻止饥饿的发生。</p></blockquote><blockquote><p>通常，多级反馈队列调度程序可由下列参数来定义:<br>.队列数量。<br>· 每个队列的调度算法。<br>· 用以确定何时升级到更高优先级队列的方法。<br>. 用以确定何时降级到更低优先级队列的方法。<br>· 用以确定进程在需要服务时应进入哪个队列的方法。</p></blockquote>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;CPU调度算法&quot;&gt;&lt;a href=&quot;#CPU调度算法&quot; class=&quot;headerlink&quot; title=&quot;CPU调度算法&quot;&gt;&lt;/a&gt;CPU调度算法&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;先到先服务 fcfs    – CPU请求次序&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;缺点：F
+      
+    
+    </summary>
+    
+    
+      <category term="操作系统" scheme="http://yoursite.com/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/"/>
+    
+  </entry>
   
   <entry>
     <title>湫嘤记-壹</title>
