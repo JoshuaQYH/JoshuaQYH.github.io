@@ -1,45 +1,2098 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Qiuyihao"><title>KnowMyself</title><meta name="description" content="A Blog Powered By Hexo"><meta name="keywords"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/hy.JPG" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/hy.JPG" style="width:127px;"><h3 title=""><a href="/">KnowMyself</a></h3></div></div><ul class="social-links"></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a class="current" href="/">首页</a></li><li><a href="/about">关于</a></li><li><a href="/archives">归档</a></li><li><a href="/links">友链</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)" style="display:none;"> </a></li></div><div class="avatar"><img></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2018/05/08/流水线技术简介/">流水线技术简介</a></h3></div><div class="post-content"><p>[TOC]
-流水线技术流水线基础概念​    • 指令的执行过程是，对每一条指令做取指令，分析指令，执行指令。
-​    • 取指–移码–执行–访存–写回
-​    • 流水执行是，取指令时间上一条指令的执行阶段，执行指令阶段可能是下一条指令的取指令阶段。
-​    • 抽象概念：把一个重复过程分为若干个子过程，...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2018-05-08</span><i class="fa fa-tag"></i><a class="tag" href="/tags/计组理论/" title="计组理论">计组理论 </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2018/05/07/CPU调度算法/">操作系统第五章之CPU调度算法（重点）</a></h3></div><div class="post-content"><p>CPU调度算法
-先到先服务 fcfs    – CPU请求次序
-
-缺点：FCFS 算法对于分时系统(每个用户需要定时地得到一定的CPU 时间)是特别麻烦的。允许一个进程保持CPU 时间过长将是个严重错误。
+<!DOCTYPE html>
 
 
-最短作业优先sjf  – 平均等待时间最短 | 最优
+
+  
 
 
-存在抢占和非抢占
-
-抢占（最短剩余时间优先）：...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2018-05-07</span><i class="fa fa-tag"></i><a class="tag" href="/tags/操作系统/" title="操作系统">操作系统 </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2018/05/04/湫嘤记-壹/">湫嘤记-壹</a></h3></div><div class="post-content"><p>
-“我意识到在这个地球上，除了你，没有人能够远程控制我的感情。”
-​                                ——记生命中一段绵长的奇迹。
-
-一开始并不是想要讲一个宏大而浪漫的故事。没得讲，也不敢想。那天的白衣和相机，那天的短暂相遇，成了我最意想不到的一场奇迹。
-一、十二月份的广州已经有些寒...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2018-05-04</span><i class="fa fa-tag"></i><a class="tag" href="/tags/love/" title="love">love </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2018/05/03/第四章CPU--计组课堂笔记-01/">计算机组成原理课堂笔记</a></h3></div><div class="post-content"><p>[TOC]
-CPU基础概念CPU功能： 指令控制，操作控制，时间控制，数据加工
-CPU控制方式：同步控制，异步控制，联合控制
-CPU指令周期：取值时间+执行时间
-CPU周期：机器周期，总线周期。
-CPU中断逻辑中断基础概念
-暂停当前程序的执行，转而去执行其他程序，执行完毕之后，重新恢复中断程序的执行
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
 
 
-中断源：...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2018-05-03</span><i class="fa fa-tag"></i><a class="tag" href="/tags/计组理论-CPU/" title="计组理论 CPU">计组理论 CPU </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2018/05/02/关系数据库设计理论/">关系数据库设计理论简介</a></h3></div><div class="post-content"><p>
-函数依赖
-X→Y，表示Y依赖于X；
-X→Y，且Y→X不成立，Y→Z，则X→Z，表示Z传递依赖于X。
-
-函数依赖性质
-自反性
-
-传递性
-
-。。。。
 
 
-函数依赖的种类（完全函数依赖：在关系模式R（u）中，X,Y是U的子集，Y函数依赖于X 并且 Y非函数依赖于X的子集，则称Y完全函数依赖于X。X  f &gt;Y）...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2018-05-02</span><i class="fa fa-tag"></i><a class="tag" href="/tags/数据库理论/" title="数据库理论">数据库理论 </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2018/05/01/Leanring_report-ant-junit-vim-java/">ant,junit,vim,java</a></h3></div><div class="post-content"><p>编辑器之神–VimVim简介Vim是一款上古编辑器，被广大程序员成为编辑器之神，这与之强大的编辑功能和编辑效率是分不开的。和Emace一样都在代码行业享有盛誉。vim最为重要的一点就是一切操作几乎可以舍弃鼠标，熟悉了vim命令的话，光靠键盘指令可以使开发效率迅速提高。
-Vim的安装Linux下在Ubuntu平台下...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2018-05-01</span><i class="fa fa-tag"></i><a class="tag" href="/tags/编程软件-vim-java/" title="编程软件 vim java">编程软件 vim java </a></div></div></div></div><div class="post animated fadeInDown"><div class="post-title"><h3><a href="/2018/04/30/Verilog设计初步/">Verilog 设计初步</a></h3></div><div class="post-content"><p>Verilog设计初步##Verilog 代码模板
-1234567891011121314151617181920212223242526//语句关键字字母都为小写字母，大小写敏感//硬件思维来写代码//命名不能以数字开头module &lt;顶层模块名&gt; (输入输出端口列表) //定义输入输出端口列表	o...</p></div><div class="post-footer"><div class="meta"><div class="info"><i class="fa fa-sun-o"></i><span class="date">2018-04-30</span><i class="fa fa-tag"></i><a class="tag" href="/tags/verilog-计组实验/" title="verilog 计组实验">verilog 计组实验 </a></div></div></div></div><div class="pagination"><ul class="clearfix"></ul></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="KnowMyself" type="application/atom+xml" />
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="KnowMyself">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="KnowMyself">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/"/>
+
+
+
+
+
+  <title>KnowMyself</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">KnowMyself</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/08/流水线技术简介/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qiuyihao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KnowMyself">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/08/流水线技术简介/" itemprop="url">流水线技术简介</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-08T11:16:47+08:00">
+                2018-05-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="流水线技术"><a href="#流水线技术" class="headerlink" title="流水线技术"></a>流水线技术</h2><h3 id="流水线基础概念"><a href="#流水线基础概念" class="headerlink" title="流水线基础概念"></a>流水线基础概念</h3><p>​    • 指令的执行过程是，对每一条指令做取指令，分析指令，执行指令。</p>
+<p>​    • 取指–移码–执行–访存–写回</p>
+<p>​    • 流水执行是，取指令时间上一条指令的执行阶段，执行指令阶段可能是下一条指令的取指令阶段。</p>
+<p>​    • 抽象概念：把一个重复过程分为若干个子过程，每个子部件由专门的部件实现。多个处理过程在时间上错开错开，依次通过各个部件。</p>
+<p>​    • 流水的段：每个子过程。</p>
+<p>​    • 流水的深度：子过程的个数。例如： 入-取指令-指令译码-执行-存结果-出–》浮点加法：入-求阶差-对阶-尾数相加-规格化-出</p>
+<p>​    • 流水时间是每一个段时间的总和，需要注意的是通过一个段的时间最长的段为流水线设计的瓶颈。流水线中各段的时间应尽可能相等，否则将引起流水线堵塞、断流。时间长的段将成为流水线的瓶颈</p>
+<p>​    • 时空图：从时间和空间两个方面来描述指令流水执行</p>
+<p>​    • 流水线的性能指标–吞吐率。即单位时间内完成任务的数量或者输出结果的数       量。</p>
+<p>​    </p>
+<p>​    </p>
+<h3 id="相关"><a href="#相关" class="headerlink" title="相关"></a>相关</h3><p>​    • 数据相关</p>
+<p>​    • 名相关</p>
+<p>​        ○ 输出相关–写写操作</p>
+<p>​        ○ 反相关–先读后写，读的名和写的名一致</p>
+<p>​    • 控制相关</p>
+<p>​    </p>
+<p>​    每条指令访问读写的寄存器称为名</p>
+<p>​    输出相关–写写操作，两条指令的</p>
+<p>​    反相关—先读后写，读的名和写的名一致</p>
+<p>​    换名技术</p>
+<p>​    </p>
+<h3 id="流水线冒险（冲突）"><a href="#流水线冒险（冲突）" class="headerlink" title="流水线冒险（冲突）"></a>流水线冒险（冲突）</h3><p>​    1. 结构冒险–硬件不支持多条指令在同一时间周期执行–重复，细分部件</p>
+<p>​    2. 数据冒险–一条指令需要等待另外一条指令完成而造成流水线暂停。（所以设计的段的时候时间应尽量保持一致–前推旁路–写后读冲突–在写入i之前，j先读取，会造成读取错误。</p>
+<p>​    为避免数据等待的问题，在每个段之间设计了一个缓冲寄存器（也叫锁存器）</p>
+<p>​    3.控制冒险 （分支冒险）–决策依赖于另外一条指令的结果，但其他指令正在执行当中。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/07/CPU调度算法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qiuyihao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KnowMyself">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/07/CPU调度算法/" itemprop="url">操作系统第五章之CPU调度算法（重点）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-07T09:36:30+08:00">
+                2018-05-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="CPU调度算法"><a href="#CPU调度算法" class="headerlink" title="CPU调度算法"></a>CPU调度算法</h2><ul>
+<li><p>先到先服务 fcfs    – CPU请求次序</p>
+<ul>
+<li>缺点：FCFS 算法对于分时系统(每个用户需要定<br>时地得到一定的CPU 时间)是特别麻烦的。允许一个进程保持CPU 时间过长将是个严重<br>错误。</li>
+</ul>
+</li>
+<li><p>最短作业优先sjf  – 平均等待时间最短 | 最优</p>
+</li>
+<li><ul>
+<li><p>存在抢占和非抢占</p>
+</li>
+<li><p>抢占（最短剩余时间优先）：由于CPU到达时间和CPU区间大小的差异，长作业可以优先处理，但出现短作业请求的时候，优先处理短作业</p>
+<p>​</p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li>优先级调度    – fcfs sjf都是特殊的优先级调度</li>
+</ul>
+<blockquote>
+<p>每个进程都有一个优先级与其关联，具有最高优先级的进程会分配到CPU 。具有相同优先级<br>的进程按FCFS 顺序调度。</p>
+</blockquote>
+<ul>
+<li><ul>
+<li><p>同样存在抢占调度的情况</p>
+</li>
+<li><p>问题：存在阻塞或饥饿– 存在进程一直处于等待状态</p>
+</li>
+<li><p>解决方法：老化– 等待时间越长，优先级提高</p>
+<blockquote>
+<p>优先级可通过内部或外部方式来定义。内部定义优先级使用一些测量数据以计算进程<br>优先级。例如，时间极限、内存要求、打开文件的数量和平均I/O 区间与平均CPU 区间之<br>比都可以用于计算优先级。外部优先级是通过操作系统之外的准则来定义的，如进程重要<br>性、用于支付使用计算机的费用类型和数量、赞助工作的单位、其他(通常为政治)因素。</p>
+</blockquote>
+</li>
+<li><p>​</p>
+</li>
+</ul>
+</li>
+<li><p>轮转法调度 – rr ( round robin</p>
+</li>
+<li><ul>
+<li><p>为分时系统而设置的</p>
+</li>
+<li><p>平均等待时间较长，响应时间较长</p>
+</li>
+<li><p>定义较小的时间处理单元，时间片。时间片和周转时间有关，要考虑和上下文切换的时间比例</p>
+</li>
+<li><p>进程存储在一个fifo循环队列中</p>
+<p>​</p>
+</li>
+</ul>
+</li>
+<li><p>多级队列调度</p>
+<blockquote>
+<p>多级队列 调度算法(multilevel queue      scheduling algorithm) 将就绪队列分成多个独立队列(见图5.6) 。根据进程的属性，如内存大小、进程优先级、进程类型，一个进程被<strong>永久</strong>地分配到一个队列。</p>
+</blockquote>
+</li>
+<li><ul>
+<li>根据进程的性质和属性对进程进行分组的方法，给不同的队列设立优先级。比如前台交互进程和后台批处理过程。前台交互进程较高。</li>
+<li>每个队列可以采用不同的调度算法，前台交互需要等待时间较短的调度算法，通常选用rr调度，后台批处理可以选择fcfs,优先级调度算法。</li>
+<li>缺点同样会产生阻塞的情况</li>
+</ul>
+</li>
+<li><blockquote>
+<p>队列之间必须有调度，通常采用固定优先级抢占调度。例如，前台队列可以比<br>后台队列具有绝对的优先级。<br>现在来研究一下具有5 个队列的多级队列调度算法的例子，按优先级来排列:<br>①系统进程。<br>②交互进程。<br>③交互编辑进程。<br>④批处理进程。<br>⑤学生进程。</p>
+</blockquote>
+</li>
+</ul>
+<ul>
+<li>多级反馈队列调度</li>
+</ul>
+<blockquote>
+<p>多级反馈队列调度算法(multilevel feedback queue scheduling algorithm) 允<br>许进程在队列之间移动。主要思想是根据<strong>不同CPU 区间</strong>的特点以区分进程。如果进程使用<br>过多CPU 时间，那么它会被转移到更低优先级队列。这种方案将νo 约束和交互进程留在<br>更高优先级队列。此外，在较低优先级队列中等待时间过长的进程会被转移到更高优先级<br>队列。这种形式的老化阻止饥饿的发生。</p>
+</blockquote>
+<blockquote>
+<p>通常，多级反馈队列调度程序可由下列参数来定义:<br>.队列数量。<br>· 每个队列的调度算法。<br>· 用以确定何时升级到更高优先级队列的方法。<br>. 用以确定何时降级到更低优先级队列的方法。<br>· 用以确定进程在需要服务时应进入哪个队列的方法。</p>
+</blockquote>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/04/湫嘤记-壹/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qiuyihao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KnowMyself">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/04/湫嘤记-壹/" itemprop="url">湫嘤记-壹</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-04T23:33:56+08:00">
+                2018-05-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <blockquote>
+<p>“我意识到在这个地球上，除了你，没有人能够远程控制我的感情。”</p>
+<p>​                                ——记生命中一段绵长的奇迹。</p>
+</blockquote>
+<p>一开始并不是想要讲一个宏大而浪漫的故事。没得讲，也不敢想。那天的白衣和相机，那天的短暂相遇，成了我最意想不到的一场奇迹。</p>
+<h1 id="一、"><a href="#一、" class="headerlink" title="一、"></a>一、</h1><p>十二月份的广州已经有些寒意，凉风把天一点一点吹高，很高，高到目光都不知道多久才能到达流云之上。</p>
+<p>匆匆忙忙出门的路人A，对这次任务并没有一丝的兴趣。高中母校的校庆将至，每个人都要拍一段对母校的祝福。跟摄影师师兄约好的时间，就是今天了。</p>
+<p>要在陌生人面前，对着他手中的相机镜头，挤出商业性微笑，说出一串感性的祝福语吗？开什么玩笑啊……难为情。社交恐惧症，真的很难为情。</p>
+<p>万一是个很猥琐的师兄怎么办？万一很不好说话怎么办？就算不差，也实在是太抗拒陌生人了。路人A无奈地想着。</p>
+<p>啊，他来了。</p>
+<p>“你是XX吗？我就是师兄XXX。”</p>
+<p>什么？师兄……原来是这样子的吗？</p>
+<p>路人A不太记得接下来说了些什么。唯一记忆犹新的，是那个将所有的焦虑和压抑都扫到流云之上去的微笑。</p>
+<p>是光，冬日里不被云朵遮蔽的阳光，照在瞌睡的猫咪身上，绒毛的轮廓是一圈柔光如万千新生命跃动。</p>
+<p>是歌，舒缓得如细水轻盈环绕，又是一股上扬的力量把你托起，升到可以离开所有世俗冷漠的高度。</p>
+<p>路人A一直在小小的世界里搜集的，那种不经意间撞击心灵的感动，不经意间绚烂开放的美，似乎又落脚了。</p>
+<p>没有架子，没有距离感，一直都那么清爽地咧嘴笑着，弯着湖水般的明亮双眼看着A，给她看相机里的画面。</p>
+<p>不值一提的个人片段拍摄结束，故事按理来说到这里也结束了。</p>
+<p>某一天朋友B在吃饭时向路人A提起，“XXX师兄真的是个超级温柔的人啊，从来不发脾气，什么都乐意帮忙，又那么有能力，你不知道，我们这次的策划啊，师兄他……”</p>
+<p>路人A不知道策划的事。她只知道，这大概就是那一类自己很向往但是从来不可能成为的人吧。一直站在中心，那么耀眼，给所有的人善意，到处奉献自己的温柔，向暖，造暖。</p>
+<p>她是个人主义者，不喜集群，闭门造车，琴棋书画只为取悦自己，纷繁复杂能不理则一概不理，从来高傲，却又自卑，无心也无力维持巨大的社交网络，不够有趣便拒之门外，融入世界需要莫大努力，打开心门需要莫大缘分。</p>
+<p>可能是孤独，也有人说是独特。一个人流浪久了，自己也不知道是什么了。但是路人A，也是向暖的，也是想要有变化的，也是想靠近光的。</p>
+<h1 id="二、"><a href="#二、" class="headerlink" title="二、"></a>二、</h1><p>路人A咬咬牙，主动在微信上找了师兄。字字斟酌，反反复复，写学术论文般修改底稿，删除，空格，删除，空格，终于回车。</p>
+<p>“师兄真的很厉害呢。“</p>
+<p>“我想我没办法成为集体喜欢的那种人，但是我真的很欣赏师兄。”</p>
+<p>师兄并没有因为生分而怠于回复，而是真诚地聊了很久，像阔别的旧友。每字每句的温度，恰如哥哥轻拍肩的安心感，暖流注入了A的心房。</p>
+<p>“被集体喜欢很难，而且也未必就是真的喜欢……个人或者集体主义都好，都是中性词。”</p>
+<p>她并没有被冷漠对待，A的心里有小小的欢喜，受宠若惊。</p>
+<p>转念一想，欢喜什么？也许，所谓地暖，就是这样的吧。他生性使然，我怎可自作多情。</p>
+<p>12月份也就这么悠悠晃过去了。没有其他值得提的故事。</p>
+<p>但师兄在A的心中不经意撒下了几叶茶叶，不知不觉已被如获至宝地泡了一壶普洱，愈发醇厚，愈发袭人，空水共氤氲，只是，不敢细细品。</p>
+<p>但A想要把这份勇敢继续下去。从小到大，A的行动力一直不强，很多事情都在安排好了的轨道上，只要往前走，不出意外就能得到。但A知道，十八岁以后，这种安稳已经消失了，从今往后的路不再属于被动前进的人。情感，也是如此。</p>
+<p>1月1日，心血来潮的A在跨年的零点送出了一张小小的明信片。</p>
+<p>“师兄，隐约觉得在师兄身上看到了我缺失的东西——那种冬日阳光般的温柔和热情，愿意付出自己，从不吝啬自己的微笑。愿你继续用那份细腻和温柔治愈世界，时光也一定会眷顾可爱的你……”</p>
+<p>他说，哇，好喜欢！谢谢你。你也要继续简单快乐下去呀。</p>
+<p>他还说，XX，你短头发很温雅的呢。</p>
+<p>被夸了！</p>
+<p>屏幕那边的A在捂嘴笑。温雅……是这样吗？就算是商业性夸奖，也是饮饱喝足的幸福了。</p>
+<p>但是，这个时期的A清楚——或者说，在强迫自己用底线思维去说服自己搞清楚，她并不是真的喜欢上了师兄，她只是向暖，仅此而已，而也足够。应当知足，因为贪婪的悬崖一跃下即万劫不复。 </p>
+<p>也许跨年夜的小小感恩是某种契机吧，一月份的路人A和她阳光一样的师兄开始慢慢变熟，慢慢发现这样那样的共同点，慢慢酝酿这样那样的话题。</p>
+<p>A依然很谨慎，她不会每天都去叨扰师兄，她小心翼翼地选择着合适的时间、合适的频率、合适的话题，像雏鸟的羽毛，时不时轻挠师兄某根神经。</p>
+<h1 id="三、"><a href="#三、" class="headerlink" title="三、"></a>三、</h1><p>有一天，A偶然听到了一首歌，如空谷幽兰，却又仿佛能最深入人心中的每个见不到阳光的缝隙和角落，如天鹅绒的触感紧紧包围，所有的不安都暂时消失在悠悠回荡的歌声中，天地和胸膛，融为一体。如果有翅膀，此时的蓝天，一定最适合飞翔……</p>
+<p>A马上想到的，是分享给师兄。A突然想到那句话：</p>
+<p>“那天我在街上看到一棵形状奇怪的榕树，第一反应竟是拍下来给你看。那时候我就知道，我大事不好了……”</p>
+<p>这一刻她似乎明白了这种感觉。</p>
+<p>A写了一段小小的乐评，连同歌曲一起发给了师兄。</p>
+<p>22点50分，没有反应。</p>
+<p>23点，没有反应。</p>
+<p>23点30分，没有反应。</p>
+<p>0点，    没有反应。</p>
+<p>1点，    ……</p>
+<p>A控制不住自己每过几分钟就看一眼手机，但终究是失望。她把头埋在枕头里，一遍又一遍地提醒自己该冷静一点了。也许只是一阵风吧，吹过了便过，他的好，只是一种逢场的应变，一种高超的社交技巧，一种对任何人都适用的套路，他是一个善于交际的人，给每个人阳光，可是管不了你绚烂不绚烂。</p>
+<p>其实A还是不愿意相信的。师兄不是这样的人。就在两种想法的打架中，她终于撑不住，睡着了。</p>
+<p>第二天醒来第一件事仍是抓起手机打开微信。</p>
+<p>她看到了师兄回复的消息！一条，两条，三条，四条……很多，很长，很用心。</p>
+<p>“细听这首歌，仿似一个歌者在悬崖上低吟浅唱，下视平野，远眺海洋，天空和海洋汇聚成地平线，歌声悠悠的回荡在天地间，还有绕耳的回响……淡淡的孤独与忧伤，却给人从中站起来的力量……”</p>
+<p>原来一直都熬夜的师兄，刚好在那天养生了一回，早早入睡。A的消息，师兄是凌晨醒来才看到的。事情就是这么巧合。</p>
+<p>师兄的那段文字，跟A的感受完美契合，甚至，A想不到更好的语言去表达出来的部分，师兄表达出来了。能够去感知虚无缥缈的东西，并用文字去表达出来的人，是拥有一颗诗意的心的，是有情怀有温度的人，A始终这么相信着。她再次确信了，师兄的内心，有星辰大海，值得她去探索。</p>
+<p>就这么一来二去，A朦胧地感觉到，她和师兄，站在某一座吊桥的两端，相望着对方，想跨出一步，却因为不清楚绳的承重而担忧，是否会因彼此走近而使桥断裂，跌入深渊。</p>
+<p>可是A很快就明白，脚底下的并不是深谷。</p>
+<h1 id="四、"><a href="#四、" class="headerlink" title="四、"></a>四、</h1><p>某一天，朋友C说，你怎么好像变温柔了。</p>
+<p>是的，她不再那么棱角分明，不再那么冷若冰山，偶尔微笑，偶尔体贴，会去想环路上的猫咪是否有个可以安稳睡觉的家，会去想雨夜执勤的保安身上会不会太单薄，家里是否牵挂……难道这种改变毫无理由？她才突然悟到，自己好像被感染了。</p>
+<p>水愈发接近沸腾，躁动的气泡随心跳的频率不断上升，茶香再也无处可逃，飘进了彼此的心里。</p>
+<blockquote>
+<p>然后，他说，你以后就不用再拿我当师兄了，就叫我的名字就好了。</p>
+<p>然后，他说，能和你倾心交流真的很开心，我认识的人太多，但这样的人真的不多。</p>
+<p>然后，他说，晚上走环路的时候如果一个人害怕，也可以叫上我的。</p>
+<p>然后，他说，明天一起复习吗？</p>
+</blockquote>
+<p>那天晚上，A到凌晨三点半才入睡。翻来覆去的，都是一个月前师兄那模糊的身影。再次见面，他会不会对我印象减分？我长得足够好看吗？我的谈吐足够大方吗？我有很多话题跟他讲吗？不断地在心里一遍遍打草稿，想流程，仿佛迎接一场重要的面试。</p>
+<p>令A怎么也没有想到的是，接下来的两天，她几乎都和师兄待在一起。</p>
+<p>也许，如果第一次见面那天晚上，A没有跟师兄说：“今天真的很开心，谢谢你”，师兄也就不会说“明天还继续吗？”，故事可能也就没有接下来的进展了。</p>
+<p>等到很后来才知道，必然，是心的互相吸引；偶然，是彼此一个小小的表示主动的动作，必然和偶然的叠加，便是难以置信的天时地利人和。</p>
+<p>再然后，在人烟稀少的环路，在微风轻拂的中心湖，在碧绿的草地上，在有阳光的树林里，两个人天南地北地聊着，漫无目的，只顾相互接近。彼此的人设一次又一次地崩塌、修缮、重建，越来越真实，越来越完整。</p>
+<p>他们见面越来越频繁。而路人A的心里已经发生了翻天覆地的变化。但A还是不敢多想，她怕自己的细腻和敏感会给自己招来祸事——自作多情，终归破灭。</p>
+<blockquote>
+<p>你很耀眼 你很充实 像一阵风 似乎可以吹动所有的安分和不安分</p>
+<p>但我不知道你会不会眷顾曾经经过的草地</p>
+<p>你的世界像一副完整的拼图 那我应该从哪里进去 </p>
+</blockquote>
+<p>她强行关闭自己少女情窦初开的窗户，若无其事地继续相处。她仍坚守着她的底线思维，奢望太多是要吃亏的，即使感受到了某种电波，也不能得意忘形。</p>
+<p>这样做朋友也非常幸福不是吗？</p>
+<p><strong>果然，低潮来了。</strong></p>
+<p>考试周，整整四天彼此都没有联系。四天，四天里他也许一刻都没有想起过A的事吧。果然还是普通的朋友吧？想得起来了就联系，想不起来就淡如水。A很难过。</p>
+<p>倒数第二天，考完试出来，疲累的A一个人听着歌在内环上慢悠悠地走着，看着轻云追着夕阳跑，看着粉色的云块被红色的云块吞噬，紫色的云块和黄色的云块缠绵。</p>
+<p>好想跟他说话。好想好想。不怕丢脸了，不想矜持了，不怕造成困扰了。久旱何时逢甘霖。</p>
+<p>A终于忍不住拿出手机。聊了那么一两句，A还在码着字，师兄突然说：“先这样吧，我同学催我去打游戏了……”</p>
+<p>A默默把字一个一个删掉，默默地继续走。那天，A不知道怎么的迷迷糊糊走上了外环，在太阳落山之后迷路了，长长的环路逐渐融化在漆黑夜色中，她无奈地打开导航，在狂风中骑车，骑了很久很久，慌乱之中总算赶回了学校。</p>
+<p>晚上，A因为白天的事有点失落，而最后一天又是两门最艰难的专业课，万分疲劳的A扔掉厚重的课本，插上耳机，开始宣泄自己的情感。手指在键盘上飞舞，诗行像疾速前行的火车一样，呼啸着穿过自己的内心。她疯狂地把自己的感情全都宣泄在这密密麻麻的文字里，只怕手速赶不上思维的激流，只怕语言传达不了内心的狂热。</p>
+<p>手机屏幕猝不及防地亮了。是那熟悉的头像。茫茫海雾中航行的船只看到了信号塔的灯光。</p>
+<p>“在复习吗？要不要出来走走？”看一看时刻，十一点半。</p>
+<p>A叫了一声，差点从床上掉下来。她飞快地冲出去，所有的烦乱在这短短的信息里烟消云散。</p>
+<p>“深夜的环路，雾气朦胧的恍若仙境，好棒啊。”</p>
+<p>“呃，什么雾……这是丁达尔效应。”</p>
+<p>“哇，你能不能诗意一点？现在这个氛围，一定要这么理性嘛？诶，工科男的思维啊……”A已经可以放肆一点地打趣了。</p>
+<p>然后文艺到骨子里的文科生A和理性至上的工科生在凌晨寒冷的环路上傻笑了起来。</p>
+<p>回想这几天的事，A突然有点谴责自己。我是不是对师兄太不信任了？事到如今，似乎没有必要再因为一些小事而去怀疑师兄的真诚，没必要不断地去拷问这段朦胧的感情。</p>
+<p>水深火热的考试周终于过去，A第一次主动约了师兄走环路。</p>
+<p>A想杀一个措手不及。“我问你一个问题。你会不会烦我呀？”</p>
+<p>“为什么突然这么说啊？你突然这样，弄得我好不知所措。”</p>
+<p>“如果我频繁地找你会打扰到你，那你可以直接说的……我不想过分地影响你的生活。”</p>
+<p>“我，我不烦你啊……我这个人的性格，不会轻易觉得别人烦的。”<br>这句话让A倒吸一口凉气，她觉得师兄的回答烂透了。A直接就说了，原来你不烦我，是因为你性格的原因，而不是因为我的某些特质或者吸引你的地方啊？</p>
+<p>“不，不是这样的……哎呀，怎么说，我……我感觉我最近像个智障了。不知道怎么表达，可是，可是我真的没有烦你啊！”</p>
+<p>看到师兄慌乱的样子，A窃喜。她相信的，她相信师兄没有觉得她困扰。但是，她就是想逗一逗师兄。</p>
+<p>“你的回答让我伤心了。”</p>
+<p>“你的提问也让我伤心了。”</p>
+<p>“为什么？”</p>
+<p>“居然问我有没有烦你，我肯定伤心啊。”</p>
+<p>哦？似乎师兄的情商，其实一点都不低。</p>
+<h1 id="五、"><a href="#五、" class="headerlink" title="五、"></a>五、</h1><p>次日，师兄约了A一起去看电影。</p>
+<p>从学校到巨幕影院，有将近一个小时的遥远路程。可是A却觉得这简直是一种馈赠，与他一起走，即使是走在永无止境的潘洛斯阶梯，也没有问题。</p>
+<p>晚风清凉，A突然说：“你唱歌给我听好不好？”</p>
+<p>羞涩了一下之后，师兄唱了很多。唱了少女的祈祷，唱了童话镇，唱了怯。</p>
+<blockquote>
+<p>“祈求天地放过一双恋人，怕发生的永远别发生。从来没顺利遇上好景降临，如何能重拾信心……”</p>
+</blockquote>
+<p>A若有所思。</p>
+<p>每次过红绿灯的时候，其实A都在观察师兄的侧脸。这侧脸真的很好看，长长的睫毛，高挺的鼻梁，还有那如水的目光，融化了春天的雪，深藏了如烟的柳絮。</p>
+<p>聊着聊着，他们聊到了有点沉重的话题。A在社团里一直有些自卑，不起眼又被孤立，如今走到退社的境地。A垂下了头，难为情地苦笑。</p>
+<p>一直盯着地面的A，突然感受到一个温暖的手掌，轻轻地拍了拍自己的后脑勺，轻得像羽毛掉落，掉落在A的内心，然后，烟火盛放。</p>
+<p>“不要自卑啦，你很好的，我只希望你好好的呀……”</p>
+<p>A假装镇定自若，心如止水，继续说着什么话，但大脑里早已不知道自己在说什么。</p>
+<p>看电影的过程中，师兄一直把头侧向A的这一边。只要A扶一下眼镜或吸一下鼻子，师兄就警觉地看过来。A抽泣了，他都知道。他会温柔地拍一拍A的额头，用温柔得像哄婴儿的声音说“没事没事，没事哈……”</p>
+<p>看的是印度电影《神秘巨星》。电影中尹希娅的小男友，可爱又浪漫、情商极高的钦腾，一举一动都触动情窦初开少女的心弦。对比了一下有些木讷、不解风情的师兄，A凑近他，悄声说了一句“你看人家，情商多高。学习一下？”</p>
+<p>“啊……怎么办……呜……”师兄一副慌忙又委屈的模样，让A忍俊不禁。</p>
+<p>看完电影的A，感动得怎么也止不住眼泪。“现在不要看我，我妆都花了。”“花了也非常好看。”</p>
+<p>她心里在想着，如果此刻如此脆弱的我，可以得到师兄一个拥抱，哪怕片刻永恒……</p>
+<p>回去的路上，A的腿很酸痛。她开玩笑般地说，师兄可以背我吗？</p>
+<p>“可以啊！上来吧。”</p>
+<p>“不不不……不用了。”A还是没有勇气接受。</p>
+<p>但是A也有自己的小心机。她有意无意地就提起自己走不动了，她多希望，师兄能够扶着她走路。她想要接触，想要接触师兄温暖的手，想要感受到那熟悉的温度，想要靠在他结实的肩膀上看着疏星点点。</p>
+<p>结果并没有。也许师兄也在小心翼翼地着棋吧，生怕下错一步，便不复从前。</p>
+<p>一路无言，只有脚步声和影子，在路灯下演着默剧，揉碎夜的寒冷。</p>
+<p>“你，现在在想什么呀？”师兄打破沉默。</p>
+<p>完了，被将一军了。向来善于表达、自诩情商高的A突然舌头打结，捉摸不透这句话的意味，也想不到很好的回答。</p>
+<p>“那，那你在想什么？”</p>
+<p>“你猜。”</p>
+<p>“我不猜。”</p>
+<p>就这样，两个人各怀心事地继续走着，走回了各自的宿舍。</p>
+<p>A不想要再静默下去，她把考试周的时候写的诗送给了师兄，希望迟钝的他能够在字里行间领会到哪怕一丝期许。</p>
+<blockquote>
+<p>“我习惯了沉默 习惯了自己的高傲 习惯了比孤独更深一层的独特</p>
+<p>习惯了窝在自己的舒适地带 也习惯了冷漠和稀零</p>
+<p>也许我很不起眼 但也希望有人能够注意到我</p>
+<p>我其实也不甘只是这样 也想有改变 想跟着你一起成长 想要被你所带动 所感染 </p>
+<p>也想向你尽可能展示我的光怪陆离 想让你感到至少是不无聊的</p>
+<p>在兵荒马乱的世界 唱一首有点奇怪的歌 至少是让人值得注意的</p>
+<p>很难喜欢君子之交淡如水这句话  只是对淡去的感情无法挽回的一种无奈叹惜</p>
+<p>改变不了的事情 万用的道理去解释 解脱自己或者自我麻痹</p>
+<p>如果可以像浪花一样热烈 像喷泉一样灵动 为什么要选择淡如水 </p>
+<p>这样想的我很自私 我知道 每个人都有自己的生活</p>
+<p>但是</p>
+<p>如果可以用一点点的自私去换一点点的改变 </p>
+<p>用一点点的改变去一点点走进别人的生活</p>
+<p>一点点地让自己变得美好 </p>
+<p>一点点地为别人变得美好而献出自己微弱的光</p>
+<p>该如何感动得泪湿眼眶</p>
+<p>我像橡皮糖很黏 因为无法自我消化 所以渴望别人帮忙咀嚼我的情怀 快乐和烦恼</p>
+<p>我总是无法独立 千头万绪像蒲公英一样飞舞 去寻找值得落下的地方</p>
+<p>去看看——别人的房前屋后 别人的花开花落 </p>
+<p>别人那些在凌晨降临的软肋和在清晨复苏的坚定 那些写在眼里的信念和藏在心里的叹息</p>
+<p>别人那些孤独 冷了深夜铁青的窗沿</p>
+<p>别人那些温柔 爬上老家瓦顶的月光</p>
+<p>我喜欢仰望有趣的灵魂中深藏的星辰大海 拥抱春暖花开</p>
+<p>而你碰巧就在这里 </p>
+<p>那就让相同的彼此懂得 不同的便互相成就</p>
+<p>我希望的</p>
+<p>能有心照不宣 像足迹融化在雪地里 也有口口声声 是光点斑驳了夏季</p>
+<p>顺着一架很长很长的梯子 从今天爬到明天 后天 坐在未来的屋顶</p>
+<p>一起看湛蓝的天空如何变成金色的夕阳 泼墨的流云如何变成厚涂的油画</p>
+<p>编织一个很长很长的故事 也从今天写到明天 后天 写在未来的结尾</p>
+<p>金色的夕阳又唤醒了金色的朝阳 一轮又一轮 </p>
+<p>但我们永远年轻”</p>
+</blockquote>
+<p>但是师兄似乎并不解其中味，他说，诗意的灵魂不拘一格。</p>
+<p>A想要的不是赞赏呀。</p>
+<h1 id="六、"><a href="#六、" class="headerlink" title="六、"></a>六、</h1><p>接下来就是寒假了。A独自坐车回家，师兄还要留在学校几天。</p>
+<p>见不到面的第一天，A有点骚动。深夜，A还是不愿意道晚安。“去睡吧，醒来再聊呀。”</p>
+<p>一个小小的约定，给了A对明天的十足期待。睡吧，一早醒来，说不定还会有思念已久的粿汁可以吃。</p>
+<p>见不到面的第二天，一早醒来，没有早餐。也没有师兄的消息。中午，没有动静。下午，没有动静。晚上，没有动静。</p>
+<p>23点，仍然没有动静。</p>
+<p>A无精打采地趴在床上，发了一个“你不要我了”的表情。</p>
+<p>他很快就回复了。“没有呀！”他说今天很忙。</p>
+<p>那就原谅你吧。</p>
+<p>“抗日神剧好雷啊。为什么有枪不用，用刀……还有好多病句，什么几十位烈士壮烈牺牲……”</p>
+<p>“哎，你看这个就该隐藏智商。它的市场瞄准的又不是我们。你呀，智商该上线的时候不上线，在这时候就上线……”</p>
+<p>A继续聊。突然间，一个巨大方块唐突地跳了出来，密密麻麻的文字霸占了屏幕。</p>
+<blockquote>
+<p>“有好多话没有说呢，无法准确传达我自己，从何说起呢，试着说一下。</p>
+</blockquote>
+<p>总觉得和你有了默契，你是明白我的，我的快乐与忧虑也很想翻译成言语与你分享，除去忧伤，带给你一束光。</p>
+<p>我一开始答应和你走在一起不是因为我要和你在一起，而是你能明白我……</p>
+<p>我特别享受能与你走在夜道中，晚风拂过脸庞，你我倾谈。你伤心需要陪伴的时候，有时说不出来安慰的话，我心头总是一顿软绵绵的无力感，我描述不出那种具体的感觉，但我还是知道的——那叫做喜欢。”</p>
+<p>A的提醒，让师兄“智商终于上线了”</p>
+<p>这就是传说中的……告白吗？</p>
+<blockquote>
+<p>“有好多话没有说呢，无法准确传达我自己，从何说起呢，试着说一下。</p>
+<p>总觉得和你有了默契，你是明白我的，我的快乐与忧虑也很想翻译成言语与你分享，除去忧伤，带给你一束光。</p>
+<p>我一开始答应和你走在一起不是因为我要和你在一起，而是你能明白我……</p>
+<p>我特别享受能与你走在夜道中，晚风拂过脸庞，你我倾谈。你伤心需要陪伴的时候，有时说不出来安慰的话，我心头总是一顿软绵绵的无力感，我描述不出那种具体的感觉，但我还是知道的——那叫做喜欢。”</p>
+</blockquote>
+<p>A还没反应过来，还没意识到这意味着什么，眼泪就先下来了。</p>
+<p>泪水一片一片模糊视线，一个一个的方块字却越来越清晰，仿佛复刻进心里，默念便能倒背如流。</p>
+<p>她不知道，其实在她按捺不住去找师兄聊的这段时间里，师兄已经在开始准备，开始酝酿，开始勇敢地迈出一步。</p>
+<p>“ 我想说，我在2017的尾巴突然变得很幸运……就像我给你的诗写的，你碰巧就在这里，我就那么幸运遇到了你。</p>
+<p>我想要的，有人能跟我一起看夕阳和朝霞。我也愿意去仰望他的天空，他的孤独和快乐。</p>
+<p>跟你一起的日子，我希望内环有八万里。”</p>
+<p>“怪我，在你走的前一天晚上没牵起你的手。让你一个人坐车回去，我很不自在。”</p>
+<p>“那这个锅，你可要好好背着。”</p>
+<p>“下次见面，我就要抱抱你……”</p>
+<p>路人A终于可以卸掉她路人的外衣，就像尹希娅卸掉自己黑色的罩袍。她终于可以说，她不再是路人A，不再是他世界里微不足道的路人，不再是孤独地站在世界边缘的流浪诗人，她是嘤嘤，世界上独一无二的嘤嘤。</p>
+<p>他也不再是触不可及的完美师兄，他也有脆弱的一面， 傻气的一面，浪漫的一面，可爱的一面，他是奕浩，世界上独一无二的奕浩。</p>
+<h1 id="七、"><a href="#七、" class="headerlink" title="七、"></a>七、</h1><p>某天晚上，嘤嘤和奕浩在打电话。</p>
+<p>他说，“我就想这样子跟你浪费时光，什么也不做，跟你说话。”</p>
+<p>她说，“浪费这个词不是很好，改一下。”</p>
+<p>怎么改？</p>
+<p>……想了很久。</p>
+<p>嘤嘤在奕浩的电脑上敲下了：孕育时光。</p>
+<p>然后嘤嘤又想了想，继续敲下了：奕起变老。</p>
+<p>然后奕浩移动光标，在最前面敲下了：颖你而在。</p>
+<p>因你而在，孕育时光，一起变老。</p>
+<p>颖你而在，孕育时光，奕起变老。</p>
+<p>嘤嘤又想起了约会时的对话：</p>
+<blockquote>
+<p> 我们就这样到处走，没有目的地，哪里都是过程。终点就是你，终点就是我。</p>
+</blockquote>
+<p><strong>我们的故事才刚刚开始，并且永远不会结束。</strong> </p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/03/第四章CPU--计组课堂笔记-01/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qiuyihao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KnowMyself">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/03/第四章CPU--计组课堂笔记-01/" itemprop="url">计算机组成原理课堂笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-03T08:53:04+08:00">
+                2018-05-03
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>[TOC]</p>
+<h2 id="CPU基础概念"><a href="#CPU基础概念" class="headerlink" title="CPU基础概念"></a>CPU基础概念</h2><p>CPU功能： 指令控制，操作控制，时间控制，数据加工</p>
+<p>CPU控制方式：同步控制，异步控制，联合控制</p>
+<p>CPU指令周期：取值时间+执行时间</p>
+<p>CPU周期：机器周期，总线周期。</p>
+<h2 id="CPU中断逻辑"><a href="#CPU中断逻辑" class="headerlink" title="CPU中断逻辑"></a>CPU中断逻辑</h2><h4 id="中断基础概念"><a href="#中断基础概念" class="headerlink" title="中断基础概念"></a>中断基础概念</h4><ul>
+<li>暂停当前程序的执行，转而去执行其他程序，执行完毕之后，重新恢复中断程序的执行</li>
+</ul>
+<ul>
+<li><p>中断源： 人为设置的中断，程序性事故,  硬件故障，外部事件（比如断电）</p>
+</li>
+<li><p>中断分类：可屏蔽中断和不可屏蔽中断；内部中断和外部中断；软中断和硬中断。</p>
+<p>根据CPU是否可以采取响应判断来分类：可屏蔽中断，不可屏蔽中断。 电源断电，CPU不可禁止响应，另外可以根据中断源是否被屏蔽来确定是否给予响应。</p>
+<p>​</p>
+</li>
+</ul>
+<p>####中断系统需要解决的7个问题：</p>
+<ol>
+<li><p>中断如何向CPU提出诉求</p>
+</li>
+<li><p>多个中断同时发生请求，CPU如何优先处理？</p>
+<ol>
+<li>硬件排队</li>
+<li>软件轮询</li>
+</ol>
+</li>
+<li><p>CPU响应中断的条件，时间，方式。</p>
+<ol>
+<li><p>中断服务程序入口地址的查找：硬件向量法和软件查询法</p>
+</li>
+<li><p>中断响应的条件：中断允许触发器必须为1</p>
+</li>
+<li><p>中断响应时间：当前<strong>指令周期结束</strong>。（而不是指令执行结束）</p>
+<p>（2， 3 为中断响应的充分必要条件）</p>
+</li>
+</ol>
+</li>
+<li><p>CPU响应中断后如何保护现场  </p>
+</li>
+<li><p>中断响应结束之后如何阻止源程序的执行转入中断服务程序的入口地址</p>
+</li>
+<li><p>中断处理结束后，CPU如何恢复现场</p>
+</li>
+<li><p>中断处理结束过程中出现了新的中断请求,CPU该如何处理</p>
+</li>
+</ol>
+<p><strong>处理办法</strong> ：中断处理系统中配置响应的软件和硬件</p>
+<h4 id="中断屏蔽技术"><a href="#中断屏蔽技术" class="headerlink" title="中断屏蔽技术"></a>中断屏蔽技术</h4><ul>
+<li><p>实现多重中断的条件：</p>
+<ol>
+<li><p>提前设置开中断指令 </p>
+</li>
+<li><p>优先级高的中断源有权屏蔽优先级别低的中断源</p>
+</li>
+</ol>
+</li>
+<li><p>中断屏蔽的结果</p>
+<ol>
+<li>屏蔽触发器与屏蔽字</li>
+<li>改变中断优先登记以及运行轨迹的变化</li>
+</ol>
+</li>
+<li><p>多重中断的断点保护</p>
+<ol>
+<li><strong>中断响应轨迹图</strong></li>
+<li>设置中断屏蔽字改变中断响应优先级</li>
+</ol>
+</li>
+</ul>
+<p>发生多重中断时中断响应逻辑类似于CPU调度中的优先级调度。</p>
+<p>引起cpu中断的各种因素（称为中断源）</p>
+<ul>
+<li>人为设置的中断（访管指令）</li>
+<li>程序性事故</li>
+<li>硬件故障</li>
+<li>I/O设备</li>
+<li>外部事件</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/02/关系数据库设计理论/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qiuyihao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KnowMyself">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/02/关系数据库设计理论/" itemprop="url">关系数据库设计理论简介</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-02T17:28:16+08:00">
+                2018-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="https://img-blog.csdn.net/20161228171824096?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZmFuZmFuNDU2OQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="è¿éåå¾çæè¿°"></p>
+<h3 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h3><ul>
+<li>X→Y，表示Y依赖于X；</li>
+<li>X→Y，且Y→X不成立，Y→Z，则X→Z，表示Z传递依赖于X。</li>
+</ul>
+<h4 id="函数依赖性质"><a href="#函数依赖性质" class="headerlink" title="函数依赖性质"></a>函数依赖性质</h4><ul>
+<li><p>自反性</p>
+</li>
+<li><p>传递性</p>
+</li>
+<li><p>。。。。</p>
+</li>
+</ul>
+<h4 id="函数依赖的种类"><a href="#函数依赖的种类" class="headerlink" title="函数依赖的种类"></a>函数依赖的种类</h4><p>（<strong>完全函数依赖</strong>：在关系模式R（u）中，X,Y是U的子集，Y函数依赖于X 并且 Y非函数依赖于X的子集，则称Y完全函数依赖于X。X  f &gt;Y）—&gt; Y依赖于X,但不依赖X的子集。</p>
+<p>（<strong>部分函数依赖</strong>：在关系模式R（u）中，X,Y是U的子集，Y函数依赖于X 并且 Y函数依赖于X的子集）</p>
+<p>（<strong>函数依赖</strong>：某个属性集决定另一个属性集时，例如学生学号属性集Sno决定学生姓名属性集Sname，称Sname函数依赖于Sname ）</p>
+<p>（<strong>平凡函数依赖</strong>：Y函数依赖于X,并且Y包含于X，例如（Sno）-&gt;(Sno)、（Sno、Sname）-&gt;（Sno））</p>
+<p>（<strong>非平凡函数依赖</strong>：Y函数依赖于X,并且Y不包含于X,例如(Sno,Sname）-&gt;（Ssex））</p>
+<h3 id="键"><a href="#键" class="headerlink" title="键"></a>键</h3><p>候选键： 能够唯一表示一个元组，且不含多属性<br>超键： 是指能够唯一表示一个元组的属性集<br>主属性：表示候选键中的属性<br>非主属性：不包含在主键中的属性</p>
+<p><strong>判断主键的方法</strong> ：若属性集为{ A , B, C}，A+ = ABC。 则A为主键。（属性闭包判断法） </p>
+<h3 id="范式-Normal-Forms"><a href="#范式-Normal-Forms" class="headerlink" title="范式 Normal Forms"></a>范式 Normal Forms</h3><p>（1）第一范式1NF：关系中的所以属性值都是不可分割的原子值；<br>（2）第二范式2NF：如果关系是1NF，且每个非主属性都完全依赖于候选键；<br>（3）第三范式3NF：如果关系是1NF，且每个非主属性都不传递依赖于候选键；<br>（4）<strong>鲍依斯-科得(巴斯)范式</strong>BCNF范式：如果关系是1NF，且每个属性都不传递依赖于候选键。</p>
+<h3 id="属性闭包"><a href="#属性闭包" class="headerlink" title="属性闭包"></a>属性闭包</h3><p>定义：闭包就是由一个属性直接或间接推导出的所有属性的集合。</p>
+<p>表示：B的闭包用B+表示。</p>
+<p>计算：关系R的属性集X的闭包的步骤如下： </p>
+<ol>
+<li>设最终将成为闭包的属性集是Y，把Y初始化为X；<br> .  检查F中的每一个函数依赖A→B，如果属性集A中所有属性均在Y中，而B中有的属性不在Y中，则将                 其加入到Y中； </li>
+<li>重复第二步，直到没有属性可以添加到属性集Y中为止。 最后得到的Y就是X＋</li>
+</ol>
+<p>举例：</p>
+<p>例1： R = {A,B,C,D,E}</p>
+<p>​         F = {B→CD， D→E, B→A, E→C， AD→B }</p>
+<p>​             则 B+ = B ;    B+ = BCD;  B+ = BCDA； B+ = BCDAE。（推导过程是属性依赖传递的过程。</p>
+<p>​            所以最终B+ 包含了R中所有属性。 故<strong>B is a key for R。</strong></p>
+<p>例2： 有关系模式R(U，F)，其中U={A，B，C，D，E，I}，F={A→D，AB→E，BI→E，CD→I，E→C}，计算(AE)闭包。 </p>
+<p>(1) 令X={AE}，X(0)=AE</p>
+<p>(2)在F中寻找尚未使用过的左边是AE的子集的函数依赖，结果是: A→D， E→C；所以 X(1)=X(0)DC=ACDE，     显然 X(1)≠X(0).</p>
+<p>(3) 在F中寻找尚未使用过的左边是ACDE的子集的函数依赖， 结果是: CD→I；所以 X(2)=X(1)I=ACDEI。虽然X（2）≠X(1)，但F中寻找尚未使用过函数依赖的左边已经没有X（2）的子集，所以不必再计算下去，即(AE)+=ACDEI。</p>
+<p>例3：f={a-&gt;b，b-&gt;c，a-&gt;d，e-&gt;f}；由a可直接得到b和d，间接得到c，则a的闭包就是{a，b，c，d}</p>
+<h3 id="关系模式分解"><a href="#关系模式分解" class="headerlink" title="关系模式分解"></a>关系模式分解</h3><h4 id="无损连接分解"><a href="#无损连接分解" class="headerlink" title="无损连接分解"></a>无损连接分解</h4><p>R的无损分解为X Y，那么 x∩y →x  或者 x∩y → y.   </p>
+<h3 id="补充知识点"><a href="#补充知识点" class="headerlink" title="补充知识点"></a>补充知识点</h3><h4 id="自然连接"><a href="#自然连接" class="headerlink" title="自然连接"></a>自然连接</h4><p>在连接运算当中，一种最常用的连接是自然连接。如果关系R与S具有相同的属性组B，且该属性组的值相等时的连接称为自然连接，结果关系的属性集合为<strong>R的属性并上S减去属性B的属性</strong>集合。</p>
+<p>参考的文章</p>
+<p><a href="https://www.cnblogs.com/bewolf/p/4445027.html" target="_blank" rel="noopener">函数依赖集闭包、属性集闭包、超键、候选键和最小函数依赖集</a></p>
+<p><a href="https://www.cnblogs.com/makeupforever-carrie/p/6837325.html" target="_blank" rel="noopener">四种范式的实例</a></p>
+<p><a href="https://blog.csdn.net/fanfan4569/article/details/53910670" target="_blank" rel="noopener">函数依赖不懂看这里</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/01/Leanring_report-ant-junit-vim-java/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qiuyihao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KnowMyself">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/05/01/Leanring_report-ant-junit-vim-java/" itemprop="url">ant,junit,vim,java</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-05-01T16:35:48+08:00">
+                2018-05-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="编辑器之神–Vim"><a href="#编辑器之神–Vim" class="headerlink" title="编辑器之神–Vim"></a>编辑器之神–Vim</h1><h2 id="Vim简介"><a href="#Vim简介" class="headerlink" title="Vim简介"></a>Vim简介</h2><p>Vim是一款上古编辑器，被广大程序员成为编辑器之神，这与之强大的编辑功能和编辑效率是分不开的。和Emace一样都在代码行业享有盛誉。vim最为重要的一点就是一切操作几乎可以舍弃鼠标，熟悉了vim命令的话，光靠键盘指令可以使开发效率迅速提高。</p>
+<h2 id="Vim的安装"><a href="#Vim的安装" class="headerlink" title="Vim的安装"></a>Vim的安装</h2><h3 id="Linux下"><a href="#Linux下" class="headerlink" title="Linux下"></a>Linux下</h3><p>在Ubuntu平台下控制台敲入下列指令即可自动安装。</p>
+<blockquote>
+<p>sudo apt-get install vim</p>
+</blockquote>
+<h3 id="Windows下"><a href="#Windows下" class="headerlink" title="Windows下"></a>Windows下</h3><p>去<a href="http://www.vim.org/" target="_blank" rel="noopener">官网</a> 直接下载使用。</p>
+<h2 id="Vim常用指令和教程"><a href="#Vim常用指令和教程" class="headerlink" title="Vim常用指令和教程"></a>Vim常用指令和教程</h2><p>首先值得注意的一点就是其实vim是自带教程的Vimtutor,s使用方法是linux下输入命令<strong>vimtutor</strong>,即可开启教程，这属于官方教程，  最为详细，没有之一。</p>
+<p>在这里介绍一些常用的vim命令，有利于快速上手vim。</p>
+<h4 id="1-创建或打开文件-vim-filename"><a href="#1-创建或打开文件-vim-filename" class="headerlink" title="1. 创建或打开文件 vim filename"></a>1. 创建或打开文件 <code>vim filename</code></h4><blockquote>
+<p>vim helloworld.java</p>
+</blockquote>
+<h4 id="2-添加内容"><a href="#2-添加内容" class="headerlink" title="2.添加内容"></a>2.添加内容</h4><p>一开始进入处于<strong>正常模式</strong>在编辑窗口直接输入<code>i,a,o</code>等字符可以进入<strong>输入模式</strong>，可以在屏幕下方看到<em>insert</em>单词。按左上角<code>Esc</code>键可以回到正常模式，使用各种方便的指令。以下指令均在<strong>正常模式</strong>下进行。</p>
+<h4 id="3-删除内容"><a href="#3-删除内容" class="headerlink" title="3.删除内容"></a>3.删除内容</h4><p><code>dd</code>可以删除光标所在的一整行。</p>
+<p><code>ndd</code>可以删除光标以下的n行</p>
+<h4 id="4-复制内容"><a href="#4-复制内容" class="headerlink" title="4. 复制内容"></a>4. 复制内容</h4><p><code>yy</code>可以复制光标所在行的字符<br><code>nyy</code>可以复制光标以下的n行字符</p>
+<h4 id="5-粘贴内容"><a href="#5-粘贴内容" class="headerlink" title="5.粘贴内容"></a>5.粘贴内容</h4><p><code>p/P</code>作用时粘贴字符，小写p将已复制的字符粘贴到光标以下，大写P将字符粘贴到光标以上。</p>
+<h4 id="6-撤销内容"><a href="#6-撤销内容" class="headerlink" title="6. 撤销内容"></a>6. 撤销内容</h4><p>撤销指令使用<code>u</code>,类似于windows上的<code>ctrl z`</code>。</p>
+<h4 id="7-保存文件"><a href="#7-保存文件" class="headerlink" title="7. 保存文件"></a>7. 保存文件</h4><p>先进入正常模式<code>Esc</code>，然后输入<code>:</code>。然后输入：</p>
+<ul>
+<li><code>q</code> 离开vim</li>
+<li><code>w</code> 保存内容</li>
+<li><code>wq</code> 保存内容并离开vim,回到命令行</li>
+</ul>
+<p>其他还有许多可以提高效率的指令在这里就不多赘述啦。</p>
+<hr>
+<p>​            </p>
+<h1 id="Java知识入门"><a href="#Java知识入门" class="headerlink" title="Java知识入门"></a>Java知识入门</h1><p>###初探java</p>
+<p>从hello world入门, 初步体会java这一门面向对象编程语言。在HelloWorld.java文件中键入以下代码。（注意文件名称必须和<strong>类名</strong>一致）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello World"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中用到的编译指令是</p>
+<blockquote>
+<p>javac HelloWorld.java</p>
+</blockquote>
+<p>命令行没有弹出其他消息，即为编译成功。</p>
+<p>执行指令是</p>
+<blockquote>
+<p>java HelloWorld</p>
+</blockquote>
+<p>这里用到两个重要指令<code>javac</code> <code>java</code> ，分别是编译和执行指令。</p>
+<p>###基础知识</p>
+<p>由于已经学习过C++，java语言在一定程度上和C++是类似的，所以在Java入门学习上可以直接跳过基础语法，对象和类，基本数据类型，运算符，循环结构，分支结构。</p>
+<h3 id="Java面向对象"><a href="#Java面向对象" class="headerlink" title="Java面向对象"></a>Java面向对象</h3><h3 id="java继承"><a href="#java继承" class="headerlink" title="java继承"></a>java继承</h3><p>java继承的概念和C++类似，同样是定义一个父类，然后定义一个子类，来继承父类的属性，和C++不同的是，java用关键字<code>extends</code> 来表示继承关系。继承格式是</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 父类  </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> 子类 <span class="keyword">extends</span> 父类 </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>####继承的特性</p>
+<ul>
+<li><p>子类拥有父类非private的属性，方法。</p>
+</li>
+<li><p>子类可以拥有自己的属性和方法，即子类可以对父类进行扩展。</p>
+</li>
+<li><p>子类可以用自己的方式实现父类的方法。</p>
+</li>
+<li><p>Java的继承是单继承，但是可以多重继承，单继承就是一个子类只能继承一个父类，多重继承就是，例如A类继承B类，B类继承C类，所以按照关系就是C类是B类的父类，B类是A类的父类，这是java继承区别于C++继承的一个特性。</p>
+</li>
+<li><p>提高了类之间的耦合性（继承的缺点，耦合度高就会造成代码之间的联系）。</p>
+<p>​</p>
+</li>
+</ul>
+<p>####继承的关键字</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">关键字</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">extends</td>
+<td style="text-align:center">单一继承</td>
+</tr>
+<tr>
+<td style="text-align:center">implements</td>
+<td style="text-align:center">继承多个父类</td>
+</tr>
+<tr>
+<td style="text-align:center">super</td>
+<td style="text-align:center">实现对父类父类成员的访问，引用父类</td>
+</tr>
+<tr>
+<td style="text-align:center">this</td>
+<td style="text-align:center">指向自己的引用</td>
+</tr>
+<tr>
+<td style="text-align:center">final</td>
+<td style="text-align:center">将自身定义为不可继承的类</td>
+</tr>
+</tbody>
+</table>
+<h3 id="java重写和重载"><a href="#java重写和重载" class="headerlink" title="java重写和重载"></a>java重写和重载</h3><h4 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h4><p>#####重写含义</p>
+<p>重写是子类对父类的允许访问的方法的实现过程进行重新编写, <strong>返回值和形参</strong>都不能改变。<strong>即外壳不变，核心重写！</strong>重写的好处在于子类可以根据需要，定义特定于自己的行为。 也就是说子类能够根据需要实现父类的方法。。</p>
+<h5 id="重写方法的原则"><a href="#重写方法的原则" class="headerlink" title="重写方法的原则"></a>重写方法的原则</h5><ul>
+<li>参数列表必须完全与被重写方法的相同；</li>
+<li>返回类型必须完全与被重写方法的返回类型相同；</li>
+<li>访问权限不能比父类中被重写的方法的访问权限更低。例如：如果父类的一个方法被声明为public，那么在子类中重写该方法就不能声明为protected。</li>
+<li>父类的成员方法只能被它的子类重写。</li>
+<li>声明为final的方法不能被重写。</li>
+<li>声明为static的方法不能被重写，但是能够被再次声明。</li>
+<li>子类和父类在同一个包中，那么子类可以重写父类所有方法，除了声明为private和final的方法。</li>
+<li>子类和父类不在同一个包中，那么子类只能够重写父类的声明为public和protected的非final方法。</li>
+</ul>
+<h5 id="代码实例"><a href="#代码实例" class="headerlink" title="代码实例"></a>代码实例</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>&#123;</span><br><span class="line">      System.out.println(<span class="string">"动物可以移动"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="keyword">super</span>.move(); <span class="comment">// 应用super类的方法</span></span><br><span class="line">      System.out.println(<span class="string">"狗可以跑和走"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDog</span></span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">      Animal b = <span class="keyword">new</span> Dog(); <span class="comment">// Dog 对象</span></span><br><span class="line">      b.move(); <span class="comment">//执行 Dog类的方法</span></span><br><span class="line"> </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行的结果是</p>
+<blockquote>
+<p>狗可以跑和走</p>
+</blockquote>
+<p>可以看到在Dog类中重写了move()方法，传入的参数和返回类型和原来父类的方法一致，但内部代码可以修改。</p>
+<p>####重载</p>
+<p>#####重载含义</p>
+<p>重载(overloading) 是在一个类里面，方法名字相同，而参数不同。返回类型可以相同也可以不同。</p>
+<p>每个重载的方法（或者构造函数）都必须有一个独一无二的参数类型列表。</p>
+<h5 id="重载的规则"><a href="#重载的规则" class="headerlink" title="重载的规则"></a>重载的规则</h5><ul>
+<li>被重载的方法必须改变参数列表(参数个数或类型或顺序不一样)；</li>
+<li>被重载的方法可以改变返回类型；</li>
+<li>被重载的方法可以改变访问修饰符；</li>
+<li>被重载的方法可以声明新的或更广的检查异常；</li>
+<li>方法能够在同一个类中或者在一个子类中被重载。</li>
+<li>无法以返回值类型作为重载函数的区分标准。</li>
+</ul>
+<h5 id="代码实例-1"><a href="#代码实例-1" class="headerlink" title="代码实例"></a>代码实例</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Overloading</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"test1"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"test2"</span>);</span><br><span class="line">    &#125;   </span><br><span class="line"> </span><br><span class="line">    <span class="comment">//以下两个参数类型顺序不同</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(<span class="keyword">int</span> a,String s)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"test3"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"returntest3"</span>;</span><br><span class="line">    &#125;   </span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(String s,<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"test4"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"returntest4"</span>;</span><br><span class="line">    &#125;   </span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Overloading o = <span class="keyword">new</span> Overloading();</span><br><span class="line">        System.out.println(o.test());</span><br><span class="line">        o.test(<span class="number">1</span>);</span><br><span class="line">        System.out.println(o.test(<span class="number">1</span>,<span class="string">"test3"</span>));</span><br><span class="line">        System.out.println(o.test(<span class="string">"test4"</span>,<span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果是</p>
+<blockquote>
+<p>test1</p>
+<p>test2</p>
+<p>test3</p>
+<p>test4</p>
+</blockquote>
+<p>从运行结果看，调用的传参不同的函数顺序执行。</p>
+<h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><p>多态就是对象多种表现形式的体现。</p>
+<p>#####多态存在的三个必要条件</p>
+<ul>
+<li>继承</li>
+<li>重写</li>
+<li>父类引用指向子类对象</li>
+</ul>
+<p>这里提供一份代码以便理解。大意就是一个抽象父类声明但不定义一个方法，在其他子类中可以重写这个方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        System.out.println(<span class="string">"吃鱼"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        System.out.println(<span class="string">"抓老鼠"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        System.out.println(<span class="string">"吃骨头"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        System.out.println(<span class="string">"看家"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###java组件部分设计</p>
+<h3 id="Swing"><a href="#Swing" class="headerlink" title="Swing"></a>Swing</h3><p>在本次实训实验中利用了Swing这个java的<strong>GUI工具包</strong>，以实现一个简单的计算器。其中的主要用途是引用这些包的相关控件，控件的相关接口，同时给这些控件注册事件，建立事件处理逻辑。</p>
+<p>介绍控件，首先应提到<strong>JComponet</strong> 。</p>
+<p><strong>JComponent</strong></p>
+<p>Swing 的整个可视组件库的基础构造块是 JComponent。它是所有组件的父类。它是一个<strong>抽象类</strong>，所以不能创建 JComponent，但是作为类层次结构的结果，从字面意义来说它包含了数百个函数，Swing 中的每个组件都可以使用这些函数。</p>
+<p>注意： 每一个控件都是一个类，具有许多接口函数，在eclipes这个IDE上可以轻松获取。使用方法：鼠标移动到某一个控件类名，按ctrl键点击类名，即可弹出这个控件类里头详细的函数定义。</p>
+<h4 id="常用的控件集合"><a href="#常用的控件集合" class="headerlink" title="常用的控件集合"></a>常用的控件集合</h4><table>
+<thead>
+<tr>
+<th>控件</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JLabel</td>
+<td>用作文本描述</td>
+</tr>
+<tr>
+<td>JButton</td>
+<td>按钮</td>
+</tr>
+<tr>
+<td>JFrame</td>
+<td>窗口</td>
+</tr>
+<tr>
+<td>JPanel</td>
+<td>控件容器</td>
+</tr>
+<tr>
+<td>JTextField</td>
+<td>文本输入框</td>
+</tr>
+<tr>
+<td>JCheckBox</td>
+<td>确认框</td>
+</tr>
+<tr>
+<td>GridLayout</td>
+<td>生成网格状的布局</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tips: 任何一个控件都有Add()的方法，意味着每一个控件都可以添加到另外一个控件里。</em></p>
+<h4 id="注册事件的方法"><a href="#注册事件的方法" class="headerlink" title="注册事件的方法"></a>注册事件的方法</h4><p>以下以button为例，进行两种常用方式的注册。</p>
+<h5 id="方法1-匿名内部类实现"><a href="#方法1-匿名内部类实现" class="headerlink" title="方法1 匿名内部类实现"></a>方法1 匿名内部类实现</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">button.addActionListener(  </span><br><span class="line">        <span class="keyword">new</span> ActionListener()&#123;  </span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>&#123;  </span><br><span class="line">                 System.out.println(<span class="string">"你按了按钮一"</span>);  </span><br><span class="line">             &#125;  </span><br><span class="line"> &#125;);   <span class="comment">//调用监听函数并定义监听事件</span></span><br></pre></td></tr></table></figure>
+<h5 id="方法2-利用一般内部类实现"><a href="#方法2-利用一般内部类实现" class="headerlink" title="方法2 利用一般内部类实现"></a>方法2 利用一般内部类实现</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">button.addActionListener(<span class="keyword">new</span> Button2ActionListener()); </span><br><span class="line">     </span><br><span class="line"> <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Button1ActionListener</span> <span class="keyword">implements</span> <span class="title">ActionListener</span></span>&#123;  </span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>&#123;  </span><br><span class="line">           System.out.println(<span class="string">"你按了按钮一"</span>);     </span><br><span class="line">     	&#125;     </span><br><span class="line"> &#125;  <span class="comment">//将事件处理为一个类事件</span></span><br></pre></td></tr></table></figure>
+<p>用了以上的基础知识就可以解决一个简单计算器的实现啦。</p>
+<h1 id="Junit-学习和使用"><a href="#Junit-学习和使用" class="headerlink" title="Junit 学习和使用"></a>Junit 学习和使用</h1><p>###Junit是什么</p>
+<p>JUnit是用于编写和运行可重复的自动化测试的开源测试框架， 这样可以保证我们的代码按预期工作。JUnit可广泛用于工业和作为支架(从命令行)或IDE(如Eclipse)内单独的Java程序。</p>
+<p><strong>JUnit提供：</strong></p>
+<ul>
+<li>断言测试预期结果。</li>
+<li>测试功能共享通用的测试数据。</li>
+<li>测试套件轻松地组织和运行测试。</li>
+<li>图形和文本测试运行。</li>
+</ul>
+<p><strong>JUnit用于测试：</strong></p>
+<ul>
+<li><p>整个对象</p>
+</li>
+<li><p>对象的一部分 - 交互的方法或一些方法</p>
+</li>
+<li><p>几个对象之间的互动(交互)</p>
+<p>​</p>
+</li>
+</ul>
+<p>###JUnit的特点</p>
+<ul>
+<li>JUnit是用于编写和运行测试的开源框架。</li>
+<li>提供了注释，以确定测试方法。</li>
+<li>提供断言测试预期结果。</li>
+<li>提供了测试运行的运行测试。</li>
+<li>JUnit测试让您可以更快地编写代码，提高质量</li>
+<li>JUnit是优雅简洁。它是不那么复杂以及不需要花费太多的时间。</li>
+<li>JUnit测试可以自动运行，检查自己的结果，并提供即时反馈。没有必要通过测试结果报告来手动梳理。</li>
+<li>JUnit测试可以组织成测试套件包含测试案例，甚至其他测试套件。</li>
+<li>Junit显示测试进度的，如果测试是没有问题条形是绿色的，测试失败则会变成红色。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>注解</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>@Test</strong>public void method()</td>
+<td>测试注释指示该公共无效方法它所附着可以作为一个测试用例。</td>
+</tr>
+<tr>
+<td><strong>@Before</strong>public void method()</td>
+<td>Before注释表示，该方法必须在类中的每个测试之前执行，以便执行测试某些必要的先决条件。</td>
+</tr>
+<tr>
+<td><strong>@BeforeClass</strong>public static void method()</td>
+<td>BeforeClass注释指出这是附着在静态方法必须执行一次并在类的所有测试之前。发生这种情况时一般是测试计算共享配置方法(如连接到数据库)。</td>
+</tr>
+<tr>
+<td><strong>@After</strong>public void method()</td>
+<td>After 注释指示，该方法在执行每项测试后执行(如执行每一个测试后重置某些变量，删除临时变量等)</td>
+</tr>
+<tr>
+<td><strong>@AfterClass</strong>public static void method()</td>
+<td>当需要执行所有的测试在JUnit测试用例类后执行，AfterClass注解可以使用以清理建立方法，(从数据库如断开连接)。注意：附有此批注(类似于BeforeClass)的方法必须定义为静态。</td>
+</tr>
+<tr>
+<td><strong>@Ignore</strong>public static void method()</td>
+<td>当想暂时禁用特定的测试执行可以使用忽略注释。每个被注解为@Ignore的方法将不被执行。</td>
+</tr>
+</tbody>
+</table>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/30/Verilog设计初步/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Qiuyihao">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KnowMyself">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/30/Verilog设计初步/" itemprop="url">Verilog 设计初步</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-30T00:37:36+08:00">
+                2018-04-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Verilog设计初步"><a href="#Verilog设计初步" class="headerlink" title="Verilog设计初步"></a>Verilog设计初步</h1><p>##Verilog 代码模板</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//语句关键字字母都为小写字母，大小写敏感</span></span><br><span class="line"><span class="comment">//硬件思维来写代码</span></span><br><span class="line"><span class="comment">//命名不能以数字开头</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> &lt;顶层模块名&gt; (输入输出端口列表) <span class="comment">//定义输入输出端口列表</span></span><br><span class="line">	<span class="keyword">output</span> 输出端口列表；  <span class="comment">//输出端口生声明</span></span><br><span class="line">	<span class="keyword">input</span>  输入端口列表；      <span class="comment">//输入输出端口生命 </span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*定义数据类型，功能定义，函数实现*/</span></span><br><span class="line">    <span class="keyword">reg</span>  信号名；</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//逻辑功能定义</span></span><br><span class="line">	<span class="keyword">assign</span>&lt;结果信号名&gt; = &lt;表达式&gt;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//用always块描述逻辑功能</span></span><br><span class="line">    <span class="keyword">always</span> @(&lt;敏感信号&gt;)   </span><br><span class="line">        <span class="keyword">begin</span></span><br><span class="line">            <span class="comment">//过程赋值运算</span></span><br><span class="line">            <span class="comment">//语句，if else while task</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="comment">//调用其他模块</span></span><br><span class="line">    &lt;调用模块名module_name&gt;&lt;例化模块名&gt;(&lt;端口列表&gt;)；</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//门元件例化</span></span><br><span class="line">    门元件关键字&lt;例化门元件名&gt;(&lt;端口列表port_list&gt;);</span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+<p>四位选择器</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> mux4_1(out,in0, in1, in2,in4,sel);</span><br><span class="line">    <span class="keyword">output</span> out;</span><br><span class="line">    <span class="keyword">input</span> in0,in1,in2,in3;</span><br><span class="line">    <span class="keyword">input</span>[<span class="number">1</span>:<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">reg</span> out;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">always</span> @（in0 <span class="keyword">or</span> in1 <span class="keyword">or</span> in2 <span class="keyword">or</span> in3 <span class="keyword">or</span> sel)</span><br><span class="line">        <span class="keyword">begin</span> </span><br><span class="line">            <span class="keyword">case</span>(sel)</span><br></pre></td></tr></table></figure>
+<h2 id="数据类型及运算符"><a href="#数据类型及运算符" class="headerlink" title="数据类型及运算符"></a>数据类型及运算符</h2><ul>
+<li>整数类型<ul>
+<li>构成是：字符宽度+进制+数值。</li>
+<li>例如：2’0xd5;  宽度为2的十六进制d5。</li>
+</ul>
+</li>
+<li>逻辑类型<ul>
+<li>高低电平 1 0，电路里体现为电压的区间</li>
+<li>x：未知</li>
+<li>z:   高阻</li>
+</ul>
+</li>
+<li>net类型<ul>
+<li>常用的是wire。用法是 wire[7:0] databus。 //databus宽度8</li>
+</ul>
+</li>
+<li>寄存器类型<ul>
+<li>reg </li>
+<li>integer</li>
+<li>time</li>
+<li>real</li>
+<li>realtime</li>
+</ul>
+</li>
+<li>parameter参数 <ul>
+<li>用来定义符号常量。 parameter sel = 8’ha3。</li>
+</ul>
+</li>
+<li>向量类型</li>
+<li>逻辑运算符</li>
+<li>位运算符</li>
+<li>三目运算</li>
+<li>位拼接运算符</li>
+</ul>
+<p>下例采用数据流方式描述1位全加器。</p>
+<p>在本例中，有两个连续赋值语句。这些赋值语句是并发的，与其书写的顺序无关。只要<br>连续赋值语句右端表达式中操作数的值变化(即有事件发生), 连续赋值语句即被执行。如果A<br>变化，则两个连续赋值都被计算，即同时对右端表达式求值，并将结果赋给左端目标。</p>
+<h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><ul>
+<li>initial</li>
+<li>always @（敏感信号）<ul>
+<li>@ (posedge clk) 上升沿</li>
+<li>@ (negedge clk) 下降沿触发</li>
+</ul>
+</li>
+<li>赋值语句<ul>
+<li>连续赋值语句assign 只要连续赋值语句右端表达式中操作数的值变化, 连续赋值语句即被执行。</li>
+<li>阻塞赋值 a = b;         ————-非时序赋值（组合）</li>
+<li>非阻塞赋值  a&lt;=b      ————时序赋值中使用  </li>
+<li>时序和组合在电路上的表现是时序赋值过程中需要等待时钟沿来触发。</li>
+</ul>
+</li>
+</ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h2 id="设计特点"><a href="#设计特点" class="headerlink" title="设计特点"></a>设计特点</h2><h4 id="层次化模块化"><a href="#层次化模块化" class="headerlink" title="层次化模块化"></a>层次化模块化</h4><p>顶层模块和底层模块的设计方法，将模块细分为若干个子模块，在底层实现子模块功能，在顶层组合各个子模块。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+
+
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Qiuyihao</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">标签</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Qiuyihao</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
