@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-11T01:19:50.006Z</updated>
+  <updated>2018-05-15T01:21:23.187Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,19 +17,71 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>单周期CPU设计笔记和总结</title>
-    <link href="http://yoursite.com/2018/05/11/%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0%E5%92%8C%E6%80%BB%E7%BB%93/"/>
-    <id>http://yoursite.com/2018/05/11/单周期CPU设计笔记和总结/</id>
-    <published>2018-05-11T01:19:49.811Z</published>
-    <updated>2018-05-11T01:19:50.006Z</updated>
+    <title>认识经济学原理</title>
+    <link href="http://yoursite.com/2018/05/15/%E8%AE%A4%E8%AF%86%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%8E%9F%E7%90%86/"/>
+    <id>http://yoursite.com/2018/05/15/认识经济学原理/</id>
+    <published>2018-05-15T01:21:22.895Z</published>
+    <updated>2018-05-15T01:21:23.187Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="单周期CPU设计"><a href="#单周期CPU设计" class="headerlink" title="单周期CPU设计"></a>单周期CPU设计</h3>]]></content>
+    <content type="html"><![CDATA[<h1 id="经济学学习"><a href="#经济学学习" class="headerlink" title="经济学学习"></a>经济学学习</h1><p>##十大曼昆经济学原理</p><p>###原理一：人们面临交替关系</p><p>典型的交替关系就是 “大炮和黄油”的交替，花更多钱在大炮研发上就注定了减少黄油生产的投入。</p><p>这其中 涉及到一个资源配置做出决策的问题。</p><p>认识到人们面临交替关系本身并没有告诉我们，人们将会或应该作出什么决策。一<br>个学生不应该仅仅由于要增加用于学习经济学的时间而放弃心理学的学习。社会不应该<br>仅仅由于环境控制降低了我们的物质生活水平而不再保护环境。也不应该仅仅由于帮助<br>穷人扭曲了工作激励而忽视了他们。然而，认识到生活中的交替关系是重要的，因为人<br>们只有了解他们可以得到的选择，才能作出良好的决策。</p><h3 id="原理二：某种东西的成本是为了得到它而放弃的东西"><a href="#原理二：某种东西的成本是为了得到它而放弃的东西" class="headerlink" title="原理二：某种东西的成本是为了得到它而放弃的东西"></a>原理二：某种东西的成本是为了得到它而放弃的东西</h3><p>许多行为选择的成本有时不是那么明显，收益也分为长期和短期，时间成本 ，金钱成本，人力成本都是需要考量的。</p><h3 id="原理三：-理性人考虑边际量"><a href="#原理三：-理性人考虑边际量" class="headerlink" title="原理三： 理性人考虑边际量"></a>原理三： 理性人考虑边际量</h3><p>做决策考虑行为所花的额外成本和额外收益，通过比较这种边际收益和边际成本来，评价比较合理。</p><h3 id="原理四：人们会对激励做出反应"><a href="#原理四：人们会对激励做出反应" class="headerlink" title="原理四：人们会对激励做出反应"></a>原理四：人们会对激励做出反应</h3><p>激励在决定行为中的中心作用是重要的。激励在贸易中可能体现为商品的成本或者收益。</p><hr><p><em>列出并简要解释个人作出决策的四个原理</em></p><hr><h3 id="原理五：-贸易能使每个人状况更好"><a href="#原理五：-贸易能使每个人状况更好" class="headerlink" title="原理五： 贸易能使每个人状况更好"></a>原理五： 贸易能使每个人状况更好</h3><p>贸易竞争能使国家和个人在相互交易的过程中收益。国与国之间的贸易未必就是像体育比赛一样一方赢，一方输，事实恰好相反，两国之间贸易可以使每个国家状况更好。</p><h3 id="原理六：市场通常是组织经济活动的一种好方法"><a href="#原理六：市场通常是组织经济活动的一种好方法" class="headerlink" title="原理六：市场通常是组织经济活动的一种好方法"></a>原理六：市场通常是组织经济活动的一种好方法</h3><p>经济学家亚当·斯密（Adam Smith）在他 1776 年的著作《国富论》中提出了全部<br>经济学中最有名的观察结果：家庭和企业在市场上相互交易，他们仿佛被一只“看不见<br>的手”所指引，引起了合意的市场结果。本书的目的之一就是要解释这只看不见的手如<br>何施展它的魔力。当你学习经济学时，你将会知道，价格就是看不见的手用来指引经济<br>活动的工具。价格既反映了一种物品的社会价值，也反映了生产该物品的社会成本</p><p>关于看不见的手在指引经济活动中的技巧有一个重要推论：当政府阻止价格根据供<br>求自发地调整时，它就限制了看不见的手协调组成经济的千百万家庭和企业的能力。这<br>个推论解释了为什么税收对资源配置有不利的影响：税收扭曲了价格，从而扭曲了家庭<br>和企业的决策。这个推论还解释了租金控制这类直接控制价格的政策所引起的更大伤<br>害。而且，这个推论也解释了共产主义的失败。在共产主义国家中，价格不是在市场上<br>决定的，而是由中央计划者指定。这些计划者缺乏那种在价格对市场力量自由地作出反<br>应时反映在价格中的信息。中央计划者之所以失败，是因为它们在管理经济时把市场上<br>那只看不见的手缚起来了。</p><p>###原理七：政府有时可以改善市场结果</p><p>政府干预经济的原因：促进效率和促进平等。政策的目标不是做大经济蛋糕二十改变蛋糕的分割。</p><p>​    看不见的手通常会使市场有效地配置资源。但是，由于各种原因，有时看不见的手<br>不起作用。经济学家用市场失灵这个词来指市场本身不能有效配置资源的情况。<br>市场失灵的一个可能原因是外部性。外部性是一个人的行动对旁观者福利的影响。<br>污染是一个典型的例子。如果一家化工厂并不承担它排放烟尘的全部成本，它就会大量<br>排放。在这种情况下，政府就可以通过环境保护来增加经济福利。<br>    市场失灵的另一个可能原因是市场势力。市场势力是指一个人（或一小群人）不适<br>当地影响市场价格的能力。例如，假设镇里的每个人都需要水，但只有一口井。这口井<br>的所有者对水的销售就有市场势力——在这种情况下，它是一个垄断者。这口井的所有<br>者并不受残酷竞争的限制，而正常情况下看不见的手正是以这种竞争来制约个人的私<br>利。你将会知道，在这种情况下，规定垄断者收取的价格有可能提高经济效率。</p><hr><p><em>列出并简要解释关于经济相互交易的三个原理</em></p><hr><h3 id="原理八：-一国的生活水平取决于它生产物品与劳务的能力"><a href="#原理八：-一国的生活水平取决于它生产物品与劳务的能力" class="headerlink" title="原理八： 一国的生活水平取决于它生产物品与劳务的能力"></a>原理八： 一国的生活水平取决于它生产物品与劳务的能力</h3><p>​    用什么来解释各国和不同时期中生活水平的巨大差别呢？答案之简单出人意料之<br>外。几乎所有生活水平的变动都可以归因于各国生产率的差别——这就是一个工人一小<br>时所生产的物品与劳务量的差别。在那些每单位时间工人能生产大量物品与劳务的国<br>家，大多数人享有高生活水平；在那些工人生产率低的国家，大多数人必须忍受贫困的<br>生活。同样，一国的生产率增长率决定了平均收入增长率。</p><p>​    生产率和生活水平之间的基本关系是简单的，但它的意义是深远的。如果生产率是<br>生活水平的首要决定因素，那么，其他解释的重要性就应该是次要的。例如，有人想把<br>上个世纪美国工人生活水平的提高归功于工会或最低工资法。但美国工人的真正英雄行<br>为是他们提高了生产率。另一个例子是，一些评论家声称，美国近年来收入增长放慢是<br>由于日本和其他国家日益激烈的竞争。但真正的敌人不是来自国外的竞争，而是美国生<br>产率增长的放慢。</p><p>​    生产率与生活水平之间的关系对公共政策也有深远的含义。在考虑任何一项政策如<br>何影响生活水平时，关键问题是政策如何影响我们生产物品与劳务的能力。为了提高生<br>活水平，决策者需要通过让工人受到良好的教育，拥有生产物品与劳务需要的工具，以<br>及得到获取最好技术的机会。</p><h3 id="原理九：-当政府发行了过多的货币之后，物价上涨"><a href="#原理九：-当政府发行了过多的货币之后，物价上涨" class="headerlink" title="原理九： 当政府发行了过多的货币之后，物价上涨"></a>原理九： 当政府发行了过多的货币之后，物价上涨</h3><p>货币发行量超量，会导致通货膨胀</p><h3 id="原理十：社会面临通货膨胀与失业之间的短期交替关系"><a href="#原理十：社会面临通货膨胀与失业之间的短期交替关系" class="headerlink" title="原理十：社会面临通货膨胀与失业之间的短期交替关系"></a>原理十：社会面临通货膨胀与失业之间的短期交替关系</h3><p>交替关系称为菲利普斯曲线。</p><p>由于价格是粘性的，各种政府政策都具有不同于长期效应的短期效应。例如，当政<br>府减少货币量时，它就减少了人们支出的数量。较低的支出与居高不下的价格结合在一<br>起就减少了企业销售的物品与劳务量。销售量减少又引起企业解雇工人。因此，对价格<br>的变动作出完全的调整之前，货币量减少就暂时增加了失业。</p><hr><p><em>列出并简要解释描述整体经济如何运行的三个原理。</em></p><hr><p>币值稳定–交换的媒介</p><p>币值不稳定–投机的工具</p>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;h3 id=&quot;单周期CPU设计&quot;&gt;&lt;a href=&quot;#单周期CPU设计&quot; class=&quot;headerlink&quot; title=&quot;单周期CPU设计&quot;&gt;&lt;/a&gt;单周期CPU设计&lt;/h3&gt;
+        &lt;h1 id=&quot;经济学学习&quot;&gt;&lt;a href=&quot;#经济学学习&quot; class=&quot;headerlink&quot; title=&quot;经济学学习&quot;&gt;&lt;/a&gt;经济学学习&lt;/h1&gt;&lt;p&gt;##十大曼昆经济学原理&lt;/p&gt;
+&lt;p&gt;###原理一：人们面临交替关系&lt;/p&gt;
+&lt;p&gt;典型的交替关系就是 “大炮和黄油
+      
+    
+    </summary>
+    
+    
+      <category term="经济学，毛概" scheme="http://yoursite.com/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6%EF%BC%8C%E6%AF%9B%E6%A6%82/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2018/05/14/%E8%AF%BB%E8%80%85%E5%86%99%E8%80%85%E9%97%AE%E9%A2%98/"/>
+    <id>http://yoursite.com/2018/05/14/读者写者问题/</id>
+    <published>2018-05-14T01:54:14.617Z</published>
+    <updated>2018-05-14T01:54:14.787Z</updated>
+    
+    <content type="html"><![CDATA[<p>读者写者问题</p><p>–写者对数据库有排他的访问</p><p>第一读者-写者问题</p><p>若有写者正在访问对象，那么其他读者需要保持等待</p><p>第二读者-写者问题</p><p>如果有写者等待访问对象，那么不会有新读者开始读操作</p><p>以上问题经常出现在数据库的访问读写问题之中。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;读者写者问题&lt;/p&gt;
+&lt;p&gt;–写者对数据库有排他的访问&lt;/p&gt;
+&lt;p&gt;第一读者-写者问题&lt;/p&gt;
+&lt;p&gt;若有写者正在访问对象，那么其他读者需要保持等待&lt;/p&gt;
+&lt;p&gt;第二读者-写者问题&lt;/p&gt;
+&lt;p&gt;如果有写者等待访问对象，那么不会有新读者开始读操作&lt;/p&gt;
+&lt;p&gt;以上问题
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>单周期CPU设计笔记和总结</title>
+    <link href="http://yoursite.com/2018/05/11/%E5%8D%95%E5%91%A8%E6%9C%9FCPU%E8%AE%BE%E8%AE%A1%E7%AC%94%E8%AE%B0%E5%92%8C%E6%80%BB%E7%BB%93/"/>
+    <id>http://yoursite.com/2018/05/11/单周期CPU设计笔记和总结/</id>
+    <published>2018-05-11T01:19:49.811Z</published>
+    <updated>2018-05-15T03:40:27.772Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="单周期CPU设计与实现（实验"><a href="#单周期CPU设计与实现（实验" class="headerlink" title="单周期CPU设计与实现（实验)"></a>单周期CPU设计与实现（实验)</h3><p>每一个指令都在一个时钟周期内完成，称为单周期CPU。</p><hr><h3 id="单周期CPU数据通路图"><a href="#单周期CPU数据通路图" class="headerlink" title="单周期CPU数据通路图"></a>单周期CPU数据通路图</h3><p>该图描述的是CPU中数据，如何在 PC时钟，指令存储器，寄存器组，控制单元，ALU，数据存储器和控制器中如何传送的过程。</p><h4 id="MIPS指令的三种格式"><a href="#MIPS指令的三种格式" class="headerlink" title="MIPS指令的三种格式"></a>MIPS指令的三种格式</h4><ul><li><p>R类型</p></li><li><p>I类型</p></li><li><p>J类型</p></li></ul><p>算术运算指令</p><p>逻辑运算指令</p><p>移位指令</p><p>比较指令</p><p>存储器读写指令</p><p>分支指令</p><p>跳转指令</p><p>停机指令</p><p>CPU学习笔记 - 5/15</p><p>###逻辑设计</p><ul><li>组合单元— 操作单元 如门 ALU</li></ul><ul><li>状态单元— 存储单元，如存储器，寄存器</li></ul><p>注： 状态单元需要两个输入（时钟信号值和输入数据值） 一个输出（输出数据值）。</p><h3 id="建立数据通路"><a href="#建立数据通路" class="headerlink" title="建立数据通路"></a>建立数据通路</h3><p>部件认识：</p><p>PC程序计数器：存储当前指令的地址，每执行完一条指令，PC+4。（一个指令4个字节）</p><p>指令存储器：</p><p>数据存储器：</p><p>寄存器堆：</p><p>ALU:</p><p>加法器：</p><p><a href="http://www.cnblogs.com/sevenir-code/p/4887994.html" target="_blank" rel="noopener">MIPS指令特点</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h3 id=&quot;单周期CPU设计与实现（实验&quot;&gt;&lt;a href=&quot;#单周期CPU设计与实现（实验&quot; class=&quot;headerlink&quot; title=&quot;单周期CPU设计与实现（实验)&quot;&gt;&lt;/a&gt;单周期CPU设计与实现（实验)&lt;/h3&gt;&lt;p&gt;每一个指令都在一个时钟周期内完成，称为单
       
     
     </summary>
@@ -194,9 +246,9 @@
     <link href="http://yoursite.com/2018/05/03/%E7%AC%AC%E5%9B%9B%E7%AB%A0CPU--%E8%AE%A1%E7%BB%84%E8%AF%BE%E5%A0%82%E7%AC%94%E8%AE%B0-01/"/>
     <id>http://yoursite.com/2018/05/03/第四章CPU--计组课堂笔记-01/</id>
     <published>2018-05-03T00:53:04.206Z</published>
-    <updated>2018-05-08T02:51:23.068Z</updated>
+    <updated>2018-05-15T04:42:54.494Z</updated>
     
-    <content type="html"><![CDATA[<p>[TOC]</p><h2 id="CPU基础概念"><a href="#CPU基础概念" class="headerlink" title="CPU基础概念"></a>CPU基础概念</h2><p>CPU功能： 指令控制，操作控制，时间控制，数据加工</p><p>CPU控制方式：同步控制，异步控制，联合控制</p><p>CPU指令周期：取值时间+执行时间</p><p>CPU周期：机器周期，总线周期。</p><h2 id="CPU中断逻辑"><a href="#CPU中断逻辑" class="headerlink" title="CPU中断逻辑"></a>CPU中断逻辑</h2><h4 id="中断基础概念"><a href="#中断基础概念" class="headerlink" title="中断基础概念"></a>中断基础概念</h4><ul><li>暂停当前程序的执行，转而去执行其他程序，执行完毕之后，重新恢复中断程序的执行</li></ul><ul><li><p>中断源： 人为设置的中断，程序性事故,  硬件故障，外部事件（比如断电）</p></li><li><p>中断分类：可屏蔽中断和不可屏蔽中断；内部中断和外部中断；软中断和硬中断。</p><p>根据CPU是否可以采取响应判断来分类：可屏蔽中断，不可屏蔽中断。 电源断电，CPU不可禁止响应，另外可以根据中断源是否被屏蔽来确定是否给予响应。</p><p>​</p></li></ul><p>####中断系统需要解决的7个问题：</p><ol><li><p>中断如何向CPU提出诉求</p></li><li><p>多个中断同时发生请求，CPU如何优先处理？</p><ol><li>硬件排队</li><li>软件轮询</li></ol></li><li><p>CPU响应中断的条件，时间，方式。</p><ol><li><p>中断服务程序入口地址的查找：硬件向量法和软件查询法</p></li><li><p>中断响应的条件：中断允许触发器必须为1</p></li><li><p>中断响应时间：当前<strong>指令周期结束</strong>。（而不是指令执行结束）</p><p>（2， 3 为中断响应的充分必要条件）</p></li></ol></li><li><p>CPU响应中断后如何保护现场  </p></li><li><p>中断响应结束之后如何阻止源程序的执行转入中断服务程序的入口地址</p></li><li><p>中断处理结束后，CPU如何恢复现场</p></li><li><p>中断处理结束过程中出现了新的中断请求,CPU该如何处理</p></li></ol><p><strong>处理办法</strong> ：中断处理系统中配置响应的软件和硬件</p><h4 id="中断屏蔽技术"><a href="#中断屏蔽技术" class="headerlink" title="中断屏蔽技术"></a>中断屏蔽技术</h4><ul><li><p>实现多重中断的条件：</p><ol><li><p>提前设置开中断指令 </p></li><li><p>优先级高的中断源有权屏蔽优先级别低的中断源</p></li></ol></li><li><p>中断屏蔽的结果</p><ol><li>屏蔽触发器与屏蔽字</li><li>改变中断优先登记以及运行轨迹的变化</li></ol></li><li><p>多重中断的断点保护</p><ol><li><strong>中断响应轨迹图</strong></li><li>设置中断屏蔽字改变中断响应优先级</li></ol></li></ul><p>发生多重中断时中断响应逻辑类似于CPU调度中的优先级调度。</p><p>引起cpu中断的各种因素（称为中断源）</p><ul><li>人为设置的中断（访管指令）</li><li>程序性事故</li><li>硬件故障</li><li>I/O设备</li><li>外部事件</li></ul>]]></content>
+    <content type="html"><![CDATA[<p>[TOC]</p><h2 id="CPU基础概念"><a href="#CPU基础概念" class="headerlink" title="CPU基础概念"></a>CPU基础概念</h2><p>CPU功能： 指令控制，操作控制，时间控制，数据加工</p><p>CPU控制方式：同步控制，异步控制，联合控制</p><p>CPU指令周期：取值时间+执行时间</p><p>CPU周期：机器周期，总线周期。</p><h2 id="CPU中断逻辑"><a href="#CPU中断逻辑" class="headerlink" title="CPU中断逻辑"></a>CPU中断逻辑</h2><h4 id="中断基础概念"><a href="#中断基础概念" class="headerlink" title="中断基础概念"></a>中断基础概念</h4><ul><li>暂停当前程序的执行，转而去执行其他程序，执行完毕之后，重新恢复中断程序的执行</li></ul><ul><li><p>中断源： 人为设置的中断，程序性事故,  硬件故障，外部事件（比如断电）</p></li><li><p>中断分类：可屏蔽中断和不可屏蔽中断；内部中断和外部中断；软中断和硬中断。</p><p>根据CPU是否可以采取响应判断来分类：可屏蔽中断，不可屏蔽中断。 电源断电，CPU不可禁止响应，另外可以根据中断源是否被屏蔽来确定是否给予响应。</p><p>​</p></li></ul><p>####中断系统需要解决的7个问题：</p><ol><li><p>中断如何向CPU提出诉求</p></li><li><p>多个中断同时发生请求，CPU如何优先处理？</p><ol><li>硬件排队</li><li>软件轮询</li></ol></li><li><p>CPU响应中断的条件，时间，方式。</p><ol><li><p>中断服务程序入口地址的查找：硬件向量法和软件查询法</p></li><li><p>中断响应的条件：中断允许触发器必须为1</p></li><li><p>中断响应时间：当前<strong>指令周期结束</strong>。（而不是指令执行结束）</p><p>（2， 3 为中断响应的充分必要条件）</p></li></ol></li><li><p>CPU响应中断后如何保护现场  </p></li><li><p>中断响应结束之后如何阻止源程序的执行转入中断服务程序的入口地址</p></li><li><p>中断处理结束后，CPU如何恢复现场</p></li><li><p>中断处理结束过程中出现了新的中断请求,CPU该如何处理</p></li></ol><p><strong>处理办法</strong> ：中断处理系统中配置响应的软件和硬件</p><h4 id="中断屏蔽技术"><a href="#中断屏蔽技术" class="headerlink" title="中断屏蔽技术"></a>中断屏蔽技术</h4><ul><li><p>实现多重中断的条件：</p><ol><li><p>提前设置开中断指令 </p></li><li><p>优先级高的中断源有权屏蔽优先级别低的中断源</p></li></ol></li><li><p>中断屏蔽的结果</p><ol><li>屏蔽触发器与屏蔽字</li><li>改变中断优先登记以及运行轨迹的变化</li></ol><p><a href="https://blog.csdn.net/Blue_Starry_sky/article/details/53994698" target="_blank" rel="noopener">中断屏蔽字的设置</a></p><p>​</p></li><li><p>多重中断的断点保护</p><ol><li><strong>中断响应轨迹图</strong></li><li>设置中断屏蔽字改变中断响应优先级</li></ol></li></ul><p>发生多重中断时中断响应逻辑类似于CPU调度中的优先级调度。</p><p>引起cpu中断的各种因素（称为中断源）</p><ul><li>人为设置的中断（访管指令）</li><li>程序性事故</li></ul><ul><li>硬件故障</li><li>I/O设备</li><li>外部事件</li></ul><p><img src="C:\Users\ADMINI~1\AppData\Local\Temp\1526351012462.png" alt="52635101246"></p>]]></content>
     
     <summary type="html">
     
@@ -219,9 +271,9 @@
     <link href="http://yoursite.com/2018/05/02/%E5%85%B3%E7%B3%BB%E6%95%B0%E6%8D%AE%E5%BA%93%E8%AE%BE%E8%AE%A1%E7%90%86%E8%AE%BA/"/>
     <id>http://yoursite.com/2018/05/02/关系数据库设计理论/</id>
     <published>2018-05-02T09:28:16.232Z</published>
-    <updated>2018-05-03T01:00:16.508Z</updated>
+    <updated>2018-05-14T08:28:31.577Z</updated>
     
-    <content type="html"><![CDATA[<p><img src="https://img-blog.csdn.net/20161228171824096?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZmFuZmFuNDU2OQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="è¿éåå¾çæè¿°"></p><h3 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h3><ul><li>X→Y，表示Y依赖于X；</li><li>X→Y，且Y→X不成立，Y→Z，则X→Z，表示Z传递依赖于X。</li></ul><h4 id="函数依赖性质"><a href="#函数依赖性质" class="headerlink" title="函数依赖性质"></a>函数依赖性质</h4><ul><li><p>自反性</p></li><li><p>传递性</p></li><li><p>。。。。</p></li></ul><h4 id="函数依赖的种类"><a href="#函数依赖的种类" class="headerlink" title="函数依赖的种类"></a>函数依赖的种类</h4><p>（<strong>完全函数依赖</strong>：在关系模式R（u）中，X,Y是U的子集，Y函数依赖于X 并且 Y非函数依赖于X的子集，则称Y完全函数依赖于X。X  f &gt;Y）—&gt; Y依赖于X,但不依赖X的子集。</p><p>（<strong>部分函数依赖</strong>：在关系模式R（u）中，X,Y是U的子集，Y函数依赖于X 并且 Y函数依赖于X的子集）</p><p>（<strong>函数依赖</strong>：某个属性集决定另一个属性集时，例如学生学号属性集Sno决定学生姓名属性集Sname，称Sname函数依赖于Sname ）</p><p>（<strong>平凡函数依赖</strong>：Y函数依赖于X,并且Y包含于X，例如（Sno）-&gt;(Sno)、（Sno、Sname）-&gt;（Sno））</p><p>（<strong>非平凡函数依赖</strong>：Y函数依赖于X,并且Y不包含于X,例如(Sno,Sname）-&gt;（Ssex））</p><h3 id="键"><a href="#键" class="headerlink" title="键"></a>键</h3><p>候选键： 能够唯一表示一个元组，且不含多属性<br>超键： 是指能够唯一表示一个元组的属性集<br>主属性：表示候选键中的属性<br>非主属性：不包含在主键中的属性</p><p><strong>判断主键的方法</strong> ：若属性集为{ A , B, C}，A+ = ABC。 则A为主键。（属性闭包判断法） </p><h3 id="范式-Normal-Forms"><a href="#范式-Normal-Forms" class="headerlink" title="范式 Normal Forms"></a>范式 Normal Forms</h3><p>（1）第一范式1NF：关系中的所以属性值都是不可分割的原子值；<br>（2）第二范式2NF：如果关系是1NF，且每个非主属性都完全依赖于候选键；<br>（3）第三范式3NF：如果关系是1NF，且每个非主属性都不传递依赖于候选键；<br>（4）<strong>鲍依斯-科得(巴斯)范式</strong>BCNF范式：如果关系是1NF，且每个属性都不传递依赖于候选键。</p><h3 id="属性闭包"><a href="#属性闭包" class="headerlink" title="属性闭包"></a>属性闭包</h3><p>定义：闭包就是由一个属性直接或间接推导出的所有属性的集合。</p><p>表示：B的闭包用B+表示。</p><p>计算：关系R的属性集X的闭包的步骤如下： </p><ol><li>设最终将成为闭包的属性集是Y，把Y初始化为X；<br> .  检查F中的每一个函数依赖A→B，如果属性集A中所有属性均在Y中，而B中有的属性不在Y中，则将                 其加入到Y中； </li><li>重复第二步，直到没有属性可以添加到属性集Y中为止。 最后得到的Y就是X＋</li></ol><p>举例：</p><p>例1： R = {A,B,C,D,E}</p><p>​         F = {B→CD， D→E, B→A, E→C， AD→B }</p><p>​             则 B+ = B ;    B+ = BCD;  B+ = BCDA； B+ = BCDAE。（推导过程是属性依赖传递的过程。</p><p>​            所以最终B+ 包含了R中所有属性。 故<strong>B is a key for R。</strong></p><p>例2： 有关系模式R(U，F)，其中U={A，B，C，D，E，I}，F={A→D，AB→E，BI→E，CD→I，E→C}，计算(AE)闭包。 </p><p>(1) 令X={AE}，X(0)=AE</p><p>(2)在F中寻找尚未使用过的左边是AE的子集的函数依赖，结果是: A→D， E→C；所以 X(1)=X(0)DC=ACDE，     显然 X(1)≠X(0).</p><p>(3) 在F中寻找尚未使用过的左边是ACDE的子集的函数依赖， 结果是: CD→I；所以 X(2)=X(1)I=ACDEI。虽然X（2）≠X(1)，但F中寻找尚未使用过函数依赖的左边已经没有X（2）的子集，所以不必再计算下去，即(AE)+=ACDEI。</p><p>例3：f={a-&gt;b，b-&gt;c，a-&gt;d，e-&gt;f}；由a可直接得到b和d，间接得到c，则a的闭包就是{a，b，c，d}</p><h3 id="关系模式分解"><a href="#关系模式分解" class="headerlink" title="关系模式分解"></a>关系模式分解</h3><h4 id="无损连接分解"><a href="#无损连接分解" class="headerlink" title="无损连接分解"></a>无损连接分解</h4><p>R的无损分解为X Y，那么 x∩y →x  或者 x∩y → y.   </p><h3 id="补充知识点"><a href="#补充知识点" class="headerlink" title="补充知识点"></a>补充知识点</h3><h4 id="自然连接"><a href="#自然连接" class="headerlink" title="自然连接"></a>自然连接</h4><p>在连接运算当中，一种最常用的连接是自然连接。如果关系R与S具有相同的属性组B，且该属性组的值相等时的连接称为自然连接，结果关系的属性集合为<strong>R的属性并上S减去属性B的属性</strong>集合。</p><p>参考的文章</p><p><a href="https://www.cnblogs.com/bewolf/p/4445027.html" target="_blank" rel="noopener">函数依赖集闭包、属性集闭包、超键、候选键和最小函数依赖集</a></p><p><a href="https://www.cnblogs.com/makeupforever-carrie/p/6837325.html" target="_blank" rel="noopener">四种范式的实例</a></p><p><a href="https://blog.csdn.net/fanfan4569/article/details/53910670" target="_blank" rel="noopener">函数依赖不懂看这里</a></p>]]></content>
+    <content type="html"><![CDATA[<p><img src="https://img-blog.csdn.net/20161228171824096?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZmFuZmFuNDU2OQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" alt="è¿éåå¾çæè¿°"></p><p>[TOC]</p><h3 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h3><ul><li>X→Y，表示Y依赖于X；</li><li>X→Y，且Y→X不成立，Y→Z，则X→Z，表示Z传递依赖于X。</li></ul><h4 id="函数依赖性质"><a href="#函数依赖性质" class="headerlink" title="函数依赖性质"></a>函数依赖性质</h4><ul><li><p>自反性</p></li><li><p>传递性</p></li><li><p>增广性  A → C 可以推出 AB → BC</p></li></ul><h4 id="函数依赖的种类"><a href="#函数依赖的种类" class="headerlink" title="函数依赖的种类"></a>函数依赖的种类</h4><p>（<strong>完全函数依赖</strong>：在关系模式R（u）中，X,Y是U的子集，Y函数依赖于X 并且 Y非函数依赖于X的子集，则称Y完全函数依赖于X。X  f &gt;Y）—&gt; Y依赖于X,但未必都依赖X的子集。</p><p>（<strong>部分函数依赖</strong>：在关系模式R（u）中，X,Y是U的子集，Y函数依赖于X 并且 Y函数依赖于X的子集）</p><p>（<strong>函数依赖</strong>：某个属性集决定另一个属性集时，例如学生学号属性集Sno决定学生姓名属性集Sname，称Sname函数依赖于Sname ）</p><p>（<strong>平凡函数依赖</strong>：Y函数依赖于X,并且Y包含于X，例如（Sno）-&gt;(Sno)、（Sno、Sname）-&gt;（Sno））</p><p>（<strong>非平凡函数依赖</strong>：Y函数依赖于X,并且Y不包含于X,例如(Sno,Sname）-&gt;（Ssex））</p><h3 id="键"><a href="#键" class="headerlink" title="键"></a>键</h3><p>候选键： 能够唯一表示一个元组，且不含多属性<br>超键： 是指能够唯一表示一个元组的属性集<br>主属性：表示候选键中的属性<br>非主属性：不包含在主键中的属性</p><p><strong>判断主键的方法</strong> ：若属性集为{ A , B, C}，A+ = ABC。 则A为主键。（属性闭包判断法） </p><h3 id="范式-Normal-Forms"><a href="#范式-Normal-Forms" class="headerlink" title="范式 Normal Forms"></a>范式 Normal Forms</h3><p>（1）第一范式1NF：关系中的所以属性值都是不可分割的原子值；<br>（2）第二范式2NF：如果关系是1NF，且每个非主属性都完全依赖于候选键；<br>（3）第三范式3NF：如果关系是1NF，且每个非主属性都不传递依赖于候选键；<br>（4）<strong>鲍依斯-科得(巴斯)范式</strong>BCNF范式：如果关系是1NF，且每个属性都不传递依赖于候选键。</p><p>BCNF意味着在关系模式中每一个决定因素都包含候选键，也就是说，只要属性或属性组A能够决定任何一个属性B，则A的子集中必须有候选键。</p><h3 id="属性闭包"><a href="#属性闭包" class="headerlink" title="属性闭包"></a>属性闭包</h3><p>定义：闭包就是由一个属性直接或间接推导出的所有属性的集合。</p><p>表示：B的闭包用B+表示。</p><p>计算：关系R的属性集X的闭包的步骤如下： </p><ol><li>设最终将成为闭包的属性集是Y，把Y初始化为X；<br> .  检查F中的每一个函数依赖A→B，如果属性集A中所有属性均在Y中，而B中有的属性不在Y中，则将                 其加入到Y中； </li><li>重复第二步，直到没有属性可以添加到属性集Y中为止。 最后得到的Y就是X＋</li></ol><p>举例：</p><p>例1： R = {A,B,C,D,E}</p><p>​         F = {B→CD， D→E, B→A, E→C， AD→B }</p><p>​             则 B+ = B ;    B+ = BCD;  B+ = BCDA； B+ = BCDAE。（推导过程是属性依赖传递的过程。</p><p>​            所以最终B+ 包含了R中所有属性。 故<strong>B is a key for R。</strong></p><p>例2： 有关系模式R(U，F)，其中U={A，B，C，D，E，I}，F={A→D，AB→E，BI→E，CD→I，E→C}，计算(AE)闭包。 </p><p>(1) 令X={AE}，X(0)=AE</p><p>(2)在F中寻找尚未使用过的左边是AE的子集的函数依赖，结果是: A→D， E→C；所以 X(1)=X(0)DC=ACDE，     显然 X(1)≠X(0).</p><p>(3) 在F中寻找尚未使用过的左边是ACDE的子集的函数依赖， 结果是: CD→I；所以 X(2)=X(1)I=ACDEI。虽然X（2）≠X(1)，但F中寻找尚未使用过函数依赖的左边已经没有X（2）的子集，所以不必再计算下去，即(AE)+=ACDEI。</p><p>例3：f={a-&gt;b，b-&gt;c，a-&gt;d，e-&gt;f}；由a可直接得到b和d，间接得到c，则a的闭包就是{a，b，c，d}</p><h3 id="关系模式分解"><a href="#关系模式分解" class="headerlink" title="关系模式分解"></a>关系模式分解</h3><p>关系模式分解必须遵守两个准则<br>       (1)无损联接性：信息不失真（不增减信息）。<br>       (2)函数依赖保持性：不破坏属性间存在的依赖关系</p><h4 id="无损连接分解"><a href="#无损连接分解" class="headerlink" title="无损连接分解"></a>无损连接分解</h4><p>R的无损分解为X Y，那么 x∩y →x  或者 x∩y → y.   </p><p>####Dependency Preserving Decomposition 依赖保持分解</p><p> 关系模式R&lt;U,F&gt;的分解是指R为它的一组子集<br>          ρ={R1&lt;U1,F1&gt;, R2&lt;U2,F2&gt;,…, Rk&lt;Uk,Fk&gt;}所代替的过程。<br>          其中U=U1∪U2∪…∪k ,并且没有Ui≤Uj(表Ui包含于Uj，1≤i,j≤k),<br>          Fi是F在Ui上的投影，即Fi={X→Y∈F+∧XY≤Ui}(表XY包含于Ui）。</p><p>描述：R被分解为 i个关系子集 Ri。Fi为每个子集的函数依赖投影。</p><p>计算函数依赖fi保持的方法就是：Fi∪Fj 推出 fi成立，其中Fi Fj的计算从自身属性和原来函数依赖推导得来。</p><p>模式分解是独立保持的条件就是，所有函数依赖Fi的投影的并集的闭包 = F的闭包</p><p>思考： 可否是Fi的闭包的并集 = F的闭包？</p><p>回答：不可以，因为每个子集的函数依赖Fi，可能产生跨子集的函数依赖，先求Fi的闭包会产生不完整的闭包关系。</p><h4 id="BCNF分解"><a href="#BCNF分解" class="headerlink" title="BCNF分解"></a>BCNF分解</h4><p>BCNF的要求：函数依赖要么平凡，函数依赖的左侧是超键</p><p>如果X→Y违反BCNF, 分解R 为R-Y 和XY。</p><h4 id="第三范式"><a href="#第三范式" class="headerlink" title="第三范式"></a>第三范式</h4><p>第三范式的条件：</p><ol><li>平凡依赖</li><li>x 属于超键</li><li>A属于候选键</li></ol><p>部分依赖</p><p>传递依赖</p><h3 id="补充知识点"><a href="#补充知识点" class="headerlink" title="补充知识点"></a>补充知识点</h3><h4 id="自然连接"><a href="#自然连接" class="headerlink" title="自然连接"></a>自然连接</h4><p>在连接运算当中，一种最常用的连接是自然连接。如果关系R与S具有相同的属性组B，且该属性组的值相等时的连接称为自然连接，结果关系的属性集合为<strong>R的属性并上S减去属性B的属性</strong>集合。</p><p>参考的文章</p><p><a href="https://www.cnblogs.com/bewolf/p/4445027.html" target="_blank" rel="noopener">函数依赖集闭包、属性集闭包、超键、候选键和最小函数依赖集</a></p><p><a href="https://www.cnblogs.com/makeupforever-carrie/p/6837325.html" target="_blank" rel="noopener">四种范式的实例</a></p><p><a href="https://blog.csdn.net/fanfan4569/article/details/53910670" target="_blank" rel="noopener">函数依赖不懂看这里</a></p>]]></content>
     
     <summary type="html">
     
