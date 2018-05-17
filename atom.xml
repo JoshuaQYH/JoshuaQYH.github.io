@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2018-05-15T01:21:23.187Z</updated>
+  <updated>2018-05-17T03:10:09.029Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -17,11 +17,84 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>git学习</title>
+    <link href="http://yoursite.com/2018/05/17/git%E5%AD%A6%E4%B9%A0/"/>
+    <id>http://yoursite.com/2018/05/17/git学习/</id>
+    <published>2018-05-17T03:10:08.837Z</published>
+    <updated>2018-05-17T03:10:09.029Z</updated>
+    
+    <content type="html"><![CDATA[<p>[TOC]</p><h3 id="从本地添加项目到github仓库"><a href="#从本地添加项目到github仓库" class="headerlink" title="从本地添加项目到github仓库"></a>从本地添加项目到github仓库</h3><p>在git bash 命令行下进行：</p><figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir project    <span class="comment">//本地新建一个仓库，项目文件夹</span></span><br><span class="line">$ cd project       <span class="comment">// 进入文件夹</span></span><br><span class="line">$ git init         <span class="comment">// 初始化</span></span><br><span class="line">$ git remote add origin git<span class="meta">@github</span>.<span class="string">com:</span>username<span class="regexp">/RepoName.git /</span>/ 添加远程地址,换用户名和仓库名</span><br><span class="line">$ cat .git<span class="regexp">/config    /</span>/查看配置文件是否添加远程地址成功</span><br><span class="line">$ git add -A         <span class="comment">// 上传本地项目</span></span><br><span class="line">$ git commit -m  <span class="string">"first commit"</span>    <span class="comment">//项目注释</span></span><br><span class="line">$ git push origin master    <span class="comment">// 上传仓库初始代码</span></span><br><span class="line">$ git status    <span class="comment">//查看提交情况，这一行出现在commit之前</span></span><br></pre></td></tr></table></figure><h3 id="一些git学习链接"><a href="#一些git学习链接" class="headerlink" title="一些git学习链接"></a>一些git学习链接</h3><p><a href="https://gist.github.com/" target="_blank" rel="noopener">git 代码分享</a></p><p><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰git教程</a></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h3 id=&quot;从本地添加项目到github仓库&quot;&gt;&lt;a href=&quot;#从本地添加项目到github仓库&quot; class=&quot;headerlink&quot; title=&quot;从本地添加项目到github仓库&quot;&gt;&lt;/a&gt;从本地添加项目到github仓库&lt;/h3&gt;&lt;p&gt;在
+      
+    
+    </summary>
+    
+    
+      <category term="git" scheme="http://yoursite.com/tags/git/"/>
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2018/05/17/%E7%9B%AE%E5%BD%95%20%E4%BB%80%E4%B9%88%E6%98%AF%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E5%9B%9E%E8%B0%83%E5%87%BD%E6%95%B0%E6%9C%89%E5%93%AA%E4%BA%9B%E7%89%B9%E7%82%B9/"/>
+    <id>http://yoursite.com/2018/05/17/目录 什么是回调函数回调函数有哪些特点/</id>
+    <published>2018-05-16T17:24:06.838Z</published>
+    <updated>2018-05-16T17:24:07.042Z</updated>
+    
+    <content type="html"><![CDATA[<p>[TOC]</p><h4 id="什么是回调函数"><a href="#什么是回调函数" class="headerlink" title="什么是回调函数"></a>什么是回调函数</h4><p>In computer programming, a callback is a piece of executable code that is passed as an argument to other code, which is expected to call back (execute) the argument at some convenient time［引自 维基百科 callback］</p><p>回调函数是一段可执行的代码段，它作为一个参数传递给其他的代码，其作用是在需要的时候方便调用这段（回调函数）代码。</p><p>在JavaScript中函数也是对象的一种，同样对象可以作为参数传递给函数，因此函数也可以作为参数传递给另外一个函数，这个作为参数的函数就是回调函数。</p><p>回调函数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function add(num1, num2, callback)&#123;</span><br><span class="line">var sum = num1 + num2;</span><br><span class="line">callback(sum);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function print(num)&#123;</span><br><span class="line">console.log(num);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add(1, 2, print);//=&gt;3</span><br></pre></td></tr></table></figure><p>匿名回调函数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function add(num1, num2, callback)&#123;</span><br><span class="line">var sum = num1 + num2;</span><br><span class="line">callback(sum);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add(1, 2, function(sum)&#123;</span><br><span class="line">console.log(sum);//=&gt;3</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><p>jQuery中大量的使用了回调函数</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#btn&quot;).click(function() &#123;</span><br><span class="line">  alert(&quot;button clicked&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure><h4 id="回调函数有哪些特点"><a href="#回调函数有哪些特点" class="headerlink" title="回调函数有哪些特点"></a>回调函数有哪些特点</h4><p><strong>不会立刻执行</strong></p><p>回调函数作为参数传递给一个函数的时候，传递的只是函数的定义并不会立即执行。和普通的函数一样，回调函数在函调用函数数中也要通过<code>()</code>运算符调用才会执行。</p><p><strong>是个闭包</strong></p><p>回调函数是一个闭包，也就是说它能访问到其外层定义的变量。</p><p>你再github的用户名和刚才新建的仓库 </p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;[TOC]&lt;/p&gt;
+&lt;h4 id=&quot;什么是回调函数&quot;&gt;&lt;a href=&quot;#什么是回调函数&quot; class=&quot;headerlink&quot; title=&quot;什么是回调函数&quot;&gt;&lt;/a&gt;什么是回调函数&lt;/h4&gt;&lt;p&gt;In computer programming, a callback i
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title></title>
+    <link href="http://yoursite.com/2018/05/16/%E7%BB%8F%E6%B5%8E%E5%AD%A6%E8%AF%A5%E5%A5%B6%E5%A5%B6/"/>
+    <id>http://yoursite.com/2018/05/16/经济学该奶奶/</id>
+    <published>2018-05-16T10:10:46.261Z</published>
+    <updated>2018-05-16T10:10:46.447Z</updated>
+    
+    <content type="html"><![CDATA[<p>消费与可支配收入相关</p><p>公司投资，公司战略与财力，销量，利率低。</p><p>生产需求均衡曲线</p><p>财政扩张/收缩政策 加/减税</p><p>经济周期的波动—-产出和利率的负相关</p><p>整体思维和局部思维</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;消费与可支配收入相关&lt;/p&gt;
+&lt;p&gt;公司投资，公司战略与财力，销量，利率低。&lt;/p&gt;
+&lt;p&gt;生产需求均衡曲线&lt;/p&gt;
+&lt;p&gt;财政扩张/收缩政策 加/减税&lt;/p&gt;
+&lt;p&gt;经济周期的波动—-产出和利率的负相关&lt;/p&gt;
+&lt;p&gt;整体思维和局部思维&lt;/p&gt;
+
+      
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
     <title>认识经济学原理</title>
     <link href="http://yoursite.com/2018/05/15/%E8%AE%A4%E8%AF%86%E7%BB%8F%E6%B5%8E%E5%AD%A6%E5%8E%9F%E7%90%86/"/>
     <id>http://yoursite.com/2018/05/15/认识经济学原理/</id>
     <published>2018-05-15T01:21:22.895Z</published>
-    <updated>2018-05-15T01:21:23.187Z</updated>
+    <updated>2018-05-15T06:41:05.696Z</updated>
     
     <content type="html"><![CDATA[<h1 id="经济学学习"><a href="#经济学学习" class="headerlink" title="经济学学习"></a>经济学学习</h1><p>##十大曼昆经济学原理</p><p>###原理一：人们面临交替关系</p><p>典型的交替关系就是 “大炮和黄油”的交替，花更多钱在大炮研发上就注定了减少黄油生产的投入。</p><p>这其中 涉及到一个资源配置做出决策的问题。</p><p>认识到人们面临交替关系本身并没有告诉我们，人们将会或应该作出什么决策。一<br>个学生不应该仅仅由于要增加用于学习经济学的时间而放弃心理学的学习。社会不应该<br>仅仅由于环境控制降低了我们的物质生活水平而不再保护环境。也不应该仅仅由于帮助<br>穷人扭曲了工作激励而忽视了他们。然而，认识到生活中的交替关系是重要的，因为人<br>们只有了解他们可以得到的选择，才能作出良好的决策。</p><h3 id="原理二：某种东西的成本是为了得到它而放弃的东西"><a href="#原理二：某种东西的成本是为了得到它而放弃的东西" class="headerlink" title="原理二：某种东西的成本是为了得到它而放弃的东西"></a>原理二：某种东西的成本是为了得到它而放弃的东西</h3><p>许多行为选择的成本有时不是那么明显，收益也分为长期和短期，时间成本 ，金钱成本，人力成本都是需要考量的。</p><h3 id="原理三：-理性人考虑边际量"><a href="#原理三：-理性人考虑边际量" class="headerlink" title="原理三： 理性人考虑边际量"></a>原理三： 理性人考虑边际量</h3><p>做决策考虑行为所花的额外成本和额外收益，通过比较这种边际收益和边际成本来，评价比较合理。</p><h3 id="原理四：人们会对激励做出反应"><a href="#原理四：人们会对激励做出反应" class="headerlink" title="原理四：人们会对激励做出反应"></a>原理四：人们会对激励做出反应</h3><p>激励在决定行为中的中心作用是重要的。激励在贸易中可能体现为商品的成本或者收益。</p><hr><p><em>列出并简要解释个人作出决策的四个原理</em></p><hr><h3 id="原理五：-贸易能使每个人状况更好"><a href="#原理五：-贸易能使每个人状况更好" class="headerlink" title="原理五： 贸易能使每个人状况更好"></a>原理五： 贸易能使每个人状况更好</h3><p>贸易竞争能使国家和个人在相互交易的过程中收益。国与国之间的贸易未必就是像体育比赛一样一方赢，一方输，事实恰好相反，两国之间贸易可以使每个国家状况更好。</p><h3 id="原理六：市场通常是组织经济活动的一种好方法"><a href="#原理六：市场通常是组织经济活动的一种好方法" class="headerlink" title="原理六：市场通常是组织经济活动的一种好方法"></a>原理六：市场通常是组织经济活动的一种好方法</h3><p>经济学家亚当·斯密（Adam Smith）在他 1776 年的著作《国富论》中提出了全部<br>经济学中最有名的观察结果：家庭和企业在市场上相互交易，他们仿佛被一只“看不见<br>的手”所指引，引起了合意的市场结果。本书的目的之一就是要解释这只看不见的手如<br>何施展它的魔力。当你学习经济学时，你将会知道，价格就是看不见的手用来指引经济<br>活动的工具。价格既反映了一种物品的社会价值，也反映了生产该物品的社会成本</p><p>关于看不见的手在指引经济活动中的技巧有一个重要推论：当政府阻止价格根据供<br>求自发地调整时，它就限制了看不见的手协调组成经济的千百万家庭和企业的能力。这<br>个推论解释了为什么税收对资源配置有不利的影响：税收扭曲了价格，从而扭曲了家庭<br>和企业的决策。这个推论还解释了租金控制这类直接控制价格的政策所引起的更大伤<br>害。而且，这个推论也解释了共产主义的失败。在共产主义国家中，价格不是在市场上<br>决定的，而是由中央计划者指定。这些计划者缺乏那种在价格对市场力量自由地作出反<br>应时反映在价格中的信息。中央计划者之所以失败，是因为它们在管理经济时把市场上<br>那只看不见的手缚起来了。</p><p>###原理七：政府有时可以改善市场结果</p><p>政府干预经济的原因：促进效率和促进平等。政策的目标不是做大经济蛋糕二十改变蛋糕的分割。</p><p>​    看不见的手通常会使市场有效地配置资源。但是，由于各种原因，有时看不见的手<br>不起作用。经济学家用市场失灵这个词来指市场本身不能有效配置资源的情况。<br>市场失灵的一个可能原因是外部性。外部性是一个人的行动对旁观者福利的影响。<br>污染是一个典型的例子。如果一家化工厂并不承担它排放烟尘的全部成本，它就会大量<br>排放。在这种情况下，政府就可以通过环境保护来增加经济福利。<br>    市场失灵的另一个可能原因是市场势力。市场势力是指一个人（或一小群人）不适<br>当地影响市场价格的能力。例如，假设镇里的每个人都需要水，但只有一口井。这口井<br>的所有者对水的销售就有市场势力——在这种情况下，它是一个垄断者。这口井的所有<br>者并不受残酷竞争的限制，而正常情况下看不见的手正是以这种竞争来制约个人的私<br>利。你将会知道，在这种情况下，规定垄断者收取的价格有可能提高经济效率。</p><hr><p><em>列出并简要解释关于经济相互交易的三个原理</em></p><hr><h3 id="原理八：-一国的生活水平取决于它生产物品与劳务的能力"><a href="#原理八：-一国的生活水平取决于它生产物品与劳务的能力" class="headerlink" title="原理八： 一国的生活水平取决于它生产物品与劳务的能力"></a>原理八： 一国的生活水平取决于它生产物品与劳务的能力</h3><p>​    用什么来解释各国和不同时期中生活水平的巨大差别呢？答案之简单出人意料之<br>外。几乎所有生活水平的变动都可以归因于各国生产率的差别——这就是一个工人一小<br>时所生产的物品与劳务量的差别。在那些每单位时间工人能生产大量物品与劳务的国<br>家，大多数人享有高生活水平；在那些工人生产率低的国家，大多数人必须忍受贫困的<br>生活。同样，一国的生产率增长率决定了平均收入增长率。</p><p>​    生产率和生活水平之间的基本关系是简单的，但它的意义是深远的。如果生产率是<br>生活水平的首要决定因素，那么，其他解释的重要性就应该是次要的。例如，有人想把<br>上个世纪美国工人生活水平的提高归功于工会或最低工资法。但美国工人的真正英雄行<br>为是他们提高了生产率。另一个例子是，一些评论家声称，美国近年来收入增长放慢是<br>由于日本和其他国家日益激烈的竞争。但真正的敌人不是来自国外的竞争，而是美国生<br>产率增长的放慢。</p><p>​    生产率与生活水平之间的关系对公共政策也有深远的含义。在考虑任何一项政策如<br>何影响生活水平时，关键问题是政策如何影响我们生产物品与劳务的能力。为了提高生<br>活水平，决策者需要通过让工人受到良好的教育，拥有生产物品与劳务需要的工具，以<br>及得到获取最好技术的机会。</p><h3 id="原理九：-当政府发行了过多的货币之后，物价上涨"><a href="#原理九：-当政府发行了过多的货币之后，物价上涨" class="headerlink" title="原理九： 当政府发行了过多的货币之后，物价上涨"></a>原理九： 当政府发行了过多的货币之后，物价上涨</h3><p>货币发行量超量，会导致通货膨胀</p><h3 id="原理十：社会面临通货膨胀与失业之间的短期交替关系"><a href="#原理十：社会面临通货膨胀与失业之间的短期交替关系" class="headerlink" title="原理十：社会面临通货膨胀与失业之间的短期交替关系"></a>原理十：社会面临通货膨胀与失业之间的短期交替关系</h3><p>交替关系称为菲利普斯曲线。</p><p>由于价格是粘性的，各种政府政策都具有不同于长期效应的短期效应。例如，当政<br>府减少货币量时，它就减少了人们支出的数量。较低的支出与居高不下的价格结合在一<br>起就减少了企业销售的物品与劳务量。销售量减少又引起企业解雇工人。因此，对价格<br>的变动作出完全的调整之前，货币量减少就暂时增加了失业。</p><hr><p><em>列出并简要解释描述整体经济如何运行的三个原理。</em></p><hr><p>币值稳定–交换的媒介</p><p>币值不稳定–投机的工具</p>]]></content>
     
@@ -38,33 +111,6 @@
     
     
       <category term="经济学，毛概" scheme="http://yoursite.com/tags/%E7%BB%8F%E6%B5%8E%E5%AD%A6%EF%BC%8C%E6%AF%9B%E6%A6%82/"/>
-    
-  </entry>
-  
-  <entry>
-    <title></title>
-    <link href="http://yoursite.com/2018/05/14/%E8%AF%BB%E8%80%85%E5%86%99%E8%80%85%E9%97%AE%E9%A2%98/"/>
-    <id>http://yoursite.com/2018/05/14/读者写者问题/</id>
-    <published>2018-05-14T01:54:14.617Z</published>
-    <updated>2018-05-14T01:54:14.787Z</updated>
-    
-    <content type="html"><![CDATA[<p>读者写者问题</p><p>–写者对数据库有排他的访问</p><p>第一读者-写者问题</p><p>若有写者正在访问对象，那么其他读者需要保持等待</p><p>第二读者-写者问题</p><p>如果有写者等待访问对象，那么不会有新读者开始读操作</p><p>以上问题经常出现在数据库的访问读写问题之中。</p>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;p&gt;读者写者问题&lt;/p&gt;
-&lt;p&gt;–写者对数据库有排他的访问&lt;/p&gt;
-&lt;p&gt;第一读者-写者问题&lt;/p&gt;
-&lt;p&gt;若有写者正在访问对象，那么其他读者需要保持等待&lt;/p&gt;
-&lt;p&gt;第二读者-写者问题&lt;/p&gt;
-&lt;p&gt;如果有写者等待访问对象，那么不会有新读者开始读操作&lt;/p&gt;
-&lt;p&gt;以上问题
-      
-    
-    </summary>
-    
     
   </entry>
   
