@@ -1,1 +1,317 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Qiuyihao"><title>数据库系统，postgresql · KnowMyself</title><meta name="description" content="标签：数据库系统，postgresql - KnowMyself"><meta name="keywords"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/hy.JPG" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/hy.JPG" style="width:127px;"><h3 title=""><a href="/">KnowMyself</a></h3></div></div><ul class="social-links"></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">Home</a></li><li><a href="/about">Sobre</a></li><li><a href="/archives">Arquivo</a></li><li><a href="/links">Links</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)" style="display:none;"> </a></li></div><div class="avatar"><img></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="archive animated fadeInDown"><ul class="list-with-title"><div class="archive"><div class="listing-title">2018</div><ul class="listing"><div class="listing-item"><div class="listing-post"><a href="/2018/05/08/SQL 用法--postgresql/" title="SQL用法总结 -- postgresql（持续更新中）">SQL用法总结 -- postgresql（持续更新中）</a><div class="post-time"><span class="date">05-08</span></div></div></div></div><div class="pagination"><ul class="clearfix"></ul></div></ul></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>标签: 数据库系统，postgresql - KnowMyself</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section section-heading">
+    <div class="container">
+        <div class="content">
+            <h5>#数据库系统，postgresql</h5>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2018/05/08/SQL 用法--postgresql/" itemprop="url">SQL用法总结 -- postgresql（持续更新中）</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-05-08T01:39:10.009Z" itemprop="datePublished">11 days ago</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            12 分钟 读完 (约 1777 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <p>##SQL 用法–postgresql</p>
+<p>[TOC]</p>
+<h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><p><a href="https://www.postgresql.org/docs/9.1/static/functions-geometry.html" target="_blank" rel="noopener">https://www.postgresql.org/docs/9.1/static/functions-geometry.html</a></p>
+<p>官方链接最全。</p>
+<h4 id="表格操作"><a href="#表格操作" class="headerlink" title="表格操作"></a>表格操作</h4><h5 id="建表"><a href="#建表" class="headerlink" title="建表"></a>建表</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> <span class="keyword">users</span> (</span><br><span class="line">    user_id <span class="built_in">INT</span> AUTO_INCREMENT PRIMARY <span class="keyword">KEY</span>, //声明主键</span><br><span class="line">    username <span class="built_in">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> <span class="keyword">UNIQUE</span>,  //声明非空，唯一</span><br><span class="line">    <span class="keyword">password</span> <span class="built_in">VARCHAR</span>(<span class="number">255</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span> </span><br><span class="line">    FOREIGN <span class="keyword">KEY</span> (user_id)  </span><br><span class="line">    <span class="keyword">REFERENCES</span> projects (user_id)</span><br><span class="line">    //声明  user_id为外键引用自表格projects</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h5 id="改表"><a href="#改表" class="headerlink" title="改表"></a>改表</h5><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> table_name</span><br><span class="line"><span class="keyword">ADD</span> new_colum data_type column_constraint [<span class="keyword">AFTER</span> existing_column];  // 加列</span><br><span class="line"></span><br><span class="line"><span class="keyword">DROP</span> <span class="keyword">COLUMN</span> max_limit,  //删除列</span><br><span class="line"></span><br><span class="line"><span class="keyword">MODIFY</span> fee <span class="built_in">NUMERIC</span> (<span class="number">10</span>, <span class="number">2</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>;  //修改列约束</span><br></pre></td></tr></table></figure>
+<h5 id="删表"><a href="#删表" class="headerlink" title="删表"></a>删表</h5><p>TRUNCATE table_name;  // 将行清空，但表头依旧保留</p>
+<p>DROP table table_name;  //删除整个表格</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>PRIMARY KEY constraint</strong></th>
+<th><strong>UNIQUE constraint</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>The number of constraints</td>
+<td>One</td>
+<td>Many</td>
+</tr>
+<tr>
+<td>NULL values</td>
+<td>Do not allow</td>
+<td>Allow</td>
+</tr>
+</tbody>
+</table>
+<h3 id="表的连接"><a href="#表的连接" class="headerlink" title="表的连接"></a>表的连接</h3><h4 id="内连接–INNER-JOIN"><a href="#内连接–INNER-JOIN" class="headerlink" title="内连接–INNER JOIN"></a>内连接–INNER JOIN</h4><p>两个表使用内连接，通过指定一个属性来匹配，若两个表的同一属性具有相同值，则保留在连接表中，其余不相等的行则消去。</p>
+<p>图解</p>
+<p><img src="C:\Users\ADMINI~1\AppData\Local\Temp\1525768885721.png" alt="52576888572"></p>
+<p>使用示例（内连接也可以连接多张表格）</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  A.n</span><br><span class="line"><span class="keyword">FROM</span> A</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> B <span class="keyword">ON</span> B.n = A.n;</span><br><span class="line">INNER JOIN C ON C.n = A.n;</span><br></pre></td></tr></table></figure>
+<h4 id="全连接–FUll-OUTER-JOIN"><a href="#全连接–FUll-OUTER-JOIN" class="headerlink" title="全连接–FUll OUTER JOIN"></a>全连接–FUll OUTER JOIN</h4><p>指定连接条件，属性值相同的行保留，但不重复，属性值不同的值保留，但存在某些为Null的情况。</p>
+<p><img src="C:\Users\ADMINI~1\AppData\Local\Temp\1525769225164.png" alt="52576922516"></p>
+<p>用法示例</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_list</span><br><span class="line"><span class="keyword">FROM</span> A</span><br><span class="line"><span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> B <span class="keyword">ON</span> B.n = A.n;</span><br></pre></td></tr></table></figure>
+<h4 id="左连接–LEFT-JOIN"><a href="#左连接–LEFT-JOIN" class="headerlink" title="左连接–LEFT JOIN"></a>左连接–LEFT JOIN</h4><p>对几个将要连接的表指定条件进行连接，属性匹配的时候，会保留左表所有属性，即便右表属性为NULL,但不会存在左表属性为NULL的情况。</p>
+<p><img src="C:\Users\ADMINI~1\AppData\Local\Temp\1525769455952.png" alt="52576945595"></p>
+<p>代码示例：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    A.n</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    A</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> B <span class="keyword">ON</span> B.n = A.n;</span><br></pre></td></tr></table></figure>
+<h4 id="右连接–RIGHT-JOIN"><a href="#右连接–RIGHT-JOIN" class="headerlink" title="右连接–RIGHT JOIN"></a>右连接–RIGHT JOIN</h4><p>和左连接相反，用法如下：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    A.n</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    A</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> B <span class="keyword">ON</span> B.n = A.n;</span><br></pre></td></tr></table></figure>
+<h4 id="交叉连接–CROSS-JOIN"><a href="#交叉连接–CROSS-JOIN" class="headerlink" title="交叉连接–CROSS JOIN"></a>交叉连接–CROSS JOIN</h4><p>看图就知道。。。交叉连接结果的表格是 两表行数相乘。需要指出的一点就是两个表相连不需要指定cross join。</p>
+<p><img src="C:\Users\ADMINI~1\AppData\Local\Temp\1525769747017.png" alt="52576974701"></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    column_list</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    A,</span><br><span class="line">    B;</span><br></pre></td></tr></table></figure>
+<h3 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h3><blockquote>
+<p>PostgreSQL provides several index types: B-tree, Hash, GiST and GIN. Each index type uses a different algorithm that is best suited to different types of queries. By default, the <code>CREATE INDEX</code> command creates B-tree indexes, which fit the most common situations.</p>
+</blockquote>
+<h4 id="创建b-tree索引"><a href="#创建b-tree索引" class="headerlink" title="创建b_tree索引"></a>创建b_tree索引</h4><p>语法： create index index_name ON table_name(column_name)</p>
+<p>postgresql默认b树索引。官方描述如下：</p>
+<blockquote>
+<p>B-trees can handle equality and range queries on data that can be sorted into some ordering. In particular, the PostgreSQL query planner will consider using a B-tree index whenever an indexed column is involved in a comparison using one of these operators:</p>
+<table>
+<thead>
+<tr>
+<th><code>&lt;</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;=</code></td>
+</tr>
+<tr>
+<td><code>=</code></td>
+</tr>
+<tr>
+<td><code>&gt;=</code></td>
+</tr>
+<tr>
+<td><code>&gt;</code></td>
+</tr>
+</tbody>
+</table>
+<p>Constructs equivalent to combinations of these operators, such as </p>
+<p>BETWEEN</p>
+<p> and </p>
+<p>IN</p>
+<p>, can also be implemented with a B-tree index search. Also, an </p>
+<p>IS NULL</p>
+<p> or </p>
+<p>IS NOT NULL</p>
+<p> condition on an index column can be used with a B-tree index.</p>
+</blockquote>
+<p>上述说明b_tree在范围查询中比较有效，也可以用于顺序检索数据。</p>
+<p>当查询条件为范围查询时(运算符是 &gt; &lt; &lt;= &gt;= = is null, is not null, between and ,in)，b_tree索引可以体现较为良好的性能。</p>
+<h4 id="创建hash索引"><a href="#创建hash索引" class="headerlink" title="创建hash索引"></a>创建hash索引</h4><p>语法： create index index_name on table_name using hash(column_name)</p>
+<p>官方描述</p>
+<blockquote>
+<p>Hash indexes can only handle simple equality comparisons. The query planner will consider using a hash index whenever an indexed column is involved in a comparison using the <code>=</code> operator.</p>
+</blockquote>
+<p>上述说明，hash索引仅仅在处理简单的<strong>等值比较</strong>-(=) 中相对有效。</p>
+<h4 id="使用GiST索引"><a href="#使用GiST索引" class="headerlink" title="使用GiST索引"></a>使用GiST索引</h4><p>(错误）语法： create index  index_name on table_name using GiST（column_name)</p>
+<p>官方描述</p>
+<blockquote>
+<p>GiST indexes are not a single kind of index, but rather an infrastructure within which many different indexing strategies can be implemented. Accordingly, the particular operators with which a GiST index can be used vary depending on the indexing strategy (the <em>operator class</em>). As an example, the standard distribution of PostgreSQL includes GiST operator classes for several two-dimensional geometric data types, which support indexed queries using these operators:</p>
+<table>
+<thead>
+<tr>
+<th><code>&lt;&lt;</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&amp;&lt;</code></td>
+</tr>
+<tr>
+<td><code>&amp;&gt;</code></td>
+</tr>
+<tr>
+<td><code>&gt;&gt;</code></td>
+</tr>
+<tr>
+<td>`&lt;&lt;</td>
+<td>`</td>
+</tr>
+<tr>
+<td>`&amp;&lt;</td>
+<td>`</td>
+</tr>
+<tr>
+<td>`</td>
+<td>&amp;&gt;`</td>
+</tr>
+<tr>
+<td>`</td>
+<td>&gt;&gt;`</td>
+</tr>
+<tr>
+<td><code>@&gt;</code></td>
+</tr>
+<tr>
+<td><code>&lt;@</code></td>
+</tr>
+<tr>
+<td><code>~=</code></td>
+</tr>
+<tr>
+<td><code>&amp;&amp;</code></td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>上述描述可知，gist 不是单一类型的索引，实现了不同策略索引的基础结构。可以根据索引策略（运算符类）来采取不同的索引策略。</p>
+<p>详见<a href="https://www.postgresql.org/docs/9.1/static/gist.html" target="_blank" rel="noopener">官方文档gist index</a></p>
+<h4 id="使用GIN索引"><a href="#使用GIN索引" class="headerlink" title="使用GIN索引"></a>使用GIN索引</h4><p>gin索引能够用于优化级的最近邻查找。</p>
+<blockquote>
+<p>GIN indexes are inverted indexes which can handle values that contain more than one key, arrays for example. Like GiST, GIN can support many different user-defined indexing strategies and the particular operators with which a GIN index can be used vary depending on the indexing strategy. As an example, the standard distribution of PostgreSQLincludes GIN operator classes for one-dimensional arrays, which support indexed queries using these operators:</p>
+<table>
+<thead>
+<tr>
+<th><code>&lt;@</code></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>@&gt;</code></td>
+</tr>
+<tr>
+<td><code>=</code></td>
+</tr>
+<tr>
+<td><code>&amp;&amp;</code></td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>用法查看官方描述<a href="https://www.postgresql.org/docs/9.1/static/gin.html" target="_blank" rel="noopener">gin index</a>.</p>
+<h3 id="分析效率-explain"><a href="#分析效率-explain" class="headerlink" title="分析效率 explain"></a>分析效率 explain</h3><p>将explain(analyze)置于语句的开始，结果将返回语句执行效率有关的数值。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">explain</span> （<span class="keyword">analyze</span>） <span class="keyword">Select</span> s_name, s_address, s_nationkey </span><br><span class="line"><span class="keyword">From</span> table_a </span><br><span class="line"><span class="keyword">Where</span> s_suppkey = <span class="number">717</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">explain</span> （<span class="keyword">analyze</span>） <span class="keyword">Select</span> s_name, s_address, s_nationkey </span><br><span class="line"><span class="keyword">From</span> b_tree_a </span><br><span class="line"><span class="keyword">Where</span> s_suppkey = <span class="number">717</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">explain</span> （<span class="keyword">analyze</span>） <span class="keyword">Select</span> s_name, s_address, s_nationkey </span><br><span class="line"><span class="keyword">From</span> hash_a </span><br><span class="line"><span class="keyword">Where</span> s_suppkey = <span class="number">717</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line">Click To Expand Code</span><br><span class="line">PostgreSQL</span><br><span class="line">The following script creates the HR sample database structure in PostgreSQL.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> regions (</span><br><span class="line">	region_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">	region_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">25</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> countries (</span><br><span class="line">	country_id <span class="built_in">CHARACTER</span> (<span class="number">2</span>) PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">	country_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">40</span>),</span><br><span class="line">	region_id <span class="built_in">INTEGER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	FOREIGN <span class="keyword">KEY</span> (region_id) <span class="keyword">REFERENCES</span> regions (region_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> locations (</span><br><span class="line">	location_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">	street_address <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">40</span>),</span><br><span class="line">	postal_code <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">12</span>),</span><br><span class="line">	city <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">30</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	state_province <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">25</span>),</span><br><span class="line">	country_id <span class="built_in">CHARACTER</span> (<span class="number">2</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	FOREIGN <span class="keyword">KEY</span> (country_id) <span class="keyword">REFERENCES</span> countries (country_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> departments (</span><br><span class="line">	department_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">	department_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">30</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	location_id <span class="built_in">INTEGER</span>,</span><br><span class="line">	FOREIGN <span class="keyword">KEY</span> (location_id) <span class="keyword">REFERENCES</span> locations (location_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> jobs (</span><br><span class="line">	job_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">	job_title <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">35</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	min_salary <span class="built_in">NUMERIC</span> (<span class="number">8</span>, <span class="number">2</span>),</span><br><span class="line">	max_salary <span class="built_in">NUMERIC</span> (<span class="number">8</span>, <span class="number">2</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> employees (</span><br><span class="line">	employee_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">	first_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">20</span>),</span><br><span class="line">	last_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">25</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	email <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">100</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	phone_number <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">20</span>),</span><br><span class="line">	hire_date <span class="built_in">DATE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	job_id <span class="built_in">INTEGER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	salary <span class="built_in">NUMERIC</span> (<span class="number">8</span>, <span class="number">2</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	manager_id <span class="built_in">INTEGER</span>,</span><br><span class="line">	department_id <span class="built_in">INTEGER</span>,</span><br><span class="line">	FOREIGN <span class="keyword">KEY</span> (job_id) <span class="keyword">REFERENCES</span> jobs (job_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span>,</span><br><span class="line">	FOREIGN <span class="keyword">KEY</span> (department_id) <span class="keyword">REFERENCES</span> departments (department_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span>,</span><br><span class="line">	FOREIGN <span class="keyword">KEY</span> (manager_id) <span class="keyword">REFERENCES</span> employees (employee_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> dependents (</span><br><span class="line">	dependent_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">	first_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">50</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	last_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">50</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	relationship <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">25</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	employee_id <span class="built_in">INTEGER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	FOREIGN <span class="keyword">KEY</span> (employee_id) <span class="keyword">REFERENCES</span> employees (employee_id) <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> regions (</span><br><span class="line">    region_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">    region_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">25</span>)</span><br><span class="line">);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> countries (</span><br><span class="line">    country_id <span class="built_in">CHARACTER</span> (<span class="number">2</span>) PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">    country_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">40</span>),</span><br><span class="line">    region_id <span class="built_in">INTEGER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    FOREIGN <span class="keyword">KEY</span> (region_id) <span class="keyword">REFERENCES</span> regions (region_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span></span><br><span class="line">);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> locations (</span><br><span class="line">    location_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">    street_address <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">40</span>),</span><br><span class="line">    postal_code <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">12</span>),</span><br><span class="line">    city <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">30</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    state_province <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">25</span>),</span><br><span class="line">    country_id <span class="built_in">CHARACTER</span> (<span class="number">2</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    FOREIGN <span class="keyword">KEY</span> (country_id) <span class="keyword">REFERENCES</span> countries (country_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span></span><br><span class="line">);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> departments (</span><br><span class="line">    department_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">    department_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">30</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    location_id <span class="built_in">INTEGER</span>,</span><br><span class="line">    FOREIGN <span class="keyword">KEY</span> (location_id) <span class="keyword">REFERENCES</span> locations (location_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span></span><br><span class="line">);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> jobs (</span><br><span class="line">    job_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">    job_title <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">35</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    min_salary <span class="built_in">NUMERIC</span> (<span class="number">8</span>, <span class="number">2</span>),</span><br><span class="line">    max_salary <span class="built_in">NUMERIC</span> (<span class="number">8</span>, <span class="number">2</span>)</span><br><span class="line">);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> employees (</span><br><span class="line">    employee_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">    first_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">20</span>),</span><br><span class="line">    last_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">25</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    email <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">100</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    phone_number <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">20</span>),</span><br><span class="line">    hire_date <span class="built_in">DATE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    job_id <span class="built_in">INTEGER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    salary <span class="built_in">NUMERIC</span> (<span class="number">8</span>, <span class="number">2</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    manager_id <span class="built_in">INTEGER</span>,</span><br><span class="line">    department_id <span class="built_in">INTEGER</span>,</span><br><span class="line">    FOREIGN <span class="keyword">KEY</span> (job_id) <span class="keyword">REFERENCES</span> jobs (job_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span>,</span><br><span class="line">    FOREIGN <span class="keyword">KEY</span> (department_id) <span class="keyword">REFERENCES</span> departments (department_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span>,</span><br><span class="line">    FOREIGN <span class="keyword">KEY</span> (manager_id) <span class="keyword">REFERENCES</span> employees (employee_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span></span><br><span class="line">);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> dependents (</span><br><span class="line">    dependent_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">    first_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">50</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    last_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">50</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    relationship <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">25</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    employee_id <span class="built_in">INTEGER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    FOREIGN <span class="keyword">KEY</span> (employee_id) <span class="keyword">REFERENCES</span> employees (employee_id) <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+    
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2018 Qiuyihao&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        //plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+</body>
+</html>

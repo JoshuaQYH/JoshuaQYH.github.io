@@ -1,1 +1,201 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><meta name="author" content="Qiuyihao"><title>verilog 计组实验 · KnowMyself</title><meta name="description" content="标签：verilog 计组实验 - KnowMyself"><meta name="keywords"><meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"><meta content="yes" name="apple-mobile-web-app-capable"><meta content="black" name="apple-mobile-web-app-status-bar-style"><meta content="telephone=no" name="format-detection"><meta name="renderer" content="webkit"><link rel="short icon" href="/images/hy.JPG" type="image/x-icon"><link rel="stylesheet" href="/css/style.css"><link rel="stylesheet" href="/css/blog_basic.css"><link rel="stylesheet" href="/css/font-awesome.min.css"><link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="/atom.xml"></head><body><div class="sidebar animated fadeInDown"><div class="logo-title"><div class="title"><img src="/images/hy.JPG" style="width:127px;"><h3 title=""><a href="/">KnowMyself</a></h3></div></div><ul class="social-links"></ul><div class="footer"><a target="_blank" href="/"><span>Theme by </span></a><a href="https://www.caicai.me"> CaiCai </a><span>&</span><a href="https://github.com/Ben02/hexo-theme-Anatole"> Ben</a><div class="by_farbox"><a href="https://hexo.io/zh-cn/" target="_blank">Proudly published with Hexo&#65281;</a></div></div></div><div class="main"><div class="page-top animated fadeInDown"><div class="nav"><li><a href="/">Home</a></li><li><a href="/about">Sobre</a></li><li><a href="/archives">Arquivo</a></li><li><a href="/links">Links</a></li></div><div class="information"><div class="back_btn"><li><a class="fa fa-chevron-left" onclick="window.history.go(-1)" style="display:none;"> </a></li></div><div class="avatar"><img></div></div></div><div class="autopagerize_page_element"><div class="content"><div class="archive animated fadeInDown"><ul class="list-with-title"><div class="archive"><div class="listing-title">2018</div><ul class="listing"><div class="listing-item"><div class="listing-post"><a href="/2018/04/30/Verilog设计初步/" title="Verilog 设计初步">Verilog 设计初步</a><div class="post-time"><span class="date">04-30</span></div></div></div></div><div class="pagination"><ul class="clearfix"></ul></div></ul></div></div></div></div><script src="/js/jquery.js"></script><script src="/js/jquery-migrate-1.2.1.min.js"></script><script src="/js/jquery.appear.js"></script></body></html>
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top">
+<head>
+    <meta charset="utf-8">
+<title>标签: verilog 计组实验 - KnowMyself</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
+
+
+
+
+
+
+
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
+
+
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
+
+
+<link rel="stylesheet" href="/css/style.css">
+<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+</head>
+<body>
+    
+<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
+    <div class="container">
+        <div class="navbar-brand">
+            <a class="navbar-item navbar-logo" href="/">
+                
+                <img src="/images/logo.png" alt="" height="28">
+                
+            </a>
+            <div class="navbar-burger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        
+        <div class="navbar-menu navbar-end">
+            
+            
+            
+        </div>
+    </div>
+</nav>
+
+    <section class="section section-heading">
+    <div class="container">
+        <div class="content">
+            <h5>#verilog 计组实验</h5>
+        </div>
+    </div>
+</section>
+<section class="section">
+    <div class="container">
+    
+        <article class="article content gallery" itemscope itemprop="blogPost">
+    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
+        
+            <a href="/2018/04/30/Verilog设计初步/" itemprop="url">Verilog 设计初步</a>
+        
+    </h1>
+    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
+        <span class="column is-narrow">
+            <time datetime="2018-04-29T16:37:36.125Z" itemprop="datePublished">19 days ago</time>
+        </span>
+        
+        
+        <span class="column is-narrow">
+            
+            
+            5 分钟 读完 (约 703 字)
+        </span>
+        
+    </div>
+    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+    
+        <h1 id="Verilog设计初步"><a href="#Verilog设计初步" class="headerlink" title="Verilog设计初步"></a>Verilog设计初步</h1><p>##Verilog 代码模板</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//语句关键字字母都为小写字母，大小写敏感</span></span><br><span class="line"><span class="comment">//硬件思维来写代码</span></span><br><span class="line"><span class="comment">//命名不能以数字开头</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> &lt;顶层模块名&gt; (输入输出端口列表) <span class="comment">//定义输入输出端口列表</span></span><br><span class="line">	<span class="keyword">output</span> 输出端口列表；  <span class="comment">//输出端口生声明</span></span><br><span class="line">	<span class="keyword">input</span>  输入端口列表；      <span class="comment">//输入输出端口生命 </span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*定义数据类型，功能定义，函数实现*/</span></span><br><span class="line">    <span class="keyword">reg</span>  信号名；</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//逻辑功能定义</span></span><br><span class="line">	<span class="keyword">assign</span>&lt;结果信号名&gt; = &lt;表达式&gt;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//用always块描述逻辑功能</span></span><br><span class="line">    <span class="keyword">always</span> @(&lt;敏感信号&gt;)   </span><br><span class="line">        <span class="keyword">begin</span></span><br><span class="line">            <span class="comment">//过程赋值运算</span></span><br><span class="line">            <span class="comment">//语句，if else while task</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="comment">//调用其他模块</span></span><br><span class="line">    &lt;调用模块名module_name&gt;&lt;例化模块名&gt;(&lt;端口列表&gt;)；</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//门元件例化</span></span><br><span class="line">    门元件关键字&lt;例化门元件名&gt;(&lt;端口列表port_list&gt;);</span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+<p>四位选择器</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> mux4_1(out,in0, in1, in2,in4,sel);</span><br><span class="line">    <span class="keyword">output</span> out;</span><br><span class="line">    <span class="keyword">input</span> in0,in1,in2,in3;</span><br><span class="line">    <span class="keyword">input</span>[<span class="number">1</span>:<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">reg</span> out;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">always</span> @（in0 <span class="keyword">or</span> in1 <span class="keyword">or</span> in2 <span class="keyword">or</span> in3 <span class="keyword">or</span> sel)</span><br><span class="line">        <span class="keyword">begin</span> </span><br><span class="line">            <span class="keyword">case</span>(sel)</span><br></pre></td></tr></table></figure>
+<h2 id="数据类型及运算符"><a href="#数据类型及运算符" class="headerlink" title="数据类型及运算符"></a>数据类型及运算符</h2><ul>
+<li>整数类型<ul>
+<li>构成是：字符宽度+进制+数值。</li>
+<li>例如：2’0xd5;  宽度为2的十六进制d5。</li>
+</ul>
+</li>
+<li>逻辑类型<ul>
+<li>高低电平 1 0，电路里体现为电压的区间</li>
+<li>x：未知</li>
+<li>z:   高阻</li>
+</ul>
+</li>
+<li>net类型<ul>
+<li>常用的是wire。用法是 wire[7:0] databus。 //databus宽度8</li>
+</ul>
+</li>
+<li>寄存器类型<ul>
+<li>reg </li>
+<li>integer</li>
+<li>time</li>
+<li>real</li>
+<li>realtime</li>
+</ul>
+</li>
+<li>parameter参数 <ul>
+<li>用来定义符号常量。 parameter sel = 8’ha3。</li>
+</ul>
+</li>
+<li>向量类型</li>
+<li>逻辑运算符</li>
+<li>位运算符</li>
+<li>三目运算</li>
+<li>位拼接运算符</li>
+</ul>
+<p>下例采用数据流方式描述1位全加器。</p>
+<p>在本例中，有两个连续赋值语句。这些赋值语句是并发的，与其书写的顺序无关。只要<br>连续赋值语句右端表达式中操作数的值变化(即有事件发生), 连续赋值语句即被执行。如果A<br>变化，则两个连续赋值都被计算，即同时对右端表达式求值，并将结果赋给左端目标。</p>
+<h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><ul>
+<li>initial</li>
+<li>always @（敏感信号）<ul>
+<li>@ (posedge clk) 上升沿</li>
+<li>@ (negedge clk) 下降沿触发</li>
+</ul>
+</li>
+<li>赋值语句<ul>
+<li>连续赋值语句assign 只要连续赋值语句右端表达式中操作数的值变化, 连续赋值语句即被执行。</li>
+<li>阻塞赋值 a = b;         ————-非时序赋值（组合）</li>
+<li>非阻塞赋值  a&lt;=b      ————时序赋值中使用  </li>
+<li>时序和组合在电路上的表现是时序赋值过程中需要等待时钟沿来触发。</li>
+</ul>
+</li>
+</ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h2 id="设计特点"><a href="#设计特点" class="headerlink" title="设计特点"></a>设计特点</h2><h4 id="层次化模块化"><a href="#层次化模块化" class="headerlink" title="层次化模块化"></a>层次化模块化</h4><p>顶层模块和底层模块的设计方法，将模块细分为若干个子模块，在底层实现子模块功能，在顶层组合各个子模块。</p>
+
+    
+    </div>
+    
+    
+</article>
+
+
+
+
+    
+    
+    </div>
+</section>
+    <footer class="footer">
+    <div class="container">
+        <div class="columns content">
+            <div class="column is-narrow has-text-centered">
+                &copy; 2018 Qiuyihao&nbsp;
+                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
+                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
+            </div>
+            <div class="column is-hidden-mobile"></div>
+
+            
+            
+        </div>
+    </div>
+</footer>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- test if the browser is outdated -->
+<div id="outdated">
+    <h6>Your browser is out-of-date!</h6>
+    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
+    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
+</div>
+<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
+<script>
+    $(document).ready(function () {
+        //plugin function, place inside DOM ready function
+        outdatedBrowser({
+            bgColor: '#f25648',
+            color: '#ffffff',
+            lowerThan: 'flex'
+        })
+    });
+</script>
+
+<script>
+    window.FontAwesomeConfig = {
+        searchPseudoElements: true
+    }
+</script>
+
+
+
+<script src="/js/script.js"></script>
+
+    
+</body>
+</html>
