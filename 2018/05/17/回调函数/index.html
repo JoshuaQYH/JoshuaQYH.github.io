@@ -8,17 +8,17 @@
   
     <meta name="keywords" content="KnowMyself" />
   
-  <meta name="description" content="消费与可支配收入相关 公司投资，公司战略与财力，销量，利率低。 生产需求均衡曲线 财政扩张/收缩政策 加/减税 经济周期的波动—-产出和利率的负相关 整体思维和局部思维">
+  <meta name="description" content="[TOC] 什么是回调函数In computer programming, a callback is a piece of executable code that is passed as an argument to other code, which is expected to call back (execute) the argument at some convenient tim">
 <meta property="og:type" content="article">
 <meta property="og:title" content="KnowMyself">
-<meta property="og:url" content="http://yoursite.com/2018/05/16/经济学该奶奶/index.html">
+<meta property="og:url" content="http://yoursite.com/2018/05/17/回调函数/index.html">
 <meta property="og:site_name" content="KnowMyself">
-<meta property="og:description" content="消费与可支配收入相关 公司投资，公司战略与财力，销量，利率低。 生产需求均衡曲线 财政扩张/收缩政策 加/减税 经济周期的波动—-产出和利率的负相关 整体思维和局部思维">
+<meta property="og:description" content="[TOC] 什么是回调函数In computer programming, a callback is a piece of executable code that is passed as an argument to other code, which is expected to call back (execute) the argument at some convenient tim">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-05-16T10:10:46.447Z">
+<meta property="og:updated_time" content="2018-05-16T17:24:07.042Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="KnowMyself">
-<meta name="twitter:description" content="消费与可支配收入相关 公司投资，公司战略与财力，销量，利率低。 生产需求均衡曲线 财政扩张/收缩政策 加/减税 经济周期的波动—-产出和利率的负相关 整体思维和局部思维">
+<meta name="twitter:description" content="[TOC] 什么是回调函数In computer programming, a callback is a piece of executable code that is passed as an argument to other code, which is expected to call back (execute) the argument at some convenient tim">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -136,23 +136,32 @@ ga('send', 'pageview');
     </div>
 </header>
       <div class="outer">
-        <section id="main" class="body-wrap"><article id="post-经济学该奶奶" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main" class="body-wrap"><article id="post-回调函数" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
     <div class="article-entry post-content" itemprop="articleBody">
       
             
-            <p>消费与可支配收入相关</p>
-<p>公司投资，公司战略与财力，销量，利率低。</p>
-<p>生产需求均衡曲线</p>
-<p>财政扩张/收缩政策 加/减税</p>
-<p>经济周期的波动—-产出和利率的负相关</p>
-<p>整体思维和局部思维</p>
+            <p>[TOC]</p>
+<h4 id="什么是回调函数"><a href="#什么是回调函数" class="headerlink" title="什么是回调函数"></a>什么是回调函数</h4><p>In computer programming, a callback is a piece of executable code that is passed as an argument to other code, which is expected to call back (execute) the argument at some convenient time［引自 维基百科 callback］</p>
+<p>回调函数是一段可执行的代码段，它作为一个参数传递给其他的代码，其作用是在需要的时候方便调用这段（回调函数）代码。</p>
+<p>在JavaScript中函数也是对象的一种，同样对象可以作为参数传递给函数，因此函数也可以作为参数传递给另外一个函数，这个作为参数的函数就是回调函数。</p>
+<p>回调函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function add(num1, num2, callback)&#123;</span><br><span class="line">	var sum = num1 + num2;</span><br><span class="line">	callback(sum);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function print(num)&#123;</span><br><span class="line">	console.log(num);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add(1, 2, print);		//=&gt;3</span><br></pre></td></tr></table></figure>
+<p>匿名回调函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function add(num1, num2, callback)&#123;</span><br><span class="line">	var sum = num1 + num2;</span><br><span class="line">	callback(sum);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add(1, 2, function(sum)&#123;</span><br><span class="line">	console.log(sum);		//=&gt;3</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>jQuery中大量的使用了回调函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#btn&quot;).click(function() &#123;</span><br><span class="line">  alert(&quot;button clicked&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="回调函数有哪些特点"><a href="#回调函数有哪些特点" class="headerlink" title="回调函数有哪些特点"></a>回调函数有哪些特点</h4><p><strong>不会立刻执行</strong></p>
+<p>回调函数作为参数传递给一个函数的时候，传递的只是函数的定义并不会立即执行。和普通的函数一样，回调函数在函调用函数数中也要通过<code>()</code>运算符调用才会执行。</p>
+<p><strong>是个闭包</strong></p>
+<p>回调函数是一个闭包，也就是说它能访问到其外层定义的变量。</p>
+<p>你再github的用户名和刚才新建的仓库 </p>
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2018年05月16日 18:10</p>
-        <p>原始链接： <a class="post-url" href="/2018/05/16/经济学该奶奶/" title="">http://yoursite.com/2018/05/16/经济学该奶奶/</a></p>
+        <p>最后更新： 2018年05月17日 01:24</p>
+        <p>原始链接： <a class="post-url" href="/2018/05/17/回调函数/" title="">http://yoursite.com/2018/05/17/回调函数/</a></p>
         <footer>
             <a href="http://yoursite.com">
                 <img src="/images/logo.png" alt="Qiuyihao">
@@ -165,37 +174,6 @@ ga('send', 'pageview');
       
         
             
-<div class="page-reward">
-    <a id="rewardBtn" href="javascript:;">赏</a>
-</div>
-
-<div id="reward" class="post-modal reward-lay">
-    <a class="close" href="javascript:;" id="reward-close">×</a>
-    <span class="reward-title">
-        <i class="icon icon-quote-left"></i>
-        请我吃糖~
-        <i class="icon icon-quote-right"></i>
-    </span>
-    <div class="reward-content">
-        
-        <div class="reward-code">
-            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
-        </div>
-        <div class="reward-select">
-            
-            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
-                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
-            </label>
-            
-            
-            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
-                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
-            </label>
-            
-        </div>
-    </div>
-</div>
-
 
         
     </div>
@@ -209,7 +187,7 @@ ga('send', 'pageview');
     <div class="post-share-list" id="share-list">
         <ul class="share-icons">
           <li>
-            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/05/16/经济学该奶奶/&title=KnowMyself&pic=http://yoursite.comimages/logo.png" data-title="微博">
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/05/17/回调函数/&title=KnowMyself&pic=http://yoursite.comimages/logo.png" data-title="微博">
               <i class="fa fa-weibo"></i>
             </a>
           </li>
@@ -219,22 +197,22 @@ ga('send', 'pageview');
             </a>
           </li>
           <li>
-            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/05/16/经济学该奶奶/&title=KnowMyself&source=" data-title="QQ">
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/05/17/回调函数/&title=KnowMyself&source=" data-title="QQ">
               <i class="fa fa-qq"></i>
             </a>
           </li>
           <li>
-            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/05/16/经济学该奶奶/" data-title="Facebook">
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/05/17/回调函数/" data-title="Facebook">
               <i class="fa fa-facebook"></i>
             </a>
           </li>
           <li>
-            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=KnowMyself&url=http://yoursite.com/2018/05/16/经济学该奶奶/&via=http://yoursite.com" data-title="Twitter">
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=KnowMyself&url=http://yoursite.com/2018/05/17/回调函数/&via=http://yoursite.com" data-title="Twitter">
               <i class="fa fa-twitter"></i>
             </a>
           </li>
           <li>
-            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/05/16/经济学该奶奶/" data-title="Google+">
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/05/17/回调函数/" data-title="Google+">
               <i class="fa fa-google-plus"></i>
             </a>
           </li>
@@ -244,7 +222,7 @@ ga('send', 'pageview');
 <div class="post-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;" id="wxShare-close">×</a>
     <p>扫一扫，分享到微信</p>
-    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/05/16/经济学该奶奶/" alt="微信分享二维码">
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/05/17/回调函数/" alt="微信分享二维码">
 </div>
 
 <div class="mask"></div>
@@ -260,22 +238,28 @@ ga('send', 'pageview');
 </article>
 
 
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#什么是回调函数"><span class="post-toc-text">什么是回调函数</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#回调函数有哪些特点"><span class="post-toc-text">回调函数有哪些特点</span></a></li></ol>
+        </nav>
+    </aside>
+    
 
 <nav id="article-nav">
   
-    <a href="/2018/05/17/目录 什么是回调函数回调函数有哪些特点/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/05/17/git学习/" id="article-nav-newer" class="article-nav-link-wrap">
 
       <span class="article-nav-title">
         <i class="fa fa-hand-o-left" aria-hidden="true"></i>
         
-          (no title)
+          git学习
         
       </span>
     </a>
   
   
-    <a href="/2018/05/15/认识经济学原理/" id="article-nav-older" class="article-nav-link-wrap">
-      <span class="article-nav-title">认识经济学原理</span>
+    <a href="/2018/05/16/经济学原理/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title"></span>
       <i class="fa fa-hand-o-right" aria-hidden="true"></i>
     </a>
   
@@ -317,7 +301,7 @@ ga('send', 'pageview');
       animate: true,
       isHome: false,
       share: true,
-      reward: 1
+      reward: 0
   }
 </script>
 <div class="sidebar">
