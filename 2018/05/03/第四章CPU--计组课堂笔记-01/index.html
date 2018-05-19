@@ -1,79 +1,147 @@
 <!DOCTYPE html>
-<html class="has-navbar-fixed-top">
+<html>
 <head>
-    <meta charset="utf-8">
-<title>计算机组成原理课堂笔记 - KnowMyself</title>
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta charset="utf-8">
+  
+  <title>计算机组成原理课堂笔记 | KnowMyself</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+    <meta name="keywords" content="MinHow,MinHow's Blog" />
+  
+  <meta name="description" content="[TOC] CPU基础概念CPU功能： 指令控制，操作控制，时间控制，数据加工 CPU控制方式：同步控制，异步控制，联合控制 CPU指令周期：取值时间+执行时间 CPU周期：机器周期，总线周期。 CPU中断逻辑中断基础概念 暂停当前程序的执行，转而去执行其他程序，执行完毕之后，重新恢复中断程序的执行   中断源： 人为设置的中断，程序性事故,  硬件故障，外部事件（比如断电）  中断分类：可屏蔽中">
+<meta name="keywords" content="计组理论 CPU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机组成原理课堂笔记">
+<meta property="og:url" content="http://yoursite.com/2018/05/03/第四章CPU--计组课堂笔记-01/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="[TOC] CPU基础概念CPU功能： 指令控制，操作控制，时间控制，数据加工 CPU控制方式：同步控制，异步控制，联合控制 CPU指令周期：取值时间+执行时间 CPU周期：机器周期，总线周期。 CPU中断逻辑中断基础概念 暂停当前程序的执行，转而去执行其他程序，执行完毕之后，重新恢复中断程序的执行   中断源： 人为设置的中断，程序性事故,  硬件故障，外部事件（比如断电）  中断分类：可屏蔽中">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="c:/Users/ADMINI~1/AppData/Local/Temp/1526351012462.png">
+<meta property="og:updated_time" content="2018-05-15T04:42:54.494Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机组成原理课堂笔记">
+<meta name="twitter:description" content="[TOC] CPU基础概念CPU功能： 指令控制，操作控制，时间控制，数据加工 CPU控制方式：同步控制，异步控制，联合控制 CPU指令周期：取值时间+执行时间 CPU周期：机器周期，总线周期。 CPU中断逻辑中断基础概念 暂停当前程序的执行，转而去执行其他程序，执行完毕之后，重新恢复中断程序的执行   中断源： 人为设置的中断，程序性事故,  硬件故障，外部事件（比如断电）  中断分类：可屏蔽中">
+<meta name="twitter:image" content="c:/Users/ADMINI~1/AppData/Local/Temp/1526351012462.png">
+  
+  
+    <link rel="icon" href="/favicon.ico">
+  
+  <link href="//cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="/css/style.css">
+  <script src="/js/pace.min.js"></script>
+  
 
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.css">
-
-
-
-
-
-
-
-<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Ovo|Source+Code+Pro">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/bulma/0.6.2/css/bulma.min.css">
-
-
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/lightgallery/1.6.8/css/lightgallery.min.css">
-<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/justifiedGallery/3.6.5/css/justifiedGallery.min.css">
-
-
-<link rel="stylesheet" href="/css/style.css">
-<script defer src="//use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  
+  
 
 </head>
+
 <body>
-    
-<nav class="navbar is-transparent is-fixed-top navbar-main" role="navigation" aria-label="main navigation">
-    <div class="container">
-        <div class="navbar-brand">
-            <a class="navbar-item navbar-logo" href="/">
-                
-                <img src="/images/logo.png" alt="" height="28">
-                
-            </a>
-            <div class="navbar-burger">
-                <span></span>
-                <span></span>
-                <span></span>
+  <div id="container">
+      <header id="header">
+    <div id="banner"></div>
+    <div id="header-outer">
+        <div id="header-menu" class="header-menu-pos animated">
+            <div class="header-menu-container">
+                <a href="/" class="left">
+                    <span class="site-title">MinHow&#39;s Blog</span>
+                </a>
+                <nav id="header-menu-nav" class="right">
+                    
+                    <a  href="/">
+                        <i class="fa fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <a  href="/archives">
+                        <i class="fa fa-archive"></i>
+                        <span>Archives</span>
+                    </a>
+                    
+                    <a  href="/about">
+                        <i class="fa fa-user"></i>
+                        <span>About</span>
+                    </a>
+                    
+                </nav>
+                <a class="mobile-header-menu-button">
+                    <i class="fa fa-bars"></i>
+                </a>
             </div>
         </div>
-        
-        <div class="navbar-menu navbar-end">
-            
-            
-            
+        <div id="header-row">
+            <div id="logo">
+                <a href="/">
+                    <img src="/images/logo.png" alt="logo">
+                </a>
+            </div>
+            <div class="header-info">
+                <div id="header-title">
+                    
+                    <h2>
+                        MinHow&#39;s Blog
+                    </h2>
+                    
+                </div>
+                <div id="header-description">
+                    
+                    <h3>
+                        一个专注 WEB 开发的技术博客
+                    </h3>
+                    
+                </div>
+            </div>
+            <nav class="header-nav">
+                <div class="social">
+                    
+                        <a title="MinHow" target="_blank" href="//minhow.com">
+                            <i class="fa fa-home fa-2x"></i></a>
+                    
+                        <a title="Github" target="_blank" href="//github.com/wongminho">
+                            <i class="fa fa-github fa-2x"></i></a>
+                    
+                        <a title="Weibo" target="_blank" href="//weibo.com/WongMinHo">
+                            <i class="fa fa-weibo fa-2x"></i></a>
+                    
+                        <a title="Twitter" target="_blank" href="//twitter.com/huangminhow">
+                            <i class="fa fa-twitter fa-2x"></i></a>
+                    
+                </div>
+            </nav>
         </div>
     </div>
-</nav>
-
-    <section class="section">
-    <div class="container">
-    <article class="article content gallery" itemscope itemprop="blogPost">
-    <h1 class="article-title is-size-3 is-size-4-mobile" itemprop="name">
-        
-            计算机组成原理课堂笔记
-        
-    </h1>
-    <div class="article-meta columns is-variable is-1 is-multiline is-mobile is-size-7-mobile">
-        <span class="column is-narrow">
-            <time datetime="2018-05-03T00:53:04.206Z" itemprop="datePublished">16 days ago</time>
-        </span>
-        
-        
-        <span class="column is-narrow">
-            
-            
-            5 分钟 读完 (约 726 字)
-        </span>
-        
-    </div>
-    <div class="article-entry is-size-6-mobile" itemprop="articleBody">
+</header>
+      <div class="outer">
+        <section id="main" class="body-wrap"><article id="post-第四章CPU--计组课堂笔记-01" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-        <p>[TOC]</p>
+      <header class="article-header">
+        
+  
+    <h1 class="post-title" itemprop="name">
+      计算机组成原理课堂笔记
+    </h1>
+    <div class="post-title-bar">
+      <ul>
+          
+        <li>
+          <i class="fa fa-calendar"></i>  2018-05-03
+        </li>
+        <li>
+          <i class="fa fa-eye"></i>
+          <span id="busuanzi_value_page_pv"></span>
+        </li>
+      </ul>
+    </div>
+  
+
+          
+      </header>
+    
+    <div class="article-entry post-content" itemprop="articleBody">
+      
+            
+            <p>[TOC]</p>
 <h2 id="CPU基础概念"><a href="#CPU基础概念" class="headerlink" title="CPU基础概念"></a>CPU基础概念</h2><p>CPU功能： 指令控制，操作控制，时间控制，数据加工</p>
 <p>CPU控制方式：同步控制，异步控制，联合控制</p>
 <p>CPU指令周期：取值时间+执行时间</p>
@@ -157,81 +225,293 @@
 </ul>
 <p><img src="C:\Users\ADMINI~1\AppData\Local\Temp\1526351012462.png" alt="52635101246"></p>
 
-    
+            <div class="post-copyright">
+    <div class="content">
+        <p>最后更新： 2018年05月15日 12:42</p>
+        <p>原始链接： <a class="post-url" href="/2018/05/03/第四章CPU--计组课堂笔记-01/" title="计算机组成原理课堂笔记">http://yoursite.com/2018/05/03/第四章CPU--计组课堂笔记-01/</a></p>
+        <footer>
+            <a href="http://yoursite.com">
+                <img src="/images/logo.png" alt="Qiuyihao">
+                Qiuyihao
+            </a>
+        </footer>
     </div>
-    
-    <div class="columns is-variable is-1 is-multiline is-mobile">
-    
-        <span class="column is-narrow"><a class="tag is-light article-tag" href="/tags/计组理论-CPU/">#计组理论 CPU</a></span>
-    
-    </div>
-    
-    
-    <div class="columns is-mobile is-multiline article-nav">
-        <span class="column is-12-mobile is-half-desktop  article-nav-prev">
-            
-            <a href="/2018/05/04/湫嘤记-壹/">湫嘤记-壹</a>
-            
-        </span>
-        <span class="column is-12-mobile is-half-desktop  article-nav-next">
-            
-            <a href="/2018/05/02/关系数据库设计理论/">关系数据库设计理论简介</a>
-            
-        </span>
-    </div>
-    
-</article>
+</div>
 
-
-
-
-    </div>
-</section>
-    <footer class="footer">
-    <div class="container">
-        <div class="columns content">
-            <div class="column is-narrow has-text-centered">
-                &copy; 2018 Qiuyihao&nbsp;
-                Powered by <a href="http://hexo.io/" target="_blank">Hexo</a> & <a
-                        href="http://github.com/ppoffice/hexo-theme-minos">Minos</a>
-            </div>
-            <div class="column is-hidden-mobile"></div>
-
+      
+        
             
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;">赏</a>
+</div>
+
+<div id="reward" class="post-modal reward-lay">
+    <a class="close" href="javascript:;" id="reward-close">×</a>
+    <span class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        请我吃糖~
+        <i class="icon icon-quote-right"></i>
+    </span>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/images/wechat_code.jpg" alt="打赏二维码">
+        </div>
+        <div class="reward-select">
+            
+            <label class="reward-select-item checked" data-id="wechat" data-wechat="/images/wechat_code.jpg">
+                <img class="reward-select-item-wechat" src="/images/wechat.png" alt="微信">
+            </label>
+            
+            
+            <label class="reward-select-item" data-id="alipay" data-alipay="/images/alipay_code.jpg">
+                <img class="reward-select-item-alipay" src="/images/alipay.png" alt="支付宝">
+            </label>
             
         </div>
     </div>
-</footer>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-<!-- test if the browser is outdated -->
-<div id="outdated">
-    <h6>Your browser is out-of-date!</h6>
-    <p>Update your browser to view this website correctly. <a id="btnUpdateBrowser" href="http://outdatedbrowser.com/">Update my browser now </a></p>
-    <p class="last"><a href="#" id="btnCloseUpdateBrowser" title="Close">&times;</a></p>
 </div>
-<script src="//cdnjs.cloudflare.com/ajax/libs/outdated-browser/1.1.5/outdatedbrowser.min.js"></script>
-<script>
-    $(document).ready(function () {
-        //plugin function, place inside DOM ready function
-        outdatedBrowser({
-            bgColor: '#f25648',
-            color: '#ffffff',
-            lowerThan: 'flex'
-        })
-    });
-</script>
-
-<script>
-    window.FontAwesomeConfig = {
-        searchPseudoElements: true
-    }
-</script>
 
 
+        
+    </div>
+    <footer class="article-footer">
+        
+        
+<div class="post-share">
+    <a href="javascript:;" id="share-sub" class="post-share-fab">
+        <i class="fa fa-share-alt"></i>
+    </a>
+    <div class="post-share-list" id="share-list">
+        <ul class="share-icons">
+          <li>
+            <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=http://yoursite.com/2018/05/03/第四章CPU--计组课堂笔记-01/&title=《计算机组成原理课堂笔记》 — KnowMyself&pic=http://yoursite.comimages/logo.png" data-title="微博">
+              <i class="fa fa-weibo"></i>
+            </a>
+          </li>
+          <li>
+            <a class="weixin share-sns" id="wxFab" href="javascript:;" data-title="微信">
+              <i class="fa fa-weixin"></i>
+            </a>
+          </li>
+          <li>
+            <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=http://yoursite.com/2018/05/03/第四章CPU--计组课堂笔记-01/&title=《计算机组成原理课堂笔记》 — KnowMyself&source=" data-title="QQ">
+              <i class="fa fa-qq"></i>
+            </a>
+          </li>
+          <li>
+            <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2018/05/03/第四章CPU--计组课堂笔记-01/" data-title="Facebook">
+              <i class="fa fa-facebook"></i>
+            </a>
+          </li>
+          <li>
+            <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《计算机组成原理课堂笔记》 — KnowMyself&url=http://yoursite.com/2018/05/03/第四章CPU--计组课堂笔记-01/&via=http://yoursite.com" data-title="Twitter">
+              <i class="fa fa-twitter"></i>
+            </a>
+          </li>
+          <li>
+            <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=http://yoursite.com/2018/05/03/第四章CPU--计组课堂笔记-01/" data-title="Google+">
+              <i class="fa fa-google-plus"></i>
+            </a>
+          </li>
+        </ul>
+     </div>
+</div>
+<div class="post-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;" id="wxShare-close">×</a>
+    <p>扫一扫，分享到微信</p>
+    <img src="//api.qrserver.com/v1/create-qr-code/?data=http://yoursite.com/2018/05/03/第四章CPU--计组课堂笔记-01/" alt="微信分享二维码">
+</div>
 
-<script src="/js/script.js"></script>
+<div class="mask"></div>
+
+        
+        <ul class="article-footer-menu">
+            
+            
+  <li class="article-footer-tags">
+    <i class="fa fa-tags"></i>
+      
+    <a href="/tags/计组理论CPU/" class="color4">计组理论 CPU</a>
+      
+  </li>
+
+        </ul>
+        
+    </footer>
+  </div>
+</article>
+
+
+    <aside class="post-toc-pos post-toc-top" id="post-toc">
+        <nav class="post-toc-wrap">
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CPU基础概念"><span class="post-toc-text">CPU基础概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CPU中断逻辑"><span class="post-toc-text">CPU中断逻辑</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#中断基础概念"><span class="post-toc-text">中断基础概念</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#中断屏蔽技术"><span class="post-toc-text">中断屏蔽技术</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+    
+
+<nav id="article-nav">
+  
+    <a href="/2018/05/04/湫嘤记-壹/" id="article-nav-newer" class="article-nav-link-wrap">
+
+      <span class="article-nav-title">
+        <i class="fa fa-hand-o-left" aria-hidden="true"></i>
+        
+          湫嘤记-壹
+        
+      </span>
+    </a>
+  
+  
+    <a href="/2018/05/02/关系数据库设计理论/" id="article-nav-older" class="article-nav-link-wrap">
+      <span class="article-nav-title">关系数据库设计理论简介</span>
+      <i class="fa fa-hand-o-right" aria-hidden="true"></i>
+    </a>
+  
+</nav>
+
+
 
     
+</section>
+        
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+      <p>
+        Powered by  <a href="http://hexo.io/" target="_blank">Hexo</a>
+        Theme <a href="//github.com/wongminho/hexo-theme-miho" target="_blank">MiHo</a>
+      &copy; 2018 Qiuyihao<br>
+      </p>
+    </div>
+  </div>
+</footer>
+    <script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<script src="//cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script>
+  var mihoConfig = {
+      root: "http://yoursite.com",
+      animate: true,
+      isHome: false,
+      share: true,
+      reward: 1
+  }
+</script>
+<div class="sidebar">
+    <div id="sidebar-search" title="Search">
+        <i class="fa fa-search"></i>
+    </div>
+    <div id="sidebar-category" title="Categories">
+        <i class="fa fa-book"></i>
+    </div>
+    <div id="sidebar-tag" title="Tags">
+        <i class="fa fa-tags"></i>
+    </div>
+    <div id="sidebar-top">
+        <span class="sidebar-top-icon"><i class="fa fa-angle-up"></i></span>
+    </div>
+</div>
+<div class="sidebar-menu-box" id="sidebar-menu-box">
+    <div class="sidebar-menu-box-container">
+        <div id="sidebar-menu-box-categories">
+            
+        </div>
+        <div id="sidebar-menu-box-tags">
+            <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/love/" style="font-size: 10px;">love</a> <a href="/tags/verilog-计组实验/" style="font-size: 10px;">verilog 计组实验</a> <a href="/tags/互联网思维/" style="font-size: 10px;">互联网思维</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库理论/" style="font-size: 10px;">数据库理论</a> <a href="/tags/数据库系统，postgresql/" style="font-size: 10px;">数据库系统，postgresql</a> <a href="/tags/经济学，毛概/" style="font-size: 10px;">经济学，毛概</a> <a href="/tags/编程软件-vim-java/" style="font-size: 10px;">编程软件 vim java</a> <a href="/tags/计组实验-CPU/" style="font-size: 10px;">计组实验 CPU</a> <a href="/tags/计组理论/" style="font-size: 10px;">计组理论</a> <a href="/tags/计组理论-CPU/" style="font-size: 10px;">计组理论 CPU</a>
+        </div>
+    </div>
+    <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
+</div>
+<div class="mobile-header-menu-nav" id="mobile-header-menu-nav">
+    <div class="mobile-header-menu-container">
+        <span class="title">Menus</span>
+        <ul class="mobile-header-menu-navbar">
+            
+            <li>
+                <a  href="/">
+                    <i class="fa fa-home"></i><span>Home</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/archives">
+                    <i class="fa fa-archive"></i><span>Archives</span>
+                </a>
+            </li>
+            
+            <li>
+                <a  href="/about">
+                    <i class="fa fa-user"></i><span>About</span>
+                </a>
+            </li>
+            
+        </ul>
+    </div>
+    <div class="mobile-header-tag-container">
+        <span class="title">Tags</span>
+        <div id="mobile-header-container-tags">
+            <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/love/" style="font-size: 10px;">love</a> <a href="/tags/verilog-计组实验/" style="font-size: 10px;">verilog 计组实验</a> <a href="/tags/互联网思维/" style="font-size: 10px;">互联网思维</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库理论/" style="font-size: 10px;">数据库理论</a> <a href="/tags/数据库系统，postgresql/" style="font-size: 10px;">数据库系统，postgresql</a> <a href="/tags/经济学，毛概/" style="font-size: 10px;">经济学，毛概</a> <a href="/tags/编程软件-vim-java/" style="font-size: 10px;">编程软件 vim java</a> <a href="/tags/计组实验-CPU/" style="font-size: 10px;">计组实验 CPU</a> <a href="/tags/计组理论/" style="font-size: 10px;">计组理论</a> <a href="/tags/计组理论-CPU/" style="font-size: 10px;">计组理论 CPU</a>
+        </div>
+    </div>
+</div>
+<div class="search-wrap">
+    <span class="search-close">&times;</span>
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+            <i class="icon icon-lg icon-chevron-left"></i>
+        </a>
+        <input class="search-field" placeholder="Search..." id="keywords">
+        <a id="search-submit" href="javascript:;">
+            <i class="fa fa-search"></i>
+        </a>
+    <div class="search-container" id="search-container">
+        <ul class="search-result" id="search-result">
+        </ul>
+    </div>
+</div>
+
+<div id="search-tpl">
+    <li class="search-result-item">
+        <a href="{url}" class="search-item-li">
+            <span class="search-item-li-title" title="{title}">{title}</span>
+        </a>
+    </li>
+</div>
+<script src="/js/search.js"></script>
+<script src="/js/main.js"></script>
+
+
+  <script src="//cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+  <div id="particles"></div>
+  <script src="/js/particles.js"></script>
+
+
+
+
+
+
+
+  <link rel="stylesheet" href="//cdn.bootcss.com/animate.css/3.5.0/animate.min.css">
+  <script src="//cdn.bootcss.com/scrollReveal.js/3.0.5/scrollreveal.js"></script>
+  <script src="/js/animate.js"></script>
+
+
+  <script src="/js/pop-img.js"></script>
+  <script>
+     $(".article-entry p img").popImg();
+  </script>
+
+  </div>
 </body>
 </html>
