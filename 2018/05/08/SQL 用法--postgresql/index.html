@@ -16,15 +16,10 @@
 <meta property="og:site_name" content="KnowMyself">
 <meta property="og:description" content="##SQL 用法–postgresql [TOC] 运算符https://www.postgresql.org/docs/9.1/static/functions-geometry.html 官方链接最全。 表格操作建表12345678CREATE TABLE users (    user_id INT AUTO_INCREMENT PRIMARY KEY, //声明主键    username">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="c:/Users/ADMINI~1/AppData/Local/Temp/1525768885721.png">
-<meta property="og:image" content="c:/Users/ADMINI~1/AppData/Local/Temp/1525769225164.png">
-<meta property="og:image" content="c:/Users/ADMINI~1/AppData/Local/Temp/1525769455952.png">
-<meta property="og:image" content="c:/Users/ADMINI~1/AppData/Local/Temp/1525769747017.png">
-<meta property="og:updated_time" content="2018-05-08T09:19:38.275Z">
+<meta property="og:updated_time" content="2018-05-19T03:14:06.454Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="SQL用法总结 -- postgresql（持续更新中）">
 <meta name="twitter:description" content="##SQL 用法–postgresql [TOC] 运算符https://www.postgresql.org/docs/9.1/static/functions-geometry.html 官方链接最全。 表格操作建表12345678CREATE TABLE users (    user_id INT AUTO_INCREMENT PRIMARY KEY, //声明主键    username">
-<meta name="twitter:image" content="c:/Users/ADMINI~1/AppData/Local/Temp/1525768885721.png">
   
   
     <link rel="icon" href="/favicon.ico">
@@ -202,21 +197,17 @@ ga('send', 'pageview');
 </table>
 <h3 id="表的连接"><a href="#表的连接" class="headerlink" title="表的连接"></a>表的连接</h3><h4 id="内连接–INNER-JOIN"><a href="#内连接–INNER-JOIN" class="headerlink" title="内连接–INNER JOIN"></a>内连接–INNER JOIN</h4><p>两个表使用内连接，通过指定一个属性来匹配，若两个表的同一属性具有相同值，则保留在连接表中，其余不相等的行则消去。</p>
 <p>图解</p>
-<p><img src="C:\Users\ADMINI~1\AppData\Local\Temp\1525768885721.png" alt="52576888572"></p>
 <p>使用示例（内连接也可以连接多张表格）</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">  A.n</span><br><span class="line"><span class="keyword">FROM</span> A</span><br><span class="line"><span class="keyword">INNER</span> <span class="keyword">JOIN</span> B <span class="keyword">ON</span> B.n = A.n;</span><br><span class="line">INNER JOIN C ON C.n = A.n;</span><br></pre></td></tr></table></figure>
 <h4 id="全连接–FUll-OUTER-JOIN"><a href="#全连接–FUll-OUTER-JOIN" class="headerlink" title="全连接–FUll OUTER JOIN"></a>全连接–FUll OUTER JOIN</h4><p>指定连接条件，属性值相同的行保留，但不重复，属性值不同的值保留，但存在某些为Null的情况。</p>
-<p><img src="C:\Users\ADMINI~1\AppData\Local\Temp\1525769225164.png" alt="52576922516"></p>
 <p>用法示例</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> column_list</span><br><span class="line"><span class="keyword">FROM</span> A</span><br><span class="line"><span class="keyword">FULL</span> <span class="keyword">OUTER</span> <span class="keyword">JOIN</span> B <span class="keyword">ON</span> B.n = A.n;</span><br></pre></td></tr></table></figure>
 <h4 id="左连接–LEFT-JOIN"><a href="#左连接–LEFT-JOIN" class="headerlink" title="左连接–LEFT JOIN"></a>左连接–LEFT JOIN</h4><p>对几个将要连接的表指定条件进行连接，属性匹配的时候，会保留左表所有属性，即便右表属性为NULL,但不会存在左表属性为NULL的情况。</p>
-<p><img src="C:\Users\ADMINI~1\AppData\Local\Temp\1525769455952.png" alt="52576945595"></p>
 <p>代码示例：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    A.n</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    A</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> B <span class="keyword">ON</span> B.n = A.n;</span><br></pre></td></tr></table></figure>
 <h4 id="右连接–RIGHT-JOIN"><a href="#右连接–RIGHT-JOIN" class="headerlink" title="右连接–RIGHT JOIN"></a>右连接–RIGHT JOIN</h4><p>和左连接相反，用法如下：</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    A.n</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    A</span><br><span class="line"><span class="keyword">LEFT</span> <span class="keyword">JOIN</span> B <span class="keyword">ON</span> B.n = A.n;</span><br></pre></td></tr></table></figure>
 <h4 id="交叉连接–CROSS-JOIN"><a href="#交叉连接–CROSS-JOIN" class="headerlink" title="交叉连接–CROSS JOIN"></a>交叉连接–CROSS JOIN</h4><p>看图就知道。。。交叉连接结果的表格是 两表行数相乘。需要指出的一点就是两个表相连不需要指定cross join。</p>
-<p><img src="C:\Users\ADMINI~1\AppData\Local\Temp\1525769747017.png" alt="52576974701"></p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> </span><br><span class="line">    column_list</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    A,</span><br><span class="line">    B;</span><br></pre></td></tr></table></figure>
 <h3 id="创建索引"><a href="#创建索引" class="headerlink" title="创建索引"></a>创建索引</h3><blockquote>
 <p>PostgreSQL provides several index types: B-tree, Hash, GiST and GIN. Each index type uses a different algorithm that is best suited to different types of queries. By default, the <code>CREATE INDEX</code> command creates B-tree indexes, which fit the most common situations.</p>
@@ -346,7 +337,7 @@ ga('send', 'pageview');
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2018年05月08日 17:19</p>
+        <p>最后更新： 2018年05月19日 11:14</p>
         <p>原始链接： <a class="post-url" href="/2018/05/08/SQL 用法--postgresql/" title="SQL用法总结 -- postgresql（持续更新中）">http://yoursite.com/2018/05/08/SQL 用法--postgresql/</a></p>
         <footer>
             <a href="http://yoursite.com">
@@ -517,7 +508,7 @@ ga('send', 'pageview');
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/love/" style="font-size: 10px;">love</a> <a href="/tags/verilog-计组实验/" style="font-size: 10px;">verilog 计组实验</a> <a href="/tags/互联网思维/" style="font-size: 10px;">互联网思维</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库理论/" style="font-size: 10px;">数据库理论</a> <a href="/tags/数据库系统，postgresql/" style="font-size: 10px;">数据库系统，postgresql</a> <a href="/tags/经济学，毛概/" style="font-size: 10px;">经济学，毛概</a> <a href="/tags/编程软件-vim-java/" style="font-size: 10px;">编程软件 vim java</a> <a href="/tags/计组实验-CPU/" style="font-size: 10px;">计组实验 CPU</a> <a href="/tags/计组理论/" style="font-size: 10px;">计组理论</a> <a href="/tags/计组理论-CPU/" style="font-size: 10px;">计组理论 CPU</a>
+            <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/js-cocos2d-x/" style="font-size: 10px;">js, cocos2d.x</a> <a href="/tags/love/" style="font-size: 10px;">love</a> <a href="/tags/verilog-计组实验/" style="font-size: 10px;">verilog 计组实验</a> <a href="/tags/互联网思维/" style="font-size: 10px;">互联网思维</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库理论/" style="font-size: 10px;">数据库理论</a> <a href="/tags/数据库系统，postgresql/" style="font-size: 10px;">数据库系统，postgresql</a> <a href="/tags/经济学，毛概/" style="font-size: 10px;">经济学，毛概</a> <a href="/tags/编程软件-vim-java/" style="font-size: 10px;">编程软件 vim java</a> <a href="/tags/计组实验-CPU/" style="font-size: 10px;">计组实验 CPU</a> <a href="/tags/计组理论/" style="font-size: 10px;">计组理论</a> <a href="/tags/计组理论-CPU/" style="font-size: 10px;">计组理论 CPU</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -550,7 +541,7 @@ ga('send', 'pageview');
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/love/" style="font-size: 10px;">love</a> <a href="/tags/verilog-计组实验/" style="font-size: 10px;">verilog 计组实验</a> <a href="/tags/互联网思维/" style="font-size: 10px;">互联网思维</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库理论/" style="font-size: 10px;">数据库理论</a> <a href="/tags/数据库系统，postgresql/" style="font-size: 10px;">数据库系统，postgresql</a> <a href="/tags/经济学，毛概/" style="font-size: 10px;">经济学，毛概</a> <a href="/tags/编程软件-vim-java/" style="font-size: 10px;">编程软件 vim java</a> <a href="/tags/计组实验-CPU/" style="font-size: 10px;">计组实验 CPU</a> <a href="/tags/计组理论/" style="font-size: 10px;">计组理论</a> <a href="/tags/计组理论-CPU/" style="font-size: 10px;">计组理论 CPU</a>
+            <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/js-cocos2d-x/" style="font-size: 10px;">js, cocos2d.x</a> <a href="/tags/love/" style="font-size: 10px;">love</a> <a href="/tags/verilog-计组实验/" style="font-size: 10px;">verilog 计组实验</a> <a href="/tags/互联网思维/" style="font-size: 10px;">互联网思维</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库理论/" style="font-size: 10px;">数据库理论</a> <a href="/tags/数据库系统，postgresql/" style="font-size: 10px;">数据库系统，postgresql</a> <a href="/tags/经济学，毛概/" style="font-size: 10px;">经济学，毛概</a> <a href="/tags/编程软件-vim-java/" style="font-size: 10px;">编程软件 vim java</a> <a href="/tags/计组实验-CPU/" style="font-size: 10px;">计组实验 CPU</a> <a href="/tags/计组理论/" style="font-size: 10px;">计组理论</a> <a href="/tags/计组理论-CPU/" style="font-size: 10px;">计组理论 CPU</a>
         </div>
     </div>
 </div>
