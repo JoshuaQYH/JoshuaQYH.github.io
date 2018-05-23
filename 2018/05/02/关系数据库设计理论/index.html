@@ -8,19 +8,21 @@
   
     <meta name="keywords" content="KnowMyself" />
   
-  <meta name="description" content="[TOC] 函数依赖 X→Y，表示Y依赖于X； X→Y，且Y→X不成立，Y→Z，则X→Z，表示Z传递依赖于X。  函数依赖性质 自反性  传递性  增广性  A → C 可以推出 AB → BC   函数依赖的种类（完全函数依赖：在关系模式R（u）中，X,Y是U的子集，Y函数依赖于X 并且 Y非函数依赖于X的子集，则称Y完全函数依赖于X。X  f &amp;gt;Y）—&amp;gt; Y依赖于X,但未必都依赖">
+  <meta name="description" content="[TOC] 函数依赖 X→Y，表示Y依赖于X； X→Y，且Y→X不成立，Y→Z，则X→Z，表示Z传递依赖于X。  函数依赖性质 自反性 传递性 增广性  A → C 可以推出 AB → BC   函数依赖的种类（完全函数依赖：在关系模式R（u）中，X,Y是U的子集，Y函数依赖于X 并且 Y非函数依赖于X的子集，则称Y完全函数依赖于X。X  f &amp;gt;Y）—&amp;gt; Y依赖于X,但未必都依赖X的">
 <meta name="keywords" content="数据库理论">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关系数据库设计理论简介">
 <meta property="og:url" content="http://yoursite.com/2018/05/02/关系数据库设计理论/index.html">
 <meta property="og:site_name" content="KnowMyself">
-<meta property="og:description" content="[TOC] 函数依赖 X→Y，表示Y依赖于X； X→Y，且Y→X不成立，Y→Z，则X→Z，表示Z传递依赖于X。  函数依赖性质 自反性  传递性  增广性  A → C 可以推出 AB → BC   函数依赖的种类（完全函数依赖：在关系模式R（u）中，X,Y是U的子集，Y函数依赖于X 并且 Y非函数依赖于X的子集，则称Y完全函数依赖于X。X  f &amp;gt;Y）—&amp;gt; Y依赖于X,但未必都依赖">
+<meta property="og:description" content="[TOC] 函数依赖 X→Y，表示Y依赖于X； X→Y，且Y→X不成立，Y→Z，则X→Z，表示Z传递依赖于X。  函数依赖性质 自反性 传递性 增广性  A → C 可以推出 AB → BC   函数依赖的种类（完全函数依赖：在关系模式R（u）中，X,Y是U的子集，Y函数依赖于X 并且 Y非函数依赖于X的子集，则称Y完全函数依赖于X。X  f &amp;gt;Y）—&amp;gt; Y依赖于X,但未必都依赖X的">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://img-blog.csdn.net/20161228171824096?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZmFuZmFuNDU2OQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
-<meta property="og:updated_time" content="2018-05-19T15:26:49.674Z">
+<meta property="og:image" content="c:/Users/ADMINI~1/AppData/Local/Temp/1526869989262.png">
+<meta property="og:image" content="c:/Users/ADMINI~1/AppData/Local/Temp/1526870129743.png">
+<meta property="og:updated_time" content="2018-05-21T03:28:39.397Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关系数据库设计理论简介">
-<meta name="twitter:description" content="[TOC] 函数依赖 X→Y，表示Y依赖于X； X→Y，且Y→X不成立，Y→Z，则X→Z，表示Z传递依赖于X。  函数依赖性质 自反性  传递性  增广性  A → C 可以推出 AB → BC   函数依赖的种类（完全函数依赖：在关系模式R（u）中，X,Y是U的子集，Y函数依赖于X 并且 Y非函数依赖于X的子集，则称Y完全函数依赖于X。X  f &amp;gt;Y）—&amp;gt; Y依赖于X,但未必都依赖">
+<meta name="twitter:description" content="[TOC] 函数依赖 X→Y，表示Y依赖于X； X→Y，且Y→X不成立，Y→Z，则X→Z，表示Z传递依赖于X。  函数依赖性质 自反性 传递性 增广性  A → C 可以推出 AB → BC   函数依赖的种类（完全函数依赖：在关系模式R（u）中，X,Y是U的子集，Y函数依赖于X 并且 Y非函数依赖于X的子集，则称Y完全函数依赖于X。X  f &amp;gt;Y）—&amp;gt; Y依赖于X,但未必都依赖X的">
 <meta name="twitter:image" content="https://img-blog.csdn.net/20161228171824096?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvZmFuZmFuNDU2OQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast">
   
   
@@ -175,13 +177,11 @@ ga('send', 'pageview');
 <li>X→Y，且Y→X不成立，Y→Z，则X→Z，表示Z传递依赖于X。</li>
 </ul>
 <h4 id="函数依赖性质"><a href="#函数依赖性质" class="headerlink" title="函数依赖性质"></a>函数依赖性质</h4><ul>
-<li><p>自反性</p>
-</li>
-<li><p>传递性</p>
-</li>
-<li><p>增广性  A → C 可以推出 AB → BC</p>
-</li>
+<li>自反性</li>
+<li>传递性</li>
+<li>增广性  A → C 可以推出 AB → BC</li>
 </ul>
+<p><img src="C:\Users\ADMINI~1\AppData\Local\Temp\1526869989262.png" alt="52686998926"></p>
 <h4 id="函数依赖的种类"><a href="#函数依赖的种类" class="headerlink" title="函数依赖的种类"></a>函数依赖的种类</h4><p>（<strong>完全函数依赖</strong>：在关系模式R（u）中，X,Y是U的子集，Y函数依赖于X 并且 Y非函数依赖于X的子集，则称Y完全函数依赖于X。X  f &gt;Y）—&gt; Y依赖于X,但未必都依赖X的子集。</p>
 <p>（<strong>部分函数依赖</strong>：在关系模式R（u）中，X,Y是U的子集，Y函数依赖于X 并且 Y函数依赖于X的子集）</p>
 <p>（<strong>函数依赖</strong>：某个属性集决定另一个属性集时，例如学生学号属性集Sno决定学生姓名属性集Sname，称Sname函数依赖于Sname ）</p>
@@ -191,6 +191,7 @@ ga('send', 'pageview');
 <p><strong>判断主键的方法</strong> ：若属性集为{ A , B, C}，A+ = ABC。 则A为主键。（属性闭包判断法） </p>
 <h3 id="范式-Normal-Forms"><a href="#范式-Normal-Forms" class="headerlink" title="范式 Normal Forms"></a>范式 Normal Forms</h3><p>（1）第一范式1NF：关系中的所以属性值都是不可分割的原子值；<br>（2）第二范式2NF：如果关系是1NF，且每个非主属性都完全依赖于候选键；<br>（3）第三范式3NF：如果关系是1NF，且每个非主属性都不传递依赖于候选键；<br>（4）<strong>鲍依斯-科得(巴斯)范式</strong>BCNF范式：如果关系是1NF，且每个属性都不传递依赖于候选键。</p>
 <p>BCNF意味着在关系模式中每一个决定因素都包含候选键，也就是说，只要属性或属性组A能够决定任何一个属性B，则A的子集中必须有候选键。</p>
+<p><img src="C:\Users\ADMINI~1\AppData\Local\Temp\1526870129743.png" alt="52687012974"></p>
 <h3 id="属性闭包"><a href="#属性闭包" class="headerlink" title="属性闭包"></a>属性闭包</h3><p>定义：闭包就是由一个属性直接或间接推导出的所有属性的集合。</p>
 <p>表示：B的闭包用B+表示。</p>
 <p>计算：关系R的属性集X的闭包的步骤如下： </p>
@@ -219,7 +220,7 @@ ga('send', 'pageview');
 <p>回答：不可以，因为每个子集的函数依赖Fi，可能产生跨子集的函数依赖，先求Fi的闭包会产生不完整的闭包关系。</p>
 <h4 id="BCNF分解"><a href="#BCNF分解" class="headerlink" title="BCNF分解"></a>BCNF分解</h4><p>BCNF的要求：函数依赖要么平凡，函数依赖的左侧是超键</p>
 <p>如果X→Y违反BCNF, 分解R 为R-Y 和XY。</p>
-<h4 id="第三范式"><a href="#第三范式" class="headerlink" title="第三范式"></a>第三范式</h4><p>第三范式的条件：</p>
+<h4 id="第三范式分解"><a href="#第三范式分解" class="headerlink" title="第三范式分解"></a>第三范式分解</h4><p>第三范式的条件：</p>
 <ol>
 <li>平凡依赖</li>
 <li>x 属于超键</li>
@@ -227,6 +228,7 @@ ga('send', 'pageview');
 </ol>
 <p>部分依赖</p>
 <p>传递依赖</p>
+<p>最小覆盖模型— 简化函数依赖集</p>
 <h3 id="补充知识点"><a href="#补充知识点" class="headerlink" title="补充知识点"></a>补充知识点</h3><h4 id="自然连接"><a href="#自然连接" class="headerlink" title="自然连接"></a>自然连接</h4><p>在连接运算当中，一种最常用的连接是自然连接。如果关系R与S具有相同的属性组B，且该属性组的值相等时的连接称为自然连接，结果关系的属性集合为<strong>R的属性并上S减去属性B的属性</strong>集合。</p>
 <p>参考的文章</p>
 <p><a href="https://www.cnblogs.com/bewolf/p/4445027.html" target="_blank" rel="noopener">函数依赖集闭包、属性集闭包、超键、候选键和最小函数依赖集</a></p>
@@ -235,7 +237,7 @@ ga('send', 'pageview');
 
             <div class="post-copyright">
     <div class="content">
-        <p>最后更新： 2018年05月19日 23:26</p>
+        <p>最后更新： 2018年05月21日 11:28</p>
         <p>原始链接： <a class="post-url" href="/2018/05/02/关系数据库设计理论/" title="关系数据库设计理论简介">http://yoursite.com/2018/05/02/关系数据库设计理论/</a></p>
         <footer>
             <a href="http://yoursite.com">
@@ -322,7 +324,7 @@ ga('send', 'pageview');
 
     <aside class="post-toc-pos post-toc-top" id="post-toc">
         <nav class="post-toc-wrap">
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#函数依赖"><span class="post-toc-text">函数依赖</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#函数依赖性质"><span class="post-toc-text">函数依赖性质</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#函数依赖的种类"><span class="post-toc-text">函数依赖的种类</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#键"><span class="post-toc-text">键</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#范式-Normal-Forms"><span class="post-toc-text">范式 Normal Forms</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#属性闭包"><span class="post-toc-text">属性闭包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关系模式分解"><span class="post-toc-text">关系模式分解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#无损连接分解"><span class="post-toc-text">无损连接分解</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#BCNF分解"><span class="post-toc-text">BCNF分解</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第三范式"><span class="post-toc-text">第三范式</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#补充知识点"><span class="post-toc-text">补充知识点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自然连接"><span class="post-toc-text">自然连接</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#函数依赖"><span class="post-toc-text">函数依赖</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#函数依赖性质"><span class="post-toc-text">函数依赖性质</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#函数依赖的种类"><span class="post-toc-text">函数依赖的种类</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#键"><span class="post-toc-text">键</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#范式-Normal-Forms"><span class="post-toc-text">范式 Normal Forms</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#属性闭包"><span class="post-toc-text">属性闭包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关系模式分解"><span class="post-toc-text">关系模式分解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#无损连接分解"><span class="post-toc-text">无损连接分解</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#BCNF分解"><span class="post-toc-text">BCNF分解</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第三范式分解"><span class="post-toc-text">第三范式分解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#补充知识点"><span class="post-toc-text">补充知识点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自然连接"><span class="post-toc-text">自然连接</span></a></li></ol></li></ol>
         </nav>
     </aside>
     
@@ -406,7 +408,7 @@ ga('send', 'pageview');
             
         </div>
         <div id="sidebar-menu-box-tags">
-            <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/js-cocos2d-x/" style="font-size: 10px;">js, cocos2d.x</a> <a href="/tags/love/" style="font-size: 10px;">love</a> <a href="/tags/verilog-计组实验/" style="font-size: 10px;">verilog 计组实验</a> <a href="/tags/互联网思维/" style="font-size: 10px;">互联网思维</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库理论/" style="font-size: 10px;">数据库理论</a> <a href="/tags/数据库系统，postgresql/" style="font-size: 10px;">数据库系统，postgresql</a> <a href="/tags/经济学，毛概/" style="font-size: 10px;">经济学，毛概</a> <a href="/tags/编程软件-vim-java/" style="font-size: 10px;">编程软件 vim java</a> <a href="/tags/计组实验-CPU/" style="font-size: 10px;">计组实验 CPU</a> <a href="/tags/计组理论-CPU/" style="font-size: 10px;">计组理论 CPU</a>
+            <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/js-cocos2d-x/" style="font-size: 10px;">js, cocos2d.x</a> <a href="/tags/love/" style="font-size: 10px;">love</a> <a href="/tags/verilog-计组实验/" style="font-size: 10px;">verilog 计组实验</a> <a href="/tags/互联网思维/" style="font-size: 10px;">互联网思维</a> <a href="/tags/操作系统/" style="font-size: 20px;">操作系统</a> <a href="/tags/数据库理论/" style="font-size: 10px;">数据库理论</a> <a href="/tags/数据库系统，postgresql/" style="font-size: 10px;">数据库系统，postgresql</a> <a href="/tags/经济学，毛概/" style="font-size: 10px;">经济学，毛概</a> <a href="/tags/编程软件-vim-java/" style="font-size: 10px;">编程软件 vim java</a> <a href="/tags/计组实验-CPU/" style="font-size: 10px;">计组实验 CPU</a> <a href="/tags/计组理论-CPU/" style="font-size: 10px;">计组理论 CPU</a>
         </div>
     </div>
     <a href="javascript:;" class="sidebar-menu-box-close">&times;</a>
@@ -439,7 +441,7 @@ ga('send', 'pageview');
     <div class="mobile-header-tag-container">
         <span class="title">Tags</span>
         <div id="mobile-header-container-tags">
-            <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/js-cocos2d-x/" style="font-size: 10px;">js, cocos2d.x</a> <a href="/tags/love/" style="font-size: 10px;">love</a> <a href="/tags/verilog-计组实验/" style="font-size: 10px;">verilog 计组实验</a> <a href="/tags/互联网思维/" style="font-size: 10px;">互联网思维</a> <a href="/tags/操作系统/" style="font-size: 10px;">操作系统</a> <a href="/tags/数据库理论/" style="font-size: 10px;">数据库理论</a> <a href="/tags/数据库系统，postgresql/" style="font-size: 10px;">数据库系统，postgresql</a> <a href="/tags/经济学，毛概/" style="font-size: 10px;">经济学，毛概</a> <a href="/tags/编程软件-vim-java/" style="font-size: 10px;">编程软件 vim java</a> <a href="/tags/计组实验-CPU/" style="font-size: 10px;">计组实验 CPU</a> <a href="/tags/计组理论-CPU/" style="font-size: 10px;">计组理论 CPU</a>
+            <a href="/tags/cocos2d/" style="font-size: 10px;">cocos2d</a> <a href="/tags/git/" style="font-size: 10px;">git</a> <a href="/tags/js-cocos2d-x/" style="font-size: 10px;">js, cocos2d.x</a> <a href="/tags/love/" style="font-size: 10px;">love</a> <a href="/tags/verilog-计组实验/" style="font-size: 10px;">verilog 计组实验</a> <a href="/tags/互联网思维/" style="font-size: 10px;">互联网思维</a> <a href="/tags/操作系统/" style="font-size: 20px;">操作系统</a> <a href="/tags/数据库理论/" style="font-size: 10px;">数据库理论</a> <a href="/tags/数据库系统，postgresql/" style="font-size: 10px;">数据库系统，postgresql</a> <a href="/tags/经济学，毛概/" style="font-size: 10px;">经济学，毛概</a> <a href="/tags/编程软件-vim-java/" style="font-size: 10px;">编程软件 vim java</a> <a href="/tags/计组实验-CPU/" style="font-size: 10px;">计组实验 CPU</a> <a href="/tags/计组理论-CPU/" style="font-size: 10px;">计组理论 CPU</a>
         </div>
     </div>
 </div>
