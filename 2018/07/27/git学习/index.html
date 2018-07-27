@@ -1,0 +1,392 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>git学习 | KnowMyself</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Qiuyihao">
+    
+    <meta name="description" content="从本地添加项目到github仓库在git bash 命令行下进行：
+123456789$ mkdir project    //本地新建一个仓库，项目文件夹$ cd project       // 进入文件夹$ git init         // 初始化$ git remote add ori">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="KnowMyself" title="KnowMyself"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="KnowMyself">KnowMyself</a></h1>
+				<h2 class="blog-motto">Code and life</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:joshuaqyh.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/07/27/git学习/" title="git学习" itemprop="url">git学习</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="https://joshuaqyh.github.io" title="Qiuyihao">Qiuyihao</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2018-07-27T15:28:32.596Z" itemprop="datePublished">2018-07-27</time>
+    Updated:<time datetime="2018-07-27T15:29:24.293Z" itemprop="dateModified">2018-07-27</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#从本地添加项目到github仓库"><span class="toc-number">1.</span> <span class="toc-text">从本地添加项目到github仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git基础命令"><span class="toc-number">2.</span> <span class="toc-text">git基础命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#暂存区概念"><span class="toc-number">2.1.</span> <span class="toc-text">暂存区概念</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分支命令"><span class="toc-number">3.</span> <span class="toc-text">分支命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-协同"><span class="toc-number">4.</span> <span class="toc-text">git 协同</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标签"><span class="toc-number">5.</span> <span class="toc-text">标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些git学习链接"><span class="toc-number">6.</span> <span class="toc-text">一些git学习链接</span></a></li></ol>
+		</div>
+		
+		<h3 id="从本地添加项目到github仓库"><a href="#从本地添加项目到github仓库" class="headerlink" title="从本地添加项目到github仓库"></a>从本地添加项目到github仓库</h3><p>在git bash 命令行下进行：</p>
+<figure class="highlight groovy"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir project    <span class="comment">//本地新建一个仓库，项目文件夹</span></span><br><span class="line">$ cd project       <span class="comment">// 进入文件夹</span></span><br><span class="line">$ git init         <span class="comment">// 初始化</span></span><br><span class="line">$ git remote add origin git<span class="meta">@github</span>.<span class="string">com:</span>username<span class="regexp">/RepoName.git /</span>/ 添加远程地址,换用户名和仓库名</span><br><span class="line">$ cat .git<span class="regexp">/config    /</span>/查看配置文件是否添加远程地址成功</span><br><span class="line">$ git add -A         <span class="comment">// 上传本地项目</span></span><br><span class="line">$ git commit -m  <span class="string">"first commit"</span>    <span class="comment">//项目注释</span></span><br><span class="line">$ git push origin master    <span class="comment">// 上传仓库初始代码</span></span><br><span class="line">$ git status    <span class="comment">//查看提交情况，这一行出现在commit之前</span></span><br></pre></td></tr></table></figure>
+<h3 id="git基础命令"><a href="#git基础命令" class="headerlink" title="git基础命令"></a>git基础命令</h3><ul>
+<li>git staus  ————————————————————————- 进入仓库，查看仓库文件状态</li>
+<li>git diff  + filename ———————————————————— 查看文件与上一次提交时的不同</li>
+<li>git add + filename    ||  git commit -m “注释”   ———————提交到库   —此处相当于代码存档</li>
+<li>git log ——————————————————————————查看存档历史</li>
+<li>git reset –hard HEAD^   ———————————————— —-一个^ 表示回退几次; HEA~100 回退一百次</li>
+<li>git reset –hard  版本id   —————————————————–回溯版本id</li>
+<li>git reflog         ——————————————————————– 查看历史指令，可以看到之前的版本id </li>
+<li>git checkout – filename —————————————————— 舍弃上一次更改</li>
+<li>git pull  —————————————————————————— 更新内容</li>
+</ul>
+<h4 id="暂存区概念"><a href="#暂存区概念" class="headerlink" title="暂存区概念"></a>暂存区概念</h4><p>前面讲了我们把文件往Git版本库里添加的时候，是分两步执行的：</p>
+<p>第一步是用<code>git add</code>把文件添加进去，实际上就是把文件修改添加到暂存区；</p>
+<p>第二步是用<code>git commit</code>提交更改，实际上就是把暂存区的所有内容提交到当前分支。</p>
+<p>因为我们创建Git版本库时，Git自动为我们创建了唯一一个<code>master</code>分支，所以，现在，<code>git commit</code>就是往<code>master</code>分支上提交更改。</p>
+<p>你可以简单理解为，需要提交的文件修改通通放到暂存区，然后，一次性提交暂存区的所有修改。</p>
+<hr>
+<p><strong>多次修改的版本 可以多次add 保留到暂存区之后，一次性commit提交到版本库。</strong></p>
+<h3 id="分支命令"><a href="#分支命令" class="headerlink" title="分支命令"></a>分支命令</h3><p>查看分支：<code>git branch</code></p>
+<p>创建分支：<code>git branch &lt;name&gt;</code></p>
+<p>切换分支：<code>git checkout &lt;name&gt;</code></p>
+<p>创建+切换分支：<code>git checkout -b &lt;name&gt;</code></p>
+<p>合并某分支到当前分支：<code>git merge &lt;name&gt;</code></p>
+<p>删除分支：<code>git branch -d &lt;name&gt;</code></p>
+<p>提交分支： <code>git push origin branchname</code>    // orgin 相当于仓库， 意思为提交到仓库的某一分支</p>
+<h3 id="git-协同"><a href="#git-协同" class="headerlink" title="git 协同"></a>git 协同</h3><p>多人协作的工作模式通常是这样：</p>
+<ol>
+<li>首先，可以试图用<code>git push origin &lt;branch-name&gt;</code>推送自己的修改；</li>
+<li>如果推送失败，则因为远程分支比你的本地更新，需要先用<code>git pull</code>试图合并；</li>
+<li>如果合并有冲突，则解决冲突，并在本地提交；</li>
+<li>没有冲突或者解决掉冲突后，再用<code>git push origin &lt;branch-name&gt;</code>推送就能成功！</li>
+</ol>
+<p>如果<code>git pull</code>提示<code>no tracking information</code>，则说明本地分支和远程分支的链接关系没有创建，用命令<code>git branch --set-upstream-to &lt;branch-name&gt; origin/&lt;branch-name&gt;</code>。</p>
+<p>这就是多人协作的工作模式，一旦熟悉了，就非常简单。</p>
+<ul>
+<li><p>查看远程库信息，使用<code>git remote -v</code>；</p>
+</li>
+<li><p>本地新建的分支如果不推送到远程，对其他人就是不可见的；</p>
+</li>
+<li><p>从本地推送分支，使用<code>git push origin branch-name</code>，如果推送失败，先用<code>git pull</code>抓取远程的新提交；</p>
+</li>
+<li><p>在本地创建和远程分支对应的分支，使用<code>git checkout -b branch-name origin/branch-name</code>，本地和远程分支的名称最好一致；</p>
+</li>
+<li><p>建立本地分支和远程分支的关联，使用<code>git branch --set-upstream branch-name origin/branch-name</code>；</p>
+</li>
+<li><p>从远程抓取分支，使用<code>git pull</code>，如果有冲突，要先处理冲突。  </p>
+<p>​</p>
+<p>​</p>
+</li>
+</ul>
+<h3 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h3><p>敲命令<code>git tag &lt;name&gt;</code>就可以打一个新标签：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ git tag v1.0</span><br></pre></td></tr></table></figure>
+<p>可以用命令<code>git tag</code>查看所有标签：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git tag</span><br><span class="line">v1.0</span><br></pre></td></tr></table></figure>
+<p>因为创建的标签都只存储在本地，不会自动推送到远程。所以，打错的标签可以在本地安全删除。</p>
+<p>如果要推送某个标签到远程，使用命令<code>git push origin &lt;tagname&gt;</code>：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin v1.0</span><br><span class="line">Total 0 (delta 0), reused 0 (delta 0)</span><br><span class="line">To github.com:michaelliao/learngit.git</span><br><span class="line"> * [new tag]         v1.0 -&gt; v1.0</span><br></pre></td></tr></table></figure>
+<p>或者，一次性推送全部尚未推送到远程的本地标签：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin --tags</span><br><span class="line">Total 0 (delta 0), reused 0 (delta 0)</span><br><span class="line">To github.com:michaelliao/learngit.git</span><br><span class="line"> * [new tag]         v0.9 -&gt; v0.9</span><br></pre></td></tr></table></figure>
+<p>如果标签已经推送到远程，要删除远程标签就麻烦一点，先从本地删除：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ git tag -d v0.9</span><br><span class="line">Deleted tag &apos;v0.9&apos; (was f52c633)</span><br></pre></td></tr></table></figure>
+<p>然后，从远程删除。删除命令也是push，但是格式如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git push origin :refs/tags/v0.9</span><br><span class="line">To github.com:michaelliao/learngit.git</span><br><span class="line"> - [deleted]         v0.9</span><br></pre></td></tr></table></figure>
+<h3 id="一些git学习链接"><a href="#一些git学习链接" class="headerlink" title="一些git学习链接"></a>一些git学习链接</h3><p><a href="https://gist.github.com/" target="_blank" rel="noopener">git 代码分享</a></p>
+<p><a href="https://www.liaoxuefeng.com/wiki/0013739516305929606dd18361248578c67b8067c8c017b000" target="_blank" rel="noopener">廖雪峰git教程</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/git/">git</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="https://joshuaqyh.github.io/2018/07/27/git学习/" data-title="git学习 | KnowMyself" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/07/27/Leanring_report-ant-junit-vim-java/" title="ant,junit,vim,java">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  ant,junit,vim,java</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/07/27/CPU调度算法/"  title="操作系统第五章之CPU调度算法（重点）">
+ <strong>NEXT:</strong><br/> 
+ <span>操作系统第五章之CPU调度算法（重点）
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#从本地添加项目到github仓库"><span class="toc-number">1.</span> <span class="toc-text">从本地添加项目到github仓库</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git基础命令"><span class="toc-number">2.</span> <span class="toc-text">git基础命令</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#暂存区概念"><span class="toc-number">2.1.</span> <span class="toc-text">暂存区概念</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分支命令"><span class="toc-number">3.</span> <span class="toc-text">分支命令</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#git-协同"><span class="toc-number">4.</span> <span class="toc-text">git 协同</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#标签"><span class="toc-number">5.</span> <span class="toc-text">标签</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#一些git学习链接"><span class="toc-number">6.</span> <span class="toc-text">一些git学习链接</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/cocos2d/" title="cocos2d">cocos2d<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/js-cocos2d-x/" title="js, cocos2d.x">js, cocos2d.x<sup>1</sup></a></li>
+		
+			<li><a href="/tags/love/" title="love">love<sup>1</sup></a></li>
+		
+			<li><a href="/tags/postgresql/" title="postgresql">postgresql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/verilog-计组实验/" title="verilog 计组实验">verilog 计组实验<sup>1</sup></a></li>
+		
+			<li><a href="/tags/互联网思维/" title="互联网思维">互联网思维<sup>1</sup></a></li>
+		
+			<li><a href="/tags/操作系统/" title="操作系统">操作系统<sup>2</sup></a></li>
+		
+			<li><a href="/tags/数据库理论/" title="数据库理论">数据库理论<sup>1</sup></a></li>
+		
+			<li><a href="/tags/经济学，毛概/" title="经济学，毛概">经济学，毛概<sup>1</sup></a></li>
+		
+			<li><a href="/tags/编程软件-vim-java/" title="编程软件 vim java">编程软件 vim java<sup>1</sup></a></li>
+		
+			<li><a href="/tags/计组实验-CPU/" title="计组实验 CPU">计组实验 CPU<sup>1</sup></a></li>
+		
+			<li><a href="/tags/计组理论-CPU/" title="计组理论 CPU">计组理论 CPU<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2018 
+		
+		<a href="https://joshuaqyh.github.io" target="_blank" title="Qiuyihao">Qiuyihao</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

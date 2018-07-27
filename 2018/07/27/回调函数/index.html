@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>Hello World | KnowMyself</title>
+    <title>回调函数 | KnowMyself</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
     <meta name="author" content="Qiuyihao">
     
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in ">
+    <meta name="description" content="什么是回调函数In computer programming, a callback is a piece of executable code that is passed as an argument to other code, which is expected to call back (">
     
     
     
@@ -65,15 +65,15 @@
 		<header class="article-info clearfix">
   <h1 itemprop="name">
     
-      <a href="/2018/07/22/hello-world/" title="Hello World" itemprop="url">Hello World</a>
+      <a href="/2018/07/27/回调函数/" title="回调函数" itemprop="url">回调函数</a>
   </h1>
   <p class="article-author">By
     
       <a href="https://joshuaqyh.github.io" title="Qiuyihao">Qiuyihao</a>
     </p>
   <p class="article-time">
-    <time datetime="2018-07-22T00:46:28.391Z" itemprop="datePublished">2018-07-22</time>
-    Updated:<time datetime="2018-07-21T03:32:35.510Z" itemprop="dateModified">2018-07-21</time>
+    <time datetime="2018-07-27T15:28:32.756Z" itemprop="datePublished">2018-07-27</time>
+    Updated:<time datetime="2018-07-27T15:32:31.467Z" itemprop="dateModified">2018-07-27</time>
     
   </p>
 </header>
@@ -82,28 +82,38 @@
 		
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">Contents</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+		<ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是回调函数"><span class="toc-number">1.</span> <span class="toc-text">什么是回调函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#回调函数有哪些特点"><span class="toc-number">2.</span> <span class="toc-text">回调函数有哪些特点</span></a></li></ol>
 		</div>
 		
-		<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+		<h4 id="什么是回调函数"><a href="#什么是回调函数" class="headerlink" title="什么是回调函数"></a>什么是回调函数</h4><p>In computer programming, a callback is a piece of executable code that is passed as an argument to other code, which is expected to call back (execute) the argument at some convenient time［引自 维基百科 callback］</p>
+<p>回调函数是一段可执行的代码段，它作为一个参数传递给其他的代码，其作用是在需要的时候方便调用这段（回调函数）代码。</p>
+<p>在JavaScript中函数也是对象的一种，同样对象可以作为参数传递给函数，因此函数也可以作为参数传递给另外一个函数，这个作为参数的函数就是回调函数。</p>
+<p>回调函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function add(num1, num2, callback)&#123;</span><br><span class="line">	var sum = num1 + num2;</span><br><span class="line">	callback(sum);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">function print(num)&#123;</span><br><span class="line">	console.log(num);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add(1, 2, print);		//=&gt;3</span><br></pre></td></tr></table></figure>
+<p>匿名回调函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">function add(num1, num2, callback)&#123;</span><br><span class="line">	var sum = num1 + num2;</span><br><span class="line">	callback(sum);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">add(1, 2, function(sum)&#123;</span><br><span class="line">	console.log(sum);		//=&gt;3</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>jQuery中大量的使用了回调函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(&quot;#btn&quot;).click(function() &#123;</span><br><span class="line">  alert(&quot;button clicked&quot;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="回调函数有哪些特点"><a href="#回调函数有哪些特点" class="headerlink" title="回调函数有哪些特点"></a>回调函数有哪些特点</h4><p><strong>不会立刻执行</strong></p>
+<p>回调函数作为参数传递给一个函数的时候，传递的只是函数的定义并不会立即执行。和普通的函数一样，回调函数在函调用函数数中也要通过<code>()</code>运算符调用才会执行。</p>
+<p><strong>是个闭包</strong></p>
+<p>回调函数是一个闭包，也就是说它能访问到其外层定义的变量。</p>
+<p>你再github的用户名和刚才新建的仓库 </p>
   
 	</div>
 		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/js-cocos2d-x/">js, cocos2d.x</a>
+  </div>
 
 
 
 
 <div class="article-share" id="share">
 
-  <div data-url="https://joshuaqyh.github.io/2018/07/22/hello-world/" data-title="Hello World | KnowMyself" data-tsina="" class="share clearfix">
+  <div data-url="https://joshuaqyh.github.io/2018/07/27/回调函数/" data-title="回调函数 | KnowMyself" data-tsina="" class="share clearfix">
   </div>
 
 </div>
@@ -113,13 +123,21 @@
 <nav class="article-nav clearfix">
  
  <div class="prev" >
- <a href="/2018/07/27/知乎问答_如何用互联网思维买馒头/" title="知乎问答——如何用互联网思维卖馒头">
+ <a href="/2018/07/27/内存管理--操作系统第七章/" title="内存管理--操作系统第七章">
   <strong>PREVIOUS:</strong><br/>
   <span>
-  知乎问答——如何用互联网思维卖馒头</span>
+  内存管理--操作系统第七章</span>
 </a>
 </div>
 
+
+<div class="next">
+<a href="/2018/07/27/关系数据库设计理论/"  title="关系数据库设计理论简介">
+ <strong>NEXT:</strong><br/> 
+ <span>关系数据库设计理论简介
+</span>
+</a>
+</div>
 
 </nav>
 
@@ -129,7 +147,7 @@
 
   <div id="toc" class="toc-aside">
   <strong class="toc-title">Contents</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Quick-Start"><span class="toc-number">1.</span> <span class="toc-text">Quick Start</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Create-a-new-post"><span class="toc-number">1.1.</span> <span class="toc-text">Create a new post</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Run-server"><span class="toc-number">1.2.</span> <span class="toc-text">Run server</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Generate-static-files"><span class="toc-number">1.3.</span> <span class="toc-text">Generate static files</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Deploy-to-remote-sites"><span class="toc-number">1.4.</span> <span class="toc-text">Deploy to remote sites</span></a></li></ol></li></ol>
+  <ol class="toc"><li class="toc-item toc-level-4"><a class="toc-link" href="#什么是回调函数"><span class="toc-number">1.</span> <span class="toc-text">什么是回调函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#回调函数有哪些特点"><span class="toc-number">2.</span> <span class="toc-text">回调函数有哪些特点</span></a></li></ol>
   </div>
 
 <div id="asidepart">

@@ -1,0 +1,339 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>cocos2d学习丨坑和解决办法 | KnowMyself</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Qiuyihao">
+    
+    <meta name="description" content="cocos2d 使用遇到的问题和解决办法[TOC]
+Q 1： 如何解决中文乱码？A1: 直接看正确的示例代码，杂七杂八的代码太多，跟上版本的是下面这个
+xml文件
+1234&amp;lt;dict&amp;gt;      &amp;lt;key&amp;gt;HelloWorldStringkey&amp;gt;      &amp;lt;st">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="KnowMyself" title="KnowMyself"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="KnowMyself">KnowMyself</a></h1>
+				<h2 class="blog-motto">Code and life</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:joshuaqyh.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/07/27/Q&A_cocos2d/" title="cocos2d学习丨坑和解决办法" itemprop="url">cocos2d学习丨坑和解决办法</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="https://joshuaqyh.github.io" title="Qiuyihao">Qiuyihao</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2018-07-27T15:28:32.642Z" itemprop="datePublished">2018-07-27</time>
+    Updated:<time datetime="2018-07-27T15:30:02.216Z" itemprop="dateModified">2018-07-27</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#cocos2d-使用遇到的问题和解决办法"><span class="toc-number">1.</span> <span class="toc-text">cocos2d 使用遇到的问题和解决办法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Q-1：-如何解决中文乱码？"><span class="toc-number">1.1.</span> <span class="toc-text">Q 1： 如何解决中文乱码？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Q2：xml文件资源（字体-图片等等）的放置的正确位置？"><span class="toc-number">1.2.</span> <span class="toc-text">Q2：xml文件资源（字体,图片等等）的放置的正确位置？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Q3：-一开始打开项目文件发现文件不可用或者项目文件被卸载？"><span class="toc-number">1.3.</span> <span class="toc-text">Q3： 一开始打开项目文件发现文件不可用或者项目文件被卸载？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Q4-编译时出现-libbox-lib不是有效的win32程序？"><span class="toc-number">1.4.</span> <span class="toc-text">Q4:  编译时出现 libbox.lib不是有效的win32程序？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Q5：当出现许多-h-文件不可用的时候？"><span class="toc-number">1.5.</span> <span class="toc-text">Q5：当出现许多.h 文件不可用的时候？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Q6-本地坐标系和世界坐标系如何互换计算"><span class="toc-number">1.6.</span> <span class="toc-text">Q6:本地坐标系和世界坐标系如何互换计算</span></a></li></ol></li></ol>
+		</div>
+		
+		<h3 id="cocos2d-使用遇到的问题和解决办法"><a href="#cocos2d-使用遇到的问题和解决办法" class="headerlink" title="cocos2d 使用遇到的问题和解决办法"></a>cocos2d 使用遇到的问题和解决办法</h3><p>[TOC]</p>
+<h4 id="Q-1：-如何解决中文乱码？"><a href="#Q-1：-如何解决中文乱码？" class="headerlink" title="Q 1： 如何解决中文乱码？"></a>Q 1： 如何解决中文乱码？</h4><p>A1: 直接看正确的示例代码，杂七杂八的代码太多，跟上版本的是下面这个</p>
+<p>xml文件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dict</span>&gt;</span>  </span><br><span class="line">    <span class="tag">&lt;<span class="name">key</span>&gt;</span>HelloWorldStringkey&gt;  </span><br><span class="line">    <span class="tag">&lt;<span class="name">string</span>&gt;</span>你好，世界string&gt;  </span><br><span class="line">dict&gt;</span><br></pre></td></tr></table></figure>
+<p>解析xml文件的代码。需要注意按键值获取中文内容保存为char*指针后，用于创建的label类是CCLabelTTF，而不是Label.</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//利用CCDictionary来读取xml    </span></span><br><span class="line">   CCDictionary *strings = CCDictionary::createWithContentsOfFile(<span class="string">"strings.xml"</span>);<span class="comment">//载入资源文件夹的strings.xml  </span></span><br><span class="line">   <span class="comment">//读取HelloWorld键中的值objectForKey根据key，获取对应的string    </span></span><br><span class="line">   <span class="keyword">const</span> <span class="keyword">char</span> *HelloWorld = ((CCString*)strings-&gt;objectForKey(<span class="string">"HelloWorldString"</span>))-&gt;m_sString.c_str();   </span><br><span class="line"> </span><br><span class="line">   <span class="comment">//获取屏幕的尺寸、位置信息等        </span></span><br><span class="line">   CCSize visibleSize = CCDirector::sharedDirector()-&gt;getVisibleSize();   </span><br><span class="line"> </span><br><span class="line">   <span class="comment">//乱码文字  </span></span><br><span class="line">   CCLabelTTF *label0 = CCLabelTTF::create(<span class="string">"你好，世界"</span>,<span class="string">"arial"</span>,<span class="number">72</span>);  </span><br><span class="line">   label0-&gt;setPosition(ccp(visibleSize.width/<span class="number">2</span>,<span class="number">2</span>*visibleSize.height/<span class="number">3</span>));  </span><br><span class="line">   <span class="keyword">this</span>-&gt;addChild(label0);  </span><br><span class="line"> </span><br><span class="line">   <span class="comment">//正常中文  </span></span><br><span class="line">   CCLabelTTF *label1 = CCLabelTTF::create(HelloWorld,<span class="string">"arial"</span>,<span class="number">72</span>);  </span><br><span class="line">   label1-&gt;setPosition(ccp(visibleSize.width/<span class="number">2</span>,visibleSize.height/<span class="number">3</span>));  </span><br><span class="line">   <span class="keyword">this</span>-&gt;addChild(label1);</span><br></pre></td></tr></table></figure>
+<h4 id="Q2：xml文件资源（字体-图片等等）的放置的正确位置？"><a href="#Q2：xml文件资源（字体-图片等等）的放置的正确位置？" class="headerlink" title="Q2：xml文件资源（字体,图片等等）的放置的正确位置？"></a>Q2：xml文件资源（字体,图片等等）的放置的正确位置？</h4><p>A2：xml文件需要放在整个顶级项目文件里头的resources文件夹，而不是放在win32项目的resource…..坑。。具体可以看初始代码引用字体文件的路径。</p>
+<h4 id="Q3：-一开始打开项目文件发现文件不可用或者项目文件被卸载？"><a href="#Q3：-一开始打开项目文件发现文件不可用或者项目文件被卸载？" class="headerlink" title="Q3： 一开始打开项目文件发现文件不可用或者项目文件被卸载？"></a>Q3： 一开始打开项目文件发现文件不可用或者项目文件被卸载？</h4><p>A3：文件路径被改变，重新解压cocos安装包，重新安装。并且存放路径不能出现中文。</p>
+<h4 id="Q4-编译时出现-libbox-lib不是有效的win32程序？"><a href="#Q4-编译时出现-libbox-lib不是有效的win32程序？" class="headerlink" title="Q4:  编译时出现 libbox.lib不是有效的win32程序？"></a>Q4:  编译时出现 libbox.lib不是有效的win32程序？</h4><p>A4：需要将hellococos项目设置为启动项。</p>
+<h4 id="Q5：当出现许多-h-文件不可用的时候？"><a href="#Q5：当出现许多-h-文件不可用的时候？" class="headerlink" title="Q5：当出现许多.h 文件不可用的时候？"></a>Q5：当出现许多.h 文件不可用的时候？</h4><p>A5：重定解决方案目标</p>
+<h4 id="Q6-本地坐标系和世界坐标系如何互换计算"><a href="#Q6-本地坐标系和世界坐标系如何互换计算" class="headerlink" title="Q6:本地坐标系和世界坐标系如何互换计算"></a>Q6:本地坐标系和世界坐标系如何互换计算</h4><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">CCPoint p1 = sprite2-&gt;convertToNodeSpace(sprite1-&gt;getPosition());</span><br><span class="line">CCPoint p2 = sprite2-&gt;convertToWorldSpace(sprite1-&gt;getPosition());</span><br><span class="line">CCPoint p3 = sprite2-&gt;convertToNodeSpaceAR(sprite1-&gt;getPosition());</span><br><span class="line">CCPoint p4 = sprite2-&gt;convertToWorldSpaceAR(sprite1-&gt;getPosition());</span><br></pre></td></tr></table></figure>
+<p>计算方法都是用sprite1的坐标去加减sprite2的坐标，针对本地坐标系就用减法，针对世界坐标系就用加法。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/cocos2d/">cocos2d</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="https://joshuaqyh.github.io/2018/07/27/Q&A_cocos2d/" data-title="cocos2d学习丨坑和解决办法 | KnowMyself" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/07/27/SQL 用法--postgresql/" title="SQL用法总结">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  SQL用法总结</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/07/27/Leanring_report-ant-junit-vim-java/"  title="ant,junit,vim,java">
+ <strong>NEXT:</strong><br/> 
+ <span>ant,junit,vim,java
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#cocos2d-使用遇到的问题和解决办法"><span class="toc-number">1.</span> <span class="toc-text">cocos2d 使用遇到的问题和解决办法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Q-1：-如何解决中文乱码？"><span class="toc-number">1.1.</span> <span class="toc-text">Q 1： 如何解决中文乱码？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Q2：xml文件资源（字体-图片等等）的放置的正确位置？"><span class="toc-number">1.2.</span> <span class="toc-text">Q2：xml文件资源（字体,图片等等）的放置的正确位置？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Q3：-一开始打开项目文件发现文件不可用或者项目文件被卸载？"><span class="toc-number">1.3.</span> <span class="toc-text">Q3： 一开始打开项目文件发现文件不可用或者项目文件被卸载？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Q4-编译时出现-libbox-lib不是有效的win32程序？"><span class="toc-number">1.4.</span> <span class="toc-text">Q4:  编译时出现 libbox.lib不是有效的win32程序？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Q5：当出现许多-h-文件不可用的时候？"><span class="toc-number">1.5.</span> <span class="toc-text">Q5：当出现许多.h 文件不可用的时候？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Q6-本地坐标系和世界坐标系如何互换计算"><span class="toc-number">1.6.</span> <span class="toc-text">Q6:本地坐标系和世界坐标系如何互换计算</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/cocos2d/" title="cocos2d">cocos2d<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/js-cocos2d-x/" title="js, cocos2d.x">js, cocos2d.x<sup>1</sup></a></li>
+		
+			<li><a href="/tags/love/" title="love">love<sup>1</sup></a></li>
+		
+			<li><a href="/tags/postgresql/" title="postgresql">postgresql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/verilog-计组实验/" title="verilog 计组实验">verilog 计组实验<sup>1</sup></a></li>
+		
+			<li><a href="/tags/互联网思维/" title="互联网思维">互联网思维<sup>1</sup></a></li>
+		
+			<li><a href="/tags/操作系统/" title="操作系统">操作系统<sup>2</sup></a></li>
+		
+			<li><a href="/tags/数据库理论/" title="数据库理论">数据库理论<sup>1</sup></a></li>
+		
+			<li><a href="/tags/经济学，毛概/" title="经济学，毛概">经济学，毛概<sup>1</sup></a></li>
+		
+			<li><a href="/tags/编程软件-vim-java/" title="编程软件 vim java">编程软件 vim java<sup>1</sup></a></li>
+		
+			<li><a href="/tags/计组实验-CPU/" title="计组实验 CPU">计组实验 CPU<sup>1</sup></a></li>
+		
+			<li><a href="/tags/计组理论-CPU/" title="计组理论 CPU">计组理论 CPU<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2018 
+		
+		<a href="https://joshuaqyh.github.io" target="_blank" title="Qiuyihao">Qiuyihao</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

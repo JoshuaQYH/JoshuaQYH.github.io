@@ -1,0 +1,398 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>关系数据库设计理论简介 | KnowMyself</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Qiuyihao">
+    
+    <meta name="description" content="[TOC]
+函数依赖
+X→Y，表示Y依赖于X；
+X→Y，且Y→X不成立，Y→Z，则X→Z，表示Z传递依赖于X。
+
+函数依赖性质
+自反性
+传递性
+增广性  A → C 可以推出 AB → BC
+
+
+函数依赖的种类（完全函数依赖：在关系模式R（u）中，X,Y是U的子集，Y函数依赖于X 并且 Y非函数依赖">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="KnowMyself" title="KnowMyself"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="KnowMyself">KnowMyself</a></h1>
+				<h2 class="blog-motto">Code and life</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:joshuaqyh.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/07/27/关系数据库设计理论/" title="关系数据库设计理论简介" itemprop="url">关系数据库设计理论简介</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="https://joshuaqyh.github.io" title="Qiuyihao">Qiuyihao</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2018-07-27T15:28:32.735Z" itemprop="datePublished">2018-07-27</time>
+    Updated:<time datetime="2018-07-27T15:32:16.784Z" itemprop="dateModified">2018-07-27</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#函数依赖"><span class="toc-number">1.</span> <span class="toc-text">函数依赖</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#函数依赖性质"><span class="toc-number">1.1.</span> <span class="toc-text">函数依赖性质</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数依赖的种类"><span class="toc-number">1.2.</span> <span class="toc-text">函数依赖的种类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#键"><span class="toc-number">2.</span> <span class="toc-text">键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#范式-Normal-Forms"><span class="toc-number">3.</span> <span class="toc-text">范式 Normal Forms</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#属性闭包"><span class="toc-number">4.</span> <span class="toc-text">属性闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关系模式分解"><span class="toc-number">5.</span> <span class="toc-text">关系模式分解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#无损连接分解"><span class="toc-number">5.1.</span> <span class="toc-text">无损连接分解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BCNF分解"><span class="toc-number">5.2.</span> <span class="toc-text">BCNF分解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第三范式分解"><span class="toc-number">5.3.</span> <span class="toc-text">第三范式分解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#补充知识点"><span class="toc-number">6.</span> <span class="toc-text">补充知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#自然连接"><span class="toc-number">6.1.</span> <span class="toc-text">自然连接</span></a></li></ol></li></ol>
+		</div>
+		
+		<p>[TOC]</p>
+<h3 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h3><ul>
+<li>X→Y，表示Y依赖于X；</li>
+<li>X→Y，且Y→X不成立，Y→Z，则X→Z，表示Z传递依赖于X。</li>
+</ul>
+<h4 id="函数依赖性质"><a href="#函数依赖性质" class="headerlink" title="函数依赖性质"></a>函数依赖性质</h4><ul>
+<li>自反性</li>
+<li>传递性</li>
+<li>增广性  A → C 可以推出 AB → BC</li>
+</ul>
+<p><img src="C:\Users\ADMINI~1\AppData\Local\Temp\1526869989262.png" alt="52686998926"></p>
+<h4 id="函数依赖的种类"><a href="#函数依赖的种类" class="headerlink" title="函数依赖的种类"></a>函数依赖的种类</h4><p>（<strong>完全函数依赖</strong>：在关系模式R（u）中，X,Y是U的子集，Y函数依赖于X 并且 Y非函数依赖于X的子集，则称Y完全函数依赖于X。X  f &gt;Y）—&gt; Y依赖于X,但未必都依赖X的子集。</p>
+<p>（<strong>部分函数依赖</strong>：在关系模式R（u）中，X,Y是U的子集，Y函数依赖于X 并且 Y函数依赖于X的子集）</p>
+<p>（<strong>函数依赖</strong>：某个属性集决定另一个属性集时，例如学生学号属性集Sno决定学生姓名属性集Sname，称Sname函数依赖于Sname ）</p>
+<p>（<strong>平凡函数依赖</strong>：Y函数依赖于X,并且Y包含于X，例如（Sno）-&gt;(Sno)、（Sno、Sname）-&gt;（Sno））</p>
+<p>（<strong>非平凡函数依赖</strong>：Y函数依赖于X,并且Y不包含于X,例如(Sno,Sname）-&gt;（Ssex））</p>
+<h3 id="键"><a href="#键" class="headerlink" title="键"></a>键</h3><p>候选键： 能够唯一表示一个元组，且不含多属性<br>超键： 是指能够唯一表示一个元组的属性集<br>主属性：表示候选键中的属性<br>非主属性：不包含在主键中的属性</p>
+<p><strong>判断主键的方法</strong> ：若属性集为{ A , B, C}，A+ = ABC。 则A为主键。（属性闭包判断法） </p>
+<h3 id="范式-Normal-Forms"><a href="#范式-Normal-Forms" class="headerlink" title="范式 Normal Forms"></a>范式 Normal Forms</h3><p>（1）第一范式1NF：关系中的所以属性值都是不可分割的原子值；<br>（2）第二范式2NF：如果关系是1NF，且每个非主属性都完全依赖于候选键；<br>（3）第三范式3NF：如果关系是1NF，且每个非主属性都不传递依赖于候选键；<br>（4）<strong>鲍依斯-科得(巴斯)范式</strong>BCNF范式：如果关系是1NF，且每个属性都不传递依赖于候选键。</p>
+<p>BCNF意味着在关系模式中每一个决定因素都包含候选键，也就是说，只要属性或属性组A能够决定任何一个属性B，则A的子集中必须有候选键。</p>
+<p><img src="C:\Users\ADMINI~1\AppData\Local\Temp\1526870129743.png" alt="52687012974"></p>
+<h3 id="属性闭包"><a href="#属性闭包" class="headerlink" title="属性闭包"></a>属性闭包</h3><p>定义：闭包就是由一个属性直接或间接推导出的所有属性的集合。</p>
+<p>表示：B的闭包用B+表示。</p>
+<p>计算：关系R的属性集X的闭包的步骤如下： </p>
+<ol>
+<li>设最终将成为闭包的属性集是Y，把Y初始化为X；<br> .  检查F中的每一个函数依赖A→B，如果属性集A中所有属性均在Y中，而B中有的属性不在Y中，则将                 其加入到Y中； </li>
+<li>重复第二步，直到没有属性可以添加到属性集Y中为止。 最后得到的Y就是X＋</li>
+</ol>
+<p>举例：</p>
+<p>例1： R = {A,B,C,D,E}</p>
+<p>​         F = {B→CD， D→E, B→A, E→C， AD→B }</p>
+<p>​             则 B+ = B ;    B+ = BCD;  B+ = BCDA； B+ = BCDAE。（推导过程是属性依赖传递的过程。</p>
+<p>​            所以最终B+ 包含了R中所有属性。 故<strong>B is a key for R。</strong></p>
+<p>例2： 有关系模式R(U，F)，其中U={A，B，C，D，E，I}，F={A→D，AB→E，BI→E，CD→I，E→C}，计算(AE)闭包。 </p>
+<p>(1) 令X={AE}，X(0)=AE</p>
+<p>(2)在F中寻找尚未使用过的左边是AE的子集的函数依赖，结果是: A→D， E→C；所以 X(1)=X(0)DC=ACDE，     显然 X(1)≠X(0).</p>
+<p>(3) 在F中寻找尚未使用过的左边是ACDE的子集的函数依赖， 结果是: CD→I；所以 X(2)=X(1)I=ACDEI。虽然X（2）≠X(1)，但F中寻找尚未使用过函数依赖的左边已经没有X（2）的子集，所以不必再计算下去，即(AE)+=ACDEI。</p>
+<p>例3：f={a-&gt;b，b-&gt;c，a-&gt;d，e-&gt;f}；由a可直接得到b和d，间接得到c，则a的闭包就是{a，b，c，d}</p>
+<h3 id="关系模式分解"><a href="#关系模式分解" class="headerlink" title="关系模式分解"></a>关系模式分解</h3><p>关系模式分解必须遵守两个准则<br>       (1)无损联接性：信息不失真（不增减信息）。<br>       (2)函数依赖保持性：不破坏属性间存在的依赖关系</p>
+<h4 id="无损连接分解"><a href="#无损连接分解" class="headerlink" title="无损连接分解"></a>无损连接分解</h4><p>R的无损分解为X Y，那么 x∩y →x  或者 x∩y → y.   </p>
+<p>####Dependency Preserving Decomposition 依赖保持分解</p>
+<p> 关系模式R&lt;U,F&gt;的分解是指R为它的一组子集<br>          ρ={R1&lt;U1,F1&gt;, R2&lt;U2,F2&gt;,…, Rk&lt;Uk,Fk&gt;}所代替的过程。<br>          其中U=U1∪U2∪…∪k ,并且没有Ui≤Uj(表Ui包含于Uj，1≤i,j≤k),<br>          Fi是F在Ui上的投影，即Fi={X→Y∈F+∧XY≤Ui}(表XY包含于Ui）。</p>
+<p>描述：R被分解为 i个关系子集 Ri。Fi为每个子集的函数依赖投影。</p>
+<p>计算函数依赖fi保持的方法就是：Fi∪Fj 推出 fi成立，其中Fi Fj的计算从自身属性和原来函数依赖推导得来。</p>
+<p>模式分解是独立保持的条件就是，所有函数依赖Fi的投影的并集的闭包 = F的闭包</p>
+<p>思考： 可否是Fi的闭包的并集 = F的闭包？</p>
+<p>回答：不可以，因为每个子集的函数依赖Fi，可能产生跨子集的函数依赖，先求Fi的闭包会产生不完整的闭包关系。</p>
+<h4 id="BCNF分解"><a href="#BCNF分解" class="headerlink" title="BCNF分解"></a>BCNF分解</h4><p>BCNF的要求：函数依赖要么平凡，函数依赖的左侧是超键</p>
+<p>如果X→Y违反BCNF, 分解R 为R-Y 和XY。</p>
+<h4 id="第三范式分解"><a href="#第三范式分解" class="headerlink" title="第三范式分解"></a>第三范式分解</h4><p>第三范式的条件：</p>
+<ol>
+<li>平凡依赖</li>
+<li>x 属于超键</li>
+<li>A属于候选键</li>
+</ol>
+<p>部分依赖</p>
+<p>传递依赖</p>
+<p>最小覆盖模型— 简化函数依赖集</p>
+<h3 id="补充知识点"><a href="#补充知识点" class="headerlink" title="补充知识点"></a>补充知识点</h3><h4 id="自然连接"><a href="#自然连接" class="headerlink" title="自然连接"></a>自然连接</h4><p>在连接运算当中，一种最常用的连接是自然连接。如果关系R与S具有相同的属性组B，且该属性组的值相等时的连接称为自然连接，结果关系的属性集合为<strong>R的属性并上S减去属性B的属性</strong>集合。</p>
+<p>参考的文章</p>
+<p><a href="https://www.cnblogs.com/bewolf/p/4445027.html" target="_blank" rel="noopener">函数依赖集闭包、属性集闭包、超键、候选键和最小函数依赖集</a></p>
+<p><a href="https://www.cnblogs.com/makeupforever-carrie/p/6837325.html" target="_blank" rel="noopener">四种范式的实例</a></p>
+<p><a href="https://blog.csdn.net/fanfan4569/article/details/53910670" target="_blank" rel="noopener">函数依赖不懂看这里</a></p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/数据库理论/">数据库理论</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="https://joshuaqyh.github.io/2018/07/27/关系数据库设计理论/" data-title="关系数据库设计理论简介 | KnowMyself" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/07/27/回调函数/" title="回调函数">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  回调函数</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/07/27/第四章CPU--计组课堂笔记-01/"  title="计算机组成原理课堂笔记">
+ <strong>NEXT:</strong><br/> 
+ <span>计算机组成原理课堂笔记
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#函数依赖"><span class="toc-number">1.</span> <span class="toc-text">函数依赖</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#函数依赖性质"><span class="toc-number">1.1.</span> <span class="toc-text">函数依赖性质</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#函数依赖的种类"><span class="toc-number">1.2.</span> <span class="toc-text">函数依赖的种类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#键"><span class="toc-number">2.</span> <span class="toc-text">键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#范式-Normal-Forms"><span class="toc-number">3.</span> <span class="toc-text">范式 Normal Forms</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#属性闭包"><span class="toc-number">4.</span> <span class="toc-text">属性闭包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关系模式分解"><span class="toc-number">5.</span> <span class="toc-text">关系模式分解</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#无损连接分解"><span class="toc-number">5.1.</span> <span class="toc-text">无损连接分解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#BCNF分解"><span class="toc-number">5.2.</span> <span class="toc-text">BCNF分解</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#第三范式分解"><span class="toc-number">5.3.</span> <span class="toc-text">第三范式分解</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#补充知识点"><span class="toc-number">6.</span> <span class="toc-text">补充知识点</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#自然连接"><span class="toc-number">6.1.</span> <span class="toc-text">自然连接</span></a></li></ol></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/cocos2d/" title="cocos2d">cocos2d<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/js-cocos2d-x/" title="js, cocos2d.x">js, cocos2d.x<sup>1</sup></a></li>
+		
+			<li><a href="/tags/love/" title="love">love<sup>1</sup></a></li>
+		
+			<li><a href="/tags/postgresql/" title="postgresql">postgresql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/verilog-计组实验/" title="verilog 计组实验">verilog 计组实验<sup>1</sup></a></li>
+		
+			<li><a href="/tags/互联网思维/" title="互联网思维">互联网思维<sup>1</sup></a></li>
+		
+			<li><a href="/tags/操作系统/" title="操作系统">操作系统<sup>2</sup></a></li>
+		
+			<li><a href="/tags/数据库理论/" title="数据库理论">数据库理论<sup>1</sup></a></li>
+		
+			<li><a href="/tags/经济学，毛概/" title="经济学，毛概">经济学，毛概<sup>1</sup></a></li>
+		
+			<li><a href="/tags/编程软件-vim-java/" title="编程软件 vim java">编程软件 vim java<sup>1</sup></a></li>
+		
+			<li><a href="/tags/计组实验-CPU/" title="计组实验 CPU">计组实验 CPU<sup>1</sup></a></li>
+		
+			<li><a href="/tags/计组理论-CPU/" title="计组理论 CPU">计组理论 CPU<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2018 
+		
+		<a href="https://joshuaqyh.github.io" target="_blank" title="Qiuyihao">Qiuyihao</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

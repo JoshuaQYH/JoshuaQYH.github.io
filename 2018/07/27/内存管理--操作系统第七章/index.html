@@ -1,0 +1,349 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>内存管理--操作系统第七章 | KnowMyself</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Qiuyihao">
+    
+    <meta name="description" content="指令和数据绑定到内存地址的条件
+编译时— 若知道进程在内存里的驻留地址，直接生成 绝对代码
+加载时— 若不知道进程的驻留地址，那么生成可重定位代码
+执行时— 如果进程需要进行内存段之间的移动，那么需要延迟到执行时才进行
+
+
+逻辑地址空间和物理地址空间CPU 所生成的地址通常称为逻辑地址( logic">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="KnowMyself" title="KnowMyself"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="KnowMyself">KnowMyself</a></h1>
+				<h2 class="blog-motto">Code and life</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:joshuaqyh.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/07/27/内存管理--操作系统第七章/" title="内存管理--操作系统第七章" itemprop="url">内存管理--操作系统第七章</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="https://joshuaqyh.github.io" title="Qiuyihao">Qiuyihao</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2018-07-27T15:28:32.788Z" itemprop="datePublished">2018-07-27</time>
+    Updated:<time datetime="2018-07-27T15:33:04.109Z" itemprop="dateModified">2018-07-27</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#指令和数据绑定到内存地址的条件"><span class="toc-number">1.</span> <span class="toc-text">指令和数据绑定到内存地址的条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑地址空间和物理地址空间"><span class="toc-number">2.</span> <span class="toc-text">逻辑地址空间和物理地址空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态链接"><span class="toc-number">3.</span> <span class="toc-text">动态链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态加载"><span class="toc-number">4.</span> <span class="toc-text">动态加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交换"><span class="toc-number">5.</span> <span class="toc-text">交换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连续内存分配"><span class="toc-number">6.</span> <span class="toc-text">连续内存分配</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#内存映射与保护问题"><span class="toc-number">6.1.</span> <span class="toc-text">内存映射与保护问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#内存分配方法"><span class="toc-number">6.2.</span> <span class="toc-text">内存分配方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#碎片"><span class="toc-number">7.</span> <span class="toc-text">碎片</span></a></li></ol>
+		</div>
+		
+		<h3 id="指令和数据绑定到内存地址的条件"><a href="#指令和数据绑定到内存地址的条件" class="headerlink" title="指令和数据绑定到内存地址的条件"></a>指令和数据绑定到内存地址的条件</h3><ul>
+<li>编译时— 若知道进程在内存里的驻留地址，直接生成 绝对代码</li>
+<li>加载时— 若不知道进程的驻留地址，那么生成可重定位代码</li>
+<li>执行时— 如果进程需要进行内存段之间的移动，那么需要延迟到执行时才进行</li>
+</ul>
+<p><img src="http://p8ekwajjb.bkt.clouddn.com/1527035732685.png" alt="52703573268"></p>
+<h3 id="逻辑地址空间和物理地址空间"><a href="#逻辑地址空间和物理地址空间" class="headerlink" title="逻辑地址空间和物理地址空间"></a>逻辑地址空间和物理地址空间</h3><p>CPU 所生成的地址通常称为逻辑地址( logical address) ，而内存单元所看到的地址(I!IJ<br>加载到内存地址寄存器(memory-address register) 中的地址)通常称为物理地址(physical<br>address) 。</p>
+<p>编译和加载时的地址绑定方法生成相同的逻辑地址和物理地址。但是， 执行时的地址<br>绑定方案导致不同的逻辑地址和物理地址。对于这种情况， 通常称逻辑地址为虚拟地址<br>(virtual address)。在本书中， 对逻辑地址和虚拟地址不作区分。由程序所生成的所有逻辑<br>地址的集合称为逻辑地址空间(logical address space), 与这些逻辑地址相对应的所有物理<br>地址的集合称为物理地址空间(physical address space)。因此， 对千执行时地址绑定方案，<br>逻辑地址空间与物理地址空间是不同的。<br>运行时从虚拟地址到物理地址的映射是由被称为内存管理单元(memory-management<br>unit, MMU)的硬件设备来完成的。</p>
+<p><img src="http://p8ekwajjb.bkt.clouddn.com/1527036351509.png" alt="52703635150"></p>
+<h3 id="动态链接"><a href="#动态链接" class="headerlink" title="动态链接"></a>动态链接</h3><p>动态链接的概念与动态加载相似。只是这里不是将加载延迟到运行时，而<br>是将链接延迟到运行时</p>
+<p><img src="http://p8ekwajjb.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%9B%BE%E7%89%87_20180523090208.jpg" alt=""></p>
+<h3 id="动态加载"><a href="#动态加载" class="headerlink" title="动态加载"></a>动态加载</h3><p>迄今为止所讨论的是一个进程的整个程序和数据必须处于物理内存中，以便执行。因<br>此进程的大小受物理内存大小的限制。为了获得更好的内存空间使用率，可以使用动态加<br>载(dynamic loading) 。采用动态加载时，一个子程序只有在调用时才被加载。所有子程序<br>都以可重定位的形式保存在磁盘上。主程序装入内存并执行。当一个子程序需要调用另一<br>个子程序时，调用子程序首先检查另一个子程序是否己加载。如果没有，可重定位的链接<br>程序将用来加载所需要的子程序，并更新程序的地址表以反映这→变化。接着，控制传递<br>给新加载的子程序。<br>动态加载的优点是不用的子程序决不会被加载。如果大多数代码需要用来处理异常情<br>况，如错误处理，那么这种方法特别有用。对于这种情况，虽然总体上程序比较大，但是<br>所使用的部分(即加载的部分)可能小很多。<br>动态加载不需要操作系统提供特别的支持。利用这种方法来设计程序主要是用户的责<br>任。不过，操作系统可以帮助程序员，如提供子程序库以实现动态加载。</p>
+<h3 id="交换"><a href="#交换" class="headerlink" title="交换"></a>交换</h3><p>进程需要在内存中以便执行。不过，进程可以暂时从内存中交换(swap) 到备份存储<br>(backing store) 上，当需要再次执行时再调回到内存中。（例子：轮转法CPU调度）</p>
+<p>如何进程换出roll out进程换入 roll in，操作系统较少采用。</p>
+<h3 id="连续内存分配"><a href="#连续内存分配" class="headerlink" title="连续内存分配"></a>连续内存分配</h3><p>内存通常分为两个区域:一个用于驻留操作系统，另一个用于用户进程。操作系统可<br>以位于低内存，也可位于高内存。影响这一决定的主要因素是中断向量的位置。由于中断<br>向量通常位于低内存，因此程序员通常将操作系统也放在低内存。在本书中，只讨论操作<br>系统位于低内存的情况。真他情况的讨论类似。<br>通常需要将多个进程同时放在内存中，因此需要考虑如何为输入队列中需要调入内存<br>的进程分配内存空间。采用连续内存分配( contiguous memo可allocation) 时，每个进程位<br>于一个连续的内存区域。</p>
+<h4 id="内存映射与保护问题"><a href="#内存映射与保护问题" class="headerlink" title="内存映射与保护问题"></a>内存映射与保护问题</h4><p>通过采用重定位寄存器(已在8.1.3 小节讨论)和界限地址寄存器(己在8. 1.1小节讨论)，可以实现这种保护。重定位寄存器含有最小的物理地址值;界限地址寄存器含有逻辑地址的范围值(例如，重定位=100040 ，界限=74600) 。有了重定位寄存器和界限地址寄存器，每个逻辑地址必须小于界限地址寄存器。MMU 动’;ti:ltfp将逻辑地址加上重定位寄存器的值后映射成物理地址。映射后的物理地址再送交内存单元</p>
+<h4 id="内存分配方法"><a href="#内存分配方法" class="headerlink" title="内存分配方法"></a>内存分配方法</h4><p>最为简单的内存分配方法之一就是将内存分为多个固定大小的分区(partition) 。每个分区只能容纳一个进程。因此，多道程序的程度会受分区数所限制。如果使用这种多分区方法(multiple-partition method) ，当一个分区空闲时，可以从输入队列中选择一个进程，以调入到空闲分区。当进程终止时，其分区可以被其他进程所使用。<br>这种方法最初为IBM 08/360 操作系统(称为MFT) 所使用，现在已不再使用。下面所描<br>述的方法是固定分区方案的推广(称为MV凹，它主要用于批处理环境。这里所描述的许<br>多思想也可用于采用纯分段内存管理的分时操作系统。</p>
+<p>在可变分区(variable-partition) 方案里，操作系统有一个表，用于记录哪些内存可用<br>和哪些内存已被占用。-开始，所有内存都可用于用户进程，因此可以作为一大块可用内<br>存，称为孔(hole) 。当有新进程需要内存时，为该进程查找足够大的孔。如果找到，可以<br>从该孔为该进程分配所需的内存，孔内未分配的内存可以下次再用。<br>随着进程进入系统，它们将被加入到输入队列。操作系统根据所有进程的内存需要和<br>现有可用内存情况来决定哪些进程可分配内存。当进程分配到空间时，它就装入内存，并<br>开始竞争CPU 。当进程终It时，它将释放内存，该内存可以被操作系统分配给输入队列中<br>的其他进程。<br>在任意时候，再→组可用孔(块)大小列表和输入队列。操作系统根据调度算法来对<br>输入队列进行排序。内存不断地分配给进程，直到下-个进程的内存需求不能满足为止，<br>这时没有足够大的可用孔来装入进程。操作系统可以等到有足够大的空间，或者往下扫描<br>输入队列以确定是否有其他内存需求较小的进程可以被满足。<br>通常，→组不同大小的孔分散在内存中。当新进程需要内存时，系统为该进程查找足<br>够大的孔。如果孔太大，那么就分为两块:一块分配给新进程，另一块还回到孔集合。当<br>进程终止时，它将释放其内存，该内存将还给孔集合。如果新孔与其他孔相邻，那么将这<br>些孔合并成大孔。这时，系统可以检查是否杳进程在等待内存~间，新合井的内存空间是<br>否满足等待进程。<br>这种方法是通用动态存储分配问题的二种情况(根据一组空闲孔来分配大小为n 的请<br>求)。这个问题有许多解决方法。从-组可用孔中选择-个空闲孔的最为常用方法有首次适<br>应( first岳1)、最佳适应(best-fiO 、最差适应(worst-fit) 。<br>·首次适应:分配第一小足够大的孔。查找可以从头开始，也可以从<strong>上次首次适应结束时开始</strong>(避开碎片）。一旦找到足够大的空闲孔，就可以停止。<br>·最佳适应:分配最小的足够大的孔。必须查找整个列表，除非列表按大小排序。这<br>种方法可以产生最小剩余孔。<br>·最差适应:分配最大孔。同样，必须查找整个列表，除非列表按大小排序。这种<br>方法可以产生最大剩余孔，该孔可能比最佳适应方法产生的较小剩余孔更为有用。<br>模拟结果显示首次适应和最佳适应方法在执行时间和利用空间方面都好于最差适应<br>方法。首次适应和最佳适应方法在利用空间方面难分伯仲，但是首次适应方法要更快些。</p>
+<h3 id="碎片"><a href="#碎片" class="headerlink" title="碎片"></a>碎片</h3><p>首次适应方法和最佳适应方法算法都有外部碎片问题(external 企agmentation) 0 随着<br>进程装入和移出内存，空闲内存空间被分为小片段。当所有总的可用内存之和可以满足请<br>求，但并不连续时，这就出现了外部碎片问题，该问题可能很严重。在最坏情况下，每两<br>个进程之间就有空闲块(或浪费〉。如果这些内存是一整块，那么就可以再运行多个进程。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/操作系统/">操作系统</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="https://joshuaqyh.github.io/2018/07/27/内存管理--操作系统第七章/" data-title="内存管理--操作系统第七章 | KnowMyself" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/07/27/湫嘤记-壹/" title="湫嘤记-壹">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  湫嘤记-壹</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/07/27/回调函数/"  title="回调函数">
+ <strong>NEXT:</strong><br/> 
+ <span>回调函数
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#指令和数据绑定到内存地址的条件"><span class="toc-number">1.</span> <span class="toc-text">指令和数据绑定到内存地址的条件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#逻辑地址空间和物理地址空间"><span class="toc-number">2.</span> <span class="toc-text">逻辑地址空间和物理地址空间</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态链接"><span class="toc-number">3.</span> <span class="toc-text">动态链接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#动态加载"><span class="toc-number">4.</span> <span class="toc-text">动态加载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#交换"><span class="toc-number">5.</span> <span class="toc-text">交换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#连续内存分配"><span class="toc-number">6.</span> <span class="toc-text">连续内存分配</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#内存映射与保护问题"><span class="toc-number">6.1.</span> <span class="toc-text">内存映射与保护问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#内存分配方法"><span class="toc-number">6.2.</span> <span class="toc-text">内存分配方法</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#碎片"><span class="toc-number">7.</span> <span class="toc-text">碎片</span></a></li></ol>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/cocos2d/" title="cocos2d">cocos2d<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/js-cocos2d-x/" title="js, cocos2d.x">js, cocos2d.x<sup>1</sup></a></li>
+		
+			<li><a href="/tags/love/" title="love">love<sup>1</sup></a></li>
+		
+			<li><a href="/tags/postgresql/" title="postgresql">postgresql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/verilog-计组实验/" title="verilog 计组实验">verilog 计组实验<sup>1</sup></a></li>
+		
+			<li><a href="/tags/互联网思维/" title="互联网思维">互联网思维<sup>1</sup></a></li>
+		
+			<li><a href="/tags/操作系统/" title="操作系统">操作系统<sup>2</sup></a></li>
+		
+			<li><a href="/tags/数据库理论/" title="数据库理论">数据库理论<sup>1</sup></a></li>
+		
+			<li><a href="/tags/经济学，毛概/" title="经济学，毛概">经济学，毛概<sup>1</sup></a></li>
+		
+			<li><a href="/tags/编程软件-vim-java/" title="编程软件 vim java">编程软件 vim java<sup>1</sup></a></li>
+		
+			<li><a href="/tags/计组实验-CPU/" title="计组实验 CPU">计组实验 CPU<sup>1</sup></a></li>
+		
+			<li><a href="/tags/计组理论-CPU/" title="计组理论 CPU">计组理论 CPU<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2018 
+		
+		<a href="https://joshuaqyh.github.io" target="_blank" title="Qiuyihao">Qiuyihao</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>

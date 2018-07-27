@@ -1,0 +1,575 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>ant,junit,vim,java | KnowMyself</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Qiuyihao">
+    
+    <meta name="description" content="Vim简介Vim是一款上古编辑器，被广大程序员成为编辑器之神，这与之强大的编辑功能和编辑效率是分不开的。和Emace一样都在代码行业享有盛誉。vim最为重要的一点就是一切操作几乎可以舍弃鼠标，熟悉了vim命令的话，光靠键盘指令可以使开发效率迅速提高。
+Vim的安装Linux下在Ubuntu平台下控制">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="KnowMyself" title="KnowMyself"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="KnowMyself">KnowMyself</a></h1>
+				<h2 class="blog-motto">Code and life</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:joshuaqyh.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/07/27/Leanring_report-ant-junit-vim-java/" title="ant,junit,vim,java" itemprop="url">ant,junit,vim,java</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="https://joshuaqyh.github.io" title="Qiuyihao">Qiuyihao</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2018-07-27T15:28:32.625Z" itemprop="datePublished">2018-07-27</time>
+    Updated:<time datetime="2018-07-27T15:29:43.006Z" itemprop="dateModified">2018-07-27</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim简介"><span class="toc-number">1.</span> <span class="toc-text">Vim简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim的安装"><span class="toc-number">2.</span> <span class="toc-text">Vim的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux下"><span class="toc-number">2.1.</span> <span class="toc-text">Linux下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows下"><span class="toc-number">2.2.</span> <span class="toc-text">Windows下</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim常用指令和教程"><span class="toc-number">3.</span> <span class="toc-text">Vim常用指令和教程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-创建或打开文件-vim-filename"><span class="toc-number">3.0.1.</span> <span class="toc-text">1. 创建或打开文件 vim filename</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-添加内容"><span class="toc-number">3.0.2.</span> <span class="toc-text">2.添加内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-删除内容"><span class="toc-number">3.0.3.</span> <span class="toc-text">3.删除内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-复制内容"><span class="toc-number">3.0.4.</span> <span class="toc-text">4. 复制内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-粘贴内容"><span class="toc-number">3.0.5.</span> <span class="toc-text">5.粘贴内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-撤销内容"><span class="toc-number">3.0.6.</span> <span class="toc-text">6. 撤销内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-保存文件"><span class="toc-number">3.0.7.</span> <span class="toc-text">7. 保存文件</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java知识入门"><span class="toc-number"></span> <span class="toc-text">Java知识入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java面向对象"><span class="toc-number">0.1.</span> <span class="toc-text">Java面向对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#java继承"><span class="toc-number">0.2.</span> <span class="toc-text">java继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#java重写和重载"><span class="toc-number">0.3.</span> <span class="toc-text">java重写和重载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#重写"><span class="toc-number">0.3.1.</span> <span class="toc-text">重写</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#重写方法的原则"><span class="toc-number">0.3.1.1.</span> <span class="toc-text">重写方法的原则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#代码实例"><span class="toc-number">0.3.1.2.</span> <span class="toc-text">代码实例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#重载的规则"><span class="toc-number">0.3.1.3.</span> <span class="toc-text">重载的规则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#代码实例-1"><span class="toc-number">0.3.1.4.</span> <span class="toc-text">代码实例</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多态"><span class="toc-number">0.3.2.</span> <span class="toc-text">多态</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Swing"><span class="toc-number">0.4.</span> <span class="toc-text">Swing</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#常用的控件集合"><span class="toc-number">0.4.1.</span> <span class="toc-text">常用的控件集合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注册事件的方法"><span class="toc-number">0.4.2.</span> <span class="toc-text">注册事件的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#方法1-匿名内部类实现"><span class="toc-number">0.4.2.1.</span> <span class="toc-text">方法1 匿名内部类实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#方法2-利用一般内部类实现"><span class="toc-number">0.4.2.2.</span> <span class="toc-text">方法2 利用一般内部类实现</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Junit-学习和使用"><span class="toc-number"></span> <span class="toc-text">Junit 学习和使用</span></a>
+		</div>
+		
+		<h2 id="Vim简介"><a href="#Vim简介" class="headerlink" title="Vim简介"></a>Vim简介</h2><p>Vim是一款上古编辑器，被广大程序员成为编辑器之神，这与之强大的编辑功能和编辑效率是分不开的。和Emace一样都在代码行业享有盛誉。vim最为重要的一点就是一切操作几乎可以舍弃鼠标，熟悉了vim命令的话，光靠键盘指令可以使开发效率迅速提高。</p>
+<h2 id="Vim的安装"><a href="#Vim的安装" class="headerlink" title="Vim的安装"></a>Vim的安装</h2><h3 id="Linux下"><a href="#Linux下" class="headerlink" title="Linux下"></a>Linux下</h3><p>在Ubuntu平台下控制台敲入下列指令即可自动安装。</p>
+<blockquote>
+<p>sudo apt-get install vim</p>
+</blockquote>
+<h3 id="Windows下"><a href="#Windows下" class="headerlink" title="Windows下"></a>Windows下</h3><p>去<a href="http://www.vim.org/" target="_blank" rel="noopener">官网</a> 直接下载使用。</p>
+<h2 id="Vim常用指令和教程"><a href="#Vim常用指令和教程" class="headerlink" title="Vim常用指令和教程"></a>Vim常用指令和教程</h2><p>首先值得注意的一点就是其实vim是自带教程的Vimtutor,s使用方法是linux下输入命令<strong>vimtutor</strong>,即可开启教程，这属于官方教程，  最为详细，没有之一。</p>
+<p>在这里介绍一些常用的vim命令，有利于快速上手vim。</p>
+<h4 id="1-创建或打开文件-vim-filename"><a href="#1-创建或打开文件-vim-filename" class="headerlink" title="1. 创建或打开文件 vim filename"></a>1. 创建或打开文件 <code>vim filename</code></h4><blockquote>
+<p>vim helloworld.java</p>
+</blockquote>
+<h4 id="2-添加内容"><a href="#2-添加内容" class="headerlink" title="2.添加内容"></a>2.添加内容</h4><p>一开始进入处于<strong>正常模式</strong>在编辑窗口直接输入<code>i,a,o</code>等字符可以进入<strong>输入模式</strong>，可以在屏幕下方看到<em>insert</em>单词。按左上角<code>Esc</code>键可以回到正常模式，使用各种方便的指令。以下指令均在<strong>正常模式</strong>下进行。</p>
+<h4 id="3-删除内容"><a href="#3-删除内容" class="headerlink" title="3.删除内容"></a>3.删除内容</h4><p><code>dd</code>可以删除光标所在的一整行。</p>
+<p><code>ndd</code>可以删除光标以下的n行</p>
+<h4 id="4-复制内容"><a href="#4-复制内容" class="headerlink" title="4. 复制内容"></a>4. 复制内容</h4><p><code>yy</code>可以复制光标所在行的字符<br><code>nyy</code>可以复制光标以下的n行字符</p>
+<h4 id="5-粘贴内容"><a href="#5-粘贴内容" class="headerlink" title="5.粘贴内容"></a>5.粘贴内容</h4><p><code>p/P</code>作用时粘贴字符，小写p将已复制的字符粘贴到光标以下，大写P将字符粘贴到光标以上。</p>
+<h4 id="6-撤销内容"><a href="#6-撤销内容" class="headerlink" title="6. 撤销内容"></a>6. 撤销内容</h4><p>撤销指令使用<code>u</code>,类似于windows上的<code>ctrl z`</code>。</p>
+<h4 id="7-保存文件"><a href="#7-保存文件" class="headerlink" title="7. 保存文件"></a>7. 保存文件</h4><p>先进入正常模式<code>Esc</code>，然后输入<code>:</code>。然后输入：</p>
+<ul>
+<li><code>q</code> 离开vim</li>
+<li><code>w</code> 保存内容</li>
+<li><code>wq</code> 保存内容并离开vim,回到命令行</li>
+</ul>
+<p>其他还有许多可以提高效率的指令在这里就不多赘述啦。</p>
+<hr>
+<p>​            </p>
+<h1 id="Java知识入门"><a href="#Java知识入门" class="headerlink" title="Java知识入门"></a>Java知识入门</h1><p>###初探java</p>
+<p>从hello world入门, 初步体会java这一门面向对象编程语言。在HelloWorld.java文件中键入以下代码。（注意文件名称必须和<strong>类名</strong>一致）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">HelloWorld</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"Hello World"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中用到的编译指令是</p>
+<blockquote>
+<p>javac HelloWorld.java</p>
+</blockquote>
+<p>命令行没有弹出其他消息，即为编译成功。</p>
+<p>执行指令是</p>
+<blockquote>
+<p>java HelloWorld</p>
+</blockquote>
+<p>这里用到两个重要指令<code>javac</code> <code>java</code> ，分别是编译和执行指令。</p>
+<p>###基础知识</p>
+<p>由于已经学习过C++，java语言在一定程度上和C++是类似的，所以在Java入门学习上可以直接跳过基础语法，对象和类，基本数据类型，运算符，循环结构，分支结构。</p>
+<h3 id="Java面向对象"><a href="#Java面向对象" class="headerlink" title="Java面向对象"></a>Java面向对象</h3><h3 id="java继承"><a href="#java继承" class="headerlink" title="java继承"></a>java继承</h3><p>java继承的概念和C++类似，同样是定义一个父类，然后定义一个子类，来继承父类的属性，和C++不同的是，java用关键字<code>extends</code> 来表示继承关系。继承格式是</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 父类  </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> 子类 <span class="keyword">extends</span> 父类 </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>####继承的特性</p>
+<ul>
+<li><p>子类拥有父类非private的属性，方法。</p>
+</li>
+<li><p>子类可以拥有自己的属性和方法，即子类可以对父类进行扩展。</p>
+</li>
+<li><p>子类可以用自己的方式实现父类的方法。</p>
+</li>
+<li><p>Java的继承是单继承，但是可以多重继承，单继承就是一个子类只能继承一个父类，多重继承就是，例如A类继承B类，B类继承C类，所以按照关系就是C类是B类的父类，B类是A类的父类，这是java继承区别于C++继承的一个特性。</p>
+</li>
+<li><p>提高了类之间的耦合性（继承的缺点，耦合度高就会造成代码之间的联系）。</p>
+<p>​</p>
+</li>
+</ul>
+<p>####继承的关键字</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">关键字</th>
+<th style="text-align:center">作用</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">extends</td>
+<td style="text-align:center">单一继承</td>
+</tr>
+<tr>
+<td style="text-align:center">implements</td>
+<td style="text-align:center">继承多个父类</td>
+</tr>
+<tr>
+<td style="text-align:center">super</td>
+<td style="text-align:center">实现对父类父类成员的访问，引用父类</td>
+</tr>
+<tr>
+<td style="text-align:center">this</td>
+<td style="text-align:center">指向自己的引用</td>
+</tr>
+<tr>
+<td style="text-align:center">final</td>
+<td style="text-align:center">将自身定义为不可继承的类</td>
+</tr>
+</tbody>
+</table>
+<h3 id="java重写和重载"><a href="#java重写和重载" class="headerlink" title="java重写和重载"></a>java重写和重载</h3><h4 id="重写"><a href="#重写" class="headerlink" title="重写"></a>重写</h4><p>#####重写含义</p>
+<p>重写是子类对父类的允许访问的方法的实现过程进行重新编写, <strong>返回值和形参</strong>都不能改变。<strong>即外壳不变，核心重写！</strong>重写的好处在于子类可以根据需要，定义特定于自己的行为。 也就是说子类能够根据需要实现父类的方法。。</p>
+<h5 id="重写方法的原则"><a href="#重写方法的原则" class="headerlink" title="重写方法的原则"></a>重写方法的原则</h5><ul>
+<li>参数列表必须完全与被重写方法的相同；</li>
+<li>返回类型必须完全与被重写方法的返回类型相同；</li>
+<li>访问权限不能比父类中被重写的方法的访问权限更低。例如：如果父类的一个方法被声明为public，那么在子类中重写该方法就不能声明为protected。</li>
+<li>父类的成员方法只能被它的子类重写。</li>
+<li>声明为final的方法不能被重写。</li>
+<li>声明为static的方法不能被重写，但是能够被再次声明。</li>
+<li>子类和父类在同一个包中，那么子类可以重写父类所有方法，除了声明为private和final的方法。</li>
+<li>子类和父类不在同一个包中，那么子类只能够重写父类的声明为public和protected的非final方法。</li>
+</ul>
+<h5 id="代码实例"><a href="#代码实例" class="headerlink" title="代码实例"></a>代码实例</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>&#123;</span><br><span class="line">      System.out.println(<span class="string">"动物可以移动"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span></span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">move</span><span class="params">()</span></span>&#123;</span><br><span class="line">      <span class="keyword">super</span>.move(); <span class="comment">// 应用super类的方法</span></span><br><span class="line">      System.out.println(<span class="string">"狗可以跑和走"</span>);</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TestDog</span></span>&#123;</span><br><span class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span></span>&#123;</span><br><span class="line">      Animal b = <span class="keyword">new</span> Dog(); <span class="comment">// Dog 对象</span></span><br><span class="line">      b.move(); <span class="comment">//执行 Dog类的方法</span></span><br><span class="line"> </span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行的结果是</p>
+<blockquote>
+<p>狗可以跑和走</p>
+</blockquote>
+<p>可以看到在Dog类中重写了move()方法，传入的参数和返回类型和原来父类的方法一致，但内部代码可以修改。</p>
+<p>####重载</p>
+<p>#####重载含义</p>
+<p>重载(overloading) 是在一个类里面，方法名字相同，而参数不同。返回类型可以相同也可以不同。</p>
+<p>每个重载的方法（或者构造函数）都必须有一个独一无二的参数类型列表。</p>
+<h5 id="重载的规则"><a href="#重载的规则" class="headerlink" title="重载的规则"></a>重载的规则</h5><ul>
+<li>被重载的方法必须改变参数列表(参数个数或类型或顺序不一样)；</li>
+<li>被重载的方法可以改变返回类型；</li>
+<li>被重载的方法可以改变访问修饰符；</li>
+<li>被重载的方法可以声明新的或更广的检查异常；</li>
+<li>方法能够在同一个类中或者在一个子类中被重载。</li>
+<li>无法以返回值类型作为重载函数的区分标准。</li>
+</ul>
+<h5 id="代码实例-1"><a href="#代码实例-1" class="headerlink" title="代码实例"></a>代码实例</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Overloading</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">int</span> <span class="title">test</span><span class="params">()</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"test1"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"test2"</span>);</span><br><span class="line">    &#125;   </span><br><span class="line"> </span><br><span class="line">    <span class="comment">//以下两个参数类型顺序不同</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(<span class="keyword">int</span> a,String s)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"test3"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"returntest3"</span>;</span><br><span class="line">    &#125;   </span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">test</span><span class="params">(String s,<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">        System.out.println(<span class="string">"test4"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"returntest4"</span>;</span><br><span class="line">    &#125;   </span><br><span class="line"> </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span></span>&#123;</span><br><span class="line">        Overloading o = <span class="keyword">new</span> Overloading();</span><br><span class="line">        System.out.println(o.test());</span><br><span class="line">        o.test(<span class="number">1</span>);</span><br><span class="line">        System.out.println(o.test(<span class="number">1</span>,<span class="string">"test3"</span>));</span><br><span class="line">        System.out.println(o.test(<span class="string">"test4"</span>,<span class="number">1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>运行结果是</p>
+<blockquote>
+<p>test1</p>
+<p>test2</p>
+<p>test3</p>
+<p>test4</p>
+</blockquote>
+<p>从运行结果看，调用的传参不同的函数顺序执行。</p>
+<h4 id="多态"><a href="#多态" class="headerlink" title="多态"></a>多态</h4><p>多态就是对象多种表现形式的体现。</p>
+<p>#####多态存在的三个必要条件</p>
+<ul>
+<li>继承</li>
+<li>重写</li>
+<li>父类引用指向子类对象</li>
+</ul>
+<p>这里提供一份代码以便理解。大意就是一个抽象父类声明但不定义一个方法，在其他子类中可以重写这个方法。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">abstract</span> <span class="class"><span class="keyword">class</span> <span class="title">Animal</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">abstract</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Cat</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        System.out.println(<span class="string">"吃鱼"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        System.out.println(<span class="string">"抓老鼠"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;  </span><br><span class="line">  </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> <span class="keyword">extends</span> <span class="title">Animal</span> </span>&#123;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        System.out.println(<span class="string">"吃骨头"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">work</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">        System.out.println(<span class="string">"看家"</span>);  </span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>###java组件部分设计</p>
+<h3 id="Swing"><a href="#Swing" class="headerlink" title="Swing"></a>Swing</h3><p>在本次实训实验中利用了Swing这个java的<strong>GUI工具包</strong>，以实现一个简单的计算器。其中的主要用途是引用这些包的相关控件，控件的相关接口，同时给这些控件注册事件，建立事件处理逻辑。</p>
+<p>介绍控件，首先应提到<strong>JComponet</strong> 。</p>
+<p><strong>JComponent</strong></p>
+<p>Swing 的整个可视组件库的基础构造块是 JComponent。它是所有组件的父类。它是一个<strong>抽象类</strong>，所以不能创建 JComponent，但是作为类层次结构的结果，从字面意义来说它包含了数百个函数，Swing 中的每个组件都可以使用这些函数。</p>
+<p>注意： 每一个控件都是一个类，具有许多接口函数，在eclipes这个IDE上可以轻松获取。使用方法：鼠标移动到某一个控件类名，按ctrl键点击类名，即可弹出这个控件类里头详细的函数定义。</p>
+<h4 id="常用的控件集合"><a href="#常用的控件集合" class="headerlink" title="常用的控件集合"></a>常用的控件集合</h4><table>
+<thead>
+<tr>
+<th>控件</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JLabel</td>
+<td>用作文本描述</td>
+</tr>
+<tr>
+<td>JButton</td>
+<td>按钮</td>
+</tr>
+<tr>
+<td>JFrame</td>
+<td>窗口</td>
+</tr>
+<tr>
+<td>JPanel</td>
+<td>控件容器</td>
+</tr>
+<tr>
+<td>JTextField</td>
+<td>文本输入框</td>
+</tr>
+<tr>
+<td>JCheckBox</td>
+<td>确认框</td>
+</tr>
+<tr>
+<td>GridLayout</td>
+<td>生成网格状的布局</td>
+</tr>
+</tbody>
+</table>
+<p><em>Tips: 任何一个控件都有Add()的方法，意味着每一个控件都可以添加到另外一个控件里。</em></p>
+<h4 id="注册事件的方法"><a href="#注册事件的方法" class="headerlink" title="注册事件的方法"></a>注册事件的方法</h4><p>以下以button为例，进行两种常用方式的注册。</p>
+<h5 id="方法1-匿名内部类实现"><a href="#方法1-匿名内部类实现" class="headerlink" title="方法1 匿名内部类实现"></a>方法1 匿名内部类实现</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">button.addActionListener(  </span><br><span class="line">        <span class="keyword">new</span> ActionListener()&#123;  </span><br><span class="line">            <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>&#123;  </span><br><span class="line">                 System.out.println(<span class="string">"你按了按钮一"</span>);  </span><br><span class="line">             &#125;  </span><br><span class="line"> &#125;);   <span class="comment">//调用监听函数并定义监听事件</span></span><br></pre></td></tr></table></figure>
+<h5 id="方法2-利用一般内部类实现"><a href="#方法2-利用一般内部类实现" class="headerlink" title="方法2 利用一般内部类实现"></a>方法2 利用一般内部类实现</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">button.addActionListener(<span class="keyword">new</span> Button2ActionListener()); </span><br><span class="line">     </span><br><span class="line"> <span class="keyword">private</span> <span class="class"><span class="keyword">class</span> <span class="title">Button1ActionListener</span> <span class="keyword">implements</span> <span class="title">ActionListener</span></span>&#123;  </span><br><span class="line">       <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">actionPerformed</span><span class="params">(ActionEvent e)</span> </span>&#123;  </span><br><span class="line">           System.out.println(<span class="string">"你按了按钮一"</span>);     </span><br><span class="line">     	&#125;     </span><br><span class="line"> &#125;  <span class="comment">//将事件处理为一个类事件</span></span><br></pre></td></tr></table></figure>
+<p>用了以上的基础知识就可以解决一个简单计算器的实现啦。</p>
+<h1 id="Junit-学习和使用"><a href="#Junit-学习和使用" class="headerlink" title="Junit 学习和使用"></a>Junit 学习和使用</h1><p>###Junit是什么</p>
+<p>JUnit是用于编写和运行可重复的自动化测试的开源测试框架， 这样可以保证我们的代码按预期工作。JUnit可广泛用于工业和作为支架(从命令行)或IDE(如Eclipse)内单独的Java程序。</p>
+<p><strong>JUnit提供：</strong></p>
+<ul>
+<li>断言测试预期结果。</li>
+<li>测试功能共享通用的测试数据。</li>
+<li>测试套件轻松地组织和运行测试。</li>
+<li>图形和文本测试运行。</li>
+</ul>
+<p><strong>JUnit用于测试：</strong></p>
+<ul>
+<li><p>整个对象</p>
+</li>
+<li><p>对象的一部分 - 交互的方法或一些方法</p>
+</li>
+<li><p>几个对象之间的互动(交互)</p>
+<p>​</p>
+</li>
+</ul>
+<p>###JUnit的特点</p>
+<ul>
+<li>JUnit是用于编写和运行测试的开源框架。</li>
+<li>提供了注释，以确定测试方法。</li>
+<li>提供断言测试预期结果。</li>
+<li>提供了测试运行的运行测试。</li>
+<li>JUnit测试让您可以更快地编写代码，提高质量</li>
+<li>JUnit是优雅简洁。它是不那么复杂以及不需要花费太多的时间。</li>
+<li>JUnit测试可以自动运行，检查自己的结果，并提供即时反馈。没有必要通过测试结果报告来手动梳理。</li>
+<li>JUnit测试可以组织成测试套件包含测试案例，甚至其他测试套件。</li>
+<li>Junit显示测试进度的，如果测试是没有问题条形是绿色的，测试失败则会变成红色。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th><strong>注解</strong></th>
+<th><strong>描述</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>@Test</strong>public void method()</td>
+<td>测试注释指示该公共无效方法它所附着可以作为一个测试用例。</td>
+</tr>
+<tr>
+<td><strong>@Before</strong>public void method()</td>
+<td>Before注释表示，该方法必须在类中的每个测试之前执行，以便执行测试某些必要的先决条件。</td>
+</tr>
+<tr>
+<td><strong>@BeforeClass</strong>public static void method()</td>
+<td>BeforeClass注释指出这是附着在静态方法必须执行一次并在类的所有测试之前。发生这种情况时一般是测试计算共享配置方法(如连接到数据库)。</td>
+</tr>
+<tr>
+<td><strong>@After</strong>public void method()</td>
+<td>After 注释指示，该方法在执行每项测试后执行(如执行每一个测试后重置某些变量，删除临时变量等)</td>
+</tr>
+<tr>
+<td><strong>@AfterClass</strong>public static void method()</td>
+<td>当需要执行所有的测试在JUnit测试用例类后执行，AfterClass注解可以使用以清理建立方法，(从数据库如断开连接)。注意：附有此批注(类似于BeforeClass)的方法必须定义为静态。</td>
+</tr>
+<tr>
+<td><strong>@Ignore</strong>public static void method()</td>
+<td>当想暂时禁用特定的测试执行可以使用忽略注释。每个被注解为@Ignore的方法将不被执行。</td>
+</tr>
+</tbody>
+</table>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/编程软件-vim-java/">编程软件 vim java</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="https://joshuaqyh.github.io/2018/07/27/Leanring_report-ant-junit-vim-java/" data-title="ant,junit,vim,java | KnowMyself" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/07/27/Q&A_cocos2d/" title="cocos2d学习丨坑和解决办法">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  cocos2d学习丨坑和解决办法</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/07/27/git学习/"  title="git学习">
+ <strong>NEXT:</strong><br/> 
+ <span>git学习
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim简介"><span class="toc-number">1.</span> <span class="toc-text">Vim简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim的安装"><span class="toc-number">2.</span> <span class="toc-text">Vim的安装</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux下"><span class="toc-number">2.1.</span> <span class="toc-text">Linux下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows下"><span class="toc-number">2.2.</span> <span class="toc-text">Windows下</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Vim常用指令和教程"><span class="toc-number">3.</span> <span class="toc-text">Vim常用指令和教程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-创建或打开文件-vim-filename"><span class="toc-number">3.0.1.</span> <span class="toc-text">1. 创建或打开文件 vim filename</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-添加内容"><span class="toc-number">3.0.2.</span> <span class="toc-text">2.添加内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-删除内容"><span class="toc-number">3.0.3.</span> <span class="toc-text">3.删除内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-复制内容"><span class="toc-number">3.0.4.</span> <span class="toc-text">4. 复制内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-粘贴内容"><span class="toc-number">3.0.5.</span> <span class="toc-text">5.粘贴内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#6-撤销内容"><span class="toc-number">3.0.6.</span> <span class="toc-text">6. 撤销内容</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#7-保存文件"><span class="toc-number">3.0.7.</span> <span class="toc-text">7. 保存文件</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Java知识入门"><span class="toc-number"></span> <span class="toc-text">Java知识入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Java面向对象"><span class="toc-number">0.1.</span> <span class="toc-text">Java面向对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#java继承"><span class="toc-number">0.2.</span> <span class="toc-text">java继承</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#java重写和重载"><span class="toc-number">0.3.</span> <span class="toc-text">java重写和重载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#重写"><span class="toc-number">0.3.1.</span> <span class="toc-text">重写</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#重写方法的原则"><span class="toc-number">0.3.1.1.</span> <span class="toc-text">重写方法的原则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#代码实例"><span class="toc-number">0.3.1.2.</span> <span class="toc-text">代码实例</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#重载的规则"><span class="toc-number">0.3.1.3.</span> <span class="toc-text">重载的规则</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#代码实例-1"><span class="toc-number">0.3.1.4.</span> <span class="toc-text">代码实例</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#多态"><span class="toc-number">0.3.2.</span> <span class="toc-text">多态</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Swing"><span class="toc-number">0.4.</span> <span class="toc-text">Swing</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#常用的控件集合"><span class="toc-number">0.4.1.</span> <span class="toc-text">常用的控件集合</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#注册事件的方法"><span class="toc-number">0.4.2.</span> <span class="toc-text">注册事件的方法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#方法1-匿名内部类实现"><span class="toc-number">0.4.2.1.</span> <span class="toc-text">方法1 匿名内部类实现</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#方法2-利用一般内部类实现"><span class="toc-number">0.4.2.2.</span> <span class="toc-text">方法2 利用一般内部类实现</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Junit-学习和使用"><span class="toc-number"></span> <span class="toc-text">Junit 学习和使用</span></a>
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/cocos2d/" title="cocos2d">cocos2d<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/js-cocos2d-x/" title="js, cocos2d.x">js, cocos2d.x<sup>1</sup></a></li>
+		
+			<li><a href="/tags/love/" title="love">love<sup>1</sup></a></li>
+		
+			<li><a href="/tags/postgresql/" title="postgresql">postgresql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/verilog-计组实验/" title="verilog 计组实验">verilog 计组实验<sup>1</sup></a></li>
+		
+			<li><a href="/tags/互联网思维/" title="互联网思维">互联网思维<sup>1</sup></a></li>
+		
+			<li><a href="/tags/操作系统/" title="操作系统">操作系统<sup>2</sup></a></li>
+		
+			<li><a href="/tags/数据库理论/" title="数据库理论">数据库理论<sup>1</sup></a></li>
+		
+			<li><a href="/tags/经济学，毛概/" title="经济学，毛概">经济学，毛概<sup>1</sup></a></li>
+		
+			<li><a href="/tags/编程软件-vim-java/" title="编程软件 vim java">编程软件 vim java<sup>1</sup></a></li>
+		
+			<li><a href="/tags/计组实验-CPU/" title="计组实验 CPU">计组实验 CPU<sup>1</sup></a></li>
+		
+			<li><a href="/tags/计组理论-CPU/" title="计组理论 CPU">计组理论 CPU<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2018 
+		
+		<a href="https://joshuaqyh.github.io" target="_blank" title="Qiuyihao">Qiuyihao</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
