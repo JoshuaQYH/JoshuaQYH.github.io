@@ -1,0 +1,394 @@
+
+ <!DOCTYPE HTML>
+<html >
+<head>
+  <meta charset="UTF-8">
+  
+    <title>机器学习（一）--概念理解 | KnowMyself</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
+    
+    <meta name="author" content="Qiuyihao">
+    
+    <meta name="description" content="笔记基于《机器学习》周志华一书所作的整理。
+
+
+机器学习是什么，如何理解机器学习？
+
+人在认知事物的时候，必须经过一定的经验积累和认识，然后做出相应合理的决策。也就是说人在某一领域上经验的积累会提高人对事物的处理和反应能力。类比到机器学习中，机器学习正是这样一门学科，致力于如何通过计算的手段，利用所">
+    
+    
+    
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/pacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      <div>
+		
+			<div id="imglogo">
+				<a href="/"><img src="/img/logo.svg" alt="KnowMyself" title="KnowMyself"/></a>
+			</div>
+			
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="KnowMyself">KnowMyself</a></h1>
+				<h2 class="blog-motto">Code and life</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					
+						<li><a href="/">Home</a></li>
+					
+						<li><a href="/archives">Archives</a></li>
+					
+					<li>
+					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="hidden" name="q" value="site:joshuaqyh.github.io">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2018/08/15/机器学习（一）--概念理解/" title="机器学习（一）--概念理解" itemprop="url">机器学习（一）--概念理解</a>
+  </h1>
+  <p class="article-author">By
+    
+      <a href="https://joshuaqyh.github.io" title="Qiuyihao">Qiuyihao</a>
+    </p>
+  <p class="article-time">
+    <time datetime="2018-08-14T16:07:06.722Z" itemprop="datePublished">2018-08-15</time>
+    Updated:<time datetime="2018-08-15T03:32:49.053Z" itemprop="dateModified">2018-08-15</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+		</div>
+		
+		<blockquote>
+<p>笔记基于《机器学习》周志华一书所作的整理。</p>
+</blockquote>
+<blockquote>
+<p>机器学习是什么，如何理解机器学习？</p>
+</blockquote>
+<p>人在认知事物的时候，必须经过一定的经验积累和认识，然后做出相应合理的决策。也就是说人在某一领域上经验的积累会提高人对事物的处理和反应能力。类比到机器学习中，机器学习正是这样一门学科，致力于如何通过计算的手段，利用所谓的经验来让系统具有一定的功能或者改善自己的性能，比如计算机视觉让计算机有“看物体”的能力，并使视觉能力不断增强，自然语言处理让计算机有“翻译，对话”能力，大量的模拟和计算使机器更“懂人话”。</p>
+<p>在计算机系统中，“经验” 通常以“数据”的方式存在。机器学习所要研究的主要内容就是，关于在计算机上从数据中产生一个模型的算法，即“学习算法”。基于提供的经验和数据我们对系统进行提炼和优化模型，当系统接收到相应输入时，根据已有的经验去进行响应，做出符合“智能”定义的行为。机器学习，主要是数据+算法。通常情况下，数据的采集和处理显得更为重要，一般来说数据集越大，学习能力越强，但也意味着更长的训练时间和修正优化时间。</p>
+<blockquote>
+<p>机器学习需要的数据基础</p>
+</blockquote>
+<p>要进行机器学习，先要有数据。比如判定西瓜的好坏，需要先给出许多西瓜的数据例子：（色泽=青绿，根蒂=硬挺 … )[]，（色泽=白色，根蒂=蜷缩）[ ]等等，这些数据记录的集合称为<strong>数据集</strong>，每一条记录都是<strong>样本</strong>或者<strong>示例</strong>，每一条记录里有对象的<strong>属性或特征。</strong> 属性张开的空间称为<strong>属性空间</strong>，样本张开的空间称为<strong>样本空间</strong> 。在数学上，我们使用线性代数中的向量来表示物体的空间，空间的维度由我们数据记录中的属性个数决定，比如西瓜有色泽，根蒂，响声三个属性，那么我们以这三个属性张开的空间就可以表示所有的西瓜，每一个西瓜都能在这个空间中找到自己的坐标位置。由于空间中的每一个点对应一个坐标向量，因此我们也把一个示例称为一个<strong>特征向量</strong>。</p>
+<p>一般地，令D = {x1， x2..， Xm } 表示包含m 个示例的数据集，每个<br>示例由d 个属性描述(例如上面的西瓜数据使用了3 个属性)，则每个示例<br>Xi = (Xi1; Xi2; . . . ; Xid) 是d 维样本空间X 中的一个向量， Xi ε X ， 其中Xij 是xi在第j 个属性上的取值(例如上述第3 个西瓜在第2 个属性上的值是”硬<br>挺” ), d 称为样本xi的”维数” (dimensionality)。</p>
+<blockquote>
+<p>机器学习的过程</p>
+</blockquote>
+<p>从数据中学的模型的过程称为“学习”或者“训练”。整个过程通过执行某些算法来完成（我们将了解到十大算法CNN，RNN），训练过程 中使用的数据称为<strong>“训练数据”</strong>， 每一个样本称为<strong>“训练样本”</strong>，训练样本的集合称为<strong>“训练集”</strong>。 学得模型对应了关于数据的某种潜在规律，亦称<strong>假设（后续会根据数据的训练做不断地修正）</strong>, 机器学习本身就是一个不断逼近事实真相的过程。</p>
+<p><strong>模型有时被称为“学习器”，可看作学习算法在给定数据和参数空间上的实例化</strong></p>
+<blockquote>
+<p>机器学习所能完成的事和划分</p>
+</blockquote>
+<ul>
+<li><p>预测</p>
+<p>要建立一个可预测的模型，我们需要获得训练样本的结果信息，通常称为标记。一个样本具有标记时可成为<strong>样例</strong>。 标记集合也成为<strong>标记空间或者输出空间</strong>。比如要判断西瓜的好坏时，我们除了给出西瓜色泽，敲声等属性时，还要给出在这些属性下瓜的好坏，即赋予每一个样本标记 。根据预测对象的不同时，我们定义了不同的学习任务。</p>
+<ul>
+<li>分类：当预测的对象是离散值（例如好瓜，坏瓜），此类学习任务称为分类。</li>
+<li>回归：当预测的对象是连续值（例如西瓜的成熟度），此类学习任务称为回归。</li>
+</ul>
+<p>当预测的类别只有两个时，称为“二分类”任务，涉及多个时，称为“多分类”任务。</p>
+<p>一般地，预测任务是希望通过对训练集{(X1’ Y1) , (X2 , Y2) ,…, (Xm, Ym)} 进行学习，建立一个从输入空间X 到输出空间y 的映射f: X 叶y. 对二分类任务，通常令Y = {-1 ，+1} 或{0 ， l};  对多分类任务， IYI &gt;2; 对回归任务， Y= R，R为实数集.</p>
+</li>
+</ul>
+<p>学得模型之后，使用其进行预测的过程称为“测试”。被预测的样本称为测试样本“。也就是说学习的过程是建立一个准确率更高的关于输入到输入的映射关系。</p>
+<ul>
+<li><p>训练数据处理：聚类clustering</p>
+<p>将训练集中的西瓜分成若干组，每一组称为一个簇，这些自动形成的簇可以对应一些潜在的概念划分，比如西瓜中按照色泽划分为”深色瓜“和”浅色瓜“。 这样有助于我们了解数据内在的规律，更为深入地分析数据建立基础。<strong>但是在聚类学习中，我们事先并不知道西瓜是根据哪些属性特征来划分为簇的，在学习过程中使用的训练样本通常不拥有标记信息。</strong></p>
+<p>​</p>
+</li>
+</ul>
+<p>根据训练样本是否拥有标记信息，学习任务大致可以划分为两类：<strong>监督学习</strong>和<strong>无监督学习</strong>。没有标记的当然是无监督学习，这意味着在无监督学习中没有标准答案给机器，只能依靠机器分析内部的数据特征来做响应的判断，而有标记的学习，则可以理解为在得到标准答案后，机器的一次次自我修正，以期下次遇到相似的问题时，能得到和标准答案更为接近的答案。显然，分类和回归属于监督学习，聚类属于无监督学习。</p>
+<p><strong>泛化：</strong> 机器学习不仅在已有的训练样本上表现出高准确率，在新的未尝试过的样本上也能体现较高的准确率。显然强泛化的模型，更适用于整个样本空间，虽然样只是空间中一个很小的采样。 </p>
+<blockquote>
+<p>假设空间：由对象所可能存在的不同属性值所张成的空间</p>
+</blockquote>
+<ul>
+<li>归纳： 从特殊到一般的“泛化”过程，而从“样例”中学习显然是一个归纳的过程，所以也称为“归纳学习”。<ul>
+<li>狭义归纳：要求从训练数据集中获得概念，所以也称<strong>概念学习</strong>或者<strong>概念形成</strong>。 概念学习中最简单的就是布尔概念学习，即让机器判断对或错，黑或白，类似预测中的二分类学习。</li>
+</ul>
+</li>
+<li>演绎：从一般到特殊的“特化”过程，从基础原理推演到具体的情况。在数学公理系统中，基于公理和推理推导出与之相恰的定理。</li>
+</ul>
+<p>模拟搜索西瓜问题的假设空间有多种做法，例如<strong>从顶向下，从一般到特殊，从底向上，从特殊到一般</strong>。 搜索过程遇到和训练集的“正确答案”不一致时，需要删除或者调整参数使之逼近真相。</p>
+<p>在现实问题中，存在着很大的假设空间。但学习过程是基于有限的样本训练集来进行的，可能有多个假设和训练集一致。即存在一个与训练集一致的假设集合，称为“版本空间”。不同训练集对应不同的版本空间，版本空间属于假设空间的一部分。</p>
+<blockquote>
+<p>归纳偏好</p>
+</blockquote>
+<p>版本空间的问题：如果有三个与训练集一致的假设，但在不同模型的情况下，面临新的样本，却会产生不同的输出判断。也就是说不同的模型具有不同的偏好，对某种类型的假设的偏好。</p>
+<p><strong>在训练集之外的样本误差的计算方法</strong> P8~9</p>
+<p>总误差和实际学习算法无关，任意两个学习算法的总误差相同。 也就是说学习算法所具有的不同训练集外误差的期望性相同。这就是“没有免费午餐定理” NFL。定理的前提：我们希望学习的真实目标函数f均匀分布，实际并非如此。该定理揭示的是，脱离具体问题，空泛谈“什么学习算法”更好是毫无意义的。</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+
+  <div class="article-tags">
+  
+  <span></span> <a href="/tags/机器学习/">机器学习</a>
+  </div>
+
+
+
+
+<div class="article-share" id="share">
+
+  <div data-url="https://joshuaqyh.github.io/2018/08/15/机器学习（一）--概念理解/" data-title="机器学习（一）--概念理解 | KnowMyself" data-tsina="" class="share clearfix">
+  </div>
+
+</div>
+</footer>   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+ <div class="prev" >
+ <a href="/2018/10/21/初探区块链的挑战，应用和发展/" title="区块链挑战，应用和发展">
+  <strong>PREVIOUS:</strong><br/>
+  <span>
+  区块链挑战，应用和发展</span>
+</a>
+</div>
+
+
+<div class="next">
+<a href="/2018/07/30/神经网络-前向和方向传播/"  title="神经网络模型入门--前向和反向传播Python代码实现">
+ <strong>NEXT:</strong><br/> 
+ <span>神经网络模型入门--前向和反向传播Python代码实现
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+  
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<aside class="clearfix">
+
+  
+
+  
+<div class="tagslist">
+	<p class="asidetitle">Tags</p>
+		<ul class="clearfix">
+		
+			<li><a href="/tags/cocos2d/" title="cocos2d">cocos2d<sup>1</sup></a></li>
+		
+			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
+		
+			<li><a href="/tags/js-cocos2d-x/" title="js, cocos2d.x">js, cocos2d.x<sup>1</sup></a></li>
+		
+			<li><a href="/tags/love/" title="love">love<sup>1</sup></a></li>
+		
+			<li><a href="/tags/postgresql/" title="postgresql">postgresql<sup>1</sup></a></li>
+		
+			<li><a href="/tags/verilog-计组实验/" title="verilog 计组实验">verilog 计组实验<sup>1</sup></a></li>
+		
+			<li><a href="/tags/互联网思维/" title="互联网思维">互联网思维<sup>1</sup></a></li>
+		
+			<li><a href="/tags/区块链/" title="区块链">区块链<sup>1</sup></a></li>
+		
+			<li><a href="/tags/操作系统/" title="操作系统">操作系统<sup>2</sup></a></li>
+		
+			<li><a href="/tags/数据库理论/" title="数据库理论">数据库理论<sup>1</sup></a></li>
+		
+			<li><a href="/tags/机器学习/" title="机器学习">机器学习<sup>1</sup></a></li>
+		
+			<li><a href="/tags/神经网络/" title="神经网络">神经网络<sup>1</sup></a></li>
+		
+			<li><a href="/tags/经济学，毛概/" title="经济学，毛概">经济学，毛概<sup>1</sup></a></li>
+		
+			<li><a href="/tags/编程软件-vim-java/" title="编程软件 vim java">编程软件 vim java<sup>1</sup></a></li>
+		
+			<li><a href="/tags/计组实验-CPU/" title="计组实验 CPU">计组实验 CPU<sup>1</sup></a></li>
+		
+			<li><a href="/tags/计组理论-CPU/" title="计组理论 CPU">计组理论 CPU<sup>1</sup></a></li>
+		
+		</ul>
+</div>
+
+
+  <div class="rsspart">
+	<a href="" target="_blank" title="rss">RSS</a>
+</div>
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<div class="social-font clearfix">
+		
+		
+		
+		
+		
+	</div>
+		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2018 
+		
+		<a href="https://joshuaqyh.github.io" target="_blank" title="Qiuyihao">Qiuyihao</a>
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else
+    {
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      h  = $('article h2')
+      ah = $('article h2'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  if(ah.length==0){
+    t.css('display','none');
+  }else{
+    c.click(function(){
+      ta.css('display', 'block').addClass('fadeIn');
+    });
+    o.click(function(){
+      ta.css('display', 'none');
+    });
+    $(window).scroll(function(){
+      ta.css("top",Math.max(140,320-$(this).scrollTop()));
+    });
+  };
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina');
+  var html = [
+  '<a href="#" class="overlay" id="qrcode"></a>',
+  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
+  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+  $('.article-share-qrcode').click(function(){
+    var imgSrc = $('#qrcode-pic').attr('data-src');
+    $('#qrcode-pic').attr('src', imgSrc);
+    $('#qrcode-pic').load(function(){
+        $('.qrcode strong').text(' ');
+    });
+  });
+});     
+</script>
+
+
+
+
+
+
+  </body>
+</html>
