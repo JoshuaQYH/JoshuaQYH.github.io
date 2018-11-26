@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="人工智能，贝叶斯网络">
-    <meta name="description" content="1. 概率分布 先验概率等于无条件概率 $P(A)$  后验概率等于条件概率 $P(A|B)$   联合概率分布是由$A ,B$不同取值得到的一个$P(A,B )$概率分布。  完全联合分布中的边缘概率，是指某一随机变量成立的无条件概率，根据联合分布概率表累加计算可以得到。求得边缘概率的过程称为边缘化或者是求和消元化。 $P(A) = \sum_{z∈Z}P(A, z)$  求和消元化的联合分布表">
+    <meta name="description" content="1. 概率分布 先验概率等于无条件概率 $P(A)$  后验概率等于条件概率 $P(A|B)​$   联合概率分布是由$A ,B$不同取值得到的一个$P(A,B )$概率分布。  完全联合分布中的边缘概率，是指某一随机变量成立的无条件概率，根据联合分布概率表累加计算可以得到。求得边缘概率的过程称为边缘化或者是求和消元化。 $P(A) = \sum_{z∈Z}P(A, z)$  求和消元化的联合分布">
 <meta name="keywords" content="人工智能，贝叶斯网络">
 <meta property="og:type" content="article">
 <meta property="og:title" content="贝叶斯网络基础知识">
 <meta property="og:url" content="https://joshuaqyh.github.io/2018/11/26/ch 13不确定性的量化/index.html">
 <meta property="og:site_name" content="KnowMyself">
-<meta property="og:description" content="1. 概率分布 先验概率等于无条件概率 $P(A)$  后验概率等于条件概率 $P(A|B)$   联合概率分布是由$A ,B$不同取值得到的一个$P(A,B )$概率分布。  完全联合分布中的边缘概率，是指某一随机变量成立的无条件概率，根据联合分布概率表累加计算可以得到。求得边缘概率的过程称为边缘化或者是求和消元化。 $P(A) = \sum_{z∈Z}P(A, z)$  求和消元化的联合分布表">
+<meta property="og:description" content="1. 概率分布 先验概率等于无条件概率 $P(A)$  后验概率等于条件概率 $P(A|B)​$   联合概率分布是由$A ,B$不同取值得到的一个$P(A,B )$概率分布。  完全联合分布中的边缘概率，是指某一随机变量成立的无条件概率，根据联合分布概率表累加计算可以得到。求得边缘概率的过程称为边缘化或者是求和消元化。 $P(A) = \sum_{z∈Z}P(A, z)$  求和消元化的联合分布">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-26T15:54:54.293Z">
+<meta property="og:updated_time" content="2018-11-26T16:07:08.558Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="贝叶斯网络基础知识">
-<meta name="twitter:description" content="1. 概率分布 先验概率等于无条件概率 $P(A)$  后验概率等于条件概率 $P(A|B)$   联合概率分布是由$A ,B$不同取值得到的一个$P(A,B )$概率分布。  完全联合分布中的边缘概率，是指某一随机变量成立的无条件概率，根据联合分布概率表累加计算可以得到。求得边缘概率的过程称为边缘化或者是求和消元化。 $P(A) = \sum_{z∈Z}P(A, z)$  求和消元化的联合分布表">
+<meta name="twitter:description" content="1. 概率分布 先验概率等于无条件概率 $P(A)$  后验概率等于条件概率 $P(A|B)​$   联合概率分布是由$A ,B$不同取值得到的一个$P(A,B )$概率分布。  完全联合分布中的边缘概率，是指某一随机变量成立的无条件概率，根据联合分布概率表累加计算可以得到。求得边缘概率的过程称为边缘化或者是求和消元化。 $P(A) = \sum_{z∈Z}P(A, z)$  求和消元化的联合分布">
     
         <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
     
@@ -184,7 +184,7 @@
             <h1 id="1-概率分布"><a href="#1-概率分布" class="headerlink" title="1. 概率分布"></a>1. 概率分布</h1><ul>
 <li><p>先验概率等于无条件概率 $P(A)$</p>
 </li>
-<li><p>后验概率等于条件概率 $P(A|B)$ </p>
+<li><p>后验概率等于条件概率 $P(A|B)​$ </p>
 </li>
 <li><p>联合概率分布是由$A ,B$不同取值得到的一个$P(A,B )$概率分布。</p>
 </li>
@@ -199,16 +199,15 @@
 </ul>
 <h1 id="2-独立性"><a href="#2-独立性" class="headerlink" title="2. 独立性"></a>2. 独立性</h1><p>存在独立性，可进行概率分解降低模型的复杂度。</p>
 <p>！条件独立的含义：事件A，B，C, 若在A概率未知的情况下，AB不独立，如果A概率已知，那么AB就存在条件独立的关系。</p>
-<p>独立性的一个表现就是 $$P(A | B) = P (A)​$$ ，当B与A无互相独立互不影响的时候。</p>
-<p>其他表示: $$ P(AB ) = P(A)P(B)$$</p>
+<p>独立性的一个表现就是 $P(A | B) = P (A)$ ，当B与A无互相独立互不影响的时候。</p>
+<p>其他表示: $ P(AB ) = P(A)P(B)$</p>
 <h1 id="3-贝叶斯"><a href="#3-贝叶斯" class="headerlink" title="3. 贝叶斯"></a>3. 贝叶斯</h1><p>$P(Y|X)P(X) = P(X|Y)P(Y) = P(XY)$</p>
 <p>从概率来看到原因的概率分布。</p>
-<p>$$ P(Y | X) = $$$\frac{P(X | Y)P(Y)}{P(X)}$</p>
+<p>$ P(Y | X) = \frac{P(X | Y)P(Y)}{P(X)}$</p>
 <p>如果某人是好人(概率为$P(Y)$),  某人偷东西的事件概率为($X$) ，如果发生了A偷东西$P(Y|X)$，那么A是好人的概率$P(Y | X)$。</p>
 <p>放在实例中来观察贝叶斯公式的简单应用。在医疗诊断中，如果医生知道某一疾病发生某些症状的概率，那么可以利用贝叶斯公式估计得知当病人发生某症状时，推测病人发生某病的概率。</p>
 <p>贝叶斯公式其实是反映了原因和结果之间的概率关系。</p>
-<p>$$ P(Cause | Effect) = $$$\frac{P(Effect | Cause)P(Cause)}{P(Effect)}$ </p>
-<p>= $$\alpha$$ $P(Effect | Cause)P(Cause)$</p>
+<p>$ P(Cause | Effect) = \frac{P(Effect | Cause)P(Cause)}{P(Effect)}= \alpha P(Effect | Cause)P(Cause)$</p>
 <p> 其中的 $P(Cause) P (Effect)$  二者都属于先验概率, $\alpha$ 是让  $P(Effect | Cause)$归一化的常数。</p>
 <ul>
 <li>朴素贝叶斯</li>
@@ -222,7 +221,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-11-26T15:54:54.293Z" itemprop="dateUpdated">2018-11-26 23:54:54</time>
+    Last updated: <time datetime="2018-11-26T16:07:08.558Z" itemprop="dateUpdated">2018-11-27 00:07:08</time>
 </span><br>
 
 
