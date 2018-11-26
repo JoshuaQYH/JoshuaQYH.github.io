@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://joshuaqyh.github.io/"/>
-  <updated>2018-11-26T14:16:47.443Z</updated>
+  <updated>2018-11-26T14:57:55.063Z</updated>
   <id>https://joshuaqyh.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>基于时间的概率推理</title>
+    <link href="https://joshuaqyh.github.io/2018/11/26/ch15%20%E6%97%B6%E9%97%B4%E4%B8%8A%E7%9A%84%E6%A6%82%E7%8E%87%E6%8E%A8%E7%90%86/"/>
+    <id>https://joshuaqyh.github.io/2018/11/26/ch15 时间上的概率推理/</id>
+    <published>2018-11-26T14:44:12.876Z</published>
+    <updated>2018-11-26T14:57:55.063Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="马尔可夫过程"><a href="#马尔可夫过程" class="headerlink" title="马尔可夫过程"></a>马尔可夫过程</h1><p>当前状态依赖于前一个状态，单阶的马尔可夫链；</p><p>当前状态依赖于前n个状态，n阶的马尔可夫链；</p><p><strong>传感器模型</strong></p><p>传感器马尔可夫假设： $$P(E_t | X_{0:t}, E_{0:t-1}) = P(E_t | X_t)$$</p><p>等式右边就是我们的传感器模型。 有$$X_t$$ 就可感应得到$$E_t$$。</p><p>物理含义就是<strong>当前的证据只与当前状态有关，即便给定了过去所有状态和证据。</strong></p><p><strong>状态转移模型</strong></p><p>$$P(X_i | X_{i-1}) = P(X_t | X_{0:t-1})$$  </p><p>物理含义就是<strong>给定前一个状态，计算当前状态的概率相当于给定所有状态时计算当前状态的概率</strong> 。给定前一个状态和给定过去所有状态的结果是一样的。</p><p>有了上述两个模型之后，加上初始状态模型$$P(X_0)$$, 我们就可以确定<strong>所有变量上完整的联合概率分布</strong>，从而确定其他类型的概率分布。 公式如下：</p><p>$$P(X_{0:t}, E_{1:t}) = P(X_0) \prod_{i=1}^tP(X_i | X_{i-1})P(E_i | X_i)$$</p><h2 id="形式化基本推理任务"><a href="#形式化基本推理任务" class="headerlink" title="形式化基本推理任务"></a>形式化基本推理任务</h2><ul><li>滤波。计算信念状态。给定当前所有证据，计算当前状态的后验概率分布。</li><li>预测。给定当前所有证据，计算未来状态的后验分布。</li><li>平滑。给定当前所有证据，计算过去某一状态的后验概率。</li><li>最可能的解释。给定观察序列，找到最可能生成这些观察结果的状态序列。</li><li>学习。从观察中学习，推理哪些确实会发生转移，估计。期望最大化算法。EM算法。</li></ul><h2 id="滤波过程"><a href="#滤波过程" class="headerlink" title="滤波过程"></a>滤波过程</h2><p>根据当前时刻已知的所有证据变量，计算当前状态的后验概率分布。</p><p>假设存在函数f使得 $$P(X_{t+1} | e_{1:t+1}) = f(e_{t+1}, P(X_t | e_{1:t}))$$,其物理含义就是已知t时刻的滤波结果$$P(X_t | e_{1:t}) $$ 和t+1时刻的证据$$e_{t+1}$$ ，可以计算下一个时刻t+1的滤波结果$$P(X_t | e_{1:t}) $$。该过程称为递归估计。</p><p>公式计算过程为：</p><p>$$P(X_{t+1} | e_{1: t+1}) = P(X_{t + 1} | e_{1: t}, e_{t+1})$$                          // 分解证据</p><p>​              $$= \alpha P(e_{t+1} | X_{t+1}, e_{1:t})P(X_{t+1} | e_{1:t})$$  // 使用贝叶斯规则</p><p>​                      $$= \alpha P(e_{t+1} | X_{t+1}) P(X_{t+1} | e_{1:t})$$            // 根据传感器马尔科夫假设</p><p>​            $$=\alpha P(e_{t+1} | X_{t+1}) \sum_{x_t} P(X_{t+1}| x_t, e_{1:t})P(x_t | e_{1:t})$$  // 分解为求和式</p><p>​            $$= \alpha P(e_{t+1} | X_{t+1}) \sum_{x_t} P(X_{t+1} | x_t)P(x_t | e_{1:t})$$       // <strong>马尔可夫假设</strong></p><p>上述的求和表达式中，第一个因子来自转移模型，第二个因子来自当前状态分布。由此得到了<strong>递归公式</strong> 。我们可以认为滤波估计$$P(e_t | X_t)$$ 是沿着序列从1到t的<strong>前向”消息”</strong>：$$f_{1:t}$$ ，在每一时刻发生转移时得到修正，并根据每一新的观察进行更新，该过程表达为 $$f_{1:t+1} = \alpha Forward(f_{1:t}, e_{t+1})$$ $$Forward$$函数实现了马尔可夫假设中的递归过程。</p><h2 id="平滑过程"><a href="#平滑过程" class="headerlink" title="平滑过程"></a>平滑过程</h2><p>给定现在已知的证据，计算过去某一状态的后验分布。</p><p>$$ 对于  0 \le k &lt; t\, 计算P(X_k | e_{1:t})$$ ，计算过程是:</p><p>$$P(X_k | e_{1:t})  = P (X_k | e_{1: k}, e_{k+1:t})$$                        //  分解证据 </p><p>​             $$= \alpha P(X_k | e_{1:k})P(e_{k+1:t}| X_k, e_{1:k})  $$ // 使用贝叶斯规则</p><p>​            $$  = \alpha P(X_k | e_{1:k}) P (e_{k+1:t} | X_k)$$          // 使用条件独立性</p><p>​            $ = \alpha f_{1:k} × b_{k+1:t}$</p><p> 结果代表 $$\alpha *$$ 前向消息 点乘 后向消息。</p><p>前向消息计算方法是通过从1到k的前向滤波过程，而后向消息的计算需要从时刻t到k+1进行反向递归。</p><p>$$P(e_{k+1:t} | X_k) = \sum_{x_{k+1}} P(e_{k+1:t} | X_k, x_{k+1})P(X_{k+1} | X_k)$$ </p><p>​            $$ = \sum_{x_{k+1}} P (e_{k+1:t} | x_{k+1}) P (x_{k+1} | X_k)$$</p><p>​            $$ = \sum_{x_{k+1}}P(e_{k+1} | x_{k+1})P(e_{k+2:t} | x_{k+1})P(x_{k+1} | X_k)$$</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;马尔可夫过程&quot;&gt;&lt;a href=&quot;#马尔可夫过程&quot; class=&quot;headerlink&quot; title=&quot;马尔可夫过程&quot;&gt;&lt;/a&gt;马尔可夫过程&lt;/h1&gt;&lt;p&gt;当前状态依赖于前一个状态，单阶的马尔可夫链；&lt;/p&gt;
+&lt;p&gt;当前状态依赖于前n个状态，n阶的马尔可夫链；&lt;/
+      
+    
+    </summary>
+    
+    
+      <category term="人工智能, 马尔可夫场" scheme="https://joshuaqyh.github.io/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD-%E9%A9%AC%E5%B0%94%E5%8F%AF%E5%A4%AB%E5%9C%BA/"/>
+    
+  </entry>
   
   <entry>
     <title>贝叶斯网络基础知识</title>
