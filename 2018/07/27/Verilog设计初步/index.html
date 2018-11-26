@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Verilog 设计初步 | KnowMyself | Code and life</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="verilog 计组实验">
+    <meta name="description" content="Verilog设计初步##Verilog 代码模板 1234567891011121314151617181920212223242526//语句关键字字母都为小写字母，大小写敏感//硬件思维来写代码//命名不能以数字开头module &amp;lt;顶层模块名&amp;gt; (输入输出端口列表) //定义输入输出端口列表	output 输出端口列表；  //输出端口生声明	input  输入端口列表；">
+<meta name="keywords" content="verilog 计组实验">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Verilog 设计初步">
+<meta property="og:url" content="https://joshuaqyh.github.io/2018/07/27/Verilog设计初步/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="Verilog设计初步##Verilog 代码模板 1234567891011121314151617181920212223242526//语句关键字字母都为小写字母，大小写敏感//硬件思维来写代码//命名不能以数字开头module &amp;lt;顶层模块名&amp;gt; (输入输出端口列表) //定义输入输出端口列表	output 输出端口列表；  //输出端口生声明	input  输入端口列表；">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-27T15:30:58.770Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Verilog 设计初步">
+<meta name="twitter:description" content="Verilog设计初步##Verilog 代码模板 1234567891011121314151617181920212223242526//语句关键字字母都为小写字母，大小写敏感//硬件思维来写代码//命名不能以数字开头module &amp;lt;顶层模块名&amp;gt; (输入输出端口列表) //定义输入输出端口列表	output 输出端口列表；  //输出端口生声明	input  输入端口列表；">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Verilog 设计初步</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Verilog 设计初步</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-27T15:28:32.680Z" itemprop="datePublished" class="page-time">
+  2018-07-27
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Verilog设计初步"><span class="post-toc-number">1.</span> <span class="post-toc-text">Verilog设计初步</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据类型及运算符"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">数据类型及运算符</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#语句"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">语句</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#函数"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">函数</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设计特点"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">设计特点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#层次化模块化"><span class="post-toc-number">1.4.0.1.</span> <span class="post-toc-text">层次化模块化</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Verilog设计初步" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Verilog 设计初步</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-27 23:28:32" datetime="2018-07-27T15:28:32.680Z" itemprop="datePublished">2018-07-27</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Verilog设计初步"><a href="#Verilog设计初步" class="headerlink" title="Verilog设计初步"></a>Verilog设计初步</h1><p>##Verilog 代码模板</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//语句关键字字母都为小写字母，大小写敏感</span></span><br><span class="line"><span class="comment">//硬件思维来写代码</span></span><br><span class="line"><span class="comment">//命名不能以数字开头</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">module</span> &lt;顶层模块名&gt; (输入输出端口列表) <span class="comment">//定义输入输出端口列表</span></span><br><span class="line">	<span class="keyword">output</span> 输出端口列表；  <span class="comment">//输出端口生声明</span></span><br><span class="line">	<span class="keyword">input</span>  输入端口列表；      <span class="comment">//输入输出端口生命 </span></span><br><span class="line">    </span><br><span class="line">    <span class="comment">/*定义数据类型，功能定义，函数实现*/</span></span><br><span class="line">    <span class="keyword">reg</span>  信号名；</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//逻辑功能定义</span></span><br><span class="line">	<span class="keyword">assign</span>&lt;结果信号名&gt; = &lt;表达式&gt;;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//用always块描述逻辑功能</span></span><br><span class="line">    <span class="keyword">always</span> @(&lt;敏感信号&gt;)   </span><br><span class="line">        <span class="keyword">begin</span></span><br><span class="line">            <span class="comment">//过程赋值运算</span></span><br><span class="line">            <span class="comment">//语句，if else while task</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="comment">//调用其他模块</span></span><br><span class="line">    &lt;调用模块名module_name&gt;&lt;例化模块名&gt;(&lt;端口列表&gt;)；</span><br><span class="line">    </span><br><span class="line">    <span class="comment">//门元件例化</span></span><br><span class="line">    门元件关键字&lt;例化门元件名&gt;(&lt;端口列表port_list&gt;);</span><br><span class="line"><span class="keyword">endmodule</span></span><br></pre></td></tr></table></figure>
+<p>四位选择器</p>
+<figure class="highlight verilog"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">module</span> mux4_1(out,in0, in1, in2,in4,sel);</span><br><span class="line">    <span class="keyword">output</span> out;</span><br><span class="line">    <span class="keyword">input</span> in0,in1,in2,in3;</span><br><span class="line">    <span class="keyword">input</span>[<span class="number">1</span>:<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">reg</span> out;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">always</span> @（in0 <span class="keyword">or</span> in1 <span class="keyword">or</span> in2 <span class="keyword">or</span> in3 <span class="keyword">or</span> sel)</span><br><span class="line">        <span class="keyword">begin</span> </span><br><span class="line">            <span class="keyword">case</span>(sel)</span><br></pre></td></tr></table></figure>
+<h2 id="数据类型及运算符"><a href="#数据类型及运算符" class="headerlink" title="数据类型及运算符"></a>数据类型及运算符</h2><ul>
+<li>整数类型<ul>
+<li>构成是：字符宽度+进制+数值。</li>
+<li>例如：2’0xd5;  宽度为2的十六进制d5。</li>
+</ul>
+</li>
+<li>逻辑类型<ul>
+<li>高低电平 1 0，电路里体现为电压的区间</li>
+<li>x：未知</li>
+<li>z:   高阻</li>
+</ul>
+</li>
+<li>net类型<ul>
+<li>常用的是wire。用法是 wire[7:0] databus。 //databus宽度8</li>
+</ul>
+</li>
+<li>寄存器类型<ul>
+<li>reg </li>
+<li>integer</li>
+<li>time</li>
+<li>real</li>
+<li>realtime</li>
+</ul>
+</li>
+<li>parameter参数 <ul>
+<li>用来定义符号常量。 parameter sel = 8’ha3。</li>
+</ul>
+</li>
+<li>向量类型</li>
+<li>逻辑运算符</li>
+<li>位运算符</li>
+<li>三目运算</li>
+<li>位拼接运算符</li>
+</ul>
+<p>下例采用数据流方式描述1位全加器。</p>
+<p>在本例中，有两个连续赋值语句。这些赋值语句是并发的，与其书写的顺序无关。只要<br>连续赋值语句右端表达式中操作数的值变化(即有事件发生), 连续赋值语句即被执行。如果A<br>变化，则两个连续赋值都被计算，即同时对右端表达式求值，并将结果赋给左端目标。</p>
+<h2 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h2><ul>
+<li>initial</li>
+<li>always @（敏感信号）<ul>
+<li>@ (posedge clk) 上升沿</li>
+<li>@ (negedge clk) 下降沿触发</li>
+</ul>
+</li>
+<li>赋值语句<ul>
+<li>连续赋值语句assign 只要连续赋值语句右端表达式中操作数的值变化, 连续赋值语句即被执行。</li>
+<li>阻塞赋值 a = b;         ————-非时序赋值（组合）</li>
+<li>非阻塞赋值  a&lt;=b      ————时序赋值中使用  </li>
+<li>时序和组合在电路上的表现是时序赋值过程中需要等待时钟沿来触发。</li>
+</ul>
+</li>
+</ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><h2 id="设计特点"><a href="#设计特点" class="headerlink" title="设计特点"></a>设计特点</h2><h4 id="层次化模块化"><a href="#层次化模块化" class="headerlink" title="层次化模块化"></a>层次化模块化</h4><p>顶层模块和底层模块的设计方法，将模块细分为若干个子模块，在底层实现子模块功能，在顶层组合各个子模块。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-07-27T15:30:58.770Z" itemprop="dateUpdated">2018-07-27 23:30:58</time>
+</span><br>
+
+
+        
+        THX ! :) <a href="/2018/07/27/Verilog设计初步/" target="_blank" rel="external">https://joshuaqyh.github.io/2018/07/27/Verilog设计初步/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/verilog-计组实验/">verilog 计组实验</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/07/27/Verilog设计初步/&title=《Verilog 设计初步》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/07/27/Verilog设计初步/&title=《Verilog 设计初步》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/07/27/Verilog设计初步/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Verilog 设计初步》 — KnowMyself&url=https://joshuaqyh.github.io/2018/07/27/Verilog设计初步/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/07/27/Verilog设计初步/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/07/27/单周期CPU设计笔记和总结/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">单周期CPU设计笔记和总结</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/27/SQL 用法--postgresql/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">SQL用法总结</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/07/27/Verilog设计初步/&title=《Verilog 设计初步》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/07/27/Verilog设计初步/&title=《Verilog 设计初步》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/07/27/Verilog设计初步/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Verilog 设计初步》 — KnowMyself&url=https://joshuaqyh.github.io/2018/07/27/Verilog设计初步/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/07/27/Verilog设计初步/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACH0lEQVR42u3aMXLDMAwEQP//085MqqSQfQcqGUtcVipsGqsCJgA+HvF6fq+fz0fr6DNHex596/EXCwMD47KMPKwE9jqgJMT2lWFgYOzDmG23nsRfv7IkNgwMDIxk6+SAOAsdAwMDYz3htgVtkr4xMDAwVorYtrhtk2wOxsDA2I0xGwz8z/OfzzcwMDA+njE76uWpNhlYnhAVBgbGrRltQLPLE3kqz4ej9UYYGBiXZcyaYnlwM1J9RQMDA2MDRh5i2/RPmm5JqfyGioGBcWvG7IdXWv/5cDT/Y8DAwNiHkY8h20Tc7lZfs8DAwNiGsXLNq23MtYfFaNiJgYGxAWOWQNv2XHuILBp/GBgYGzDykvWsBlw7NH2zJwYGxgaMvCk2G4KuDy8xMDAwZilvljrzixTF5zEwMLZk5LDZgHM2KK0TLgYGxsUZbaDtJYk2oFmrDgMDYwdGEspZR7229R/tiYGBcWvGSlN+lqbrdn9eymJgYNyUkW8XHdHyujm+0hGlXQwMjA0Y66k2L03ParENa3EMDIwLMs4tZWejhbb0xcDA2I3xLFebWGcXvPJX82uEiYGBcVNGvl4HUWT3eIccjIGBsQNjPcm2U8W8DVfsj4GBsQGjbe7nzbL20lib9DEwMDBmz216bZtxGBgYGHmIs6tdeZl62jwWAwPjFoyV6xF5Gj13aBpNYjEwMG7BmBWQCaYNoh2InjDfwMDA+HTGFxmZGQa94A+fAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

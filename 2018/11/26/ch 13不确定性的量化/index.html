@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>贝叶斯网络基础知识 | KnowMyself | Code and life</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="人工智能，贝叶斯网络">
+    <meta name="description" content="1. 概率分布 先验概率等于无条件概率 $P(A)$  后验概率等于条件概率 $P(A|B)$   联合概率分布是由$A ,B$不同取值得到的一个$P(A,B )$概率分布。  完全联合分布中的边缘概率，是指某一随机变量成立的无条件概率，根据联合分布概率表累加计算可以得到。求得边缘概率的过程称为边缘化或者是求和消元化。 $P(A) = \sum_{z∈Z}P(A, z)$  求和消元化的联合分布表">
+<meta name="keywords" content="人工智能，贝叶斯网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="贝叶斯网络基础知识">
+<meta property="og:url" content="https://joshuaqyh.github.io/2018/11/26/ch 13不确定性的量化/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="1. 概率分布 先验概率等于无条件概率 $P(A)$  后验概率等于条件概率 $P(A|B)$   联合概率分布是由$A ,B$不同取值得到的一个$P(A,B )$概率分布。  完全联合分布中的边缘概率，是指某一随机变量成立的无条件概率，根据联合分布概率表累加计算可以得到。求得边缘概率的过程称为边缘化或者是求和消元化。 $P(A) = \sum_{z∈Z}P(A, z)$  求和消元化的联合分布表">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-26T14:16:47.443Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="贝叶斯网络基础知识">
+<meta name="twitter:description" content="1. 概率分布 先验概率等于无条件概率 $P(A)$  后验概率等于条件概率 $P(A|B)$   联合概率分布是由$A ,B$不同取值得到的一个$P(A,B )$概率分布。  完全联合分布中的边缘概率，是指某一随机变量成立的无条件概率，根据联合分布概率表累加计算可以得到。求得边缘概率的过程称为边缘化或者是求和消元化。 $P(A) = \sum_{z∈Z}P(A, z)$  求和消元化的联合分布表">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">贝叶斯网络基础知识</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">贝叶斯网络基础知识</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-11-26T12:01:22.786Z" itemprop="datePublished" class="page-time">
+  2018-11-26
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-概率分布"><span class="post-toc-number">1.</span> <span class="post-toc-text">1. 概率分布</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-独立性"><span class="post-toc-number">2.</span> <span class="post-toc-text">2. 独立性</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-贝叶斯"><span class="post-toc-number">3.</span> <span class="post-toc-text">3. 贝叶斯</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-ch 13不确定性的量化" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">贝叶斯网络基础知识</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-11-26 20:01:22" datetime="2018-11-26T12:01:22.786Z" itemprop="datePublished">2018-11-26</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="1-概率分布"><a href="#1-概率分布" class="headerlink" title="1. 概率分布"></a>1. 概率分布</h1><ul>
+<li><p>先验概率等于无条件概率 $P(A)$</p>
+</li>
+<li><p>后验概率等于条件概率 $P(A|B)$ </p>
+</li>
+<li><p>联合概率分布是由$A ,B$不同取值得到的一个$P(A,B )$概率分布。</p>
+</li>
+<li><p>完全联合分布中的<strong>边缘概率</strong>，是指某一随机变量成立的无条件概率，根据联合分布概率表累加计算可以得到。求得边缘概率的过程称为<strong>边缘化或者是求和消元化</strong>。</p>
+<p>$P(A) = \sum_{z∈Z}P(A, z)$  求和消元化的联合分布表示</p>
+<p>$P(A) = \sum_zP(A|z)P(z)$  根据乘法法则$P(A,z) = P(A | z) P(z)$ 可以求得求和消元化的条件概率分布。该规则也称条件化。</p>
+</li>
+<li><p>归一化常数 $\alpha$: $P(A |B) = \alpha P(AB)$。将$\alpha$替代$1 / P(B)$ 。</p>
+</li>
+<li><p>$P(X|e) = \alpha P(X ,e) = \alpha \sum_yP(X,e,y)$ 。</p>
+</li>
+</ul>
+<h1 id="2-独立性"><a href="#2-独立性" class="headerlink" title="2. 独立性"></a>2. 独立性</h1><p>存在独立性，可进行概率分解降低模型的复杂度。</p>
+<p>！条件独立的含义：事件A，B，C, 若在A概率未知的情况下，AB不独立，如果A概率已知，那么AB就存在条件独立的关系。</p>
+<p>独立性的一个表现就是 $$P(A | B) = P (A)​$$ ，当B与A无互相独立互不影响的时候。</p>
+<p>其他表示: $$ P(AB ) = P(A)P(B)$$</p>
+<h1 id="3-贝叶斯"><a href="#3-贝叶斯" class="headerlink" title="3. 贝叶斯"></a>3. 贝叶斯</h1><p>$P(Y|X)P(X) = P(X|Y)P(Y) = P(XY)$</p>
+<p>从概率来看到原因的概率分布。</p>
+<p>$$ P(Y | X) = $$$\frac{P(X | Y)P(Y)}{P(X)}$</p>
+<p>如果某人是好人(概率为$P(Y)$),  某人偷东西的事件概率为($X$) ，如果发生了A偷东西$P(Y|X)$，那么A是好人的概率$P(Y | X)$。</p>
+<p>放在实例中来观察贝叶斯公式的简单应用。在医疗诊断中，如果医生知道某一疾病发生某些症状的概率，那么可以利用贝叶斯公式估计得知当病人发生某症状时，推测病人发生某病的概率。</p>
+<p>贝叶斯公式其实是反映了原因和结果之间的概率关系。</p>
+<p>$$ P(Cause | Effect) = $$$\frac{P(Effect | Cause)P(Cause)}{P(Effect)}$ </p>
+<p>= $$\alpha$$ $P(Effect | Cause)P(Cause)$</p>
+<p> 其中的 $P(Cause) P (Effect)$  二者都属于先验概率, $\alpha$ 是让  $P(Effect | Cause)$归一化的常数。</p>
+<ul>
+<li>朴素贝叶斯</li>
+</ul>
+<p>$P(Cause, Effect_1, Effect_2, Effect_3….Effect_n) = P(Cause) \prod_n P(Effect_i | Cause)$</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-11-26T14:16:47.443Z" itemprop="dateUpdated">2018-11-26 22:16:47</time>
+</span><br>
+
+
+        
+        THX ! :) <a href="/2018/11/26/ch 13不确定性的量化/" target="_blank" rel="external">https://joshuaqyh.github.io/2018/11/26/ch 13不确定性的量化/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/人工智能，贝叶斯网络/">人工智能，贝叶斯网络</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/11/26/ch 13不确定性的量化/&title=《贝叶斯网络基础知识》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/11/26/ch 13不确定性的量化/&title=《贝叶斯网络基础知识》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/11/26/ch 13不确定性的量化/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《贝叶斯网络基础知识》 — KnowMyself&url=https://joshuaqyh.github.io/2018/11/26/ch 13不确定性的量化/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/11/26/ch 13不确定性的量化/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/11/26/ch15 时间上的概率推理/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">基于时间的概率推理</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/10/22/markdown-数学公式表示大集合/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">markdown 数学公式表示大集合</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/11/26/ch 13不确定性的量化/&title=《贝叶斯网络基础知识》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/11/26/ch 13不确定性的量化/&title=《贝叶斯网络基础知识》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/11/26/ch 13不确定性的量化/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《贝叶斯网络基础知识》 — KnowMyself&url=https://joshuaqyh.github.io/2018/11/26/ch 13不确定性的量化/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/11/26/ch 13不确定性的量化/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACt0lEQVR42u3a0W7cMAwEwPz/T7dAnwqkvuySUnIFxk8HX2JrFEBkSH58xNevP9fTnc+f/76SJ3z+3WQNxy48PDy80dKfrteA5E4Cy1eYrxkPDw/vNu/1Qfx6QbPt2IefKHjg4eHh/SivDQDtRiRvx8PDw/u/eJsw8PotSQDAw8PDezdeUoyYlRXywu4mIB2oteDh4eHFvLYB9g6fL/b38PDw8BZd9fbYbYcDZoGhWCceHh7eBV5SLDh76iapefJtETDw8PDwjvL2LasbA1ttkHj8LTw8PLwLvLaxtBkayMsceZCIwhseHh7eUV5ePM3b/3mrLE+7h2vDw8PDu8A71YbPy7v5WEAS045NRuDh4eGVvPyheRFhliK34adoreHh4eFd4LWjAO3x3Yai/bbi4eHh3eC1jfzZcEBbzmjv4OHh4X0/r23hJ4ns7Glt2l0UIPDw8PCO8mat+pY9a4/NihSPcQ8PDw/vEC8v2s4GBdokezZS8I87eHh4eBd4SRl337afBYN8VUl5Ag8PD+8sbz9uNdvFttTbrgcPDw/vHm/W1E9KtG36u0nQowCDh4eHt+Ztxp7a9lUbQvbbh4eHh3eblzyibYOtGv9xGPiiSo2Hh4d3lDf8l75MkfNlzah1CQMPDw9vzcsbV+0iTrW+2tGBx/kIPDw8vEO89ljfD6G2A1sHGmZ4eHh4R3ntsNQsnORttnzYKwkeeHh4ePd4berctr72affwwsPDwzvKmx3QeWq7SY7zo//xD4OHh4d3gTc79GcvzlP22RDYKpDg4eHhlbxNMGiXO3t7wv6i9YWHh4d3gdcGg/znZ6NUm5oDHh4e3rvx8jGCNtjs+/54eHh478ZL7mzYSdWk3iY8PDy8a7zkEE++zYcJkrLFt5Zx8fDw8K41wJLgkTfM9q2vA0g8PDy8lPcbDj1Uua55UvcAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
