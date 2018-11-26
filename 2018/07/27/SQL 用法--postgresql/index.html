@@ -1,95 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
 
- <!DOCTYPE HTML>
-<html >
-<head>
-  <meta charset="UTF-8">
-  
-    <title>SQL用法总结 | KnowMyself</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
-    <meta name="author" content="Qiuyihao">
+
     
-    <meta name="description" content="##SQL 用法–postgresql
-[TOC]
-运算符https://www.postgresql.org/docs/9.1/static/functions-geometry.html
-官方链接最全。
-表格操作建表12345678CREATE TABLE users (    user_id ">
+
+
+
+    <meta charset="utf-8">
     
     
     
     
+    <title>SQL用法总结 | KnowMyself | Code and life</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <link rel="icon" href="/img/favicon.ico">
+    <meta name="theme-color" content="#3F51B5">
     
     
-    <link rel="apple-touch-icon" href="/img/pacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    <meta name="keywords" content="postgresql">
+    <meta name="description" content="##SQL 用法–postgresql [TOC] 运算符https://www.postgresql.org/docs/9.1/static/functions-geometry.html 官方链接最全。 表格操作建表12345678CREATE TABLE users (    user_id INT AUTO_INCREMENT PRIMARY KEY, //声明主键    username">
+<meta name="keywords" content="postgresql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SQL用法总结">
+<meta property="og:url" content="https://joshuaqyh.github.io/2018/07/27/SQL 用法--postgresql/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="##SQL 用法–postgresql [TOC] 运算符https://www.postgresql.org/docs/9.1/static/functions-geometry.html 官方链接最全。 表格操作建表12345678CREATE TABLE users (    user_id INT AUTO_INCREMENT PRIMARY KEY, //声明主键    username">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-07-27T15:30:15.693Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SQL用法总结">
+<meta name="twitter:description" content="##SQL 用法–postgresql [TOC] 运算符https://www.postgresql.org/docs/9.1/static/functions-geometry.html 官方链接最全。 表格操作建表12345678CREATE TABLE users (    user_id INT AUTO_INCREMENT PRIMARY KEY, //声明主键    username">
     
-    <link rel="stylesheet" href="/css/style.css">
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
 </head>
 
-  <body>
-    <header>
-      <div>
-		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.svg" alt="KnowMyself" title="KnowMyself"/></a>
-			</div>
-			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="KnowMyself">KnowMyself</a></h1>
-				<h2 class="blog-motto">Code and life</h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					
-						<li><a href="/">Home</a></li>
-					
-						<li><a href="/archives">Archives</a></li>
-					
-					<li>
-					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
-						<input type="hidden" name="q" value="site:joshuaqyh.github.io">
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
-</div>
+<body>
+    <div id="loading" class="active"></div>
 
-    </header>
-    <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2018/07/27/SQL 用法--postgresql/" title="SQL用法总结" itemprop="url">SQL用法总结</a>
-  </h1>
-  <p class="article-author">By
-    
-      <a href="https://joshuaqyh.github.io" title="Qiuyihao">Qiuyihao</a>
-    </p>
-  <p class="article-time">
-    <time datetime="2018-07-27T15:28:32.663Z" itemprop="datePublished">2018-07-27</time>
-    Updated:<time datetime="2018-07-27T15:30:15.693Z" itemprop="dateModified">2018-07-27</time>
-    
-  </p>
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank">
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom">
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">SQL用法总结</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
 </header>
-	<div class="article-content">
-		
-		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		<ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#运算符"><span class="toc-number">1.</span> <span class="toc-text">运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#表格操作"><span class="toc-number">1.1.</span> <span class="toc-text">表格操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#建表"><span class="toc-number">1.1.1.</span> <span class="toc-text">建表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#改表"><span class="toc-number">1.1.2.</span> <span class="toc-text">改表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#删表"><span class="toc-number">1.1.3.</span> <span class="toc-text">删表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表的连接"><span class="toc-number">2.</span> <span class="toc-text">表的连接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#内连接–INNER-JOIN"><span class="toc-number">2.1.</span> <span class="toc-text">内连接–INNER JOIN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#全连接–FUll-OUTER-JOIN"><span class="toc-number">2.2.</span> <span class="toc-text">全连接–FUll OUTER JOIN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#左连接–LEFT-JOIN"><span class="toc-number">2.3.</span> <span class="toc-text">左连接–LEFT JOIN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#右连接–RIGHT-JOIN"><span class="toc-number">2.4.</span> <span class="toc-text">右连接–RIGHT JOIN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#交叉连接–CROSS-JOIN"><span class="toc-number">2.5.</span> <span class="toc-text">交叉连接–CROSS JOIN</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建索引"><span class="toc-number">3.</span> <span class="toc-text">创建索引</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建b-tree索引"><span class="toc-number">3.1.</span> <span class="toc-text">创建b_tree索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建hash索引"><span class="toc-number">3.2.</span> <span class="toc-text">创建hash索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用GiST索引"><span class="toc-number">3.3.</span> <span class="toc-text">使用GiST索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用GIN索引"><span class="toc-number">3.4.</span> <span class="toc-text">使用GIN索引</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析效率-explain"><span class="toc-number">4.</span> <span class="toc-text">分析效率 explain</span></a></li></ol>
-		</div>
-		
-		<p>##SQL 用法–postgresql</p>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">SQL用法总结</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-27T15:28:32.663Z" itemprop="datePublished" class="page-time">
+  2018-07-27
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#运算符"><span class="post-toc-number">1.</span> <span class="post-toc-text">运算符</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#表格操作"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">表格操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#建表"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">建表</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#改表"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">改表</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#删表"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">删表</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#表的连接"><span class="post-toc-number">2.</span> <span class="post-toc-text">表的连接</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#内连接–INNER-JOIN"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">内连接–INNER JOIN</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#全连接–FUll-OUTER-JOIN"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">全连接–FUll OUTER JOIN</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#左连接–LEFT-JOIN"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">左连接–LEFT JOIN</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#右连接–RIGHT-JOIN"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">右连接–RIGHT JOIN</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#交叉连接–CROSS-JOIN"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">交叉连接–CROSS JOIN</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建索引"><span class="post-toc-number">3.</span> <span class="post-toc-text">创建索引</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建b-tree索引"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">创建b_tree索引</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建hash索引"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">创建hash索引</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用GiST索引"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">使用GiST索引</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#使用GIN索引"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">使用GIN索引</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分析效率-explain"><span class="post-toc-number">4.</span> <span class="post-toc-text">分析效率 explain</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-SQL 用法--postgresql" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">SQL用法总结</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-27 23:28:32" datetime="2018-07-27T15:28:32.663Z" itemprop="datePublished">2018-07-27</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>##SQL 用法–postgresql</p>
 <p>[TOC]</p>
 <h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><p><a href="https://www.postgresql.org/docs/9.1/static/functions-geometry.html" target="_blank" rel="noopener">https://www.postgresql.org/docs/9.1/static/functions-geometry.html</a></p>
 <p>官方链接最全。</p>
@@ -257,248 +363,295 @@
 <h3 id="分析效率-explain"><a href="#分析效率-explain" class="headerlink" title="分析效率 explain"></a>分析效率 explain</h3><p>将explain(analyze)置于语句的开始，结果将返回语句执行效率有关的数值。</p>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">explain</span> （<span class="keyword">analyze</span>） <span class="keyword">Select</span> s_name, s_address, s_nationkey </span><br><span class="line"><span class="keyword">From</span> table_a </span><br><span class="line"><span class="keyword">Where</span> s_suppkey = <span class="number">717</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">explain</span> （<span class="keyword">analyze</span>） <span class="keyword">Select</span> s_name, s_address, s_nationkey </span><br><span class="line"><span class="keyword">From</span> b_tree_a </span><br><span class="line"><span class="keyword">Where</span> s_suppkey = <span class="number">717</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">explain</span> （<span class="keyword">analyze</span>） <span class="keyword">Select</span> s_name, s_address, s_nationkey </span><br><span class="line"><span class="keyword">From</span> hash_a </span><br><span class="line"><span class="keyword">Where</span> s_suppkey = <span class="number">717</span>;</span><br></pre></td></tr></table></figure>
 <figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br></pre></td><td class="code"><pre><span class="line">Click To Expand Code</span><br><span class="line">PostgreSQL</span><br><span class="line">The following script creates the HR sample database structure in PostgreSQL.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> regions (</span><br><span class="line">	region_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">	region_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">25</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> countries (</span><br><span class="line">	country_id <span class="built_in">CHARACTER</span> (<span class="number">2</span>) PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">	country_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">40</span>),</span><br><span class="line">	region_id <span class="built_in">INTEGER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	FOREIGN <span class="keyword">KEY</span> (region_id) <span class="keyword">REFERENCES</span> regions (region_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> locations (</span><br><span class="line">	location_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">	street_address <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">40</span>),</span><br><span class="line">	postal_code <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">12</span>),</span><br><span class="line">	city <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">30</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	state_province <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">25</span>),</span><br><span class="line">	country_id <span class="built_in">CHARACTER</span> (<span class="number">2</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	FOREIGN <span class="keyword">KEY</span> (country_id) <span class="keyword">REFERENCES</span> countries (country_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> departments (</span><br><span class="line">	department_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">	department_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">30</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	location_id <span class="built_in">INTEGER</span>,</span><br><span class="line">	FOREIGN <span class="keyword">KEY</span> (location_id) <span class="keyword">REFERENCES</span> locations (location_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> jobs (</span><br><span class="line">	job_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">	job_title <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">35</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	min_salary <span class="built_in">NUMERIC</span> (<span class="number">8</span>, <span class="number">2</span>),</span><br><span class="line">	max_salary <span class="built_in">NUMERIC</span> (<span class="number">8</span>, <span class="number">2</span>)</span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> employees (</span><br><span class="line">	employee_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">	first_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">20</span>),</span><br><span class="line">	last_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">25</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	email <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">100</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	phone_number <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">20</span>),</span><br><span class="line">	hire_date <span class="built_in">DATE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	job_id <span class="built_in">INTEGER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	salary <span class="built_in">NUMERIC</span> (<span class="number">8</span>, <span class="number">2</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	manager_id <span class="built_in">INTEGER</span>,</span><br><span class="line">	department_id <span class="built_in">INTEGER</span>,</span><br><span class="line">	FOREIGN <span class="keyword">KEY</span> (job_id) <span class="keyword">REFERENCES</span> jobs (job_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span>,</span><br><span class="line">	FOREIGN <span class="keyword">KEY</span> (department_id) <span class="keyword">REFERENCES</span> departments (department_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span>,</span><br><span class="line">	FOREIGN <span class="keyword">KEY</span> (manager_id) <span class="keyword">REFERENCES</span> employees (employee_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> dependents (</span><br><span class="line">	dependent_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">	first_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">50</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	last_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">50</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	relationship <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">25</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	employee_id <span class="built_in">INTEGER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">	FOREIGN <span class="keyword">KEY</span> (employee_id) <span class="keyword">REFERENCES</span> employees (employee_id) <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span></span><br><span class="line">);</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> regions (</span><br><span class="line">    region_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">    region_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">25</span>)</span><br><span class="line">);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> countries (</span><br><span class="line">    country_id <span class="built_in">CHARACTER</span> (<span class="number">2</span>) PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">    country_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">40</span>),</span><br><span class="line">    region_id <span class="built_in">INTEGER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    FOREIGN <span class="keyword">KEY</span> (region_id) <span class="keyword">REFERENCES</span> regions (region_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span></span><br><span class="line">);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> locations (</span><br><span class="line">    location_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">    street_address <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">40</span>),</span><br><span class="line">    postal_code <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">12</span>),</span><br><span class="line">    city <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">30</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    state_province <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">25</span>),</span><br><span class="line">    country_id <span class="built_in">CHARACTER</span> (<span class="number">2</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    FOREIGN <span class="keyword">KEY</span> (country_id) <span class="keyword">REFERENCES</span> countries (country_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span></span><br><span class="line">);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> departments (</span><br><span class="line">    department_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">    department_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">30</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    location_id <span class="built_in">INTEGER</span>,</span><br><span class="line">    FOREIGN <span class="keyword">KEY</span> (location_id) <span class="keyword">REFERENCES</span> locations (location_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span></span><br><span class="line">);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> jobs (</span><br><span class="line">    job_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">    job_title <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">35</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    min_salary <span class="built_in">NUMERIC</span> (<span class="number">8</span>, <span class="number">2</span>),</span><br><span class="line">    max_salary <span class="built_in">NUMERIC</span> (<span class="number">8</span>, <span class="number">2</span>)</span><br><span class="line">);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> employees (</span><br><span class="line">    employee_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">    first_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">20</span>),</span><br><span class="line">    last_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">25</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    email <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">100</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    phone_number <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">20</span>),</span><br><span class="line">    hire_date <span class="built_in">DATE</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    job_id <span class="built_in">INTEGER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    salary <span class="built_in">NUMERIC</span> (<span class="number">8</span>, <span class="number">2</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    manager_id <span class="built_in">INTEGER</span>,</span><br><span class="line">    department_id <span class="built_in">INTEGER</span>,</span><br><span class="line">    FOREIGN <span class="keyword">KEY</span> (job_id) <span class="keyword">REFERENCES</span> jobs (job_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span>,</span><br><span class="line">    FOREIGN <span class="keyword">KEY</span> (department_id) <span class="keyword">REFERENCES</span> departments (department_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span>,</span><br><span class="line">    FOREIGN <span class="keyword">KEY</span> (manager_id) <span class="keyword">REFERENCES</span> employees (employee_id) <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span></span><br><span class="line">);</span><br><span class="line"> </span><br><span class="line"><span class="keyword">CREATE</span> <span class="keyword">TABLE</span> dependents (</span><br><span class="line">    dependent_id <span class="built_in">SERIAL</span> PRIMARY <span class="keyword">KEY</span>,</span><br><span class="line">    first_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">50</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    last_name <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">50</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    relationship <span class="built_in">CHARACTER</span> <span class="built_in">VARYING</span> (<span class="number">25</span>) <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    employee_id <span class="built_in">INTEGER</span> <span class="keyword">NOT</span> <span class="literal">NULL</span>,</span><br><span class="line">    FOREIGN <span class="keyword">KEY</span> (employee_id) <span class="keyword">REFERENCES</span> employees (employee_id) <span class="keyword">ON</span> <span class="keyword">DELETE</span> <span class="keyword">CASCADE</span> <span class="keyword">ON</span> <span class="keyword">UPDATE</span> <span class="keyword">CASCADE</span></span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-07-27T15:30:15.693Z" itemprop="dateUpdated">2018-07-27 23:30:15</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/07/27/SQL 用法--postgresql/" target="_blank" rel="external">https://joshuaqyh.github.io/2018/07/27/SQL 用法--postgresql/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/postgresql/">postgresql</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/07/27/SQL 用法--postgresql/&title=《SQL用法总结》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/07/27/SQL 用法--postgresql/&title=《SQL用法总结》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/07/27/SQL 用法--postgresql/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SQL用法总结》 — KnowMyself&url=https://joshuaqyh.github.io/2018/07/27/SQL 用法--postgresql/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/07/27/SQL 用法--postgresql/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
   
-	</div>
-		<footer class="article-footer clearfix">
-
-  <div class="article-tags">
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/07/27/Verilog设计初步/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Verilog 设计初步</h4>
+      </a>
+    </div>
   
-  <span></span> <a href="/tags/postgresql/">postgresql</a>
-  </div>
 
-
-
-
-<div class="article-share" id="share">
-
-  <div data-url="https://joshuaqyh.github.io/2018/07/27/SQL 用法--postgresql/" data-title="SQL用法总结 | KnowMyself" data-tsina="" class="share clearfix">
-  </div>
-
-</div>
-</footer>   	       
-	</article>
-	
-<nav class="article-nav clearfix">
- 
- <div class="prev" >
- <a href="/2018/07/27/Verilog设计初步/" title="Verilog 设计初步">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  Verilog 设计初步</span>
-</a>
-</div>
-
-
-<div class="next">
-<a href="/2018/07/27/Q&A_cocos2d/"  title="cocos2d学习丨坑和解决办法">
- <strong>NEXT:</strong><br/> 
- <span>cocos2d学习丨坑和解决办法
-</span>
-</a>
-</div>
-
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/27/Q&A_cocos2d/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">cocos2d学习丨坑和解决办法</h4>
+      </a>
+    </div>
+  
 </nav>
 
-	
-</div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
-  <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#运算符"><span class="toc-number">1.</span> <span class="toc-text">运算符</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#表格操作"><span class="toc-number">1.1.</span> <span class="toc-text">表格操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#建表"><span class="toc-number">1.1.1.</span> <span class="toc-text">建表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#改表"><span class="toc-number">1.1.2.</span> <span class="toc-text">改表</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#删表"><span class="toc-number">1.1.3.</span> <span class="toc-text">删表</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#表的连接"><span class="toc-number">2.</span> <span class="toc-text">表的连接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#内连接–INNER-JOIN"><span class="toc-number">2.1.</span> <span class="toc-text">内连接–INNER JOIN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#全连接–FUll-OUTER-JOIN"><span class="toc-number">2.2.</span> <span class="toc-text">全连接–FUll OUTER JOIN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#左连接–LEFT-JOIN"><span class="toc-number">2.3.</span> <span class="toc-text">左连接–LEFT JOIN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#右连接–RIGHT-JOIN"><span class="toc-number">2.4.</span> <span class="toc-text">右连接–RIGHT JOIN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#交叉连接–CROSS-JOIN"><span class="toc-number">2.5.</span> <span class="toc-text">交叉连接–CROSS JOIN</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#创建索引"><span class="toc-number">3.</span> <span class="toc-text">创建索引</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#创建b-tree索引"><span class="toc-number">3.1.</span> <span class="toc-text">创建b_tree索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#创建hash索引"><span class="toc-number">3.2.</span> <span class="toc-text">创建hash索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用GiST索引"><span class="toc-number">3.3.</span> <span class="toc-text">使用GiST索引</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#使用GIN索引"><span class="toc-number">3.4.</span> <span class="toc-text">使用GIN索引</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#分析效率-explain"><span class="toc-number">4.</span> <span class="toc-text">分析效率 explain</span></a></li></ol>
-  </div>
 
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
-<aside class="clearfix">
+    
 
-  
 
-  
-<div class="tagslist">
-	<p class="asidetitle">Tags</p>
-		<ul class="clearfix">
-		
-			<li><a href="/tags/cocos2d/" title="cocos2d">cocos2d<sup>1</sup></a></li>
-		
-			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
-		
-			<li><a href="/tags/js-cocos2d-x/" title="js, cocos2d.x">js, cocos2d.x<sup>1</sup></a></li>
-		
-			<li><a href="/tags/love/" title="love">love<sup>1</sup></a></li>
-		
-			<li><a href="/tags/markdown/" title="markdown">markdown<sup>1</sup></a></li>
-		
-			<li><a href="/tags/postgresql/" title="postgresql">postgresql<sup>1</sup></a></li>
-		
-			<li><a href="/tags/verilog-计组实验/" title="verilog 计组实验">verilog 计组实验<sup>1</sup></a></li>
-		
-			<li><a href="/tags/互联网思维/" title="互联网思维">互联网思维<sup>1</sup></a></li>
-		
-			<li><a href="/tags/区块链/" title="区块链">区块链<sup>1</sup></a></li>
-		
-			<li><a href="/tags/操作系统/" title="操作系统">操作系统<sup>2</sup></a></li>
-		
-			<li><a href="/tags/数据库理论/" title="数据库理论">数据库理论<sup>1</sup></a></li>
-		
-			<li><a href="/tags/机器学习/" title="机器学习">机器学习<sup>1</sup></a></li>
-		
-			<li><a href="/tags/神经网络/" title="神经网络">神经网络<sup>1</sup></a></li>
-		
-			<li><a href="/tags/经济学，毛概/" title="经济学，毛概">经济学，毛概<sup>1</sup></a></li>
-		
-			<li><a href="/tags/编程软件-vim-java/" title="编程软件 vim java">编程软件 vim java<sup>1</sup></a></li>
-		
-			<li><a href="/tags/计组实验-CPU/" title="计组实验 CPU">计组实验 CPU<sup>1</sup></a></li>
-		
-			<li><a href="/tags/计组理论-CPU/" title="计组理论 CPU">计组理论 CPU<sup>1</sup></a></li>
-		
-		</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
 </div>
 
-
-  <div class="rsspart">
-	<a href="" target="_blank" title="rss">RSS</a>
-</div>
-
-</aside>
-</div>
-    </div>
-    <footer><div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-	
-	<div class="social-font clearfix">
-		
-		
-		
-		
-		
-	</div>
-		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2018 
-		
-		<a href="https://joshuaqyh.github.io" target="_blank" title="Qiuyihao">Qiuyihao</a>
-		
-		</p>
-</div>
-</footer>
-    <script src="/js/jquery-2.1.0.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else
-    {
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
-      
-      $('#toc.toc-aside').css('display', 'none');
+        <footer class="footer">
+    <div class="top">
         
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/07/27/SQL 用法--postgresql/&title=《SQL用法总结》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/07/27/SQL 用法--postgresql/&title=《SQL用法总结》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/07/27/SQL 用法--postgresql/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《SQL用法总结》 — KnowMyself&url=https://joshuaqyh.github.io/2018/07/27/SQL 用法--postgresql/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/07/27/SQL 用法--postgresql/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3aQW7DMAwEwP7/0+m1QFt3l3IDWBqdgkSQNT4wIqmPj3i8voyv3/w2s13t+vvbBgYGxmMZr8vxfXPXM/PtXu8n3xsGBsY5jNlySaBMNpG8vj/2jIGBgRGEzpyXkDAwMDBmjDY4JiskMzEwMDDyJDYpkK28lDfl4hgYGA9k5FX393/+l/4GBgbGoxiv0bgX2QbZH/aDgYGxNaN9cHsQzFeYHU8xMDBOYMxaArMmwcpxsAi1GBgYxzDagJvMXG8qRP8YGBgYxzDa0Bm1GGNMezzFwMDYm9FuNC+63dUGyK9lYGBg7MpIimWzAllLnYXd6H8DAwNjC0ZyuSEPvusN0fx4ioGBcQ5jdudq6cHlQXB4NMTAwNiCsRKC8/S1vZYxu7SBgYGxN6Mt8beHwlmpLmkk1EtgYGA8kJE8eHZJIk9f21//6GxgYGBszUiSxiRxnTUA8iT511wcAwPjGMZKYrlSgJs1CTAwMDCuf00S2vULHHUSi4GBsR3jrq3kxbVZwrzUtsTAwHg4o209zhqc+d2tNlXGwMA4gdFu7oYLWwu8uj2AgYGxBeNVjhmv/T5JoaNOLAYGxhaM9nCWHBzz+w8rbVEMDIzTGLPyWR46Z1tsmwcYGBgnMGZFrlkYXU96o9ohBgbGkYwZLA+m7RwMDAyM/JCXz89LaXW5DQMD4wDGygXT69VmL6st8GFgYOzNmF2JmD2+fXAS6DEwMLZmfALfqdYsxarnNgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
     }
-  });
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
 });
 </script>
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      h  = $('article h2')
-      ah = $('article h2'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  if(ah.length==0){
-    t.css('display','none');
-  }else{
-    c.click(function(){
-      ta.css('display', 'block').addClass('fadeIn');
-    });
-    o.click(function(){
-      ta.css('display', 'none');
-    });
-    $(window).scroll(function(){
-      ta.css("top",Math.max(140,320-$(this).scrollTop()));
-    });
-  };
-});
-</script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina');
-  var html = [
-  '<a href="#" class="overlay" id="qrcode"></a>',
-  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
-  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
-  $('.article-share-qrcode').click(function(){
-    var imgSrc = $('#qrcode-pic').attr('data-src');
-    $('#qrcode-pic').attr('src', imgSrc);
-    $('#qrcode-pic').load(function(){
-        $('.qrcode strong').text(' ');
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
     });
-  });
-});     
+})();
 </script>
 
 
 
-
-
-
-  </body>
+</body>
 </html>

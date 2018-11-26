@@ -1,97 +1,203 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
 
- <!DOCTYPE HTML>
-<html >
-<head>
-  <meta charset="UTF-8">
-  
-    <title>计算机组成原理课堂笔记 | KnowMyself</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=3, minimum-scale=1">
     
-    <meta name="author" content="Qiuyihao">
+
     
-    <meta name="description" content="[TOC]
-CPU基础概念CPU功能： 指令控制，操作控制，时间控制，数据加工
-CPU控制方式：同步控制，异步控制，联合控制
-CPU指令周期：取值时间+执行时间
-CPU周期：机器周期，总线周期。
-CPU中断逻辑中断基础概念
-暂停当前程序的执行，转而去执行其他程序，执行完毕之后，重新恢复中断程序的执行">
+
+
+
+    <meta charset="utf-8">
     
     
     
     
+    <title>计算机组成原理课堂笔记 | KnowMyself | Code and life</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
-    <link rel="icon" href="/img/favicon.ico">
+    <meta name="theme-color" content="#3F51B5">
     
     
-    <link rel="apple-touch-icon" href="/img/pacman.jpg">
-    <link rel="apple-touch-icon-precomposed" href="/img/pacman.jpg">
+    <meta name="keywords" content="计组理论 CPU">
+    <meta name="description" content="[TOC] CPU基础概念CPU功能： 指令控制，操作控制，时间控制，数据加工 CPU控制方式：同步控制，异步控制，联合控制 CPU指令周期：取值时间+执行时间 CPU周期：机器周期，总线周期。 CPU中断逻辑中断基础概念 暂停当前程序的执行，转而去执行其他程序，执行完毕之后，重新恢复中断程序的执行   中断源： 人为设置的中断，程序性事故,  硬件故障，外部事件（比如断电）  中断分类：可屏蔽中">
+<meta name="keywords" content="计组理论 CPU">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机组成原理课堂笔记">
+<meta property="og:url" content="https://joshuaqyh.github.io/2018/07/27/第四章CPU--计组课堂笔记-01/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="[TOC] CPU基础概念CPU功能： 指令控制，操作控制，时间控制，数据加工 CPU控制方式：同步控制，异步控制，联合控制 CPU指令周期：取值时间+执行时间 CPU周期：机器周期，总线周期。 CPU中断逻辑中断基础概念 暂停当前程序的执行，转而去执行其他程序，执行完毕之后，重新恢复中断程序的执行   中断源： 人为设置的中断，程序性事故,  硬件故障，外部事件（比如断电）  中断分类：可屏蔽中">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://p8ekwajjb.bkt.clouddn.com/1526351012462.png">
+<meta property="og:updated_time" content="2018-07-27T15:31:39.065Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="计算机组成原理课堂笔记">
+<meta name="twitter:description" content="[TOC] CPU基础概念CPU功能： 指令控制，操作控制，时间控制，数据加工 CPU控制方式：同步控制，异步控制，联合控制 CPU指令周期：取值时间+执行时间 CPU周期：机器周期，总线周期。 CPU中断逻辑中断基础概念 暂停当前程序的执行，转而去执行其他程序，执行完毕之后，重新恢复中断程序的执行   中断源： 人为设置的中断，程序性事故,  硬件故障，外部事件（比如断电）  中断分类：可屏蔽中">
+<meta name="twitter:image" content="http://p8ekwajjb.bkt.clouddn.com/1526351012462.png">
     
-    <link rel="stylesheet" href="/css/style.css">
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
 </head>
 
-  <body>
-    <header>
-      <div>
-		
-			<div id="imglogo">
-				<a href="/"><img src="/img/logo.svg" alt="KnowMyself" title="KnowMyself"/></a>
-			</div>
-			
-			<div id="textlogo">
-				<h1 class="site-name"><a href="/" title="KnowMyself">KnowMyself</a></h1>
-				<h2 class="blog-motto">Code and life</h2>
-			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
-			</a></div>
-			<nav class="animated">
-				<ul>
-					
-						<li><a href="/">Home</a></li>
-					
-						<li><a href="/archives">Archives</a></li>
-					
-					<li>
-					
-					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
-						<label>Search</label>
-						<input type="text" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
-						<input type="hidden" name="q" value="site:joshuaqyh.github.io">
-					</form>
-					
-					</li>
-				</ul>
-			</nav>			
-</div>
+<body>
+    <div id="loading" class="active"></div>
 
-    </header>
-    <div id="container">
-      <div id="main" class="post" itemscope itemprop="blogPost">
-	<article itemprop="articleBody"> 
-		<header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2018/07/27/第四章CPU--计组课堂笔记-01/" title="计算机组成原理课堂笔记" itemprop="url">计算机组成原理课堂笔记</a>
-  </h1>
-  <p class="article-author">By
-    
-      <a href="https://joshuaqyh.github.io" title="Qiuyihao">Qiuyihao</a>
-    </p>
-  <p class="article-time">
-    <time datetime="2018-07-27T15:28:32.706Z" itemprop="datePublished">2018-07-27</time>
-    Updated:<time datetime="2018-07-27T15:31:39.065Z" itemprop="dateModified">2018-07-27</time>
-    
-  </p>
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:634206017@qq.com" title="634206017@qq.com" class="mail">634206017@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/yscoder" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="http://www.weibo.com/ysweb" target="_blank">
+                <i class="icon icon-lg icon-weibo"></i>
+                Weibo
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/custom">
+                <i class="icon icon-lg icon-link"></i>
+                测试
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">计算机组成原理课堂笔记</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
 </header>
-	<div class="article-content">
-		
-		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU基础概念"><span class="toc-number">1.</span> <span class="toc-text">CPU基础概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU中断逻辑"><span class="toc-number">2.</span> <span class="toc-text">CPU中断逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#中断基础概念"><span class="toc-number">2.0.1.</span> <span class="toc-text">中断基础概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#中断屏蔽技术"><span class="toc-number">2.0.2.</span> <span class="toc-text">中断屏蔽技术</span></a></li></ol></li></ol></li></ol>
-		</div>
-		
-		<p>[TOC]</p>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">计算机组成原理课堂笔记</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-27T15:28:32.706Z" itemprop="datePublished" class="page-time">
+  2018-07-27
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CPU基础概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">CPU基础概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#CPU中断逻辑"><span class="post-toc-number">2.</span> <span class="post-toc-text">CPU中断逻辑</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#中断基础概念"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">中断基础概念</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#中断屏蔽技术"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">中断屏蔽技术</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-第四章CPU--计组课堂笔记-01" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">计算机组成原理课堂笔记</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-27 23:28:32" datetime="2018-07-27T15:28:32.706Z" itemprop="datePublished">2018-07-27</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>[TOC]</p>
 <h2 id="CPU基础概念"><a href="#CPU基础概念" class="headerlink" title="CPU基础概念"></a>CPU基础概念</h2><p>CPU功能： 指令控制，操作控制，时间控制，数据加工</p>
 <p>CPU控制方式：同步控制，异步控制，联合控制</p>
 <p>CPU指令周期：取值时间+执行时间</p>
@@ -174,248 +280,295 @@ CPU中断逻辑中断基础概念
 <li>外部事件</li>
 </ul>
 <p><img src="http://p8ekwajjb.bkt.clouddn.com/1526351012462.png" alt="52635101246"></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-07-27T15:31:39.065Z" itemprop="dateUpdated">2018-07-27 23:31:39</time>
+</span><br>
+
+
+        
+        这里可以写作者留言，标签和 hexo 中所有变量及辅助函数等均可调用，示例：<a href="/2018/07/27/第四章CPU--计组课堂笔记-01/" target="_blank" rel="external">https://joshuaqyh.github.io/2018/07/27/第四章CPU--计组课堂笔记-01/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计组理论-CPU/">计组理论 CPU</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/07/27/第四章CPU--计组课堂笔记-01/&title=《计算机组成原理课堂笔记》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/07/27/第四章CPU--计组课堂笔记-01/&title=《计算机组成原理课堂笔记》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/07/27/第四章CPU--计组课堂笔记-01/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《计算机组成原理课堂笔记》 — KnowMyself&url=https://joshuaqyh.github.io/2018/07/27/第四章CPU--计组课堂笔记-01/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/07/27/第四章CPU--计组课堂笔记-01/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
   
-	</div>
-		<footer class="article-footer clearfix">
-
-  <div class="article-tags">
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/07/27/关系数据库设计理论/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">关系数据库设计理论简介</h4>
+      </a>
+    </div>
   
-  <span></span> <a href="/tags/计组理论-CPU/">计组理论 CPU</a>
-  </div>
 
-
-
-
-<div class="article-share" id="share">
-
-  <div data-url="https://joshuaqyh.github.io/2018/07/27/第四章CPU--计组课堂笔记-01/" data-title="计算机组成原理课堂笔记 | KnowMyself" data-tsina="" class="share clearfix">
-  </div>
-
-</div>
-</footer>   	       
-	</article>
-	
-<nav class="article-nav clearfix">
- 
- <div class="prev" >
- <a href="/2018/07/27/关系数据库设计理论/" title="关系数据库设计理论简介">
-  <strong>PREVIOUS:</strong><br/>
-  <span>
-  关系数据库设计理论简介</span>
-</a>
-</div>
-
-
-<div class="next">
-<a href="/2018/07/27/单周期CPU设计笔记和总结/"  title="单周期CPU设计笔记和总结">
- <strong>NEXT:</strong><br/> 
- <span>单周期CPU设计笔记和总结
-</span>
-</a>
-</div>
-
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/27/单周期CPU设计笔记和总结/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">单周期CPU设计笔记和总结</h4>
+      </a>
+    </div>
+  
 </nav>
 
-	
-</div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
-  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU基础概念"><span class="toc-number">1.</span> <span class="toc-text">CPU基础概念</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#CPU中断逻辑"><span class="toc-number">2.</span> <span class="toc-text">CPU中断逻辑</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#中断基础概念"><span class="toc-number">2.0.1.</span> <span class="toc-text">中断基础概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#中断屏蔽技术"><span class="toc-number">2.0.2.</span> <span class="toc-text">中断屏蔽技术</span></a></li></ol></li></ol></li></ol>
-  </div>
 
-<div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
-<aside class="clearfix">
+    
 
-  
 
-  
-<div class="tagslist">
-	<p class="asidetitle">Tags</p>
-		<ul class="clearfix">
-		
-			<li><a href="/tags/cocos2d/" title="cocos2d">cocos2d<sup>1</sup></a></li>
-		
-			<li><a href="/tags/git/" title="git">git<sup>1</sup></a></li>
-		
-			<li><a href="/tags/js-cocos2d-x/" title="js, cocos2d.x">js, cocos2d.x<sup>1</sup></a></li>
-		
-			<li><a href="/tags/love/" title="love">love<sup>1</sup></a></li>
-		
-			<li><a href="/tags/markdown/" title="markdown">markdown<sup>1</sup></a></li>
-		
-			<li><a href="/tags/postgresql/" title="postgresql">postgresql<sup>1</sup></a></li>
-		
-			<li><a href="/tags/verilog-计组实验/" title="verilog 计组实验">verilog 计组实验<sup>1</sup></a></li>
-		
-			<li><a href="/tags/互联网思维/" title="互联网思维">互联网思维<sup>1</sup></a></li>
-		
-			<li><a href="/tags/区块链/" title="区块链">区块链<sup>1</sup></a></li>
-		
-			<li><a href="/tags/操作系统/" title="操作系统">操作系统<sup>2</sup></a></li>
-		
-			<li><a href="/tags/数据库理论/" title="数据库理论">数据库理论<sup>1</sup></a></li>
-		
-			<li><a href="/tags/机器学习/" title="机器学习">机器学习<sup>1</sup></a></li>
-		
-			<li><a href="/tags/神经网络/" title="神经网络">神经网络<sup>1</sup></a></li>
-		
-			<li><a href="/tags/经济学，毛概/" title="经济学，毛概">经济学，毛概<sup>1</sup></a></li>
-		
-			<li><a href="/tags/编程软件-vim-java/" title="编程软件 vim java">编程软件 vim java<sup>1</sup></a></li>
-		
-			<li><a href="/tags/计组实验-CPU/" title="计组实验 CPU">计组实验 CPU<sup>1</sup></a></li>
-		
-			<li><a href="/tags/计组理论-CPU/" title="计组理论 CPU">计组理论 CPU<sup>1</sup></a></li>
-		
-		</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
 </div>
 
-
-  <div class="rsspart">
-	<a href="" target="_blank" title="rss">RSS</a>
-</div>
-
-</aside>
-</div>
-    </div>
-    <footer><div id="footer" >
-	
-	<div class="line">
-		<span></span>
-		<div class="author"></div>
-	</div>
-	
-	
-	<div class="social-font clearfix">
-		
-		
-		
-		
-		
-	</div>
-		<p class="copyright">Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/A-limon/pacman" target="_blank" title="Pacman">Pacman</a> © 2018 
-		
-		<a href="https://joshuaqyh.github.io" target="_blank" title="Qiuyihao">Qiuyihao</a>
-		
-		</p>
-</div>
-</footer>
-    <script src="/js/jquery-2.1.0.min.js"></script>
-<script type="text/javascript">
-$(document).ready(function(){ 
-  $('.navbar').click(function(){
-    $('header nav').toggleClass('shownav');
-  });
-  var myWidth = 0;
-  function getSize(){
-    if( typeof( window.innerWidth ) == 'number' ) {
-      myWidth = window.innerWidth;
-    } else if( document.documentElement && document.documentElement.clientWidth) {
-      myWidth = document.documentElement.clientWidth;
-    };
-  };
-  var m = $('#main'),
-      a = $('#asidepart'),
-      c = $('.closeaside'),
-      o = $('.openaside');
-  $(window).resize(function(){
-    getSize(); 
-    if (myWidth >= 1024) {
-      $('header nav').removeClass('shownav');
-    }else
-    {
-      m.removeClass('moveMain');
-      a.css('display', 'block').removeClass('fadeOut');
-      o.css('display', 'none');
-      
-      $('#toc.toc-aside').css('display', 'none');
+        <footer class="footer">
+    <div class="top">
         
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2015 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/07/27/第四章CPU--计组课堂笔记-01/&title=《计算机组成原理课堂笔记》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/07/27/第四章CPU--计组课堂笔记-01/&title=《计算机组成原理课堂笔记》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/07/27/第四章CPU--计组课堂笔记-01/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《计算机组成原理课堂笔记》 — KnowMyself&url=https://joshuaqyh.github.io/2018/07/27/第四章CPU--计组课堂笔记-01/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/07/27/第四章CPU--计组课堂笔记-01/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACq0lEQVR42u3aQY7bMBAEwP3/p5PrAonl7hly4wClkyHLMksHzqjJr6/4+PXt+H7m+fOrb5/PPP/268aBh4eHtxj6n8fzoJ+vf3Wmvf75Mb26Jx4eHt5tXjIpv7rF8x2eH02Cz4sEHh4e3ufzkgElxSa/Bg8PD+//4rXt7Kac5FEIHh4e3r/izcKCNk3dXHM9a8HDw8OLee3gPuHzlfU9PDw8vPWqelsqZlsB2v8qxomHh4d3gddOyi01b5TzCLhu9/Hw8PCO8pLX+Nmi171eNwl8oxQZDw8Pb8E7FUbMSLMisVrZw8PDw1vwNrAkYsgHMQs1NsUJDw8Pb8bL2+W2UZ6tUu2jiuHbAB4eHt6C1+LziXuz3DW7Px4eHt5tXt6D76PbZIGt/dVfzuDh4eFd4G0a6zznmC2hzTYuHHtvwMPDw3vfo0YLXfnftH+cB8T5AhseHh7ebV4+7bbN98+HEYUeDw8Pr+QlTXNdWw4tre1beTw8PLwbvHxAmw1Ysy1WG1KduODh4eGNeO2x31LQPtx66wAeHh7eBd4sqG0XpdoQIW++3/wKDw8P7wKvjQByWNum58HH7G54eHh4p3htFJu/8M+W+ds2+s3jxsPDw7vAawPT2URf1KU48C0eKB4eHt5RXv56vy8GSWSQxLvFY8LDw8O7wJsFuPkWgbMT/XAMeHh4eEd57capBJxM+jNSC8bDw8O7wWsBOaaNhvOCkRc2PDw8vBu8X+WxLwP59flmrDclAQ8PD+8oLz9mN20Xxk611zUVDw8Pr/w2j3Hz7VB72KYw4OHh4f0Mrw1z81g2b9CHmwPw8PDwPpj3PE2fihjakoCHh4f3yby8YGyGOMNHFQMPDw/vKG82uH1avFq4Slp8PDw8vAu82av+LPDNo4d9mcHDw8O7wPsN0HD5Pp8Ve1MAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
     }
-  });
-  c.click(function(){
-    a.addClass('fadeOut').css('display', 'none');
-    o.css('display', 'block').addClass('fadeIn');
-    m.addClass('moveMain');
-  });
-  o.click(function(){
-    o.css('display', 'none').removeClass('beforeFadeIn');
-    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
-    m.removeClass('moveMain');
-  });
-  $(window).scroll(function(){
-    o.css("top",Math.max(80,260-$(this).scrollTop()));
-  });
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
 });
 </script>
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var ai = $('.article-content>iframe'),
-      ae = $('.article-content>embed'),
-      t  = $('#toc'),
-      h  = $('article h2')
-      ah = $('article h2'),
-      ta = $('#toc.toc-aside'),
-      o  = $('.openaside'),
-      c  = $('.closeaside');
-  if(ai.length>0){
-    ai.wrap('<div class="video-container" />');
-  };
-  if(ae.length>0){
-   ae.wrap('<div class="video-container" />');
-  };
-  if(ah.length==0){
-    t.css('display','none');
-  }else{
-    c.click(function(){
-      ta.css('display', 'block').addClass('fadeIn');
-    });
-    o.click(function(){
-      ta.css('display', 'none');
-    });
-    $(window).scroll(function(){
-      ta.css("top",Math.max(140,320-$(this).scrollTop()));
-    });
-  };
-});
-</script>
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
 
 
-<script type="text/javascript">
-$(document).ready(function(){ 
-  var $this = $('.share'),
-      url = $this.attr('data-url'),
-      encodedUrl = encodeURIComponent(url),
-      title = $this.attr('data-title'),
-      tsina = $this.attr('data-tsina');
-  var html = [
-  '<a href="#" class="overlay" id="qrcode"></a>',
-  '<div class="qrcode clearfix"><span>扫描二维码分享到微信朋友圈</span><a class="qrclose" href="#share"></a><strong>Loading...Please wait</strong><img id="qrcode-pic" data-src="http://s.jiathis.com/qrcode.php?url=' + encodedUrl + '"/></div>',
-  '<a href="#textlogo" class="article-back-to-top" title="Top"></a>',
-  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
-  '<a href="#qrcode" class="article-share-qrcode" title="QRcode"></a>',
-  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
-  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="Weibo"></a>',
-  '<span title="Share to"></span>'
-  ].join('');
-  $this.append(html);
-  $('.article-share-qrcode').click(function(){
-    var imgSrc = $('#qrcode-pic').attr('data-src');
-    $('#qrcode-pic').attr('src', imgSrc);
-    $('#qrcode-pic').load(function(){
-        $('.qrcode strong').text(' ');
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '死鬼去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
     });
-  });
-});     
+})();
 </script>
 
 
 
-
-
-
-  </body>
+</body>
 </html>
