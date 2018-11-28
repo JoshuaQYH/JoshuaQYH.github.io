@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>认证技术 | KnowMyself | Code and life</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="信息安全,加密认证技术">
+    <meta name="description" content="零知识证明Fiat-Shamir 算法 $n  = p * q。p, q$是大素数。 $n$为可信第三方机构公开，而$p, q$为私有或者销毁 $s: Alice$的密钥, $0 &amp;lt; s &amp;lt; n$。 Alice 必须证明其知晓密钥$s$,而不需要向任何人出示$s$。 $v:Alice$的公钥，满足$v \equiv s^2 \, mod \, n$ 。 Alice 计算并得出v展示给B">
+<meta name="keywords" content="信息安全,加密认证技术">
+<meta property="og:type" content="article">
+<meta property="og:title" content="认证技术">
+<meta property="og:url" content="https://joshuaqyh.github.io/2018/11/28/零知识证明/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="零知识证明Fiat-Shamir 算法 $n  = p * q。p, q$是大素数。 $n$为可信第三方机构公开，而$p, q$为私有或者销毁 $s: Alice$的密钥, $0 &amp;lt; s &amp;lt; n$。 Alice 必须证明其知晓密钥$s$,而不需要向任何人出示$s$。 $v:Alice$的公钥，满足$v \equiv s^2 \, mod \, n$ 。 Alice 计算并得出v展示给B">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-11-28T08:23:44.323Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="认证技术">
+<meta name="twitter:description" content="零知识证明Fiat-Shamir 算法 $n  = p * q。p, q$是大素数。 $n$为可信第三方机构公开，而$p, q$为私有或者销毁 $s: Alice$的密钥, $0 &amp;lt; s &amp;lt; n$。 Alice 必须证明其知晓密钥$s$,而不需要向任何人出示$s$。 $v:Alice$的公钥，满足$v \equiv s^2 \, mod \, n$ 。 Alice 计算并得出v展示给B">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">认证技术</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">认证技术</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-11-28T08:24:19.198Z" itemprop="datePublished" class="page-time">
+  2018-11-28
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#零知识证明"><span class="post-toc-number">1.</span> <span class="post-toc-text">零知识证明</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Fiat-Shamir-算法"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Fiat-Shamir 算法</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#认证技术"><span class="post-toc-number">2.</span> <span class="post-toc-text">认证技术</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#X-509"><span class="post-toc-number">2.0.1.</span> <span class="post-toc-text">X.509</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Kerberos"><span class="post-toc-number">2.0.2.</span> <span class="post-toc-text">Kerberos</span></a></li></ol></li></ol><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#PKI"><span class="post-toc-number">3.</span> <span class="post-toc-text">PKI</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Kerberos-1"><span class="post-toc-number">4.</span> <span class="post-toc-text">Kerberos</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Neeedham-Schroeder-Symmetric-key-Protocol"><span class="post-toc-number">4.0.1.</span> <span class="post-toc-text">* $Neeedham-Schroeder \, Symmetric \, key \, Protocol$</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#架构"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">* 架构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#流程"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">* 流程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#局限性"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">*  局限性</span></a></li>
+        </nav>
+    </aside>
+
+
+<article id="post-零知识证明" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">认证技术</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-11-28 16:24:19" datetime="2018-11-28T08:24:19.198Z" itemprop="datePublished">2018-11-28</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="零知识证明"><a href="#零知识证明" class="headerlink" title="零知识证明"></a>零知识证明</h2><h3 id="Fiat-Shamir-算法"><a href="#Fiat-Shamir-算法" class="headerlink" title="Fiat-Shamir 算法"></a>Fiat-Shamir 算法</h3><ol>
+<li>$n  = p * q。p, q$是大素数。 $n$为可信第三方机构公开，而$p, q$为私有或者销毁</li>
+<li>$s: Alice$的密钥, $0 &lt; s &lt; n$。 Alice 必须证明其知晓密钥$s$,而不需要向任何人出示$s$。</li>
+<li>$v:Alice$的公钥，满足$v \equiv s^2 \, mod \, n$ 。<ol>
+<li>Alice 计算并得出v展示给Bob</li>
+<li>无法从v推导出s。</li>
+</ol>
+</li>
+<li>$r: Alice$随机挑选的一个数字，满足$0 &lt; r &lt; n-1$。</li>
+<li>$x : x = r^2 \, mod \, n$ 作为一个Alice计算后的证据x(evidence)，并发送给Bob。</li>
+<li>$c: $ Bob随机挑选的一个数c(challenger)，范围是{1， 0}。</li>
+<li>$y : y = rs^c \, mod \, n$ 由$Alice$计算得到结果y（response），并发送给Bob。</li>
+<li>Bob通过计算$y^2\, mod \,n \,\,?=  xv^c\, mode \, n$ ,如果相等，则认证完毕。</li>
+</ol>
+<h2 id="认证技术"><a href="#认证技术" class="headerlink" title="认证技术"></a>认证技术</h2><h4 id="X-509"><a href="#X-509" class="headerlink" title="X.509"></a>X.509</h4><p>数据协议，定义一个数据目录服务，维护一个用户信息数据库。</p>
+<h4 id="Kerberos"><a href="#Kerberos" class="headerlink" title="Kerberos"></a>Kerberos</h4><p>认证协议，用于证明接收双方的合法性。基于C/S结构的单向认证，弱双向认证。</p>
+<p>##认证攻击类型</p>
+<ul>
+<li>假冒攻击</li>
+<li>重放攻击</li>
+<li>强迫延时攻击</li>
+<li>交错攻击</li>
+<li>Oracle会话攻击</li>
+<li>并行会话攻击</li>
+</ul>
+<h2 id="PKI"><a href="#PKI" class="headerlink" title="PKI"></a>PKI</h2><p>PKI 公钥基础设施，通过公开密钥技术和数字证书，来确保系统信息安全，并负责验证数字证书持有者身份的体系。<strong>绝对安全，由国家信用作为背书</strong>。</p>
+<p>应用：VPN，安全电子邮件，web服务安全。</p>
+<h2 id="Kerberos-1"><a href="#Kerberos-1" class="headerlink" title="Kerberos"></a>Kerberos</h2><p>Kerberos  是一种计算机网络认证协议。基于<strong>票据（tickets）</strong> 的工作原理和$Neeedham-Schroeder \, Symmetric \, key \, Protocol$，允许结点以一种安全的策略，在不安全的网络中，互相证明的身份。</p>
+<ul>
+<li>防窃听，防重放攻击。</li>
+<li>C/S 模型，提供双方认证。</li>
+<li>该协议无竞争对手！</li>
+<li>开源，多平台可用。</li>
+</ul>
+<p>该协议建立在对称加密体系之上，并且需要一个<strong>可信的第三方机构</strong> 。在特定的认证情景中使用不同的对称加密算法。</p>
+<h4 id="Neeedham-Schroeder-Symmetric-key-Protocol"><a href="#Neeedham-Schroeder-Symmetric-key-Protocol" class="headerlink" title="* $Neeedham-Schroeder \, Symmetric \, key \, Protocol$"></a>* $Neeedham-Schroeder \, Symmetric \, key \, Protocol$</h4><p>情景：</p>
+<ol>
+<li>TA是一个第三方的可信机构，可分发密钥中心，能够提供双方会话共享密钥。</li>
+<li>E（K，-）是一个对称加密算法（如DES）</li>
+<li>TA拥有一个密钥$K_{AT}$y与Alice一致，同样也有一个$K_{BT}$ 与Bob一致。</li>
+<li>Alice使用一个随机数$r_A$ 来认证TA，并从TA获得一个会话密钥 $K_{AB}$ 。</li>
+<li>Alice使用$K_{BT}$加密$(K_{AB}, r_B) $ 发给bob，bob使用$K_{BT}$解密。</li>
+<li>Bob使用会话密钥$K_{AB}$ 加密$r_B $发送给Alice。</li>
+<li>Alice使用$K_{AB}$解密得到$r_B$，并使用$K_AB$加密$r_B - 1$ 发送给Bob，Bob解密检查结果是否为$r_B -1$  。</li>
+</ol>
+<h3 id="架构"><a href="#架构" class="headerlink" title="* 架构"></a>* 架构</h3><p>AS = 认证服务器（认证机构）</p>
+<p>SS = 提供服务的服务器（服务机构）</p>
+<p>TGS= 票据许可服务器</p>
+<p>TGT = 许可的票据</p>
+<p>ST = 服务票据</p>
+<h3 id="流程"><a href="#流程" class="headerlink" title="* 流程"></a>* 流程</h3><ul>
+<li>用户客户端注册</li>
+<li>客户端认证</li>
+<li>客户服务认证</li>
+<li>客户服务请求</li>
+</ul>
+<p>客户登录步骤：</p>
+<ol>
+<li>用户输入用户名和密码，构成【长期密钥】，用于加密网络传输的数据。</li>
+<li>使用hash函数运行输入的密码，得到客户的主密钥【客户/客户 密钥】，并由客户端保管。</li>
+<li>TGS，SS会话密钥属于短期密钥，利用主密钥实现交换和发布。</li>
+</ol>
+<p>客户认证步骤：</p>
+<ol>
+<li>客户机向AS发送一个明文消息，代表用户请求服务。</li>
+<li>AS校验Bob是否在其数据库中，如果在，则AS返回一下两条信息给客户<ol>
+<li>消息A，用主密钥加密的【客户/TGS】会话密钥。</li>
+<li>消息B， 用TGS加密的票据授权票据TGT，客户网络地址，票据有效期，【客户/TGS会话密钥】。</li>
+</ol>
+</li>
+<li>客户机收到A，B，使用主密钥解密A 得到【客户/TGS 会话密钥】,消息B无法解密，因为没有TGS密钥来解密。</li>
+</ol>
+<p>客户服务认证步骤：</p>
+<ol>
+<li>申请服务时，客户机向TGS发送两条消息：<ol>
+<li>消息C，由消息B和申请服务的ID组成。</li>
+<li>消息D，用【客户/TGS会话密钥】加密的认证。（客户ID+时间戳组成）</li>
+</ol>
+</li>
+<li>基于收到的消息C，D，TGS将从消息C中重新获取消息B，用TGS密钥解密消息B，从而得到【客户/TGS会话密钥】，TGS使用这个密钥解密消息D，成功认证，然后返回两条消息给客户机 ：<ol>
+<li>消息E，用SS服务器加密的客户-SS服务票据ST（客户ID，客户网络地址，【客户/SS会话密钥】，票据有效期）</li>
+<li>消息F：用【客户/TGS会话密钥】加密的【客户/SS会话密钥】。</li>
+</ol>
+</li>
+</ol>
+<p>客户服务申请步骤:</p>
+<ol>
+<li>基于从TGS收到的消息E，F，客户机有足够的消息向SS认证自己。客户机发送消息给SS：<ol>
+<li>消息E，由先前步骤得到的E。</li>
+<li>消息G：用【客户/SS会话密钥】加密的一个新的认证，包括客户ID和时间戳</li>
+</ol>
+</li>
+<li>SS用自己的密钥解密消息E（票据），重新得到 【客户/SS会话密钥】，用这个会话密钥，SS解密消息G得到认证，返回确认函H给客户机，确认该身份真实，并同一向该客户提供服务。<ol>
+<li>消息H：在客户认证中找到时间戳， +1，用【客户/SS会话密钥加密】</li>
+</ol>
+</li>
+<li>客户机使用【客户/SS会话密钥】解密确认函H，并检查时间戳是否被正确地更新，如果是，客户机可以信赖该服务器，并向该服务器发送服务请求。</li>
+<li>服务器向客户机提供所请求地服务。</li>
+</ol>
+<h3 id="局限性"><a href="#局限性" class="headerlink" title="*  局限性"></a>*  局限性</h3><ul>
+<li>单点故障：中心化</li>
+<li>时钟同步：未同步时间戳认证将会失效。</li>
+<li>管理协议未标准化</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-11-28T08:23:44.323Z" itemprop="dateUpdated">2018-11-28 16:23:44</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2018/11/28/零知识证明/" target="_blank" rel="external">https://joshuaqyh.github.io/2018/11/28/零知识证明/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信息安全/">信息安全</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/加密认证技术/">加密认证技术</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/11/28/零知识证明/&title=《认证技术》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/11/28/零知识证明/&title=《认证技术》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/11/28/零知识证明/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《认证技术》 — KnowMyself&url=https://joshuaqyh.github.io/2018/11/28/零知识证明/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/11/28/零知识证明/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/11/28/DES 算法/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">python实现DES加密算法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/11/28/零知识证明/&title=《认证技术》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/11/28/零知识证明/&title=《认证技术》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/11/28/零知识证明/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《认证技术》 — KnowMyself&url=https://joshuaqyh.github.io/2018/11/28/零知识证明/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/11/28/零知识证明/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIklEQVR42u3awW7rMAwEwP7/T7vXB7zG3RWTApZGp8CxZY0PhEjq6yse1z/j/sqrf+9nbp9aHBgYGI9lXLfj1T33z+b4tfl/oGJgYBzASEJhG3xfLfd+zlf3/LJmDAwMjNup24C79hsDAwNjEnDv50mS4eS9GBgYGEk6Oq93TTadb8vFMTAwHsjIq+5///sj/Q0MDIxHMa5ytPO0y7qWBgYGxt6MSfLZ3pmnr4tvwcDAOJhxP/V80flsxe4VAwNjI0bebpwXv3JwXZjDwMDYmtGG1CRNzf9NPkRResPAwDiA0Rbo22B9/2nadBoDA+McRh4K8zQ1OUD25jIcBgbGYYx2EzlvKiSz/XIdAwNja8Zk69YG3HnK2oZyDAyMPRiTklmyiISUNzijYxYYGBjbMZLw2r64Pfa6dtgCAwPjNMa7mpqTBLjdONY7XAwMjIcz8i3dpIjWBs22nYCBgXECoy2E5Q3OtSJd3c7EwMDYmpEX0eZluDwxXjx2hoGBsSmjbTEmW702ua1Laf/fiYGBcQwj35y1xzLyZdXbQQwMjGMYa7ArGO2HW/vcGBgYuzKucqw1Bta2hnX+jYGBsSkjH/PEtQ3HbQEOAwNjb0YSZOfF/bWUtTiQgYGBcQBjEvjWGpDzkhwGBgZG3h5oF9eG9Sg9xsDAwIin+0SGnTRNMTAwTmAkqekk3c2box8vt2FgYDyQsdZonAfZ97YKMDAwNmV8A8UNdHK8fsYwAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
