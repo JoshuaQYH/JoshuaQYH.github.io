@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://joshuaqyh.github.io/"/>
-  <updated>2018-12-03T04:52:30.366Z</updated>
+  <updated>2018-12-03T09:59:20.855Z</updated>
   <id>https://joshuaqyh.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>消息认证和哈希算法</title>
+    <link href="https://joshuaqyh.github.io/2018/12/03/%E6%B6%88%E6%81%AF%E8%AE%A4%E8%AF%81%E5%92%8C%E5%93%88%E5%B8%8C%E5%87%BD%E6%95%B0/"/>
+    <id>https://joshuaqyh.github.io/2018/12/03/消息认证和哈希函数/</id>
+    <published>2018-12-03T09:59:20.640Z</published>
+    <updated>2018-12-03T09:59:20.855Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="消息认证概述"><a href="#消息认证概述" class="headerlink" title="消息认证概述"></a>消息认证概述</h2><p>网络通信针对消息内容的攻击方法：</p><ol><li>伪造消息</li><li>篡改消息内容</li><li>改变消息顺序</li><li>消息重放或者延迟</li></ol><p>消息认证过程：</p><ol><li>接收者确信消息未被改变</li><li>接收者确信消息来自所生成的发送者</li><li>消息中含有序列号，保证正确的消息顺序</li></ol><p>消息认证的三种方式：</p><ol><li><p>消息认证加密。对消息加密，以密文作为消息的认证标识。</p></li><li><p>消息认证码MAC。使用一个公开函数，加上密钥，为消息产生一个数据块，作为消息的认证标识并附加到消息中一起传输。</p></li><li><p>哈希方法。使用一个公开函数，将消息映射到一个固定长度的散列值，并作为消息认证标识附加到消息中一起传输。</p></li><li><p>数字签名。基于非对称密码技术的数字签名将签名与被签文件绑定，提供了不可依赖不可伪造，容易验证的功能。</p><p>​</p></li></ol><h2 id="MAC-消息认证码"><a href="#MAC-消息认证码" class="headerlink" title="MAC 消息认证码"></a>MAC 消息认证码</h2><p>消息验证码有三部分算法（G：密钥生成算法；S：签名算法；V：消息验证算法）</p><ul><li>基本结构：</li></ul><p>MAC方法双方使用一个共享的密钥，为目标消息生成一个固定的数据块，并加入到消息中，该数据块被称为消息认证码，或者是密码校验和。</p><p>MAC函数类似于加密函数，但<strong>不需要</strong> 可逆性，因此收到攻击的弱点在数学上比加密算法要少。</p><ul><li>使用MAC的理由：<ul><li>主要提供真实性。</li><li>与加密算法比较，代价算法较小。</li><li>认证和保密函数分离较为灵活</li><li>很多信息需要真实性而不是保密性。</li></ul></li><li>模型<ul><li>只用于消息认证的MAC模型</li><li>用于与明文相关的消息认证和保密性的MAC模型</li><li>用于与密文相关的消息认证和保密性的MAC模型</li></ul></li><li>与数字签名都用于消息认证。MAC是通讯双方共享一个私有密钥。而数字签名则是利用公钥密码技术实现。</li></ul><p>##HASH</p><p>输入变长的消息，经过hash输出定常的散列值。</p><h3 id="哈希函数的一些基本要求"><a href="#哈希函数的一些基本要求" class="headerlink" title="哈希函数的一些基本要求"></a>哈希函数的一些基本要求</h3><ol><li>能够映射任意长的分组数据</li><li>产生定长的哈希结果</li><li>可计算，易于计算</li><li>单向性</li><li>抗碰撞（强弱）</li></ol><h3 id="分类"><a href="#分类" class="headerlink" title="分类"></a>分类</h3><ul><li><p>按规避碰撞能力分：</p><ul><li>强无碰撞</li><li>弱无碰撞</li></ul></li><li><p>按是否需要密钥分：</p><ul><li><p>不带密钥的hash</p></li><li><p>带密钥的hash</p><p>​</p></li></ul></li></ul><p>生日攻击理论：计算哈希碰撞的概率和计算量之间的关系</p><h3 id="hash函数通用模型"><a href="#hash函数通用模型" class="headerlink" title="hash函数通用模型"></a>hash函数通用模型</h3><p>由merkle提出的模型结构:</p><ol><li>将消息M划分为一些固定长度的块Yi</li><li>最后一块padding并使其包含消息M的长度</li><li>设定初始值CV0</li><li>采用压缩函数f，CVi = f（CVi-1， Yi-1）</li><li>最后一个CVi为hash值。</li></ol><h2 id="MD5-算法"><a href="#MD5-算法" class="headerlink" title="MD5 算法"></a>MD5 算法</h2><p>信息摘要5算法。确保信息传输的完整性和一致性。</p><p>使用小端模式，输入不定长度信息，以512bit进行分组，生成4个32bit的数据，最后联合输出固定128bit的信息摘要。</p><p>小端模式，低字节放在低地址处。</p><h4 id="算法逻辑"><a href="#算法逻辑" class="headerlink" title="算法逻辑"></a>算法逻辑</h4><ol><li>填充<ol><li>在长度为 $K$ bits的原始消息数据尾部填充长度为 $P$ bits的标识$100…0  。$ $ 1 \le P \le 512$ ,使得填充后的消息位数为$K + P \equiv 448(mod \, 512)$。<ol><li>注意：当$K \equiv 448 (mod\,512)$时，$P = 512$。</li></ol></li><li>向上述填充好的消息尾部附加$K$值得低64位，即$(K \, mod \, 2^{64})$。最后得到一个长度位数为$K + P + 64 \equiv 0 (mod \, 512)$。</li></ol></li><li>分块<ol><li>将填充后得消息结果分割为$L$  个$512-bit$分组,记为:$Y_0, Y_1, …, Y_{L-1}$</li><li>分组结果表示为$N$个$32-bit$字记为$M_0, M_1, …, M_{N-1}, N = L×16 $ </li></ol></li><li>初始化<ol><li>初始化一个$128-bit$ 的MD缓冲区，记为$CV_q$,表示成4个$32-bit$寄存器$(A,B,C,D)$； $CV_0 = IV$。迭代在MD缓冲区进行，最后一步的$128-bit$输出即为算法的结果。</li></ol></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;消息认证概述&quot;&gt;&lt;a href=&quot;#消息认证概述&quot; class=&quot;headerlink&quot; title=&quot;消息认证概述&quot;&gt;&lt;/a&gt;消息认证概述&lt;/h2&gt;&lt;p&gt;网络通信针对消息内容的攻击方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;伪造消息&lt;/li&gt;
+&lt;li&gt;篡改消息内容&lt;/li
+      
+    
+    </summary>
+    
+    
+      <category term="信息安全" scheme="https://joshuaqyh.github.io/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="加密技术" scheme="https://joshuaqyh.github.io/tags/%E5%8A%A0%E5%AF%86%E6%8A%80%E6%9C%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>聚类算法 | K-means and mean-shift</title>
