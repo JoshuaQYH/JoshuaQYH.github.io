@@ -21,18 +21,18 @@
     
     
     <meta name="keywords" content="信息安全,加密技术">
-    <meta name="description" content="一、 DES算法原理概述###预备知识  64位为一个分组，当成明文输入DES算法模型，输出同样长度64位的密文。  对称加密，加密密钥也是解密密钥，密钥定义了加密过程。  密钥构成：64位，每8位的最后一位用于奇偶校验，所以实际密钥长度为56位。  基本过程是换位和置换（根据置换矩阵） ​   ###算法核心概要  总体结构  Feistel轮函数  子密钥生成  解密过程 ​   信息空间处理">
+    <meta name="description" content="一、 DES算法原理概述预备知识 64位为一个分组，当成明文输入DES算法模型，输出同样长度64位的密文。  对称加密，加密密钥也是解密密钥，密钥定义了加密过程。  密钥构成：64位，每8位的最后一位用于奇偶校验，所以实际密钥长度为56位。  基本过程是换位和置换（根据置换矩阵） ​   算法核心概要 总体结构  Feistel轮函数  子密钥生成  解密过程 ​   信息空间处理： 原始明文消息">
 <meta name="keywords" content="信息安全,加密技术">
 <meta property="og:type" content="article">
 <meta property="og:title" content="python实现DES加密算法">
 <meta property="og:url" content="https://joshuaqyh.github.io/2018/11/28/DES 算法/index.html">
 <meta property="og:site_name" content="KnowMyself">
-<meta property="og:description" content="一、 DES算法原理概述###预备知识  64位为一个分组，当成明文输入DES算法模型，输出同样长度64位的密文。  对称加密，加密密钥也是解密密钥，密钥定义了加密过程。  密钥构成：64位，每8位的最后一位用于奇偶校验，所以实际密钥长度为56位。  基本过程是换位和置换（根据置换矩阵） ​   ###算法核心概要  总体结构  Feistel轮函数  子密钥生成  解密过程 ​   信息空间处理">
+<meta property="og:description" content="一、 DES算法原理概述预备知识 64位为一个分组，当成明文输入DES算法模型，输出同样长度64位的密文。  对称加密，加密密钥也是解密密钥，密钥定义了加密过程。  密钥构成：64位，每8位的最后一位用于奇偶校验，所以实际密钥长度为56位。  基本过程是换位和置换（根据置换矩阵） ​   算法核心概要 总体结构  Feistel轮函数  子密钥生成  解密过程 ​   信息空间处理： 原始明文消息">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-28T07:13:03.396Z">
+<meta property="og:updated_time" content="2018-11-28T08:28:40.225Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="python实现DES加密算法">
-<meta name="twitter:description" content="一、 DES算法原理概述###预备知识  64位为一个分组，当成明文输入DES算法模型，输出同样长度64位的密文。  对称加密，加密密钥也是解密密钥，密钥定义了加密过程。  密钥构成：64位，每8位的最后一位用于奇偶校验，所以实际密钥长度为56位。  基本过程是换位和置换（根据置换矩阵） ​   ###算法核心概要  总体结构  Feistel轮函数  子密钥生成  解密过程 ​   信息空间处理">
+<meta name="twitter:description" content="一、 DES算法原理概述预备知识 64位为一个分组，当成明文输入DES算法模型，输出同样长度64位的密文。  对称加密，加密密钥也是解密密钥，密钥定义了加密过程。  密钥构成：64位，每8位的最后一位用于奇偶校验，所以实际密钥长度为56位。  基本过程是换位和置换（根据置换矩阵） ​   算法核心概要 总体结构  Feistel轮函数  子密钥生成  解密过程 ​   信息空间处理： 原始明文消息">
     
         <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
     
@@ -158,7 +158,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、-DES算法原理概述"><span class="post-toc-number">1.</span> <span class="post-toc-text">一、 DES算法原理概述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#信息空间处理："><span class="post-toc-number">1.1.</span> <span class="post-toc-text">信息空间处理：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#加密过程："><span class="post-toc-number">1.2.</span> <span class="post-toc-text">加密过程：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解密过程："><span class="post-toc-number">1.3.</span> <span class="post-toc-text">解密过程：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#初始置换："><span class="post-toc-number">1.4.</span> <span class="post-toc-text">初始置换：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#轮函数-f-R-i-1-K-i"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">轮函数$f(R_{i-1}, K_i)$</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#子密钥生成"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">子密钥生成</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、-代码模块"><span class="post-toc-number">2.</span> <span class="post-toc-text">二、 代码模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#核心函数展示和描述"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">核心函数展示和描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据结构说明"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">数据结构说明</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三、-完整代码"><span class="post-toc-number">3.</span> <span class="post-toc-text">三、 完整代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四、总结"><span class="post-toc-number">4.</span> <span class="post-toc-text">四、总结</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#一、-DES算法原理概述"><span class="post-toc-number">1.</span> <span class="post-toc-text">一、 DES算法原理概述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#预备知识"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">预备知识</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#算法核心概要"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">算法核心概要</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#信息空间处理："><span class="post-toc-number">1.3.</span> <span class="post-toc-text">信息空间处理：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#加密过程："><span class="post-toc-number">1.4.</span> <span class="post-toc-text">加密过程：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#解密过程："><span class="post-toc-number">1.5.</span> <span class="post-toc-text">解密过程：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#初始置换："><span class="post-toc-number">1.6.</span> <span class="post-toc-text">初始置换：</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#迭代T"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">迭代T</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#逆置换"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">逆置换</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#轮函数-f-R-i-1-K-i"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">轮函数$f(R_{i-1}, K_i)$</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#子密钥生成"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">子密钥生成</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#二、-代码模块"><span class="post-toc-number">2.</span> <span class="post-toc-text">二、 代码模块</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#核心函数展示和描述"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">核心函数展示和描述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据结构说明"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">数据结构说明</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#三、-完整代码"><span class="post-toc-number">3.</span> <span class="post-toc-text">三、 完整代码</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#四、总结"><span class="post-toc-number">4.</span> <span class="post-toc-text">四、总结</span></a></li></ol>
         </nav>
     </aside>
 
@@ -181,8 +181,7 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h2 id="一、-DES算法原理概述"><a href="#一、-DES算法原理概述" class="headerlink" title="一、 DES算法原理概述"></a>一、 DES算法原理概述</h2><p>###预备知识</p>
-<ul>
+            <h2 id="一、-DES算法原理概述"><a href="#一、-DES算法原理概述" class="headerlink" title="一、 DES算法原理概述"></a>一、 DES算法原理概述</h2><h3 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h3><ul>
 <li><p>64位为一个分组，当成明文输入DES算法模型，输出同样长度64位的密文。</p>
 </li>
 <li><p>对称加密，加密密钥也是解密密钥，密钥定义了加密过程。</p>
@@ -193,8 +192,7 @@
 <p>​</p>
 </li>
 </ul>
-<p>###算法核心概要</p>
-<ul>
+<h3 id="算法核心概要"><a href="#算法核心概要" class="headerlink" title="算法核心概要"></a>算法核心概要</h3><ul>
 <li><p>总体结构</p>
 </li>
 <li><p>Feistel轮函数</p>
@@ -222,8 +220,7 @@
 <h3 id="解密过程："><a href="#解密过程：" class="headerlink" title="解密过程："></a>解密过程：</h3><p>加密逆向进行分析。和加密不同的是，子密钥调度过程为逆序，其他一致。</p>
 <h3 id="初始置换："><a href="#初始置换：" class="headerlink" title="初始置换："></a>初始置换：</h3><p>给定一个固定的初始置换IP矩阵来重排明文块M中的二进制位。得到二进制串$M_0 = IP (M) = L_0R_0$</p>
 <p>表： IP置换表（8 <em> 8）（row </em> col 下同）</p>
-<p>###迭代T</p>
-<ol>
+<h3 id="迭代T"><a href="#迭代T" class="headerlink" title="迭代T"></a>迭代T</h3><ol>
 <li><p>迭代规则：交叉迭代。$L_i = R_{i-1} \,\,  R_i = L_{i-1} \bigoplus f(R_{i - 1}, K_i)$. $K_i$为子密钥，长度为$$K_i\,, f$$为$$fiestel$$ 轮函数。</p>
 </li>
 <li><p>16次迭代后产生$L_{16}R_{16}$</p>
@@ -232,7 +229,7 @@
 <p>​</p>
 </li>
 </ol>
-<p>###逆置换$P^{-1}$ $C = IP^{-1}(R_{16}L_{16})$ </p>
+<h3 id="逆置换"><a href="#逆置换" class="headerlink" title="逆置换"></a>逆置换</h3><p>$P^{-1}$ $C = IP^{-1}(R_{16}L_{16})$ </p>
 <p>表： 逆置换表（8 * 8）</p>
 <h3 id="轮函数-f-R-i-1-K-i"><a href="#轮函数-f-R-i-1-K-i" class="headerlink" title="轮函数$f(R_{i-1}, K_i)$"></a>轮函数$f(R_{i-1}, K_i)$</h3><p>密码函数<code>f(R, K)</code>接受两个输入：32 位的数据和 48 位的子密钥。然后：</p>
 <ol>
@@ -288,7 +285,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-11-28T07:13:03.396Z" itemprop="dateUpdated">2018-11-28 15:13:03</time>
+    Last updated: <time datetime="2018-11-28T08:28:40.225Z" itemprop="dateUpdated">2018-11-28 16:28:40</time>
 </span><br>
 
 
