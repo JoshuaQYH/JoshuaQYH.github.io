@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>死锁问题 | KnowMyself | Code and life</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="操作系统">
+    <meta name="description" content="读者写者问题–写者对数据库有排他的访问  第一读者-写者问题  若有写者正在访问对象，那么其他读者需要保持等待  第二读者-写者问题  如果有写者等待访问对象，那么不会有新读者开始读操作 以上问题经常出现在数据库的访问读写问题之中。 哲学家问题导致出现哲学家饥饿的情况。 死锁的特征！死锁的必要条件： 互斥 占有并等待 非抢占 循环等待">
+<meta name="keywords" content="操作系统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="死锁问题">
+<meta property="og:url" content="https://joshuaqyh.github.io/2018/07/27/读者写者问题/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="读者写者问题–写者对数据库有排他的访问  第一读者-写者问题  若有写者正在访问对象，那么其他读者需要保持等待  第二读者-写者问题  如果有写者等待访问对象，那么不会有新读者开始读操作 以上问题经常出现在数据库的访问读写问题之中。 哲学家问题导致出现哲学家饥饿的情况。 死锁的特征！死锁的必要条件： 互斥 占有并等待 非抢占 循环等待">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://p8ekwajjb.bkt.clouddn.com/%E6%AD%BB%E9%94%81%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6.png">
+<meta property="og:image" content="http://p8ekwajjb.bkt.clouddn.com/1526434313403.png">
+<meta property="og:updated_time" content="2018-12-03T03:34:12.976Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="死锁问题">
+<meta name="twitter:description" content="读者写者问题–写者对数据库有排他的访问  第一读者-写者问题  若有写者正在访问对象，那么其他读者需要保持等待  第二读者-写者问题  如果有写者等待访问对象，那么不会有新读者开始读操作 以上问题经常出现在数据库的访问读写问题之中。 哲学家问题导致出现哲学家饥饿的情况。 死锁的特征！死锁的必要条件： 互斥 占有并等待 非抢占 循环等待">
+<meta name="twitter:image" content="http://p8ekwajjb.bkt.clouddn.com/%E6%AD%BB%E9%94%81%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">死锁问题</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">死锁问题</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-07-27T15:28:32.721Z" itemprop="datePublished" class="page-time">
+  2018-07-27
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#读者写者问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">读者写者问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#哲学家问题"><span class="post-toc-number">2.</span> <span class="post-toc-text">哲学家问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#死锁的特征"><span class="post-toc-number">3.</span> <span class="post-toc-text">死锁的特征</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#！死锁的必要条件："><span class="post-toc-number">3.1.</span> <span class="post-toc-text">！死锁的必要条件：</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#资源分配图"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">资源分配图</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#死锁处理方法"><span class="post-toc-number">4.</span> <span class="post-toc-text">死锁处理方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#死锁预防"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">死锁预防</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#死锁避免"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">死锁避免</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#！！！死锁避免-银行家算法（重点）"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">！！！死锁避免-银行家算法（重点）</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#死锁检测"><span class="post-toc-number">5.</span> <span class="post-toc-text">死锁检测</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#检测算法"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">检测算法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#恢复算法"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">恢复算法</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-读者写者问题" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">死锁问题</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-07-27 23:28:32" datetime="2018-07-27T15:28:32.721Z" itemprop="datePublished">2018-07-27</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h3 id="读者写者问题"><a href="#读者写者问题" class="headerlink" title="读者写者问题"></a>读者写者问题</h3><p>–写者对数据库有排他的访问</p>
+<ul>
+<li>第一读者-写者问题</li>
+</ul>
+<p>若有写者正在访问对象，那么其他读者需要保持等待</p>
+<ul>
+<li>第二读者-写者问题</li>
+</ul>
+<p>如果有写者等待访问对象，那么不会有新读者开始读操作</p>
+<p>以上问题经常出现在数据库的访问读写问题之中。</p>
+<h3 id="哲学家问题"><a href="#哲学家问题" class="headerlink" title="哲学家问题"></a>哲学家问题</h3><p>导致出现哲学家饥饿的情况。</p>
+<h3 id="死锁的特征"><a href="#死锁的特征" class="headerlink" title="死锁的特征"></a>死锁的特征</h3><h4 id="！死锁的必要条件："><a href="#！死锁的必要条件：" class="headerlink" title="！死锁的必要条件："></a>！死锁的必要条件：</h4><ol>
+<li>互斥</li>
+<li>占有并等待</li>
+<li>非抢占</li>
+<li>循环等待</li>
+</ol>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p8ekwajjb.bkt.clouddn.com/%E6%AD%BB%E9%94%81%E5%BF%85%E8%A6%81%E6%9D%A1%E4%BB%B6.png" alt="52643424888" title="">
+                </div>
+                <div class="image-caption">52643424888</div>
+            </figure>
+<h4 id="资源分配图"><a href="#资源分配图" class="headerlink" title="资源分配图"></a>资源分配图</h4><p>节点集可分为两类：一类是系统活动进程集合（节点连接的线代表申请边，表示申请创建进程），一类是系统所有资源类型的集合（节点连接的线代表分配边，表示请求分配资源）。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="http://p8ekwajjb.bkt.clouddn.com/1526434313403.png" alt="52643431340" title="">
+                </div>
+                <div class="image-caption">52643431340</div>
+            </figure>
+<h3 id="死锁处理方法"><a href="#死锁处理方法" class="headerlink" title="死锁处理方法"></a>死锁处理方法</h3><ul>
+<li>使用协议预防或者避免死锁</li>
+<li>允许系统进入死锁状态，然后检测恢复它</li>
+<li>忽视死锁，认为死锁不可能存在。。。（unix windows多采用这种办法，，比较常用</li>
+<li>​</li>
+</ul>
+<h4 id="死锁预防"><a href="#死锁预防" class="headerlink" title="死锁预防"></a>死锁预防</h4><p>只要保证死锁的四个必要条件有一个不成立，就可以起到死锁预防的效果。</p>
+<ol>
+<li>否定互斥条件：这仅仅适用于共享资源。非共享资源必须有互斥条件</li>
+<li>占有并等待：两种协议</li>
+<li>非抢占：协议：一个进程占有资源并申请另外一个无法分配的资源，那么原来的资源将会隐式释放</li>
+<li>循环等待：对所有资源类型进行编号排序，按编号递增顺序来申请资源。</li>
+</ol>
+<p>死锁预防的缺点：低设备利用率和 低吞吐率</p>
+<h4 id="死锁避免"><a href="#死锁避免" class="headerlink" title="死锁避免"></a>死锁避免</h4><p>死锁避免的方法：获得申请资源时进程的附加信息：意思是获得资源的先验信息，根据信息来判断是否分配资源或让其等待。</p>
+<p>死锁避免的两个方法：</p>
+<ol>
+<li>安全状态：存在一个安全序列，给进程分配资源，使得永远不会出现死锁，系统状态就是安全的。</li>
+<li>资源分配图：</li>
+<li>银行家算法 ！！！</li>
+</ol>
+<h4 id="！！！死锁避免-银行家算法（重点）"><a href="#！！！死锁避免-银行家算法（重点）" class="headerlink" title="！！！死锁避免-银行家算法（重点）"></a>！！！死锁避免-银行家算法（重点）</h4><p>数据结构</p>
+<ul>
+<li>Allocation：当前进程各种资源分配的的实例数量—-  二维矩阵 — 行代表不同进程，列代表资源</li>
+<li>Max: 当前进程各类型资源的最大需求   —————— 二维矩阵— 同1</li>
+<li>Need: 当前资源仍需要的各种类型资源——————- 二维矩阵— 同1</li>
+<li>Avoidable: 当前系统能再提供的资源———————-  一维数组– 列代表资源类型，只有一行</li>
+</ul>
+<ol>
+<li><p>安全性算法：一个Finish[m]数组判断进程是否完成，  每满足一个进程资源请求设为Finish[i] = true, 最后检测所有Finish是否都为false, 如果不是则不安全。</p>
+</li>
+<li><p>资源请求算法：每个进程有一个请求向量，系统假设满足该请求，然后计算分配后的结果是否安全，不安全则不分配。</p>
+<p><strong>两者最大缺点</strong>：无法提前预知进程对资源的最大需求。</p>
+</li>
+</ol>
+<h3 id="死锁检测"><a href="#死锁检测" class="headerlink" title="死锁检测"></a>死锁检测</h3><p>系统需要提供：</p>
+<ol>
+<li>检测出现了死锁的算法</li>
+<li>如何从死锁中恢复过来</li>
+</ol>
+<h4 id="检测算法"><a href="#检测算法" class="headerlink" title="检测算法"></a>检测算法</h4><ul>
+<li>对于资源只有单个实例</li>
+<li>对于资源有两个实例与银行家的安全算法不同的是最大需求矩阵变化为请求矩阵。其他基本一致 。得到一个安全序列的时候则认为系统安全。</li>
+</ul>
+<p>时间复杂度 O （m*n^2)</p>
+<h4 id="恢复算法"><a href="#恢复算法" class="headerlink" title="恢复算法"></a>恢复算法</h4><p>取消死锁的方法</p>
+<ul>
+<li><p>终止一个或者某些进程  </p>
+<ul>
+<li><p>终止所有死锁进程—- 不大好</p>
+</li>
+<li><p>一次终止一个进程直到死锁取消。部分终止需要进程终止进程的选择，但终止完<strong>需要恢复</strong>！调度原则有：</p>
+<ul>
+<li><p>按优先级：优先级低的先终止</p>
+</li>
+<li><p>按执行时间长度：执行时间短的先终止</p>
+</li>
+<li><p>按进程需要的资源：需要资源多的先终止</p>
+<p>需要注意饥饿的情况。。</p>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>资源抢占</p>
+</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-12-03T03:34:12.976Z" itemprop="dateUpdated">2018-12-03 11:34:12</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2018/07/27/读者写者问题/" target="_blank" rel="external">https://joshuaqyh.github.io/2018/07/27/读者写者问题/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/操作系统/">操作系统</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/07/27/读者写者问题/&title=《死锁问题》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/07/27/读者写者问题/&title=《死锁问题》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/07/27/读者写者问题/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《死锁问题》 — KnowMyself&url=https://joshuaqyh.github.io/2018/07/27/读者写者问题/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/07/27/读者写者问题/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/07/27/关系数据库设计理论/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">关系数据库设计理论简介</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/07/27/第四章CPU--计组课堂笔记-01/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">计算机组成原理课堂笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/07/27/读者写者问题/&title=《死锁问题》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/07/27/读者写者问题/&title=《死锁问题》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/07/27/读者写者问题/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《死锁问题》 — KnowMyself&url=https://joshuaqyh.github.io/2018/07/27/读者写者问题/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/07/27/读者写者问题/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJklEQVR42u3awW7EIAxF0fn/n063lVrS+2xSKeayqpQJ4bBwbfDng8f1bayern6/euvnu+T3rSFDhozXMq7bcf+B2hI5m6xNhgwZ5zDIIshTvhH8LRLiZciQIYMwSEp3zyDflSFDhoz0k2m4rAViGTJkyOBFLEnpOoUun1+GDBmnMfip+////cj9hgwZMl7FuMJRO1BLLxjiVcmQIWM0gwc4nvylDRlpc8ZyO2TIkDGases4jL+VLq6VLMqQIWMEIz3QT1vH+NO0eP7l/4YMGTKGMmphtBZeN7R/7ToXlCFDxqsY/aDZvwStbbcMGTJOYJCPPdLC1ag94ylkyJDxcgYJmulhGZktRZKrBRkyZExlpKGwVj92MKhsliFDxmhG2lTBMzGC4aE23lwZMmQMYvALgH4za63VA+W2MmTIOIbBj/6Dyrh9OYoSUBkyZIxmpOGPpHdp0KxdA8iQIeM0RnoN2cd0rkXj1lUZMmSMY6Slaa05Y1ewliFDxmmMWom4qy0jTQqXh24yZMgYzeAXmZ30rnZ5iTZLhgwZhzFq4ZUsN23mCN6VIUPGUMYVjtoBXNqnls4jQ4aM2YxasNs7D9mgVrOFDBkyRjBIkCVXm7ue8vRRhgwZpzGCI/hNaWUt7fujlJUhQ4YMXGSSNot0BlSRy5AhQ0apFaNfYaPGMhkyZBzAIKGQpH272jIePG6TIUPGCxm8dEzLS55c3i+Ls2XIkDGO8QXb+3RyGy7TuwAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
