@@ -29,7 +29,7 @@
 <meta property="og:site_name" content="KnowMyself">
 <meta property="og:description" content="马尔可夫过程当前状态依赖于前一个状态，单阶的马尔可夫链； 当前状态依赖于前n个状态，n阶的马尔可夫链； 传感器模型 传感器马尔可夫假设： $$P(E_t | X_{0:t}, E_{0:t-1}) = P(E_t | X_t)$$ 等式右边就是我们的传感器模型。 有$X_t$ 就可感应得到$E_t$。 物理含义就是当前的证据只与当前状态有关，即便给定了过去所有状态和证据。 状态转移模型 $$P(X">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-28T07:14:22.347Z">
+<meta property="og:updated_time" content="2018-12-03T16:10:30.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="基于时间的概率推理">
 <meta name="twitter:description" content="马尔可夫过程当前状态依赖于前一个状态，单阶的马尔可夫链； 当前状态依赖于前n个状态，n阶的马尔可夫链； 传感器模型 传感器马尔可夫假设： $$P(E_t | X_{0:t}, E_{0:t-1}) = P(E_t | X_t)$$ 等式右边就是我们的传感器模型。 有$X_t$ 就可感应得到$E_t$。 物理含义就是当前的证据只与当前状态有关，即便给定了过去所有状态和证据。 状态转移模型 $$P(X">
@@ -119,7 +119,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -158,7 +158,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#马尔可夫过程"><span class="post-toc-number">1.</span> <span class="post-toc-text">马尔可夫过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#形式化基本推理任务"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">形式化基本推理任务</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#滤波过程"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">滤波过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#平滑过程"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">平滑过程</span></a></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#马尔可夫过程"><span class="post-toc-number">1.</span> <span class="post-toc-text">马尔可夫过程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#形式化基本推理任务"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">形式化基本推理任务</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#滤波过程"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">滤波过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#平滑过程"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">平滑过程</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#隐马尔可夫模型HMM"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">隐马尔可夫模型HMM</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#卡尔曼滤波器"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">卡尔曼滤波器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#动态贝叶斯网络DBN"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">动态贝叶斯网络DBN</span></a></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -219,6 +219,13 @@
 <p>$P(e_{k+1:t} | X_k) = \sum_{x_{k+1}} P(e_{k+1:t} | X_k, x_{k+1})P(X_{k+1} | X_k)$</p>
 <p>​            $ = \sum_{x_{k+1}} P (e_{k+1:t} | x_{k+1}) P (x_{k+1} | X_k)$</p>
 <p>​            $ = \sum_{x_{k+1}}P(e_{k+1} | x_{k+1})P(e_{k+2:t} | x_{k+1})P(x_{k+1} | X_k)$</p>
+<h2 id="隐马尔可夫模型HMM"><a href="#隐马尔可夫模型HMM" class="headerlink" title="隐马尔可夫模型HMM"></a>隐马尔可夫模型HMM</h2><h2 id="卡尔曼滤波器"><a href="#卡尔曼滤波器" class="headerlink" title="卡尔曼滤波器"></a>卡尔曼滤波器</h2><p>使用观测到的离散量来估计连续变量的规律，使用隐马尔可夫模型来建模。</p>
+<p>使用合适的条件概率密度来表示转移模型和传感器模型；</p>
+<p>使用线性高斯分布，意味着下一状态$X_{t+1}$必须是当前状态$X_t$ 的线性函数，并加上一个高斯噪声$\sigma$。</p>
+<p>$$X_{t+1} = \alpha X_t + \sigma$$</p>
+<p>提炼为线性高斯转移模型为：</p>
+<p>$$P(X_{t+ \gamma} = x_{t+\gamma}|X_t = x_t, X’_t = x’_t) = N (x_t + x’<em>t \gamma, \sigma^2)(x</em>{t+\gamma})$$</p>
+<h2 id="动态贝叶斯网络DBN"><a href="#动态贝叶斯网络DBN" class="headerlink" title="动态贝叶斯网络DBN"></a>动态贝叶斯网络DBN</h2><p>每一个隐马尔可夫模型都可以表示为只有一个状态变量和一个证据变量的动态贝叶斯网络。</p>
 
         </div>
 
@@ -227,7 +234,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-11-28T07:14:22.347Z" itemprop="dateUpdated">2018-11-28 15:14:22</time>
+    最終更新：<time datetime="2018-12-03T16:10:30.116Z" itemprop="dateUpdated">2018-12-04 00:10:30</time>
 </span><br>
 
 
@@ -367,7 +374,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
         </p>
     </div>
     <div class="bottom">
