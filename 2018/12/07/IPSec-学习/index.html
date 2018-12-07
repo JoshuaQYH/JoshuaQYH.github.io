@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html lang="" class="loading">
+<head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KnowMyself - Code and life</title>
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="Here are some records for life and study.,"> 
+    <meta name="author" content="Qiuyihao"> 
+    <link rel="alternative" href="atom.xml" title="KnowMyself" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
+</head>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">IPSec 学习</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
+        </div>
+    </div>
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class="main">
+        <h1 class="title">IPSec 学习</h1>
+        <div class="stuff">
+            <span>十二月 07, 2018</span>
+            
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/信息安全/">信息安全</a></li></ul>
+
+
+        </div>
+        <div class="content markdown">
+            <h1 id="IP-Sec-定义"><a href="#IP-Sec-定义" class="headerlink" title="IP Sec 定义"></a>IP Sec 定义</h1><p>IPSec全称是<code>Internet Protocol Security</code> ，因特网协议安全，由IETF官方定义。</p>
+<p><code>RFC-1825 to RFC-1827</code>。属于一种协议套件，通过认证和加密数据包来保证因特网安全通信。</p>
+<ul>
+<li><p>属于端到端的安全模式。</p>
+</li>
+<li><p>保护跨IP网络的应用层通信。但应用层无需设计使用ＩＰＳｅｃ。</p>
+<ul>
+<li>可以使用SSL（安全套接字），TLS（传输层安全），安全壳（SSH）。</li>
+</ul>
+</li>
+<li><p>ＩＰＳｅｃ是ISO标准网络层安全协议的后继者。</p>
+</li>
+<li><p>IP协议的安全性：使用IPＳｅｃ解决</p>
+</li>
+<li><p>IPＳｅｃ提供网络层加密方案，在网络层对内容先加密再传输。</p>
+<ul>
+<li>数据加密方式有<ul>
+<li>传输模式：对数据部分ｐａｙｌｏａｄ加密。</li>
+<li>隧道模式：对整个IP分组进行加密。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h1 id="数据保护措施"><a href="#数据保护措施" class="headerlink" title="数据保护措施"></a>数据保护措施</h1><ul>
+<li>数据保密：使用各种加密手法。主要是对称加密技术。要保证公钥的合法性，我们需要确认发送证书的一方不是伪装的攻击者。Ｘ．５０９证书作为可信第三方为通信双方做身份验证。或者使用预共享的密钥，RSA密钥。</li>
+<li>数据完整性度量：保证数据完整。数据做摘要，完整接收后再进行摘要比对。</li>
+<li>来源认证：确认收发双方，以信息摘要的方式解决。信息摘要种包含了发送方的地址信息HMAC</li>
+<li>防止重放攻击：加上时间戳＋随机数，保证消息唯一区分。</li>
+</ul>
+<h1 id="IPSec-的一些基本理念"><a href="#IPSec-的一些基本理念" class="headerlink" title="IPSec 的一些基本理念"></a>IPSec 的一些基本理念</h1><h3 id="AH认证头协议"><a href="#AH认证头协议" class="headerlink" title="AH认证头协议"></a>AH认证头协议</h3><p>AH比ESP相比具有更强的<strong>认证</strong>能力。能有效在数据传送过程中对数据进行完整性度量度量和来源认证，防止重放攻击。</p>
+<p>工作原理：在IP数据报前加上一个身份验证报头，报头中有一个带密钥的Hash值。</p>
+<p>可单独使用，也可以和ESP协议结合使用。</p>
+<h3 id="ESP封装安全载荷协议"><a href="#ESP封装安全载荷协议" class="headerlink" title="ESP封装安全载荷协议"></a>ESP封装安全载荷协议</h3><p>能够对数据进行完整性度量，来源认证和加密，防止重放攻击。</p>
+<ul>
+<li><p>ESP服务依据建立的SA，对可选项目有所限制</p>
+<ul>
+<li>完整性检查和验证一起进行</li>
+</ul>
+</li>
+<li><p>加密服务是可选的。启用加密，那么也就启用了完整性检车和认证。</p>
+</li>
+<li><p>一般情况下，ESP只加密数据报中有效载荷部分（传输模式），在端对端的隧道通信下，需要开启隧道模式。</p>
+</li>
+<li><p>ESP报头位置在IP报头之后，在TCP，UDP报头之前。</p>
+</li>
+<li><p>可以与AH协议结合使用，也可以单独使用。</p>
+<p>​</p>
+</li>
+</ul>
+<h3 id="Tunnel隧道模式"><a href="#Tunnel隧道模式" class="headerlink" title="Tunnel隧道模式"></a>Tunnel隧道模式</h3><p>加密原IP报文，作为数据内容，在这段数据内容之前，加上ESP或AH协议头，加上新的IP头，形成IPSec报文进行传输。</p>
+<h3 id="Transport-Mode传输模式"><a href="#Transport-Mode传输模式" class="headerlink" title="Transport Mode传输模式"></a>Transport Mode传输模式</h3><p>仅保护IP报文中的有效载荷部分，在该过程中原报文结构被修改。然后在修改后有效载荷前加上新的ESP或AH协议头，装回原来的IP地址，形成IPSec报文。</p>
+<h3 id="SA"><a href="#SA" class="headerlink" title="SA"></a>SA</h3><p>安全关联。可以认为是某一连接被IPSec保护的唯一标识。</p>
+<p>SA是单向的，一次连接，通信双方都需要创建一个SA。</p>
+<h3 id="SAD"><a href="#SAD" class="headerlink" title="SAD"></a>SAD</h3><p>  安全关联数据库。</p>
+<p>SAD条目：</p>
+<ol>
+<li>顺序号计数器</li>
+<li>顺序号溢出计数器</li>
+<li>防止回放窗口</li>
+<li>SA有效期</li>
+<li>AH协议中所使用的算法和密钥</li>
+<li>ESP协议 涉及加密认证的算法和密钥</li>
+<li>IPSec运行模式</li>
+<li>PMTU 两个通信设备间的MTU</li>
+</ol>
+<p>除了SAD外还有 SPI，SPD，IKE</p>
+<h1 id="ESP协议"><a href="#ESP协议" class="headerlink" title="ESP协议"></a>ESP协议</h1><p>１.　主要了解隧道模式下IPSec数据报结构。</p>
+<p>新IP头 + ESP头 + 加密原数据报 + 加密ESP尾 + ESP的MAC验证码</p>
+<p>２.　传输模式下的ＩＰＳｅｃ数据报结构</p>
+<p>原IP头＋ESP头＋加密的原IP数据报文＋加密的ESP尾＋ESP－MAC　</p>
+<h1 id="AH协议"><a href="#AH协议" class="headerlink" title="AH协议"></a>AH协议</h1><p>不加密，供验证。消息高，不防窃听。</p>
+<h1 id="IKE-因特网密钥交换"><a href="#IKE-因特网密钥交换" class="headerlink" title="IKE 因特网密钥交换"></a>IKE 因特网密钥交换</h1><p>几种IKE协议。</p>
+<p>ISAKMP：用于建立SA，密钥。</p>
+<p>Oakley：允许在非安全连接中安全交换密钥</p>
+<p>SKEME：安全密钥交换机制。</p>
+<h1 id="Gateway-模式和Road-Warrior模式"><a href="#Gateway-模式和Road-Warrior模式" class="headerlink" title="Gateway 模式和Road Warrior模式"></a>Gateway 模式和Road Warrior模式</h1><p>IPSec适用于：</p>
+<ol>
+<li>两个私有网络通过因特网对接</li>
+<li>因特网接入私有网络</li>
+</ol>
+<p>需要保护好通信数据。</p>
+<p>Gateway模式是网关之间的通信，只需要在网关上设置好IPSec模式。</p>
+<p>Road Warrior模式一头是网关，另外一头是单个客户端。</p>
+<p><em>注： 私有网络内部主机默认为安全，没有必要对私有网络中的每一个设备配置ＩＰｓｅｃ</em></p>
+
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
+        </div>
+        
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci="" data-cs="" data-r="" data-o="" data-a="" data-d="false">查看评论</div>
+
+
+    </div>
+    
+</div>
+
+
+    </div>
+</div>
+</body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+</html>

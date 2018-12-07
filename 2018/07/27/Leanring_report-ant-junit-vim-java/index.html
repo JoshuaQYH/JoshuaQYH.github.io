@@ -1,186 +1,57 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="" class="loading">
 <head><meta name="generator" content="Hexo 3.8.0">
-    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KnowMyself - Code and life</title>
 
-    
-
-    
-
-
-
-    <meta charset="utf-8">
-    
-    
-    
-    
-    <title>ant,junit,vim,java | KnowMyself | Code and life</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#3F51B5">
-    
-    
-    <meta name="keywords" content="vim,java">
-    <meta name="description" content="Vim简介Vim是一款上古编辑器，被广大程序员成为编辑器之神，这与之强大的编辑功能和编辑效率是分不开的。和Emace一样都在代码行业享有盛誉。vim最为重要的一点就是一切操作几乎可以舍弃鼠标，熟悉了vim命令的话，光靠键盘指令可以使开发效率迅速提高。 Vim的安装Linux下在Ubuntu平台下控制台敲入下列指令即可自动安装。  sudo apt-get install vim  Windows下">
-<meta name="keywords" content="vim,java">
-<meta property="og:type" content="article">
-<meta property="og:title" content="ant,junit,vim,java">
-<meta property="og:url" content="https://joshuaqyh.github.io/2018/07/27/Leanring_report-ant-junit-vim-java/index.html">
-<meta property="og:site_name" content="KnowMyself">
-<meta property="og:description" content="Vim简介Vim是一款上古编辑器，被广大程序员成为编辑器之神，这与之强大的编辑功能和编辑效率是分不开的。和Emace一样都在代码行业享有盛誉。vim最为重要的一点就是一切操作几乎可以舍弃鼠标，熟悉了vim命令的话，光靠键盘指令可以使开发效率迅速提高。 Vim的安装Linux下在Ubuntu平台下控制台敲入下列指令即可自动安装。  sudo apt-get install vim  Windows下">
-<meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-11-28T07:14:40.430Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="ant,junit,vim,java">
-<meta name="twitter:description" content="Vim简介Vim是一款上古编辑器，被广大程序员成为编辑器之神，这与之强大的编辑功能和编辑效率是分不开的。和Emace一样都在代码行业享有盛誉。vim最为重要的一点就是一切操作几乎可以舍弃鼠标，熟悉了vim命令的话，光靠键盘指令可以使开发效率迅速提高。 Vim的安装Linux下在Ubuntu平台下控制台敲入下列指令即可自动安装。  sudo apt-get install vim  Windows下">
-    
-        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
-    
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
-
-    <!-- custom head -->
-    
-
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="Here are some records for life and study.,"> 
+    <meta name="author" content="Qiuyihao"> 
+    <link rel="alternative" href="atom.xml" title="KnowMyself" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
 </head>
-
-<body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide">
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Qiuyihao</h5>
-          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
-        </hgroup>
-      </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/">
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives">
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags">
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories">
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/JoshuaQYH" target="_blank">
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-      </ul>
-    </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">ant,junit,vim,java</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">ant,junit,vim,java</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
         </div>
-        
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
-        
     </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class="main">
         <h1 class="title">ant,junit,vim,java</h1>
-        <h5 class="subtitle">
+        <div class="stuff">
+            <span>七月 27, 2018</span>
             
-                <time datetime="2018-07-27T15:28:32.625Z" itemprop="datePublished" class="page-time">
-  2018-07-27
-</time>
-
-
-            
-        </h5>
-    </div>
-
-    
-
-
-</header>
-
-
-<div class="container body-wrap">
-    
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Vim简介"><span class="post-toc-number">1.</span> <span class="post-toc-text">Vim简介</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Vim的安装"><span class="post-toc-number">2.</span> <span class="post-toc-text">Vim的安装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Linux下"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">Linux下</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Windows下"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">Windows下</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Vim常用指令和教程"><span class="post-toc-number">3.</span> <span class="post-toc-text">Vim常用指令和教程</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-创建或打开文件-vim-filename"><span class="post-toc-number">3.0.1.</span> <span class="post-toc-text">1. 创建或打开文件 vim filename</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-添加内容"><span class="post-toc-number">3.0.2.</span> <span class="post-toc-text">2.添加内容</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-删除内容"><span class="post-toc-number">3.0.3.</span> <span class="post-toc-text">3.删除内容</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-复制内容"><span class="post-toc-number">3.0.4.</span> <span class="post-toc-text">4. 复制内容</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-粘贴内容"><span class="post-toc-number">3.0.5.</span> <span class="post-toc-text">5.粘贴内容</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-撤销内容"><span class="post-toc-number">3.0.6.</span> <span class="post-toc-text">6. 撤销内容</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-保存文件"><span class="post-toc-number">3.0.7.</span> <span class="post-toc-text">7. 保存文件</span></a></li></ol></li></ol><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Java知识入门"><span class="post-toc-number"></span> <span class="post-toc-text">Java知识入门</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Java面向对象"><span class="post-toc-number">0.1.</span> <span class="post-toc-text">Java面向对象</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#java继承"><span class="post-toc-number">0.2.</span> <span class="post-toc-text">java继承</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#java重写和重载"><span class="post-toc-number">0.3.</span> <span class="post-toc-text">java重写和重载</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#重写"><span class="post-toc-number">0.3.1.</span> <span class="post-toc-text">重写</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#重写方法的原则"><span class="post-toc-number">0.3.1.1.</span> <span class="post-toc-text">重写方法的原则</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#代码实例"><span class="post-toc-number">0.3.1.2.</span> <span class="post-toc-text">代码实例</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#重载的规则"><span class="post-toc-number">0.3.1.3.</span> <span class="post-toc-text">重载的规则</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#代码实例-1"><span class="post-toc-number">0.3.1.4.</span> <span class="post-toc-text">代码实例</span></a></li></ol></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#多态"><span class="post-toc-number">0.3.2.</span> <span class="post-toc-text">多态</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Swing"><span class="post-toc-number">0.4.</span> <span class="post-toc-text">Swing</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#常用的控件集合"><span class="post-toc-number">0.4.1.</span> <span class="post-toc-text">常用的控件集合</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#注册事件的方法"><span class="post-toc-number">0.4.2.</span> <span class="post-toc-text">注册事件的方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#方法1-匿名内部类实现"><span class="post-toc-number">0.4.2.1.</span> <span class="post-toc-text">方法1 匿名内部类实现</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#方法2-利用一般内部类实现"><span class="post-toc-number">0.4.2.2.</span> <span class="post-toc-text">方法2 利用一般内部类实现</span></a></li></ol></li></ol></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Junit-学习和使用"><span class="post-toc-number"></span> <span class="post-toc-text">Junit 学习和使用</span></a>
-        </li></nav>
-    </aside>
-
-
-<article id="post-Leanring_report-ant-junit-vim-java" class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">ant,junit,vim,java</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2018-07-27 23:28:32" datetime="2018-07-27T15:28:32.625Z" itemprop="datePublished">2018-07-27</time>
-
-            
-
-
-            
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/java/">java</a></li><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/vim/">vim</a></li></ul>
 
 
         </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
+        <div class="content markdown">
             <h2 id="Vim简介"><a href="#Vim简介" class="headerlink" title="Vim简介"></a>Vim简介</h2><p>Vim是一款上古编辑器，被广大程序员成为编辑器之神，这与之强大的编辑功能和编辑效率是分不开的。和Emace一样都在代码行业享有盛誉。vim最为重要的一点就是一切操作几乎可以舍弃鼠标，熟悉了vim命令的话，光靠键盘指令可以使开发效率迅速提高。</p>
 <h2 id="Vim的安装"><a href="#Vim的安装" class="headerlink" title="Vim的安装"></a>Vim的安装</h2><h3 id="Linux下"><a href="#Linux下" class="headerlink" title="Linux下"></a>Linux下</h3><p>在Ubuntu平台下控制台敲入下列指令即可自动安装。</p>
 <blockquote>
@@ -432,294 +303,90 @@
 </tbody>
 </table>
 
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
         </div>
-
-        <blockquote class="post-copyright">
-    
-    <div class="content">
         
-<span class="post-time">
-    Last updated: <time datetime="2018-11-28T07:14:40.430Z" itemprop="dateUpdated">2018-11-28 15:14:40</time>
-</span><br>
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci="" data-cs="" data-r="" data-o="" data-a="" data-d="false">查看评论</div>
 
 
-        
-        Thanks for your reading  :) | URL <a href="/2018/07/27/Leanring_report-ant-junit-vim-java/" target="_blank" rel="external">https://joshuaqyh.github.io/2018/07/27/Leanring_report-ant-junit-vim-java/</a>
-        
     </div>
     
-    <footer>
-        <a href="https://joshuaqyh.github.io">
-            <img src="/img/avatar.jpg" alt="Qiuyihao">
-            Qiuyihao
-        </a>
-    </footer>
-</blockquote>
-
-        
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vim/">vim</a></li></ul>
-
-
-            
-<div class="page-share-wrap">
-    
-
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/07/27/Leanring_report-ant-junit-vim-java/&title=《ant,junit,vim,java》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/07/27/Leanring_report-ant-junit-vim-java/&title=《ant,junit,vim,java》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/07/27/Leanring_report-ant-junit-vim-java/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ant,junit,vim,java》 — KnowMyself&url=https://joshuaqyh.github.io/2018/07/27/Leanring_report-ant-junit-vim-java/&via=https://joshuaqyh.github.io" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/07/27/Leanring_report-ant-junit-vim-java/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
-    </a>
 </div>
 
 
-
-        </div>
     </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2018/07/27/Q&A_cocos2d/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">cocos2d学习丨坑和解决办法</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2018/07/27/git学习/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">git学习</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</article>
-
-
-
 </div>
-
-        <footer class="footer">
-    <div class="top">
-        
-<p>
-    <span id="busuanzi_container_site_uv" style="display:none">
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style="display:none">
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
-
-        <p>
-            
-                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Qiuyihao &copy; 2017 - 2018</span>
-            <span>
-                
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
-    </div>
-</footer>
-
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/07/27/Leanring_report-ant-junit-vim-java/&title=《ant,junit,vim,java》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/07/27/Leanring_report-ant-junit-vim-java/&title=《ant,junit,vim,java》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/07/27/Leanring_report-ant-junit-vim-java/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《ant,junit,vim,java》 — KnowMyself&url=https://joshuaqyh.github.io/2018/07/27/Leanring_report-ant-junit-vim-java/&via=https://joshuaqyh.github.io" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/07/27/Leanring_report-ant-junit-vim-java/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACy0lEQVR42u3aQY7iQAwFUO5/6RlpNLsWyf92CnrxskLdkNQrpLKx/XrF159/18/X7/57/Z7rT7171s87PHbh4eHhjZb+7sqXcn3PhHr99+s1vF0PHh4e3jHeLBjsQ0Jy6F9v98198PDw8L7Ky2+aHPTJ05NAhYeHh/ebee3BnSTW+cbh4eHh/TZechDPAkN7z7y8+3CtBQ8PDy/mbRpg33r9of4eHh4eXtlVf/jwjdPo/dr+3xkPDw/vAC9Jl/Py7mYRm6Gum5Xj4eHhfYS3SXDzga2oCBuEkxswHh4e3jHerAGWD1Tt75A32x7r7+Hh4eFdZs5tAaJ9TNskS0JLURbBw8PDe5S3x7SjAPvRgSJZx8PDwzvMa0edNmMHs1JF8gVEtRY8PDy8Ea89dtvhp9nRvykE1/uBh4eHN5kEePhXfLvoHJaHmYNFCjw8PLzRcNWscdW2vvKyxTBI4OHh4S147ZE9a2XNAkxSHHmg1oKHh4e37rnP2l35sd6WifcbhIeHh3eC1w4NJCnyrDDRbjQeHh7e53l5o2t23B8pwubNPDw8PLxjvFlynG9Qsuh21CAqH+Ph4eE9ytsf7psBgn3V5Gbr8fDw8A7wZshNO2qWds8CDB4eHt4J3qyFn4SHPPFtC7VFgRgPDw/vAK8deJoNkhZ1kbJcOyzj4uHh4a15s0y8ztzjltUsXN2sBw8PD+9RXjsQkL8nb6flpd6aioeHh3eMNxsIyNPcZCM2bbC3K8TDw8N7lLc5mq+T5rY9ti/73gxd4eHh4T3Ea4uns8DwKq99av6aPRIPDw8v5s2O6TxFzlP2Tdn3poyLh4eHd4CXB4N2mKAdltoMExRDA3h4eHgf5F1/dtYwa8sKRXjAw8PD+yqvfWc7BNAm1tHXgIeHh3eMNxt1SsoQs0O/DSFFxo2Hh4e35s0aYG2oeGoYqy0i4+Hh4T3K+wv7XkEFrvKtzwAAAABJRU5ErkJggg==" alt="微信分享二维码">
-</div>
-
-
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-<script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
-
-
-</script>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
-
-
-
-<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
-</script>
-
-<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-
-
-
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = '唉要去哪里了！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
-
-
-
 </body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 </html>

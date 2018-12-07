@@ -1,189 +1,57 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="" class="loading">
 <head><meta name="generator" content="Hexo 3.8.0">
-    
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>KnowMyself - Code and life</title>
 
-    
-
-    
-
-
-
-    <meta charset="utf-8">
-    
-    
-    
-    
-    <title>关系数据库设计理论简介 | KnowMyself | Code and life</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    
-    <meta name="theme-color" content="#3F51B5">
-    
-    
-    <meta name="keywords" content="数据库理论">
-    <meta name="description" content="[TOC] 函数依赖 X→Y，表示Y依赖于X； X→Y，且Y→X不成立，Y→Z，则X→Z，表示Z传递依赖于X。  函数依赖性质 自反性 传递性 增广性  A → C 可以推出 AB → BC                                                                                               5268699892">
-<meta name="keywords" content="数据库理论">
-<meta property="og:type" content="article">
-<meta property="og:title" content="关系数据库设计理论简介">
-<meta property="og:url" content="https://joshuaqyh.github.io/2018/07/27/关系数据库设计理论/index.html">
-<meta property="og:site_name" content="KnowMyself">
-<meta property="og:description" content="[TOC] 函数依赖 X→Y，表示Y依赖于X； X→Y，且Y→X不成立，Y→Z，则X→Z，表示Z传递依赖于X。  函数依赖性质 自反性 传递性 增广性  A → C 可以推出 AB → BC                                                                                               5268699892">
-<meta property="og:locale" content="default">
-<meta property="og:image" content="c:/Users/ADMINI~1/AppData/Local/Temp/1526869989262.png">
-<meta property="og:image" content="c:/Users/ADMINI~1/AppData/Local/Temp/1526870129743.png">
-<meta property="og:updated_time" content="2018-07-27T15:32:16.784Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="关系数据库设计理论简介">
-<meta name="twitter:description" content="[TOC] 函数依赖 X→Y，表示Y依赖于X； X→Y，且Y→X不成立，Y→Z，则X→Z，表示Z传递依赖于X。  函数依赖性质 自反性 传递性 增广性  A → C 可以推出 AB → BC                                                                                               5268699892">
-<meta name="twitter:image" content="c:/Users/ADMINI~1/AppData/Local/Temp/1526869989262.png">
-    
-        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
-    
-    <link rel="shortcut icon" href="/favicon.ico">
-    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
-    <script>window.lazyScripts=[]</script>
-
-    <!-- custom head -->
-    
-
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="google" content="notranslate">
+    <meta name="keywords" content="Fechin,"> 
+    <meta name="description" content="Here are some records for life and study.,"> 
+    <meta name="author" content="Qiuyihao"> 
+    <link rel="alternative" href="atom.xml" title="KnowMyself" type="application/atom+xml"> 
+    <link rel="icon" href="/img/favicon.png"> 
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+    <link rel="stylesheet" href="/css/diaspora.css">
 </head>
-
-<body>
-    <div id="loading" class="active"></div>
-
-    <aside id="menu" class="hide">
-  <div class="inner flex-row-vertical">
-    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
-        <i class="icon icon-lg icon-close"></i>
-    </a>
-    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
-      <div class="brand">
-        <a href="/" class="avatar waves-effect waves-circle waves-light">
-          <img src="/img/avatar.jpg">
-        </a>
-        <hgroup class="introduce">
-          <h5 class="nickname">Qiuyihao</h5>
-          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
-        </hgroup>
-      </div>
-    </div>
-    <div class="scroll-wrap flex-col">
-      <ul class="nav">
-        
-            <li class="waves-block waves-effect">
-              <a href="/">
-                <i class="icon icon-lg icon-home"></i>
-                主页
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/archives">
-                <i class="icon icon-lg icon-archives"></i>
-                Archives
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/tags">
-                <i class="icon icon-lg icon-tags"></i>
-                Tags
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="/categories">
-                <i class="icon icon-lg icon-th-list"></i>
-                Categories
-              </a>
-            </li>
-        
-            <li class="waves-block waves-effect">
-              <a href="https://github.com/JoshuaQYH" target="_blank">
-                <i class="icon icon-lg icon-github"></i>
-                Github
-              </a>
-            </li>
-        
-      </ul>
-    </div>
-  </div>
-</aside>
-
-    <main id="main">
-        <header class="top-header" id="header">
-    <div class="flex-row">
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
-          <i class="icon icon-lg icon-navicon"></i>
-        </a>
-        <div class="flex-col header-title ellipsis">关系数据库设计理论简介</div>
-        
-        <div class="search-wrap" id="search-wrap">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
-                <i class="icon icon-lg icon-chevron-left"></i>
-            </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
-            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
-                <i class="icon icon-lg icon-search"></i>
-            </a>
+</html>
+<body class="loading">
+    <div id="loader"></div>
+    <div id="single">
+    <div id="top" style="display: block;">
+    <div class="bar" style="width: 0;"></div>
+    <a class="icon-home image-icon" href="javascript:;"></a>
+    <div title="播放/暂停" class="icon-play"></div>
+    <h3 class="subtitle">关系数据库设计理论简介</h3>
+    <div class="social">
+        <!--<div class="like-icon">-->
+            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
+        <!--</div>-->
+        <div>
+            <div class="share">
+                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
+            </div>
+            <div id="qr"></div>
         </div>
-        
-        
-        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
-            <i class="icon icon-lg icon-share-alt"></i>
-        </a>
-        
     </div>
-</header>
-<header class="content-header post-header">
-
-    <div class="container fade-scale">
+    <div class="scrollbar"></div>
+</div>
+    <div class="section">
+        <div class="article">
+    <div class="main">
         <h1 class="title">关系数据库设计理论简介</h1>
-        <h5 class="subtitle">
+        <div class="stuff">
+            <span>七月 27, 2018</span>
             
-                <time datetime="2018-07-27T15:28:32.735Z" itemprop="datePublished" class="page-time">
-  2018-07-27
-</time>
-
-
-            
-        </h5>
-    </div>
-
-    
-
-
-</header>
-
-
-<div class="container body-wrap">
-    
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#函数依赖"><span class="post-toc-number">1.</span> <span class="post-toc-text">函数依赖</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#函数依赖性质"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">函数依赖性质</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#函数依赖的种类"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">函数依赖的种类</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#键"><span class="post-toc-number">2.</span> <span class="post-toc-text">键</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#范式-Normal-Forms"><span class="post-toc-number">3.</span> <span class="post-toc-text">范式 Normal Forms</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#属性闭包"><span class="post-toc-number">4.</span> <span class="post-toc-text">属性闭包</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关系模式分解"><span class="post-toc-number">5.</span> <span class="post-toc-text">关系模式分解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#无损连接分解"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">无损连接分解</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#BCNF分解"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">BCNF分解</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#第三范式分解"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">第三范式分解</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#补充知识点"><span class="post-toc-number">6.</span> <span class="post-toc-text">补充知识点</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#自然连接"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">自然连接</span></a></li></ol></li></ol>
-        </nav>
-    </aside>
-
-
-<article id="post-关系数据库设计理论" class="post-article article-type-post fade" itemprop="blogPost">
-
-    <div class="post-card">
-        <h1 class="post-card-title">关系数据库设计理论简介</h1>
-        <div class="post-meta">
-            <time class="post-time" title="2018-07-27 23:28:32" datetime="2018-07-27T15:28:32.735Z" itemprop="datePublished">2018-07-27</time>
-
-            
-
-
-            
-<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
-    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
-</span>
+  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/数据库理论/">数据库理论</a></li></ul>
 
 
         </div>
-        <div class="post-content" id="post-content" itemprop="postContent">
+        <div class="content markdown">
             <p>[TOC]</p>
 <h3 id="函数依赖"><a href="#函数依赖" class="headerlink" title="函数依赖"></a>函数依赖</h3><ul>
 <li>X→Y，表示Y依赖于X；</li>
@@ -194,13 +62,7 @@
 <li>传递性</li>
 <li>增广性  A → C 可以推出 AB → BC</li>
 </ul>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="C:\Users\ADMINI~1\AppData\Local\Temp\1526869989262.png" alt="52686998926" title="">
-                </div>
-                <div class="image-caption">52686998926</div>
-            </figure>
+<p><img src="C:\Users\ADMINI~1\AppData\Local\Temp\1526869989262.png" alt="52686998926"></p>
 <h4 id="函数依赖的种类"><a href="#函数依赖的种类" class="headerlink" title="函数依赖的种类"></a>函数依赖的种类</h4><p>（<strong>完全函数依赖</strong>：在关系模式R（u）中，X,Y是U的子集，Y函数依赖于X 并且 Y非函数依赖于X的子集，则称Y完全函数依赖于X。X  f &gt;Y）—&gt; Y依赖于X,但未必都依赖X的子集。</p>
 <p>（<strong>部分函数依赖</strong>：在关系模式R（u）中，X,Y是U的子集，Y函数依赖于X 并且 Y函数依赖于X的子集）</p>
 <p>（<strong>函数依赖</strong>：某个属性集决定另一个属性集时，例如学生学号属性集Sno决定学生姓名属性集Sname，称Sname函数依赖于Sname ）</p>
@@ -210,13 +72,7 @@
 <p><strong>判断主键的方法</strong> ：若属性集为{ A , B, C}，A+ = ABC。 则A为主键。（属性闭包判断法） </p>
 <h3 id="范式-Normal-Forms"><a href="#范式-Normal-Forms" class="headerlink" title="范式 Normal Forms"></a>范式 Normal Forms</h3><p>（1）第一范式1NF：关系中的所以属性值都是不可分割的原子值；<br>（2）第二范式2NF：如果关系是1NF，且每个非主属性都完全依赖于候选键；<br>（3）第三范式3NF：如果关系是1NF，且每个非主属性都不传递依赖于候选键；<br>（4）<strong>鲍依斯-科得(巴斯)范式</strong>BCNF范式：如果关系是1NF，且每个属性都不传递依赖于候选键。</p>
 <p>BCNF意味着在关系模式中每一个决定因素都包含候选键，也就是说，只要属性或属性组A能够决定任何一个属性B，则A的子集中必须有候选键。</p>
-<figure class="image-bubble">
-                <div class="img-lightbox">
-                    <div class="overlay"></div>
-                    <img src="C:\Users\ADMINI~1\AppData\Local\Temp\1526870129743.png" alt="52687012974" title="">
-                </div>
-                <div class="image-caption">52687012974</div>
-            </figure>
+<p><img src="C:\Users\ADMINI~1\AppData\Local\Temp\1526870129743.png" alt="52687012974"></p>
 <h3 id="属性闭包"><a href="#属性闭包" class="headerlink" title="属性闭包"></a>属性闭包</h3><p>定义：闭包就是由一个属性直接或间接推导出的所有属性的集合。</p>
 <p>表示：B的闭包用B+表示。</p>
 <p>计算：关系R的属性集X的闭包的步骤如下： </p>
@@ -260,294 +116,90 @@
 <p><a href="https://www.cnblogs.com/makeupforever-carrie/p/6837325.html" target="_blank" rel="noopener">四种范式的实例</a></p>
 <p><a href="https://blog.csdn.net/fanfan4569/article/details/53910670" target="_blank" rel="noopener">函数依赖不懂看这里</a></p>
 
+            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
+            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
+                <source type="audio/mpeg" src="">
+            </audio>
+            
+                <ul id="audio-list" style="display:none">
+                    
+                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
+                    
+                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
+                    
+                </ul>
+            
         </div>
-
-        <blockquote class="post-copyright">
-    
-    <div class="content">
         
-<span class="post-time">
-    Last updated: <time datetime="2018-07-27T15:32:16.784Z" itemprop="dateUpdated">2018-07-27 23:32:16</time>
-</span><br>
+    <div id="gitalk-container" class="comment link" data-ae="false" data-ci="" data-cs="" data-r="" data-o="" data-a="" data-d="false">查看评论</div>
 
 
-        
-        Thanks for your reading  :) | URL <a href="/2018/07/27/关系数据库设计理论/" target="_blank" rel="external">https://joshuaqyh.github.io/2018/07/27/关系数据库设计理论/</a>
-        
     </div>
     
-    <footer>
-        <a href="https://joshuaqyh.github.io">
-            <img src="/img/avatar.jpg" alt="Qiuyihao">
-            Qiuyihao
-        </a>
-    </footer>
-</blockquote>
-
-        
-
-
-        <div class="post-footer">
-            
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据库理论/">数据库理论</a></li></ul>
-
-
-            
-<div class="page-share-wrap">
-    
-
-<div class="page-share" id="pageShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/07/27/关系数据库设计理论/&title=《关系数据库设计理论简介》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/07/27/关系数据库设计理论/&title=《关系数据库设计理论简介》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/07/27/关系数据库设计理论/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《关系数据库设计理论简介》 — KnowMyself&url=https://joshuaqyh.github.io/2018/07/27/关系数据库设计理论/&via=https://joshuaqyh.github.io" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/07/27/关系数据库设计理论/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-
-    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
-        <i class="icon icon-share-alt icon-lg"></i>
-    </a>
 </div>
 
 
-
-        </div>
     </div>
-
-    
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2018/07/27/回调函数/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">回调函数</h4>
-      </a>
-    </div>
-  
-
-  
-    <div class="waves-block waves-effect next">
-      <a href="/2018/07/27/读者写者问题/" id="post-next" class="post-nav-link">
-        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">死锁问题</h4>
-      </a>
-    </div>
-  
-</nav>
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-</article>
-
-
-
 </div>
-
-        <footer class="footer">
-    <div class="top">
-        
-<p>
-    <span id="busuanzi_container_site_uv" style="display:none">
-        站点总访客数：<span id="busuanzi_value_site_uv"></span>
-    </span>
-    <span id="busuanzi_container_site_pv" style="display:none">
-        站点总访问量：<span id="busuanzi_value_site_pv"></span>
-    </span>
-</p>
-
-
-        <p>
-            
-                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
-            
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
-        </p>
-    </div>
-    <div class="bottom">
-        <p><span>Qiuyihao &copy; 2017 - 2018</span>
-            <span>
-                
-                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
-            </span>
-        </p>
-    </div>
-</footer>
-
-    </main>
-    <div class="mask" id="mask"></div>
-<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
-
-
-
-<div class="global-share" id="globalShare">
-    <ul class="reset share-icons">
-      <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/07/27/关系数据库设计理论/&title=《关系数据库设计理论简介》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
-          <i class="icon icon-weibo"></i>
-        </a>
-      </li>
-      <li>
-        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
-          <i class="icon icon-weixin"></i>
-        </a>
-      </li>
-      <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/07/27/关系数据库设计理论/&title=《关系数据库设计理论简介》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
-          <i class="icon icon-qq"></i>
-        </a>
-      </li>
-      <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/07/27/关系数据库设计理论/" data-title=" Facebook">
-          <i class="icon icon-facebook"></i>
-        </a>
-      </li>
-      <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《关系数据库设计理论简介》 — KnowMyself&url=https://joshuaqyh.github.io/2018/07/27/关系数据库设计理论/&via=https://joshuaqyh.github.io" data-title=" Twitter">
-          <i class="icon icon-twitter"></i>
-        </a>
-      </li>
-      <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/07/27/关系数据库设计理论/" data-title=" Google+">
-          <i class="icon icon-google-plus"></i>
-        </a>
-      </li>
-    </ul>
- </div>
-
-
-<div class="page-modal wx-share" id="wxShare">
-    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsUlEQVR42u3aQW7jQAwEwPz/09lrAK+cbs4Q6wVKJyOSJdUYGDIkv77i4/vH8fMvX6Pj9W6vZ99/vnzg4eHhHTzs9Xh6zOyapxdNnv7+/o9LhoeHh7fGyzfo91eenH2/HMn74OHh4X0mL9m+Z0lzzsbDw8P7X3h58t1e05Y/8PDw8D6BNysHJA8YvlYZnC7UWvDw8PBiXt5F+pzPK/09PDw8vOOuepsQ50XYPCScHHh4eHgbvNnoQLuVJxt6m4gXS4aHh4e3wGsz0qTYerdYMAtReHh4eHu8k7ZW2+y/tUDFb4WHh4e3wEvS1hyT3KcdGsgT9MezeHh4eGu8NoHOm/ptonyyxHh4eHh7vDaBPgkeJ8WFZPDrL5/x8PDw1nhJUtums/lC3Cr4Pk5G4OHh4V3l3SpJtIEkSb5PSg94eHh4e7w8SU3CQBtmig29LF7UOTgeHh7eJd7s8XnBN+/1t3eOAgMeHh7eiDcLBnkSnF9/8vdfghMeHh7eVd7Jdt+OBSRBIr9zERLw8PDwFnhFlTceCGjDTAKuFx0PDw9vgZe3/E8KsvkoQItJ3hkPDw9vj9e+esvOP7f4X9JxPDw8vDVeTmpLBifDVSdX4uHh4W3w2vb8ycjU7KXzMu4wJODh4eGN+kp5q74NG/l98hbX8DfEw8PDW+CdbPT5Nn1SgJiFMTw8PLxtXj44lbT5zxtmbUioR6/w8PDwjnntxp3DZmWIPHg8Xo+Hh4d3lfddHieLkuPbs49vi4eHh7fAm5UY2rbWeWljNuKAh4eHt8drm1j5t9qybF7sKL6Lh4eHt8abbfS3RgfaIsWw1oKHh4f3j3hte2z2rbY5h4eHh/f5vNkLteXak1EGPDw8vG1emxbng1A5ow0w0U+Fh4eHt8Br/+G/NWiVL0qeuOPh4eEt8/4AExjLiJNuNW0AAAAASUVORK5CYII=" alt="微信分享二维码">
-</div>
-
-
-
-
-    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
-<script>
-var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
-
-
-</script>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
-
-
-<div class="search-panel" id="search-panel">
-    <ul class="search-result" id="search-result"></ul>
-</div>
-<template id="search-tpl">
-<li class="item">
-    <a href="{path}" class="waves-block waves-effect">
-        <div class="title ellipsis" title="{title}">{title}</div>
-        <div class="flex-row flex-middle">
-            <div class="tags ellipsis">
-                {tags}
-            </div>
-            <time class="flex-col time">{date}</time>
-        </div>
-    </a>
-</li>
-</template>
-
-<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
-
-
-
-<!-- mathjax config similar to math.stackexchange -->
-
-<script type="text/x-mathjax-config">
-MathJax.Hub.Config({
-    tex2jax: {
-        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-        processEscapes: true,
-        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-    }
-});
-
-MathJax.Hub.Queue(function() {
-    var all = MathJax.Hub.getAllJax(), i;
-    for(i=0; i < all.length; i += 1) {
-        all[i].SourceElement().parentNode.className += ' has-jax';
-    }
-});
-</script>
-
-<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
-
-
-
-
-<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-
-
-
-<script>
-(function() {
-    var OriginTitile = document.title, titleTime;
-    document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-            document.title = '唉要去哪里了！';
-            clearTimeout(titleTime);
-        } else {
-            document.title = '(つェ⊂)咦!又好了!';
-            titleTime = setTimeout(function() {
-                document.title = OriginTitile;
-            },2000);
-        }
-    });
-})();
-</script>
-
-
-
 </body>
+<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
+<script src="/js/plugin.js"></script>
+<script src="/js/diaspora.js"></script>
+<link rel="stylesheet" href="/photoswipe/photoswipe.css">
+<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
+<script src="/photoswipe/photoswipe.min.js"></script>
+<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+            <div class="pswp__top-bar">
+                <!--  Controls are self-explanatory. Order can be changed. -->
+                <div class="pswp__counter"></div>
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
 </html>
