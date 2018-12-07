@@ -1,57 +1,232 @@
-
 <!DOCTYPE html>
-<html lang="" class="loading">
+<html>
 <head><meta name="generator" content="Hexo 3.8.0">
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>KnowMyself - Code and life</title>
+    
 
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="google" content="notranslate">
-    <meta name="keywords" content="Fechin,"> 
-    <meta name="description" content="Here are some records for life and study.,"> 
-    <meta name="author" content="Qiuyihao"> 
-    <link rel="alternative" href="atom.xml" title="KnowMyself" type="application/atom+xml"> 
-    <link rel="icon" href="/img/favicon.png"> 
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-    <link rel="stylesheet" href="/css/diaspora.css">
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>markdown 数学公式表示大集合 | KnowMyself | Code and life</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="markdown">
+    <meta name="description" content="MarkDown 插入数学公式实验大集合0. 前言 最近在学习一些机器学习相关的知识，想把自己学习的东西通过 MD 的形式在线记录下来，但是之前一直没有开始行动，因为里面的公式什么的感觉实在是麻烦。于是今天打算花点时间了解一下如何在 markdown 中插入数学公式，发现其实很简单，大概花一个小时左右就能知道如何编写了。  1. 基础认识 笔者认为所谓插入数学公式其实就是引入一种规则，然后通过模板">
+<meta name="keywords" content="markdown">
+<meta property="og:type" content="article">
+<meta property="og:title" content="markdown 数学公式表示大集合">
+<meta property="og:url" content="https://joshuaqyh.github.io/2018/10/22/markdown-数学公式表示大集合/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="MarkDown 插入数学公式实验大集合0. 前言 最近在学习一些机器学习相关的知识，想把自己学习的东西通过 MD 的形式在线记录下来，但是之前一直没有开始行动，因为里面的公式什么的感觉实在是麻烦。于是今天打算花点时间了解一下如何在 markdown 中插入数学公式，发现其实很简单，大概花一个小时左右就能知道如何编写了。  1. 基础认识 笔者认为所谓插入数学公式其实就是引入一种规则，然后通过模板">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://juejin.im/equation?tex=a%20%2B%20b">
+<meta property="og:image" content="https://juejin.im/equation?tex=a%20%2B%20b">
+<meta property="og:image" content="https://juejin.im/equation?tex=x_1">
+<meta property="og:image" content="https://juejin.im/equation?tex=x_1%5E2">
+<meta property="og:image" content="https://juejin.im/equation?tex=x%5E2_1">
+<meta property="og:image" content="https://juejin.im/equation?tex=x_%7B22%7D%5E%7B(n)%7D">
+<meta property="og:image" content="https://juejin.im/equation?tex=%7B%7D%5E*x%5E*">
+<meta property="og:image" content="https://juejin.im/equation?tex=x_%7Bbalabala%7D%5E%7Bbala%7D">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cfrac%7Bx%2By%7D%7B2%7D">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cfrac%7B1%7D%7B1%2B%5Cfrac%7B1%7D%7B2%7D%7D">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cfrac%7B1%7D%7B1%2B%5Cfrac%7B1%7D%7B2%7D%7D">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Csqrt%7B2%7D%3C%5Csqrt%5B3%5D%7B3%7D">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Csqrt%7B1%2B%5Csqrt%5Bp%5D%7B1%2Ba%5E2%7D%7D">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Csqrt%7B1%2B%5Csqrt%5B%5Ep%5D%7B1%2Ba%5E2%7D%7D">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Csum_%7Bk%3D1%7D%5E%7Bn%7D%5Cfrac%7B1%7D%7Bk%7D">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Csum_%7Bk%3D1%7D%5En%5Cfrac%7B1%7D%7Bk%7D">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cint_%7Ba%7D%5Eb%20f(x)dx">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cint_a%5Eb%20f(x)dx">
+<meta property="og:image" content="https://juejin.im/equation?tex=a%5C!b">
+<meta property="og:image" content="https://juejin.im/equation?tex=ab">
+<meta property="og:image" content="https://juejin.im/equation?tex=a%5C%2Cb">
+<meta property="og:image" content="https://juejin.im/equation?tex=a%5C%3Bb">
+<meta property="og:image" content="https://juejin.im/equation?tex=a%5C%20b">
+<meta property="og:image" content="https://juejin.im/equation?tex=a%5Cquad%20b">
+<meta property="og:image" content="https://juejin.im/equation?tex=a%5Cqquad%20b">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cint_a%5Eb%20f(x)%5Cmathrm%7Bd%7Dx">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cint_a%5Eb%20f(x)%5C%2C%5Cmathrm%7Bd%7Dx">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5C%7C">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cleft(%5Csum_%7Bk%3D%5Cfrac%7B1%7D%7B2%7D%7D%5E%7BN%5E2%7D%5Cfrac%7B1%7D%7Bk%7D%5Cright)">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cbegin%7Bmatrix%7D1%20%26%202%5C%5C%5C%5C3%20%264%5Cend%7Bmatrix%7D">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cbegin%7Bpmatrix%7D1%20%26%202%5C%5C%5C%5C3%20%264%5Cend%7Bpmatrix%7D">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cbegin%7Bbmatrix%7D1%20%26%202%5C%5C%5C%5C3%20%264%5Cend%7Bbmatrix%7D">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cbegin%7BBmatrix%7D1%20%26%202%5C%5C%5C%5C3%20%264%5Cend%7BBmatrix%7D">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cbegin%7Bvmatrix%7D1%20%26%202%5C%5C%5C%5C3%20%264%5Cend%7Bvmatrix%7D">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cleft%7C%5Cbegin%7Bmatrix%7D1%20%26%202%5C%5C%5C%5C3%20%264%5Cend%7Bmatrix%7D%5Cright%7C">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cbegin%7BVmatrix%7D1%20%26%202%5C%5C%5C%5C3%20%264%5Cend%7BVmatrix%7D">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cmathbf%7BX%7D%20%3D%0A%5Cleft(%20%5Cbegin%7Barray%7D%7Bccc%7D%0Ax%5C_%7B11%7D%20%26%20x%5C_%7B12%7D%20%26%20%5Cldots%20%5C%5C%5C%5C%0Ax%5C_%7B21%7D%20%26%20x%5C_%7B22%7D%20%26%20%5Cldots%20%5C%5C%5C%5C%0A%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cddots%0A%5Cend%7Barray%7D%20%5Cright)">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cleft%7C%20%5Cbegin%7Bmultline%7D%0Ax%20%3D%20a%2Bb%2Bc%2B%7B%7D%20%5C%5C%5C%5C%0Ad%2Be%2Bf%2Bg%0A%5Cend%7Bmultline%7D%20%5Cright%7C">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cleft%7C%20%5Cbegin%7Baligned%7D%0Ax%20%3D%7B%7D%26%20a%2Bb%2Bc%2B%7B%7D%20%5C%5C%5C%5C%0A%26d%2Be%2Bf%2Bg%0A%5Cend%7Baligned%7D%20%5Cright%7C">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cbegin%7Bgather%7D%0Aa%20%3D%20b%2Bc%2Bd%20%5C%5C%5C%5C%0Ax%20%3D%20y%2Bz%0A%5Cend%7Bgather%7D">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cbegin%7Balign%7D%0Aa%20%26%3D%20b%2Bc%2Bd%20%5C%5C%5C%5C%0Ax%20%26%3D%20y%2Bz%0A%5Cend%7Balign%7D">
+<meta property="og:image" content="https://juejin.im/equation?tex=y%3D%5Cbegin%7Bcases%7D%0A-x%2C%5Cquad%20x%5Cleq%200%20%5C%5C%5C%5C%0Ax%2C%5Cquad%20x%3E0%0A%5Cend%7Bcases%7D">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cleft(%20%5Cbegin%7Barray%7D%7B%7Cc%7Cc%7C%7D%0A1%20%26%20%5Cldots%20%5C%5C%5C%5C%0A%5Chline%0A%5Cvdots%20%26%20%5Cddots%20%0A%5Cend%7Barray%7D%20%5Cright)">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cbegin%7Barray%7D%7B%7Cc%7Cc%7C%7D%0A%5Chline%0A%7B1111111111%7D%20%26%202%20%5C%5C%5C%5C%0A%5Chline%0A%7Bbalabala%7D%20%26%20%E4%BD%A0%E5%A5%BD%E5%95%8A%20%5C%5C%5C%5C%0A%5Chline%0A%5Cend%7Barray%7D">
+<meta property="og:image" content="https://juejin.im/equation?tex=%5Cbegin%7Barray%7D%7B%7Cc%7Cc%7Cc%7Cc%7Cc%7Cc%7Cc%7Cc%7C%7D%0A%5Chline%0A%7B%5Calpha%7D%20%26%20%7B%5Cbackslash%20alpha%7D%20%26%20%7B%5Ctheta%7D%20%26%20%7B%5Cbackslash%20theta%7D%20%26%20%7Bo%7D%20%26%20%7Bo%7D%20%26%20%7B%5Cupsilon%7D%20%26%20%7B%5Cbackslash%20upsilon%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5Cbeta%7D%20%26%20%7B%5Cbackslash%20beta%7D%20%26%20%7B%5Cvartheta%7D%20%26%20%7B%5Cbackslash%20vartheta%7D%20%26%20%7B%5Cpi%7D%20%26%20%7B%5Cbackslash%20pi%7D%20%26%20%7B%5Cphi%7D%20%26%20%7B%5Cbackslash%20phi%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5Cgamma%7D%20%26%20%7B%5Cbackslash%20gamma%7D%20%26%20%7B%5Ciota%7D%20%26%20%7B%5Cbackslash%20iota%7D%20%26%20%7B%5Cvarpi%7D%20%26%20%7B%5Cbackslash%20varpi%7D%20%26%20%7B%5Cvarphi%7D%20%26%20%7B%5Cbackslash%20varphi%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5Cdelta%7D%20%26%20%7B%5Cbackslash%20delta%7D%20%26%20%7B%5Ckappa%7D%20%26%20%7B%5Cbackslash%20kappa%7D%20%26%20%7B%5Crho%7D%20%26%20%7B%5Cbackslash%20rho%7D%20%26%20%7B%5Cchi%7D%20%26%20%7B%5Cbackslash%20chi%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5Cepsilon%7D%20%26%20%7B%5Cbackslash%20epsilon%7D%20%26%20%7B%5Clambda%7D%20%26%20%7B%5Cbackslash%20lambda%7D%20%26%20%7B%5Cvarrho%7D%20%26%20%7B%5Cbackslash%20varrho%7D%20%26%20%7B%5Cpsi%7D%20%26%20%7B%5Cbackslash%20psi%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5Cvarepsilon%7D%20%26%20%7B%5Cbackslash%20varepsilon%7D%20%26%20%7B%5Cmu%7D%20%26%20%7B%5Cbackslash%20mu%7D%20%26%20%7B%5Csigma%7D%20%26%20%7B%5Cbackslash%20sigma%7D%20%26%20%7B%5Comega%7D%20%26%20%7B%5Cbackslash%20omega%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5Czeta%7D%20%26%20%7B%5Cbackslash%20zeta%7D%20%26%20%7B%5Cnu%7D%20%26%20%7B%5Cbackslash%20nu%7D%20%26%20%7B%5Cvarsigma%7D%20%26%20%7B%5Cbackslash%20varsigma%7D%20%26%20%7B%7D%20%26%20%7B%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5Ceta%7D%20%26%20%7B%5Cbackslash%20eta%7D%20%26%20%7B%5Cxi%7D%20%26%20%7B%5Cbackslash%20xi%7D%20%26%20%7B%5Ctau%7D%20%26%20%7B%5Cbackslash%20tau%7D%20%26%20%7B%7D%20%26%20%7B%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5CGamma%7D%20%26%20%7B%5Cbackslash%20Gamma%7D%20%26%20%7B%5CLambda%7D%20%26%20%7B%5Cbackslash%20Lambda%7D%20%26%20%7B%5CSigma%7D%20%26%20%7B%5Cbackslash%20Sigma%7D%20%26%20%7B%5CPsi%7D%20%26%20%7B%5Cbackslash%20Psi%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5CDelta%7D%20%26%20%7B%5Cbackslash%20Delta%7D%20%26%20%7B%5CXi%7D%20%26%20%7B%5Cbackslash%20Xi%7D%20%26%20%7B%5CUpsilon%7D%20%26%20%7B%5Cbackslash%20Upsilon%7D%20%26%20%7B%5COmega%7D%20%26%20%7B%5Cbackslash%20Omega%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5COmega%7D%20%26%20%7B%5Cbackslash%20Omega%7D%20%26%20%7B%5CPi%7D%20%26%20%7B%5Cbackslash%20Pi%7D%20%26%20%7B%5CPhi%7D%20%26%20%7B%5Cbackslash%20Phi%7D%20%26%20%7B%7D%20%26%20%7B%7D%20%5C%5C%5C%5C%0A%5Chline%0A%5Cend%7Barray%7D">
+<meta property="og:updated_time" content="2018-10-22T05:47:02.773Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="markdown 数学公式表示大集合">
+<meta name="twitter:description" content="MarkDown 插入数学公式实验大集合0. 前言 最近在学习一些机器学习相关的知识，想把自己学习的东西通过 MD 的形式在线记录下来，但是之前一直没有开始行动，因为里面的公式什么的感觉实在是麻烦。于是今天打算花点时间了解一下如何在 markdown 中插入数学公式，发现其实很简单，大概花一个小时左右就能知道如何编写了。  1. 基础认识 笔者认为所谓插入数学公式其实就是引入一种规则，然后通过模板">
+<meta name="twitter:image" content="https://juejin.im/equation?tex=a%20%2B%20b">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
 </head>
-</html>
-<body class="loading">
-    <div id="loader"></div>
-    <div id="single">
-    <div id="top" style="display: block;">
-    <div class="bar" style="width: 0;"></div>
-    <a class="icon-home image-icon" href="javascript:;"></a>
-    <div title="播放/暂停" class="icon-play"></div>
-    <h3 class="subtitle">markdown 数学公式表示大集合</h3>
-    <div class="social">
-        <!--<div class="like-icon">-->
-            <!--<a href="javascript:;" class="likeThis active"><span class="icon-like"></span><span class="count">76</span></a>-->
-        <!--</div>-->
-        <div>
-            <div class="share">
-                <a title="获取二维码" class="icon-scan" href="javascript:;"></a>
-            </div>
-            <div id="qr"></div>
-        </div>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
     </div>
-    <div class="scrollbar"></div>
-</div>
-    <div class="section">
-        <div class="article">
-    <div class="main">
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">markdown 数学公式表示大集合</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
         <h1 class="title">markdown 数学公式表示大集合</h1>
-        <div class="stuff">
-            <span>十月 22, 2018</span>
+        <h5 class="subtitle">
             
-  <ul class="post-tags-list"><li class="post-tags-list-item"><a class="post-tags-list-link" href="/tags/markdown/">markdown</a></li></ul>
+                <time datetime="2018-10-22T05:47:02.506Z" itemprop="datePublished" class="page-time">
+  2018-10-22
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#MarkDown-插入数学公式实验大集合"><span class="post-toc-number">1.</span> <span class="post-toc-text">MarkDown 插入数学公式实验大集合</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#0-前言"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">0. 前言</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-基础认识"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">1. 基础认识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-1-插入方式"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">1.1 插入方式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-1-1-行间插入"><span class="post-toc-number">1.2.1.1.</span> <span class="post-toc-text">1.1.1 行间插入</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-1-2-另取一行"><span class="post-toc-number">1.2.1.2.</span> <span class="post-toc-text">1.1.2 另取一行</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-2-基本类型的插入"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">1.2 基本类型的插入</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-2-1-上、下标"><span class="post-toc-number">1.2.2.1.</span> <span class="post-toc-text">1.2.1 上、下标</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-2-2-分式"><span class="post-toc-number">1.2.2.2.</span> <span class="post-toc-text">1.2.2 分式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-2-3-根式"><span class="post-toc-number">1.2.2.3.</span> <span class="post-toc-text">1.2.3 根式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-2-4-求和、积分"><span class="post-toc-number">1.2.2.4.</span> <span class="post-toc-text">1.2.4 求和、积分</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-2-5-空格"><span class="post-toc-number">1.2.2.5.</span> <span class="post-toc-text">1.2.5 空格</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-2-6-公式界定符"><span class="post-toc-number">1.2.2.6.</span> <span class="post-toc-text">1.2.6 公式界定符</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-2-7-矩阵"><span class="post-toc-number">1.2.2.7.</span> <span class="post-toc-text">1.2.7 矩阵</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-2-8-排版数组"><span class="post-toc-number">1.2.2.8.</span> <span class="post-toc-text">1.2.8 排版数组</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-常用公式举例"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">2. 常用公式举例</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-1-多行公式"><span class="post-toc-number">1.3.1.</span> <span class="post-toc-text">2.1 多行公式</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-1-1-长公式"><span class="post-toc-number">1.3.1.1.</span> <span class="post-toc-text">2.1.1 长公式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-1-2-公式组"><span class="post-toc-number">1.3.1.2.</span> <span class="post-toc-text">2.1.2 公式组</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-1-3-分段函数"><span class="post-toc-number">1.3.1.3.</span> <span class="post-toc-text">2.1.3 分段函数</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-2-数组的其他使用"><span class="post-toc-number">1.3.2.</span> <span class="post-toc-text">2.2 数组的其他使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-2-1-划线"><span class="post-toc-number">1.3.2.1.</span> <span class="post-toc-text">2.2.1 划线</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-2-2-制表"><span class="post-toc-number">1.3.2.2.</span> <span class="post-toc-text">2.2.2 制表</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-常用数学符号"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">3. 常用数学符号</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-1-希腊字母"><span class="post-toc-number">1.4.1.</span> <span class="post-toc-text">3.1 希腊字母</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-总结"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">4. 总结</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#5-参考资料"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">5. 参考资料</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-markdown-数学公式表示大集合" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">markdown 数学公式表示大集合</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-10-22 13:47:02" datetime="2018-10-22T05:47:02.506Z" itemprop="datePublished">2018-10-22</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
 
 
         </div>
-        <div class="content markdown">
+        <div class="post-content" id="post-content" itemprop="postContent">
             <h1 id="MarkDown-插入数学公式实验大集合"><a href="#MarkDown-插入数学公式实验大集合" class="headerlink" title="MarkDown 插入数学公式实验大集合"></a>MarkDown 插入数学公式实验大集合</h1><h2 id="0-前言"><a href="#0-前言" class="headerlink" title="0. 前言"></a>0. 前言</h2><blockquote>
 <p>最近在学习一些机器学习相关的知识，想把自己学习的东西通过 MD 的形式在线记录下来，但是之前一直没有开始行动，因为里面的公式什么的感觉实在是麻烦。于是今天打算花点时间了解一下<a href="https://link.juejin.im/?target=http%3A%2F%2Fblog.csdn.net%2Fxiahouzuoxin%2Farticle%2Fdetails%2F26478179" target="_blank" rel="noopener"><code>如何在 markdown 中插入数学公式</code></a>，发现其实很简单，大概花一个小时左右就能知道如何编写了。</p>
 </blockquote>
@@ -66,10 +241,22 @@
 </blockquote>
 <h4 id="1-1-1-行间插入"><a href="#1-1-1-行间插入" class="headerlink" title="1.1.1 行间插入"></a>1.1.1 行间插入</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">\\(a + b\\)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
 <p>这里是行间插入公式 a + b : (a + b)，特点就是通过<code>(</code> 和 <code>)</code> 包含公式，然后为了模板引擎能够区分该 <code>(</code> 不是普通文本的 <code>(</code> 而是公式的 <code>(</code>，通过 <code>\\</code> 转义一下。这样应该就很好理解这个语法构成了。注意这里方式不唯一，这是笔者喜欢的方式，其他的使用方式自行搜索。下面的介绍同样是这样。</p>
-<p>PS: 这里掘金使用的是 <code>$a + b$</code> : <img src="https://juejin.im/equation?tex=a%20%2B%20b" alt="a + b">，如果对您的阅读产生印象，请看最后说明，这里就不做一一更改了。谢谢。</p>
+<p>PS: 这里掘金使用的是 <code>$a + b$</code> : <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=a%20%2B%20b" alt="a + b" title="">
+                </div>
+                <div class="image-caption">a + b</div>
+            </figure>，如果对您的阅读产生印象，请看最后说明，这里就不做一一更改了。谢谢。</p>
 <h4 id="1-1-2-另取一行"><a href="#1-1-2-另取一行" class="headerlink" title="1.1.2 另取一行"></a>1.1.2 另取一行</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$$a + b$$</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
 <p>这里是另取一行</p>
-<p><img src="https://juejin.im/equation?tex=a%20%2B%20b" alt="a + b"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=a%20%2B%20b" alt="a + b" title="">
+                </div>
+                <div class="image-caption">a + b</div>
+            </figure>
 <p>特点就是通过<code>$$</code>包含公式。</p>
 <p>笔者认为第二种方式更好，以下没看 JS 源码纯属猜测：行间的需要考虑到当前行的行高并对公式进行处理，而另取一行就更简单一些，可能解析起来更快。最最最最最最主要是看起来漂亮 ^_^ 不太要考虑空间不够换行。</p>
 <h3 id="1-2-基本类型的插入"><a href="#1-2-基本类型的插入" class="headerlink" title="1.2 基本类型的插入"></a>1.2 基本类型的插入</h3><blockquote>
@@ -77,55 +264,265 @@
 </blockquote>
 <h4 id="1-2-1-上、下标"><a href="#1-2-1-上、下标" class="headerlink" title="1.2.1 上、下标"></a>1.2.1 上、下标</h4><p>先看结果再总结语法吧。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$$x_1$$</span><br><span class="line"></span><br><span class="line">$$x_1^2$$</span><br><span class="line"></span><br><span class="line">$$x^2_1$$</span><br><span class="line"></span><br><span class="line">$$x_&#123;22&#125;^&#123;(n)&#125;$$</span><br><span class="line"></span><br><span class="line">$$&#123;&#125;^*x^*$$</span><br><span class="line"></span><br><span class="line">$$x_&#123;balabala&#125;^&#123;bala&#125;$$</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-<p><img src="https://juejin.im/equation?tex=x_1" alt="x_1"></p>
-<p><img src="https://juejin.im/equation?tex=x_1%5E2" alt="x_1^2"></p>
-<p><img src="https://juejin.im/equation?tex=x%5E2_1" alt="x^2_1"></p>
-<p><img src="https://juejin.im/equation?tex=x_%7B22%7D%5E%7B(n" alt="x_{22}^{(n)}">%7D)</p>
-<p><img src="https://juejin.im/equation?tex=%7B%7D%5E*x%5E*" alt="{}^*x^*"></p>
-<p><img src="https://juejin.im/equation?tex=x_%7Bbalabala%7D%5E%7Bbala%7D" alt="x_{balabala}^{bala}"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=x_1" alt="x_1" title="">
+                </div>
+                <div class="image-caption">x_1</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=x_1%5E2" alt="x_1^2" title="">
+                </div>
+                <div class="image-caption">x_1^2</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=x%5E2_1" alt="x^2_1" title="">
+                </div>
+                <div class="image-caption">x^2_1</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=x_%7B22%7D%5E%7B(n)%7D" alt="x_{22}^{(n)}" title="">
+                </div>
+                <div class="image-caption">x_{22}^{(n)}</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%7B%7D%5E*x%5E*" alt="{}^*x^*" title="">
+                </div>
+                <div class="image-caption">{}^*x^*</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=x_%7Bbalabala%7D%5E%7Bbala%7D" alt="x_{balabala}^{bala}" title="">
+                </div>
+                <div class="image-caption">x_{balabala}^{bala}</div>
+            </figure>
 <p>可以看到 <code>x</code> 元素的上标通过 <code>^</code> 符号后接的内容体现，下表通过 <code>_</code> 符号后接的内容体现，多于一位是要加 <code>{}</code> 包裹的。 笔者习惯先下标后上标的写法，和我的书写习惯一致：<code>x_{balabala}^{bala}</code>，不管你使用哪一种风格，最好自己注意统一，不要混用。</p>
 <h4 id="1-2-2-分式"><a href="#1-2-2-分式" class="headerlink" title="1.2.2 分式"></a>1.2.2 分式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$$\frac&#123;x+y&#125;&#123;2&#125;$$</span><br><span class="line"></span><br><span class="line">$$\frac&#123;1&#125;&#123;1+\frac&#123;1&#125;&#123;2&#125;&#125;$$</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-<p><img src="https://juejin.im/equation?tex=%5Cfrac%7Bx%2By%7D%7B2%7D" alt="\frac{x+y}{2}"></p>
-<p><img src="https://juejin.im/equation?tex=%5Cfrac%7B1%7D%7B1%2B%5Cfrac%7B1%7D%7B2%7D%7D" alt="\frac{1}{1+\frac{1}{2}}"></p>
-<p>这里就出现了一个 <code>frac{}{}</code> 函数的东西，同样，为了区分这是函数不是几个字母，通过 <code>\frac</code>转义，于是 <code>frac</code> 被解析成函数，然后第一个 <code>{}</code> 里面的被解析成分子，第二个 <code>{}</code> 被解析成分母。这里可以试试分数的行间解析<img src="https://juejin.im/equation?tex=%5Cfrac%7B1%7D%7B1%2B%5Cfrac%7B1%7D%7B2%7D%7D" alt="\frac{1}{1+\frac{1}{2}}">。我要看行间填充效果我要看行间填充效果我要看行间填充效果我要看行间填充效果我要看行间填充效果我要看行间填充效果我要看行间填充效果我要看行间填充效果我要看行间填充效果我要看行间填充效果我要看行间填充效果我要看行间填充效果。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cfrac%7Bx%2By%7D%7B2%7D" alt="frac{x+y}{2}" title="">
+                </div>
+                <div class="image-caption">frac{x+y}{2}</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cfrac%7B1%7D%7B1%2B%5Cfrac%7B1%7D%7B2%7D%7D" alt="frac{1}{1+frac{1}{2}}" title="">
+                </div>
+                <div class="image-caption">frac{1}{1+frac{1}{2}}</div>
+            </figure>
+<p>这里就出现了一个 <code>frac{}{}</code> 函数的东西，同样，为了区分这是函数不是几个字母，通过 <code>\frac</code>转义，于是 <code>frac</code> 被解析成函数，然后第一个 <code>{}</code> 里面的被解析成分子，第二个 <code>{}</code> 被解析成分母。这里可以试试分数的行间解析<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cfrac%7B1%7D%7B1%2B%5Cfrac%7B1%7D%7B2%7D%7D" alt="frac{1}{1+frac{1}{2}}" title="">
+                </div>
+                <div class="image-caption">frac{1}{1+frac{1}{2}}</div>
+            </figure>。我要看行间填充效果我要看行间填充效果我要看行间填充效果我要看行间填充效果我要看行间填充效果我要看行间填充效果我要看行间填充效果我要看行间填充效果我要看行间填充效果我要看行间填充效果我要看行间填充效果我要看行间填充效果。</p>
 <h4 id="1-2-3-根式"><a href="#1-2-3-根式" class="headerlink" title="1.2.3 根式"></a>1.2.3 根式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$$\sqrt&#123;2&#125;&lt;\sqrt[3]&#123;3&#125;$$</span><br><span class="line"></span><br><span class="line">$$\sqrt&#123;1+\sqrt[p]&#123;1+a^2&#125;&#125;$$</span><br><span class="line"></span><br><span class="line">$$\sqrt&#123;1+\sqrt[^p\!]&#123;1+a^2&#125;&#125;$$</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-<p><img src="https://juejin.im/equation?tex=%5Csqrt%7B2%7D%3C%5Csqrt%5B3%5D%7B3%7D" alt="\sqrt{2}&lt;\sqrt[3]{3}"></p>
-<p><img src="https://juejin.im/equation?tex=%5Csqrt%7B1%2B%5Csqrt%5Bp%5D%7B1%2Ba%5E2%7D%7D" alt="\sqrt{1+\sqrt[p]{1+a^2}}"></p>
-<p><img src="https://juejin.im/equation?tex=%5Csqrt%7B1%2B%5Csqrt%5B%5Ep%5D%7B1%2Ba%5E2%7D%7D" alt="\sqrt{1+\sqrt[^p]{1+a^2}}"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Csqrt%7B2%7D%3C%5Csqrt%5B3%5D%7B3%7D" alt="sqrt{2}<sqrt[3]{3}" title="">
+                </div>
+                <div class="image-caption">sqrt{2}<sqrt[3]{3}< div="">
+            </sqrt[3]{3}<></div></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Csqrt%7B1%2B%5Csqrt%5Bp%5D%7B1%2Ba%5E2%7D%7D" alt="sqrt{1+sqrt[p]{1+a^2}}" title="">
+                </div>
+                <div class="image-caption">sqrt{1+sqrt[p]{1+a^2}}</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Csqrt%7B1%2B%5Csqrt%5B%5Ep%5D%7B1%2Ba%5E2%7D%7D" alt="sqrt{1+sqrt[^p]{1+a^2}}" title="">
+                </div>
+                <div class="image-caption">sqrt{1+sqrt[^p]{1+a^2}}</div>
+            </figure>
 <p>读到这里你已经了解了函数的概念，那么这历久很简单了，语法就是 <code>sqrt[]{}</code> 。<code>[]</code> 中代表是几次根式，<code>{}</code> 代表根号下的表达式。第二和第三个的区别在于为了美观微调位置 ^_^。</p>
 <h4 id="1-2-4-求和、积分"><a href="#1-2-4-求和、积分" class="headerlink" title="1.2.4 求和、积分"></a>1.2.4 求和、积分</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$$\sum_&#123;k=1&#125;^&#123;n&#125;\frac&#123;1&#125;&#123;k&#125;$$</span><br><span class="line"></span><br><span class="line">$\sum_&#123;k=1&#125;^n\frac&#123;1&#125;&#123;k&#125;$</span><br><span class="line"></span><br><span class="line">$$\int_a^b f(x)dx$$</span><br><span class="line"></span><br><span class="line">$\int_a^b f(x)dx$</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-<p><img src="https://juejin.im/equation?tex=%5Csum_%7Bk%3D1%7D%5E%7Bn%7D%5Cfrac%7B1%7D%7Bk%7D" alt="\sum_{k=1}^{n}\frac{1}{k}"></p>
-<p><img src="https://juejin.im/equation?tex=%5Csum_%7Bk%3D1%7D%5En%5Cfrac%7B1%7D%7Bk%7D" alt="\sum_{k=1}^n\frac{1}{k}"></p>
-<p><img src="https://juejin.im/equation?tex=%5Cint_%7Ba%7D%5Eb%20f(x" alt="\int_{a}^b f(x)dx">dx)</p>
-<p><img src="https://juejin.im/equation?tex=%5Cint_a%5Eb%20f(x" alt="\int_a^b f(x)dx">dx)</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Csum_%7Bk%3D1%7D%5E%7Bn%7D%5Cfrac%7B1%7D%7Bk%7D" alt="sum_{k=1}^{n}frac{1}{k}" title="">
+                </div>
+                <div class="image-caption">sum_{k=1}^{n}frac{1}{k}</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Csum_%7Bk%3D1%7D%5En%5Cfrac%7B1%7D%7Bk%7D" alt="sum_{k=1}^nfrac{1}{k}" title="">
+                </div>
+                <div class="image-caption">sum_{k=1}^nfrac{1}{k}</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cint_%7Ba%7D%5Eb%20f(x)dx" alt="int_{a}^b f(x)dx" title="">
+                </div>
+                <div class="image-caption">int_{a}^b f(x)dx</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cint_a%5Eb%20f(x)dx" alt="int_a^b f(x)dx" title="">
+                </div>
+                <div class="image-caption">int_a^b f(x)dx</div>
+            </figure>
 <p>这里很容易看出求和函数表达式 <code>sum_{起点}^{终点}表达式</code>，积分函数表达式 <code>int_下限^上限 被积函数d被积量</code>。还有一个有趣的是行间的公式都被压缩了。</p>
 <h4 id="1-2-5-空格"><a href="#1-2-5-空格" class="headerlink" title="1.2.5 空格"></a>1.2.5 空格</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">紧贴 $a\!b$</span><br><span class="line">没有空格 $ab$</span><br><span class="line">小空格 a\,b</span><br><span class="line">中等空格 a\;b</span><br><span class="line">大空格 a\ b</span><br><span class="line">quad空格 $a\quad b$</span><br><span class="line">两个quad空格 $a\qquad b$</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-<p><img src="https://juejin.im/equation?tex=a%5C!b" alt="a\!b"></p>
-<p><img src="https://juejin.im/equation?tex=ab" alt="ab"></p>
-<p><img src="https://juejin.im/equation?tex=a%5C%2Cb" alt="a\,b"></p>
-<p><img src="https://juejin.im/equation?tex=a%5C%3Bb" alt="a\;b"></p>
-<p><img src="https://juejin.im/equation?tex=a%5C%20b" alt="a\ b"></p>
-<p><img src="https://juejin.im/equation?tex=a%5Cquad%20b" alt="a\quad b"></p>
-<p><img src="https://juejin.im/equation?tex=a%5Cqquad%20b" alt="a\qquad b"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=a%5C!b" alt="a!b" title="">
+                </div>
+                <div class="image-caption">a!b</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=ab" alt="ab" title="">
+                </div>
+                <div class="image-caption">ab</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=a%5C%2Cb" alt="a,b" title="">
+                </div>
+                <div class="image-caption">a,b</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=a%5C%3Bb" alt="a;b" title="">
+                </div>
+                <div class="image-caption">a;b</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=a%5C%20b" alt="a b" title="">
+                </div>
+                <div class="image-caption">a b</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=a%5Cquad%20b" alt="aquad b" title="">
+                </div>
+                <div class="image-caption">aquad b</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=a%5Cqquad%20b" alt="aqquad b" title="">
+                </div>
+                <div class="image-caption">aqquad b</div>
+            </figure>
 <p>这个直接看上面的文字，介绍很清楚，主要指微调距离，使得公式更加漂亮。请比较下面的积分公式：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$$\int_a^b f(x)\mathrm&#123;d&#125;x$$</span><br><span class="line"></span><br><span class="line">$$\int_a^b f(x)\,\mathrm&#123;d&#125;x$$</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-<p><img src="https://juejin.im/equation?tex=%5Cint_a%5Eb%20f(x" alt="\int_a^b f(x)\mathrm{d}x">%5Cmathrm%7Bd%7Dx)</p>
-<p><img src="https://juejin.im/equation?tex=%5Cint_a%5Eb%20f(x" alt="\int_a^b f(x)\,\mathrm{d}x">%5C%2C%5Cmathrm%7Bd%7Dx)</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cint_a%5Eb%20f(x)%5Cmathrm%7Bd%7Dx" alt="int_a^b f(x)mathrm{d}x" title="">
+                </div>
+                <div class="image-caption">int_a^b f(x)mathrm{d}x</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cint_a%5Eb%20f(x)%5C%2C%5Cmathrm%7Bd%7Dx" alt="int_a^b f(x),mathrm{d}x" title="">
+                </div>
+                <div class="image-caption">int_a^b f(x),mathrm{d}x</div>
+            </figure>
 <h4 id="1-2-6-公式界定符"><a href="#1-2-6-公式界定符" class="headerlink" title="1.2.6 公式界定符"></a>1.2.6 公式界定符</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">\\( ( \\)</span><br><span class="line">\\( ) \\)</span><br><span class="line">\\( [ \\)</span><br><span class="line">\\( ] \\)</span><br><span class="line">\\( \\&#123; \\)</span><br><span class="line">\\( \\&#125; \\)</span><br><span class="line">\\( | \\)</span><br><span class="line">\\( \\| \\)</span><br><span class="line"></span><br><span class="line">掘金：</span><br><span class="line">$ ( $</span><br><span class="line">$ ) $</span><br><span class="line">$ [ $</span><br><span class="line">$ ] $</span><br><span class="line">$ \&#123; $</span><br><span class="line">$ \&#125; $</span><br><span class="line">$ | $</span><br><span class="line">$ \| $</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-<p>主要符号有 <img src="https://juejin.im/equation?tex=(" alt="("> <img src="https://juejin.im/equation?tex=" alt=")">) <img src="https://juejin.im/equation?tex=%5D" alt="[](https://juejin.im/equation?tex=%5B) ![]"> <img src="https://juejin.im/equation?tex=%5C%7B" alt="\{"> <img src="https://juejin.im/equation?tex=%5C%7D" alt="\}"> <img src="https://juejin.im/equation?tex=%7C" alt="|"> <img src="https://juejin.im/equation?tex=%5C%7C" alt="\|"> 那么如何使用呢？ 通过 <code>\left</code> 和 <code>\right</code> 后面跟界定符来对同时进行界定。</p>
+<p>主要符号有 <figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5C%7C" alt="(](https://juejin.im/equation?tex=() ![)](https://juejin.im/equation?tex=)) ![[](https://juejin.im/equation?tex=%5B) ![]](https://juejin.im/equation?tex=%5D) ![{](https://juejin.im/equation?tex=%5C%7B) ![}](https://juejin.im/equation?tex=%5C%7D) ![|](https://juejin.im/equation?tex=%7C) ![|" title="">
+                </div>
+                <div class="image-caption">(](https://juejin.im/equation?tex=() ![)](https://juejin.im/equation?tex=)) ![[](https://juejin.im/equation?tex=%5B) ![]](https://juejin.im/equation?tex=%5D) ![{](https://juejin.im/equation?tex=%5C%7B) ![}](https://juejin.im/equation?tex=%5C%7D) ![|](https://juejin.im/equation?tex=%7C) ![|</div>
+            </figure> 那么如何使用呢？ 通过 <code>\left</code> 和 <code>\right</code> 后面跟界定符来对同时进行界定。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$$\left(\sum_&#123;k=\frac&#123;1&#125;&#123;2&#125;&#125;^&#123;N^2&#125;\frac&#123;1&#125;&#123;k&#125;\right)$$</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-<p><img src="https://juejin.im/equation?tex=%5Cleft(%5Csum_%7Bk%3D%5Cfrac%7B1%7D%7B2%7D%7D%5E%7BN%5E2%7D%5Cfrac%7B1%7D%7Bk%7D%5Cright" alt="\left(\sum_{k=\frac{1}{2}}^{N^2}\frac{1}{k}\right)">)</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cleft(%5Csum_%7Bk%3D%5Cfrac%7B1%7D%7B2%7D%7D%5E%7BN%5E2%7D%5Cfrac%7B1%7D%7Bk%7D%5Cright)" alt="left(sum_{k=frac{1}{2}}^{N^2}frac{1}{k}ight)" title="">
+                </div>
+                <div class="image-caption">left(sum_{k=frac{1}{2}}^{N^2}frac{1}{k}ight)</div>
+            </figure>
 <h4 id="1-2-7-矩阵"><a href="#1-2-7-矩阵" class="headerlink" title="1.2.7 矩阵"></a>1.2.7 矩阵</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$$\begin&#123;matrix&#125;1 &amp; 2\\\\3 &amp;4\end&#123;matrix&#125;$$</span><br><span class="line"></span><br><span class="line">$$\begin&#123;pmatrix&#125;1 &amp; 2\\\\3 &amp;4\end&#123;pmatrix&#125;$$</span><br><span class="line"></span><br><span class="line">$$\begin&#123;bmatrix&#125;1 &amp; 2\\\\3 &amp;4\end&#123;bmatrix&#125;$$</span><br><span class="line"></span><br><span class="line">$$\begin&#123;Bmatrix&#125;1 &amp; 2\\\\3 &amp;4\end&#123;Bmatrix&#125;$$</span><br><span class="line"></span><br><span class="line">$$\begin&#123;vmatrix&#125;1 &amp; 2\\\\3 &amp;4\end&#123;vmatrix&#125;$$</span><br><span class="line"></span><br><span class="line">$$\left|\begin&#123;matrix&#125;1 &amp; 2\\\\3 &amp;4\end&#123;matrix&#125;\right|$$</span><br><span class="line"></span><br><span class="line">$$\begin&#123;Vmatrix&#125;1 &amp; 2\\\\3 &amp;4\end&#123;Vmatrix&#125;$$</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-<p><img src="https://juejin.im/equation?tex=%5Cbegin%7Bmatrix%7D1%20%26%202%5C%5C%5C%5C3%20%264%5Cend%7Bmatrix%7D" alt="\begin{matrix}1 &amp; 2\\\\3 &amp;4\end{matrix}"></p>
-<p><img src="https://juejin.im/equation?tex=%5Cbegin%7Bpmatrix%7D1%20%26%202%5C%5C%5C%5C3%20%264%5Cend%7Bpmatrix%7D" alt="\begin{pmatrix}1 &amp; 2\\\\3 &amp;4\end{pmatrix}"></p>
-<p><img src="https://juejin.im/equation?tex=%5Cbegin%7Bbmatrix%7D1%20%26%202%5C%5C%5C%5C3%20%264%5Cend%7Bbmatrix%7D" alt="\begin{bmatrix}1 &amp; 2\\\\3 &amp;4\end{bmatrix}"></p>
-<p><img src="https://juejin.im/equation?tex=%5Cbegin%7BBmatrix%7D1%20%26%202%5C%5C%5C%5C3%20%264%5Cend%7BBmatrix%7D" alt="\begin{Bmatrix}1 &amp; 2\\\\3 &amp;4\end{Bmatrix}"></p>
-<p><img src="https://juejin.im/equation?tex=%5Cbegin%7Bvmatrix%7D1%20%26%202%5C%5C%5C%5C3%20%264%5Cend%7Bvmatrix%7D" alt="\begin{vmatrix}1 &amp; 2\\\\3 &amp;4\end{vmatrix}"></p>
-<p><img src="https://juejin.im/equation?tex=%5Cleft%7C%5Cbegin%7Bmatrix%7D1%20%26%202%5C%5C%5C%5C3%20%264%5Cend%7Bmatrix%7D%5Cright%7C" alt="\left|\begin{matrix}1 &amp; 2\\\\3 &amp;4\end{matrix}\right|"></p>
-<p><img src="https://juejin.im/equation?tex=%5Cbegin%7BVmatrix%7D1%20%26%202%5C%5C%5C%5C3%20%264%5Cend%7BVmatrix%7D" alt="\begin{Vmatrix}1 &amp; 2\\\\3 &amp;4\end{Vmatrix}"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cbegin%7Bmatrix%7D1%20%26%202%5C%5C%5C%5C3%20%264%5Cend%7Bmatrix%7D" alt="begin{matrix}1 & 2\\3 &4end{matrix}" title="">
+                </div>
+                <div class="image-caption">begin{matrix}1 & 2\\3 &4end{matrix}</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cbegin%7Bpmatrix%7D1%20%26%202%5C%5C%5C%5C3%20%264%5Cend%7Bpmatrix%7D" alt="begin{pmatrix}1 & 2\\3 &4end{pmatrix}" title="">
+                </div>
+                <div class="image-caption">begin{pmatrix}1 & 2\\3 &4end{pmatrix}</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cbegin%7Bbmatrix%7D1%20%26%202%5C%5C%5C%5C3%20%264%5Cend%7Bbmatrix%7D" alt="begin{bmatrix}1 & 2\\3 &4end{bmatrix}" title="">
+                </div>
+                <div class="image-caption">begin{bmatrix}1 & 2\\3 &4end{bmatrix}</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cbegin%7BBmatrix%7D1%20%26%202%5C%5C%5C%5C3%20%264%5Cend%7BBmatrix%7D" alt="begin{Bmatrix}1 & 2\\3 &4end{Bmatrix}" title="">
+                </div>
+                <div class="image-caption">begin{Bmatrix}1 & 2\\3 &4end{Bmatrix}</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cbegin%7Bvmatrix%7D1%20%26%202%5C%5C%5C%5C3%20%264%5Cend%7Bvmatrix%7D" alt="begin{vmatrix}1 & 2\\3 &4end{vmatrix}" title="">
+                </div>
+                <div class="image-caption">begin{vmatrix}1 & 2\\3 &4end{vmatrix}</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cleft%7C%5Cbegin%7Bmatrix%7D1%20%26%202%5C%5C%5C%5C3%20%264%5Cend%7Bmatrix%7D%5Cright%7C" alt="left|begin{matrix}1 & 2\\3 &4end{matrix}ight|" title="">
+                </div>
+                <div class="image-caption">left|begin{matrix}1 & 2\\3 &4end{matrix}ight|</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cbegin%7BVmatrix%7D1%20%26%202%5C%5C%5C%5C3%20%264%5Cend%7BVmatrix%7D" alt="begin{Vmatrix}1 & 2\\3 &4end{Vmatrix}" title="">
+                </div>
+                <div class="image-caption">begin{Vmatrix}1 & 2\\3 &4end{Vmatrix}</div>
+            </figure>
 <p>类似于 left right，这里是 begin 和 end。而且里面有具体的矩阵语法，<code>&amp;</code> 区分行间元素，<code>\\\\</code>代表换行。可以理解为 HTML 的标签之类的。</p>
 <h4 id="1-2-8-排版数组"><a href="#1-2-8-排版数组" class="headerlink" title="1.2.8 排版数组"></a>1.2.8 排版数组</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">\mathbf&#123;X&#125; =</span><br><span class="line">\left( \begin&#123;array&#125;&#123;ccc&#125;</span><br><span class="line">x\_&#123;11&#125; &amp; x\_&#123;12&#125; &amp; \ldots \\\\</span><br><span class="line">x\_&#123;21&#125; &amp; x\_&#123;22&#125; &amp; \ldots \\\\</span><br><span class="line">\vdots &amp; \vdots &amp; \ddots</span><br><span class="line">\end&#123;array&#125; \right)</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-<p><img src="https://juejin.im/equation?tex=%5Cmathbf%7BX%7D%20%3D%0A%5Cleft(%20%5Cbegin%7Barray%7D%7Bccc%7D%0Ax%5C_%7B11%7D%20%26%20x%5C_%7B12%7D%20%26%20%5Cldots%20%5C%5C%5C%5C%0Ax%5C_%7B21%7D%20%26%20x%5C_%7B22%7D%20%26%20%5Cldots%20%5C%5C%5C%5C%0A%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cddots%0A%5Cend%7Barray%7D%20%5Cright" alt="\mathbf{X} =\left( \begin{array}{ccc}x\_{11} &amp; x\_{12} &amp; \ldots \\\\x\_{21} &amp; x\_{22} &amp; \ldots \\\\\vdots &amp; \vdots &amp; \ddots\end{array} \right)">)</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cmathbf%7BX%7D%20%3D%0A%5Cleft(%20%5Cbegin%7Barray%7D%7Bccc%7D%0Ax%5C_%7B11%7D%20%26%20x%5C_%7B12%7D%20%26%20%5Cldots%20%5C%5C%5C%5C%0Ax%5C_%7B21%7D%20%26%20x%5C_%7B22%7D%20%26%20%5Cldots%20%5C%5C%5C%5C%0A%5Cvdots%20%26%20%5Cvdots%20%26%20%5Cddots%0A%5Cend%7Barray%7D%20%5Cright)" alt="mathbf{X} =left( begin{array}{ccc}x_{11} & x_{12} & ldots \\x_{21} & x_{22} & ldots \\vdots & vdots & ddotsend{array} ight)" title="">
+                </div>
+                <div class="image-caption">mathbf{X} =left( begin{array}{ccc}x_{11} & x_{12} & ldots \\x_{21} & x_{22} & ldots \\vdots & vdots & ddotsend{array} ight)</div>
+            </figure>
 <h2 id="2-常用公式举例"><a href="#2-常用公式举例" class="headerlink" title="2. 常用公式举例"></a>2. 常用公式举例</h2><blockquote>
 <p>持续更新……</p>
 </blockquote>
@@ -134,25 +531,75 @@
 </blockquote>
 <h4 id="2-1-1-长公式"><a href="#2-1-1-长公式" class="headerlink" title="2.1.1 长公式"></a>2.1.1 长公式</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;multline&#125;</span><br><span class="line">x = a+b+c+&#123;&#125; \\\\</span><br><span class="line">d+e+f+g</span><br><span class="line">\end&#123;multline&#125;</span><br><span class="line">$$</span><br><span class="line"></span><br><span class="line">$$</span><br><span class="line">\begin&#123;aligned&#125;</span><br><span class="line">x =&#123;&#125;&amp; a+b+c+&#123;&#125; \\\\</span><br><span class="line">&amp;d+e+f+g</span><br><span class="line">\end&#123;aligned&#125;</span><br><span class="line">$$</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
 <p>不对齐</p>
-<p><img src="https://juejin.im/equation?tex=%5Cleft%7C%20%5Cbegin%7Bmultline%7D%0Ax%20%3D%20a%2Bb%2Bc%2B%7B%7D%20%5C%5C%5C%5C%0Ad%2Be%2Bf%2Bg%0A%5Cend%7Bmultline%7D%20%5Cright%7C" alt="\left| \begin{multline}x = a+b+c+{} \\\\d+e+f+g\end{multline} \right|"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cleft%7C%20%5Cbegin%7Bmultline%7D%0Ax%20%3D%20a%2Bb%2Bc%2B%7B%7D%20%5C%5C%5C%5C%0Ad%2Be%2Bf%2Bg%0A%5Cend%7Bmultline%7D%20%5Cright%7C" alt="left| begin{multline}x = a+b+c+{} \\d+e+f+gend{multline} ight|" title="">
+                </div>
+                <div class="image-caption">left| begin{multline}x = a+b+c+{} \\d+e+f+gend{multline} ight|</div>
+            </figure>
 <p>对齐</p>
-<p><img src="https://juejin.im/equation?tex=%5Cleft%7C%20%5Cbegin%7Baligned%7D%0Ax%20%3D%7B%7D%26%20a%2Bb%2Bc%2B%7B%7D%20%5C%5C%5C%5C%0A%26d%2Be%2Bf%2Bg%0A%5Cend%7Baligned%7D%20%5Cright%7C" alt="\left| \begin{aligned}x ={}&amp; a+b+c+{} \\\\&amp;d+e+f+g\end{aligned} \right|"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cleft%7C%20%5Cbegin%7Baligned%7D%0Ax%20%3D%7B%7D%26%20a%2Bb%2Bc%2B%7B%7D%20%5C%5C%5C%5C%0A%26d%2Be%2Bf%2Bg%0A%5Cend%7Baligned%7D%20%5Cright%7C" alt="left| begin{aligned}x ={}& a+b+c+{} \\&d+e+f+gend{aligned} ight|" title="">
+                </div>
+                <div class="image-caption">left| begin{aligned}x ={}& a+b+c+{} \\&d+e+f+gend{aligned} ight|</div>
+            </figure>
 <h4 id="2-1-2-公式组"><a href="#2-1-2-公式组" class="headerlink" title="2.1.2 公式组"></a>2.1.2 公式组</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;gather&#125;</span><br><span class="line">a = b+c+d \\\\</span><br><span class="line">x = y+z</span><br><span class="line">\end&#123;gather&#125;</span><br><span class="line">$$</span><br><span class="line"></span><br><span class="line">$$</span><br><span class="line">\begin&#123;align&#125;</span><br><span class="line">a &amp;= b+c+d \\\\</span><br><span class="line">x &amp;= y+z</span><br><span class="line">\end&#123;align&#125;</span><br><span class="line">$$</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-<p><img src="https://juejin.im/equation?tex=%5Cbegin%7Bgather%7D%0Aa%20%3D%20b%2Bc%2Bd%20%5C%5C%5C%5C%0Ax%20%3D%20y%2Bz%0A%5Cend%7Bgather%7D" alt="\begin{gather}a = b+c+d \\\\x = y+z\end{gather}"></p>
-<p><img src="https://juejin.im/equation?tex=%5Cbegin%7Balign%7D%0Aa%20%26%3D%20b%2Bc%2Bd%20%5C%5C%5C%5C%0Ax%20%26%3D%20y%2Bz%0A%5Cend%7Balign%7D" alt="\begin{align}a &amp;= b+c+d \\\\x &amp;= y+z\end{align}"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cbegin%7Bgather%7D%0Aa%20%3D%20b%2Bc%2Bd%20%5C%5C%5C%5C%0Ax%20%3D%20y%2Bz%0A%5Cend%7Bgather%7D" alt="begin{gather}a = b+c+d \\x = y+zend{gather}" title="">
+                </div>
+                <div class="image-caption">begin{gather}a = b+c+d \\x = y+zend{gather}</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cbegin%7Balign%7D%0Aa%20%26%3D%20b%2Bc%2Bd%20%5C%5C%5C%5C%0Ax%20%26%3D%20y%2Bz%0A%5Cend%7Balign%7D" alt="begin{align}a &= b+c+d \\x &= y+zend{align}" title="">
+                </div>
+                <div class="image-caption">begin{align}a &= b+c+d \\x &= y+zend{align}</div>
+            </figure>
 <h4 id="2-1-3-分段函数"><a href="#2-1-3-分段函数" class="headerlink" title="2.1.3 分段函数"></a>2.1.3 分段函数</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">y=\begin&#123;cases&#125;</span><br><span class="line">-x,\quad x\leq 0 \\\\</span><br><span class="line">x,\quad x&gt;0</span><br><span class="line">\end&#123;cases&#125;</span><br><span class="line">$$</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-<p><img src="https://juejin.im/equation?tex=y%3D%5Cbegin%7Bcases%7D%0A-x%2C%5Cquad%20x%5Cleq%200%20%5C%5C%5C%5C%0Ax%2C%5Cquad%20x%3E0%0A%5Cend%7Bcases%7D" alt="y=\begin{cases}-x,\quad x\leq 0 \\\\x,\quad x&gt;0\end{cases}"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=y%3D%5Cbegin%7Bcases%7D%0A-x%2C%5Cquad%20x%5Cleq%200%20%5C%5C%5C%5C%0Ax%2C%5Cquad%20x%3E0%0A%5Cend%7Bcases%7D" alt="y=begin{cases}-x,quad xleq 0 \\x,quad x>0end{cases}" title="">
+                </div>
+                <div class="image-caption">y=begin{cases}-x,quad xleq 0 \\x,quad x>0end{cases}</div>
+            </figure>
 <p>里面用到了 (\leq) 符号，下一章会介绍常用数学符号。</p>
 <h3 id="2-2-数组的其他使用"><a href="#2-2-数组的其他使用" class="headerlink" title="2.2 数组的其他使用"></a>2.2 数组的其他使用</h3><h4 id="2-2-1-划线"><a href="#2-2-1-划线" class="headerlink" title="2.2.1 划线"></a>2.2.1 划线</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\left(\begin&#123;array&#125;&#123;|c|c|&#125;</span><br><span class="line">1 &amp; 2 \\\\</span><br><span class="line">\\hline</span><br><span class="line">3 &amp; 4</span><br><span class="line">\end&#123;array&#125;\right)</span><br><span class="line">$$</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-<p><img src="https://juejin.im/equation?tex=%5Cleft(%20%5Cbegin%7Barray%7D%7B%7Cc%7Cc%7C%7D%0A1%20%26%20%5Cldots%20%5C%5C%5C%5C%0A%5Chline%0A%5Cvdots%20%26%20%5Cddots%20%0A%5Cend%7Barray%7D%20%5Cright" alt="\left( \begin{array}{|c|c|}1 &amp; \ldots \\\\\hline\vdots &amp; \ddots \end{array} \right)">)</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cleft(%20%5Cbegin%7Barray%7D%7B%7Cc%7Cc%7C%7D%0A1%20%26%20%5Cldots%20%5C%5C%5C%5C%0A%5Chline%0A%5Cvdots%20%26%20%5Cddots%20%0A%5Cend%7Barray%7D%20%5Cright)" alt="left( begin{array}{|c|c|}1 & ldots \\hlinevdots & ddots end{array} ight)" title="">
+                </div>
+                <div class="image-caption">left( begin{array}{|c|c|}1 & ldots \\hlinevdots & ddots end{array} ight)</div>
+            </figure>
 <h4 id="2-2-2-制表"><a href="#2-2-2-制表" class="headerlink" title="2.2.2 制表"></a>2.2.2 制表</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;array&#125;&#123;|c|c|&#125;</span><br><span class="line">\hline</span><br><span class="line">&#123;1111111111&#125; &amp; 2 \\\\</span><br><span class="line">\hline</span><br><span class="line">3 &amp; 4 \\\\</span><br><span class="line">\hline</span><br><span class="line">\end&#123;array&#125;</span><br><span class="line">$$</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-<p><img src="https://juejin.im/equation?tex=%5Cbegin%7Barray%7D%7B%7Cc%7Cc%7C%7D%0A%5Chline%0A%7B1111111111%7D%20%26%202%20%5C%5C%5C%5C%0A%5Chline%0A%7Bbalabala%7D%20%26%20%E4%BD%A0%E5%A5%BD%E5%95%8A%20%5C%5C%5C%5C%0A%5Chline%0A%5Cend%7Barray%7D" alt="\begin{array}{|c|c|}\hline{1111111111} &amp; 2 \\\\\hline{balabala} &amp; 你好啊 \\\\\hline\end{array}"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cbegin%7Barray%7D%7B%7Cc%7Cc%7C%7D%0A%5Chline%0A%7B1111111111%7D%20%26%202%20%5C%5C%5C%5C%0A%5Chline%0A%7Bbalabala%7D%20%26%20%E4%BD%A0%E5%A5%BD%E5%95%8A%20%5C%5C%5C%5C%0A%5Chline%0A%5Cend%7Barray%7D" alt="begin{array}{|c|c|}hline{1111111111} & 2 \\hline{balabala} & 你好啊 \\hlineend{array}" title="">
+                </div>
+                <div class="image-caption">begin{array}{|c|c|}hline{1111111111} & 2 \\hline{balabala} & 你好啊 \\hlineend{array}</div>
+            </figure>
 <p>可以看到，其实其他很多东西都可以很灵活的表达出来。碰到其他有趣的我会继续写出来的。</p>
 <h2 id="3-常用数学符号"><a href="#3-常用数学符号" class="headerlink" title="3. 常用数学符号"></a>3. 常用数学符号</h2><blockquote>
 <p>这里提供一个<a href="https://link.juejin.im/?target=http%3A%2F%2Ffiles.cnblogs.com%2Fhoukai%2FLATEX%25E6%2595%25B0%25E5%25AD%25A6%25E7%25AC%25A6%25E5%258F%25B7%25E8%25A1%25A8.rar" target="_blank" rel="noopener">文档下载</a>，如果上面的链接失效，也可以到我的 <a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fmk43%2FBlogResource%2Fblob%2Fmaster%2FLaTex%2FLATEX%25E6%2595%25B0%25E5%25AD%25A6%25E7%25AC%25A6%25E5%258F%25B7%25E8%25A1%25A8.pdf" target="_blank" rel="noopener">GitHub 下载 pdf 版</a>。下面举几个例子。</p>
 </blockquote>
 <h3 id="3-1-希腊字母"><a href="#3-1-希腊字母" class="headerlink" title="3.1 希腊字母"></a>3.1 希腊字母</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">\begin&#123;array&#125;&#123;|c|c|c|c|c|c|c|c|&#125;</span><br><span class="line">\hline</span><br><span class="line">&#123;\alpha&#125; &amp; &#123;\backslash alpha&#125; &amp; &#123;\theta&#125; &amp; &#123;\backslash theta&#125; &amp; &#123;o&#125; &amp; &#123;o&#125; &amp; &#123;\upsilon&#125; &amp; &#123;\backslash upsilon&#125; \\\\</span><br><span class="line">\hline</span><br><span class="line">&#123;\beta&#125; &amp; &#123;\backslash beta&#125; &amp; &#123;\vartheta&#125; &amp; &#123;\backslash vartheta&#125; &amp; &#123;\pi&#125; &amp; &#123;\backslash pi&#125; &amp; &#123;\phi&#125; &amp; &#123;\backslash phi&#125; \\\\</span><br><span class="line">\hline</span><br><span class="line">&#123;\gamma&#125; &amp; &#123;\backslash gamma&#125; &amp; &#123;\iota&#125; &amp; &#123;\backslash iota&#125; &amp; &#123;\varpi&#125; &amp; &#123;\backslash varpi&#125; &amp; &#123;\varphi&#125; &amp; &#123;\backslash varphi&#125; \\\\</span><br><span class="line">\hline</span><br><span class="line">&#123;\delta&#125; &amp; &#123;\backslash delta&#125; &amp; &#123;\kappa&#125; &amp; &#123;\backslash kappa&#125; &amp; &#123;\rho&#125; &amp; &#123;\backslash rho&#125; &amp; &#123;\chi&#125; &amp; &#123;\backslash chi&#125; \\\\</span><br><span class="line">\hline</span><br><span class="line">&#123;\epsilon&#125; &amp; &#123;\backslash epsilon&#125; &amp; &#123;\lambda&#125; &amp; &#123;\backslash lambda&#125; &amp; &#123;\varrho&#125; &amp; &#123;\backslash varrho&#125; &amp; &#123;\psi&#125; &amp; &#123;\backslash psi&#125; \\\\</span><br><span class="line">\hline</span><br><span class="line">&#123;\varepsilon&#125; &amp; &#123;\backslash varepsilon&#125; &amp; &#123;\mu&#125; &amp; &#123;\backslash mu&#125; &amp; &#123;\sigma&#125; &amp; &#123;\backslash sigma&#125; &amp; &#123;\omega&#125; &amp; &#123;\backslash omega&#125; \\\\</span><br><span class="line">\hline</span><br><span class="line">&#123;\zeta&#125; &amp; &#123;\backslash zeta&#125; &amp; &#123;\nu&#125; &amp; &#123;\backslash nu&#125; &amp; &#123;\varsigma&#125; &amp; &#123;\backslash varsigma&#125; &amp; &#123;&#125; &amp; &#123;&#125; \\\\</span><br><span class="line">\hline</span><br><span class="line">&#123;\eta&#125; &amp; &#123;\backslash eta&#125; &amp; &#123;\xi&#125; &amp; &#123;\backslash xi&#125; &amp; &#123;\tau&#125; &amp; &#123;\backslash tau&#125; &amp; &#123;&#125; &amp; &#123;&#125; \\\\</span><br><span class="line">\hline</span><br><span class="line">&#123;\Gamma&#125; &amp; &#123;\backslash Gamma&#125; &amp; &#123;\Lambda&#125; &amp; &#123;\backslash Lambda&#125; &amp; &#123;\Sigma&#125; &amp; &#123;\backslash Sigma&#125; &amp; &#123;\Psi&#125; &amp; &#123;\backslash Psi&#125; \\\\</span><br><span class="line">\hline</span><br><span class="line">&#123;\Delta&#125; &amp; &#123;\backslash Delta&#125; &amp; &#123;\Xi&#125; &amp; &#123;\backslash Xi&#125; &amp; &#123;\Upsilon&#125; &amp; &#123;\backslash Upsilon&#125; &amp; &#123;\Omega&#125; &amp; &#123;\backslash Omega&#125; \\\\</span><br><span class="line">\hline</span><br><span class="line">&#123;\Omega&#125; &amp; &#123;\backslash Omega&#125; &amp; &#123;\Pi&#125; &amp; &#123;\backslash Pi&#125; &amp; &#123;\Phi&#125; &amp; &#123;\backslash Phi&#125; &amp; &#123;&#125; &amp; &#123;&#125; \\\\</span><br><span class="line">\hline</span><br><span class="line">\end&#123;array&#125;</span><br><span class="line">$$</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
-<p><img src="https://juejin.im/equation?tex=%5Cbegin%7Barray%7D%7B%7Cc%7Cc%7Cc%7Cc%7Cc%7Cc%7Cc%7Cc%7C%7D%0A%5Chline%0A%7B%5Calpha%7D%20%26%20%7B%5Cbackslash%20alpha%7D%20%26%20%7B%5Ctheta%7D%20%26%20%7B%5Cbackslash%20theta%7D%20%26%20%7Bo%7D%20%26%20%7Bo%7D%20%26%20%7B%5Cupsilon%7D%20%26%20%7B%5Cbackslash%20upsilon%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5Cbeta%7D%20%26%20%7B%5Cbackslash%20beta%7D%20%26%20%7B%5Cvartheta%7D%20%26%20%7B%5Cbackslash%20vartheta%7D%20%26%20%7B%5Cpi%7D%20%26%20%7B%5Cbackslash%20pi%7D%20%26%20%7B%5Cphi%7D%20%26%20%7B%5Cbackslash%20phi%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5Cgamma%7D%20%26%20%7B%5Cbackslash%20gamma%7D%20%26%20%7B%5Ciota%7D%20%26%20%7B%5Cbackslash%20iota%7D%20%26%20%7B%5Cvarpi%7D%20%26%20%7B%5Cbackslash%20varpi%7D%20%26%20%7B%5Cvarphi%7D%20%26%20%7B%5Cbackslash%20varphi%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5Cdelta%7D%20%26%20%7B%5Cbackslash%20delta%7D%20%26%20%7B%5Ckappa%7D%20%26%20%7B%5Cbackslash%20kappa%7D%20%26%20%7B%5Crho%7D%20%26%20%7B%5Cbackslash%20rho%7D%20%26%20%7B%5Cchi%7D%20%26%20%7B%5Cbackslash%20chi%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5Cepsilon%7D%20%26%20%7B%5Cbackslash%20epsilon%7D%20%26%20%7B%5Clambda%7D%20%26%20%7B%5Cbackslash%20lambda%7D%20%26%20%7B%5Cvarrho%7D%20%26%20%7B%5Cbackslash%20varrho%7D%20%26%20%7B%5Cpsi%7D%20%26%20%7B%5Cbackslash%20psi%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5Cvarepsilon%7D%20%26%20%7B%5Cbackslash%20varepsilon%7D%20%26%20%7B%5Cmu%7D%20%26%20%7B%5Cbackslash%20mu%7D%20%26%20%7B%5Csigma%7D%20%26%20%7B%5Cbackslash%20sigma%7D%20%26%20%7B%5Comega%7D%20%26%20%7B%5Cbackslash%20omega%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5Czeta%7D%20%26%20%7B%5Cbackslash%20zeta%7D%20%26%20%7B%5Cnu%7D%20%26%20%7B%5Cbackslash%20nu%7D%20%26%20%7B%5Cvarsigma%7D%20%26%20%7B%5Cbackslash%20varsigma%7D%20%26%20%7B%7D%20%26%20%7B%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5Ceta%7D%20%26%20%7B%5Cbackslash%20eta%7D%20%26%20%7B%5Cxi%7D%20%26%20%7B%5Cbackslash%20xi%7D%20%26%20%7B%5Ctau%7D%20%26%20%7B%5Cbackslash%20tau%7D%20%26%20%7B%7D%20%26%20%7B%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5CGamma%7D%20%26%20%7B%5Cbackslash%20Gamma%7D%20%26%20%7B%5CLambda%7D%20%26%20%7B%5Cbackslash%20Lambda%7D%20%26%20%7B%5CSigma%7D%20%26%20%7B%5Cbackslash%20Sigma%7D%20%26%20%7B%5CPsi%7D%20%26%20%7B%5Cbackslash%20Psi%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5CDelta%7D%20%26%20%7B%5Cbackslash%20Delta%7D%20%26%20%7B%5CXi%7D%20%26%20%7B%5Cbackslash%20Xi%7D%20%26%20%7B%5CUpsilon%7D%20%26%20%7B%5Cbackslash%20Upsilon%7D%20%26%20%7B%5COmega%7D%20%26%20%7B%5Cbackslash%20Omega%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5COmega%7D%20%26%20%7B%5Cbackslash%20Omega%7D%20%26%20%7B%5CPi%7D%20%26%20%7B%5Cbackslash%20Pi%7D%20%26%20%7B%5CPhi%7D%20%26%20%7B%5Cbackslash%20Phi%7D%20%26%20%7B%7D%20%26%20%7B%7D%20%5C%5C%5C%5C%0A%5Chline%0A%5Cend%7Barray%7D" alt="\begin{array}{|c|c|c|c|c|c|c|c|}\hline{\alpha} &amp; {\backslash alpha} &amp; {\theta} &amp; {\backslash theta} &amp; {o} &amp; {o} &amp; {\upsilon} &amp; {\backslash upsilon} \\\\\hline{\beta} &amp; {\backslash beta} &amp; {\vartheta} &amp; {\backslash vartheta} &amp; {\pi} &amp; {\backslash pi} &amp; {\phi} &amp; {\backslash phi} \\\\\hline{\gamma} &amp; {\backslash gamma} &amp; {\iota} &amp; {\backslash iota} &amp; {\varpi} &amp; {\backslash varpi} &amp; {\varphi} &amp; {\backslash varphi} \\\\\hline{\delta} &amp; {\backslash delta} &amp; {\kappa} &amp; {\backslash kappa} &amp; {\rho} &amp; {\backslash rho} &amp; {\chi} &amp; {\backslash chi} \\\\\hline{\epsilon} &amp; {\backslash epsilon} &amp; {\lambda} &amp; {\backslash lambda} &amp; {\varrho} &amp; {\backslash varrho} &amp; {\psi} &amp; {\backslash psi} \\\\\hline{\varepsilon} &amp; {\backslash varepsilon} &amp; {\mu} &amp; {\backslash mu} &amp; {\sigma} &amp; {\backslash sigma} &amp; {\omega} &amp; {\backslash omega} \\\\\hline{\zeta} &amp; {\backslash zeta} &amp; {\nu} &amp; {\backslash nu} &amp; {\varsigma} &amp; {\backslash varsigma} &amp; {} &amp; {} \\\\\hline{\eta} &amp; {\backslash eta} &amp; {\xi} &amp; {\backslash xi} &amp; {\tau} &amp; {\backslash tau} &amp; {} &amp; {} \\\\\hline{\Gamma} &amp; {\backslash Gamma} &amp; {\Lambda} &amp; {\backslash Lambda} &amp; {\Sigma} &amp; {\backslash Sigma} &amp; {\Psi} &amp; {\backslash Psi} \\\\\hline{\Delta} &amp; {\backslash Delta} &amp; {\Xi} &amp; {\backslash Xi} &amp; {\Upsilon} &amp; {\backslash Upsilon} &amp; {\Omega} &amp; {\backslash Omega} \\\\\hline{\Omega} &amp; {\backslash Omega} &amp; {\Pi} &amp; {\backslash Pi} &amp; {\Phi} &amp; {\backslash Phi} &amp; {} &amp; {} \\\\\hline\end{array}"></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://juejin.im/equation?tex=%5Cbegin%7Barray%7D%7B%7Cc%7Cc%7Cc%7Cc%7Cc%7Cc%7Cc%7Cc%7C%7D%0A%5Chline%0A%7B%5Calpha%7D%20%26%20%7B%5Cbackslash%20alpha%7D%20%26%20%7B%5Ctheta%7D%20%26%20%7B%5Cbackslash%20theta%7D%20%26%20%7Bo%7D%20%26%20%7Bo%7D%20%26%20%7B%5Cupsilon%7D%20%26%20%7B%5Cbackslash%20upsilon%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5Cbeta%7D%20%26%20%7B%5Cbackslash%20beta%7D%20%26%20%7B%5Cvartheta%7D%20%26%20%7B%5Cbackslash%20vartheta%7D%20%26%20%7B%5Cpi%7D%20%26%20%7B%5Cbackslash%20pi%7D%20%26%20%7B%5Cphi%7D%20%26%20%7B%5Cbackslash%20phi%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5Cgamma%7D%20%26%20%7B%5Cbackslash%20gamma%7D%20%26%20%7B%5Ciota%7D%20%26%20%7B%5Cbackslash%20iota%7D%20%26%20%7B%5Cvarpi%7D%20%26%20%7B%5Cbackslash%20varpi%7D%20%26%20%7B%5Cvarphi%7D%20%26%20%7B%5Cbackslash%20varphi%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5Cdelta%7D%20%26%20%7B%5Cbackslash%20delta%7D%20%26%20%7B%5Ckappa%7D%20%26%20%7B%5Cbackslash%20kappa%7D%20%26%20%7B%5Crho%7D%20%26%20%7B%5Cbackslash%20rho%7D%20%26%20%7B%5Cchi%7D%20%26%20%7B%5Cbackslash%20chi%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5Cepsilon%7D%20%26%20%7B%5Cbackslash%20epsilon%7D%20%26%20%7B%5Clambda%7D%20%26%20%7B%5Cbackslash%20lambda%7D%20%26%20%7B%5Cvarrho%7D%20%26%20%7B%5Cbackslash%20varrho%7D%20%26%20%7B%5Cpsi%7D%20%26%20%7B%5Cbackslash%20psi%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5Cvarepsilon%7D%20%26%20%7B%5Cbackslash%20varepsilon%7D%20%26%20%7B%5Cmu%7D%20%26%20%7B%5Cbackslash%20mu%7D%20%26%20%7B%5Csigma%7D%20%26%20%7B%5Cbackslash%20sigma%7D%20%26%20%7B%5Comega%7D%20%26%20%7B%5Cbackslash%20omega%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5Czeta%7D%20%26%20%7B%5Cbackslash%20zeta%7D%20%26%20%7B%5Cnu%7D%20%26%20%7B%5Cbackslash%20nu%7D%20%26%20%7B%5Cvarsigma%7D%20%26%20%7B%5Cbackslash%20varsigma%7D%20%26%20%7B%7D%20%26%20%7B%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5Ceta%7D%20%26%20%7B%5Cbackslash%20eta%7D%20%26%20%7B%5Cxi%7D%20%26%20%7B%5Cbackslash%20xi%7D%20%26%20%7B%5Ctau%7D%20%26%20%7B%5Cbackslash%20tau%7D%20%26%20%7B%7D%20%26%20%7B%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5CGamma%7D%20%26%20%7B%5Cbackslash%20Gamma%7D%20%26%20%7B%5CLambda%7D%20%26%20%7B%5Cbackslash%20Lambda%7D%20%26%20%7B%5CSigma%7D%20%26%20%7B%5Cbackslash%20Sigma%7D%20%26%20%7B%5CPsi%7D%20%26%20%7B%5Cbackslash%20Psi%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5CDelta%7D%20%26%20%7B%5Cbackslash%20Delta%7D%20%26%20%7B%5CXi%7D%20%26%20%7B%5Cbackslash%20Xi%7D%20%26%20%7B%5CUpsilon%7D%20%26%20%7B%5Cbackslash%20Upsilon%7D%20%26%20%7B%5COmega%7D%20%26%20%7B%5Cbackslash%20Omega%7D%20%5C%5C%5C%5C%0A%5Chline%0A%7B%5COmega%7D%20%26%20%7B%5Cbackslash%20Omega%7D%20%26%20%7B%5CPi%7D%20%26%20%7B%5Cbackslash%20Pi%7D%20%26%20%7B%5CPhi%7D%20%26%20%7B%5Cbackslash%20Phi%7D%20%26%20%7B%7D%20%26%20%7B%7D%20%5C%5C%5C%5C%0A%5Chline%0A%5Cend%7Barray%7D" alt="begin{array}{|c|c|c|c|c|c|c|c|}hline{alpha} & {backslash alpha} & {	heta} & {backslash theta} & {o} & {o} & {upsilon} & {backslash upsilon} \\hline{beta} & {backslash beta} & {vartheta} & {backslash vartheta} & {pi} & {backslash pi} & {phi} & {backslash phi} \\hline{gamma} & {backslash gamma} & {iota} & {backslash iota} & {varpi} & {backslash varpi} & {varphi} & {backslash varphi} \\hline{delta} & {backslash delta} & {kappa} & {backslash kappa} & {ho} & {backslash rho} & {chi} & {backslash chi} \\hline{epsilon} & {backslash epsilon} & {lambda} & {backslash lambda} & {varrho} & {backslash varrho} & {psi} & {backslash psi} \\hline{varepsilon} & {backslash varepsilon} & {mu} & {backslash mu} & {sigma} & {backslash sigma} & {omega} & {backslash omega} \\hline{zeta} & {backslash zeta} & {
+u} & {backslash nu} & {varsigma} & {backslash varsigma} & {} & {} \\hline{eta} & {backslash eta} & {xi} & {backslash xi} & {	au} & {backslash tau} & {} & {} \\hline{Gamma} & {backslash Gamma} & {Lambda} & {backslash Lambda} & {Sigma} & {backslash Sigma} & {Psi} & {backslash Psi} \\hline{Delta} & {backslash Delta} & {Xi} & {backslash Xi} & {Upsilon} & {backslash Upsilon} & {Omega} & {backslash Omega} \\hline{Omega} & {backslash Omega} & {Pi} & {backslash Pi} & {Phi} & {backslash Phi} & {} & {} \\hlineend{array}" title="">
+                </div>
+                <div class="image-caption">begin{array}{|c|c|c|c|c|c|c|c|}hline{alpha} & {backslash alpha} & {	heta} & {backslash theta} & {o} & {o} & {upsilon} & {backslash upsilon} \\hline{beta} & {backslash beta} & {vartheta} & {backslash vartheta} & {pi} & {backslash pi} & {phi} & {backslash phi} \\hline{gamma} & {backslash gamma} & {iota} & {backslash iota} & {varpi} & {backslash varpi} & {varphi} & {backslash varphi} \\hline{delta} & {backslash delta} & {kappa} & {backslash kappa} & {ho} & {backslash rho} & {chi} & {backslash chi} \\hline{epsilon} & {backslash epsilon} & {lambda} & {backslash lambda} & {varrho} & {backslash varrho} & {psi} & {backslash psi} \\hline{varepsilon} & {backslash varepsilon} & {mu} & {backslash mu} & {sigma} & {backslash sigma} & {omega} & {backslash omega} \\hline{zeta} & {backslash zeta} & {
+u} & {backslash nu} & {varsigma} & {backslash varsigma} & {} & {} \\hline{eta} & {backslash eta} & {xi} & {backslash xi} & {	au} & {backslash tau} & {} & {} \\hline{Gamma} & {backslash Gamma} & {Lambda} & {backslash Lambda} & {Sigma} & {backslash Sigma} & {Psi} & {backslash Psi} \\hline{Delta} & {backslash Delta} & {Xi} & {backslash Xi} & {Upsilon} & {backslash Upsilon} & {Omega} & {backslash Omega} \\hline{Omega} & {backslash Omega} & {Pi} & {backslash Pi} & {Phi} & {backslash Phi} & {} & {} \\hlineend{array}</div>
+            </figure>
 <p>写太累了😂😂😂。。。其他的详见 <a href="https://link.juejin.im/?target=https%3A%2F%2Fgithub.com%2Fmk43%2FBlogResource%2Fblob%2Fmaster%2FLaTex%2FLATEX%25E6%2595%25B0%25E5%25AD%25A6%25E7%25AC%25A6%25E5%258F%25B7%25E8%25A1%25A8.pdf" target="_blank" rel="noopener">PDF</a>。</p>
 <h2 id="4-总结"><a href="#4-总结" class="headerlink" title="4. 总结"></a>4. 总结</h2><blockquote>
 <p>通过这样梳理一下基本的公式都能插入了，而且也会如何查资料。对于自己日后学习 LaTeX 写论文有很大帮助。以下建议带有很强的主观性，仅供参考。</p>
@@ -174,90 +621,294 @@
 </ol>
 <p>说明：掘金好像有些转义不出来，如果想看效果可以<a href="https://link.juejin.im/?target=http%3A%2F%2Ffitzeng.org%2F2018%2F01%2F23%2FLaTexFormula%2F" target="_blank" rel="noopener">参考这篇</a>自己多试试。</p>
 
-            <!--[if lt IE 9]><script>document.createElement('audio');</script><![endif]-->
-            <audio id="audio" loop="1" preload="auto" controls="controls" data-autoplay="false">
-                <source type="audio/mpeg" src="">
-            </audio>
-            
-                <ul id="audio-list" style="display:none">
-                    
-                        <li title="0" data-url="http://link.hhtjim.com/163/5146554.mp3"></li>
-                    
-                        <li title="1" data-url="http://link.hhtjim.com/qq/001faIUs4M2zna.mp3"></li>
-                    
-                </ul>
-            
         </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
         
-    <div id="gitalk-container" class="comment link" data-ae="false" data-ci="" data-cs="" data-r="" data-o="" data-a="" data-d="false">查看评论</div>
+<span class="post-time">
+    Last updated: <time datetime="2018-10-22T05:47:02.773Z" itemprop="dateUpdated">2018-10-22 13:47:02</time>
+</span><br>
 
 
+        
+        Thanks for your reading  :) | URL <a href="/2018/10/22/markdown-数学公式表示大集合/" target="_blank" rel="external">https://joshuaqyh.github.io/2018/10/22/markdown-数学公式表示大集合/</a>
+        
     </div>
     
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/markdown/">markdown</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/10/22/markdown-数学公式表示大集合/&title=《markdown 数学公式表示大集合》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/10/22/markdown-数学公式表示大集合/&title=《markdown 数学公式表示大集合》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/10/22/markdown-数学公式表示大集合/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《markdown 数学公式表示大集合》 — KnowMyself&url=https://joshuaqyh.github.io/2018/10/22/markdown-数学公式表示大集合/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/10/22/markdown-数学公式表示大集合/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
 </div>
 
 
+
+        </div>
     </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/11/26/ch 13不确定性的量化/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">贝叶斯网络基础知识</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/10/21/初探区块链的挑战，应用和发展/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">区块链挑战，应用和发展</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
 </div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/10/22/markdown-数学公式表示大集合/&title=《markdown 数学公式表示大集合》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/10/22/markdown-数学公式表示大集合/&title=《markdown 数学公式表示大集合》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/10/22/markdown-数学公式表示大集合/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《markdown 数学公式表示大集合》 — KnowMyself&url=https://joshuaqyh.github.io/2018/10/22/markdown-数学公式表示大集合/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/10/22/markdown-数学公式表示大集合/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACqUlEQVR42u3aQW7DMAwEwP7/0+01QGtnSYpGW4xPQSzHGh0kZamPj/j6fLm+f5Nc908l771vObrw8PDwBl1PuvX6zdXd779//znB54OLh4eH9wyv2q37p3rte8P0xoKHh4f3a3hJ+2S7fP+beHh4eP+PlwcEvcGaDDEeHh7eNi8PAvKwdR5YJAvPsawFDw8PL+admtaf/LxS38PDw8MbV9V75f98gq4uFeXe4uHh4S3wqhFqtfCflMSq7ctDhoeHh7fAm+9IE/A8vLj/tSSYxsPDw5vz5tvipASVdHqSIVz2Ew8PD2+Nl1OrA9EbuHw5KcQQeHh4eGu8fN+db3B7kcH8qAEeHh7eBq8as/bSjvxuNYwoLA94eHh4C7y8W3PM2fijufrh4eHhtXgbE3Fvgck30HkYjYeHh/cML5l2q08lC0weBxfiDzw8PLwFXtIon8qrXZy0rx5HwMPDw9vg9Upi1UMD1eiheoSrsDzg4eHhtXjJZFrdEFfv5m3ysAMPDw/vGV5OmjMmpMKChIeHh7fGy0OBfCqfHCCovvfyezw8PLw1Xj7h5nHDdjGsfOgKDw8Pb4GXT9ankNXIOB+4HxYGPDw8vEO8vBw1ORDQOzKVD/2bRQUPDw9vjXeqlFUtlfWeKkQYeHh4eGu8XiybU3tlrXxzH+248fDw8I7yqpFBdQgmUW8OLmTVeHh4eEd51UJ+8vo8Yphfl/8Y8PDw8Ma8z+KVT9blsLUVhbxZzPDw8PAWeNWpdqOUlTMOBBN4eHh4h3jVGDfvXI/U24Jf3sXDw8Nb41UD03zunWyvq8nKKMbFw8PDW+NVC1fJ3d6A4uHh4f0tXr51TvKBZDiaQTMeHh7eGu9sxDBZVJLNdHlhwMPDwzvK6/3h722ykyF7/pAWHh4eXsz7Alqo2k+OATc5AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
 </body>
-<script src="//cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
-<script src="//lib.baomitu.com/jquery/1.8.3/jquery.min.js"></script>
-<script src="/js/plugin.js"></script>
-<script src="/js/diaspora.js"></script>
-<link rel="stylesheet" href="/photoswipe/photoswipe.css">
-<link rel="stylesheet" href="/photoswipe/default-skin/default-skin.css">
-<script src="/photoswipe/photoswipe.min.js"></script>
-<script src="/photoswipe/photoswipe-ui-default.min.js"></script>
-
-<!-- Root element of PhotoSwipe. Must have class pswp. -->
-<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-    <!-- Background of PhotoSwipe. 
-         It's a separate element as animating opacity is faster than rgba(). -->
-    <div class="pswp__bg"></div>
-    <!-- Slides wrapper with overflow:hidden. -->
-    <div class="pswp__scroll-wrap">
-        <!-- Container that holds slides. 
-            PhotoSwipe keeps only 3 of them in the DOM to save memory.
-            Don't modify these 3 pswp__item elements, data is added later on. -->
-        <div class="pswp__container">
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-            <div class="pswp__item"></div>
-        </div>
-        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
-        <div class="pswp__ui pswp__ui--hidden">
-            <div class="pswp__top-bar">
-                <!--  Controls are self-explanatory. Order can be changed. -->
-                <div class="pswp__counter"></div>
-                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
-                <button class="pswp__button pswp__button--share" title="Share"></button>
-                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
-                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
-                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
-                <!-- element will get class pswp__preloader--active when preloader is running -->
-                <div class="pswp__preloader">
-                    <div class="pswp__preloader__icn">
-                      <div class="pswp__preloader__cut">
-                        <div class="pswp__preloader__donut"></div>
-                      </div>
-                    </div>
-                </div>
-            </div>
-            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
-                <div class="pswp__share-tooltip"></div> 
-            </div>
-            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
-            </button>
-            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
-            </button>
-            <div class="pswp__caption">
-                <div class="pswp__caption__center"></div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-
-
 </html>
