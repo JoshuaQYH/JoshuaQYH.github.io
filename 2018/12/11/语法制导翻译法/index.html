@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>语法制导翻译法 | KnowMyself | Code and life</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="编译原理">
+    <meta name="description" content="SDTS基本概念$语法制导翻译法SDTS = 一个源语言 + 一个目标语言 + 一组翻译规则$ SDTS的翻译规则是文法中的产生式再加上语义动作。 SDTS其形式定义T如下： $$T = (V_T, V_N, \delta, R, S)$$  $V_T$ 是一个有穷的输入字母表，包含源语言中的符号。 $V_N$ 是一个有穷的非终结符号集合。 $\delta$ 是一个有穷的输出字母表，包含出现翻译串">
+<meta name="keywords" content="编译原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="语法制导翻译法">
+<meta property="og:url" content="https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="SDTS基本概念$语法制导翻译法SDTS = 一个源语言 + 一个目标语言 + 一组翻译规则$ SDTS的翻译规则是文法中的产生式再加上语义动作。 SDTS其形式定义T如下： $$T = (V_T, V_N, \delta, R, S)$$  $V_T$ 是一个有穷的输入字母表，包含源语言中的符号。 $V_N$ 是一个有穷的非终结符号集合。 $\delta$ 是一个有穷的输出字母表，包含出现翻译串">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181211113425.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181211113456.png">
+<meta property="og:updated_time" content="2018-12-11T03:38:29.687Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="语法制导翻译法">
+<meta name="twitter:description" content="SDTS基本概念$语法制导翻译法SDTS = 一个源语言 + 一个目标语言 + 一组翻译规则$ SDTS的翻译规则是文法中的产生式再加上语义动作。 SDTS其形式定义T如下： $$T = (V_T, V_N, \delta, R, S)$$  $V_T$ 是一个有穷的输入字母表，包含源语言中的符号。 $V_N$ 是一个有穷的非终结符号集合。 $\delta$ 是一个有穷的输出字母表，包含出现翻译串">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181211113425.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">语法制导翻译法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">语法制导翻译法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-12-11T02:04:36.000Z" itemprop="datePublished" class="page-time">
+  2018-12-11
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SDTS基本概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">SDTS基本概念</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-语法制导翻译法" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">语法制导翻译法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-12-11 10:04:36" datetime="2018-12-11T02:04:36.000Z" itemprop="datePublished">2018-12-11</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="SDTS基本概念"><a href="#SDTS基本概念" class="headerlink" title="SDTS基本概念"></a>SDTS基本概念</h1><p>$语法制导翻译法SDTS = 一个源语言 + 一个目标语言 + 一组翻译规则$</p>
+<p>SDTS的翻译规则是文法中的产生式再加上语义动作。</p>
+<p>SDTS其形式定义T如下：</p>
+<p>$$T = (V_T, V_N, \delta, R, S)$$</p>
+<ul>
+<li>$V_T$ 是一个有穷的输入字母表，包含源语言中的符号。</li>
+<li>$V_N$ 是一个有穷的非终结符号集合。</li>
+<li>$\delta$ 是一个有穷的输出字母表，包含出现翻译串或输出串中的那些符号。</li>
+<li>$R$是形如$A\rightarrow w,y$的规则的有穷集合。</li>
+<li>$S ∈ V_N$是一个开始符号。</li>
+</ul>
+<hr>
+<blockquote>
+<p>解释R中$A\rightarrow w, y$ 。</p>
+</blockquote>
+<p>w 是终结符和（或）非终结符组成的串； y是由$V_N$和（或）$\delta$中符号组成的串。</p>
+<p>w 为规则的源成分；y为规则的翻译成分，出现在w，y中的非终结符必须是一一对应的。</p>
+<hr>
+<blockquote>
+<p>T的基础源文法</p>
+</blockquote>
+<p> SDTS的基础源文法是一个CFG(上下文无关文法context-free-grammar）：$(V_N, V_T, P,S)$ </p>
+<p>$P $是形如$A\rightarrow w（w$ 为源程序成分 )的产生式的集合。</p>
+<p>从T中<strong>去掉输出字母表$\delta$ ，再从T的规则中移走翻译成分y,就可以得到T的基础源文法。</strong></p>
+<hr>
+<blockquote>
+<p>T 的基础目标文法</p>
+</blockquote>
+<p>类似地，从T中去掉字母表$V_T$ 并从T的规则中移去源成分。</p>
+<p>CFG：$(V_N, P, \delta, S)$。</p>
+<p>P是形如$A \rightarrow y$(y为目标成分)产生式的集合。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181211113425.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181211113456.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<hr>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2018-12-11T03:38:29.687Z" itemprop="dateUpdated">2018-12-11 11:38:29</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2018/12/11/语法制导翻译法/" target="_blank" rel="external">https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编译原理/">编译原理</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/&title=《语法制导翻译法》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/&title=《语法制导翻译法》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《语法制导翻译法》 — KnowMyself&url=https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/12/11/DApp学习之路/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">基于以太坊的DApp学习开发之路</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/12/10/样例学习/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">样例学习</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/&title=《语法制导翻译法》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/&title=《语法制导翻译法》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《语法制导翻译法》 — KnowMyself&url=https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3aS1LDMBAFQO5/6XCAlM17I4eqSO1VioCs1mLQfH5+4uf19rx/+/45WS35+WMPBgbG1zJet8/95hLePftqzXxvGBgY5zDa5XLM/e+sHB8GBgZGHviuXpxfKNuLJgYGBsb9cm1wvPr2fn0MDAyMWRK7Um7LE92P5+IYGBhfyMir7v//+SP9DQwMjK9ivEbPrOjfFuOK/WBgYGzNaINgm7Lmqe/s4DAwME5gzIpos83V5bMgHNcbwsDA2IjRprWzQbG2hFf8x8DAwNiIkV/pnh3teqpJgIGBcQ7jqbCbbKIdvyjWxMDA2JSRL71e1csvi+1hYWBgnMxIwm4Oy5ud9cgFBgbGkYw2CLZ/m4+dRU1WDAyMYxhPAfJLZzsudhnEMTAwDmDkC82Guur6X9kWxcDA2JuRNzI/ndauHAEGBsYJjFmjsW0PfGJE449OLAYGxqaMdvRhlsrmYxbFTjAwMDZlPJVezspks7cUuTgGBsYWjKQ0X5fpl+tgybcYGBjnMNbLZ4+dZTmKcdmJxcDA2I4xi1f51bDd4izcY2Bg7M2YDUnk4XUWiOvAjYGBsTWjvZzl5bmktZk0TWdFQAwMjP0Y+RhW/sqVnupsOAMDA+MERt44bBPXpD253lTAwMDAaFPKPMi2AfePqyEGBsbxjJVUsz2Ux0YuMDAwNmKsBMGVOt8sMb7sxGJgYGzKmA1mtZvOR8pm4x0YGBibMn4BvRCEmhrshdoAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

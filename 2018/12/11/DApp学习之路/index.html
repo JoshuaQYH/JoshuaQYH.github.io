@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>基于以太坊的DApp学习开发之路 | KnowMyself | Code and life</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="Ethereum,Smart-contract,Full-stack">
+    <meta name="description" content="准备的知识前端React.js + Redux 用于前端组件设计和状态管理。拟学习MD组件库。 web3.js 与区块链数据交互通信 webpack 服务端web3.js 与区块链交互 +  express 响应请求/路由功能+mongodb基本增删该查。 区块链智能合约+测试部署+调用 solc + ganache + influa + truffle + metamask ！ IPFS 学习链">
+<meta name="keywords" content="Ethereum,Smart-contract,Full-stack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="基于以太坊的DApp学习开发之路">
+<meta property="og:url" content="https://joshuaqyh.github.io/2018/12/11/DApp学习之路/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="准备的知识前端React.js + Redux 用于前端组件设计和状态管理。拟学习MD组件库。 web3.js 与区块链数据交互通信 webpack 服务端web3.js 与区块链交互 +  express 响应请求/路由功能+mongodb基本增删该查。 区块链智能合约+测试部署+调用 solc + ganache + influa + truffle + metamask ！ IPFS 学习链">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-12-24T08:49:19.693Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="基于以太坊的DApp学习开发之路">
+<meta name="twitter:description" content="准备的知识前端React.js + Redux 用于前端组件设计和状态管理。拟学习MD组件库。 web3.js 与区块链数据交互通信 webpack 服务端web3.js 与区块链交互 +  express 响应请求/路由功能+mongodb基本增删该查。 区块链智能合约+测试部署+调用 solc + ganache + influa + truffle + metamask ！ IPFS 学习链">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">基于以太坊的DApp学习开发之路</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">基于以太坊的DApp学习开发之路</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-12-11T13:47:18.000Z" itemprop="datePublished" class="page-time">
+  2018-12-11
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#准备的知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">准备的知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前端"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">前端</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#服务端"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">服务端</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#区块链"><span class="post-toc-number">2.</span> <span class="post-toc-text">区块链</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#学习链接"><span class="post-toc-number">3.</span> <span class="post-toc-text">学习链接</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#学习记录"><span class="post-toc-number">4.</span> <span class="post-toc-text">学习记录</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#开发核心步骤"><span class="post-toc-number">5.</span> <span class="post-toc-text">开发核心步骤</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-DApp学习之路" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">基于以太坊的DApp学习开发之路</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-12-11 21:47:18" datetime="2018-12-11T13:47:18.000Z" itemprop="datePublished">2018-12-11</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="准备的知识"><a href="#准备的知识" class="headerlink" title="准备的知识"></a>准备的知识</h2><h3 id="前端"><a href="#前端" class="headerlink" title="前端"></a>前端</h3><p>React.js + Redux 用于前端组件设计和状态管理。拟学习MD组件库。</p>
+<p>web3.js 与区块链数据交互通信 webpack</p>
+<h3 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h3><p>web3.js 与区块链交互 +  express 响应请求/路由功能+mongodb基本增删该查。</p>
+<h2 id="区块链"><a href="#区块链" class="headerlink" title="区块链"></a>区块链</h2><p>智能合约+测试部署+调用</p>
+<p>solc + ganache + influa + truffle + metamask</p>
+<p>！ IPFS</p>
+<h2 id="学习链接"><a href="#学习链接" class="headerlink" title="学习链接"></a>学习链接</h2><p><a href="https://medium.com/ethereum-developers/the-ultimate-end-to-end-tutorial-to-create-and-deploy-a-fully-descentralized-dapp-in-ethereum-18f0cf6d7e0e" target="_blank" rel="noopener">https://medium.com/ethereum-developers/the-ultimate-end-to-end-tutorial-to-create-and-deploy-a-fully-descentralized-dapp-in-ethereum-18f0cf6d7e0e</a> </p>
+<h2 id="学习记录"><a href="#学习记录" class="headerlink" title="学习记录"></a>学习记录</h2><p>通过一个简单应用体会全栈Dapp过程。涉及框架 truffle ，IPFS，webpack，react，babel，web3</p>
+<h2 id="开发核心步骤"><a href="#开发核心步骤" class="headerlink" title="开发核心步骤"></a>开发核心步骤</h2><p>步骤</p>
+<ol>
+<li>Setup the project</li>
+<li>Program the Solidity contracts</li>
+<li>Create the frontend application</li>
+<li>Deploy the application online with IPFS</li>
+<li>Use a custom domain for the application</li>
+<li>Play with the final Dapp!</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2018-12-24T08:49:19.693Z" itemprop="dateUpdated">2018-12-24 16:49:19</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2018/12/11/DApp学习之路/" target="_blank" rel="external">https://joshuaqyh.github.io/2018/12/11/DApp学习之路/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ethereum/">Ethereum</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Full-stack/">Full-stack</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Smart-contract/">Smart-contract</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/12/11/DApp学习之路/&title=《基于以太坊的DApp学习开发之路》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/12/11/DApp学习之路/&title=《基于以太坊的DApp学习开发之路》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/12/11/DApp学习之路/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《基于以太坊的DApp学习开发之路》 — KnowMyself&url=https://joshuaqyh.github.io/2018/12/11/DApp学习之路/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/12/11/DApp学习之路/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/12/17/人工神经网络学习/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">人工神经网络学习</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/12/11/语法制导翻译法/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">语法制导翻译法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/12/11/DApp学习之路/&title=《基于以太坊的DApp学习开发之路》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/12/11/DApp学习之路/&title=《基于以太坊的DApp学习开发之路》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/12/11/DApp学习之路/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《基于以太坊的DApp学习开发之路》 — KnowMyself&url=https://joshuaqyh.github.io/2018/12/11/DApp学习之路/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/12/11/DApp学习之路/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACH0lEQVR42u3aQW6EMAwF0Ln/pem2UjvMtw0jkbysKgRMHgvXjv16xev4tf5ez+8/vyd5arQwMDAeyzhOV37PZKMX/C4GBsYGjHebOL/n3Z1JgE6eSvaGgYGBcf6TyXt6wR0DAwNjHnCr4TLfEAYGBsakiE1K02ogrr75glocAwPjgYz81P37f9/S38DAwHgU4yiuJCnslbvHYGFgYKzNmByTzcvOPLmMhjkwMDCWZlRHJaqhdr65Uc6LgYHxcEb1yCxP6XofpdlGxcDA2IDR22JyoF8tU6NWZS9vxcDAeCzjjtGKXvDNAeU0EQMD4+GM5EXzpmMemqsNBgwMjH0Y8xmNcrtx8Cn/eRYDA2NpRn6klRe01RbCJPRjYGDsxpiMUCSNhN7xXCEEY2BgLMpIHk6O1SYDFr1hCwwMjH0YeVMzD8e9ZsAk3cTAwNiBMRkI6yWCvetRgoiBgbEoozcA0Tvuz1PJJhIDA2NLRp7SzbeSvwcDA2M3Rt6kzMNocqxWTSs/YDAwMDZg9IYtqvjeh7h9ZgQDA+OBjGprMy9l88ZD3rTAwMBYmzEPo8n13mhFs/7GwMBYjtEb2Ko2A+4Y48g/FgYGxhqMPMhemz7mzYbk2A4DA2MHRn4ElqeGefKX/wf4UMpiYGBgDNqWSRHbC+sYGBgY86A8r7CjQz0MDIwNGNeOTUx4zUIaAwNjaUaexiVDWvMStxqgMTAwlmb8APWe0T+QaKoeAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

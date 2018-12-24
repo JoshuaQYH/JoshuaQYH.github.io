@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>人工神经网络学习 | KnowMyself | Code and life</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="人工智能,神经网络">
+    <meta name="description" content="神经元结构神经元结构就是一个函数发生器：输入+函数运算+输出。  输入是多个输入点$a$ 的加权(w)求和。     函数运算：激活函数。常用sigmoid函数。   输出：一个输出值，可能作为其他神经元的输入点之一。   前馈网络单层前馈神经网络（感知器）">
+<meta name="keywords" content="人工智能,神经网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="人工神经网络学习">
+<meta property="og:url" content="https://joshuaqyh.github.io/2018/12/17/人工神经网络学习/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="神经元结构神经元结构就是一个函数发生器：输入+函数运算+输出。  输入是多个输入点$a$ 的加权(w)求和。     函数运算：激活函数。常用sigmoid函数。   输出：一个输出值，可能作为其他神经元的输入点之一。   前馈网络单层前馈神经网络（感知器）">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181217200818.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181217200939.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181217201840.png">
+<meta property="og:updated_time" content="2018-12-17T13:36:19.584Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="人工神经网络学习">
+<meta name="twitter:description" content="神经元结构神经元结构就是一个函数发生器：输入+函数运算+输出。  输入是多个输入点$a$ 的加权(w)求和。     函数运算：激活函数。常用sigmoid函数。   输出：一个输出值，可能作为其他神经元的输入点之一。   前馈网络单层前馈神经网络（感知器）">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181217200818.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">人工神经网络学习</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">人工神经网络学习</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-12-17T12:06:03.000Z" itemprop="datePublished" class="page-time">
+  2018-12-17
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#神经元结构"><span class="post-toc-number">1.</span> <span class="post-toc-text">神经元结构</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#前馈网络"><span class="post-toc-number">2.</span> <span class="post-toc-text">前馈网络</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#单层前馈神经网络（感知器）"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">单层前馈神经网络（感知器）</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-人工神经网络学习" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">人工神经网络学习</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-12-17 20:06:03" datetime="2018-12-17T12:06:03.000Z" itemprop="datePublished">2018-12-17</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="神经元结构"><a href="#神经元结构" class="headerlink" title="神经元结构"></a>神经元结构</h2><p>神经元结构就是一个函数发生器：输入+函数运算+输出。</p>
+<ul>
+<li>输入是多个输入点$a$ 的加权(w)求和。 </li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181217200818.png" alt=""></p>
+<ul>
+<li><p>函数运算：激活函数。常用sigmoid函数。</p>
+<p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181217200939.png" alt=""></p>
+</li>
+<li><p>输出：一个输出值，可能作为其他神经元的输入点之一。</p>
+</li>
+</ul>
+<h2 id="前馈网络"><a href="#前馈网络" class="headerlink" title="前馈网络"></a>前馈网络</h2><h3 id="单层前馈神经网络（感知器）"><a href="#单层前馈神经网络（感知器）" class="headerlink" title="单层前馈神经网络（感知器）"></a>单层前馈神经网络（感知器）</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181217201840.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>​                                                            输入直接连接到输出。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2018-12-17T13:36:19.584Z" itemprop="dateUpdated">2018-12-17 21:36:19</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2018/12/17/人工神经网络学习/" target="_blank" rel="external">https://joshuaqyh.github.io/2018/12/17/人工神经网络学习/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/人工智能/">人工智能</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/神经网络/">神经网络</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/12/17/人工神经网络学习/&title=《人工神经网络学习》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/12/17/人工神经网络学习/&title=《人工神经网络学习》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/12/17/人工神经网络学习/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《人工神经网络学习》 — KnowMyself&url=https://joshuaqyh.github.io/2018/12/17/人工神经网络学习/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/12/17/人工神经网络学习/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/12/20/adaboost集成学习/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">adaboost集成学习</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/12/11/DApp学习之路/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">基于以太坊的DApp学习开发之路</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/12/17/人工神经网络学习/&title=《人工神经网络学习》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/12/17/人工神经网络学习/&title=《人工神经网络学习》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/12/17/人工神经网络学习/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《人工神经网络学习》 — KnowMyself&url=https://joshuaqyh.github.io/2018/12/17/人工神经网络学习/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/12/17/人工神经网络学习/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuklEQVR42u3aQW7bQAwFUN//0inQVRfV+JMcJg7wtBIUW5qnAEOa5OsVH19/j/P5v1eeridX8mddO/Dw8PBaS386nj6T3Cf/bvLJ8z0f74+Hh4e3xsuDQbKJn+92hp0x+Zrx8PDwPoGXb/rJlWRx1fQaDw8P7zfy8r/mjA8KDHh4eHjFYsQk4e4VFHL2hVoLHh4eXsy71QD7zvMf6O/h4eHhBdtrL2BUg0c+TFBeIR4eHt4CL//x3yuk9sq4yWhCoTGGh4eHt8CrFhTmW3l1dGA+moCHh4d3i5cEgPPSewMEvdGBvOWGh4eHt81LEtZquysJCZNmWJSU4+Hh4S3w5kuZBIYeO18VHh4e3gbv/LVkuUkZNx+lqib6eHh4eJ/J66WzvfS3GmDeNOHw8PDwFnjV0kC15T9ZaO9lvXrxCg8PD6/Iq5ZNJ4FkUhTOW2J4eHh4e7zJWNVdXvV/Eo074OHh4S3wztvu3fM8Zf8aH3h4eHh7vKQYemsQKi8x5Gn3m1eJh4eH9428aum2WgKuBoMeEg8PD2+Pd7fwWr3nrZdb+K2Ah4eHN+DlafFkFGAjEU+Scjw8PLwNXrXYOnlwXrpNGmNRnwsPDw9vjRdFj1ZTPw8G1aLDtQYYHh4e3iXedpt//sqiEgYeHh7eAq9a84zKpvFQaa8N1isc4+Hh4d3iVSu+ebpcriVvdKzw8PDwtprh5VGq3ibeKw3nyFf1feDh4eG1eJMiQq9E2xsdyF/9m5QaDw8Pb8zLj2r5NXlY/pnkfITEw8PDK/KSYJDXgyel23m6/5/74OHh4a3xkk150v7P0/Fq1IraYHh4eHgfxstLFUn4mSTrjyk1Hh4e3g/x8rT4Vhqdl4wvpNR4eHh4RV5ejKi2/POBg16oiAIDHh4e3lXeZGvuDRacvzUf5xqNDuDh4eGdVvIHtkLQdX84tZUAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
