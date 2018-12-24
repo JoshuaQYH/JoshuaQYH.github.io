@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>支持向量机算法原理及实现 | KnowMyself | Code and life</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="人工智能,机器学习,SVM">
+    <meta name="description" content="基本原理基本概念最简单的支持向量机是一个二分类的分类器。分类思想是给定一组包含正负样本的集合，然后找到一个超平面（可以是一维或者多维），来对正负样本进行分割。 该方法对于解决小样本，非线性，及高维模式识别中表现出许多的优势。 以下图的直线就是概念中的超平面，将样本划分为两个类别。在解决实际的多分类问题中可以转化为多个二分类问题。">
+<meta name="keywords" content="人工智能,机器学习,SVM">
+<meta property="og:type" content="article">
+<meta property="og:title" content="支持向量机算法原理及实现">
+<meta property="og:url" content="https://joshuaqyh.github.io/2018/12/24/支持向量机算法原理及实现/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="基本原理基本概念最简单的支持向量机是一个二分类的分类器。分类思想是给定一组包含正负样本的集合，然后找到一个超平面（可以是一维或者多维），来对正负样本进行分割。 该方法对于解决小样本，非线性，及高维模式识别中表现出许多的优势。 以下图的直线就是概念中的超平面，将样本划分为两个类别。在解决实际的多分类问题中可以转化为多个二分类问题。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181224221553.png">
+<meta property="og:image" content="c:/Users/Qiuyh/AppData/Local/Temp/1545661438928.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181224224634.png">
+<meta property="og:updated_time" content="2018-12-24T14:50:59.489Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="支持向量机算法原理及实现">
+<meta name="twitter:description" content="基本原理基本概念最简单的支持向量机是一个二分类的分类器。分类思想是给定一组包含正负样本的集合，然后找到一个超平面（可以是一维或者多维），来对正负样本进行分割。 该方法对于解决小样本，非线性，及高维模式识别中表现出许多的优势。 以下图的直线就是概念中的超平面，将样本划分为两个类别。在解决实际的多分类问题中可以转化为多个二分类问题。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181224221553.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">支持向量机算法原理及实现</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">支持向量机算法原理及实现</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-12-24T12:33:53.000Z" itemprop="datePublished" class="page-time">
+  2018-12-24
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#基本原理"><span class="post-toc-number">1.</span> <span class="post-toc-text">基本原理</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本概念"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">基本概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#函数间隔"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">函数间隔</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#kernel"><span class="post-toc-number">1.2.0.1.</span> <span class="post-toc-text">kernel</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#soft-margin-amp-slack-variable"><span class="post-toc-number">1.2.0.2.</span> <span class="post-toc-text">soft margin &amp; slack variable</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Sequential-Minimal-Optimization"><span class="post-toc-number">1.2.0.3.</span> <span class="post-toc-text">Sequential Minimal Optimization</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#python-实现"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">python 实现</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-支持向量机算法原理及实现" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">支持向量机算法原理及实现</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-12-24 20:33:53" datetime="2018-12-24T12:33:53.000Z" itemprop="datePublished">2018-12-24</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="基本原理"><a href="#基本原理" class="headerlink" title="基本原理"></a>基本原理</h1><h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>最简单的支持向量机是一个二分类的分类器。分类思想是给定一组包含正负样本的集合，然后找到一个超平面（可以是一维或者多维），来对正负样本进行分割。</p>
+<p>该方法对于解决小样本，非线性，及高维模式识别中表现出许多的优势。</p>
+<p>以下图的直线就是概念中的超平面，将样本划分为两个类别。在解决实际的多分类问题中可以转化为多个二分类问题。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181224221553.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>其中的超平面方程由以下线性方程来描述。</p>
+<p>​    $$g(x) = w^Tx + b = 0$$</p>
+<p>其中$x$为样本的特征向量，$w^T$ 代表平面的法向量，而 $b$ 代表超平面的偏移量。</p>
+<p>假设输入样本为 $x_0$，使得 $g(x_0) &gt; 0$ 的样本为正样本，反之为负样本，正负标签记为 ${+1, -1} $。</p>
+<h2 id="函数间隔"><a href="#函数间隔" class="headerlink" title="函数间隔"></a>函数间隔</h2><p> <img src="C:\Users\Qiuyh\AppData\Local\Temp\1545661438928.png" alt="54566143892"></p>
+<p>函数的间隔指的是正负样本点中到超平面的最近距离。对数据点进行分类，当超平面离数据点的间隔越大，<strong>分类的确信度越高</strong>。故当多个超平面的分类准确率一致时，我们要着重考虑<strong>最大间隔的分类器</strong>。</p>
+<p>所以支持向量机的最终目标就是找到一个最大间隔的分类器。可以理解为一个约束优化问题，用以下式子来表示。</p>
+<p>$$max \, \frac{r^<em>}{||w||}  \ subject\, to \, y_i (w^Tx_i  + b ) \ge r^</em> $$ </p>
+<p>其中 $r^*$为函数间隔。   </p>
+<p>① 该方程并非凸函数求解，所以将方程转化为凸函数。转化为以下约束优化问题。</p>
+<p>$$min \, \frac{1}{||w||} \ subject \,to\, y_i(w^Tx_i + b) \geq r*$$</p>
+<p>转为凸函数以后，使用拉格朗日乘子法和KTT条件求解对偶问题。</p>
+<p>②用拉格朗日乘子法和KKT条件求解最优值：</p>
+<p>$$\min\ \frac{1}{2}||w||^2$$</p>
+<p>$$s.t.\ -y_i(w^Tx_i+b)+1\leq 0,\ i=1,2,..,m$$</p>
+<p>整合成：</p>
+<p>$$L(w, b, \alpha) = \frac{1}{2}||w||^2+\sum^m_{i=1}\alpha_i(-y_i(w^Tx_i+b)+1)$$</p>
+<p>推导：$\min\ f(x)=\min \max\ L(w, b, \alpha)\geq \max \min\ L(w, b, \alpha)$</p>
+<p>根据KKT条件：</p>
+<p>$$\frac{\partial }{\partial w}L(w, b, \alpha)=w-\sum\alpha_iy_ix_i=0,\ w=\sum\alpha_iy_ix_i$$</p>
+<p>$$\frac{\partial }{\partial b}L(w, b, \alpha)=\sum\alpha_iy_i=0$$</p>
+<p>带入$ L(w, b, \alpha)$</p>
+<p>$\min\  L(w, b, \alpha)=\frac{1}{2}||w||^2+\sum^m_{i=1}\alpha_i(-y_i(w^Tx_i+b)+1)$</p>
+<p>$\qquad\qquad\qquad=\frac{1}{2}w^Tw-\sum^m_{i=1}\alpha_iy_iw^Tx_i-b\sum^m_{i=1}\alpha_iy_i+\sum^m_{i=1}\alpha_i$</p>
+<p>$\qquad\qquad\qquad=\frac{1}{2}w^T\sum\alpha_iy_ix_i-\sum^m_{i=1}\alpha_iy_iw^Tx_i+\sum^m_{i=1}\alpha_i$</p>
+<p>$\qquad\qquad\qquad=\sum^m_{i=1}\alpha_i-\frac{1}{2}\sum^m_{i=1}\alpha_iy_iw^Tx_i$</p>
+<p>$\qquad\qquad\qquad=\sum^m_{i=1}\alpha_i-\frac{1}{2}\sum^m_{i,j=1}\alpha_i\alpha_jy_iy_j(x_ix_j)$</p>
+<p>再把max问题转成min问题：</p>
+<p>$\max\ \sum^m_{i=1}\alpha_i-\frac{1}{2}\sum^m_{i,j=1}\alpha_i\alpha_jy_iy_j(x_ix_j)=\min \frac{1}{2}\sum^m_{i,j=1}\alpha_i\alpha_jy_iy_j(x_ix_j)-\sum^m_{i=1}\alpha_i$</p>
+<p>$s.t.\ \sum^m_{i=1}\alpha_iy_i=0,$</p>
+<p>$ \alpha_i \geq 0,i=1,2,…,m$</p>
+<p>以上为SVM对偶问题的对偶形式</p>
+<hr>
+<h4 id="kernel"><a href="#kernel" class="headerlink" title="kernel"></a>kernel</h4><p>在低维空间计算获得高维空间的计算结果，也就是说计算结果满足高维（满足高维，才能说明高维下线性可分）。</p>
+<h4 id="soft-margin-amp-slack-variable"><a href="#soft-margin-amp-slack-variable" class="headerlink" title="soft margin &amp; slack variable"></a>soft margin &amp; slack variable</h4><p>引入松弛变量$\xi\geq0$，对应数据点允许偏离的functional margin 的量。</p>
+<p>目标函数：$\min\ \frac{1}{2}||w||^2+C\sum\xi_i\qquad s.t.\ y_i(w^Tx_i+b)\geq1-\xi_i$ </p>
+<p>对偶问题：</p>
+<p>$$\max\ \sum^m_{i=1}\alpha_i-\frac{1}{2}\sum^m_{i,j=1}\alpha_i\alpha_jy_iy_j(x_ix_j)=\min \frac{1}{2}\sum^m_{i,j=1}\alpha_i\alpha_jy_iy_j(x_ix_j)-\sum^m_{i=1}\alpha_i$$</p>
+<p>$$s.t.\ C\geq\alpha_i \geq 0,i=1,2,…,m\quad \sum^m_{i=1}\alpha_iy_i=0,$$</p>
+<hr>
+<h4 id="Sequential-Minimal-Optimization"><a href="#Sequential-Minimal-Optimization" class="headerlink" title="Sequential Minimal Optimization"></a>Sequential Minimal Optimization</h4><p>首先定义特征到结果的输出函数：$u=w^Tx+b$.</p>
+<p>因为$w=\sum\alpha_iy_ix_i$</p>
+<p>有$u=\sum y_i\alpha_iK(x_i, x)-b$</p>
+<hr>
+<p>$\max \sum^m_{i=1}\alpha_i-\frac{1}{2}\sum^m_{i=1}\sum^m_{j=1}\alpha_i\alpha_jy_iy_j&lt;\phi(x_i)^T,\phi(x_j)&gt;$</p>
+<p>$s.t.\ \sum^m_{i=1}\alpha_iy_i=0,$</p>
+<p>$ \alpha_i \geq 0,i=1,2,…,m$</p>
+<hr>
+<p>参考资料：</p>
+<p>[1] :<a href="http://blog.csdn.net/xianlingmao/article/details/7919597" target="_blank" rel="noopener">Lagrange Multiplier and KKT</a></p>
+<p>[2] :<a href="https://my.oschina.net/dfsj66011/blog/517766" target="_blank" rel="noopener">推导SVM</a></p>
+<p>[3] :<a href="http://pytlab.org/2017/08/15/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%E7%AE%97%E6%B3%95%E5%AE%9E%E8%B7%B5-%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA-SVM-%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86/" target="_blank" rel="noopener">机器学习算法实践-支持向量机(SVM)算法原理</a></p>
+<p>[4] :<a href="http://blog.csdn.net/wds2006sdo/article/details/53156589" target="_blank" rel="noopener">Python实现SVM</a></p>
+<h2 id="python-实现"><a href="#python-实现" class="headerlink" title="python 实现"></a>python 实现</h2><p>以下是利用sklearn的一个简单实现。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_iris</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span>  train_test_split</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line">%matplotlib inline</span><br><span class="line"></span><br><span class="line"><span class="comment"># data</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">create_data</span><span class="params">()</span>:</span></span><br><span class="line">    iris = load_iris()</span><br><span class="line">    df = pd.DataFrame(iris.data, columns=iris.feature_names)</span><br><span class="line">    df[<span class="string">'label'</span>] = iris.target</span><br><span class="line">    df.columns = [<span class="string">'sepal length'</span>, <span class="string">'sepal width'</span>, <span class="string">'petal length'</span>, <span class="string">'petal width'</span>, <span class="string">'label'</span>]</span><br><span class="line">    data = np.array(df.iloc[:<span class="number">100</span>, [<span class="number">0</span>, <span class="number">1</span>, <span class="number">-1</span>]])</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(data)):</span><br><span class="line">        <span class="keyword">if</span> data[i,<span class="number">-1</span>] == <span class="number">0</span>:</span><br><span class="line">            data[i,<span class="number">-1</span>] = <span class="number">-1</span></span><br><span class="line">    <span class="comment"># print(data)</span></span><br><span class="line">    <span class="keyword">return</span> data[:,:<span class="number">2</span>], data[:,<span class="number">-1</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">## 生成数据集并显示 </span></span><br><span class="line">X, y = create_data()</span><br><span class="line">X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=<span class="number">0.25</span>)</span><br><span class="line">plt.scatter(X[:<span class="number">50</span>,<span class="number">0</span>],X[:<span class="number">50</span>,<span class="number">1</span>], label=<span class="string">'0'</span>)</span><br><span class="line">plt.scatter(X[<span class="number">50</span>:,<span class="number">0</span>],X[<span class="number">50</span>:,<span class="number">1</span>], label=<span class="string">'1'</span>)</span><br><span class="line">plt.legend()</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181224224634.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>数据集如上。</p>
+<p>SVM实现如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">SVM</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, max_iter=<span class="number">100</span>, kernel=<span class="string">'linear'</span>)</span>:</span></span><br><span class="line">        self.max_iter = max_iter</span><br><span class="line">        self._kernel = kernel</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">init_args</span><span class="params">(self, features, labels)</span>:</span></span><br><span class="line">        self.m, self.n = features.shape</span><br><span class="line">        self.X = features</span><br><span class="line">        self.Y = labels</span><br><span class="line">        self.b = <span class="number">0.0</span></span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 将Ei保存在一个列表里</span></span><br><span class="line">        self.alpha = np.ones(self.m)</span><br><span class="line">        self.E = [self._E(i) <span class="keyword">for</span> i <span class="keyword">in</span> range(self.m)]</span><br><span class="line">        <span class="comment"># 松弛变量</span></span><br><span class="line">        self.C = <span class="number">1.0</span></span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_KKT</span><span class="params">(self, i)</span>:</span></span><br><span class="line">        y_g = self._g(i)*self.Y[i]</span><br><span class="line">        <span class="keyword">if</span> self.alpha[i] == <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">return</span> y_g &gt;= <span class="number">1</span></span><br><span class="line">        <span class="keyword">elif</span> <span class="number">0</span> &lt; self.alpha[i] &lt; self.C:</span><br><span class="line">            <span class="keyword">return</span> y_g == <span class="number">1</span></span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> y_g &lt;= <span class="number">1</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># g(x)预测值，输入xi（X[i]）</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_g</span><span class="params">(self, i)</span>:</span></span><br><span class="line">        r = self.b</span><br><span class="line">        <span class="keyword">for</span> j <span class="keyword">in</span> range(self.m):</span><br><span class="line">            r += self.alpha[j]*self.Y[j]*self.kernel(self.X[i], self.X[j])</span><br><span class="line">        <span class="keyword">return</span> r</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># 核函数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">kernel</span><span class="params">(self, x1, x2)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self._kernel == <span class="string">'linear'</span>:</span><br><span class="line">            <span class="keyword">return</span> sum([x1[k]*x2[k] <span class="keyword">for</span> k <span class="keyword">in</span> range(self.n)])</span><br><span class="line">        <span class="keyword">elif</span> self._kernel == <span class="string">'poly'</span>:</span><br><span class="line">            <span class="keyword">return</span> (sum([x1[k]*x2[k] <span class="keyword">for</span> k <span class="keyword">in</span> range(self.n)]) + <span class="number">1</span>)**<span class="number">2</span></span><br><span class="line">    </span><br><span class="line">        <span class="keyword">return</span> <span class="number">0</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># E（x）为g(x)对输入x的预测值和y的差</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_E</span><span class="params">(self, i)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._g(i) - self.Y[i]</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_init_alpha</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 外层循环首先遍历所有满足0&lt;a&lt;C的样本点，检验是否满足KKT</span></span><br><span class="line">        index_list = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(self.m) <span class="keyword">if</span> <span class="number">0</span> &lt; self.alpha[i] &lt; self.C]</span><br><span class="line">        <span class="comment"># 否则遍历整个训练集</span></span><br><span class="line">        non_satisfy_list = [i <span class="keyword">for</span> i <span class="keyword">in</span> range(self.m) <span class="keyword">if</span> i <span class="keyword">not</span> <span class="keyword">in</span> index_list]</span><br><span class="line">        index_list.extend(non_satisfy_list)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> index_list:</span><br><span class="line">            <span class="keyword">if</span> self._KKT(i):</span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">            </span><br><span class="line">            E1 = self.E[i]</span><br><span class="line">            <span class="comment"># 如果E2是+，选择最小的；如果E2是负的，选择最大的</span></span><br><span class="line">            <span class="keyword">if</span> E1 &gt;= <span class="number">0</span>:</span><br><span class="line">                j = min(range(self.m), key=<span class="keyword">lambda</span> x: self.E[x])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                j = max(range(self.m), key=<span class="keyword">lambda</span> x: self.E[x])</span><br><span class="line">            <span class="keyword">return</span> i, j</span><br><span class="line">        </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_compare</span><span class="params">(self, _alpha, L, H)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> _alpha &gt; H:</span><br><span class="line">            <span class="keyword">return</span> H</span><br><span class="line">        <span class="keyword">elif</span> _alpha &lt; L:</span><br><span class="line">            <span class="keyword">return</span> L</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="keyword">return</span> _alpha      </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">fit</span><span class="params">(self, features, labels)</span>:</span></span><br><span class="line">        self.init_args(features, labels)</span><br><span class="line">        </span><br><span class="line">        <span class="keyword">for</span> t <span class="keyword">in</span> range(self.max_iter):</span><br><span class="line">            <span class="comment"># train</span></span><br><span class="line">            i1, i2 = self._init_alpha()</span><br><span class="line">            </span><br><span class="line">            <span class="comment"># 边界</span></span><br><span class="line">            <span class="keyword">if</span> self.Y[i1] == self.Y[i2]:</span><br><span class="line">                L = max(<span class="number">0</span>, self.alpha[i1]+self.alpha[i2]-self.C)</span><br><span class="line">                H = min(self.C, self.alpha[i1]+self.alpha[i2])</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                L = max(<span class="number">0</span>, self.alpha[i2]-self.alpha[i1])</span><br><span class="line">                H = min(self.C, self.C+self.alpha[i2]-self.alpha[i1])</span><br><span class="line">                </span><br><span class="line">            E1 = self.E[i1]</span><br><span class="line">            E2 = self.E[i2]</span><br><span class="line">            <span class="comment"># eta=K11+K22-2K12</span></span><br><span class="line">            eta = self.kernel(self.X[i1], self.X[i1]) + self.kernel(self.X[i2], self.X[i2]) - <span class="number">2</span>*self.kernel(self.X[i1], self.X[i2])</span><br><span class="line">            <span class="keyword">if</span> eta &lt;= <span class="number">0</span>:</span><br><span class="line">                <span class="comment"># print('eta &lt;= 0')</span></span><br><span class="line">                <span class="keyword">continue</span></span><br><span class="line">                </span><br><span class="line">            alpha2_new_unc = self.alpha[i2] + self.Y[i2] * (E2 - E1) / eta</span><br><span class="line">            alpha2_new = self._compare(alpha2_new_unc, L, H)</span><br><span class="line">            </span><br><span class="line">            alpha1_new = self.alpha[i1] + self.Y[i1] * self.Y[i2] * (self.alpha[i2] - alpha2_new)</span><br><span class="line">            </span><br><span class="line">            b1_new = -E1 - self.Y[i1] * self.kernel(self.X[i1], self.X[i1]) * (alpha1_new-self.alpha[i1]) - self.Y[i2] * self.kernel(self.X[i2], self.X[i1]) * (alpha2_new-self.alpha[i2])+ self.b </span><br><span class="line">            b2_new = -E2 - self.Y[i1] * self.kernel(self.X[i1], self.X[i2]) * (alpha1_new-self.alpha[i1]) - self.Y[i2] * self.kernel(self.X[i2], self.X[i2]) * (alpha2_new-self.alpha[i2])+ self.b </span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> <span class="number">0</span> &lt; alpha1_new &lt; self.C:</span><br><span class="line">                b_new = b1_new</span><br><span class="line">            <span class="keyword">elif</span> <span class="number">0</span> &lt; alpha2_new &lt; self.C:</span><br><span class="line">                b_new = b2_new</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                <span class="comment"># 选择中点</span></span><br><span class="line">                b_new = (b1_new + b2_new) / <span class="number">2</span></span><br><span class="line">                </span><br><span class="line">            <span class="comment"># 更新参数</span></span><br><span class="line">            self.alpha[i1] = alpha1_new</span><br><span class="line">            self.alpha[i2] = alpha2_new</span><br><span class="line">            self.b = b_new</span><br><span class="line">            </span><br><span class="line">            self.E[i1] = self._E(i1)</span><br><span class="line">            self.E[i2] = self._E(i2)</span><br><span class="line">        <span class="keyword">return</span> <span class="string">'train done!'</span></span><br><span class="line">            </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">predict</span><span class="params">(self, data)</span>:</span></span><br><span class="line">        r = self.b</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(self.m):</span><br><span class="line">            r += self.alpha[i] * self.Y[i] * self.kernel(data, self.X[i])</span><br><span class="line">            </span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span> <span class="keyword">if</span> r &gt; <span class="number">0</span> <span class="keyword">else</span> <span class="number">-1</span></span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">score</span><span class="params">(self, X_test, y_test)</span>:</span></span><br><span class="line">        right_count = <span class="number">0</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(X_test)):</span><br><span class="line">            result = self.predict(X_test[i])</span><br><span class="line">            <span class="keyword">if</span> result == y_test[i]:</span><br><span class="line">                right_count += <span class="number">1</span></span><br><span class="line">        <span class="keyword">return</span> right_count / len(X_test)</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">_weight</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># linear model</span></span><br><span class="line">        yx = self.Y.reshape(<span class="number">-1</span>, <span class="number">1</span>)*self.X</span><br><span class="line">        self.w = np.dot(yx.T, self.alpha)</span><br><span class="line">        <span class="keyword">return</span> self.w</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2018-12-24T14:50:59.489Z" itemprop="dateUpdated">2018-12-24 22:50:59</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2018/12/24/支持向量机算法原理及实现/" target="_blank" rel="external">https://joshuaqyh.github.io/2018/12/24/支持向量机算法原理及实现/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/SVM/">SVM</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/人工智能/">人工智能</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/12/24/支持向量机算法原理及实现/&title=《支持向量机算法原理及实现》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/12/24/支持向量机算法原理及实现/&title=《支持向量机算法原理及实现》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/12/24/支持向量机算法原理及实现/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《支持向量机算法原理及实现》 — KnowMyself&url=https://joshuaqyh.github.io/2018/12/24/支持向量机算法原理及实现/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/12/24/支持向量机算法原理及实现/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/12/24/K近邻算法/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">K近邻算法及python实现</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/12/24/支持向量机算法原理及实现/&title=《支持向量机算法原理及实现》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/12/24/支持向量机算法原理及实现/&title=《支持向量机算法原理及实现》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/12/24/支持向量机算法原理及实现/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《支持向量机算法原理及实现》 — KnowMyself&url=https://joshuaqyh.github.io/2018/12/24/支持向量机算法原理及实现/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/12/24/支持向量机算法原理及实现/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrElEQVR42u3aQW7DMAwEwP7/0+21QJF0l5TqHsanwAksjg8iQ/HjI74+v10/77e/efX89s6xCw8PD28R+s/r/WIJLwn3/fPfr/XqN3h4eHi3ee8DSpY5dSf/ffIS8fDw8P4DL6la86CTwn1TmuPh4eE9y0sw+1ZCXr7j4eHhPcs79ud/3bptW8bHei14eHh4XTzFZv0fPl8538PDw8Nbn6on227b6m3L9FWceHh4eBd47aacLJ80cDeJoT4ew8PDwzvKyzfrfVM138r3jYwoUDw8PLyjvNlWvkkGs/buL+0JPDw8vAu85Jg/D3fW/L0xgPXyHwMeHh7empcft8/GC4alcPBtPROBh4eHd4g3A+SF76wZ0bKjUhsPDw/vEC9PDG0pPGtA5PikmYKHh4d3gzcreetGaoDZv7IoKjw8PLw1b9Za3byO2YDC8GgNDw8P7wIvOZjfN2STlkQeST5YgIeHh3ePt9ms2zL67P0iBjw8PLwLvDxVbJoU7ZBWvnq+Ch4eHt5tXjteMNv0i05zHCEeHh7ePd7sQbPF8pbHrB38so2Lh4eHd4jXtkrzLT4p09vB1rzsxsPDw7vHa8NtQ9wngyQJFW1lPDw8vMu8PKAcPwt9k7rw8PDwzvLyJWeHUm2geWEdtYzx8PDwLvDyxTbHY236eWAOAg8PD6/cM9tNfLbwfsgg+k/w/gAMDw8Pb83LR6CSFLJPKvV0GB4eHt6f8z7Lqx0OmJXv+UhB0WvBw8PDO8Rrt9r2WCt5NW2qmH2Lh4eHd5aXJ4N98si3+FliqLMfHh4e3oLXtlA3zdzZ59m4GB4eHt6zvHpTPnTQtRlHwMPDw3uWl7diN/i8lO8P+/Dw8PBO8trhqrzgzscRNqdXv0xG4OHh4R3l/dEjjqaiVarAw8PDm/O+AACYnHFeE8+WAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
