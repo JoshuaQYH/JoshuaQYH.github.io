@@ -30,9 +30,9 @@
 <meta property="og:description" content="基本原理基本概念最简单的支持向量机是一个二分类的分类器。分类思想是给定一组包含正负样本的集合，然后找到一个超平面（可以是一维或者多维），来对正负样本进行分割。 该方法对于解决小样本，非线性，及高维模式识别中表现出许多的优势。 以下图的直线就是概念中的超平面，将样本划分为两个类别。在解决实际的多分类问题中可以转化为多个二分类问题。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181224221553.png">
-<meta property="og:image" content="c:/Users/Qiuyh/AppData/Local/Temp/1545661438928.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181224225647.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181224224634.png">
-<meta property="og:updated_time" content="2018-12-24T14:50:59.489Z">
+<meta property="og:updated_time" content="2018-12-24T14:58:57.323Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="支持向量机算法原理及实现">
 <meta name="twitter:description" content="基本原理基本概念最简单的支持向量机是一个二分类的分类器。分类思想是给定一组包含正负样本的集合，然后找到一个超平面（可以是一维或者多维），来对正负样本进行分割。 该方法对于解决小样本，非线性，及高维模式识别中表现出许多的优势。 以下图的直线就是概念中的超平面，将样本划分为两个类别。在解决实际的多分类问题中可以转化为多个二分类问题。">
@@ -123,7 +123,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -199,7 +199,7 @@
 <p>​    $$g(x) = w^Tx + b = 0$$</p>
 <p>其中$x$为样本的特征向量，$w^T$ 代表平面的法向量，而 $b$ 代表超平面的偏移量。</p>
 <p>假设输入样本为 $x_0$，使得 $g(x_0) &gt; 0$ 的样本为正样本，反之为负样本，正负标签记为 ${+1, -1} $。</p>
-<h2 id="函数间隔"><a href="#函数间隔" class="headerlink" title="函数间隔"></a>函数间隔</h2><p> <img src="C:\Users\Qiuyh\AppData\Local\Temp\1545661438928.png" alt="54566143892"></p>
+<h2 id="函数间隔"><a href="#函数间隔" class="headerlink" title="函数间隔"></a>函数间隔</h2><p> <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181224225647.png" alt=""></p>
 <p>函数的间隔指的是正负样本点中到超平面的最近距离。对数据点进行分类，当超平面离数据点的间隔越大，<strong>分类的确信度越高</strong>。故当多个超平面的分类准确率一致时，我们要着重考虑<strong>最大间隔的分类器</strong>。</p>
 <p>所以支持向量机的最终目标就是找到一个最大间隔的分类器。可以理解为一个约束优化问题，用以下式子来表示。</p>
 <p>$$max \, \frac{r^<em>}{||w||}  \ subject\, to \, y_i (w^Tx_i  + b ) \ge r^</em> $$ </p>
@@ -268,7 +268,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2018-12-24T14:50:59.489Z" itemprop="dateUpdated">2018-12-24 22:50:59</time>
+    最后更新时间：<time datetime="2018-12-24T14:58:57.323Z" itemprop="dateUpdated">2018-12-24 22:58:57</time>
 </span><br>
 
 
@@ -401,7 +401,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
