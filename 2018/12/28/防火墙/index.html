@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>防火墙 | KnowMyself | Code and life</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="信息安全,计算机网络">
+    <meta name="description" content="防火墙概念在两个网络之间实现访问控制地一组软件或硬件系统。主要功能是屏蔽和允许指定的数据通信。依赖一组访问控制策略，由访问控制策略决定通讯的合法性。 用处：  管理控制网络流通数据流  数据包检测 连接状态 状态包检测   作为中间媒介阻塞不安全的服务和协议  通过隔离外部网络来保护本地主机 避免直接与外接互动   保护资源，强化网络安全策略。将所有安全软件配置在防火墙上。采取某些手段如Finge">
+<meta name="keywords" content="信息安全,计算机网络">
+<meta property="og:type" content="article">
+<meta property="og:title" content="防火墙">
+<meta property="og:url" content="https://joshuaqyh.github.io/2018/12/28/防火墙/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="防火墙概念在两个网络之间实现访问控制地一组软件或硬件系统。主要功能是屏蔽和允许指定的数据通信。依赖一组访问控制策略，由访问控制策略决定通讯的合法性。 用处：  管理控制网络流通数据流  数据包检测 连接状态 状态包检测   作为中间媒介阻塞不安全的服务和协议  通过隔离外部网络来保护本地主机 避免直接与外接互动   保护资源，强化网络安全策略。将所有安全软件配置在防火墙上。采取某些手段如Finge">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181228110934.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181228111509.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181228113809.png">
+<meta property="og:updated_time" content="2018-12-28T05:14:42.600Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="防火墙">
+<meta name="twitter:description" content="防火墙概念在两个网络之间实现访问控制地一组软件或硬件系统。主要功能是屏蔽和允许指定的数据通信。依赖一组访问控制策略，由访问控制策略决定通讯的合法性。 用处：  管理控制网络流通数据流  数据包检测 连接状态 状态包检测   作为中间媒介阻塞不安全的服务和协议  通过隔离外部网络来保护本地主机 避免直接与外接互动   保护资源，强化网络安全策略。将所有安全软件配置在防火墙上。采取某些手段如Finge">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181228110934.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">防火墙</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">防火墙</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-12-28T02:10:09.000Z" itemprop="datePublished" class="page-time">
+  2018-12-28
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#防火墙概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">防火墙概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#防火墙的种类"><span class="post-toc-number">2.</span> <span class="post-toc-text">防火墙的种类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第一代：包过滤（网络级防火墙）"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">第一代：包过滤（网络级防火墙）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第二代：-状态过滤（状态检测防火墙）"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">第二代： 状态过滤（状态检测防火墙）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#第三代：-应用层过滤（应用层网关）"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">第三代： 应用层过滤（应用层网关）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#托管防火墙"><span class="post-toc-number">3.</span> <span class="post-toc-text">托管防火墙</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#包过滤防火墙"><span class="post-toc-number">4.</span> <span class="post-toc-text">包过滤防火墙</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#过滤分析："><span class="post-toc-number">4.0.1.</span> <span class="post-toc-text">过滤分析：</span></a></li></ol></li></ol><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#状态检测防火墙"><span class="post-toc-number">5.</span> <span class="post-toc-text">状态检测防火墙</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#应用层网关Proxy（ALG）"><span class="post-toc-number">6.</span> <span class="post-toc-text">应用层网关Proxy（ALG）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#堡垒主机Bastion"><span class="post-toc-number">7.</span> <span class="post-toc-text">堡垒主机Bastion</span></a></li>
+        </nav>
+    </aside>
+
+
+<article id="post-防火墙" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">防火墙</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-12-28 10:10:09" datetime="2018-12-28T02:10:09.000Z" itemprop="datePublished">2018-12-28</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="防火墙概念"><a href="#防火墙概念" class="headerlink" title="防火墙概念"></a>防火墙概念</h2><p>在两个网络之间实现访问控制地一组软件或硬件系统。主要功能是屏蔽和允许指定的数据通信。依赖一组访问控制策略，由访问控制策略决定通讯的合法性。</p>
+<p>用处：</p>
+<ol>
+<li><p>管理控制网络流通数据流</p>
+<ol>
+<li>数据包检测</li>
+<li>连接状态</li>
+<li>状态包检测</li>
+</ol>
+</li>
+<li><p>作为中间媒介阻塞不安全的服务和协议</p>
+<ol>
+<li>通过隔离外部网络来保护本地主机</li>
+<li>避免直接与外接互动</li>
+</ol>
+</li>
+<li><p>保护资源，强化网络安全策略。将所有安全软件配置在防火墙上。采取某些手段如Finger来屏蔽透露内部细节的服务。</p>
+</li>
+<li><p>报告和记录事件，对网络存取和访问进行监控审计。</p>
+<p>​</p>
+</li>
+</ol>
+<h2 id="防火墙的种类"><a href="#防火墙的种类" class="headerlink" title="防火墙的种类"></a>防火墙的种类</h2><h3 id="第一代：包过滤（网络级防火墙）"><a href="#第一代：包过滤（网络级防火墙）" class="headerlink" title="第一代：包过滤（网络级防火墙）"></a>第一代：包过滤（网络级防火墙）</h3><p>工作在<strong>网络层以下</strong>，基于路由器本身的分组过滤功能，检索流经数据包包头信息，决定对数据包的动作。</p>
+<h3 id="第二代：-状态过滤（状态检测防火墙）"><a href="#第二代：-状态过滤（状态检测防火墙）" class="headerlink" title="第二代： 状态过滤（状态检测防火墙）"></a>第二代： 状态过滤（状态检测防火墙）</h3><p>工作在<strong>网络层</strong>，采用状态检测的技术，是包过滤技术的拓展。使用一个<strong>检查引擎或数据包</strong>并抽取与<strong>应用层状态</strong>相关的信息，以此决定是否接收该连接。</p>
+<h3 id="第三代：-应用层过滤（应用层网关）"><a href="#第三代：-应用层过滤（应用层网关）" class="headerlink" title="第三代： 应用层过滤（应用层网关）"></a>第三代： 应用层过滤（应用层网关）</h3><p>应用层代理防火墙。应用层网关代理服务器有效伪装成因特网上的真实服务器，并对请求做出评估，决定允许或者拒绝。</p>
+<p>应用层网关能够理解应用级上的协议，完成较为复杂的访问控制。每一种协议需要相应的代理软件，<strong>效率不如网络级防火墙</strong>。</p>
+<p>第四代：基于安全操作系统的防火墙</p>
+<h2 id="托管防火墙"><a href="#托管防火墙" class="headerlink" title="托管防火墙"></a>托管防火墙</h2><p>三种托管防火墙的方式：</p>
+<ol>
+<li>Bastion Host 堡垒主机。具备三层过滤和代理控制的功能。主要用于处理安全事件。</li>
+<li>Host-Based Firewall。严格过滤数据流。</li>
+<li>Personal Firewall。 例子Windows 防火墙。</li>
+</ol>
+<h2 id="包过滤防火墙"><a href="#包过滤防火墙" class="headerlink" title="包过滤防火墙"></a>包过滤防火墙</h2><p>最基本的防火墙，通常工作在OSI的三层及以下。可控内容包括报文的源地址，报文的目标地址，服务类型，以及第二层数据链路层可控的MAC地址。</p>
+<p>包过滤技术允许符合安全过滤规则的数据包通过。同时执行预先定义的操作，记录过滤信息，发送报警信息。</p>
+<h4 id="过滤分析："><a href="#过滤分析：" class="headerlink" title="过滤分析："></a>过滤分析：</h4><ul>
+<li><p>分析数据包包头字段。包括IP PORT，TCP。。。</p>
+</li>
+<li><p>一个访问控制列表，每一条记录定义了对符合记录条件的数据包所要执行的动作。</p>
+<p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181228110934.png" alt=""></p>
+<p>优点：</p>
+<ol>
+<li>高速，只对包头进行检查</li>
+<li>对用户透明</li>
+</ol>
+<p>缺点：</p>
+<ol>
+<li><p>无法根据数据内容进行过滤</p>
+</li>
+<li><p>提供简单的日志信息</p>
+</li>
+<li><p>ACL配置困难</p>
+</li>
+<li><p>端口暴露在外网，安全风险</p>
+<p>​</p>
+</li>
+</ol>
+</li>
+</ul>
+<h2 id="状态检测防火墙"><a href="#状态检测防火墙" class="headerlink" title="状态检测防火墙"></a>状态检测防火墙</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181228111509.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>状态检测技术主要在<strong>传输层和网络层工作</strong>。</li>
+<li>动态过滤规则存储在连接状态表中，并由防火墙维护。</li>
+<li>对表中记录设置超时参数。</li>
+<li>只对连接的初始报文进行检查。</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>只对初始报文进行检查，后续报文不做检查，可以快速通过</li>
+<li>可以区分连接的发起方和接收方，通过状态分析阻断更多的复杂攻击行为，以及分析打开相应的端口。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>主要工作在网络层和传输层，对报文的数据部分检查很少，安全性低。</li>
+<li>对初始报文内容检测相对增多，对防火墙的响应速度提出了更高的要求。</li>
+</ul>
+<h2 id="应用层网关Proxy（ALG）"><a href="#应用层网关Proxy（ALG）" class="headerlink" title="应用层网关Proxy（ALG）"></a>应用层网关Proxy（ALG）</h2><p>应用层网关防火墙也叫应用层代理，负责内部网络和外部网络之间的通讯。网络连接通过中介来实现，设定符合预定的访问控制规则，所以恶意侵害无法伤害被保护的真实网络设备。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181228113809.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>提供一些复杂的访问控制：</p>
+<ul>
+<li>认证机制</li>
+<li>内容过滤</li>
+<li>成熟的日志记录</li>
+</ul>
+<p>优点：</p>
+<ul>
+<li>提供高速缓存</li>
+<li>屏蔽内联网络</li>
+<li>连接基于服务</li>
+<li>代理服务建立在应用层</li>
+<li>规则简单</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>专用</li>
+<li>延迟</li>
+<li>用户不透明</li>
+<li>不完全支持所有协议</li>
+<li>对特定操作系统有依赖性</li>
+<li>速度较慢。</li>
+</ul>
+<h2 id="堡垒主机Bastion"><a href="#堡垒主机Bastion" class="headerlink" title="堡垒主机Bastion"></a>堡垒主机Bastion</h2>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2018-12-28T05:14:42.600Z" itemprop="dateUpdated">2018-12-28 13:14:42</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2018/12/28/防火墙/" target="_blank" rel="external">https://joshuaqyh.github.io/2018/12/28/防火墙/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/信息安全/">信息安全</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机网络/">计算机网络</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/12/28/防火墙/&title=《防火墙》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/12/28/防火墙/&title=《防火墙》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/12/28/防火墙/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《防火墙》 — KnowMyself&url=https://joshuaqyh.github.io/2018/12/28/防火墙/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/12/28/防火墙/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/12/24/支持向量机算法原理及实现/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">支持向量机算法原理及实现</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/12/28/防火墙/&title=《防火墙》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/12/28/防火墙/&title=《防火墙》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/12/28/防火墙/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《防火墙》 — KnowMyself&url=https://joshuaqyh.github.io/2018/12/28/防火墙/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/12/28/防火墙/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLElEQVR42u3aQW7DMAwEwPz/0y7Qa2tjl3ILWB6dgiC1NTqwJMXPJ17H98q/OX6ss2ee/dXnLxYGBsZjGcflut702W/yLbbHcUrFwMB4AeM6yCawPFi3xxE9EwMDAyMOvnnYTZ6PgYGBsRJwZ2nlES8MDAyM2VaSdHBG/ddaHAMD44GMthD9z89/eL+BgYHxEMZRrvW22kqieborDAyMrRn5IMV6i//eq9DhPAgGBsZjGW0Zeb2JldfnAxkYGBhvY6xsbjY8kWz3OuhH9xsYGBhbMPJAOftl/rnlYWBgvIcxK1BnY16z8N3uEwMDYz9GMvQwGxpb/yY/IAwMjL0ZbenYxrf8IPJSNrrCxMDA2I7RNsVmYXcFVhwlBgbGpozZy1pAu9G8SYeBgbE3467GWX4hetfT6v8VGBgYj2XkReysDTe7vBwW0hgYGJsykuC41Kwvy9F8zKKYGcHAwHg4Y5aEFenawnVmMSeCgYHxAsZKAE0Su7z1lhfP0XAYBgbGFoy8oZ+33tqn5QnoZxbRMTAwtmDk1HaQKyl92xD8y9MwMDC2ZiRNt1mUm41rtAeKgYHxBsb6NUBS9LYDHG16ioGBsTcjX7OmWx5wb+sdYmBgbMqYjVO0QxXtkdXpKQYGxgsYSeBrU8D1UF4khRgYGBhBXrlS6LbNOAwMDIz2YrJN+PKwXrwdAwPjBYx8MGK2oZUhjCgBxcDA2JpxQwG5MGYxK4mHGAwMjOcxvgAWr3RyswsB7AAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
