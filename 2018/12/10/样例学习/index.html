@@ -30,7 +30,7 @@
 <meta property="og:description" content="主要的学习类型 半监督学习：给定少数样本打标签，并充分利用大量未标注的样例。 监督学习：对每一个样本进行标注，相当于给出答案，让模型自适应。 无监督学习：通常的任务是聚类，无需给定样本的标签即可完成分类任务。 强化学习：Agent在强化序列（奖罚组合的序列）中学习，在Agent完成动作的时候，根据动作的正确与否采取奖罚。 迁移学习：场景的迁移发生学习的自适应。 对抗性学习：生成器和分类器之间对抗。">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181210203105.png">
-<meta property="og:updated_time" content="2018-12-10T12:40:50.067Z">
+<meta property="og:updated_time" content="2019-01-12T12:15:46.798Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="样例学习">
 <meta name="twitter:description" content="主要的学习类型 半监督学习：给定少数样本打标签，并充分利用大量未标注的样例。 监督学习：对每一个样本进行标注，相当于给出答案，让模型自适应。 无监督学习：通常的任务是聚类，无需给定样本的标签即可完成分类任务。 强化学习：Agent在强化序列（奖罚组合的序列）中学习，在Agent完成动作的时候，根据动作的正确与否采取奖罚。 迁移学习：场景的迁移发生学习的自适应。 对抗性学习：生成器和分类器之间对抗。">
@@ -160,7 +160,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#主要的学习类型"><span class="post-toc-number">1.</span> <span class="post-toc-text">主要的学习类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#监督学习"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">监督学习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#学习过程"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">学习过程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分类回归"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">分类回归</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#拟合问题"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">拟合问题</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分而治之策略"><span class="post-toc-number">1.1.5.</span> <span class="post-toc-text">分而治之策略</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#选择测试属性"><span class="post-toc-number">1.1.6.</span> <span class="post-toc-text">选择测试属性</span></a></li></ol></li></ol></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#主要的学习类型"><span class="post-toc-number">1.</span> <span class="post-toc-text">主要的学习类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#监督学习"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">监督学习</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义"><span class="post-toc-number">1.1.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#学习过程"><span class="post-toc-number">1.1.2.</span> <span class="post-toc-text">学习过程</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分类回归"><span class="post-toc-number">1.1.3.</span> <span class="post-toc-text">分类回归</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#拟合问题"><span class="post-toc-number">1.1.4.</span> <span class="post-toc-text">拟合问题</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#决策树"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">决策树</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#分而治之策略"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">分而治之策略</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#选择测试属性"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">选择测试属性</span></a></li></ol></li></ol></li></ol>
         </nav>
     </aside>
 
@@ -201,8 +201,7 @@
 <h3 id="分类回归"><a href="#分类回归" class="headerlink" title="分类回归"></a>分类回归</h3><p>当模型给出的结果$y$是有限集合的时候，我们可以把这一类学习问题称之为<strong>分类</strong>。通常分类问题有：布尔分类，二值分类等等。而$y$是数值型的问题时，我们把学习问题称为<strong>回归</strong>。</p>
 <h3 id="拟合问题"><a href="#拟合问题" class="headerlink" title="拟合问题"></a>拟合问题</h3><p>训练过程其实也是一种数据拟合的过程。拟合过程会出现多个拟合的结果，这些结果确切地拟合了数据，结果表现一致，我们称之为一致假说。在多个一致假说中的选择问题上，我们有一个重要的原理：奥坎姆剃刀——即选择与<strong>数据一致的最简单假说</strong>。</p>
 <p>过拟合是机器学习中常见的一个问题，意为“学习过度”，模型输出的样本空间与实际空间出现了较大的偏差。</p>
-<p>##决策树</p>
-<ul>
+<h2 id="决策树"><a href="#决策树" class="headerlink" title="决策树"></a>决策树</h2><ul>
 <li><p>决策树表示一个函数，以属性值向量作为输入，返回一个”决策“——简单输出值。</p>
 <p>主要的问题在于如何进行特征选择，安排决策树属性值判断顺序。</p>
 </li>
@@ -241,7 +240,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2018-12-10T12:40:50.067Z" itemprop="dateUpdated">2018-12-10 20:40:50</time>
+    Last updated: <time datetime="2019-01-12T12:15:46.798Z" itemprop="dateUpdated">2019-01-12 20:15:46</time>
 </span><br>
 
 
@@ -385,7 +384,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>Qiuyihao &copy; 2017 - 2018</span>
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
