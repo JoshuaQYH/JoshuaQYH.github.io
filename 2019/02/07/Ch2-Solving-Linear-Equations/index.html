@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Ch2 | Solving Linear Equations | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="线性代数">
+    <meta name="description" content="向量与线性方程组行图像在二维平面中，行图像就是每一道方程所对应的线相交与一点。（更高维情况，就是低一维的对象相交得到低两维的对象）。点的坐标就是线性方程组的解。                                                                                                            列图像列图像就是将线性方">
+<meta name="keywords" content="线性代数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ch2 | Solving Linear Equations">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/02/07/Ch2-Solving-Linear-Equations/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="向量与线性方程组行图像在二维平面中，行图像就是每一道方程所对应的线相交与一点。（更高维情况，就是低一维的对象相交得到低两维的对象）。点的坐标就是线性方程组的解。                                                                                                            列图像列图像就是将线性方">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208000556.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208000701.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208001013.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208001034.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208211421.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208222506.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208222554.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208222719.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208222808.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208224849.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208224819.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208225240.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208225551.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208230320.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208232050.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190209011617.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190209011736.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190209012357.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190209012749.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190209015001.png">
+<meta property="og:updated_time" content="2019-02-08T18:01:00.559Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ch2 | Solving Linear Equations">
+<meta name="twitter:description" content="向量与线性方程组行图像在二维平面中，行图像就是每一道方程所对应的线相交与一点。（更高维情况，就是低一维的对象相交得到低两维的对象）。点的坐标就是线性方程组的解。                                                                                                            列图像列图像就是将线性方">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208000556.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Ch2 | Solving Linear Equations</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Ch2 | Solving Linear Equations</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-02-07T15:54:13.000Z" itemprop="datePublished" class="page-time">
+  2019-02-07
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#向量与线性方程组"><span class="post-toc-number">1.</span> <span class="post-toc-text">向量与线性方程组</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#行图像"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">行图像</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#列图像"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">列图像</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#矩阵-向量乘法"><span class="post-toc-number">2.</span> <span class="post-toc-text">矩阵-向量乘法</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Elimination-消去"><span class="post-toc-number">3.</span> <span class="post-toc-text">Elimination 消去</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Matrix-Multiplication-矩阵乘法"><span class="post-toc-number">4.</span> <span class="post-toc-text">Matrix Multiplication 矩阵乘法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#乘法性质"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">乘法性质</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#常见操作"><span class="post-toc-number">4.3.</span> <span class="post-toc-text">常见操作</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#增广矩阵"><span class="post-toc-number">4.4.</span> <span class="post-toc-text">增广矩阵</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#矩阵运算法则"><span class="post-toc-number">5.</span> <span class="post-toc-text">矩阵运算法则</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#矩阵相乘"><span class="post-toc-number">5.1.</span> <span class="post-toc-text">矩阵相乘</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#运算律"><span class="post-toc-number">5.2.</span> <span class="post-toc-text">运算律</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#块矩阵和块乘法"><span class="post-toc-number">5.3.</span> <span class="post-toc-text">块矩阵和块乘法</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#逆矩阵"><span class="post-toc-number">6.</span> <span class="post-toc-text">逆矩阵</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义-1"><span class="post-toc-number">6.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#引理"><span class="post-toc-number">6.2.</span> <span class="post-toc-text">引理</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#矩阵乘法的逆矩阵"><span class="post-toc-number">6.3.</span> <span class="post-toc-text">矩阵乘法的逆矩阵</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Calculating-A-1-by-Gauss-Jordan-Elimination"><span class="post-toc-number">6.4.</span> <span class="post-toc-text">Calculating $A^{-1}$ by Gauss-Jordan Elimination</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#A-LU-矩阵因式分解"><span class="post-toc-number">7.</span> <span class="post-toc-text">A = LU 矩阵因式分解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概述"><span class="post-toc-number">7.1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#计算-L和U"><span class="post-toc-number">7.2.</span> <span class="post-toc-text">计算 L和U</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#转置"><span class="post-toc-number">8.</span> <span class="post-toc-text">转置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义-2"><span class="post-toc-number">8.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#性质"><span class="post-toc-number">8.2.</span> <span class="post-toc-text">性质</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#对称矩阵"><span class="post-toc-number">8.3.</span> <span class="post-toc-text">对称矩阵</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#置换矩阵"><span class="post-toc-number">9.</span> <span class="post-toc-text">置换矩阵</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Ch2-Solving-Linear-Equations" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Ch2 | Solving Linear Equations</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-02-07 23:54:13" datetime="2019-02-07T15:54:13.000Z" itemprop="datePublished">2019-02-07</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="向量与线性方程组"><a href="#向量与线性方程组" class="headerlink" title="向量与线性方程组"></a>向量与线性方程组</h2><h3 id="行图像"><a href="#行图像" class="headerlink" title="行图像"></a>行图像</h3><p>在二维平面中，行图像就是每一道方程所对应的线相交与一点。（更高维情况，就是低一维的对象相交得到低两维的对象）。点的坐标就是线性方程组的解。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208000556.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="列图像"><a href="#列图像" class="headerlink" title="列图像"></a>列图像</h3><p>列图像就是将线性方程组写成线性组合的形式，在平面内进行几何向量的运算。</p>
+<ul>
+<li>线性组合中的列向量就是方程中每一个未知数所有系数构成的向量</li>
+<li>线性组合中的系数就是方程组的未知数</li>
+<li>线性组合中的结果就是方程组的解构成的列向量</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208000701.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="矩阵-向量乘法"><a href="#矩阵-向量乘法" class="headerlink" title="矩阵-向量乘法"></a>矩阵-向量乘法</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208001013.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208001034.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>以上内容都是基于二阶线性方程组和二维平面内进行的，在高维的情况下可直接推广。这里不做赘述。</p>
+<h2 id="Elimination-消去"><a href="#Elimination-消去" class="headerlink" title="Elimination 消去"></a>Elimination 消去</h2><p>通常在求解一个线性方程组，无法直接构造适用的线性系统A，需要对原方程组进行一定的变化，这些变化方法统称为 消去，最终得到一个上三角矩阵 A。（<a href="https://baike.baidu.com/item/%E4%B8%BB%E5%AF%B9%E8%A7%92%E7%BA%BF" target="_blank" rel="noopener">主对角线</a>以下都是0的方阵称为上三角矩阵）</p>
+<p>上三角矩阵具备以下性质：</p>
+<p>1、上三角矩阵的<a href="https://baike.baidu.com/item/%E8%A1%8C%E5%88%97%E5%BC%8F" target="_blank" rel="noopener">行列式</a>为<a href="https://baike.baidu.com/item/%E5%AF%B9%E8%A7%92%E7%BA%BF" target="_blank" rel="noopener">对角线</a>元素相乘；</p>
+<p>2、上三角矩阵乘以系数后也是上三角矩阵；</p>
+<p>3、上三角矩阵间的加减法和乘法运算的结果仍是上三角矩阵；</p>
+<p>4、上三角矩阵的<a href="https://baike.baidu.com/item/%E9%80%86%E7%9F%A9%E9%98%B5" target="_blank" rel="noopener">逆矩阵</a>也仍然是上三角矩阵。</p>
+<p>5、这些事实说明：所有上三角矩阵的<a href="https://baike.baidu.com/item/%E9%9B%86%E5%90%88/2908117" target="_blank" rel="noopener">集合</a>以及相应的运算构成一个方形矩阵集合的一个子代数。</p>
+<p>一般需要对原方程组进行 行交换，乘以系数，或者方程相减等操作，从而得到化简后的上三角矩阵。</p>
+<h2 id="Matrix-Multiplication-矩阵乘法"><a href="#Matrix-Multiplication-矩阵乘法" class="headerlink" title="Matrix Multiplication 矩阵乘法"></a>Matrix Multiplication 矩阵乘法</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>矩阵乘法的规则（考虑3列的情形）：</p>
+<p>$$AB = A [b_1 \, b_2 b_3] = [Ab_1\, Ab_2\, Ab_3] \tag{1}$$</p>
+<p>A 为 m × n 的矩阵，B为 n × o 的矩阵，乘法结果就是 m × o 的矩阵。</p>
+<p>A B 矩阵需要满足上述的行列数目规则， A的列数等于B的行数。</p>
+<h3 id="乘法性质"><a href="#乘法性质" class="headerlink" title="乘法性质"></a>乘法性质</h3><ul>
+<li>结合律成立</li>
+<li>交换律不成立</li>
+</ul>
+<h3 id="常见操作"><a href="#常见操作" class="headerlink" title="常见操作"></a>常见操作</h3><p>利用一些置换矩阵来完成矩阵操作：</p>
+<ul>
+<li>行交换</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208211421.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>消除某些行</li>
+</ul>
+<h3 id="增广矩阵"><a href="#增广矩阵" class="headerlink" title="增广矩阵"></a>增广矩阵</h3><p>对于 Ax = b，其增广矩阵为 [ A b ]</p>
+<h2 id="矩阵运算法则"><a href="#矩阵运算法则" class="headerlink" title="矩阵运算法则"></a>矩阵运算法则</h2><h3 id="矩阵相乘"><a href="#矩阵相乘" class="headerlink" title="矩阵相乘"></a>矩阵相乘</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208222506.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="运算律"><a href="#运算律" class="headerlink" title="运算律"></a>运算律</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208222554.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="块矩阵和块乘法"><a href="#块矩阵和块乘法" class="headerlink" title="块矩阵和块乘法"></a>块矩阵和块乘法</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208222719.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="逆矩阵"><a href="#逆矩阵" class="headerlink" title="逆矩阵"></a>逆矩阵</h2><h3 id="定义-1"><a href="#定义-1" class="headerlink" title="定义"></a>定义</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208222808.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>但是不是所有矩阵都有逆矩阵！</p>
+<p>若矩阵可逆，那么该矩阵和逆矩阵相乘的结果就是单位矩阵！</p>
+<h3 id="引理"><a href="#引理" class="headerlink" title="引理"></a>引理</h3><p>关于逆矩阵有以下几个引理，常用的有 Note5.</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208224849.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208224819.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="矩阵乘法的逆矩阵"><a href="#矩阵乘法的逆矩阵" class="headerlink" title="矩阵乘法的逆矩阵"></a>矩阵乘法的逆矩阵</h3><p>如果矩阵 A，B都是可逆矩阵，那么 AB 的逆矩阵就是</p>
+<p>$$(AB)^{-1} = B^{-1}A^{-1} \tag{2}$$</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208225240.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>以此类推，有：<br><br>$$(ABC\dots Z)^{-1} = Z^{-1}\dots C^{-1}B^{-1}A^{-1} \tag{3}$$<br><br><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208225551.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="Calculating-A-1-by-Gauss-Jordan-Elimination"><a href="#Calculating-A-1-by-Gauss-Jordan-Elimination" class="headerlink" title="Calculating $A^{-1}$ by Gauss-Jordan Elimination"></a>Calculating $A^{-1}$ by Gauss-Jordan Elimination</h3><p>考虑三列的情形：</p>
+<p>$$AA^{-1} = A[x_1\, x_2\, x_3 ] = [e_1 \, e_2 \, e_3] = I$$</p>
+<p>处理成近似 Ax = b的情况。</p>
+<p>构造增广矩阵 $[A \, e_1 \, e_2 \,e_3] $ , 利用消去运算，将增广矩阵改造成 $[I \, A^{-1}]$，从而得到 $A^{-1}$。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208230320.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="A-LU-矩阵因式分解"><a href="#A-LU-矩阵因式分解" class="headerlink" title="A = LU 矩阵因式分解"></a>A = LU 矩阵因式分解</h2><h3 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190208232050.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>给定一个A矩阵，要找出一个下三角矩阵L和一个上三角矩阵U，使得 A = LU</p>
+<p>L和U的好处就是将稠密的A矩阵转为两个稀疏矩阵L、U，减低计算复杂度，提升计算速度。</p>
+<h3 id="计算-L和U"><a href="#计算-L和U" class="headerlink" title="计算 L和U"></a>计算 L和U</h3><p>对于一个式子 A = LU，各矩阵解释如下：</p>
+<ul>
+<li>A 为一个初始矩阵，待分解。</li>
+<li>U 为 A矩阵经过矩阵消元得到的上三角矩阵。</li>
+<li>L 为一个下三角矩阵，可以根据行变换的倍数和行，在单元矩阵上填充非0数。</li>
+</ul>
+<h2 id="转置"><a href="#转置" class="headerlink" title="转置"></a>转置</h2><h3 id="定义-2"><a href="#定义-2" class="headerlink" title="定义"></a>定义</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190209011617.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="性质"><a href="#性质" class="headerlink" title="性质"></a>性质</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190209011736.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="对称矩阵"><a href="#对称矩阵" class="headerlink" title="对称矩阵"></a>对称矩阵</h3><ul>
+<li>定义</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190209012357.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>对称矩阵的生成方法 $R^T R $ </li>
+</ul>
+<p>给定任意的一个矩阵 R，我们可以使用 其转置$R^T$与R相乘，得到一个正方形的对称矩阵。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190209012749.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>对称矩阵的分解性质 $LDL^T$</li>
+</ul>
+<p>对于一个矩阵 A，我们考虑其因式分解 A = LDU。如果A为对称矩阵，那么U = $L^T$ 。</p>
+<h2 id="置换矩阵"><a href="#置换矩阵" class="headerlink" title="置换矩阵"></a>置换矩阵</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190209015001.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>置换就是对原矩阵进行变换，包括系数变换，行交换。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-02-08T18:01:00.559Z" itemprop="dateUpdated">2019-02-09 02:01:00</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/02/07/Ch2-Solving-Linear-Equations/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/02/07/Ch2-Solving-Linear-Equations/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/线性代数/">线性代数</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/02/07/Ch2-Solving-Linear-Equations/&title=《Ch2 | Solving Linear Equations》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/02/07/Ch2-Solving-Linear-Equations/&title=《Ch2 | Solving Linear Equations》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/02/07/Ch2-Solving-Linear-Equations/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Ch2 | Solving Linear Equations》 — KnowMyself&url=https://joshuaqyh.github.io/2019/02/07/Ch2-Solving-Linear-Equations/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/02/07/Ch2-Solving-Linear-Equations/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/02/07/CH1_Introduction-to-Vectors/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Ch1 - Introduction to Vectors</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/02/07/Ch2-Solving-Linear-Equations/&title=《Ch2 | Solving Linear Equations》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/02/07/Ch2-Solving-Linear-Equations/&title=《Ch2 | Solving Linear Equations》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/02/07/Ch2-Solving-Linear-Equations/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Ch2 | Solving Linear Equations》 — KnowMyself&url=https://joshuaqyh.github.io/2019/02/07/Ch2-Solving-Linear-Equations/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/02/07/Ch2-Solving-Linear-Equations/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACxUlEQVR42u3aQW7DMAwEwPz/0y3QUwpE9pKUmqAYn4rGiTU6iPRKj0d8ff1cz38/X6v/r+5c/fLqWas7t114eHh4raFfD+h6oKv7E8DqFxJqNIl4eHh4x3h5MUjKQ15O5tN3Y8HDw8N7K6/HTopNUjDw8PDw/gfvmlRtmquBCB4eHt57eckinn8rjxXyeOJ41oKHh4dX24dqLsrv+vv4/h4eHh5ea1c9X+irZabajjdHi4eHh3eAN49Kq5tn1cA3b5QLbwx4eHh4A17va/OAoHq8IJ/6X5/i4eHhHeYlX8i3tSYlp1cMlm8MeHh4eId51UMA1aHkhWfyy3h4eHh/z5sfe0pCislTojHj4eHhHeD12uLeltXNIl7EJOUKDw8P7wQvb17njXUSzlbvvHkKHh4e3gHeJBroNc15OSlHD0nLjoeHh7eJd/2FSXvdm6x5ucLDw8M7x0uW5l7cUJ2yatwQBcF4eHh4h3m9cCGJa5MCMIoYrrMWPDw8vK28ycKdN9zVQpKXlkIRwsPDw9vEq7azzdY2mLIk7Khuy+Hh4eGd5lUX90kEnDTivUMMG8474OHh4QUr+aTxTVrbHFCNgKNfwMPDw9vKmxeGSaPcm6ZCu4+Hh4d3jDc/3tQLL3JMHka8iHHx8PDwtvJ6i3h1a6pXWpINtuhTPDw8vK28fCtrclAgmcQ8usXDw8P7TN71sAqbT60Io/qUm0NXeHh4eFt5zdf7eIi9LbFJ2XjM5xgPDw8vWCfzK1+Uew10L4xYjhYPDw/vAK8aPUw2xpKJqx4yyIsNHh4e3l5e9cG7jgvMD2+N8mY8PDy8Ma/6mOqA8khi0hy/uB8PDw/vrbxqXNtDVqOQm3cFPDw8vA/j5Vti1YMIkztfhBF4eHh4B3jVgLU6Hdf/722qJS0+Hh4e3gle7yU/x1QPaeWT2zwogIeHh9fnfQOqlVS5vhB90gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
