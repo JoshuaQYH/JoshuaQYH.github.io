@@ -21,30 +21,30 @@
     
     
     <meta name="keywords" content="python,数据可视化">
-    <meta name="description" content="本文主要介绍了 10 种常用且易于上手的可视化方法，基于python3.7实现。主要使用了两个图形可视化库，matplotlib &amp;amp; seaborn。这两个库的图形效果有细微差别，matplotlib较为流行且支持的可视化图形较多，seaborn也有特有的图形效果，二者搭配使用较佳。 以下提供15种方式的可视化供参考和上手！简单给出示例代码和效果图。 只要记住API的调用方式就能迅速掌握了">
+    <meta name="description" content="本文主要介绍了 10 种常用且易于上手的可视化方法，基于python3.7实现。主要使用了两个图形可视化库，matplotlib &amp;amp; seaborn。这两个库的图形效果有细微差别，matplotlib较为流行且支持的可视化图形较多，seaborn也有特有的图形效果，二者搭配使用较佳。 以下提供10种方式的可视化供参考和上手！简单给出示例代码和效果图。 只要记住API的调用方式就能迅速掌握了">
 <meta name="keywords" content="python,数据可视化">
 <meta property="og:type" content="article">
 <meta property="og:title" content="10 个 python可视化实例 | matplotlib &amp; seaborn">
 <meta property="og:url" content="https://joshuaqyh.github.io/2019/02/17/python可视化实例-matplotlib-seaborn/index.html">
 <meta property="og:site_name" content="KnowMyself">
-<meta property="og:description" content="本文主要介绍了 10 种常用且易于上手的可视化方法，基于python3.7实现。主要使用了两个图形可视化库，matplotlib &amp;amp; seaborn。这两个库的图形效果有细微差别，matplotlib较为流行且支持的可视化图形较多，seaborn也有特有的图形效果，二者搭配使用较佳。 以下提供15种方式的可视化供参考和上手！简单给出示例代码和效果图。 只要记住API的调用方式就能迅速掌握了">
+<meta property="og:description" content="本文主要介绍了 10 种常用且易于上手的可视化方法，基于python3.7实现。主要使用了两个图形可视化库，matplotlib &amp;amp; seaborn。这两个库的图形效果有细微差别，matplotlib较为流行且支持的可视化图形较多，seaborn也有特有的图形效果，二者搭配使用较佳。 以下提供10种方式的可视化供参考和上手！简单给出示例代码和效果图。 只要记住API的调用方式就能迅速掌握了">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190217171619.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190217171842.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190217172139.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190217172043.png">
-<meta property="og:image" content="c:/Users/Qiuyh/AppData/Local/Temp/1550395389290.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190217174112.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190217172431.png">
 <meta property="og:image" content="https://static001.geekbang.org/resource/image/45/f7/45c38de6563d528f610bfcef5c8874f7.png">
 <meta property="og:image" content="https://static001.geekbang.org/resource/image/57/93/57e1bc17d943620620fb087d6190df93.png">
 <meta property="og:image" content="https://static001.geekbang.org/resource/image/19/7d/1924d3cbf035053fa3d5043794624c7d.png">
-<meta property="og:image" content="c:/Users/Qiuyh/AppData/Local/Temp/1550395848222.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190217174241.png">
 <meta property="og:image" content="https://static001.geekbang.org/resource/image/7c/aa/7cbdbb115e7d984c3086acb689b661aa.png">
 <meta property="og:image" content="https://static001.geekbang.org/resource/image/88/0d/885450d23f468b9cbcabd90ff9a3480d.png">
-<meta property="og:updated_time" content="2019-02-17T09:38:24.827Z">
+<meta property="og:updated_time" content="2019-02-17T09:43:58.052Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="10 个 python可视化实例 | matplotlib &amp; seaborn">
-<meta name="twitter:description" content="本文主要介绍了 10 种常用且易于上手的可视化方法，基于python3.7实现。主要使用了两个图形可视化库，matplotlib &amp;amp; seaborn。这两个库的图形效果有细微差别，matplotlib较为流行且支持的可视化图形较多，seaborn也有特有的图形效果，二者搭配使用较佳。 以下提供15种方式的可视化供参考和上手！简单给出示例代码和效果图。 只要记住API的调用方式就能迅速掌握了">
+<meta name="twitter:description" content="本文主要介绍了 10 种常用且易于上手的可视化方法，基于python3.7实现。主要使用了两个图形可视化库，matplotlib &amp;amp; seaborn。这两个库的图形效果有细微差别，matplotlib较为流行且支持的可视化图形较多，seaborn也有特有的图形效果，二者搭配使用较佳。 以下提供10种方式的可视化供参考和上手！简单给出示例代码和效果图。 只要记住API的调用方式就能迅速掌握了">
 <meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190217171619.png">
     
         <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
@@ -132,7 +132,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -195,7 +195,7 @@
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
             <p>本文主要介绍了 10 种常用且易于上手的可视化方法，基于python3.7实现。主要使用了两个图形可视化库，matplotlib &amp; seaborn。这两个库的图形效果有细微差别，matplotlib较为流行且支持的可视化图形较多，seaborn也有特有的图形效果，二者搭配使用较佳。</p>
-<p>以下提供15种方式的可视化供参考和上手！简单给出示例代码和效果图。</p>
+<p>以下提供10种方式的可视化供参考和上手！简单给出示例代码和效果图。</p>
 <p>只要记住API的调用方式就能迅速掌握了！</p>
 <h1 id="1-散点图-scatter"><a href="#1-散点图-scatter" class="headerlink" title="1. 散点图 scatter"></a>1. 散点图 scatter</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="comment"># 数据准备</span></span><br><span class="line">N = <span class="number">1000</span></span><br><span class="line">x = np.random.randn(N)</span><br><span class="line">y = np.random.randn(N)</span><br><span class="line"><span class="comment"># 用 Matplotlib 画散点图</span></span><br><span class="line">plt.scatter(x, y,marker=<span class="string">'x'</span>)</span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment"># 用 Seaborn 画散点图</span></span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">'x'</span>: x, <span class="string">'y'</span>: y&#125;)</span><br><span class="line">sns.jointplot(x=<span class="string">"x"</span>, y=<span class="string">"y"</span>, data=df, kind=<span class="string">'scatter'</span>);</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <figure class="image-bubble">
@@ -226,9 +226,9 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="C:\Users\Qiuyh\AppData\Local\Temp\1550395389290.png" alt="55039538929" title="">
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190217174112.png" alt="" title="">
                 </div>
-                <div class="image-caption">55039538929</div>
+                <div class="image-caption"></div>
             </figure>
 <h1 id="5-箱线图-boxplot"><a href="#5-箱线图-boxplot" class="headerlink" title="5. 箱线图 boxplot"></a>5. 箱线图 boxplot</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 数据准备</span></span><br><span class="line"><span class="comment"># 生成 0-1 之间的 10*4 维度数据</span></span><br><span class="line">data=np.random.normal(size=(<span class="number">10</span>,<span class="number">4</span>)) </span><br><span class="line">lables = [<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>]</span><br><span class="line"><span class="comment"># 用 Matplotlib 画箱线图</span></span><br><span class="line">plt.boxplot(data,labels=lables)</span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment"># 用 Seaborn 画箱线图</span></span><br><span class="line">df = pd.DataFrame(data, columns=lables)</span><br><span class="line">sns.boxplot(data=df)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
 <figure class="image-bubble">
@@ -267,9 +267,9 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="C:\Users\Qiuyh\AppData\Local\Temp\1550395848222.png" alt="55039584822" title="">
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190217174241.png" alt="" title="">
                 </div>
-                <div class="image-caption">55039584822</div>
+                <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -297,7 +297,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2019-02-17T09:38:24.827Z" itemprop="dateUpdated">2019-02-17 17:38:24</time>
+    Last updated: <time datetime="2019-02-17T09:43:58.052Z" itemprop="dateUpdated">2019-02-17 17:43:58</time>
 </span><br>
 
 
@@ -430,7 +430,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
