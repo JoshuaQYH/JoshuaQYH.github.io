@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>10 个 python可视化实例 | matplotlib &amp; seaborn | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="python,数据可视化">
+    <meta name="description" content="本文主要介绍了 10 种常用且易于上手的可视化方法，基于python3.7实现。主要使用了两个图形可视化库，matplotlib &amp;amp; seaborn。这两个库的图形效果有细微差别，matplotlib较为流行且支持的可视化图形较多，seaborn也有特有的图形效果，二者搭配使用较佳。 以下提供15种方式的可视化供参考和上手！简单给出示例代码和效果图。 只要记住API的调用方式就能迅速掌握了">
+<meta name="keywords" content="python,数据可视化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="10 个 python可视化实例 | matplotlib &amp; seaborn">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/02/17/python可视化实例-matplotlib-seaborn/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="本文主要介绍了 10 种常用且易于上手的可视化方法，基于python3.7实现。主要使用了两个图形可视化库，matplotlib &amp;amp; seaborn。这两个库的图形效果有细微差别，matplotlib较为流行且支持的可视化图形较多，seaborn也有特有的图形效果，二者搭配使用较佳。 以下提供15种方式的可视化供参考和上手！简单给出示例代码和效果图。 只要记住API的调用方式就能迅速掌握了">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190217171619.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190217171842.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190217172139.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190217172043.png">
+<meta property="og:image" content="c:/Users/Qiuyh/AppData/Local/Temp/1550395389290.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190217172431.png">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/45/f7/45c38de6563d528f610bfcef5c8874f7.png">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/57/93/57e1bc17d943620620fb087d6190df93.png">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/19/7d/1924d3cbf035053fa3d5043794624c7d.png">
+<meta property="og:image" content="c:/Users/Qiuyh/AppData/Local/Temp/1550395848222.png">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/7c/aa/7cbdbb115e7d984c3086acb689b661aa.png">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/88/0d/885450d23f468b9cbcabd90ff9a3480d.png">
+<meta property="og:updated_time" content="2019-02-17T09:38:24.827Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="10 个 python可视化实例 | matplotlib &amp; seaborn">
+<meta name="twitter:description" content="本文主要介绍了 10 种常用且易于上手的可视化方法，基于python3.7实现。主要使用了两个图形可视化库，matplotlib &amp;amp; seaborn。这两个库的图形效果有细微差别，matplotlib较为流行且支持的可视化图形较多，seaborn也有特有的图形效果，二者搭配使用较佳。 以下提供15种方式的可视化供参考和上手！简单给出示例代码和效果图。 只要记住API的调用方式就能迅速掌握了">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190217171619.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">10 个 python可视化实例 | matplotlib &amp; seaborn</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">10 个 python可视化实例 | matplotlib &amp; seaborn</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-02-17T09:08:32.000Z" itemprop="datePublished" class="page-time">
+  2019-02-17
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#1-散点图-scatter"><span class="post-toc-number">1.</span> <span class="post-toc-text">1. 散点图 scatter</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#2-折线图-plot"><span class="post-toc-number">2.</span> <span class="post-toc-text">2. 折线图 plot</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#3-直方图-histogram"><span class="post-toc-number">3.</span> <span class="post-toc-text">3. 直方图 histogram</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#4-条形图-bar"><span class="post-toc-number">4.</span> <span class="post-toc-text">4. 条形图 bar</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#5-箱线图-boxplot"><span class="post-toc-number">5.</span> <span class="post-toc-text">5. 箱线图 boxplot</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#6-饼图-pie"><span class="post-toc-number">6.</span> <span class="post-toc-text">6. 饼图 pie</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#7-热力图-heat-map"><span class="post-toc-number">7.</span> <span class="post-toc-text">7. 热力图 heat map</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#8-蜘蛛图"><span class="post-toc-number">8.</span> <span class="post-toc-text">8. 蜘蛛图</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#9-二元分布图"><span class="post-toc-number">9.</span> <span class="post-toc-text">9. 二元分布图</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#10-成对关系图"><span class="post-toc-number">10.</span> <span class="post-toc-text">10. 成对关系图</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-python可视化实例-matplotlib-seaborn" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">10 个 python可视化实例 | matplotlib & seaborn</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-02-17 17:08:32" datetime="2019-02-17T09:08:32.000Z" itemprop="datePublished">2019-02-17</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>本文主要介绍了 10 种常用且易于上手的可视化方法，基于python3.7实现。主要使用了两个图形可视化库，matplotlib &amp; seaborn。这两个库的图形效果有细微差别，matplotlib较为流行且支持的可视化图形较多，seaborn也有特有的图形效果，二者搭配使用较佳。</p>
+<p>以下提供15种方式的可视化供参考和上手！简单给出示例代码和效果图。</p>
+<p>只要记住API的调用方式就能迅速掌握了！</p>
+<h1 id="1-散点图-scatter"><a href="#1-散点图-scatter" class="headerlink" title="1. 散点图 scatter"></a>1. 散点图 scatter</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="comment"># 数据准备</span></span><br><span class="line">N = <span class="number">1000</span></span><br><span class="line">x = np.random.randn(N)</span><br><span class="line">y = np.random.randn(N)</span><br><span class="line"><span class="comment"># 用 Matplotlib 画散点图</span></span><br><span class="line">plt.scatter(x, y,marker=<span class="string">'x'</span>)</span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment"># 用 Seaborn 画散点图</span></span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">'x'</span>: x, <span class="string">'y'</span>: y&#125;)</span><br><span class="line">sns.jointplot(x=<span class="string">"x"</span>, y=<span class="string">"y"</span>, data=df, kind=<span class="string">'scatter'</span>);</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190217171619.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="2-折线图-plot"><a href="#2-折线图-plot" class="headerlink" title="2. 折线图 plot"></a>2. 折线图 plot</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="comment"># 数据准备</span></span><br><span class="line">x = [<span class="number">2010</span>, <span class="number">2011</span>, <span class="number">2012</span>, <span class="number">2013</span>, <span class="number">2014</span>, <span class="number">2015</span>, <span class="number">2016</span>, <span class="number">2017</span>, <span class="number">2018</span>, <span class="number">2019</span>]</span><br><span class="line">y = [<span class="number">5</span>, <span class="number">3</span>, <span class="number">6</span>, <span class="number">20</span>, <span class="number">17</span>, <span class="number">16</span>, <span class="number">19</span>, <span class="number">30</span>, <span class="number">32</span>, <span class="number">35</span>]</span><br><span class="line"><span class="comment"># 使用 Matplotlib 画折线图</span></span><br><span class="line">plt.plot(x, y)</span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment"># 使用 Seaborn 画折线图</span></span><br><span class="line">df = pd.DataFrame(&#123;<span class="string">'x'</span>: x, <span class="string">'y'</span>: y&#125;)</span><br><span class="line">sns.lineplot(x=<span class="string">"x"</span>, y=<span class="string">"y"</span>, data=df)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190217171842.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="3-直方图-histogram"><a href="#3-直方图-histogram" class="headerlink" title="3. 直方图 histogram"></a>3. 直方图 histogram</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="comment"># 数据准备</span></span><br><span class="line">a = np.random.randn(<span class="number">100</span>)</span><br><span class="line">s = pd.Series(a) </span><br><span class="line"><span class="comment"># 用 Matplotlib 画直方图</span></span><br><span class="line">plt.hist(s)</span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment"># 用 Seaborn 画直方图</span></span><br><span class="line">sns.distplot(s, kde=<span class="keyword">False</span>)</span><br><span class="line">plt.show()</span><br><span class="line">sns.distplot(s, kde=<span class="keyword">True</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190217172139.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190217172043.png" alt=""></p>
+<h1 id="4-条形图-bar"><a href="#4-条形图-bar" class="headerlink" title="4. 条形图 bar"></a>4. 条形图 bar</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="comment"># 数据准备</span></span><br><span class="line">x = [<span class="string">'Cat1'</span>, <span class="string">'Cat2'</span>, <span class="string">'Cat3'</span>, <span class="string">'Cat4'</span>, <span class="string">'Cat5'</span>]</span><br><span class="line">y = [<span class="number">5</span>, <span class="number">4</span>, <span class="number">8</span>, <span class="number">12</span>, <span class="number">7</span>]</span><br><span class="line"><span class="comment"># 用 Matplotlib 画条形图</span></span><br><span class="line">plt.bar(x, y)</span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment"># 用 Seaborn 画条形图</span></span><br><span class="line">sns.barplot(x, y)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="C:\Users\Qiuyh\AppData\Local\Temp\1550395389290.png" alt="55039538929" title="">
+                </div>
+                <div class="image-caption">55039538929</div>
+            </figure>
+<h1 id="5-箱线图-boxplot"><a href="#5-箱线图-boxplot" class="headerlink" title="5. 箱线图 boxplot"></a>5. 箱线图 boxplot</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 数据准备</span></span><br><span class="line"><span class="comment"># 生成 0-1 之间的 10*4 维度数据</span></span><br><span class="line">data=np.random.normal(size=(<span class="number">10</span>,<span class="number">4</span>)) </span><br><span class="line">lables = [<span class="string">'A'</span>,<span class="string">'B'</span>,<span class="string">'C'</span>,<span class="string">'D'</span>]</span><br><span class="line"><span class="comment"># 用 Matplotlib 画箱线图</span></span><br><span class="line">plt.boxplot(data,labels=lables)</span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment"># 用 Seaborn 画箱线图</span></span><br><span class="line">df = pd.DataFrame(data, columns=lables)</span><br><span class="line">sns.boxplot(data=df)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190217172431.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="6-饼图-pie"><a href="#6-饼图-pie" class="headerlink" title="6. 饼图 pie"></a>6. 饼图 pie</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="comment"># 数据准备</span></span><br><span class="line">nums = [<span class="number">25</span>, <span class="number">37</span>, <span class="number">33</span>, <span class="number">37</span>, <span class="number">6</span>]</span><br><span class="line">labels = [<span class="string">'High-school'</span>,<span class="string">'Bachelor'</span>,<span class="string">'Master'</span>,<span class="string">'Ph.d'</span>, <span class="string">'Others'</span>]</span><br><span class="line"><span class="comment"># 用 Matplotlib 画饼图</span></span><br><span class="line">plt.pie(x = nums, labels=labels)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static001.geekbang.org/resource/image/45/f7/45c38de6563d528f610bfcef5c8874f7.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="7-热力图-heat-map"><a href="#7-热力图-heat-map" class="headerlink" title="7. 热力图 heat map"></a>7. 热力图 heat map</h1><p>较为直观的多元变量分析方法。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="comment"># 数据准备,使用seaborn自带数据集flights</span></span><br><span class="line">flights = sns.load_dataset(<span class="string">"flights"</span>)</span><br><span class="line">data=flights.pivot(<span class="string">'year'</span>,<span class="string">'month'</span>,<span class="string">'passengers'</span>)</span><br><span class="line"><span class="comment"># 用 Seaborn 画热力图</span></span><br><span class="line">sns.heatmap(data)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static001.geekbang.org/resource/image/57/93/57e1bc17d943620620fb087d6190df93.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="8-蜘蛛图"><a href="#8-蜘蛛图" class="headerlink" title="8. 蜘蛛图"></a>8. 蜘蛛图</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">from</span> matplotlib.font_manager <span class="keyword">import</span> FontProperties  </span><br><span class="line"><span class="comment"># 数据准备</span></span><br><span class="line">labels=np.array([<span class="string">u" 推进 "</span>,<span class="string">"KDA"</span>,<span class="string">u" 生存 "</span>,<span class="string">u" 团战 "</span>,<span class="string">u" 发育 "</span>,<span class="string">u" 输出 "</span>])</span><br><span class="line">stats=[<span class="number">83</span>, <span class="number">61</span>, <span class="number">95</span>, <span class="number">67</span>, <span class="number">76</span>, <span class="number">88</span>]</span><br><span class="line"><span class="comment"># 画图数据准备，角度、状态值</span></span><br><span class="line">angles=np.linspace(<span class="number">0</span>, <span class="number">2</span>*np.pi, len(labels), endpoint=<span class="keyword">False</span>)</span><br><span class="line">stats=np.concatenate((stats,[stats[<span class="number">0</span>]]))</span><br><span class="line">angles=np.concatenate((angles,[angles[<span class="number">0</span>]]))</span><br><span class="line"><span class="comment"># 用 Matplotlib 画蜘蛛图</span></span><br><span class="line">fig = plt.figure()</span><br><span class="line">ax = fig.add_subplot(<span class="number">111</span>, polar=<span class="keyword">True</span>)   </span><br><span class="line">ax.plot(angles, stats, <span class="string">'o-'</span>, linewidth=<span class="number">2</span>)</span><br><span class="line">ax.fill(angles, stats, alpha=<span class="number">0.25</span>)</span><br><span class="line"><span class="comment"># 设置中文字体</span></span><br><span class="line">font = FontProperties(fname=<span class="string">r"C:\Windows\Fonts\simhei.ttf"</span>, size=<span class="number">14</span>)  </span><br><span class="line">ax.set_thetagrids(angles * <span class="number">180</span>/np.pi, labels, FontProperties=font)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static001.geekbang.org/resource/image/19/7d/1924d3cbf035053fa3d5043794624c7d.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="9-二元分布图"><a href="#9-二元分布图" class="headerlink" title="9. 二元分布图"></a>9. 二元分布图</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="comment"># 数据准备</span></span><br><span class="line">tips = sns.load_dataset(<span class="string">"tips"</span>)</span><br><span class="line">print(tips.head(<span class="number">10</span>))</span><br><span class="line"><span class="comment"># 用 Seaborn 画二元变量分布图（散点图，核密度图，Hexbin 图）</span></span><br><span class="line">sns.jointplot(x=<span class="string">"total_bill"</span>, y=<span class="string">"tip"</span>, data=tips, kind=<span class="string">'scatter'</span>)</span><br><span class="line">sns.jointplot(x=<span class="string">"total_bill"</span>, y=<span class="string">"tip"</span>, data=tips, kind=<span class="string">'kde'</span>)</span><br><span class="line">sns.jointplot(x=<span class="string">"total_bill"</span>, y=<span class="string">"tip"</span>, data=tips, kind=<span class="string">'hex'</span>)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="C:\Users\Qiuyh\AppData\Local\Temp\1550395848222.png" alt="55039584822" title="">
+                </div>
+                <div class="image-caption">55039584822</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static001.geekbang.org/resource/image/7c/aa/7cbdbb115e7d984c3086acb689b661aa.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="10-成对关系图"><a href="#10-成对关系图" class="headerlink" title="10. 成对关系图"></a>10. 成对关系图</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="comment"># 数据准备</span></span><br><span class="line">iris = sns.load_dataset(<span class="string">'iris'</span>)</span><br><span class="line"><span class="comment"># 用 Seaborn 画成对关系</span></span><br><span class="line">sns.pairplot(iris)</span><br><span class="line">plt.show()</span><br></pre></td></tr></table></figure>
+<p>这里我们用 Seaborn 中的 pairplot 函数来对数据集中的多个双变量的关系进行探索，如下图所示。从图上你能看出，一共有 sepal_length、sepal_width、petal_length 和 petal_width4 个变量，它们分别是花萼长度、花萼宽度、花瓣长度和花瓣宽度。</p>
+<p>下面这张图相当于这 4 个变量两两之间的关系。比如矩阵中的第一张图代表的就是花萼长度自身的分布图，它右侧的这张图代表的是花萼长度与花萼宽度这两个变量之间的关系。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static001.geekbang.org/resource/image/88/0d/885450d23f468b9cbcabd90ff9a3480d.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>更多可视化示例可参考matplotlib 官网上的例子。<a href="https://matplotlib.org/gallery/index.html" target="_blank" rel="noopener">https://matplotlib.org/gallery/index.html</a></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2019-02-17T09:38:24.827Z" itemprop="dateUpdated">2019-02-17 17:38:24</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/02/17/python可视化实例-matplotlib-seaborn/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/02/17/python可视化实例-matplotlib-seaborn/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据可视化/">数据可视化</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/02/17/python可视化实例-matplotlib-seaborn/&title=《10 个 python可视化实例 | matplotlib & seaborn》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/02/17/python可视化实例-matplotlib-seaborn/&title=《10 个 python可视化实例 | matplotlib & seaborn》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/02/17/python可视化实例-matplotlib-seaborn/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《10 个 python可视化实例 | matplotlib & seaborn》 — KnowMyself&url=https://joshuaqyh.github.io/2019/02/17/python可视化实例-matplotlib-seaborn/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/02/17/python可视化实例-matplotlib-seaborn/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/02/09/堆栈-C语言实现顺序存储和链式存储/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">堆栈——C语言实现顺序存储和链式存储</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/02/17/python可视化实例-matplotlib-seaborn/&title=《10 个 python可视化实例 | matplotlib & seaborn》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/02/17/python可视化实例-matplotlib-seaborn/&title=《10 个 python可视化实例 | matplotlib & seaborn》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/02/17/python可视化实例-matplotlib-seaborn/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《10 个 python可视化实例 | matplotlib & seaborn》 — KnowMyself&url=https://joshuaqyh.github.io/2019/02/17/python可视化实例-matplotlib-seaborn/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/02/17/python可视化实例-matplotlib-seaborn/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuUlEQVR42u3aQW7jMAwF0Nz/0u62QGv3kxTbFHhaFU5G0vMAEkPy9YrH9Wl8fZ782+T53ZO71Y8NPDw8vMHW76Z7XuYKxvM8VzzyPePh4eFt854P7udDPNlEMvPzBfC8n9vneHh4eG/AS47jKiyPjfHw8PD+Ly8JqXuz3b0gPDw8vHfjJT/+q6neXricXwyHcy14eHh4MW8Szv7V3yv1PTw8PLxxVT2/JPLCWK+x4GoNPDw8vA3eJFyuNmM9h9fJp8194uHh4R3lVcv8CSy/GE4hb5/g4eHhLfCqx+48IZsjC0HzZLt4eHh4RV6Sbpi3WOWHe5IEyUNzPDw8vA3eqVpS9WKohuO9VgM8PDy8DV5efEqWz0v+1QupF3zj4eHhbfAmd0gvQdB7Wfl+XqeuSDw8PLyb7ydha/XTU4d7L0z/pr6Hh4eHd5Q3Ob7zVGzOzktlk9eBh4eHN+E9H9ArfQqDdEb5Uzw8PLwFXq8kf7bwP09S/PCK8fDw8NZ41eRskobI2wXy71cDcTw8PLxtXn5V9IphvQRuL1WBh4eHt8GbNzZNDvRqiqGaNMHDw8Pb4FUXywv5ve1W5y/0lOHh4eEd4k3SBzkvR/b+f6LfCnh4eHhHefnRnAfNSbtAPkMSyn/z+vDw8PAWeNWt5MnZavI3b0GYrIiHh4d3ilc90Cdpgl7T1Sjox8PDw/sVXi8ZUS1W9VastoLh4eHhbfPm6YlqeayXLC5cTnh4eHhHeVdxTK6TXgBdber6IUuNh4eHN+ZVD9xJy1S17XWeyMDDw8Pb41WXzA/xvPBfbQtIXjQeHh7eNm9SuJoc+vOURLO+h4eHh/eLvMl3TjUWlENqPDw8vDfgVdOp1ebUZOZRTxkeHh7emJenDKoFqmoSIQmsCyldPDw8vAXe5Ad/FVNt2OrNjIeHh7fG+wCjBQ0BSvXrFAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
