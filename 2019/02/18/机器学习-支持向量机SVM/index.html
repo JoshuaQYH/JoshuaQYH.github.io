@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>机器学习 | 使用SVM进行乳腺癌检测 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="机器学习,数据分析">
+    <meta name="description" content="关于SVM其基础知识和原理已经在一篇文章中提及到了，戳这里。 本文主要是谈谈如何利用sklearn包中的SVM来进行乳腺癌的检测。 在 sklearn中使用svm通过以下语句即可完成一个SVM模型的创建。 123456789from sklearn import svm# 创建分类模型classfier_model = svm.SVC(C = 1.0, kernel = &apos;rbf&apos;, degree">
+<meta name="keywords" content="机器学习,数据分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习 | 使用SVM进行乳腺癌检测">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/02/18/机器学习-支持向量机SVM/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="关于SVM其基础知识和原理已经在一篇文章中提及到了，戳这里。 本文主要是谈谈如何利用sklearn包中的SVM来进行乳腺癌的检测。 在 sklearn中使用svm通过以下语句即可完成一个SVM模型的创建。 123456789from sklearn import svm# 创建分类模型classfier_model = svm.SVC(C = 1.0, kernel = &apos;rbf&apos;, degree">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/a6/4d/a65435de48cee8091bd5f83d286ddb4d.png">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/73/d9/7351aa1ce3ab939f7ab609565e1f57d9.png">
+<meta property="og:updated_time" content="2019-02-18T14:08:37.741Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习 | 使用SVM进行乳腺癌检测">
+<meta name="twitter:description" content="关于SVM其基础知识和原理已经在一篇文章中提及到了，戳这里。 本文主要是谈谈如何利用sklearn包中的SVM来进行乳腺癌的检测。 在 sklearn中使用svm通过以下语句即可完成一个SVM模型的创建。 123456789from sklearn import svm# 创建分类模型classfier_model = svm.SVC(C = 1.0, kernel = &apos;rbf&apos;, degree">
+<meta name="twitter:image" content="https://static001.geekbang.org/resource/image/a6/4d/a65435de48cee8091bd5f83d286ddb4d.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">机器学习 | 使用SVM进行乳腺癌检测</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">机器学习 | 使用SVM进行乳腺癌检测</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-02-18T13:14:26.000Z" itemprop="datePublished" class="page-time">
+  2019-02-18
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#在-sklearn中使用svm"><span class="post-toc-number">1.</span> <span class="post-toc-text">在 sklearn中使用svm</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用SVM进行乳腺癌检测"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用SVM进行乳腺癌检测</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-机器学习-支持向量机SVM" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">机器学习 | 使用SVM进行乳腺癌检测</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-02-18 21:14:26" datetime="2019-02-18T13:14:26.000Z" itemprop="datePublished">2019-02-18</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>关于SVM其基础知识和原理已经在一篇文章中提及到了，戳<a href="https://joshuaqyh.github.io/2018/12/24/%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E5%8F%8A%E5%AE%9E%E7%8E%B0/">这里</a>。</p>
+<p>本文主要是谈谈如何利用sklearn包中的SVM来进行乳腺癌的检测。</p>
+<h1 id="在-sklearn中使用svm"><a href="#在-sklearn中使用svm" class="headerlink" title="在 sklearn中使用svm"></a>在 sklearn中使用svm</h1><p>通过以下语句即可完成一个SVM模型的创建。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建分类模型</span></span><br><span class="line">classfier_model = svm.SVC(C = <span class="number">1.0</span>, kernel = <span class="string">'rbf'</span>, degree=<span class="number">3</span>, gamma=<span class="string">'auto'</span>)</span><br><span class="line"><span class="comment"># svm.LinearSVC 在数据线性可分时使用</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建回归模型</span></span><br><span class="line">regression_model = svm.SVR(kernel = <span class="string">'rbf'</span>, degree=<span class="number">3</span>, gamma = <span class="string">'auto'</span>)</span><br><span class="line"><span class="comment"># svm.LinearSVR 在数据线性可分时使用</span></span><br></pre></td></tr></table></figure>
+<p>这里重点关注SVC 的构造函数：model = svm.SVC(kernel=‘rbf’, C=1.0, gamma=‘auto’)，这里有三个重要的参数 kernel、C 和 gamma。</p>
+<ul>
+<li><strong>kernel</strong>：代表核函数，默认为 rbf 高斯核函数，主要可选项有：</li>
+</ul>
+<ol>
+<li>inear：线性核函数，在数据为线性可分时，运算速度快，效果好，无法处理线性不可分的数据。</li>
+<li>poly：多项式核函数，可以将数据从低维空间映射到高维空间，但是参数较多，计算两大。</li>
+<li>rbf：高斯核函数（默认），将样本映射到高维空间，但是相较于多项式核函数来说参数较少，性能不错。</li>
+<li>sigmoid：sigmoid 核函数，当选用sigmoid，svm实现的时多层神经网络。</li>
+</ol>
+<ul>
+<li><strong>C</strong>代表的是目标函数的惩罚系数，惩罚系数指的是分错样本时的惩罚程度。当 C 越大的时候，分类器的准确性越高，但同样容错率会越低，泛化能力会变差。相反，C 越小，泛化能力越强，但是准确性会降低。</li>
+<li><strong>gamma</strong> 代表核函数的系数，默认为样本特征数的倒数，即 gamma = 1 / n_features。</li>
+</ul>
+<p>然后训练和预测的方式是：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">model.fit(train_X,train_y)</span><br><span class="line">model.predict(test_X)</span><br></pre></td></tr></table></figure>
+<h1 id="使用SVM进行乳腺癌检测"><a href="#使用SVM进行乳腺癌检测" class="headerlink" title="使用SVM进行乳腺癌检测"></a>使用SVM进行乳腺癌检测</h1><p>首先必须确定的是，乳腺癌检测是一个分类问题。</p>
+<p>检测存在两个过程：</p>
+<p>数据准备阶段：</p>
+<ol>
+<li>数据加载：加载数据集；</li>
+<li>数据清洗：删除无关的列，对列数据属性进行变换或者映射；</li>
+<li>特征选择：一般是剔除无关特征，运用降维方式，用少量特征代表数据的特性，增强分类器的泛化能力，避免数据过拟合。</li>
+<li>数据规范化：Z-score等等</li>
+</ol>
+<p>分类阶段：</p>
+<ol>
+<li>创建模型</li>
+<li>训练模型</li>
+<li>预测模型</li>
+<li>评估模型</li>
+</ol>
+<p>整个过程的代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> svm</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> metrics</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="string">代码来自：https://github.com/cystanford?tab=repositories</span></span><br><span class="line"><span class="string">"""</span></span><br><span class="line"><span class="comment"># 加载数据集，你需要把数据放到目录中</span></span><br><span class="line">data = pd.read_csv(<span class="string">"./breast_cancer_data.csv"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 数据探索</span></span><br><span class="line"><span class="comment"># 因为数据集中列比较多，我们需要把 dataframe 中的列全部显示出来</span></span><br><span class="line">pd.set_option(<span class="string">'display.max_columns'</span>, <span class="keyword">None</span>)</span><br><span class="line">print(data.columns)</span><br><span class="line">print(data.head(<span class="number">5</span>))</span><br><span class="line">print(data.describe())</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将特征字段分成 3 组</span></span><br><span class="line">features_mean= list(data.columns[<span class="number">2</span>:<span class="number">12</span>])</span><br><span class="line">features_se= list(data.columns[<span class="number">12</span>:<span class="number">22</span>])</span><br><span class="line">features_worst=list(data.columns[<span class="number">22</span>:<span class="number">32</span>])</span><br><span class="line"><span class="comment"># 数据清洗</span></span><br><span class="line"><span class="comment"># ID 列没有用，删除该列</span></span><br><span class="line">data.drop(<span class="string">"id"</span>,axis=<span class="number">1</span>,inplace=<span class="keyword">True</span>)</span><br><span class="line"><span class="comment"># 将 B 良性替换为 0，M 恶性替换为 1</span></span><br><span class="line">data[<span class="string">'diagnosis'</span>]=data[<span class="string">'diagnosis'</span>].map(&#123;<span class="string">'M'</span>:<span class="number">1</span>,<span class="string">'B'</span>:<span class="number">0</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 将肿瘤诊断结果可视化</span></span><br><span class="line">sns.countplot(data[<span class="string">'diagnosis'</span>],label=<span class="string">"Count"</span>)</span><br><span class="line">plt.show()</span><br><span class="line"><span class="comment"># 用热力图呈现 features_mean 字段之间的相关性</span></span><br><span class="line">corr = data[features_mean].corr()</span><br><span class="line">plt.figure(figsize=(<span class="number">14</span>,<span class="number">14</span>))</span><br><span class="line"><span class="comment"># annot=True 显示每个方格的数据</span></span><br><span class="line">sns.heatmap(corr, annot=<span class="keyword">True</span>)</span><br><span class="line">plt.show()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 特征选择</span></span><br><span class="line">features_remain = [<span class="string">'radius_mean'</span>,<span class="string">'texture_mean'</span>, <span class="string">'smoothness_mean'</span>,<span class="string">'compactness_mean'</span>,<span class="string">'symmetry_mean'</span>, <span class="string">'fractal_dimension_mean'</span>] </span><br><span class="line"></span><br><span class="line"><span class="comment"># 抽取 30% 的数据作为测试集，其余作为训练集</span></span><br><span class="line">train, test = train_test_split(data, test_size = <span class="number">0.3</span>)<span class="comment"># in this our main data is splitted into train and test</span></span><br><span class="line"><span class="comment"># 抽取特征选择的数值作为训练和测试数据</span></span><br><span class="line">train_X = train[features_remain]</span><br><span class="line">train_y=train[<span class="string">'diagnosis'</span>]</span><br><span class="line">test_X= test[features_remain]</span><br><span class="line">test_y =test[<span class="string">'diagnosis'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 采用 Z-Score 规范化数据，保证每个特征维度的数据均值为 0，方差为 1</span></span><br><span class="line">ss = StandardScaler()</span><br><span class="line">train_X = ss.fit_transform(train_X)</span><br><span class="line">test_X = ss.transform(test_X)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建模型</span></span><br><span class="line">classifier_model = svm.SVC(C = <span class="number">1.0</span>, kernel = <span class="string">'rbf'</span>, degree=<span class="number">3</span>, gamma=<span class="string">'auto'</span>)</span><br><span class="line">classifier_model.fit(train_X, train_y)</span><br><span class="line"></span><br><span class="line">prediction = classifier_model.predict(test_X)</span><br><span class="line"><span class="keyword">print</span> (<span class="string">"准确率： "</span>, metrics.accuracy_score(prediction, test_y))</span><br></pre></td></tr></table></figure>
+<p>这是运行的结果：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static001.geekbang.org/resource/image/a6/4d/a65435de48cee8091bd5f83d286ddb4d.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static001.geekbang.org/resource/image/73/d9/7351aa1ce3ab939f7ab609565e1f57d9.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p>其中的<strong>特征选择问题</strong>：</p>
+<p>热力图中对角线上的为单变量自身的相关系数是 1。颜色越浅代表相关性越大。所以你能看出来 radius_mean、perimeter_mean 和 area_mean 相关性非常大，compactness_mean、concavity_mean、concave_points_mean 这三个字段也是相关的，因此我们可以取其中的一个作为代表。</p>
+<p>特征选择的目的是降维，用少量的特征代表数据的特性，这样也可以增强分类器的泛化能力，避免数据过拟合。</p>
+<p>所以我们可以<strong>将相关性较强的一组特征视为一类，然后选出一个特征代表该类</strong>。</p>
+<p>我们能看到 mean、se 和 worst 这三组特征是对同一组内容的不同度量方式，我们可以保留 mean 这组特征，在特征选择中忽略掉 se 和 worst。同时我们能看到 mean 这组特征中，radius_mean、perimeter_mean、area_mean 这三个属性相关性大，compactness_mean、daconcavity_mean、concave points_mean 这三个属性相关性大。我们分别从这 2 类中选择 1 个属性作为代表，比如 radius_mean 和 compactness_mean。</p>
+<p>这样我们就可以把原来的 10 个属性缩减为 6 个属性，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">features_remain = [<span class="string">'radius_mean'</span>,<span class="string">'texture_mean'</span>, <span class="string">'smoothness_mean'</span>,<span class="string">'compactness_mean'</span>,<span class="string">'symmetry_mean'</span>, <span class="string">'fractal_dimension_mean'</span>]</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-02-18T14:08:37.741Z" itemprop="dateUpdated">2019-02-18 22:08:37</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/02/18/机器学习-支持向量机SVM/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/02/18/机器学习-支持向量机SVM/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据分析/">数据分析</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/02/18/机器学习-支持向量机SVM/&title=《机器学习 | 使用SVM进行乳腺癌检测》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/02/18/机器学习-支持向量机SVM/&title=《机器学习 | 使用SVM进行乳腺癌检测》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/02/18/机器学习-支持向量机SVM/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《机器学习 | 使用SVM进行乳腺癌检测》 — KnowMyself&url=https://joshuaqyh.github.io/2019/02/18/机器学习-支持向量机SVM/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/02/18/机器学习-支持向量机SVM/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/02/18/机器学习-朴素贝叶斯分类/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">机器学习 | 朴素贝叶斯分类</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/02/18/机器学习-支持向量机SVM/&title=《机器学习 | 使用SVM进行乳腺癌检测》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/02/18/机器学习-支持向量机SVM/&title=《机器学习 | 使用SVM进行乳腺癌检测》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/02/18/机器学习-支持向量机SVM/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《机器学习 | 使用SVM进行乳腺癌检测》 — KnowMyself&url=https://joshuaqyh.github.io/2019/02/18/机器学习-支持向量机SVM/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/02/18/机器学习-支持向量机SVM/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtklEQVR42u3a3WrcQAwG0H3/l06gVwnE7qefWaf0+KoY73jOBCxV0usVXx9/rvm/7+98ve73sHzh4eHhtbZ+dd2//v6V+fPJ1u/3c3k0eHh4eMd4+XK9j3t+EPl+omPCw8PDe5RXxSfgHIaHh4f3r/OuXtxL0ycFETw8PLyneMlWkjBQTa+TA3pTrQUPDw8v5r2zAbbbSPt1/T08PLz/gPdRvJLCay9RTn5V3i0eHh7eAV5vLKCaKFfvJ+/Kd4WHh4e3y0sAeVvrXKioDiV8i3t4eHh4q7zJf/iT9Lc6UDUZJojCAx4eHt6YNylGVINBnrhXn7l8Hg8PD+8AL//o90YK5s22Zn2l+gI8PDy8Aa/3Qc+b/Unw6LXKokYaHh4e3phXLdHmW+z9Nl+zOSmGh4eHt5TNzgus1YZZPgowGVnAw8PDO8e7fzRqz8cf+q0gUd0DHh4e3hYvKQT0Utsk2OTlj2ZBBA8PD+8Ar1dgTVLbaqjI0+Vm2QIPDw/vAC9fdNLs77Xc8jGsaD94eHh4S7y8bb/Vb8oT6N5qeHh4eOd4ecrbS20nSfOkMYaHh4d3gpcvnX+atxr/yf1XfhJ4eHh4S7xqAbc6ajAfBejt4TKlxsPDw1vi9UYE3tPW6hUpumeAh4eHt5l/VocJ8sOqFiPW6i54eHh4LV5vMDRPqaul3knDDA8PD+9ZXi8wJJtOmv3V1f5SZcHDw8Nb5VUfrZYDeml0tdAQPYmHh4e3xOsVTHsNs/w4khWiAIaHh4d3gDcpmFZDyFNJPB4eHt4JXh4M8vR3XiBe+yvh4eHhHeP1mvq9Jlb1t9UA9kOtGg8PD+8h3glwtdhRboDh4eHh/QJetfFfPazkKJNCBh4eHt5p3rwY0RsjqA4TVI8YDw8P7wSvWgtNWvX5/UnBd9TTw8PDw+vwPgHrAUrfzbKaEQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
