@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>机器学习 | EM聚类算法 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="机器学习,数据分析,数据挖掘">
+    <meta name="description" content="EM算法的思想利用到了极大似然法，首先必须对极大似然有所了解。 极大似然估计法极大似然估计，简单来说就是通过抽取一部分样本，反推个体分布规律中的参数。比如从一个班抽取一部分同学，统计其身高，反推实际的高斯分布中的参数如均值$\mu$ 和标准差$\theta$。一般步骤就是： （1）写出似然函数； （2）对似然函数取对数，并整理； （3）求导数，令导数为0，得到似然方程； （4）解似然方程，得到的参">
+<meta name="keywords" content="机器学习,数据分析,数据挖掘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习 | EM聚类算法">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/02/24/机器学习-EM聚类算法/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="EM算法的思想利用到了极大似然法，首先必须对极大似然有所了解。 极大似然估计法极大似然估计，简单来说就是通过抽取一部分样本，反推个体分布规律中的参数。比如从一个班抽取一部分同学，统计其身高，反推实际的高斯分布中的参数如均值$\mu$ 和标准差$\theta$。一般步骤就是： （1）写出似然函数； （2）对似然函数取对数，并整理； （3）求导数，令导数为0，得到似然方程； （4）解似然方程，得到的参">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190224062751.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190224062830.png">
+<meta property="og:image" content="https://img-my.csdn.net/uploads/201301/24/1359004674_9261.jpg">
+<meta property="og:image" content="https://img-my.csdn.net/uploads/201301/24/1359004692_8552.jpg">
+<meta property="og:image" content="https://img-my.csdn.net/uploads/201301/24/1359004726_5955.jpg">
+<meta property="og:updated_time" content="2019-02-23T23:36:02.921Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习 | EM聚类算法">
+<meta name="twitter:description" content="EM算法的思想利用到了极大似然法，首先必须对极大似然有所了解。 极大似然估计法极大似然估计，简单来说就是通过抽取一部分样本，反推个体分布规律中的参数。比如从一个班抽取一部分同学，统计其身高，反推实际的高斯分布中的参数如均值$\mu$ 和标准差$\theta$。一般步骤就是： （1）写出似然函数； （2）对似然函数取对数，并整理； （3）求导数，令导数为0，得到似然方程； （4）解似然方程，得到的参">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190224062751.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">机器学习 | EM聚类算法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">机器学习 | EM聚类算法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-02-23T22:00:00.000Z" itemprop="datePublished" class="page-time">
+  2019-02-24
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#极大似然估计法"><span class="post-toc-number">1.</span> <span class="post-toc-text">极大似然估计法</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#EM算法"><span class="post-toc-number">2.</span> <span class="post-toc-text">EM算法</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#EM算法用途"><span class="post-toc-number">3.</span> <span class="post-toc-text">EM算法用途</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用-EM工具包"><span class="post-toc-number">4.</span> <span class="post-toc-text">使用 EM工具包</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-机器学习-EM聚类算法" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">机器学习 | EM聚类算法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-02-24 06:00:00" datetime="2019-02-23T22:00:00.000Z" itemprop="datePublished">2019-02-24</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>EM算法的思想利用到了极大似然法，首先必须对极大似然有所了解。</p>
+<h1 id="极大似然估计法"><a href="#极大似然估计法" class="headerlink" title="极大似然估计法"></a>极大似然估计法</h1><p>极大似然估计，简单来说就是通过抽取一部分样本，反推个体分布规律中的参数。比如从一个班抽取一部分同学，统计其身高，反推实际的高斯分布中的参数如均值$\mu$ 和标准差$\theta$。一般步骤就是：</p>
+<p>（1）写出似然函数；</p>
+<p>（2）对似然函数取对数，并整理；</p>
+<p>（3）求导数，令导数为0，得到似然方程；</p>
+<p>（4）解似然方程，得到的参数即为所求；</p>
+<p>详细介绍如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190224062751.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190224062830.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="EM算法"><a href="#EM算法" class="headerlink" title="EM算法"></a>EM算法</h1><p>​    期望最大算法是一种从不完全数据或有数据丢失的数据集（存在隐含变量）中求解概率模型参数的最大似然估计方法。</p>
+<p><strong>EM的算法流程：</strong></p>
+<p>初始化分布参数θ；</p>
+<p><strong>重复以下步骤直到收敛</strong>：</p>
+<p>​        <strong>E步骤：</strong>根据参数初始值或上一次迭代的模型参数来计算出隐性变量的后验概率，其实就是隐性变量的期望。作为隐藏变量的现估计值：</p>
+<p>​       <img src="https://img-my.csdn.net/uploads/201301/24/1359004674_9261.jpg" alt="img"></p>
+<p>​        <strong>M步骤：</strong>将似然函数最大化以获得新的参数值：</p>
+<p>​          <img src="https://img-my.csdn.net/uploads/201301/24/1359004692_8552.jpg" alt="img"></p>
+<p>​        这个不断的迭代，就可以得到使似然函数L(θ)最大化的参数θ了。那就得回答刚才的第二个问题了，它会收敛吗？</p>
+<p>感性的说，因为下界不断提高，所以极大似然估计单调增加，那么最终我们会到达最大似然估计的最大值。理性分析的话，就会得到下面的东西：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://img-my.csdn.net/uploads/201301/24/1359004726_5955.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p>具体如何证明的，看推导过程参考：Andrew Ng《The EM algorithm》</p>
+<p><a href="http://www.cnblogs.com/jerrylead/archive/2011/04/06/2006936.html" target="_blank" rel="noopener">http://www.cnblogs.com/jerrylead/archive/2011/04/06/2006936.html</a></p>
+<h1 id="EM算法用途"><a href="#EM算法用途" class="headerlink" title="EM算法用途"></a>EM算法用途</h1><p><strong>EM的应用</strong></p>
+<p>​       EM算法有很多的应用，最广泛的就是GMM混合高斯模型、聚类、HMM等等。具体可以参考JerryLead的cnblog中的Machine Learning专栏：</p>
+<p><a href="http://www.cnblogs.com/jerrylead/archive/2011/04/06/2006936.html" target="_blank" rel="noopener">（</a><a href="http://www.cnblogs.com/jerrylead/archive/2011/04/06/2006936.html" target="_blank" rel="noopener">EM算法）</a>The EM Algorithm</p>
+<p><a href="http://www.cnblogs.com/jerrylead/archive/2011/04/06/2006924.html" target="_blank" rel="noopener">混合高斯模型（</a>Mixtures of Gaussians）和EM算法</p>
+<p><a href="http://www.cnblogs.com/jerrylead/archive/2011/04/06/2006910.html" target="_blank" rel="noopener">K-means</a>聚类算法</p>
+<h1 id="使用-EM工具包"><a href="#使用-EM工具包" class="headerlink" title="使用 EM工具包"></a>使用 EM工具包</h1><p>直接使用sklearn中的工具包，获得GMM模型，先fit拟合，然后predict输出结果。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> csv</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> seaborn <span class="keyword">as</span> sns</span><br><span class="line"><span class="keyword">from</span> sklearn.mixture <span class="keyword">import</span> GaussianMixture</span><br><span class="line"><span class="keyword">from</span> sklearn.preprocessing <span class="keyword">import</span> StandardScaler</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 数据加载，避免中文乱码问题</span></span><br><span class="line">data_ori = pd.read_csv(<span class="string">'./heros.csv'</span>, encoding = <span class="string">'gb18030'</span>)</span><br><span class="line">features = [<span class="string">u'最大生命'</span>,<span class="string">u'生命成长'</span>,<span class="string">u'初始生命'</span>,<span class="string">u'最大法力'</span>, <span class="string">u'法力成长'</span>,<span class="string">u'初始法力'</span>,<span class="string">u'最高物攻'</span>,<span class="string">u'物攻成长'</span>,<span class="string">u'初始物攻'</span>,<span class="string">u'最大物防'</span>,<span class="string">u'物防成长'</span>,<span class="string">u'初始物防'</span>, <span class="string">u'最大每5秒回血'</span>, <span class="string">u'每5秒回血成长'</span>, <span class="string">u'初始每5秒回血'</span>, <span class="string">u'最大每5秒回蓝'</span>, <span class="string">u'每5秒回蓝成长'</span>, <span class="string">u'初始每5秒回蓝'</span>, <span class="string">u'最大攻速'</span>, <span class="string">u'攻击范围'</span>]</span><br><span class="line">data = data_ori[features]</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 对英雄属性之间的关系进行可视化分析</span></span><br><span class="line"><span class="comment"># 设置 plt 正确显示中文</span></span><br><span class="line">plt.rcParams[<span class="string">'font.sans-serif'</span>]=[<span class="string">'SimHei'</span>] <span class="comment"># 用来正常显示中文标签</span></span><br><span class="line">plt.rcParams[<span class="string">'axes.unicode_minus'</span>]=<span class="keyword">False</span> <span class="comment"># 用来正常显示负号</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用热力图呈现 features_mean 字段之间的相关性</span></span><br><span class="line">corr = data[features].corr()</span><br><span class="line">plt.figure(figsize=(<span class="number">14</span>,<span class="number">14</span>))</span><br><span class="line"><span class="comment"># annot=True 显示每个方格的数据</span></span><br><span class="line">sns.heatmap(corr, annot=<span class="keyword">True</span>)</span><br><span class="line">plt.show()</span><br><span class="line"> </span><br><span class="line"><span class="comment"># 相关性大的属性保留一个，因此可以对属性进行降维</span></span><br><span class="line">features_remain = [<span class="string">u'最大生命'</span>, <span class="string">u'初始生命'</span>, <span class="string">u'最大法力'</span>, <span class="string">u'最高物攻'</span>, <span class="string">u'初始物攻'</span>, <span class="string">u'初始物攻'</span>, <span class="string">u'最大物防'</span>, <span class="string">u'初始物防'</span>, <span class="string">u'最大每5秒回血'</span>, <span class="string">u'最大每5秒回蓝'</span>, <span class="string">u'初始每5秒回蓝'</span>, <span class="string">u'最大攻速'</span>, <span class="string">u'攻击范围'</span>]</span><br><span class="line">data = data_ori[features_remain]</span><br><span class="line">data[<span class="string">u'最大攻速'</span>] = data[<span class="string">u'最大攻速'</span>].apply(<span class="keyword">lambda</span> x: float(x.strip(<span class="string">'%'</span>))/<span class="number">100</span>)</span><br><span class="line">data[<span class="string">u'攻击范围'</span>]=data[<span class="string">u'攻击范围'</span>].map(&#123;<span class="string">'远程'</span>:<span class="number">1</span>,<span class="string">'近战'</span>:<span class="number">0</span>&#125;)</span><br><span class="line"><span class="comment"># 采用 Z-Score 规范化数据，保证每个特征维度的数据均值为 0，方差为 1</span></span><br><span class="line">ss = StandardScaler()</span><br><span class="line">data = ss.fit_transform(data)</span><br><span class="line"><span class="comment"># 构造 GMM 聚类</span></span><br><span class="line">gmm = GaussianMixture(n_components=<span class="number">5</span>, covariance_type=<span class="string">'full'</span>)</span><br><span class="line">gmm.fit(data)</span><br><span class="line"><span class="comment"># 训练数据</span></span><br><span class="line">prediction = gmm.predict(data)</span><br><span class="line">print(prediction)</span><br><span class="line"><span class="comment"># 将分组结果输出到 CSV 文件中</span></span><br><span class="line">data_ori.insert(<span class="number">0</span>, <span class="string">'分组'</span>, prediction)</span><br><span class="line">data_ori.to_csv(<span class="string">'./hero_out.csv'</span>, index=<span class="keyword">False</span>, sep=<span class="string">','</span>)</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-02-23T23:36:02.921Z" itemprop="dateUpdated">2019-02-24 07:36:02</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/02/24/机器学习-EM聚类算法/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/02/24/机器学习-EM聚类算法/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据分析/">数据分析</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/02/24/机器学习-EM聚类算法/&title=《机器学习 | EM聚类算法》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/02/24/机器学习-EM聚类算法/&title=《机器学习 | EM聚类算法》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/02/24/机器学习-EM聚类算法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《机器学习 | EM聚类算法》 — KnowMyself&url=https://joshuaqyh.github.io/2019/02/24/机器学习-EM聚类算法/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/02/24/机器学习-EM聚类算法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/02/24/常用的三种数据规范化的方法法/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">常用的三种数据规范化的方法及python实现</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/02/24/机器学习-EM聚类算法/&title=《机器学习 | EM聚类算法》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/02/24/机器学习-EM聚类算法/&title=《机器学习 | EM聚类算法》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/02/24/机器学习-EM聚类算法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《机器学习 | EM聚类算法》 — KnowMyself&url=https://joshuaqyh.github.io/2019/02/24/机器学习-EM聚类算法/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/02/24/机器学习-EM聚类算法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACqUlEQVR42u3aQW7DMAwEwP7/0+mlhwCF011RSgx0fApkW9HkIDEkv77i6/F0PY/8vvs8fvVk8lb+zIYLDw8Pb7D0q+le322Xlc+f/zSXq8LDw8M7xrtaYvJMzki+5TUpXzMeHh7enXlXz+SwPDbGw8PD+w+8JIDO38LDw8O7D29vImD+OUkHb8614OHh4cW8STj7qc9H6nt4eHh446p6W9o/keRdW+fPnHh4eHgHePmGOwma8/nzwli+Tjw8PLy9vPZvf0vNt/W2sSA5kPDw8PDew2sLXWvFrXm4HK0cDw8P7wCvBeSJ1LXi1kEkHh4e3ht58zJ/21CVJ4g3VPDw8PDwlnjzItZismAQrBetV3h4eHhbeW24nBelksW1R0V95ODh4eEd4+VNTvm23sa3kwD68l08PDy8D/HWNv21u5vTxHh4eHjHKlDt1j85KiZPrv18eHh4eKd58819kshoR6JDBQ8PD28rLz8A8mJ/XjzLkwtt+hgPDw/vHG9ti29LXMkM7aKLNAoeHh7eVl7bLrArRZuPj1oN8PDw8A7zkgC6bSnY23bQHjN4eHh4p3ltA0GekH3E1xy2o1cLDw8PL80SrBWo2nnaIln7Fh4eHt47eXmatf2y9khIEsSTJgY8PDy8OS8Pi6MUwHjOdv6ipwwPDw9vKy8v0rcjbctUO9sfhxMeHh7eMV7b2LTGSIpkk0TDZa4aDw8PbxPvUV5tYWwtQE9SElEzFh4eHt4B3qRalIxP0hbtITQqieHh4eGVvLYVdW3jTkLtIwcDHh4e3jFeWzlKmgPau3V3Q946gIeHh3czXnt4FDnmOLVx+aPg4eHh3YCXhLZrwXcbNEeHBx4eHt4xXhsW50nY/DDIny/asPDw8PAO8NZ6tdZG2o1+VzMWHh4e3ibeN1rBfYKyOicWAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
