@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>机器学习 | KNN算法 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="机器学习,数据挖掘,数据分析">
+    <meta name="description" content="KNN工作原理近朱者赤，近墨者黑”可以说是 KNN 的工作原理。整个计算过程分为三步：  计算待分类物体与其他物体之间的距离； 统计距离最近的 K 个邻居； 对于 K 个最近的邻居，它们属于哪个分类最多，待分类物体就属于哪一类。  K 值如何选择 你能看出整个 KNN 的分类过程，K 值的选择还是很重要的。那么问题来了，K 值选择多少是适合的呢？ 如果 K 值比较小，就相当于未分类物体与它的邻居非">
+<meta name="keywords" content="机器学习,数据挖掘,数据分析">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习 | KNN算法">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/02/24/机器学习-KNN算法/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="KNN工作原理近朱者赤，近墨者黑”可以说是 KNN 的工作原理。整个计算过程分为三步：  计算待分类物体与其他物体之间的距离； 统计距离最近的 K 个邻居； 对于 K 个最近的邻居，它们属于哪个分类最多，待分类物体就属于哪一类。  K 值如何选择 你能看出整个 KNN 的分类过程，K 值的选择还是很重要的。那么问题来了，K 值选择多少是适合的呢？ 如果 K 值比较小，就相当于未分类物体与它的邻居非">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/f8/80/f8d4fe58ec9580a4ffad5cee263b1b80.png">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/40/6a/40efe7cb4a2571e55438b55f8d37366a.png">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/bd/aa/bda520e8ee34ea19df8dbad3da85faaa.png">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/dd/43/dd19ca4f0be3f60b526e9ea0b7d13543.jpg">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/4d/c5/4d614c3d6722c02e4ea03cb1e6653dc5.png">
+<meta property="og:updated_time" content="2019-02-23T17:42:53.397Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习 | KNN算法">
+<meta name="twitter:description" content="KNN工作原理近朱者赤，近墨者黑”可以说是 KNN 的工作原理。整个计算过程分为三步：  计算待分类物体与其他物体之间的距离； 统计距离最近的 K 个邻居； 对于 K 个最近的邻居，它们属于哪个分类最多，待分类物体就属于哪一类。  K 值如何选择 你能看出整个 KNN 的分类过程，K 值的选择还是很重要的。那么问题来了，K 值选择多少是适合的呢？ 如果 K 值比较小，就相当于未分类物体与它的邻居非">
+<meta name="twitter:image" content="https://static001.geekbang.org/resource/image/f8/80/f8d4fe58ec9580a4ffad5cee263b1b80.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">机器学习 | KNN算法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">机器学习 | KNN算法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-02-23T17:03:49.000Z" itemprop="datePublished" class="page-time">
+  2019-02-24
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#KNN工作原理"><span class="post-toc-number">1.</span> <span class="post-toc-text">KNN工作原理</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#KD-树"><span class="post-toc-number">2.</span> <span class="post-toc-text">KD 树</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#用-KNN-做回归"><span class="post-toc-number">3.</span> <span class="post-toc-text">用 KNN 做回归</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#KNN用途"><span class="post-toc-number">4.</span> <span class="post-toc-text">KNN用途</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#手写体识别"><span class="post-toc-number">5.</span> <span class="post-toc-text">手写体识别</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-机器学习-KNN算法" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">机器学习 | KNN算法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-02-24 01:03:49" datetime="2019-02-23T17:03:49.000Z" itemprop="datePublished">2019-02-24</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="KNN工作原理"><a href="#KNN工作原理" class="headerlink" title="KNN工作原理"></a>KNN工作原理</h1><p>近朱者赤，近墨者黑”可以说是 KNN 的工作原理。整个计算过程分为三步：</p>
+<ol>
+<li>计算待分类物体与其他物体之间的距离；</li>
+<li>统计距离最近的 K 个邻居；</li>
+<li>对于 K 个最近的邻居，它们属于哪个分类最多，待分类物体就属于哪一类。</li>
+</ol>
+<p><strong>K 值如何选择</strong></p>
+<p>你能看出整个 KNN 的分类过程，K 值的选择还是很重要的。那么问题来了，K 值选择多少是适合的呢？</p>
+<p>如果 K 值比较小，就相当于未分类物体与它的邻居非常接近才行。这样产生的一个问题就是，如果邻居点是个噪声点，那么未分类物体的分类也会产生误差，这样 KNN 分类就会产生过拟合。</p>
+<p>如果 K 值比较大，相当于距离过远的点也会对未知物体的分类产生影响，虽然这种情况的好处是鲁棒性强，但是不足也很明显，会产生欠拟合情况，也就是没有把未分类物体真正分类出来。</p>
+<p>所以 K 值应该是个实践出来的结果，并不是我们事先而定的。<strong>在工程上，我们一般采用交叉验证的方式选取 K 值。</strong></p>
+<p>交叉验证的思路就是，把样本集中的大部分样本作为训练集，剩余的小部分样本用于预测，来验证分类模型的准确性。所以在 KNN 算法中，我们一般会把 K 值选取在较小的范围内，同时在验证集上准确率最高的那一个最终确定作为 K 值。</p>
+<p><strong>距离如何计算</strong></p>
+<p>在 KNN 算法中，还有一个重要的计算就是关于距离的度量。两个样本点之间的距离代表了这两个样本之间的相似度。距离越大，差异性越大；距离越小，相似度越大。</p>
+<p>关于距离的计算方式有下面五种方式：</p>
+<ol>
+<li>欧氏距离；</li>
+<li>曼哈顿距离；</li>
+<li>闵可夫斯基距离；</li>
+<li>切比雪夫距离；</li>
+<li>余弦距离。</li>
+</ol>
+<p>其中前三种距离是 KNN 中最常用的距离，我给你分别讲解下。</p>
+<p><strong>欧氏距离</strong>是我们最常用的距离公式，也叫做欧几里得距离。在二维空间中，两点的欧式距离就是：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static001.geekbang.org/resource/image/f8/80/f8d4fe58ec9580a4ffad5cee263b1b80.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p>同理，我们也可以求得两点在 n 维空间中的距离：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static001.geekbang.org/resource/image/40/6a/40efe7cb4a2571e55438b55f8d37366a.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p><strong>曼哈顿距离</strong>在几何空间中用的比较多。以下图为例，绿色的直线代表两点之间的欧式距离，而红色和黄色的线为两点的曼哈顿距离。所以曼哈顿距离等于两个点在坐标系上绝对轴距总和。用公式表示就是：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static001.geekbang.org/resource/image/bd/aa/bda520e8ee34ea19df8dbad3da85faaa.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static001.geekbang.org/resource/image/dd/43/dd19ca4f0be3f60b526e9ea0b7d13543.jpg" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p><strong>闵可夫斯基距离</strong>不是一个距离，而是一组距离的定义。对于 n 维空间中的两个点 x(x1,x2,…,xn) 和 y(y1,y2,…,yn) ， x 和 y 两点之间的闵可夫斯基距离为：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static001.geekbang.org/resource/image/4d/c5/4d614c3d6722c02e4ea03cb1e6653dc5.png" alt="img" title="">
+                </div>
+                <div class="image-caption">img</div>
+            </figure>
+<p>其中 p 代表空间的维数，当 p=1 时，就是曼哈顿距离；当 p=2 时，就是欧氏距离；当 p→∞时，就是切比雪夫距离。</p>
+<p><strong>那么切比雪夫距离</strong>怎么计算呢？二个点之间的切比雪夫距离就是这两个点坐标数值差的绝对值的最大值，用数学表示就是：max(|x1-y1|,|x2-y2|)。</p>
+<p><strong>余弦距离</strong>实际上计算的是两个向量的夹角，是在方向上计算两者之间的差异，对绝对数值不敏感。在兴趣相关性比较上，角度关系比距离的绝对值更重要，因此余弦距离可以用于衡量用户对内容兴趣的区分度。比如我们用搜索引擎搜索某个关键词，它还会给你推荐其他的相关搜索，这些推荐的关键词就是采用余弦距离计算得出的。</p>
+<h1 id="KD-树"><a href="#KD-树" class="headerlink" title="KD 树"></a>KD 树</h1><p>其实从上文你也能看出来，KNN 的计算过程是大量计算样本点之间的距离。为了减少计算距离次数，提升 KNN 的搜索效率，人们提出了 KD 树（K-Dimensional 的缩写）。KD 树是对数据点在 K 维空间中划分的一种数据结构。在 KD 树的构造中，每个节点都是 k 维数值点的二叉树。既然是二叉树，就可以采用二叉树的增删改查操作，这样就大大提升了搜索效率。</p>
+<p>在这里，我们不需要对 KD 树的数学原理了解太多，你只需要知道它是一个二叉树的数据结构，方便存储 K 维空间的数据就可以了。而且在 sklearn 中，我们直接可以调用 KD 树，很方便。</p>
+<h1 id="用-KNN-做回归"><a href="#用-KNN-做回归" class="headerlink" title="用 KNN 做回归"></a>用 KNN 做回归</h1><p>KNN 不仅可以做分类，还可以做回归。首先讲下什么是回归。在开头电影这个案例中，如果想要对未知电影进行类型划分，这是一个分类问题。首先看一下要分类的未知电影，离它最近的 K 部电影大多数属于哪个分类，这部电影就属于哪个分类。</p>
+<p>如果是一部新电影，已知它是爱情片，想要知道它的打斗次数、接吻次数可能是多少，这就是一个回归问题。</p>
+<p>那么 KNN 如何做回归呢？</p>
+<p>对于一个新点，我们需要找出这个点的 K 个最近邻居，然后将这些邻居的属性的平均值赋给该点，就可以得到该点的属性。当然不同邻居的影响力权重可以设置成不同的。举个例子，比如一部电影 A，已知它是动作片，当 K=3 时，最近的 3 部电影是《战狼》，《红海行动》和《碟中谍 6》，那么它的打斗次数和接吻次数的预估值分别为 (100+95+105)/3=100 次、(5+3+31)/3=13 次。</p>
+<h1 id="KNN用途"><a href="#KNN用途" class="headerlink" title="KNN用途"></a>KNN用途</h1><p>KNN 的理论简单直接，针对 KNN 中的搜索也有相应的 KD 树这个数据结构。KNN 的理论成熟，可以应用到线性和非线性的分类问题中，也可以用于回归分析。</p>
+<p>不过 KNN 需要计算测试点与样本点之间的距离，当数据量大的时候，计算量是非常庞大的，需要大量的存储空间和计算时间。另外如果样本分类不均衡，比如有些分类的样本非常少，那么该类别的分类准确率就会低很多。</p>
+<p>当然在实际工作中，我们需要考虑到各种可能存在的情况，比如针对某类样本少的情况，可以增加该类别的权重。</p>
+<p>同样 KNN 也可以用于推荐算法，虽然现在很多推荐系统的算法会使用 TD-IDF、协同过滤、Apriori 算法，不过针对数据量不大的情况下，采用 KNN 作为推荐算法也是可行的。</p>
+<h1 id="手写体识别"><a href="#手写体识别" class="headerlink" title="手写体识别"></a>手写体识别</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> accuracy_score</span><br><span class="line"><span class="keyword">from</span> sklearn.datasets <span class="keyword">import</span> load_digits</span><br><span class="line"><span class="keyword">from</span> sklearn.neighbors <span class="keyword">import</span> KNeighborsClassifier</span><br><span class="line"><span class="keyword">from</span> sklearn.svm <span class="keyword">import</span> SVC</span><br><span class="line"><span class="keyword">from</span> sklearn.naive_bayes <span class="keyword">import</span> MultinomialNB</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeClassifier</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">digits = load_digits()</span><br><span class="line">data = digits.data</span><br><span class="line"><span class="comment"># 分割数据，将 25% 的数据作为测试集，其余作为训练集（你也可以指定其他比例的数据作为训练集）</span></span><br><span class="line">train_x, test_x, train_y, test_y = train_test_split(data, digits.target, test_size=<span class="number">0.25</span>, random_state=<span class="number">33</span>)</span><br><span class="line"><span class="comment"># 采用 Z-Score 规范化 Z-Score 会将数值规范化为一个标准的正态分布，即均值为 0，方差为 1，数值会包含负数。</span></span><br><span class="line">ss = preprocessing.StandardScaler()</span><br><span class="line">train_ss_x = ss.fit_transform(train_x)</span><br><span class="line">test_ss_x = ss.transform(test_x)</span><br><span class="line"></span><br><span class="line">knn = KNeighborsClassifier()</span><br><span class="line">knn.fit(train_ss_x, train_y) </span><br><span class="line">predict_y = knn.predict(test_ss_x) </span><br><span class="line">print(<span class="string">"KNN 准确率: %.4lf"</span> % accuracy_score(predict_y, test_y))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建 SVM 分类器</span></span><br><span class="line">svm = SVC()</span><br><span class="line">svm.fit(train_ss_x, train_y)</span><br><span class="line">predict_y=svm.predict(test_ss_x)</span><br><span class="line">print(<span class="string">'SVM 准确率: %0.4lf'</span> % accuracy_score(predict_y, test_y))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 采用 Min-Max 规范化</span></span><br><span class="line">mm = preprocessing.MinMaxScaler()</span><br><span class="line">train_mm_x = mm.fit_transform(train_x)</span><br><span class="line">test_mm_x = mm.transform(test_x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建 Naive Bayes 分类器</span></span><br><span class="line">mnb = MultinomialNB()</span><br><span class="line">mnb.fit(train_mm_x, train_y) </span><br><span class="line">predict_y = mnb.predict(test_mm_x) </span><br><span class="line">print(<span class="string">"多项式朴素贝叶斯准确率: %.4lf"</span> % accuracy_score(predict_y, test_y))</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建 CART 决策树分类器</span></span><br><span class="line">dtc = DecisionTreeClassifier()</span><br><span class="line">dtc.fit(train_mm_x, train_y) </span><br><span class="line">predict_y = dtc.predict(test_mm_x) </span><br><span class="line">print(<span class="string">"CART 决策树准确率: %.4lf"</span> % accuracy_score(predict_y, test_y))</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">KNN 准确率: <span class="number">0.9756</span></span><br><span class="line">SVM 准确率: <span class="number">0.9867</span></span><br><span class="line">多项式朴素贝叶斯准确率: <span class="number">0.8844</span></span><br><span class="line">CART 决策树准确率: <span class="number">0.8600</span></span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-02-23T17:42:53.397Z" itemprop="dateUpdated">2019-02-24 01:42:53</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/02/24/机器学习-KNN算法/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/02/24/机器学习-KNN算法/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据分析/">数据分析</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/02/24/机器学习-KNN算法/&title=《机器学习 | KNN算法》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/02/24/机器学习-KNN算法/&title=《机器学习 | KNN算法》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/02/24/机器学习-KNN算法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《机器学习 | KNN算法》 — KnowMyself&url=https://joshuaqyh.github.io/2019/02/24/机器学习-KNN算法/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/02/24/机器学习-KNN算法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/02/18/机器学习-支持向量机SVM/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">机器学习 | 使用SVM进行乳腺癌检测</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/02/24/机器学习-KNN算法/&title=《机器学习 | KNN算法》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/02/24/机器学习-KNN算法/&title=《机器学习 | KNN算法》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/02/24/机器学习-KNN算法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《机器学习 | KNN算法》 — KnowMyself&url=https://joshuaqyh.github.io/2019/02/24/机器学习-KNN算法/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/02/24/机器学习-KNN算法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACOUlEQVR42u3aO27DQAxFUe9/00rrFGbuI+UA4lxVgR3Ic1RQ/L1e+LrervdP6v+p70Z+5eZLhgwZj2Vc5TX5YXK3T4+Dn02GDBnnMOqwWN8i/ZbfgZxNhgwZMurAikIhDtMyZMiQMWdMEj4SmtP7yJAh4zQGKWJ5iKxLUx5kv1KLy5Ah44EM3nX//7+/Mt+QIUPGoxhX6+o15tLiNjiPDBkyVjPSIDgZbfZ+pU46ZciQcQ5jMhK4K+zWB2oWsTJkyFjB4OViHf56n5P1i/iNIUOGjKWMdIWCl6OT1Y1gNU2GDBkHMHgWyZtufLViklz+6hrKkCHjSEYvUPZSxnRBLQi4MmTIWMGYp3q9sDsqXPl7QIYMGSsY6SHSwWRvDBCMQmXIkLGaMSk4JxEvLYxR002GDBmrGSRF40GTjyrTAP3HI5YhQ8ZSBt8a4ysRPFCmowi0bCFDhox1DJ6Kpa26u0YOvbgqQ4aMfYxJ8pcWur0hZbOIlSFDxgrGJCz2ksh0LSMYBsiQIWMpgxeo6ThznlbyQleGDBm7GWmxetcaWW+QGbw3ZMiQsYjRa3WNEjhcKsetQBkyZCxlXOFFjpKuf6X7ax/7hTJkyFjK6LX1SZAlATpNInsBXYYMGTsY82Y9L035KIIvlsmQIeMcRtrkmg8GeqkeGg/IkCHjYEaatPWK5DQNlSFDhgxeavKWXG+Z44vvDRkyZDyEkQZBXu7yZY7e45MhQ8YJjN5KRDp5IItfk8JYhgwZSxk/SCCtYzn2T9MAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
