@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>机器学习 | K-means 聚类算法 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="机器学习,python,数据分析,数据挖掘">
+    <meta name="description" content="K-Means 工作原理 工作原理很简单：  选取 K 个点作为初始的类中心点，这些点一般都是从数据集中随机抽取的； 将每个点分配到最近的类中心点，这样就形成了 K 个类，然后重新计算每个类的中心点； 重复第二步，直到类不发生变化，或者你也可以设置最大迭代次数，这样即使类中心点发生变化，但是只要达到最大迭代次数就会结束。  使用 K-means 算法123from sklearn.cluster">
+<meta name="keywords" content="机器学习,python,数据分析,数据挖掘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习 | K-means 聚类算法">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/02/24/机器学习-kmeans-聚类/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="K-Means 工作原理 工作原理很简单：  选取 K 个点作为初始的类中心点，这些点一般都是从数据集中随机抽取的； 将每个点分配到最近的类中心点，这样就形成了 K 个类，然后重新计算每个类的中心点； 重复第二步，直到类不发生变化，或者你也可以设置最大迭代次数，这样即使类中心点发生变化，但是只要达到最大迭代次数就会结束。  使用 K-means 算法123from sklearn.cluster">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-23T19:51:23.007Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习 | K-means 聚类算法">
+<meta name="twitter:description" content="K-Means 工作原理 工作原理很简单：  选取 K 个点作为初始的类中心点，这些点一般都是从数据集中随机抽取的； 将每个点分配到最近的类中心点，这样就形成了 K 个类，然后重新计算每个类的中心点； 重复第二步，直到类不发生变化，或者你也可以设置最大迭代次数，这样即使类中心点发生变化，但是只要达到最大迭代次数就会结束。  使用 K-means 算法123from sklearn.cluster">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">机器学习 | K-means 聚类算法</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">机器学习 | K-means 聚类算法</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-02-23T17:46:05.000Z" itemprop="datePublished" class="page-time">
+  2019-02-24
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#K-Means-工作原理"><span class="post-toc-number">1.</span> <span class="post-toc-text">K-Means 工作原理</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#使用-K-means-算法"><span class="post-toc-number">2.</span> <span class="post-toc-text">使用 K-means 算法</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#K-means-聚类分割"><span class="post-toc-number">3.</span> <span class="post-toc-text">K-means 聚类分割</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-机器学习-kmeans-聚类" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">机器学习 | K-means 聚类算法</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-02-24 01:46:05" datetime="2019-02-23T17:46:05.000Z" itemprop="datePublished">2019-02-24</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="K-Means-工作原理"><a href="#K-Means-工作原理" class="headerlink" title="K-Means 工作原理"></a>K-Means 工作原理</h1><p> 工作原理很简单：</p>
+<ol>
+<li>选取 K 个点作为初始的类中心点，这些点一般都是从数据集中随机抽取的；</li>
+<li>将每个点分配到最近的类中心点，这样就形成了 K 个类，然后重新计算每个类的中心点；</li>
+<li>重复第二步，直到类不发生变化，或者你也可以设置最大迭代次数，这样即使类中心点发生变化，但是只要达到最大迭代次数就会结束。</li>
+</ol>
+<h1 id="使用-K-means-算法"><a href="#使用-K-means-算法" class="headerlink" title="使用 K-means 算法"></a>使用 K-means 算法</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> KMeans</span><br><span class="line"></span><br><span class="line">KMeans(n_clusters=<span class="number">8</span>, init=<span class="string">'k-means++'</span>, n_init=<span class="number">10</span>, max_iter=<span class="number">300</span>, tol=<span class="number">0.0001</span>, precompute_distances=<span class="string">'auto'</span>, verbose=<span class="number">0</span>, random_state=<span class="keyword">None</span>, copy_x=<span class="keyword">True</span>, n_jobs=<span class="number">1</span>, algorithm=<span class="string">'auto'</span>)</span><br></pre></td></tr></table></figure>
+<p>们能看到在 K-Means 类创建的过程中，有一些主要的参数：</p>
+<ul>
+<li><strong>n_clusters</strong>: 即 K 值，一般需要多试一些 K 值来保证更好的聚类效果。你可以随机设置一些 K 值，然后选择聚类效果最好的作为最终的 K 值；</li>
+<li><strong>max_iter</strong>： 最大迭代次数，如果聚类很难收敛的话，设置最大迭代次数可以让我们及时得到反馈结果，否则程序运行时间会非常长；</li>
+<li><strong>n_init</strong>：初始化中心点的运算次数，默认是 10。程序是否能快速收敛和中心点的选择关系非常大，所以在中心点选择上多花一些时间，来争取整体时间上的快速收敛还是非常值得的。由于每一次中心点都是随机生成的，这样得到的结果就有好有坏，非常不确定，所以要运行 n_init 次, 取其中最好的作为初始的中心点。如果 K 值比较大的时候，你可以适当增大 n_init 这个值；</li>
+<li><strong>init：</strong> 即初始值选择的方式，默认是采用优化过的 k-means++ 方式，你也可以自己指定中心点，或者采用 random 完全随机的方式。自己设置中心点一般是对于个性化的数据进行设置，很少采用。random 的方式则是完全随机的方式，一般推荐采用优化过的 k-means++ 方式；</li>
+<li><strong>algorithm</strong>：k-means 的实现算法，有“auto” “full”“elkan”三种。一般来说建议直接用默认的”auto”。简单说下这三个取值的区别，如果你选择”full”采用的是传统的 K-Means 算法，“auto”会根据数据的特点自动选择是选择“full”还是“elkan”。我们一般选择默认的取值，即“auto” 。</li>
+</ul>
+<p>在创建好 K-Means 类之后，就可以使用它的方法，最常用的是 fit 和 predict 这个两个函数。你可以单独使用 fit 函数和 predict 函数，也可以合并使用 fit_predict 函数。其中 fit(data) 可以对 data 数据进行 k-Means 聚类。 predict(data) 可以针对 data 中的每个样本，计算最近的类。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding: utf-8</span></span><br><span class="line"><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> KMeans</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># 输入数据</span></span><br><span class="line">data = pd.read_csv(<span class="string">'data.csv'</span>, encoding=<span class="string">'gbk'</span>)</span><br><span class="line">train_x = data[[<span class="string">"2019 年国际排名 "</span>,<span class="string">"2018 世界杯 "</span>,<span class="string">"2015 亚洲杯 "</span>]]</span><br><span class="line">df = pd.DataFrame(train_x)</span><br><span class="line">kmeans = KMeans(n_clusters=<span class="number">3</span>)</span><br><span class="line"><span class="comment"># 规范化到 [0,1] 空间</span></span><br><span class="line">min_max_scaler=preprocessing.MinMaxScaler()</span><br><span class="line">train_x=min_max_scaler.fit_transform(train_x)</span><br><span class="line"><span class="comment"># kmeans 算法</span></span><br><span class="line">kmeans.fit(train_x)</span><br><span class="line">predict_y = kmeans.predict(train_x)</span><br><span class="line"><span class="comment"># 合并聚类结果，插入到原数据中</span></span><br><span class="line">result = pd.concat((data,pd.DataFrame(predict_y)),axis=<span class="number">1</span>)</span><br><span class="line">result.rename(&#123;<span class="number">0</span>:<span class="string">u'聚类'</span>&#125;,axis=<span class="number">1</span>,inplace=<span class="keyword">True</span>)</span><br><span class="line">print(result)</span><br></pre></td></tr></table></figure>
+<h1 id="K-means-聚类分割"><a href="#K-means-聚类分割" class="headerlink" title="K-means 聚类分割"></a>K-means 聚类分割</h1><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 使用 K-means 对图像进行聚类，并显示聚类压缩后的图像</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> PIL.Image <span class="keyword">as</span> image</span><br><span class="line"><span class="keyword">from</span> sklearn.cluster <span class="keyword">import</span> KMeans</span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"><span class="keyword">import</span> matplotlib.image <span class="keyword">as</span> mpimg</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载图像，并对数据进行规范化</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">load_data</span><span class="params">(filePath)</span>:</span></span><br><span class="line">    <span class="comment"># 读文件</span></span><br><span class="line">    f = open(filePath,<span class="string">'rb'</span>)</span><br><span class="line">    data = []</span><br><span class="line">    <span class="comment"># 得到图像的像素值</span></span><br><span class="line">    img = image.open(f)</span><br><span class="line">    <span class="comment"># 得到图像尺寸</span></span><br><span class="line">    width, height = img.size</span><br><span class="line">    <span class="keyword">for</span> x <span class="keyword">in</span> range(width):</span><br><span class="line">        <span class="keyword">for</span> y <span class="keyword">in</span> range(height):</span><br><span class="line">            <span class="comment"># 得到点 (x,y) 的三个通道值</span></span><br><span class="line">            c1, c2, c3 = img.getpixel((x, y))</span><br><span class="line">            data.append([c1, c2, c3])</span><br><span class="line">    f.close()</span><br><span class="line">    <span class="comment"># 采用 Min-Max 规范化</span></span><br><span class="line">    mm = preprocessing.MinMaxScaler()</span><br><span class="line">    data = mm.fit_transform(data)</span><br><span class="line">    <span class="keyword">return</span> np.mat(data), width, height</span><br><span class="line"></span><br><span class="line"><span class="comment"># 加载图像，得到规范化的结果 img，以及图像尺寸</span></span><br><span class="line">img, width, height = load_data(<span class="string">'./weixin.jpg'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 用 K-Means 对图像进行 2 聚类</span></span><br><span class="line">kmeans =KMeans(n_clusters=<span class="number">2</span>)</span><br><span class="line">kmeans.fit(img)</span><br><span class="line">label = kmeans.predict(img)</span><br><span class="line"><span class="comment"># 将图像聚类结果，转化成图像尺寸的矩阵</span></span><br><span class="line">label = label.reshape([width, height])</span><br><span class="line"><span class="comment"># 创建个新图像 pic_mark，用来保存图像聚类的结果，并设置不同的灰度值</span></span><br><span class="line">pic_mark = image.new(<span class="string">"L"</span>, (width, height))</span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(width):</span><br><span class="line">    <span class="keyword">for</span> y <span class="keyword">in</span> range(height):</span><br><span class="line">        <span class="comment"># 根据类别设置图像灰度, 类别 0 灰度值为 255， 类别 1 灰度值为 127</span></span><br><span class="line">        pic_mark.putpixel((x, y), int(<span class="number">256</span>/(label[x][y]+<span class="number">1</span>))<span class="number">-1</span>)</span><br><span class="line">pic_mark.save(<span class="string">"weixin_mark.jpg"</span>, <span class="string">"JPEG"</span>)</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-02-23T19:51:23.007Z" itemprop="dateUpdated">2019-02-24 03:51:23</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/02/24/机器学习-kmeans-聚类/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/02/24/机器学习-kmeans-聚类/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据分析/">数据分析</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/02/24/机器学习-kmeans-聚类/&title=《机器学习 | K-means 聚类算法》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/02/24/机器学习-kmeans-聚类/&title=《机器学习 | K-means 聚类算法》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/02/24/机器学习-kmeans-聚类/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《机器学习 | K-means 聚类算法》 — KnowMyself&url=https://joshuaqyh.github.io/2019/02/24/机器学习-kmeans-聚类/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/02/24/机器学习-kmeans-聚类/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/02/24/常用的三种数据规范化的方法法/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">常用的三种数据规范化的方法及python实现</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/02/24/机器学习-KNN算法/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">机器学习 | KNN算法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/02/24/机器学习-kmeans-聚类/&title=《机器学习 | K-means 聚类算法》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/02/24/机器学习-kmeans-聚类/&title=《机器学习 | K-means 聚类算法》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/02/24/机器学习-kmeans-聚类/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《机器学习 | K-means 聚类算法》 — KnowMyself&url=https://joshuaqyh.github.io/2019/02/24/机器学习-kmeans-聚类/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/02/24/机器学习-kmeans-聚类/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACu0lEQVR42u3aQW7jMBAEQP//09nrAgtJ3TPiJgFKJ8N2JBYNkEzPfD7x9fXX9e/7yV9d3eH+/vmzVhceHh7eYuhXQ7l6nQ/l/p37J95//2H68PDw8I7x7oeYs5Nh3QPa+zxY8PDw8H4k735A+XCTYzceHh7e7+Ll8UF7RG6jEDw8PLyfwEvCiPbTNpxtv/ly1oKHh4c3edanHcR3vT5S38PDw8NbV9Xb5X6zcLehRjQ2PDw8vAO8dlGeLeWzglYOeIgq8PDw8I7xZkPcB8EJadPahYeHh/cu791FPC+P7Zu6opACDw8P7xgvDwg2D263lnyCLqcbDw8P7xhvhmnbpPJjcYt/6InAw8PDO8bbHGHzaHXW4NVuWnh4eHineS8cXkdTlm9IbVnusjMCDw8P71VeHh+0DVWbFqt2CvDw8PBO8/L2qfYwvYkSkuCjOIjj4eHhvcqbLdCf8mq3lnazefjd8PDw8I7x8qLU7NM2tM1D5LoKh4eHh7fmtaWszfdnR/NZ2IGHh4d3gvdWxNDGGfeT1U5rEePi4eHhrXnt0bZte2qbsfZTjIeHh/c/eckyncPypXzzrId38PDw8I7xNu1NsyghjzZW042Hh4d3gFeU4ctjbpKC7JsV6sIYHh4e3prX/ns/K2u1z8rbFB6+g4eHh3eAN4tW22NuPrj2cD/sLMPDw8Nb8Nr4dTMds61lczc8PDy8E7x6D3npmJtvObPSGh4eHt453ld57Q/TeetAXn57iHHx8PDwXuW1m0EbDcyKXrNy1zCJwcPDwxvx8jJ/ErPmoUPSoPDCxoCHh4d3jNcuxG2s0E5KEdQmkQQeHh7eN/Fm28Dmzu1GcnmkxsPDw/smXr4Z5EFG3qYw3ELw8PDwjvHapTkf4qZg1v4ML8S4eHh4eJOVfNVElW8Sbalsttng4eHhvcr7A1oTu2Dh+1nxAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

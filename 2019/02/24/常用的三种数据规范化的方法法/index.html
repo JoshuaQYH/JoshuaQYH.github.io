@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>常用的三种数据规范化的方法及python实现 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="机器学习,python,数据分析,数据挖掘">
+    <meta name="description" content="三种数据规范化方法介绍和使用Min-max 规范化Min-max 规范化方法是将原始数据变换到 [0,1] 的空间中。用公式表示就是： 新数值 =（原数值 - 极小值）/（极大值 - 极小值）。 即$new = \frac{old - min}{max - min}$。 在如朴素贝叶斯方法和决策树方法中，规范化后的数值必须非负数，所以一般采用min-max规范化。 在python中使用如下： 12">
+<meta name="keywords" content="机器学习,python,数据分析,数据挖掘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用的三种数据规范化的方法及python实现">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/02/24/常用的三种数据规范化的方法法/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="三种数据规范化方法介绍和使用Min-max 规范化Min-max 规范化方法是将原始数据变换到 [0,1] 的空间中。用公式表示就是： 新数值 =（原数值 - 极小值）/（极大值 - 极小值）。 即$new = \frac{old - min}{max - min}$。 在如朴素贝叶斯方法和决策树方法中，规范化后的数值必须非负数，所以一般采用min-max规范化。 在python中使用如下： 12">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-23T19:49:33.646Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="常用的三种数据规范化的方法及python实现">
+<meta name="twitter:description" content="三种数据规范化方法介绍和使用Min-max 规范化Min-max 规范化方法是将原始数据变换到 [0,1] 的空间中。用公式表示就是： 新数值 =（原数值 - 极小值）/（极大值 - 极小值）。 即$new = \frac{old - min}{max - min}$。 在如朴素贝叶斯方法和决策树方法中，规范化后的数值必须非负数，所以一般采用min-max规范化。 在python中使用如下： 12">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">常用的三种数据规范化的方法及python实现</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">常用的三种数据规范化的方法及python实现</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-02-23T19:35:40.000Z" itemprop="datePublished" class="page-time">
+  2019-02-24
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#三种数据规范化方法介绍和使用"><span class="post-toc-number">1.</span> <span class="post-toc-text">三种数据规范化方法介绍和使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Min-max-规范化"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Min-max 规范化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Z-Score-规范化"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">Z-Score 规范化</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#小数定标规范化"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">小数定标规范化</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-常用的三种数据规范化的方法法" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">常用的三种数据规范化的方法及python实现</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-02-24 03:35:40" datetime="2019-02-23T19:35:40.000Z" itemprop="datePublished">2019-02-24</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="三种数据规范化方法介绍和使用"><a href="#三种数据规范化方法介绍和使用" class="headerlink" title="三种数据规范化方法介绍和使用"></a>三种数据规范化方法介绍和使用</h1><h2 id="Min-max-规范化"><a href="#Min-max-规范化" class="headerlink" title="Min-max 规范化"></a>Min-max 规范化</h2><p>Min-max 规范化方法是将原始数据变换到 [0,1] 的空间中。用公式表示就是：</p>
+<p><strong>新数值 =（原数值 - 极小值）/（极大值 - 极小值）。</strong></p>
+<p>即$new = \frac{old - min}{max - min}$。</p>
+<p>在如朴素贝叶斯方法和决策树方法中，规范化后的数值必须非负数，所以一般采用min-max规范化。</p>
+<p>在python中使用如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># 初始化数据，每一行表示一个样本，每一列表示一个特征</span></span><br><span class="line">x = np.array([[ <span class="number">0.</span>, <span class="number">-3.</span>,  <span class="number">1.</span>],</span><br><span class="line">              [ <span class="number">3.</span>,  <span class="number">1.</span>,  <span class="number">2.</span>],</span><br><span class="line">              [ <span class="number">0.</span>,  <span class="number">1.</span>, <span class="number">-1.</span>]])</span><br><span class="line"><span class="comment"># 将数据进行 [0,1] 规范化</span></span><br><span class="line">min_max_scaler = preprocessing.MinMaxScaler() <span class="comment"># 获得一个转换器对象</span></span><br><span class="line">minmax_x = min_max_scaler.fit_transform(x)  <span class="comment"># 使用转换器的方法进行转换</span></span><br><span class="line"><span class="keyword">print</span> minmax_x</span><br></pre></td></tr></table></figure>
+<h2 id="Z-Score-规范化"><a href="#Z-Score-规范化" class="headerlink" title="Z-Score 规范化"></a>Z-Score 规范化</h2><p>假设 A 与 B 的考试成绩都为 80 分，A 的考卷满分是 100 分（及格 60 分），B 的考卷满分是 500 分（及格 300 分）。虽然两个人都考了 80 分，但是 A 的 80 分与 B 的 80 分代表完全不同的含义。</p>
+<p>那么如何用相同的标准来比较 A 与 B 的成绩呢？Z-Score 就是用来可以解决这一问题的。</p>
+<p>我们定义：<strong>新数值 =（原数值 - 均值）/ 标准差。</strong> 这一方法其实就是把数据规范化成一个标准的正态分布。</p>
+<p>假设 A 所在的班级平均分为 80，标准差为 10。B 所在的班级平均分为 400，标准差为 100。那么 A 的新数值 =(80-80)/10=0，B 的新数值 =(80-400)/100=-3.2。</p>
+<p>那么在 Z-Score 标准下，A 的成绩会比 B 的成绩好。</p>
+<p>我们能看到 Z-Score 的优点是算法简单，不受数据量级影响，结果易于比较。不足在于，它需要数据整体的平均值和方差，而且结果没有实际意义，只是用于比较。</p>
+<p>在python中使用如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn <span class="keyword">import</span> preprocessing</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># 初始化数据</span></span><br><span class="line">x = np.array([[ <span class="number">0.</span>, <span class="number">-3.</span>,  <span class="number">1.</span>],</span><br><span class="line">              [ <span class="number">3.</span>,  <span class="number">1.</span>,  <span class="number">2.</span>],</span><br><span class="line">              [ <span class="number">0.</span>,  <span class="number">1.</span>, <span class="number">-1.</span>]])</span><br><span class="line"><span class="comment"># 将数据进行 Z-Score 规范化</span></span><br><span class="line">scaled_x = preprocessing.scale(x) <span class="comment"># 直接调用 scale方法</span></span><br><span class="line"><span class="keyword">print</span> scaled_x</span><br></pre></td></tr></table></figure>
+<h2 id="小数定标规范化"><a href="#小数定标规范化" class="headerlink" title="小数定标规范化"></a>小数定标规范化</h2><p>小数定标规范化就是通过移动小数点的位置来进行规范化。小数点移动多少位取决于属性 A 的取值中的最大绝对值。</p>
+<p>举个例子，比如属性 A 的取值范围是 -999 到 88，那么最大绝对值为 999，小数点就会移动 3 位，即新数值 = 原数值 /1000。那么 A 的取值范围就被规范化为 -0.999 到 0.088。</p>
+<p>在python中使用如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># coding:utf-8</span></span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="comment"># 初始化数据</span></span><br><span class="line">x = np.array([[ <span class="number">0.</span>, <span class="number">-3.</span>,  <span class="number">1.</span>],</span><br><span class="line">              [ <span class="number">3.</span>,  <span class="number">1.</span>,  <span class="number">2.</span>],</span><br><span class="line">              [ <span class="number">0.</span>,  <span class="number">1.</span>, <span class="number">-1.</span>]])</span><br><span class="line"><span class="comment"># 小数定标规范化</span></span><br><span class="line">j = np.ceil(np.log10(np.max(abs(x)))) <span class="comment"># 获取小数点移动位数</span></span><br><span class="line">scaled_x = x/(<span class="number">10</span>**j)</span><br><span class="line"><span class="keyword">print</span> scaled_x</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-02-23T19:49:33.646Z" itemprop="dateUpdated">2019-02-24 03:49:33</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/02/24/常用的三种数据规范化的方法法/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/02/24/常用的三种数据规范化的方法法/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据分析/">数据分析</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/02/24/常用的三种数据规范化的方法法/&title=《常用的三种数据规范化的方法及python实现》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/02/24/常用的三种数据规范化的方法法/&title=《常用的三种数据规范化的方法及python实现》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/02/24/常用的三种数据规范化的方法法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《常用的三种数据规范化的方法及python实现》 — KnowMyself&url=https://joshuaqyh.github.io/2019/02/24/常用的三种数据规范化的方法法/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/02/24/常用的三种数据规范化的方法法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/02/24/机器学习-kmeans-聚类/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">机器学习 | K-means 聚类算法</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/02/24/常用的三种数据规范化的方法法/&title=《常用的三种数据规范化的方法及python实现》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/02/24/常用的三种数据规范化的方法法/&title=《常用的三种数据规范化的方法及python实现》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/02/24/常用的三种数据规范化的方法法/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《常用的三种数据规范化的方法及python实现》 — KnowMyself&url=https://joshuaqyh.github.io/2019/02/24/常用的三种数据规范化的方法法/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/02/24/常用的三种数据规范化的方法法/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACvUlEQVR42u3aQW7jMBAEwPz/01lgT7nI7p4hnV2gdDIcSWQxAEk35+srvr7/Xj8///wmuefpm9dtJd8fuPDw8PBGXX+6nl799NfXz77u4mvYUytPfcbDw8O7zUsWg6dXJ7NxC9i8Bw8PD+/f4SXTentPDsPDw8P7H3kJo92UJ2/Lt+Z4eHh4n+QlE3EepCbdauPg61kLHh4eXsw7293PfL5+voeHh4c3OlXfTL6bQPb70IWHh4d3gzfbLs82vpuCrSQIjpYHPDw8vEO8tov7N8zC2SSSKMJcPDw8vDUvOkyKN83JnXmJwKZsCw8PD+8GL5m420gin+Lz6b4dRDw8PLwbvBsR7Wzg9kvOmwAXDw8P7xCvPbJqG2h5eYCbH7Dh4eHh3eDljDyKzReAdhDrSAIPDw/vKG8Tm24m7jyETZaix/vx8PDwPs7Lp/s29j0VBL8B4+Hh4V3g5YVNpwqw8sVmVgERFRDg4eHhLXj5gX27BZ8tIcnSUge4eHh4eEd57TZ6H622bc2O3PDw8PBu89oCrLyjbdyQb9nr0is8PDy8Q7wkdEi6OLunXVqGiwEeHh7eZV5bKDAbrHazPmsRDw8P7wavDWrzaKAtQZhFGPVChYeHh7fmnQ1tTz27GcTofA8PDw9vwWtfkW9kZxP6rHirSKnx8PDwLvDyze4sYM2LqGYLxlf+UwIPDw9vwduUAuSYWYttK4+/G/Dw8PAu8GaxQr4pb8PZTelVnYXg4eHhxbzv8rqxOd60+Obfg4eHh3eBN5t2Z6HDPro9FRnj4eHh7Xl5sVQyBHvMbGGIjr7w8PDwjvLyg672OKp9tt0W1zEuHh4e3i/xZlN/cjA2e+ewW3h4eHiXebMutoFFcsyWlyng4eHh3eO1pVdtZJBvtQ+XGuDh4eF9roopmtY3z+blCPlgDZF4eHh4Ke8PdF67YPHTtSQAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
