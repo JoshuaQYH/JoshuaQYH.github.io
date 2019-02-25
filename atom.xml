@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://joshuaqyh.github.io/"/>
-  <updated>2019-02-23T23:36:02.921Z</updated>
+  <updated>2019-02-25T18:06:36.480Z</updated>
   <id>https://joshuaqyh.github.io/</id>
   
   <author>
@@ -15,6 +15,62 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>机器学习 | 线性模型-手写推导和求解</title>
+    <link href="https://joshuaqyh.github.io/2019/02/26/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E6%80%A7%E6%A8%A1%E5%9E%8B-%E6%89%8B%E5%86%99%E6%8E%A8%E5%AF%BC%E5%92%8C%E6%B1%82%E8%A7%A3/"/>
+    <id>https://joshuaqyh.github.io/2019/02/26/机器学习-线性模型-手写推导和求解/</id>
+    <published>2019-02-25T18:02:44.000Z</published>
+    <updated>2019-02-25T18:06:36.480Z</updated>
+    
+    <content type="html"><![CDATA[<p>写的好草啊，虽然这个有点简单，但如果涉及到对数回归就会相对麻烦一点了，这次就先这样，下次要更加规范一点：</p><ol><li>字体不要太草</li><li>公式符号要特别标明</li></ol><p>下面是简单记录模型的含义，以及如何利用梯度下降法来求解最小二乘法的问题。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190226020318.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190226020337.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;写的好草啊，虽然这个有点简单，但如果涉及到对数回归就会相对麻烦一点了，这次就先这样，下次要更加规范一点：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;字体不要太草&lt;/li&gt;
+&lt;li&gt;公式符号要特别标明&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;下面是简单记录模型的含义，以及如何利用梯度下降法来求解最小二乘
+      
+    
+    </summary>
+    
+    
+      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器学习 |  思考篇</title>
+    <link href="https://joshuaqyh.github.io/2019/02/25/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%80%9D%E8%80%83%E7%AF%87/"/>
+    <id>https://joshuaqyh.github.io/2019/02/25/机器学习-思考篇/</id>
+    <published>2019-02-25T15:53:56.000Z</published>
+    <updated>2019-02-25T18:12:33.544Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="机器学习的局限在哪里"><a href="#机器学习的局限在哪里" class="headerlink" title="机器学习的局限在哪里"></a>机器学习的局限在哪里</h1><ul><li>缺乏可解释性</li><li>假设数据分布一致</li><li>需要大量数据</li><li>难以进行知识推理，只能基于统计归纳</li></ul><h1 id="机器学习未来的发展方向在哪里"><a href="#机器学习未来的发展方向在哪里" class="headerlink" title="机器学习未来的发展方向在哪里"></a>机器学习未来的发展方向在哪里</h1><ul><li>提升可解释性，脱离黑盒模型</li><li>自解释和自推理</li><li>防止对抗攻击</li><li>神经网络压缩</li><li>强化学习</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;机器学习的局限在哪里&quot;&gt;&lt;a href=&quot;#机器学习的局限在哪里&quot; class=&quot;headerlink&quot; title=&quot;机器学习的局限在哪里&quot;&gt;&lt;/a&gt;机器学习的局限在哪里&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;缺乏可解释性&lt;/li&gt;
+&lt;li&gt;假设数据分布一致&lt;/li&gt;
+&lt;l
+      
+    
+    </summary>
+    
+    
+      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>机器学习 | EM聚类算法</title>

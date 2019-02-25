@@ -14,28 +14,28 @@
     
     
     
-    <title>语法制导翻译法 | KnowMyself | QiuYH&#39;s Blog</title>
+    <title>机器学习 | 线性模型-手写推导和求解 | KnowMyself | QiuYH&#39;s Blog</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="编译原理">
-    <meta name="description" content="SDTS基本概念$语法制导翻译法SDTS = 一个源语言 + 一个目标语言 + 一组翻译规则$ SDTS的翻译规则是文法中的产生式再加上语义动作。 SDTS其形式定义T如下： $$T = (V_T, V_N, \delta, R, S)$$  $V_T$ 是一个有穷的输入字母表，包含源语言中的符号。 $V_N$ 是一个有穷的非终结符号集合。 $\delta$ 是一个有穷的输出字母表，包含出现翻译串">
-<meta name="keywords" content="编译原理">
+    <meta name="keywords" content="机器学习,数据挖掘">
+    <meta name="description" content="写的好草啊，虽然这个有点简单，但如果涉及到对数回归就会相对麻烦一点了，这次就先这样，下次要更加规范一点：  字体不要太草 公式符号要特别标明  下面是简单记录模型的含义，以及如何利用梯度下降法来求解最小二乘法的问题。">
+<meta name="keywords" content="机器学习,数据挖掘">
 <meta property="og:type" content="article">
-<meta property="og:title" content="语法制导翻译法">
-<meta property="og:url" content="https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/index.html">
+<meta property="og:title" content="机器学习 | 线性模型-手写推导和求解">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/02/26/机器学习-线性模型-手写推导和求解/index.html">
 <meta property="og:site_name" content="KnowMyself">
-<meta property="og:description" content="SDTS基本概念$语法制导翻译法SDTS = 一个源语言 + 一个目标语言 + 一组翻译规则$ SDTS的翻译规则是文法中的产生式再加上语义动作。 SDTS其形式定义T如下： $$T = (V_T, V_N, \delta, R, S)$$  $V_T$ 是一个有穷的输入字母表，包含源语言中的符号。 $V_N$ 是一个有穷的非终结符号集合。 $\delta$ 是一个有穷的输出字母表，包含出现翻译串">
+<meta property="og:description" content="写的好草啊，虽然这个有点简单，但如果涉及到对数回归就会相对麻烦一点了，这次就先这样，下次要更加规范一点：  字体不要太草 公式符号要特别标明  下面是简单记录模型的含义，以及如何利用梯度下降法来求解最小二乘法的问题。">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181211113425.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181211113456.png">
-<meta property="og:updated_time" content="2018-12-11T03:38:29.687Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190226020318.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190226020337.png">
+<meta property="og:updated_time" content="2019-02-25T18:06:36.480Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="语法制导翻译法">
-<meta name="twitter:description" content="SDTS基本概念$语法制导翻译法SDTS = 一个源语言 + 一个目标语言 + 一组翻译规则$ SDTS的翻译规则是文法中的产生式再加上语义动作。 SDTS其形式定义T如下： $$T = (V_T, V_N, \delta, R, S)$$  $V_T$ 是一个有穷的输入字母表，包含源语言中的符号。 $V_N$ 是一个有穷的非终结符号集合。 $\delta$ 是一个有穷的输出字母表，包含出现翻译串">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181211113425.png">
+<meta name="twitter:title" content="机器学习 | 线性模型-手写推导和求解">
+<meta name="twitter:description" content="写的好草啊，虽然这个有点简单，但如果涉及到对数回归就会相对麻烦一点了，这次就先这样，下次要更加规范一点：  字体不要太草 公式符号要特别标明  下面是简单记录模型的含义，以及如何利用梯度下降法来求解最小二乘法的问题。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190226020318.png">
     
         <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
     
@@ -116,7 +116,7 @@
         <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
           <i class="icon icon-lg icon-navicon"></i>
         </a>
-        <div class="flex-col header-title ellipsis">语法制导翻译法</div>
+        <div class="flex-col header-title ellipsis">机器学习 | 线性模型-手写推导和求解</div>
         
         <div class="search-wrap" id="search-wrap">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
@@ -138,11 +138,11 @@
 <header class="content-header post-header">
 
     <div class="container fade-scale">
-        <h1 class="title">语法制导翻译法</h1>
+        <h1 class="title">机器学习 | 线性模型-手写推导和求解</h1>
         <h5 class="subtitle">
             
-                <time datetime="2018-12-11T02:04:36.000Z" itemprop="datePublished" class="page-time">
-  2018-12-11
+                <time datetime="2019-02-25T18:02:44.000Z" itemprop="datePublished" class="page-time">
+  2019-02-26
 </time>
 
 
@@ -158,20 +158,13 @@
 
 <div class="container body-wrap">
     
-    <aside class="post-widget">
-        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
-            <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SDTS基本概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">SDTS基本概念</span></a></li></ol>
-        </nav>
-    </aside>
 
-
-<article id="post-语法制导翻译法" class="post-article article-type-post fade" itemprop="blogPost">
+<article id="post-机器学习-线性模型-手写推导和求解" class="post-article article-type-post fade" itemprop="blogPost">
 
     <div class="post-card">
-        <h1 class="post-card-title">语法制导翻译法</h1>
+        <h1 class="post-card-title">机器学习 | 线性模型-手写推导和求解</h1>
         <div class="post-meta">
-            <time class="post-time" title="2018-12-11 10:04:36" datetime="2018-12-11T02:04:36.000Z" itemprop="datePublished">2018-12-11</time>
+            <time class="post-time" title="2019-02-26 02:02:44" datetime="2019-02-25T18:02:44.000Z" itemprop="datePublished">2019-02-26</time>
 
             
 
@@ -184,52 +177,26 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            <h1 id="SDTS基本概念"><a href="#SDTS基本概念" class="headerlink" title="SDTS基本概念"></a>SDTS基本概念</h1><p>$语法制导翻译法SDTS = 一个源语言 + 一个目标语言 + 一组翻译规则$</p>
-<p>SDTS的翻译规则是文法中的产生式再加上语义动作。</p>
-<p>SDTS其形式定义T如下：</p>
-<p>$$T = (V_T, V_N, \delta, R, S)$$</p>
-<ul>
-<li>$V_T$ 是一个有穷的输入字母表，包含源语言中的符号。</li>
-<li>$V_N$ 是一个有穷的非终结符号集合。</li>
-<li>$\delta$ 是一个有穷的输出字母表，包含出现翻译串或输出串中的那些符号。</li>
-<li>$R$是形如$A\rightarrow w,y$的规则的有穷集合。</li>
-<li>$S ∈ V_N$是一个开始符号。</li>
-</ul>
-<hr>
-<blockquote>
-<p>解释R中$A\rightarrow w, y$ 。</p>
-</blockquote>
-<p>w 是终结符和（或）非终结符组成的串； y是由$V_N$和（或）$\delta$中符号组成的串。</p>
-<p>w 为规则的源成分；y为规则的翻译成分，出现在w，y中的非终结符必须是一一对应的。</p>
-<hr>
-<blockquote>
-<p>T的基础源文法</p>
-</blockquote>
-<p> SDTS的基础源文法是一个CFG(上下文无关文法context-free-grammar）：$(V_N, V_T, P,S)$ </p>
-<p>$P $是形如$A\rightarrow w（w$ 为源程序成分 )的产生式的集合。</p>
-<p>从T中<strong>去掉输出字母表$\delta$ ，再从T的规则中移走翻译成分y,就可以得到T的基础源文法。</strong></p>
-<hr>
-<blockquote>
-<p>T 的基础目标文法</p>
-</blockquote>
-<p>类似地，从T中去掉字母表$V_T$ 并从T的规则中移去源成分。</p>
-<p>CFG：$(V_N, P, \delta, S)$。</p>
-<p>P是形如$A \rightarrow y$(y为目标成分)产生式的集合。</p>
+            <p>写的好草啊，虽然这个有点简单，但如果涉及到对数回归就会相对麻烦一点了，这次就先这样，下次要更加规范一点：</p>
+<ol>
+<li>字体不要太草</li>
+<li>公式符号要特别标明</li>
+</ol>
+<p>下面是简单记录模型的含义，以及如何利用梯度下降法来求解最小二乘法的问题。</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181211113425.png" alt="" title="">
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190226020318.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure>
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20181211113456.png" alt="" title="">
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190226020337.png" alt="" title="">
                 </div>
                 <div class="image-caption"></div>
             </figure>
-<hr>
 
         </div>
 
@@ -238,12 +205,12 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2018-12-11T03:38:29.687Z" itemprop="dateUpdated">2018-12-11 11:38:29</time>
+    最終更新：<time datetime="2019-02-25T18:06:36.480Z" itemprop="dateUpdated">2019-02-26 02:06:36</time>
 </span><br>
 
 
         
-        Thanks for your reading  :) | URL <a href="/2018/12/11/语法制导翻译法/" target="_blank" rel="external">https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/</a>
+        Thanks for your reading  :) | URL <a href="/2019/02/26/机器学习-线性模型-手写推导和求解/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/02/26/机器学习-线性模型-手写推导和求解/</a>
         
     </div>
     
@@ -260,7 +227,7 @@
 
         <div class="post-footer">
             
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/编译原理/">编译原理</a></li></ul>
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
 
 
             
@@ -270,7 +237,7 @@
 <div class="page-share" id="pageShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/&title=《语法制导翻译法》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/02/26/机器学习-线性模型-手写推导和求解/&title=《机器学习 | 线性模型-手写推导和求解》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -280,22 +247,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/&title=《语法制导翻译法》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/02/26/机器学习-线性模型-手写推导和求解/&title=《机器学习 | 线性模型-手写推导和求解》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/02/26/机器学习-线性模型-手写推导和求解/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《语法制导翻译法》 — KnowMyself&url=https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《机器学习 | 线性模型-手写推导和求解》 — KnowMyself&url=https://joshuaqyh.github.io/2019/02/26/机器学习-线性模型-手写推导和求解/&via=https://joshuaqyh.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/02/26/机器学习-线性模型-手写推导和求解/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -315,21 +282,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between">
-  
-    <div class="waves-block waves-effect prev">
-      <a href="/2018/12/11/DApp学习之路/" id="post-prev" class="post-nav-link">
-        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
-        <h4 class="title">基于以太坊的DApp学习开发之路</h4>
-      </a>
-    </div>
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
   
 
   
     <div class="waves-block waves-effect next">
-      <a href="/2018/12/10/样例学习/" id="post-next" class="post-nav-link">
+      <a href="/2019/02/25/机器学习-思考篇/" id="post-next" class="post-nav-link">
         <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
-        <h4 class="title">样例学习</h4>
+        <h4 class="title">机器学习 |  思考篇</h4>
       </a>
     </div>
   
@@ -400,7 +360,7 @@
 <div class="global-share" id="globalShare">
     <ul class="reset share-icons">
       <li>
-        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/&title=《语法制导翻译法》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/02/26/机器学习-线性模型-手写推导和求解/&title=《机器学习 | 线性模型-手写推导和求解》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
           <i class="icon icon-weibo"></i>
         </a>
       </li>
@@ -410,22 +370,22 @@
         </a>
       </li>
       <li>
-        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/&title=《语法制导翻译法》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/02/26/机器学习-线性模型-手写推导和求解/&title=《机器学习 | 线性模型-手写推导和求解》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
           <i class="icon icon-qq"></i>
         </a>
       </li>
       <li>
-        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/" data-title=" Facebook">
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/02/26/机器学习-线性模型-手写推导和求解/" data-title=" Facebook">
           <i class="icon icon-facebook"></i>
         </a>
       </li>
       <li>
-        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《语法制导翻译法》 — KnowMyself&url=https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《机器学习 | 线性模型-手写推导和求解》 — KnowMyself&url=https://joshuaqyh.github.io/2019/02/26/机器学习-线性模型-手写推导和求解/&via=https://joshuaqyh.github.io" data-title=" Twitter">
           <i class="icon icon-twitter"></i>
         </a>
       </li>
       <li>
-        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2018/12/11/语法制导翻译法/" data-title=" Google+">
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/02/26/机器学习-线性模型-手写推导和求解/" data-title=" Google+">
           <i class="icon icon-google-plus"></i>
         </a>
       </li>
@@ -436,7 +396,7 @@
 <div class="page-modal wx-share" id="wxShare">
     <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
-    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACJElEQVR42u3aS1LDMBAFQO5/6XCAlM17I4eqSO1VioCs1mLQfH5+4uf19rx/+/45WS35+WMPBgbG1zJet8/95hLePftqzXxvGBgY5zDa5XLM/e+sHB8GBgZGHviuXpxfKNuLJgYGBsb9cm1wvPr2fn0MDAyMWRK7Um7LE92P5+IYGBhfyMir7v//+SP9DQwMjK9ivEbPrOjfFuOK/WBgYGzNaINgm7Lmqe/s4DAwME5gzIpos83V5bMgHNcbwsDA2IjRprWzQbG2hFf8x8DAwNiIkV/pnh3teqpJgIGBcQ7jqbCbbKIdvyjWxMDA2JSRL71e1csvi+1hYWBgnMxIwm4Oy5ud9cgFBgbGkYw2CLZ/m4+dRU1WDAyMYxhPAfJLZzsudhnEMTAwDmDkC82Guur6X9kWxcDA2JuRNzI/ndauHAEGBsYJjFmjsW0PfGJE449OLAYGxqaMdvRhlsrmYxbFTjAwMDZlPJVezspks7cUuTgGBsYWjKQ0X5fpl+tgybcYGBjnMNbLZ4+dZTmKcdmJxcDA2I4xi1f51bDd4izcY2Bg7M2YDUnk4XUWiOvAjYGBsTWjvZzl5bmktZk0TWdFQAwMjP0Y+RhW/sqVnupsOAMDA+MERt44bBPXpD253lTAwMDAaFPKPMi2AfePqyEGBsbxjJVUsz2Ux0YuMDAwNmKsBMGVOt8sMb7sxGJgYGzKmA1mtZvOR8pm4x0YGBibMn4BvRCEmhrshdoAAAAASUVORK5CYII=" alt="微信分享二维码">
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADNklEQVR42u3aS24jMQwFQN//0h5gdgNPtx/JTuCmS6sAcSSVvGD4eTzi9fy7Xn9+/czRb18/87qOzjr65Pl9LljY2NjYN2HnVzm/3NFu5zscMc55ySnnj4WNjY29j50ErcmjTJB5QE0s2NjY2N/MHh0Tn5iHvfPnxsbGxsauJh5Hu+VPloS3PCnCxsbG/jb2VYHhvEmQtBAm4fBHamnY2NjYH8+eNHo/7edf6m9jY2Njfwz7WVzJDvlZeWJTHeh5o8DGxsZexM4vlKQf8/btpAGQ7Fb+HrCxsbE/nj0JXdWr56RJOIwSFWxsbOx17EnZvTdqk5yStHubTWhsbGzsRex8yGbCSB6iHIRaqQs2Njb2PnaOiUJCPJST7JAXts7vgI2NjY09Lzn1ws+kMVzoh2BjY2PfnJ03bqvJw1WFqmrbOAnA2NjY2JvY1dJ8cq1eK7c6ypOH4TddEWxsbOxF7GoDtfook5JQLyE5DLfY2NjYi9jVsk4veEwauvm51cQJGxsbexO7Wk56xGvSjq2mK9XEBhsbG3sTO/+3fh7wqsX9SVh987VhY2NjL2LnTdwk5FSbu3lLoPooUTDDxsbGvjm7WpqvHp+Xh3ojm83hHmxsbOyl7J9rzeapQjUs5S0HbGxs7K3s6rBO74p5aMmTnCTliPDY2NjYN2fPeVVAnmbkKUq5vIWNjY29jp1folcAqo7+5C2KvP3wnwwMGxsbewW7x8uPT0jVFKj3VTVHdrCxsbFvy84LN70d5g/Xe8rRpbGxsbE/mJ2EhGppvjdMkycS1cfFxsbG3s1OUoJJ4eaCgn5xt0e+sLGxsW/O7pVpqkf2Upo8vJWDJTY2NvZqdjUNSEJactG8YJQ/1qELGxsbexF7vtG15adJQjIPnNjY2Nh3ZD+Lq5o2VJ+yWpzK9/nnb7GxsbEXsXvNg2pa0gs2eQjsjXJiY2Njb2LnpaVkvLJa1uk1HqqBEBsbG/sb2HmaUW2sVp8mHxsaBWBsbGzsr2RPAtIk2FRPjBInbGxs7C9mT4ZpJjtfFQ6xsbGxt7J7RaVqWlJNG5LHHU0kYWNjY69g965SJSVXb4aiwc2xsbGxb87+A3HZAl28KDDSAAAAAElFTkSuQmCC" alt="微信分享二维码">
 </div>
 
 
