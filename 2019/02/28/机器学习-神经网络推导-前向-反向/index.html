@@ -43,7 +43,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190228112544.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190228112615.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190228112647.png">
-<meta property="og:updated_time" content="2019-02-28T03:30:24.075Z">
+<meta property="og:updated_time" content="2019-02-28T05:03:23.861Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习 | 神经网络推导-前向&amp;反向">
 <meta name="twitter:description" content="以下BP神经网络推导过程是来自于NTU的李宏毅老师的ML课程。过程相当易懂，很好理解。为避免忘记，在此记录一下。视频推导链接如下（需要fq）: https://www.youtube.com/watch?v=ibJpTrp5mcE">
@@ -134,7 +134,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -173,8 +173,8 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#求解核心思路"><span class="post-toc-number">1.</span> <span class="post-toc-text">求解核心思路</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#反向推导"><span class="post-toc-number">2.</span> <span class="post-toc-text">反向推导</span></a></li></ol><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总结"><span class="post-toc-number"></span> <span class="post-toc-text">总结</span></a>
-        </li></nav>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前导知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">前导知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#求解核心思路"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">求解核心思路</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#反向推导"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">反向推导</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总结"><span class="post-toc-number">2.</span> <span class="post-toc-text">总结</span></a></li></ol>
+        </nav>
     </aside>
 
 
@@ -207,6 +207,11 @@
                 </div>
                 <div class="image-caption">局部网络图</div>
             </figure>
+<h1 id="前导知识"><a href="#前导知识" class="headerlink" title="前导知识"></a>前导知识</h1><p>我们必须了解到的就是BP神经网络本质就是一个多层级联神经元和对应连接权重和偏置构成的函数，我们输入该函数，然后得到函数值就是模型的输出结果。</p>
+<p>该函数具备有权重参数和偏置参数，我们需要通过输入训练数据和标签来拟合得到一组权重参数和偏置参数。拟合的方式近似于最小二乘法，我们可以得到BP神经网络的损失函数。如下：</p>
+<p>给定训练集标签向量$O_t$和训练结果$R_t$, 我们将其训练误差$L$表示为:</p>
+<p>$$L = \frac{1}{2} \sum_{t∈T}{(O_t - R_t)}^2 \tag{1}$$</p>
+<p>其实也就是所有模型输出实例的预测结果减去标签真实结果的平方和的一半。<strong>我们将训练误差函数定义为一个BP神经网络模型的损失函数，我们的目标就是最小化该损失函数</strong>。求解思路看下。</p>
 <h2 id="求解核心思路"><a href="#求解核心思路" class="headerlink" title="求解核心思路"></a>求解核心思路</h2><p>BP神经网络参数（权重+bias）和损失函数L($\theta$)已知，利用梯度下降法和链式法则可进行推导。</p>
 <ol>
 <li>首先梯度下降法核心思想不变，我们需要重点关注梯度函数。</li>
@@ -314,7 +319,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2019-02-28T03:30:24.075Z" itemprop="dateUpdated">2019-02-28 11:30:24</time>
+    Last updated: <time datetime="2019-02-28T05:03:23.861Z" itemprop="dateUpdated">2019-02-28 13:03:23</time>
 </span><br>
 
 
@@ -447,7 +452,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
