@@ -43,7 +43,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190228112544.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190228112615.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/20190228112647.png">
-<meta property="og:updated_time" content="2019-02-28T05:03:23.861Z">
+<meta property="og:updated_time" content="2019-02-28T05:27:32.007Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习 | 神经网络推导-前向&amp;反向">
 <meta name="twitter:description" content="以下BP神经网络推导过程是来自于NTU的李宏毅老师的ML课程。过程相当易懂，很好理解。为避免忘记，在此记录一下。视频推导链接如下（需要fq）: https://www.youtube.com/watch?v=ibJpTrp5mcE">
@@ -173,7 +173,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前导知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">前导知识</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#求解核心思路"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">求解核心思路</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#反向推导"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">反向推导</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总结"><span class="post-toc-number">2.</span> <span class="post-toc-text">总结</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#前导知识"><span class="post-toc-number">1.</span> <span class="post-toc-text">前导知识</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#求解核心思路"><span class="post-toc-number">2.</span> <span class="post-toc-text">求解核心思路</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#反向推导"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">反向推导</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#总结"><span class="post-toc-number">3.</span> <span class="post-toc-text">总结</span></a></li></ol>
         </nav>
     </aside>
 
@@ -212,7 +212,7 @@
 <p>给定训练集标签向量$O_t$和训练结果$R_t$, 我们将其训练误差$L$表示为:</p>
 <p>$$L = \frac{1}{2} \sum_{t∈T}{(O_t - R_t)}^2 \tag{1}$$</p>
 <p>其实也就是所有模型输出实例的预测结果减去标签真实结果的平方和的一半。<strong>我们将训练误差函数定义为一个BP神经网络模型的损失函数，我们的目标就是最小化该损失函数</strong>。求解思路看下。</p>
-<h2 id="求解核心思路"><a href="#求解核心思路" class="headerlink" title="求解核心思路"></a>求解核心思路</h2><p>BP神经网络参数（权重+bias）和损失函数L($\theta$)已知，利用梯度下降法和链式法则可进行推导。</p>
+<h1 id="求解核心思路"><a href="#求解核心思路" class="headerlink" title="求解核心思路"></a>求解核心思路</h1><p>BP神经网络参数（权重+bias）和损失函数L($\theta$)已知，利用梯度下降法和链式法则可进行推导。</p>
 <ol>
 <li>首先梯度下降法核心思想不变，我们需要重点关注梯度函数。</li>
 </ol>
@@ -319,7 +319,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-02-28T05:03:23.861Z" itemprop="dateUpdated">2019-02-28 13:03:23</time>
+    Last updated: <time datetime="2019-02-28T05:27:32.007Z" itemprop="dateUpdated">2019-02-28 13:27:32</time>
 </span><br>
 
 
@@ -396,7 +396,14 @@
     </div>
 
     
-<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/03/01/软件工程核心概念/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">软件工程核心概念</h4>
+      </a>
+    </div>
   
 
   
