@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>机器学习 | PageRank 算法和简单应用 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="机器学习,数据分析,数据挖掘">
+    <meta name="description" content="PageRank 算法原理PageRank 算法是一种简单有效且流行的网页排序算法，它通过一个网页的所有入链数目来计算该网页的重要性（PageRank 值，简称 PR），其思想类似于一篇论文被引用的次数越大，该论文的影响力越大。 以下给出一个简单的例子，一个个网页就是互联网中的一个个节点，这些网页之间相互引用，构成一个有向图。">
+<meta name="keywords" content="机器学习,数据分析,数据挖掘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习 | PageRank 算法和简单应用">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/03/05/机器学习-PageRank-算法和简单应用/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="PageRank 算法原理PageRank 算法是一种简单有效且流行的网页排序算法，它通过一个网页的所有入链数目来计算该网页的重要性（PageRank 值，简称 PR），其思想类似于一篇论文被引用的次数越大，该论文的影响力越大。 以下给出一个简单的例子，一个个网页就是互联网中的一个个节点，这些网页之间相互引用，构成一个有向图。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/81/36/814d53ff8d73113631482e71b7c53636.png">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/20/d4/204b0934f166d6945a90185aa2c95dd4.png">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/a8/b8/a8eb12b5242e082b5d2281300c326bb8.png">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/fc/8c/fcbcdd8e96384f855b4f7c842627ff8c.png">
+<meta property="og:image" content="https://static001.geekbang.org/resource/image/5f/8f/5f40c980c2f728f12159058ea19a4d8f.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190305182416.png">
+<meta property="og:updated_time" content="2019-03-05T10:25:28.463Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习 | PageRank 算法和简单应用">
+<meta name="twitter:description" content="PageRank 算法原理PageRank 算法是一种简单有效且流行的网页排序算法，它通过一个网页的所有入链数目来计算该网页的重要性（PageRank 值，简称 PR），其思想类似于一篇论文被引用的次数越大，该论文的影响力越大。 以下给出一个简单的例子，一个个网页就是互联网中的一个个节点，这些网页之间相互引用，构成一个有向图。">
+<meta name="twitter:image" content="https://static001.geekbang.org/resource/image/81/36/814d53ff8d73113631482e71b7c53636.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">机器学习 | PageRank 算法和简单应用</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">机器学习 | PageRank 算法和简单应用</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-05T08:20:08.000Z" itemprop="datePublished" class="page-time">
+  2019-03-05
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#PageRank-算法原理"><span class="post-toc-number">1.</span> <span class="post-toc-text">PageRank 算法原理</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#PageRank-算法实践"><span class="post-toc-number">2.</span> <span class="post-toc-text">PageRank  算法实践</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-机器学习-PageRank-算法和简单应用" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">机器学习 | PageRank 算法和简单应用</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-05 16:20:08" datetime="2019-03-05T08:20:08.000Z" itemprop="datePublished">2019-03-05</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="PageRank-算法原理"><a href="#PageRank-算法原理" class="headerlink" title="PageRank 算法原理"></a>PageRank 算法原理</h1><p>PageRank 算法是一种简单有效且流行的网页排序算法，它通过一个网页的所有入链数目来计算该网页的重要性（PageRank 值，简称 PR），其思想类似于一篇论文被引用的次数越大，该论文的影响力越大。</p>
+<p>以下给出一个简单的例子，一个个网页就是互联网中的一个个节点，这些网页之间相互引用，构成一个有向图。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static001.geekbang.org/resource/image/81/36/814d53ff8d73113631482e71b7c53636.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>这里有着和算法相关的两个概念。</p>
+<ul>
+<li>出链：网页链接出去的链接，相当于离散数学的图论中的出度概念；</li>
+<li>入链：链接进来的链接，相当于入度。</li>
+</ul>
+<p>简单来说，一个网页的影响力（PR值） = 该网页所有入链集合的加权影响力之和，用公式表示为：</p>
+<p>$$RP(u) = \sum_{v ∈ B_u} \frac{PR(v)}{L(v)}$$</p>
+<p>其中，u 为待评估的节点网页，$B_u$ 为所有入链到节点u的网页集合，$PR_(v)$ 为入链到u的网页影响力值，而 $L(v)$ 则是网页 v 的出链数目。 以上述图像为例子，已知一个网页出链的数目，可以计算一个网页跳转到另外一个网页的概率，由此 A，B，C，D四个网页的转移矩阵 M</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static001.geekbang.org/resource/image/20/d4/204b0934f166d6945a90185aa2c95dd4.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>假设这四个网页的初始影响力（权重） w 都是一致的，给出如下向量 w0，代表A，B，C，D初始影响力。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static001.geekbang.org/resource/image/a8/b8/a8eb12b5242e082b5d2281300c326bb8.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>经过第一次转移之后，各页面计算结果如下 w1, (矩阵乘法的过程，其实就是PR公式计算了)。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static001.geekbang.org/resource/image/fc/8c/fcbcdd8e96384f855b4f7c842627ff8c.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>由此不断产生迭代，直到第 n 次迭代之后，wn 的影响力不再发生变化，收敛的最终结果就是各网页的最终PR值。</p>
+<p>存在两种特殊情况：</p>
+<p>１.　等级泄露：一个网站如果没有出链，只有入链，那么吸收了其他页面的影响力，但却不释放，最终会导致其他页面的PR值为０；</p>
+<p>２.　等级沉没，如果一个网站只有出链，没有入链，多次迭代，这个网站的影响力PR将会变为０。</p>
+<p>为了解决这两个问题，ＰａｇｅＲａｎｋ有了一个优化模型，称为随机浏览模型。</p>
+<p><strong>随机浏览模型</strong></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://static001.geekbang.org/resource/image/5f/8f/5f40c980c2f728f12159058ea19a4d8f.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>在原来模型的基础上，引入了一个阻尼因子ｄ，这个因子代表用户按照跳转链接来上网的概率，通常取一个固定值，而 1 - d 则代表了用户不是通过跳转链接来访问的网页，比如直接输入网址。其中 N代表比较网页的总数。</p>
+<h1 id="PageRank-算法实践"><a href="#PageRank-算法实践" class="headerlink" title="PageRank  算法实践"></a>PageRank  算法实践</h1><p>首先我们需要了解如何使用 PageRank 算法以及如何用python快速构建一个图。</p>
+<p>这里直接使用工具包，networkx，里面内置了PageRank 计算函数和建图的函数，代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> networkx <span class="keyword">as</span> nx</span><br><span class="line"></span><br><span class="line"><span class="comment"># creat directed graph</span></span><br><span class="line">G = nx.DiGraph()</span><br><span class="line"></span><br><span class="line"><span class="comment"># define the edge relationship</span></span><br><span class="line">edges = [(<span class="string">"a"</span>, <span class="string">"b"</span>), (<span class="string">"a"</span>, <span class="string">"c"</span>), (<span class="string">"a"</span>, <span class="string">"d"</span>), (<span class="string">"b"</span>, <span class="string">"a"</span>), (<span class="string">"b"</span>, <span class="string">"d"</span>), (<span class="string">"c"</span>, <span class="string">"a"</span>), (<span class="string">"d"</span>, <span class="string">"b"</span>), (<span class="string">"d"</span>, <span class="string">"b"</span>)]</span><br><span class="line"></span><br><span class="line"><span class="comment"># add edge</span></span><br><span class="line"><span class="keyword">for</span> edge <span class="keyword">in</span> edges:</span><br><span class="line">    G.add_edge(edge[<span class="number">0</span>], edge[<span class="number">1</span>])</span><br><span class="line"></span><br><span class="line"><span class="comment"># calculate pr value with the pagerank</span></span><br><span class="line">pagerank_list = nx.pagerank(G, alpha = <span class="number">1</span>)</span><br><span class="line"><span class="keyword">print</span> (pagerank_list)</span><br><span class="line"></span><br><span class="line"><span class="comment"># node operations</span></span><br><span class="line">G.add_node(<span class="string">'c'</span>)</span><br><span class="line">G.add_nodes_from([<span class="string">'d'</span>, <span class="string">'e'</span>])</span><br><span class="line">G.remove_node(<span class="string">'d'</span>)</span><br><span class="line">G.remove_nodes_from([<span class="string">'c'</span>, <span class="string">'d'</span>])</span><br><span class="line">print(G.nodes())</span><br><span class="line">print(G.number_of_nodes())</span><br><span class="line"></span><br><span class="line"><span class="comment"># edge operations</span></span><br><span class="line">G.add_edge(<span class="string">'x'</span>, <span class="string">'y'</span>)</span><br><span class="line">print(G.edges())</span><br><span class="line">G.remove_edge(<span class="string">'x'</span>, <span class="string">'y'</span>)</span><br><span class="line">print(G.edges())</span><br><span class="line">print(G.number_of_edges())</span><br></pre></td></tr></table></figure>
+<p>实战项目来自 <a href="https://github.com/cystanford/PageRank/tree/master/input" target="_blank" rel="noopener">Github</a>, 主要是分析 希拉里邮件发送接收的关系网，由此来发现与希拉里关系密切的人。</p>
+<p>代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">import</span> networkx <span class="keyword">as</span> nx</span><br><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">from</span> collections <span class="keyword">import</span> defaultdict</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line">emails = pd.read_csv(<span class="string">"./data/Emails.csv"</span>)</span><br><span class="line"></span><br><span class="line">file = pd.read_csv(<span class="string">"./data/Aliases.csv"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># key: alias  value: personId</span></span><br><span class="line">aliases = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> index, row <span class="keyword">in</span> file.iterrows():</span><br><span class="line">    aliases[row[<span class="string">'Alias'</span>]] = row[<span class="string">'PersonId'</span>]</span><br><span class="line">    </span><br><span class="line">file = pd.read_csv(<span class="string">"./data/Persons.csv"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># key: id  value: name</span></span><br><span class="line">persons = &#123;&#125;</span><br><span class="line"><span class="keyword">for</span> index, row <span class="keyword">in</span> file.iterrows():</span><br><span class="line">    persons[row[<span class="string">'Id'</span>]] = row[<span class="string">'Name'</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># transform the alias name to the same</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">unify_name</span><span class="params">(name)</span>:</span></span><br><span class="line">    name = str(name).lower()</span><br><span class="line">    name = name.replace(<span class="string">','</span>,<span class="string">''</span>).split(<span class="string">"@"</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">if</span> name <span class="keyword">in</span> aliases.keys():</span><br><span class="line">        <span class="keyword">return</span> persons[aliases[name]]</span><br><span class="line">    <span class="keyword">return</span> name</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">draw_graph</span><span class="params">(graph)</span>:</span></span><br><span class="line">    <span class="comment"># graph is a direct graph object</span></span><br><span class="line">    </span><br><span class="line">    <span class="comment"># set spring_layout</span></span><br><span class="line">    positions = nx.spring_layout(graph)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># set the size of the nodes. The PR value is higher, the node is larger.</span></span><br><span class="line">    nodesize = [x[<span class="string">'pagerank'</span>]*<span class="number">20000</span> <span class="keyword">for</span> v, x <span class="keyword">in</span> graph.nodes(data=<span class="keyword">True</span>)]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># set the length of the edges</span></span><br><span class="line">    edgesize = [np.sqrt(e[<span class="number">2</span>][<span class="string">'weight'</span>]) <span class="keyword">for</span> e <span class="keyword">in</span> graph.edges(data = <span class="keyword">True</span>)]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># draw nodes</span></span><br><span class="line">    nx.draw_networkx_nodes(graph, positions, node_size = nodesize, alpha = <span class="number">0.4</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># draw edges</span></span><br><span class="line">    nx.draw_networkx_edges(graph, positions, edge_size = edgesize, alpha = <span class="number">0.6</span>)</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># draw nodes' label</span></span><br><span class="line">    nx.draw_networkx_labels(graph, positions, font_size = <span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">    plt.show()</span><br><span class="line">    </span><br><span class="line"></span><br><span class="line"><span class="comment"># normalize the from and to value.</span></span><br><span class="line"><span class="comment"># the metadataFrom and metadatato is the columns's name</span></span><br><span class="line">emails.MetadataFrom = emails.MetadataFrom.apply(unify_name)</span><br><span class="line">emails.MetadataTo = emails.MetadataTo.apply(unify_name)</span><br><span class="line"></span><br><span class="line"><span class="comment"># set the weight is equal the sending times</span></span><br><span class="line"><span class="comment"># &#123;  (from, to): num &#125;</span></span><br><span class="line">edges_weights_temp = defaultdict(list)  <span class="comment"># the key can be a tuple</span></span><br><span class="line"><span class="keyword">for</span> row <span class="keyword">in</span> zip(emails.MetadataFrom, emails.MetadataTo, emails.RawText):</span><br><span class="line">    temp = (row[<span class="number">0</span>], row[<span class="number">1</span>])</span><br><span class="line">    <span class="keyword">if</span> temp <span class="keyword">not</span> <span class="keyword">in</span> edges_weights_temp:</span><br><span class="line">        edges_weights_temp[temp] = <span class="number">1</span></span><br><span class="line">    <span class="keyword">else</span>: </span><br><span class="line">        edges_weights_temp[temp] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        </span><br><span class="line"><span class="comment"># transfer the format (from, to):value  -&gt; from, to, value</span></span><br><span class="line">edge_weights = [(key[<span class="number">0</span>], key[<span class="number">1</span>], val) <span class="keyword">for</span> key, val <span class="keyword">in</span> edges_weights_temp.items()]</span><br><span class="line"></span><br><span class="line"><span class="comment"># create the direct graph</span></span><br><span class="line">graph = nx.DiGraph()</span><br><span class="line"></span><br><span class="line"><span class="comment"># add weight </span></span><br><span class="line">graph.add_weighted_edges_from(edge_weights)</span><br><span class="line"></span><br><span class="line"><span class="comment"># calculate the pr value of every node</span></span><br><span class="line">pagerank = nx.pagerank(graph)  <span class="comment"># return a dict</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># get the pr of per value</span></span><br><span class="line">pagerank_list = &#123;node: rank <span class="keyword">for</span> node, rank <span class="keyword">in</span> pagerank.items()&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># set the pr value as the attribute of the node</span></span><br><span class="line">nx.set_node_attributes(graph, name = <span class="string">'pagerank'</span>, values=pagerank_list)</span><br><span class="line"></span><br><span class="line"><span class="comment"># draw graph</span></span><br><span class="line">draw_graph(graph)</span><br><span class="line"></span><br><span class="line"><span class="comment"># simplify the graph</span></span><br><span class="line">pagerank_threshold = <span class="number">0.02</span></span><br><span class="line"><span class="comment"># copy a graph</span></span><br><span class="line">small_graph = graph.copy()</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> n, p_rank <span class="keyword">in</span> graph.nodes(data = <span class="keyword">True</span>):</span><br><span class="line">    <span class="keyword">if</span> p_rank[<span class="string">'pagerank'</span>] &lt; pagerank_threshold:</span><br><span class="line">        small_graph.remove_node(n)</span><br><span class="line">draw_graph(small_graph)</span><br></pre></td></tr></table></figure>
+<p>结果如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190305182416.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-03-05T10:25:28.463Z" itemprop="dateUpdated">2019-03-05 18:25:28</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/03/05/机器学习-PageRank-算法和简单应用/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/03/05/机器学习-PageRank-算法和简单应用/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据分析/">数据分析</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/03/05/机器学习-PageRank-算法和简单应用/&title=《机器学习 | PageRank 算法和简单应用》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/03/05/机器学习-PageRank-算法和简单应用/&title=《机器学习 | PageRank 算法和简单应用》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/03/05/机器学习-PageRank-算法和简单应用/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《机器学习 | PageRank 算法和简单应用》 — KnowMyself&url=https://joshuaqyh.github.io/2019/03/05/机器学习-PageRank-算法和简单应用/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/03/05/机器学习-PageRank-算法和简单应用/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/03/阐释原型方法对软件生命周期各阶段的支持/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">阐释原型方法对软件生命周期各阶段的支持</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/03/05/机器学习-PageRank-算法和简单应用/&title=《机器学习 | PageRank 算法和简单应用》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/03/05/机器学习-PageRank-算法和简单应用/&title=《机器学习 | PageRank 算法和简单应用》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/03/05/机器学习-PageRank-算法和简单应用/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《机器学习 | PageRank 算法和简单应用》 — KnowMyself&url=https://joshuaqyh.github.io/2019/03/05/机器学习-PageRank-算法和简单应用/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/03/05/机器学习-PageRank-算法和简单应用/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsUlEQVR42u3aUW7jMAwFwNz/0t0DbO19j7SSLDD+KtRU1qiAyFB8veLn5/b5+5PtSDJ+9dsHHjw8PLwDS78aSWa7R+bvuhq53248PDy8c7z7Y/p+ufdLv5/z/q/yN16O4+Hh4X0Nb5bNJql2vh48PDy8/4WXsJ/6Wzw8PLxv5iXFiDbNnYWE2ZY9UGvBw8PDi3l5cvw9Px+538PDw8Nb36q3oWKWIrdNCcU68fDw8A7w8raA/LKqbTLYjODh4eF9ipdkpLMrrnbmdqF5EMLDw8M7wZsdr5twkgekPNWuCxN4eHh4I95sEfnLZs0BeeD5RzsCHh4e3lt4bStA2xqVz/lA8o2Hh4d36nt9HRLyrdmXiVs8Hh4e3mne7IKqvfJPQsV+/l9G8PDw8A7w8qnzJHjWZLAPV5dz4uHh4T3EO5H45nMmR/+sdQAPDw/vHC9JqTfX/3nD1qZMvKpS4+Hh4S14yYGebETLzufML9Xw8PDw3s9LxmdNBm2pYpbu/5JS4+Hh4b2R1yays1aDdtHFW/Dw8PAO8PJ0tn3yQkayfW0rAx4eHt6neHn7VIJpU+TZ5RkeHh7eOV57NLewTZDYfB4PDw/vHC+5gpodypvC7qaNoO6MwMPDwyt5SaFhVoptQ0WyfXmxGA8PD+8cr/5o8PrZgT4LJ1GYwcPDw3uUlxz3yeV9XnjNSxVtuwAeHh7ee3htu8C+vJu3TOWNC0XFBQ8PD2/N+ymfvCEgDwnt0oskGw8PD+/U9/riNZtjel81yZPyGomHh4dX/rZuY4qv/JPg8VTBN/rP4OHh4T3Ke6pkMGssmF3FFYEBDw8P70O85KJrxpiVOaJgg4eHh/dR3makvuzftwvg4eHhHeY9W0RotynZ9NkW4+Hh4Z3grb7q357A+1DUnvav2YOHh4eX8v4AR/TFOlS0iD4AAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
