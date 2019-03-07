@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://joshuaqyh.github.io/"/>
-  <updated>2019-03-05T10:25:28.463Z</updated>
+  <updated>2019-03-07T18:15:33.049Z</updated>
   <id>https://joshuaqyh.github.io/</id>
   
   <author>
@@ -15,6 +15,45 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>深度学习模型中的优化策略</title>
+    <link href="https://joshuaqyh.github.io/2019/03/08/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5/"/>
+    <id>https://joshuaqyh.github.io/2019/03/08/深度学习核心概念/</id>
+    <published>2019-03-07T16:15:32.000Z</published>
+    <updated>2019-03-07T18:15:33.049Z</updated>
+    
+    <content type="html"><![CDATA[<p>   在深度学习中，我们通常需要优化我们所定义的损失函数，优化的方法思想就是通过梯度下降的方式不断逼近一个局部最优解，更新模型参数然后来保证损失函数预测误差最小。在本文主要综述了几种常见的优化策略，包括梯度下降的策略以及学习率变化的策略。这些策略有一些基本的概念需要重点掌握，这些策略有简单有复杂， 但是依照“没有免费午餐“的定理，在具体情景中，要具体运用比较，没有绝对的最优策略，只有相对的最优策略。</p><p>虽然在实践中我们可以直接调用深度学习框架的API来完成优化，但是要更加深入地理解其原理和过程才是一个优秀的深度学习工程师啊，面试肯定会涉及一些原理概念解释滴。下面就开始总结啦！</p><h1 id="批量梯度下降法-Batch-gradient-descent"><a href="#批量梯度下降法-Batch-gradient-descent" class="headerlink" title="批量梯度下降法 Batch gradient descent"></a>批量梯度下降法 Batch gradient descent</h1><p>批量梯度下降法（也叫确定性梯度算法）指的是在<strong>一个大批量的数据样本中同时处理所有样本</strong>，在更新参数的时候，会同时利用所有样本的梯度变化。公式表达如下：</p><p>$$\theta_{t+1} = \theta_{t} - \eta \bigtriangledown L(\theta_t)  = \theta_t - \frac{\eta}{N} \sum_{n=1}^{N}\bigtriangledown l(y_n, f(x_n; \theta_t))$$  </p><p>从公式上可以看到模型参数$\theta$开始更新的时候，是当计算得到所有样本$x_n$输出预测结果$f(x_n; \theta_t)$后得到损失函数梯度值时，进行模型参数的更新。</p><p>可以看到这整个过程的缺点就是训练慢，处理棘手，而且内存消耗大，但是可以保证找到一个最小的损失函数值。</p><p>伪代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for iter in range(nb_epoches):</span><br><span class="line">params_grad = eval_grad(loss_func, dataset, params)</span><br><span class="line">params = params - learning_rate * params_grad</span><br></pre></td></tr></table></figure><h1 id="随机梯度下降法-Stochastic-gradient-descent"><a href="#随机梯度下降法-Stochastic-gradient-descent" class="headerlink" title="随机梯度下降法 Stochastic gradient descent"></a>随机梯度下降法 Stochastic gradient descent</h1><p>随机梯度下降法简称SGD，与批量梯度下降法相比，随机梯度下降法是在每训练一个样本的时候就进行的函数模型的更新，在每次的训练迭代中，会先随机打乱训练集，然后每抽取一个样本进行训练时，就进行更新。</p><p>公式表达如下：</p><p>$\theta_{t+1} = \theta_t - \eta \bigtriangledown L(\theta_t) = \theta_t - \eta \bigtriangledown l(y_n , f(x_n; \theta_t))$</p><p>显而易见，在处理大数据样本的时候，模型更新速度很快，但是存在收敛震荡的情况，可能会跳出局部最优解，但是也很接近局部最优解。从计算设备的角度来考虑，随机梯度下降无法做到很好的并行计算，没有很好地利用多核架构，每一次更新都得依赖前一个样本的计算。</p><p>伪代码如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for iter in range(epoches):</span><br><span class="line">np.random.shuffle(dataset)</span><br><span class="line">for example in dataset:</span><br><span class="line">param_grad = eval_grad(loss_func, example, params)</span><br><span class="line">params = params - learning_rate * params_grad</span><br></pre></td></tr></table></figure><h1 id="小批量梯度下降-Mini-batch-gradient-descent"><a href="#小批量梯度下降-Mini-batch-gradient-descent" class="headerlink" title="小批量梯度下降 Mini-batch gradient descent"></a>小批量梯度下降 Mini-batch gradient descent</h1><p>小批量梯度下降法，其实就是介于批量下降法和随机梯度下降法之间的优化方法，关键在于每次更新模型参数时，训练样本的大小。我们知道大批量的运算将会使我们的计算设备和内存不堪重负，而随机梯度下降法的中的单样本更新则无法充分使用我们的多核计算架构。我们想要达到的目的就是：<strong>既能有效的保证计算设备的良好充分使用，又能保证较短的训练时间和较好的性能</strong> 。而小批量梯度下降法就是我们比较常用的一种优化方法。</p><p>小批量的大小通常使用以下几个因素决定的：</p><ul><li>更大的批量将计算得到更为精确的梯度估计，但是回报却是小于线性的。</li><li>极小批量将无法充分利用多核架构，这促使我们给批量设定一个最小阈值。</li><li>如果批量处理中所有样本可以并行地处理，那么内存消耗和批量大小将会呈正比，所有批量有一个上限。</li></ul><p>小批量随机梯度下降法用数学公式表达如下：</p><p>$$\theta_{t+1} = \theta_{t} - \eta\bigtriangledown L(\theta_t) = \theta_t - \frac{\eta}{S} \sum_{(x_n, y_n) ∈S} \bigtriangledown l(y_n, f(x_n; \theta_t))$$</p><p>S 代表批量的大小，通常为10~300之间。</p><p>整个过程如下：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">for i in range(nb_epochs):</span><br><span class="line">np.random.shuffle(dataset)</span><br><span class="line">for batch in get_batches(dataset, batch_size = 64):</span><br><span class="line">params_grad = eval_grad(loss_func, batch, params)</span><br><span class="line">params = params - learning_rate * params_grad</span><br></pre></td></tr></table></figure><p>对于小批量梯度下降法来说，用小批量可以比较好的近似真实梯度，但是对学习率的自适应调整有了一定的要求。</p><h1 id="动量-Momentum"><a href="#动量-Momentum" class="headerlink" title="动量 Momentum"></a>动量 Momentum</h1><p>虽然SGD仍然是非常接收欢迎的优化方法，但是其学习过程有时是相当的漫长，动量方法就是为了加速学习，特别是在处理高曲率，小但一致的梯度，或者带噪声的梯度。动量算法简单来说就是在原来SGD的基础上，利用了之前所有梯度指数级衰减的移动平均，并且沿该方向继续移动。</p><p>在描述该方法的时候，引入了变量 v 来充当速度的角色，它代表参数在参数空间移动的方向和速率。数学描述如下：</p><p>$v_{t+1} = \gamma v_t + \eta\bigtriangledown L(\theta_t)$</p><p>$\theta_{t+1} = \theta_t - v_{t+1}$</p><p>该迭代式可以看出：</p><p>$v_{t+1} = \eta { \bigtriangledown L(\theta_t) + \eta L(\theta_{t-1}) + \eta^2 \bigtriangledown L(\theta_{t-2}）+ … }$</p><p>这种方法有效的利用了前面所有的梯度信息，可以有效的减少SGD，mini-batch的震荡，但是这种算法有时会导致跳出最优解，而且随着计算次数的增加，有些梯度信息已经几乎可以忽略不记了。</p><h1 id="自适应梯度下降法-Adagrad"><a href="#自适应梯度下降法-Adagrad" class="headerlink" title="自适应梯度下降法 Adagrad"></a>自适应梯度下降法 Adagrad</h1><p>自适应可以理解为学习率的自适应变化，在基础的下降法种的学习率$\eta$ 是一个常数，在自适应法中，学习率需要除以之前所有导数的平方和的平方根。</p><p>表达式如下：</p><p>$g_{t+1, i} = g_{t, i} + (\frac{\partial L(\theta_t)}{\partial \theta_i})^2$</p><p>$\theta_{t+1, i} = \theta_{t, i} - \frac{\eta}{\sqrt{g_{t+1, i}} + \epsilon} \frac{\partial L(\theta_t)}{\partial  \theta_i}$</p><p>该方法实现了学习率的自动调整，当迭代次数增加的时候，学习率将会变得极小。</p><h1 id="RMSprop-root-mean-square-propagation"><a href="#RMSprop-root-mean-square-propagation" class="headerlink" title="RMSprop (root mean square propagation)"></a>RMSprop (root mean square propagation)</h1><p>为了解决Adagrad学习率单调递减的原因，我们对于每一个时刻的导数计算，引入了$\gamma $来避免学习率极低的情况，是简单利用线性加权的方式来描述这一方法的：</p><p>$g_{t+1, i} = \gamma g_{t, i} + (1 - \gamma)(\frac{\partial L(\theta_t)}{\partial \theta_i}) ^2$</p><p>$\theta_{t+1, i} = \theta_{t, i} - \frac{\eta}{\sqrt{g_{t+1, i} + \epsilon}} \frac{\partial L(\theta_t)}{\partial \theta_i}$</p><p>一般$gamma$可以取0.9。</p><h1 id="Adam-Adaptive-moment-estimation"><a href="#Adam-Adaptive-moment-estimation" class="headerlink" title="Adam (Adaptive moment estimation)"></a>Adam (Adaptive moment estimation)</h1><p>Adam 简单来说就是在RMSProp的基础之上，添加了momentum和bias的方法，过程如下：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190308021211.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;   在深度学习中，我们通常需要优化我们所定义的损失函数，优化的方法思想就是通过梯度下降的方式不断逼近一个局部最优解，更新模型参数然后来保证损失函数预测误差最小。在本文主要综述了几种常见的优化策略，包括梯度下降的策略以及学习率变化的策略。这些策略有一些基本的概念需要重点掌握
+      
+    
+    </summary>
+    
+    
+      <category term="深度学习" scheme="https://joshuaqyh.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器学习 | 蒙特卡罗算法详解</title>
+    <link href="https://joshuaqyh.github.io/2019/03/07/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E8%92%99%E7%89%B9%E5%8D%A1%E7%BD%97%E7%AE%97%E6%B3%95%E8%AF%A6%E8%A7%A3/"/>
+    <id>https://joshuaqyh.github.io/2019/03/07/机器学习-蒙特卡罗算法详解/</id>
+    <published>2019-03-06T16:54:13.000Z</published>
+    <updated>2019-03-06T17:00:00.666Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>机器学习 | PageRank 算法和简单应用</title>
@@ -1063,9 +1102,9 @@
     
       <category term="信息安全" scheme="https://joshuaqyh.github.io/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
     
-      <category term="Java" scheme="https://joshuaqyh.github.io/tags/Java/"/>
-    
       <category term="加密技术" scheme="https://joshuaqyh.github.io/tags/%E5%8A%A0%E5%AF%86%E6%8A%80%E6%9C%AF/"/>
+    
+      <category term="Java" scheme="https://joshuaqyh.github.io/tags/Java/"/>
     
   </entry>
   
@@ -1540,9 +1579,9 @@
     </summary>
     
     
-      <category term="vim" scheme="https://joshuaqyh.github.io/tags/vim/"/>
-    
       <category term="Java" scheme="https://joshuaqyh.github.io/tags/Java/"/>
+    
+      <category term="vim" scheme="https://joshuaqyh.github.io/tags/vim/"/>
     
   </entry>
   
