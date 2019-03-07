@@ -30,7 +30,8 @@
 <meta property="og:description" content="在深度学习中，我们通常需要优化我们所定义的损失函数，优化的方法思想就是通过梯度下降的方式不断逼近一个局部最优解，更新模型参数然后来保证损失函数预测误差最小。在本文主要综述了几种常见的优化策略，包括梯度下降的策略以及学习率变化的策略。这些策略有一些基本的概念需要重点掌握，这些策略有简单有复杂， 但是依照“没有免费午餐“的定理，在具体情景中，要具体运用比较，没有绝对的最优策略，只有相对的最优策略">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190308021211.png">
-<meta property="og:updated_time" content="2019-03-07T18:15:33.049Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190308022822.png">
+<meta property="og:updated_time" content="2019-03-07T18:35:14.513Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习模型中的优化策略">
 <meta name="twitter:description" content="在深度学习中，我们通常需要优化我们所定义的损失函数，优化的方法思想就是通过梯度下降的方式不断逼近一个局部最优解，更新模型参数然后来保证损失函数预测误差最小。在本文主要综述了几种常见的优化策略，包括梯度下降的策略以及学习率变化的策略。这些策略有一些基本的概念需要重点掌握，这些策略有简单有复杂， 但是依照“没有免费午餐“的定理，在具体情景中，要具体运用比较，没有绝对的最优策略，只有相对的最优策略">
@@ -234,6 +235,8 @@
                 </div>
                 <div class="image-caption"></div>
             </figure>
+<p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190308022822.png" alt=""></p>
+<p>从上文可以看到，Adam其实是对学习率和要更新的梯度值进行了修改，学习率近似于RMSProp的方法，而梯度的修改则是参照了Momentum方法，当前的梯度信息需要依赖以往所有梯度信息的线性加权求和，权重随着迭代次数增加而减少。</p>
 
         </div>
 
@@ -242,7 +245,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-03-07T18:15:33.049Z" itemprop="dateUpdated">2019-03-08 02:15:33</time>
+    Last updated: <time datetime="2019-03-07T18:35:14.513Z" itemprop="dateUpdated">2019-03-08 02:35:14</time>
 </span><br>
 
 
