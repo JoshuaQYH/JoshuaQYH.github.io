@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>软件质量标准 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="软件工程">
+    <meta name="description" content="软件质量问题定义软件质量问题是软件工程开发的关键问题，也是软件工程生产的核心问题。 软件质量问题是导致软件项目进度延误，预算超支或项目失败，项目终止等软件危机的根本原因。 意义提高软件质量可以降低项目开发的总成本：  降低维护成本并延长软件的生命期，降低软件失效导致的成本损失。  我们需要通过减少并及早检测纠正实际的软件开发过程和软件开发结果于预期不符的情况，降低错误成本。 软件质量概念现代质量管">
+<meta name="keywords" content="软件工程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件质量标准">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/03/08/软件质量标准/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="软件质量问题定义软件质量问题是软件工程开发的关键问题，也是软件工程生产的核心问题。 软件质量问题是导致软件项目进度延误，预算超支或项目失败，项目终止等软件危机的根本原因。 意义提高软件质量可以降低项目开发的总成本：  降低维护成本并延长软件的生命期，降低软件失效导致的成本损失。  我们需要通过减少并及早检测纠正实际的软件开发过程和软件开发结果于预期不符的情况，降低错误成本。 软件质量概念现代质量管">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190308145353.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190308145747.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190308152321.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190308152358.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190308152847.png">
+<meta property="og:updated_time" content="2019-03-08T07:29:52.178Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="软件质量标准">
+<meta name="twitter:description" content="软件质量问题定义软件质量问题是软件工程开发的关键问题，也是软件工程生产的核心问题。 软件质量问题是导致软件项目进度延误，预算超支或项目失败，项目终止等软件危机的根本原因。 意义提高软件质量可以降低项目开发的总成本：  降低维护成本并延长软件的生命期，降低软件失效导致的成本损失。  我们需要通过减少并及早检测纠正实际的软件开发过程和软件开发结果于预期不符的情况，降低错误成本。 软件质量概念现代质量管">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190308145353.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">软件质量标准</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">软件质量标准</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-08T06:29:42.000Z" itemprop="datePublished" class="page-time">
+  2019-03-08
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#软件质量问题"><span class="post-toc-number">1.</span> <span class="post-toc-text">软件质量问题</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#定义"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#意义"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">意义</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#软件质量"><span class="post-toc-number">2.</span> <span class="post-toc-text">软件质量</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概念"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">概念</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#软件质量的不同观点"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">软件质量的不同观点</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#软件质量范畴-（3A）"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">软件质量范畴 （3A）</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#高质量软件标准体系"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">高质量软件标准体系</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#产品质量"><span class="post-toc-number">2.4.1.</span> <span class="post-toc-text">产品质量</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#过程质量控制"><span class="post-toc-number">2.4.2.</span> <span class="post-toc-text">过程质量控制</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#软件产品质量标准"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">软件产品质量标准</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#软件的质量特性的定义"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">软件的质量特性的定义</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#软件质量层次模型"><span class="post-toc-number">2.7.</span> <span class="post-toc-text">软件质量层次模型</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-软件质量标准" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">软件质量标准</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-08 14:29:42" datetime="2019-03-08T06:29:42.000Z" itemprop="datePublished">2019-03-08</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="软件质量问题"><a href="#软件质量问题" class="headerlink" title="软件质量问题"></a>软件质量问题</h1><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>软件质量问题是软件工程开发的关键问题，也是软件工程生产的核心问题。</p>
+<p>软件质量问题是导致软件项目进度延误，预算超支或项目失败，项目终止等软件危机的根本原因。</p>
+<h2 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h2><p>提高软件质量可以降低项目开发的总成本：</p>
+<ul>
+<li>降低维护成本并延长软件的生命期，降低软件失效导致的成本损失。</li>
+</ul>
+<p>我们需要通过减少并及早检测纠正实际的软件开发过程和软件开发结果于预期不符的情况，降低错误成本。</p>
+<h1 id="软件质量"><a href="#软件质量" class="headerlink" title="软件质量"></a>软件质量</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2><p>现代质量管理中，质量代表着用户的满意程度。</p>
+<p>ANSI/IEEE std729-1983： 软件质量是与软件产品满足规定和隐含的需求能力有关的特征和特性的全体。</p>
+<p>ISO/IEC 9001-1999：软件质量是产品满足需求的能力。</p>
+<h2 id="软件质量的不同观点"><a href="#软件质量的不同观点" class="headerlink" title="软件质量的不同观点"></a>软件质量的不同观点</h2><ul>
+<li>先验论观点：质量是产品一种可以认识但不可定义的性质</li>
+<li>用户观点：质量是产品满足使用目的的衡量指标</li>
+<li>制造者观点：质量是产品性能和规格符合要求的符合度</li>
+<li>产品观点：质量是联结产品固有性能的纽带</li>
+<li>价值观点：质量依赖于顾客愿意付给产品报酬的数量</li>
+</ul>
+<h2 id="软件质量范畴-（3A）"><a href="#软件质量范畴-（3A）" class="headerlink" title="软件质量范畴 （3A）"></a>软件质量范畴 （3A）</h2><ul>
+<li>可说明性: 用户可以给予产品的描述和定义来使用产品</li>
+<li>有效性：产品对大多数用户是有效的</li>
+<li>易用性/可用性：产品容易使用，并且具备有用的功能</li>
+</ul>
+<h2 id="高质量软件标准体系"><a href="#高质量软件标准体系" class="headerlink" title="高质量软件标准体系"></a>高质量软件标准体系</h2><h3 id="产品质量"><a href="#产品质量" class="headerlink" title="产品质量"></a>产品质量</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190308145353.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="过程质量控制"><a href="#过程质量控制" class="headerlink" title="过程质量控制"></a>过程质量控制</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190308145747.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="软件产品质量标准"><a href="#软件产品质量标准" class="headerlink" title="软件产品质量标准"></a>软件产品质量标准</h2><ol>
+<li>功能性：软件所实现的功能达到它的设计规范和满足用户需求的程度</li>
+<li>可用性：对于一个软件，用户学习，操作，准备输入和理解输出所付出的努力程度</li>
+<li>可靠性：在规定的时间和条件下，软件所能达到保持其正常功能操作，性能水平的程度</li>
+<li>性能：在指定的条件下，用软件实现某种功能所需的计算机资源的有效程度。</li>
+<li>能力/容量：系统的接受力，容纳或吸收的能力，或某项功能的最大量或最大限度</li>
+<li>可测量性：系统某些特性可以通过一些量化的数据指标描述当前状态或理想状态</li>
+<li>可维护性：对于一个运行阶段的软件，当环境改变或软件发生错误时，进行相应修改所需要付出的努力程度</li>
+<li>兼容性：不同版本之间的软件功能存在普适兼容</li>
+<li>可扩展性：在软件功能进行迭代时，优良的可扩展性可减少无谓的工作劳动，减少对已有系统的改动，从而提高效率。</li>
+</ol>
+<h2 id="软件的质量特性的定义"><a href="#软件的质量特性的定义" class="headerlink" title="软件的质量特性的定义"></a>软件的质量特性的定义</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190308152321.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190308152358.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="软件质量层次模型"><a href="#软件质量层次模型" class="headerlink" title="软件质量层次模型"></a>软件质量层次模型</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190308152847.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-03-08T07:29:52.178Z" itemprop="dateUpdated">2019-03-08 15:29:52</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/03/08/软件质量标准/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/03/08/软件质量标准/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件工程/">软件工程</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/03/08/软件质量标准/&title=《软件质量标准》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/03/08/软件质量标准/&title=《软件质量标准》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/03/08/软件质量标准/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《软件质量标准》 — KnowMyself&url=https://joshuaqyh.github.io/2019/03/08/软件质量标准/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/03/08/软件质量标准/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/08/深度学习核心概念/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">深度学习模型中的优化策略</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/03/08/软件质量标准/&title=《软件质量标准》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/03/08/软件质量标准/&title=《软件质量标准》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/03/08/软件质量标准/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《软件质量标准》 — KnowMyself&url=https://joshuaqyh.github.io/2019/03/08/软件质量标准/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/03/08/软件质量标准/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACL0lEQVR42u3aS27DMAwFwNz/0inQVYPCziPpBrU0WhlpIXm8IMTP4xGv5/f6/Xz+y8+V73z+/6OFgYFxW8bzdCWHHf2194rnux3ug4GBsQGjut15xDvfLQ/ohd0wMDAwgtA5+RxJoMfAwMDopZf5BTFJdDEwMDDOGcl2vdBZSEQ/k4tjYGDckDFpDPz184f6GxgYGP+YMQmOVzUPem/ysgMGBsbSjHx4YvIqeSivfo7CRhgYGDdn5ANeveZB3kiothwwMDAweqF2wstbAm9gGBgYyzGqJf5r414ydpY0UzEwMNZmXNUqqAbTXoJ6cfcDAwPjhox88CvpJM5Ldb3rIwYGxkqMefKZXNTyb1kN0xgYGPsw8iCYFL+SX3q1wMM9MTAwNmNUy2HVAHpV7omBgbEPI28MTAr0+f5VWPMYDAyMWzHy62CviN+7YpYHPjAwMLZh5AGxd0Gstj9H0yIYGBjLMSZzGb1SWjXdffM+GBgYSzOqJfhqgM6HKpLPWr6YYmBgLMFIRrh6JbA5pjDSgYGBsQGjenz1SndVY6CQxGJgYCzEmDQje0dGAbTXYMDAwFiU8SyuSX6cl/uTc1+eMTAwlmb0auzV8tw8cM8HPjAwMO7OyIv+k2PyBDi/PmJgYOzGqCal83Gx+exEeXIEAwNjA8a8Gp9fNKtDsRgYGBj5qETvQySXxag9gIGBsTRjMpw6GUJNeFGIx8DAWJrRSyDzolteYruqtYCBgbEQ4wuXApNhJeey8wAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
