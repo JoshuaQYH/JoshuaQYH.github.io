@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>深度学习-训练中存在的问题和策略 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="深度学习">
+    <meta name="description" content="梯度爆炸和消失在求解梯度时，通过链式法则可以使用多个中间梯度来表示初始梯度，在多层网络中，如果多个中间梯度都大于1，那么最后计算得到的梯度将远大于一，故存在梯度爆炸； 如果许多中间梯度都大于1，那么最后计算的到梯度将近乎0，故存在梯度消失。">
+<meta name="keywords" content="深度学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习-训练中存在的问题和策略">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/03/14/深度学习-训练中存在的问题/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="梯度爆炸和消失在求解梯度时，通过链式法则可以使用多个中间梯度来表示初始梯度，在多层网络中，如果多个中间梯度都大于1，那么最后计算得到的梯度将远大于一，故存在梯度爆炸； 如果许多中间梯度都大于1，那么最后计算的到梯度将近乎0，故存在梯度消失。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190314163412.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190314171856.png">
+<meta property="og:image" content="c:/Users/Qiuyh/AppData/Local/Temp/1552555155244.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190314170344.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190314175216.png">
+<meta property="og:image" content="c:/Users/Qiuyh/Desktop/大三下/软件测试/平时作业/20190314174445.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190314174934.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190314175004.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190314175518.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190314175638.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190314175803.png">
+<meta property="og:updated_time" content="2019-03-14T11:56:01.644Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深度学习-训练中存在的问题和策略">
+<meta name="twitter:description" content="梯度爆炸和消失在求解梯度时，通过链式法则可以使用多个中间梯度来表示初始梯度，在多层网络中，如果多个中间梯度都大于1，那么最后计算得到的梯度将远大于一，故存在梯度爆炸； 如果许多中间梯度都大于1，那么最后计算的到梯度将近乎0，故存在梯度消失。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190314163412.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">深度学习-训练中存在的问题和策略</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">深度学习-训练中存在的问题和策略</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-14T08:23:24.000Z" itemprop="datePublished" class="page-time">
+  2019-03-14
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#梯度爆炸和消失"><span class="post-toc-number">1.</span> <span class="post-toc-text">梯度爆炸和消失</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Mini-batch-的问题"><span class="post-toc-number">2.</span> <span class="post-toc-text">Mini-batch 的问题</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#过拟合的问题"><span class="post-toc-number">3.</span> <span class="post-toc-text">过拟合的问题</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-深度学习-训练中存在的问题" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">深度学习-训练中存在的问题和策略</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-14 16:23:24" datetime="2019-03-14T08:23:24.000Z" itemprop="datePublished">2019-03-14</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="梯度爆炸和消失"><a href="#梯度爆炸和消失" class="headerlink" title="梯度爆炸和消失"></a>梯度爆炸和消失</h1><p>在求解梯度时，通过链式法则可以使用多个中间梯度来表示初始梯度，在多层网络中，如果多个中间梯度都大于1，那么最后计算得到的梯度将远大于一，故存在梯度爆炸；</p>
+<p>如果许多中间梯度都大于1，那么最后计算的到梯度将近乎0，故存在梯度消失。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190314163412.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>由于梯度爆炸的存在，训练过程相当不稳定。我们需要保证，激活函数的导数或权重的绝对值小于等于1。</p>
+<p>解决梯度爆炸的策略有：</p>
+<ol>
+<li>初始化权重值的绝对值小于1</li>
+<li>在训练前对权重进行标准化</li>
+<li>对输入进行归一化</li>
+</ol>
+<p>梯度消失将会使训练相当慢，我们必须使激活函数倒数*权重的绝对值不要太小，解决的策略有：</p>
+<ol>
+<li>选择ReLU激活函数</li>
+<li>权重初始化，$w - N(0, \sigma^2)$</li>
+<li>权重在训练前重新标准化</li>
+</ol>
+<p>简单来说，在开始训练之前，网络权重初始化的策略是，从由输出维数n和m决定的正态分布或者均匀分布中采样，会加快网络的训练过程。</p>
+<ul>
+<li>当激活函数是tanh时（Weight initialization: Xavier’s method）</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190314171856.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ul>
+<li>当激活函数是ReLU时（Kaiming He 大神）</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="C:\Users\Qiuyh\AppData\Local\Temp\1552555155244.png" alt="55255515524" title="">
+                </div>
+                <div class="image-caption">55255515524</div>
+            </figure>
+<h1 id="Mini-batch-的问题"><a href="#Mini-batch-的问题" class="headerlink" title="Mini-batch 的问题"></a>Mini-batch 的问题</h1><p>问题：每一批的数据分布不一致。</p>
+<p>解决方法：批量归一化BN。将每一组数据都归一化为标准正态分布。（均值为0，方差为1）</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190314170344.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>BN 通常放在激活函数ReLU之前。</p>
+<p>在合理的学习率范围内，学习率越大，BN越有效。上述的$\gamma $$,\beta$ 作为模型的参数，一并学习。 </p>
+<h1 id="过拟合的问题"><a href="#过拟合的问题" class="headerlink" title="过拟合的问题"></a>过拟合的问题</h1><p>过拟合是普遍存在的，我们有以下几种策略来解决：</p>
+<ol>
+<li><p>借助验证集来确定提前终止迭代的次数</p>
+<p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190314175216.png" alt=""></p>
+<p>​</p>
+</li>
+<li><p>正则化：$L_P$Norm</p>
+<p><img src="C:\Users\Qiuyh\Desktop\大三下\软件测试\平时作业\20190314174445.png" alt=""></p>
+</li>
+<li><p>dropout</p>
+</li>
+</ol>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190314174934.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190314175004.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<ol start="4">
+<li><p>数据增广（增强）</p>
+<p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190314175518.png" alt=""></p>
+</li>
+<li><p>集成模型</p>
+<p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190314175638.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190314175803.png" alt=""></p>
+<p>​</p>
+</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-03-14T11:56:01.644Z" itemprop="dateUpdated">2019-03-14 19:56:01</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/03/14/深度学习-训练中存在的问题/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/03/14/深度学习-训练中存在的问题/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/03/14/深度学习-训练中存在的问题/&title=《深度学习-训练中存在的问题和策略》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/03/14/深度学习-训练中存在的问题/&title=《深度学习-训练中存在的问题和策略》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/03/14/深度学习-训练中存在的问题/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深度学习-训练中存在的问题和策略》 — KnowMyself&url=https://joshuaqyh.github.io/2019/03/14/深度学习-训练中存在的问题/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/03/14/深度学习-训练中存在的问题/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/14/Leetcode-Practice-2/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Leetcode | Practice 2</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/03/14/深度学习-训练中存在的问题/&title=《深度学习-训练中存在的问题和策略》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/03/14/深度学习-训练中存在的问题/&title=《深度学习-训练中存在的问题和策略》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/03/14/深度学习-训练中存在的问题/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深度学习-训练中存在的问题和策略》 — KnowMyself&url=https://joshuaqyh.github.io/2019/03/14/深度学习-训练中存在的问题/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/03/14/深度学习-训练中存在的问题/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsElEQVR42u3a3WrDMAwG0L7/S2+3GyXppx9vLZxchUJsHxcsI+nxiJ+vH8/zL8/P87dXoz2PeT/j48SDh4eHN1j6/cRXgGQLeuMk+Bdj4uHh4R3jXU1TPbJzXj5aHiTw8PDwPoV3f1jf33Wrd2M8PDy8T+fdI/PReldqPDw8vP/lJcmI/IhP2JOlH8m14OHh4cW8yXX2v96P1Pfw8PDwxlX1PEjkxbM8GZGHgcvZ8fDw8A7w8gN3AkgYSfKiuk48PDy8E7zdNqneEb97N/41Ix4eHt5hXlLWSspUyVE+KYAVNggPDw/vMO90cauXzhglSvDw8PAO8HZL+3lImCQpFopheHh4eANenoaoJhd6yOp6ovoeHh4e3jHepA2rl54olP+DkICHh4f3N7zq9HlCNl9EHiR6bQ14eHh4u7w8GVq9/va+rW7Qi5Xg4eHhHeBNBqq2W1UjVTWEvKjy4eHh4a3y8pJS9XDvtSDkv+TlNDw8PLxdXq+xKd+OeRgYtRTg4eHhrfLyVGkeJHptXvOgcplrwcPDw1vlzRMQvVaA/D1vUIi2Gw8PD2/My/WTa3de1poc+i96yvDw8PCWeEkytNpG0AsY1SRy8xqNh4eHt8SbDJSU8JsVucEfgIeHh/f3vGpyIU8fJJs1uaYXNg4PDw9vwOstqLeUXvNBfk2PohweHh7eKq+6xN7FetKIUG5ZwMPDwzvMyy/ZeaksH22ytsuv8PDw8FZ5X8WnVwDLMyJb13Q8PDy8c7xJtah3Ba9uVvV9VPHDw8PDi3l5MJgU+KvISXKkUMfDw8PDG/Dm6d1esWqyoVFiFw8PD+/tedXjPk9e9AIGHh4e3jvwktJX7/dqOmPUOoCHh4c35vWKXnlitzp7r33hMjDg4eHhrfLKXVqDr6otCGvNAXh4eHg7vG93LkrfkxSmSAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

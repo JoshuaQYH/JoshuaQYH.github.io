@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>概念 | 软件的本质与软件工程科学 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="软件工程,系统分析与设计">
+    <meta name="description" content="以下问题和解答来自 SYSU 16 级系统分析与设计课程 week1 的作业实践。 Student ID       ： 16340186  Student Name :    邱奕浩  Q1: 阐述软件工程的定义。  A1： 软件工程一直以来缺乏严格标准的定义，不过很多学者，组织机构都给出了自己的定义，如：  NATO (1968): 软件工程是研究和应用如何以系统的，规范化的，可定量的过程化">
+<meta name="keywords" content="软件工程,系统分析与设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="概念 | 软件的本质与软件工程科学">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/03/02/软件工程-概念-软件的本质与软件工程科学/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="以下问题和解答来自 SYSU 16 级系统分析与设计课程 week1 的作业实践。 Student ID       ： 16340186  Student Name :    邱奕浩  Q1: 阐述软件工程的定义。  A1： 软件工程一直以来缺乏严格标准的定义，不过很多学者，组织机构都给出了自己的定义，如：  NATO (1968): 软件工程是研究和应用如何以系统的，规范化的，可定量的过程化">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190302163413.png">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Characteristics_of_Capability_Maturity_Model.svg/500px-Characteristics_of_Capability_Maturity_Model.svg.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190302163103.png">
+<meta property="og:updated_time" content="2019-03-02T08:48:19.002Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="概念 | 软件的本质与软件工程科学">
+<meta name="twitter:description" content="以下问题和解答来自 SYSU 16 级系统分析与设计课程 week1 的作业实践。 Student ID       ： 16340186  Student Name :    邱奕浩  Q1: 阐述软件工程的定义。  A1： 软件工程一直以来缺乏严格标准的定义，不过很多学者，组织机构都给出了自己的定义，如：  NATO (1968): 软件工程是研究和应用如何以系统的，规范化的，可定量的过程化">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190302163413.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">概念 | 软件的本质与软件工程科学</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">概念 | 软件的本质与软件工程科学</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-02T04:05:54.000Z" itemprop="datePublished" class="page-time">
+  2019-03-02
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-软件工程-概念-软件的本质与软件工程科学" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">概念 | 软件的本质与软件工程科学</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-02 12:05:54" datetime="2019-03-02T04:05:54.000Z" itemprop="datePublished">2019-03-02</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>以下问题和解答来自 SYSU 16 级系统分析与设计课程 week1 的作业实践。</p>
+<p>Student ID       ： 16340186 </p>
+<p>Student Name :    邱奕浩</p>
+</blockquote>
+<p><strong>Q1: 阐述软件工程的定义。 </strong></p>
+<p>A1： 软件工程一直以来缺乏严格标准的定义，不过很多学者，组织机构都给出了自己的定义，如：</p>
+<ol>
+<li><a href="https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B" target="_blank" rel="noopener"><strong>NATO (1968)</strong></a>: 软件工程是研究和应用如何以系统的，规范化的，可定量的过程化方法去开发和维护软件，以及如何把经过实践验证而证明正确的管理技术和当前最好的技术方法综合起来的一门独立学科。</li>
+<li><a href="https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B" target="_blank" rel="noopener"><strong>IEEE (1993)</strong></a>：软件工程是将系统化的，严格约束化的，量化的工程方法应用于软件的开发，运行，维护过程，即用工程化的方法来打造软件。</li>
+<li><a href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/25279" target="_blank" rel="noopener"><strong>《计算机科学技术百科全书》</strong></a>：软件工程是应用计算机科学，数学，逻辑学及管理科学等原理，来开发软件的过程。</li>
+<li><a href="https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B#%E6%B2%92%E6%9C%89%E9%8A%80%E5%BD%88%E8%88%87%E4%BA%BA%E6%9C%88%E7%A5%9E%E8%A9%B1" target="_blank" rel="noopener"><strong>《信息技术 软件工程术语》</strong></a>: 软件工程是应用计算机科学理论和技术以及工程管理原则和方法，按预算和进度，实现满足用户要求的软件产品的定义、开发、和维护的工程或学科。</li>
+</ol>
+<p>从上述各方的定义中，我们可以得出：</p>
+<ol>
+<li><p>软件工程是一门独立的交叉学科，也是一门独特的工程，综合了理论，工程，技术，管理等方面的知识，同时处于理论与实践水平不断发展的过程。</p>
+</li>
+<li><p>软件工程具有系统化，约束化，规范化，过程化，可量化的特点，具备相应的工程管理原则和方法。</p>
+<p>​</p>
+</li>
+</ol>
+<hr>
+<p><strong>Q2: 解释导致软件危机 ( software crisis ) 的本质原因和表现形式，并述说克服软件危机的方法。 </strong></p>
+<p>A2：</p>
+<ul>
+<li><strong>软件危机的本质原因</strong>：<ul>
+<li>软件的大量需求与软件生产力效率之间的矛盾，</li>
+<li>软件系统的复杂性与软件开发方法之间的矛盾。</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><strong>软件危机的表现形式</strong>：</p>
+<ul>
+<li>软件开发成本日益增长，开发成本往往超出预算<strong>（成本）</strong></li>
+<li>软件开发进度难以控制，项目的开发时间往往超出预定的进度时间表<strong>（时间）</strong></li>
+<li>用户对软件产品不满意的现象经常发生，这是对用户需求的理解不够明确，用户需求多样化的原因<strong>（需求）</strong></li>
+<li>软件产品的质量不可靠，时常存在 Bug <strong>（质量）</strong>  </li>
+<li>软件的可维护性低，数量不断膨胀的软件产品缺乏适当的文档资料 <strong>（维护）</strong></li>
+<li>软件的开发生产率跟不上硬件的发展，计算能力越大，编程问题越大，软件越复杂。<strong>（摩尔定律）</strong></li>
+</ul>
+</li>
+<li><p><strong>克服软件危机的主要方法</strong>：</p>
+<ul>
+<li>软件从业者必须正确认识计算机软件的内涵（软件 ≠ 程序）。</li>
+<li>充分认识到软件开发并不是来自于某种个体劳动的神秘技巧，而是需要依托组织良好，管理严密，协同配合的工程活动。</li>
+<li>采用成熟的软件开发技术和方法，比如<a href="https://zh.wikipedia.org/wiki/%E7%B5%90%E6%A7%8B%E5%8C%96%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88" target="_blank" rel="noopener">结构化程序设计</a>，<a href="https://zh.wikipedia.org/wiki/%E6%96%B9%E6%B3%95_(%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8" target="_blank" rel="noopener">面向对象的开发</a>)，<a href="https://zh.wikipedia.org/wiki/CMM" target="_blank" rel="noopener">CMM</a>，<a href="https://zh.wikipedia.org/wiki/%E7%BB%9F%E4%B8%80%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80" target="_blank" rel="noopener">UML</a>等等</li>
+<li>开发和使用适当的软件工具</li>
+<li>从业者的专业素养和知识水平必须不断提升</li>
+</ul>
+<p>IBM大型机之父 Brooks 在其著名论文《<a href="https://zh.wikipedia.org/wiki/%E6%B2%A1%E6%9C%89%E9%93%B6%E5%BC%B9" target="_blank" rel="noopener">没有银弹</a>》中断言：“在10年无法找到解决软件危机的灵丹妙药”，在其另外一著作《<a href="https://zh.wikipedia.org/wiki/%E4%BA%BA%E6%9C%88%E7%A5%9E%E8%AF%9D" target="_blank" rel="noopener">人月神话</a>》提到：开发软件的困难是天生存在的，我们只能渐进式的改善它。在整体工程环境没有改变之前，对克服软件危机所能做的就是<strong>依靠人的素质，培养优秀的软件工程师</strong>。</p>
+<p>​</p>
+</li>
+</ul>
+<hr>
+<p><strong>Q3: 解释一下软件的生命周期的概念。</strong></p>
+<p>A3：软件像一个个生命体一样，具有孕育、诞生、成长、成熟、衰亡的生存过程，即软件的生命周期。软件的生命周期被划分为若干阶段，每个阶段具有明确的任务，从而使规模，结构和管理复杂软件的开发过程得到适当的控制管理。生命周期主要分为以下6个阶段。</p>
+<ol>
+<li><p><strong>可行性分析与计划阶段</strong> </p>
+<ol>
+<li>确定软件开发的总体目标，给出功能，性能，可靠性以及接口等方面的要求，并进行可行性分析。</li>
+<li>估算软件的开发成本，估计可利用的资源，成本，效益，开发进度，进行投资-收益分析，制定开发计划。</li>
+<li>提交可行性分析报告、开发计划等文档。</li>
+</ol>
+</li>
+<li><p><strong>需求分析阶段</strong></p>
+<ol>
+<li>分析用户需求，给出需求的详细定义，确定软件的各项功能，性能需求和设计约束，确定对文档编制的要求。</li>
+<li>提交软件需求说明文档，软件规格说明文档，数据要求说明等文档和初步的用户手册。</li>
+</ol>
+</li>
+<li><p><strong>设计阶段</strong></p>
+<ol>
+<li>概要设计：将需求转化成软件的体系结构，结构中每一组成部分必须是意义明确的模块，每一个模块必须和需求相匹配。</li>
+<li>详细设计：对模块所完成的任务进行详细具体的描述，提供源程序编写的直接依据。</li>
+<li>提交结构设计说明、详细设计说明和测试计划初稿等文档。</li>
+</ol>
+</li>
+<li><p><strong>实现阶段</strong></p>
+<ol>
+<li>完成源程序的编码，编译，调试，得到没有语法错误的程序清单。必须确保程序结构良好，清晰，具有较为良好的可读性，并且与上一设计阶段中的要求相一致。</li>
+<li>根据项目重要性和规模，编写开发进度日报，周报，或月报。</li>
+<li>完成用户手册，操作手册等面向用户的文档编写工作。</li>
+<li>编制初步的测试计划。</li>
+</ol>
+</li>
+<li><p><strong>测试阶段</strong></p>
+<ol>
+<li>全面测试目标软件（包括单元测试，集成测试，系统测试等），并检查审阅已编制好的文档，提交测试分析报告。逐项评价所生产的程序，文档以及开发工作本身，提交项目开发总结报告。</li>
+<li>在这个开发过程中，开发集体需要按月编写进度月报。</li>
+</ol>
+</li>
+<li><p><strong>运行和维护阶段</strong></p>
+<ol>
+<li>用户使用软件之后，必须在运行使用中加以持续的维护，根据用户新提出的需求进行软件功能的扩充，删改，更新和升级。</li>
+<li>软件维护包括改正性维护（用于发现软件错误），适应性维护（适应运行环境的变化）以及完善性维护（增强功能）。</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190302163413.png" alt=""></p>
+<p>​</p>
+</li>
+</ol>
+<hr>
+<p><strong>Q4:  SWEBoK 的 15 个知识域（<a href="https://www.sebokwiki.org/wiki/An_Overview_of_the_SWEBOK_Guide" target="_blank" rel="noopener">An Overview of the SWEBOK Guide</a> 请中文翻译其名称与简短说明）</strong></p>
+<p>A4：SWEBoK  的中文名称为软件工程知识体系( <a href="https://www.computer.org/web/swebok/index" target="_blank" rel="noopener">Software Engineering Body of Knowledge</a>)，是 IEEE Computer Society 构建软件生产的最佳实践与相关知识的框架，用于指导软件工程人才的培养与学科建设。<strong>知识体系分为软件工程实践和基础教育两个部分，共有15个知识域 ( Knowledge Aaras 以下简称 KA )</strong> 。</p>
+<ol>
+<li><strong>软件工程实践(The Practice of Software Engineering) </strong><ol>
+<li><strong>软件需求 (Software Requirements) </strong>：软件需求知识域主要关注软件需求的协商，谈判，分析，明确。，验证等过程。该 KA 是整个 SWEBoK 中最重要的两个领域之一。经业界实践表明，如果软件需求工作没做好，那么整条软件产品线和软件工程项目将变得极其最弱，所谓 ”牵一发而动全身”。</li>
+<li><strong>软件设计 (Software Design) </strong>： 软件设计是定义软件结构，组件，接口，和其他系统特性以及产品结果的过程，该 KA 涵盖了软件的设计过程和目标产品。软件设计在软件生命周期中的主要目的是结合上一阶段的软件需求，做出对软件内部结构，接口和行为的具体描述。和软件需求 KA一样，软件设计KA是 SWEBoK 中最重要的领域之一。</li>
+<li><strong>软件构建 (Software Construction)</strong>： 软件构建实现主要涉及到了详细的代码设计实现，单元测试，集成测试，调试和验证等工作任务。软件构建 KA 包含的相关主题是满足需求和设计约束的软件程序的发展过程，涵盖了软件构造基础，管理软件构建任务，构建方法论，实用的构建思想和软件构造的工具。</li>
+<li><strong>软件测试 (Software Testing) </strong>：软件测试是一项评估软件项目质量以及识别软件缺陷并改善的工作，该 KA 包含了软件测试的基础知识，软件测试的技术，用户界面接口测试，相关的测试措施和实际软件的考虑方法。</li>
+<li><strong>软件维护 (Software Maintenance) </strong>：软件维护 KA 涉及了升级现有软件功能（完善性维护），调整软件适应运行环境的变化（适应性维护），以及更正软件缺陷（改正性维护）等方面的工作。</li>
+<li><strong>软件配置管理 (Software Configuration Management) </strong>： 系统的配置是硬件，固件，软件或他们组合的功能和物理特征。同时配置还可以看作是硬件，固件，软件，或其组合的特定版本的集合。不同的版本有不同的配置，根据特定的构建过程组合在一起，以服务与特定的目的。</li>
+<li><strong>软件工程管理 (Software Engineering Management)</strong> ：软件工程管理包括计划，协调，衡量，报告和控制一个项目，以确保软件的开发和维护是系统化的，有纪律的以及可量化的。</li>
+<li><strong>软件工程过程 (Software Engineering Process) </strong>： 该KA涉及软件生命周期过程的定义，实现，评估，度量，管理和改进。所涵盖的主题包括过程实现和变更，过程定义，过程评估模型和方法，以及过程测量。</li>
+<li><strong>软件工程模型和方法 (Software Engineering Models and Methods) </strong>：该 KA 解决了围绕整个软件生命周期各阶段问题的方法，以及在特定生命周期阶段的其他 KA 所包含的问题的方法。</li>
+<li><strong>软件质量 (Software Quality)</strong>： 软件质量问题是普遍存在于整个软件生命周期的问题，该 KA 关注软件质量的基础，软件质量管理过程，以及实际的考虑。</li>
+<li><strong>软件工程专业实践 (Software Engineering Professional Practice)</strong>：该 KA 的理念是对于软件工程师而言，必须具备的知识，技能和态度，要以一种专业的，负责的，和合乎道德的方法来进行实践。</li>
+</ol>
+</li>
+<li><strong>软件工程教育的需求 (The Educational Requirements of Software Engineering )</strong><ol>
+<li><strong>软件工程经济学 (Software Engineering Economics)</strong>： 该 KA 主要关注的是如何在业务环境中做出决策，以便技术决策与组织的业务目标保持一致。</li>
+<li><strong>计算基础  (Computing Foundations)</strong>：该 KA 涵盖了提供给软件工程实践所需的计算背景的基础主题。包括问题解决技术、抽象、算法和复杂性、编程基础、并行和分布式计算的基础、计算机组织、操作系统和网络通信。</li>
+<li><strong>数学基础 (Mathematical Foundations) </strong>： 该 KA 涵盖了用于软件工程实践所需的数学理论基础，包含的主题有集合、关系、函数、基本的明题和谓词逻辑、证明方法、图、树、离散数学、仿真建模等等。</li>
+<li><strong>工程基础 (Engineering Foundations)</strong>：该KA主要提供了用于软件工程实践所需的工程背景基础，主题涵盖了经验方法和实验技术、统计分析、测量与指标、工程设计、建模与仿真、以及根本原因分析等方面。</li>
+</ol>
+</li>
+</ol>
+<hr>
+<p><strong>Q5： 简单解释 CMMI 的五个级别。</strong></p>
+<p>A5： <a href="https://en.wikipedia.org/wiki/Capability_Maturity_Model_Integration" target="_blank" rel="noopener">CMMI</a> 中文名称为能力成熟度模型集成，是一种过程性的改进训练和评估计划，用于度量一个企业的软件工程能力。其五个级别简单概括如下：</p>
+<ol>
+<li><strong>Level 1 - Initial</strong>：企业运作处于一种无序，自发生产的模式，过程难以预测，控制性差，反应性弱。</li>
+<li><strong>Level 2 - Managed</strong>：企业在管理级的水平上处于有序的，项目化的生产模式，具有明确的流程和较好的项目控制程序。</li>
+<li><strong>Level 3 - Defined</strong>：企业工程水平达到定义级，企业企业管理组织化，流程标准化，体系制度化。</li>
+<li><strong>Level 4 - Quantitatively Managed</strong>：企业管理水平进一步升级，实现数字化管理和控制。</li>
+<li><strong>Level 5 - Optimizing</strong>：在优化级别，企业项目管理达到最高水平，能主动改善业务项目流程，不断实现过程优化。</li>
+</ol>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Characteristics_of_Capability_Maturity_Model.svg/500px-Characteristics_of_Capability_Maturity_Model.svg.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<hr>
+<p><strong>Q6：用自己的语言简述 SWEBok 或 CMMI（ 200 字）。</strong></p>
+<p>SWEBok （软件工程知识体系）是 IEEE Computer Society 提出来的一套构建软件生产的最佳实践与相关知识的框架，用于指导软件工程人才的培养和学科建设。该体系从<strong>软件工程的实践和教育</strong>两个方面切入，就这两个方面划分了15个知识域（KA）。</p>
+<p>在实践方面，知识体系归纳了 11 种知识域：围绕软件生命周期提出了 5 个知识域：软件需求 KA、软件设计 KA、软件实现 KA、软件测试 KA、软件运行维护 KA；结合工程管理的原则，提出了 6 个 KA：软件配置管理 KA、软件工程管理 KA、软件工程过程 KA、软件工程建模与方法 KA、软件质量 KA、软件工程专业实践 KA。</p>
+<p>在教育方面，则是提出了软件工程经济学 KA、计算基础 KA、数学基础 KA、工程基础 KA。</p>
+<p>整套知识体系科学完备，教育 KA 是 实践 KA 的基础和支撑，在实践的探索过程中，又不断地给予教育体系层面的反馈和优化。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190302163103.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<hr>
+<p><strong>完。</strong></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-03-02T08:48:19.002Z" itemprop="dateUpdated">2019-03-02 16:48:19</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/03/02/软件工程-概念-软件的本质与软件工程科学/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/03/02/软件工程-概念-软件的本质与软件工程科学/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统分析与设计/">系统分析与设计</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件工程/">软件工程</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/03/02/软件工程-概念-软件的本质与软件工程科学/&title=《概念 | 软件的本质与软件工程科学》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/03/02/软件工程-概念-软件的本质与软件工程科学/&title=《概念 | 软件的本质与软件工程科学》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/03/02/软件工程-概念-软件的本质与软件工程科学/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《概念 | 软件的本质与软件工程科学》 — KnowMyself&url=https://joshuaqyh.github.io/2019/03/02/软件工程-概念-软件的本质与软件工程科学/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/03/02/软件工程-概念-软件的本质与软件工程科学/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/03/03/阐释原型方法对软件生命周期各阶段的支持/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">阐释原型方法对软件生命周期各阶段的支持</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/01/软件工程-核心概念/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">概念 | 必知的软件工程核心概念</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/03/02/软件工程-概念-软件的本质与软件工程科学/&title=《概念 | 软件的本质与软件工程科学》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/03/02/软件工程-概念-软件的本质与软件工程科学/&title=《概念 | 软件的本质与软件工程科学》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/03/02/软件工程-概念-软件的本质与软件工程科学/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《概念 | 软件的本质与软件工程科学》 — KnowMyself&url=https://joshuaqyh.github.io/2019/03/02/软件工程-概念-软件的本质与软件工程科学/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/03/02/软件工程-概念-软件的本质与软件工程科学/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADL0lEQVR42u3aQZLiMAwFUO5/aWY7XT0JX5KZwuZlRaVD4hcWauvr8YiP51/H7/P5NVffun9udVXLDmxsbOxN2M/b436hV1deUe/vn38rWc/V9djY2Ninsu+LR69UJAvNz+QvPSqE2NjY2NjBg+9Ly9pChY2NjY2dsKsNpl4Z65VJbGxsbOxe06faZsrvn7eH3t5Lw8bGxv549qRIfNrnt+Tb2NjY2B/Mfg6OSSSQhwHVEhWtHBsbG/sgdrVI9M7k1SRvdeVNq8v1YGNjYx/HTr6cl5nkzmuj4vIAEDY2NvZB7N4GIN8YTKKIVT9DISTAxsbG3pCdtHuSbUav/dRr9+dFrrwDw8bGxt6KnY/mJJjqeM2qLUQ1isDGxsY+iZ1T88BgsvupbjnyCOFFPICNjY29OTsvHvmwTnVxk0ZSb4QIGxsb+wx28i970kiqkqrDN72NU1S0sLGxsTdn51WuFw884mNyN2xsbOxvZichbr4BqA7uTIrQ5OfBxsbGPondK0695U5C38mAzosuGjY2NvYR7F7gmjw++W5vEKf6k2BjY2N/M3vt6/if0XIZj42Njb0tO98w9JpE89A32XiUD2xsbOwj2JMGTS8GyAvP5NW/OI+NjY19HDsvKnlpyZfbw1Sj5R93w8bGxj6I3Wsh5Q2j6quZF7/C68bGxsY+iJ0Uht5WoVpaJuFu7xpsbGzs3dm9ptLk8dVG0ls2NtjY2NgHsZNxmSo1jw1WxQN5pBFNJ2FjY2NvxZ601/O2TvLXKKBtDR794zM2Njb2cezqUE6yPagOACXbiepWZDSphI2Njb0Jex6dTl5B0orKQ4Lk5V5uSLCxsbG3ZU9GYSZN+WoUkQfAo7qNjY2NvSE7b8f0xnGq8W21dFWbTdjY2NjnsXuNpHm422ta5e2wF40nbGxs7IPY1Rh1MmRTrav5+WqEjI2NjX0ee200mxeP94UE0bOwsbGxj2M3m+xBwygfu0mun5RebGxsbOx51DppNvVWGKUi2NjY2F/DzovWZPMwH7vExsbG/k72pKk0f3G9WCIpipfPwsbGxj6InbdmJgFtb4kT0rKRHWxsbOzPZf8Bl86Wui+5gKQAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>堆栈——C语言实现顺序存储和链式存储 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="数据结构,C">
+    <meta name="description" content="堆栈的顺序存储实现堆栈的顺序存储实现其实是利用了定长数组来模拟堆栈先进后出的规则，由此决定了堆栈的固定容量, 同时需要两个头尾指针来指示栈顶和栈底的位置。 以下展示各部分的代码实现。  定义结构体  1234567typedef int Position;struct QNode &amp;#123;    ElementType *Data;     /* 存储元素的数组 */    Position">
+<meta name="keywords" content="数据结构,C">
+<meta property="og:type" content="article">
+<meta property="og:title" content="堆栈——C语言实现顺序存储和链式存储">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/02/09/数据结构-堆栈-C语言实现顺序存储和链式存储/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="堆栈的顺序存储实现堆栈的顺序存储实现其实是利用了定长数组来模拟堆栈先进后出的规则，由此决定了堆栈的固定容量, 同时需要两个头尾指针来指示栈顶和栈底的位置。 以下展示各部分的代码实现。  定义结构体  1234567typedef int Position;struct QNode &amp;#123;    ElementType *Data;     /* 存储元素的数组 */    Position">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-02-09T16:01:16.854Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="堆栈——C语言实现顺序存储和链式存储">
+<meta name="twitter:description" content="堆栈的顺序存储实现堆栈的顺序存储实现其实是利用了定长数组来模拟堆栈先进后出的规则，由此决定了堆栈的固定容量, 同时需要两个头尾指针来指示栈顶和栈底的位置。 以下展示各部分的代码实现。  定义结构体  1234567typedef int Position;struct QNode &amp;#123;    ElementType *Data;     /* 存储元素的数组 */    Position">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">堆栈——C语言实现顺序存储和链式存储</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">堆栈——C语言实现顺序存储和链式存储</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-02-09T15:06:33.000Z" itemprop="datePublished" class="page-time">
+  2019-02-09
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#堆栈的顺序存储实现"><span class="post-toc-number">1.</span> <span class="post-toc-text">堆栈的顺序存储实现</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#堆栈的链式存储实现"><span class="post-toc-number">2.</span> <span class="post-toc-text">堆栈的链式存储实现</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-数据结构-堆栈-C语言实现顺序存储和链式存储" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">堆栈——C语言实现顺序存储和链式存储</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-02-09 23:06:33" datetime="2019-02-09T15:06:33.000Z" itemprop="datePublished">2019-02-09</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="堆栈的顺序存储实现"><a href="#堆栈的顺序存储实现" class="headerlink" title="堆栈的顺序存储实现"></a>堆栈的顺序存储实现</h1><p>堆栈的顺序存储实现其实是利用了定长数组来模拟堆栈先进后出的规则，由此决定了堆栈的固定容量, 同时需要两个头尾指针来指示栈顶和栈底的位置。</p>
+<p>以下展示各部分的代码实现。</p>
+<ul>
+<li>定义结构体</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> Position;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">QNode</span> &#123;</span></span><br><span class="line">    ElementType *Data;     <span class="comment">/* 存储元素的数组 */</span></span><br><span class="line">    Position Front, Rear;  <span class="comment">/* 队列的头、尾指针 */</span></span><br><span class="line">    <span class="keyword">int</span> MaxSize;           <span class="comment">/* 队列最大容量 */</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">QNode</span> *<span class="title">Queue</span>;</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建队列</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Queue <span class="title">CreateQueue</span><span class="params">( <span class="keyword">int</span> MaxSize )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Queue Q = (Queue)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct QNode));</span><br><span class="line">    Q-&gt;Data = (ElementType *)<span class="built_in">malloc</span>(MaxSize * <span class="keyword">sizeof</span>(ElementType));</span><br><span class="line">    Q-&gt;Front = Q-&gt;Rear = <span class="number">0</span>;</span><br><span class="line">    Q-&gt;MaxSize = MaxSize;</span><br><span class="line">    <span class="keyword">return</span> Q;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>判断堆栈队列是否已满</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">IsFull</span><span class="params">( Queue Q )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> ((Q-&gt;Rear+<span class="number">1</span>)%Q-&gt;MaxSize == Q-&gt;Front);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>添加栈顶元素</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">AddQ</span><span class="params">( Queue Q, ElementType X )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( IsFull(Q) ) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"队列满"</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        Q-&gt;Rear = (Q-&gt;Rear+<span class="number">1</span>)%Q-&gt;MaxSize;</span><br><span class="line">        Q-&gt;Data[Q-&gt;Rear] = X;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>判断堆栈是否为空</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">IsEmpty</span><span class="params">( Queue Q )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (Q-&gt;Front == Q-&gt;Rear);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>弹出栈顶元素</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ElementType <span class="title">DeleteQ</span><span class="params">( Queue Q )</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span> ( IsEmpty(Q) ) &#123; </span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"队列空"</span>);</span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>  &#123;</span><br><span class="line">        Q-&gt;Front =(Q-&gt;Front+<span class="number">1</span>)%Q-&gt;MaxSize;</span><br><span class="line">        <span class="keyword">return</span>  Q-&gt;Data[Q-&gt;Front];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="堆栈的链式存储实现"><a href="#堆栈的链式存储实现" class="headerlink" title="堆栈的链式存储实现"></a>堆栈的链式存储实现</h1><p>堆栈的链式结构实现原理是将栈中的每一个元素视为链表中的每一个结点，利用链表的尾部的增删来实现先进后出的堆栈特点。</p>
+<ul>
+<li>定义结构体</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">SNode</span> * <span class="title">PtrToSNode</span>;</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">SNode</span> &#123;</span></span><br><span class="line">    ElementType Data;</span><br><span class="line">    PtrToSNode Next;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">typedef</span> PtrToSNode Stack;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建一个链式堆栈</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Stack <span class="title">CreateStack</span><span class="params">( )</span> </span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 构建一个堆栈的头结点，返回该结点指针 */</span></span><br><span class="line">    Stack S;</span><br><span class="line"></span><br><span class="line">    S = (Stack)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct SNode));</span><br><span class="line">    S-&gt;Next = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="keyword">return</span> S;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>判断堆栈链表是否为空</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">IsEmpty</span> <span class="params">( Stack S )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 判断堆栈S是否为空，若是返回true；否则返回false */</span></span><br><span class="line">    <span class="keyword">return</span> ( S-&gt;Next == <span class="literal">NULL</span> );</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>元素压入栈顶</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">Push</span><span class="params">( Stack S, ElementType X )</span></span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 将元素X压入堆栈S */</span></span><br><span class="line">    PtrToSNode TmpCell;</span><br><span class="line"></span><br><span class="line">    TmpCell = (PtrToSNode)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(struct SNode));</span><br><span class="line">    TmpCell-&gt;Data = X;</span><br><span class="line">    TmpCell-&gt;Next = S-&gt;Next;</span><br><span class="line">    S-&gt;Next = TmpCell;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>弹出栈顶元素</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">ElementType <span class="title">Pop</span><span class="params">( Stack S )</span>  </span></span><br><span class="line"><span class="function"></span>&#123; <span class="comment">/* 删除并返回堆栈S的栈顶元素 */</span></span><br><span class="line">    PtrToSNode FirstCell;</span><br><span class="line">    ElementType TopElem;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>( IsEmpty(S) ) &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"堆栈空"</span>); </span><br><span class="line">        <span class="keyword">return</span> ERROR;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> &#123;</span><br><span class="line">        FirstCell = S-&gt;Next; </span><br><span class="line">        TopElem = FirstCell-&gt;Data;</span><br><span class="line">        S-&gt;Next = FirstCell-&gt;Next;</span><br><span class="line">        <span class="built_in">free</span>(FirstCell);</span><br><span class="line">        <span class="keyword">return</span> TopElem;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ul>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-02-09T16:01:16.854Z" itemprop="dateUpdated">2019-02-10 00:01:16</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/02/09/数据结构-堆栈-C语言实现顺序存储和链式存储/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/02/09/数据结构-堆栈-C语言实现顺序存储和链式存储/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/02/09/数据结构-堆栈-C语言实现顺序存储和链式存储/&title=《堆栈——C语言实现顺序存储和链式存储》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/02/09/数据结构-堆栈-C语言实现顺序存储和链式存储/&title=《堆栈——C语言实现顺序存储和链式存储》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/02/09/数据结构-堆栈-C语言实现顺序存储和链式存储/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《堆栈——C语言实现顺序存储和链式存储》 — KnowMyself&url=https://joshuaqyh.github.io/2019/02/09/数据结构-堆栈-C语言实现顺序存储和链式存储/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/02/09/数据结构-堆栈-C语言实现顺序存储和链式存储/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/02/17/python可视化实例-matplotlib-seaborn/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">10 个 python可视化实例 | matplotlib &amp; seaborn</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/02/09/CH3-Vector-Spaces-and-Subspaces/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">CH3 | Vector Spaces and Subspaces</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/02/09/数据结构-堆栈-C语言实现顺序存储和链式存储/&title=《堆栈——C语言实现顺序存储和链式存储》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/02/09/数据结构-堆栈-C语言实现顺序存储和链式存储/&title=《堆栈——C语言实现顺序存储和链式存储》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/02/09/数据结构-堆栈-C语言实现顺序存储和链式存储/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《堆栈——C语言实现顺序存储和链式存储》 — KnowMyself&url=https://joshuaqyh.github.io/2019/02/09/数据结构-堆栈-C语言实现顺序存储和链式存储/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/02/09/数据结构-堆栈-C语言实现顺序存储和链式存储/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADLklEQVR42u3aW27bQBAEQN3/0soFErJ7RgHEVfHLkCnu1hLweB6vV3y9L6/2nmSVf/02//wDFzY2NvZD2JvtXrOvV8m/lTwht2BjY2Ofyp6RrkPO9T3Xx9oi6yCHjY2N/cPs6+/mAWwWzPaBFhsbG/uX2flxXG80P7L8oLGxsbGx89AyK+u3z/9/38LGxsY+j513Rb//5//S38bGxsb+YvZ7dG0OaD+O815f2NjY2CexN8WjfGgmP6a2zdA2obGxsbHPY+et3HaxtlW8GRvKj/I12xY2Njb2Q9jtIM6nUoL8yflYz01LGBsbG/sgdpsMtA3g2ajNrHSVvypsbGzsU9l5uzQvJ92EkHKtpGNbJDDY2NjYB7Fnxff8oXnakJeo2sbAzSFiY2NjH8RuB2VafBucZrz2xWBjY2M/l70ZiMlHeWaDPjcloTI03nRFsLGxsQ9lt23d2Vb24zh5kvNql8fGxsb+enabeMzu3A/07Nda5VvY2NjYD2HnKUQ+KJMnIcmT90EXGxsb+1T2rIjflu/bZsAGlrw2bGxs7PPYxZ/7OBXJU472CPJmxg0eGxsb++HstmSzCXWztdqCUd0YwMbGxn44Oy/rtOX7NhS1TeK2FIWNjY19NjtPMPahpd1WUorKnxxV1LCxsbEfyN43cTdbbEtLm4LUaxM/sbGxsb+S3ZZ72lRkk8bMClVRGMbGxsb+AXYeWtpwOAtX7ZDQzbFiY2NjH8eeNX3zgLFPdYr2bbITbGxs7IPYsypUG2w2W2/7s+2usLGxsZ/OniUJeUowS3Lapw3fMDY2NvYR7AQzG9Np2wxtCGwP6y8rYmNjYx/BTv7d36QlbVEpLznle8bGxsY+mz37R39W0Gmbx3lRafjasLGxsY9gv8trM5ozaxXnR5knVNjY2Ngnsdsw0D6obehuUpRZOxkbGxv7DHY+atkO68wGNGer10eGjY2NfRw7L/23saBt0H6qqBT1t7GxsbF/jJ0UhjZtgE+VtIquCDY2NvaPsZPCTftJfhCze7CxsbF/h/2pQk+yibZ3kbcEivCJjY2NfRA7L9Dk4WHWMMi3vklOsLGxsQ9i/wHdJPOHvVkeqQAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
