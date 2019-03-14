@@ -20,19 +20,19 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="">
-    <meta name="description" content="Here are some records for life and study.">
-<meta name="keywords" content="Oppppps!">
+    <meta name="keywords" content="C++,algorithm,Leetcode">
+    <meta name="description" content="Author: qyh Date: 2019-03-14 Description: Buid BT Stree from preorder tree URL:https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/  12345678910111213141516171819202122">
+<meta name="keywords" content="C++,algorithm,Leetcode">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Leetcode | Practice 2">
 <meta property="og:url" content="https://joshuaqyh.github.io/2019/03/14/Leetcode-Practice-2/index.html">
 <meta property="og:site_name" content="KnowMyself">
-<meta property="og:description" content="Here are some records for life and study.">
+<meta property="og:description" content="Author: qyh Date: 2019-03-14 Description: Buid BT Stree from preorder tree URL:https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/  12345678910111213141516171819202122">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-03-14T08:01:08.320Z">
+<meta property="og:updated_time" content="2019-03-14T15:07:10.532Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Leetcode | Practice 2">
-<meta name="twitter:description" content="Here are some records for life and study.">
+<meta name="twitter:description" content="Author: qyh Date: 2019-03-14 Description: Buid BT Stree from preorder tree URL:https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/  12345678910111213141516171819202122">
     
         <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
     
@@ -119,7 +119,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -174,7 +174,14 @@
 
         </div>
         <div class="post-content" id="post-content" itemprop="postContent">
-            
+            <blockquote>
+<p>Author: qyh</p>
+<p>Date: 2019-03-14</p>
+<p>Description: Buid BT Stree from preorder tree</p>
+<p>URL:<a href="https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/" target="_blank" rel="noopener">https://leetcode.com/problems/construct-binary-search-tree-from-preorder-traversal/</a></p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*Definition for a binary tree node.*/</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">TreeNode</span> &#123;</span></span><br><span class="line">	<span class="keyword">int</span> val;</span><br><span class="line">    TreeNode *left;</span><br><span class="line">    TreeNode *right;</span><br><span class="line">    TreeNode(<span class="keyword">int</span> x) : val(x), left(<span class="literal">NULL</span>), right(<span class="literal">NULL</span>) &#123;&#125;</span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="comment">/***********************</span></span><br><span class="line"><span class="comment">	求解思路：</span></span><br><span class="line"><span class="comment">	其实很简单，就是简单的二叉搜索树的插入，然后输出根节点就行了，没有那么复杂。。。</span></span><br><span class="line"><span class="comment">	***********************/</span></span><br><span class="line"></span><br><span class="line">	<span class="function">TreeNode* <span class="title">bstFromPreorder</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; preorder)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (preorder.empty())</span><br><span class="line">			<span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">		TreeNode* root = <span class="keyword">new</span> TreeNode(preorder[<span class="number">0</span>]);</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; preorder.size(); i++)&#123;</span><br><span class="line">			insert(root, preorder[i]);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> root;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function">TreeNode* <span class="title">insert</span><span class="params">(TreeNode* &amp;root, <span class="keyword">int</span> val)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">if</span> (root == <span class="literal">NULL</span>)</span><br><span class="line">			root = <span class="keyword">new</span> TreeNode(val);</span><br><span class="line">		<span class="keyword">else</span> <span class="keyword">if</span> (root-&gt;val &gt; val) &#123;</span><br><span class="line">			root-&gt;left = insert(root-&gt;left, val);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">else</span> &#123;</span><br><span class="line">			root-&gt;right = insert(root-&gt;right, val);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> root;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">levelOrder</span><span class="params">(TreeNode* root)</span> </span>&#123;</span><br><span class="line">	<span class="keyword">if</span> (root == <span class="literal">NULL</span>) <span class="keyword">return</span>;</span><br><span class="line">	<span class="built_in">queue</span>&lt;TreeNode*&gt; Q;</span><br><span class="line">	Q.push(root);</span><br><span class="line">	<span class="keyword">while</span> (!Q.empty()) &#123;</span><br><span class="line">		TreeNode* tmp = Q.front();</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; tmp-&gt;val &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">		Q.pop();</span><br><span class="line">		<span class="keyword">if</span> (tmp-&gt;left != <span class="literal">NULL</span>) &#123;</span><br><span class="line">			Q.push(tmp-&gt;left);</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span> (tmp-&gt;right != <span class="literal">NULL</span>) &#123;</span><br><span class="line">			Q.push(tmp-&gt;right);</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; test;</span><br><span class="line">	<span class="keyword">int</span> val[<span class="number">6</span>] = &#123;<span class="number">8</span>, <span class="number">5</span>, <span class="number">1</span>, <span class="number">7</span>, <span class="number">10</span>, <span class="number">12</span>&#125;;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">6</span>; i++) &#123;</span><br><span class="line">		test.push_back(val[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	Solution sol;</span><br><span class="line">	TreeNode* root = sol.bstFromPreorder(test);</span><br><span class="line">	levelOrder(root);</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
         </div>
 
         <blockquote class="post-copyright">
@@ -182,7 +189,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-03-14T08:01:08.320Z" itemprop="dateUpdated">2019-03-14 16:01:08</time>
+    最后更新时间：<time datetime="2019-03-14T15:07:10.532Z" itemprop="dateUpdated">2019-03-14 23:07:10</time>
 </span><br>
 
 
@@ -204,6 +211,8 @@
 
         <div class="post-footer">
             
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+
 
             
 <div class="page-share-wrap">
@@ -320,7 +329,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
         </p>
     </div>
     <div class="bottom">
