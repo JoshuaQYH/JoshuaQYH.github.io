@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://joshuaqyh.github.io/"/>
-  <updated>2019-03-17T18:12:41.962Z</updated>
+  <updated>2019-03-24T14:39:30.411Z</updated>
   <id>https://joshuaqyh.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>软件工程 | 系分作业二</title>
+    <link href="https://joshuaqyh.github.io/2019/03/24/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B-%E7%B3%BB%E5%88%86%E4%BD%9C%E4%B8%9A%E4%BA%8C/"/>
+    <id>https://joshuaqyh.github.io/2019/03/24/软件工程-系分作业二/</id>
+    <published>2019-03-24T12:17:58.000Z</published>
+    <updated>2019-03-24T14:39:30.411Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>16340186   邱奕浩   电子政务方向</p></blockquote><h1 id="一、-简答题"><a href="#一、-简答题" class="headerlink" title="一、 简答题"></a>一、 简答题</h1><ol><li><strong>用简短的语言给出对分析，设计的理解。</strong></li></ol><ul><li><p><strong>分析</strong>强调的是对问题和需求和调查研究，而不是解决方案。其含义较为广泛，如市场分析，需求分析，面向对象分析等等。</p></li><li><p><strong>设计</strong>强调的是满足需求上的<strong>解决方案</strong>，但不涉及其实现，设计通常不会涉及较为底层细节的描述，更多是描述宏观的事物和策略。</p><p><strong>简单来说分析就是做正确的事，设计就是正确地去做事。</strong>（来自教材《UML和模式应用》P5）、</p><p>​</p></li></ul><ol start="2"><li><p><strong>用一句话描述面向对象分析与设计的优势。</strong></p><p>OOA／D的优势在于能够满足复杂软件功能的分析，设计与实现，同时又有有利于团队成员理解项目和产品的迭代更新。</p><p>​</p></li><li><p><strong>简述 <code>UML</code>（统一建模语言）的作用。考试考哪些图？</strong></p></li></ol><p>   UML是描述，构造和文档化系统制品的可视化语言，是图形化表示法的事实标准，主要用来绘制和展示与软件（尤其是<code>OO</code>软件）相关的图形和文字，能够形象直观的表达面向对象软件设计中各个部分的逻辑和关联，帮助软件开发人员更好的理解项目设计。</p><p>   考试考的图有：用例图、静态图、行为图、实现图</p><p>   ​</p><ol start="4"><li><p><strong>从软件本质的角度，解释软件范围（需求）控制的可行性。</strong></p><p>软件的本质特性是复杂性，不可视性，不一致性，可变性。软件范围多数情况下对于客户和开发人员都是相对模糊的，软件的需求设计并不是一开始就能完全确定下来，在后续的开发、测试、运维阶段都会发生一定的变化，并进行不断地迭代更新，不断满足用户日新月异的需求点。</p><p>而根据著名的 <code>２／８</code> 法则，产品初期发展只需要 <code>２０％</code> 的有效核心需求就足以打开市场的大门，后续再进一步扩大软件范围，不断地跟进满足需求，不断完善用户服务和体验，依旧可以创造有价值的软件产品。</p><p>​</p></li></ol><h1 id="二、项目管理实践"><a href="#二、项目管理实践" class="headerlink" title="二、项目管理实践"></a>二、项目管理实践</h1><ol><li><p>看板使用练习（提交看板执行结果贴图，建议使用 <code>Git project</code>）</p><ul><li>使用截图工具（ <code>png</code> 格式输出），展现你团队的任务 <code>Kanban</code></li><li>每个人的任务是明确的。必须一周后可以看到具体结果</li><li>每个人的任务是1-2项</li><li>至少包含一个团队活动任务</li></ul><p>​</p></li></ol><ol start="2"><li><code>UML</code> 绘图工具练习（提交贴图，必须使用 <code>UMLet</code>）<ul><li>请在 参考书2 或 教材 中选择一个类图（给出参考书页码图号）</li></ul></li></ol><p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190324223826.png" alt=""></p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;16340186   邱奕浩   电子政务方向&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h1 id=&quot;一、-简答题&quot;&gt;&lt;a href=&quot;#一、-简答题&quot; class=&quot;headerlink&quot; title=&quot;一、 简答题&quot;&gt;&lt;/a&gt;一、 简答题&lt;/h1
+      
+    
+    </summary>
+    
+    
+      <category term="软件工程" scheme="https://joshuaqyh.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode | Practice 3</title>
@@ -995,9 +1021,9 @@
     
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
-      <category term="信息安全" scheme="https://joshuaqyh.github.io/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
-    
       <category term="Java" scheme="https://joshuaqyh.github.io/tags/Java/"/>
+    
+      <category term="信息安全" scheme="https://joshuaqyh.github.io/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
@@ -1183,11 +1209,11 @@
     </summary>
     
     
+      <category term="Java" scheme="https://joshuaqyh.github.io/tags/Java/"/>
+    
       <category term="信息安全" scheme="https://joshuaqyh.github.io/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
     
       <category term="加密技术" scheme="https://joshuaqyh.github.io/tags/%E5%8A%A0%E5%AF%86%E6%8A%80%E6%9C%AF/"/>
-    
-      <category term="Java" scheme="https://joshuaqyh.github.io/tags/Java/"/>
     
   </entry>
   
@@ -1662,9 +1688,9 @@
     </summary>
     
     
-      <category term="Java" scheme="https://joshuaqyh.github.io/tags/Java/"/>
-    
       <category term="vim" scheme="https://joshuaqyh.github.io/tags/vim/"/>
+    
+      <category term="Java" scheme="https://joshuaqyh.github.io/tags/Java/"/>
     
   </entry>
   
