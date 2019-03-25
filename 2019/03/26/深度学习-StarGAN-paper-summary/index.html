@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>深度学习 | StarGAN - paper summary | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="深度学习,Paper">
+    <meta name="description" content="StarGAN: Unified Generative Adversarial Networks for Multi-Domain Image-to-Image TranslationSummaryAlthough many GAN models show amazing performance in image-to-image translation tasks in recent studi">
+<meta name="keywords" content="深度学习,Paper">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习 | StarGAN - paper summary">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/03/26/深度学习-StarGAN-paper-summary/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="StarGAN: Unified Generative Adversarial Networks for Multi-Domain Image-to-Image TranslationSummaryAlthough many GAN models show amazing performance in image-to-image translation tasks in recent studi">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003803.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003614.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003635.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003652.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003708.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003742.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003857.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003931.png">
+<meta property="og:updated_time" content="2019-03-25T16:39:40.648Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深度学习 | StarGAN - paper summary">
+<meta name="twitter:description" content="StarGAN: Unified Generative Adversarial Networks for Multi-Domain Image-to-Image TranslationSummaryAlthough many GAN models show amazing performance in image-to-image translation tasks in recent studi">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003803.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">深度学习 | StarGAN - paper summary</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">深度学习 | StarGAN - paper summary</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-25T16:31:38.000Z" itemprop="datePublished" class="page-time">
+  2019-03-26
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#StarGAN-Unified-Generative-Adversarial-Networks-for-Multi-Domain-Image-to-Image-Translation"><span class="post-toc-number">1.</span> <span class="post-toc-text">StarGAN: Unified Generative Adversarial Networks for Multi-Domain Image-to-Image Translation</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Summary"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">Summary</span></a></li></ol></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Appendix"><span class="post-toc-number">2.</span> <span class="post-toc-text">Appendix</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-深度学习-StarGAN-paper-summary" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">深度学习 | StarGAN - paper summary</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-26 00:31:38" datetime="2019-03-25T16:31:38.000Z" itemprop="datePublished">2019-03-26</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="StarGAN-Unified-Generative-Adversarial-Networks-for-Multi-Domain-Image-to-Image-Translation"><a href="#StarGAN-Unified-Generative-Adversarial-Networks-for-Multi-Domain-Image-to-Image-Translation" class="headerlink" title="StarGAN: Unified Generative Adversarial Networks for Multi-Domain Image-to-Image Translation"></a>StarGAN: Unified Generative Adversarial Networks for Multi-Domain Image-to-Image Translation</h1><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>Although many GAN models show amazing performance in image-to-image translation tasks in recent studies, there are lots of limitations in scalability, robustness,efficiency and so on. Aimed at developing a more effective GAN model in image translation task, StarGAN is introduced to solve the problem that existing models are incapable of the implementation of multi-domain image translation among different datasets by using a single network. The StarGAN framework can learn mappings among multiple domains using a single generator and discriminator and behaves more effective than current similar models in the training phase. However, the other models cannot jointly train domains from various datasets, and if they want to learn all mappings within <em>k</em> domains, <em>k(k-1)</em> generators have to be trained, which is inefficient and ineffective.</p>
+<p>The StarGAN model structure consists of two modules, including a generator and a discriminator. The working principle of StarGAN is to train a generator <em>G</em> that learns mappings among different domains and a discriminator <em>D</em> that distinguish between real and fake images and classify real images to its corresponding real domain. Basically, StarGAN adopts two generators <em>(G1, G2)</em> for generating near-true fake images to fool the discriminator, causing the discriminator to be unable to distinguish the authenticity of the images and classify the pictures as the target domain. The input of <em>G1</em>is an image and the target domain label, and then its output is a fake image. Furthermore, <em>G2</em> tries to take in as input both fake image from the output of <em>G1</em> and original domain under the depth-wise concatenation and reconstructs an image as the output that will be treated as the input image of <em>G1</em>.Therefore, a near-true fake image is generated after many generating cycles and inputs the discriminator for judgment.</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003803.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>Toachieve the goal to train a single generator <em>G</em> that learns mappings among multiple domains, <em>G</em> is trained to translate an input image x into an output image yconditioned on the randomly generated target domain label <em>c, G (x, c)</em> <em>→</em> <em>y.</em>Meanwhile, an auxiliary classifier is introduced to permit a singlediscriminator to control multiple domains. The discriminator will produceprobability distributions over both sources and domain labels. That is <em>D: x<strong>→</strong>{Dsrc(x), Dcls(x)}.Dsrc(x)</em> means the probability distributionover sources given by <em>D</em>. The authorsdefine an adversarial loss to measure how easily the generated image iscorrectly distinguished:</p>
+<p><strong><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003614.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></strong></p>
+<p>Basedon the generated and adversarial characteristics, the generator will try tominimize the above objective, while the discriminator will try to maximize it.The loss function of the aforementioned auxiliary classifier can divide intotwo situations to discuss which is to classify real images and fake images tothe target domain <em>c</em>, defined as:</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003635.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>Toguarantee that translated images preserve the content of its input images whilechanging only the domain-related part of the inputs, a cycle consistency lossapplies to the generator, represented as:</p>
+<p><strong><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003652.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></strong></p>
+<p>Insummary, the loss function of the full objective to optimize <em>D</em> and <em>G</em> is designed as follows:</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003708.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>Thehyperparameter <em>λcls</em>, <em>λrec</em> is used to control therelative importance of domain classification and reconstruction loss. Both <em>D</em> and <em>G</em> will try to minimize the above full objective during the trainingprocessing.</p>
+<p>Animportant advantage and novel aspect of StarGAN is that it can utilize severaldatasets with different types of labels while all existing models only can betrained with a single dataset. To alleviate the problem that label informationis partially known to each dataset, the authors introduce a method named maskvector <em>m</em> to ignore unspecified labelsand focus on the explicitly known label provided by a particular dataset. Themask vector <em>m</em> is represented by ann-dimensional one-hot vector, where n stands for the number of datasets.Therefore, a unified version of the label is made as a vector c(~):</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003742.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>Where <em>ci</em> represents the label of <em>ith</em> dataset. So it solves theproblem of the inconsistent labels on multiple datasets and inability to sharethe label and transfer the feature. When training StarGAN with multipledatasets, the domain label c(~) is applied and the model isto be trained in a multi-task learning setting, where the discriminator triesto minimize only the classification error associated to the known label.</p>
+<p>Beforestarting to implement the model, we should understand the internal constructionof the generator and discriminator. The generator network structure of StarGANis modified and adapted from CycleGAN, composing of two convolutional layerswith the stride size of two for downsampling, six residual blocks, and twotransposed convolutional layers with the stride size of two for upsampling.Moreover, it applies the instance normalization method for the generator butnot for the discriminator. Adapted from PatchGANs, the discriminator isdesigned to classify whether the local image patches are real or fake.</p>
+<p>The twodatasets CelebA and RaFD are used to train and test StarGAN, and try to makethe comparison between StarGAN and some baseline models like DIAT, cycleGAN,and IcGAN, finding the advantage and strength of StarGAN. The qualitativeresults on CelebA show a higher visual quality and preserve the facial identityfeature of an input. Moreover, quantitative result reflects that StarGANobtained the majority of votes for best transferring attributes in all cases.As for the result on RaFD, StarGAN is capable of generating the mostnatural-looking expressions and preserve the personal identity and facialfeatures of the input. Furthermore, the model gets the lowest classificationerror, meaning producing the most realistic facial expression. Also, theparameters required of the model is less than other models, enhancing thescalability of the model. When training model jointly on CelebA and RaFD, ithas confirmed that StarGAN can properly learn features in a dataset andtransfer them to another dataset by using a proper mask vector, achievingexcellent results on image-to-image cross-domain translation.</p>
+<p>Due tothe limited number of test datasets used in the experiment, it is almost notpossible to verify whether the StarGAN model is universal or not. Anotherunfortunate fact is that some properties outside the target domain arefrequently modified. For instance, face attributes would be easily modifiedwhen executing the synthetic facial expression task. For further development ofthis model, we assume that the model will develop towards more accurate andfine-grained target domain generation, and meanwhile ensure the stability of non-targetdomain attributes. However, it also is worthy of recognition that this modelhas achieved relatively excellent improvement and progress on the efficiencyand quality of the image-to-image translation. In particular, the beginning oftraining models with multiple different datasets with various labels created.It is valuable work to enable more researchers to explore and develop excellentimage translation applications across multiple domains.</p>
+<h1 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h1><p><a href="">[1]    </a><a href="https://arxiv.org/abs/1711.09020" target="_blank" rel="noopener">StarGAN: Unified Generative Adversarial Networks forMulti-Domain Image-to-Image Translation</a> <a href="https://github.com/yunjey" target="_blank" rel="noopener">Yunjey Choi</a> 1,2, <a href="https://github.com/mjc92" target="_blank" rel="noopener">Minje Choi</a> 1,2, <a href="https://www.facebook.com/munyoung.kim.1291" target="_blank" rel="noopener">MunyoungKim</a> 2,3, <a href="https://www.facebook.com/jungwoo.ha.921" target="_blank" rel="noopener">Jung-Woo Ha</a> 2, <a href="https://www.cse.ust.hk/~hunkim/" target="_blank" rel="noopener">Sung Kim</a> 2,4, and <a href="https://sites.google.com/site/jaegulchoo/" target="_blank" rel="noopener">JaegulChoo</a> 1,2 1 Korea University, 2 Clova AI Research (NAVER Corp.), 3 The College of NewJersey, 4 HKUST <em>IEEEConference on Computer Vision and Pattern Recognition (</em><a href="http://cvpr2018.thecvf.com/" target="_blank" rel="noopener"><em>CVPR</em></a><em>)</em>, 2018 (<strong>Oral</strong>)</p>
+<p><a href="">[2]    The code of this paper is open in </a><a href="https://github.com/yunjey/stargan" target="_blank" rel="noopener">Github</a>.</p>
+<p><a href="">[3]    Z. Liu, P. Luo, X. Wang,and X. Tang. Deep learning face attributes in the wild. In <em>Proceedings of the IEEE International Conference on Computer Vision(ICCV)</em>, 2015.</a></p>
+<p><a href="">[4]    O. Langner, R. Dotsch, G.Bijlstra, D. H. Wigboldus, S. T. Hawk, and A. Van Knippenberg. Presentation andvalidation of the radboud faces database. <em>Cognitionand Emotion</em>, 24(8):1377–1388, 2010.</a></p>
+<p><a href="">[5]    Facial Attribute Transferon CelebA</a><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003857.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure></p>
+<p><a href="">[6]    Facial ExpressionSynthesis on RaFD</a></p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003931.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2019-03-25T16:39:40.648Z" itemprop="dateUpdated">2019-03-26 00:39:40</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/03/26/深度学习-StarGAN-paper-summary/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/03/26/深度学习-StarGAN-paper-summary/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Paper/">Paper</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/03/26/深度学习-StarGAN-paper-summary/&title=《深度学习 | StarGAN - paper summary》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/03/26/深度学习-StarGAN-paper-summary/&title=《深度学习 | StarGAN - paper summary》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/03/26/深度学习-StarGAN-paper-summary/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深度学习 | StarGAN - paper summary》 — KnowMyself&url=https://joshuaqyh.github.io/2019/03/26/深度学习-StarGAN-paper-summary/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/03/26/深度学习-StarGAN-paper-summary/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/25/机器学习-支持向量机学习笔记/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">机器学习 | 支持向量机学习笔记</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/03/26/深度学习-StarGAN-paper-summary/&title=《深度学习 | StarGAN - paper summary》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/03/26/深度学习-StarGAN-paper-summary/&title=《深度学习 | StarGAN - paper summary》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/03/26/深度学习-StarGAN-paper-summary/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深度学习 | StarGAN - paper summary》 — KnowMyself&url=https://joshuaqyh.github.io/2019/03/26/深度学习-StarGAN-paper-summary/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/03/26/深度学习-StarGAN-paper-summary/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuklEQVR42u3aS3LjMAwFwNz/0pmqrEf0w4e2F61VylEsthYE8sCfn/j6/bvOn5z/6ukbnq6nO39uXHh4eHitpZ8fk3/y9PN5icn953sevx8PDw/vGq+3reeAeeE5r+fxczw8PLyP8s7loVpakqY5KTx4eHh438+rNtC9ljpvr/Hw8PA+xUu29fP91UY5KRtvzVrw8PDwajtzISz4hp8vzvfw8PDwBlP1PFyYF4nJeh7XgIeHh3eBVx1lJY1v9ajBJOqNQgo8PDy8C7zd6LZaNqqYJgwPDw9vlZcXgGpYUH3H1SdGa8bDw8Nb5c2PT5WjgdVh2IsXioeHh3eB19voJw9Lgo9eCBLVPTw8PLwxL9/0k8Y3md1XW+TqES48PDy8d/Ly0Vc+pprEGQvHFPDw8PAu8PLjAr2Nu9dG9wZdL/5jwMPDw1vlVYde1aNaC1FsEFJEJ8vw8PDwxrw8Ht1CVoOJCR4PDw/vNm+rMOS/7RWGwgvCw8PDu8CbRwz54D9/VvU7o/MReHh4eEu85vbaGlZVS0Lv6MB/wgg8PDy8y7xkcZNwIQ8gkjj4xT8DeHh4eBd4SZtbbYV7UcX8iZECDw8Pb4mXNL75gvLwYnIgtVBs8PDw8FZ5vZFVr11OoocEX3gdeHh4eB/iJdOzSagxCSOiZhoPDw9vlXdufPM/q55TqI7Hek/Hw8PDu8HbHTXl5SEvFckT8fDw8N7Jy480bY2j8teUB7hR9cPDw8Nb4v0Wr17Z6L2OeSOOh4eHd4M32XbnUeykmuUHHfDw8PBu8KrD+17xyIPavAiVExc8PDy8Vd5uiFCNhidF5cX9eHh4eF/AS9rofKOvLr0aVeDh4eF9lje5v3qQqzC7O5cHPDw8vGu8PIzIH5ls7vlhrObwDA8PD+8Cb2sAluPztjh5cQsjNzw8PLx0Vf8A6YzaT9crZcYAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

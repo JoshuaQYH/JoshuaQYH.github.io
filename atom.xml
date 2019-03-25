@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://joshuaqyh.github.io/"/>
-  <updated>2019-03-24T15:00:13.316Z</updated>
+  <updated>2019-03-25T16:39:40.648Z</updated>
   <id>https://joshuaqyh.github.io/</id>
   
   <author>
@@ -15,6 +15,55 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>深度学习 | StarGAN - paper summary</title>
+    <link href="https://joshuaqyh.github.io/2019/03/26/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-StarGAN-paper-summary/"/>
+    <id>https://joshuaqyh.github.io/2019/03/26/深度学习-StarGAN-paper-summary/</id>
+    <published>2019-03-25T16:31:38.000Z</published>
+    <updated>2019-03-25T16:39:40.648Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="StarGAN-Unified-Generative-Adversarial-Networks-for-Multi-Domain-Image-to-Image-Translation"><a href="#StarGAN-Unified-Generative-Adversarial-Networks-for-Multi-Domain-Image-to-Image-Translation" class="headerlink" title="StarGAN: Unified Generative Adversarial Networks for Multi-Domain Image-to-Image Translation"></a>StarGAN: Unified Generative Adversarial Networks for Multi-Domain Image-to-Image Translation</h1><h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>Although many GAN models show amazing performance in image-to-image translation tasks in recent studies, there are lots of limitations in scalability, robustness,efficiency and so on. Aimed at developing a more effective GAN model in image translation task, StarGAN is introduced to solve the problem that existing models are incapable of the implementation of multi-domain image translation among different datasets by using a single network. The StarGAN framework can learn mappings among multiple domains using a single generator and discriminator and behaves more effective than current similar models in the training phase. However, the other models cannot jointly train domains from various datasets, and if they want to learn all mappings within <em>k</em> domains, <em>k(k-1)</em> generators have to be trained, which is inefficient and ineffective.</p><p>The StarGAN model structure consists of two modules, including a generator and a discriminator. The working principle of StarGAN is to train a generator <em>G</em> that learns mappings among different domains and a discriminator <em>D</em> that distinguish between real and fake images and classify real images to its corresponding real domain. Basically, StarGAN adopts two generators <em>(G1, G2)</em> for generating near-true fake images to fool the discriminator, causing the discriminator to be unable to distinguish the authenticity of the images and classify the pictures as the target domain. The input of <em>G1</em>is an image and the target domain label, and then its output is a fake image. Furthermore, <em>G2</em> tries to take in as input both fake image from the output of <em>G1</em> and original domain under the depth-wise concatenation and reconstructs an image as the output that will be treated as the input image of <em>G1</em>.Therefore, a near-true fake image is generated after many generating cycles and inputs the discriminator for judgment.</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003803.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>Toachieve the goal to train a single generator <em>G</em> that learns mappings among multiple domains, <em>G</em> is trained to translate an input image x into an output image yconditioned on the randomly generated target domain label <em>c, G (x, c)</em> <em>→</em> <em>y.</em>Meanwhile, an auxiliary classifier is introduced to permit a singlediscriminator to control multiple domains. The discriminator will produceprobability distributions over both sources and domain labels. That is <em>D: x<strong>→</strong>{Dsrc(x), Dcls(x)}.Dsrc(x)</em> means the probability distributionover sources given by <em>D</em>. The authorsdefine an adversarial loss to measure how easily the generated image iscorrectly distinguished:</p><p><strong><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003614.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure></strong></p><p>Basedon the generated and adversarial characteristics, the generator will try tominimize the above objective, while the discriminator will try to maximize it.The loss function of the aforementioned auxiliary classifier can divide intotwo situations to discuss which is to classify real images and fake images tothe target domain <em>c</em>, defined as:</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003635.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>Toguarantee that translated images preserve the content of its input images whilechanging only the domain-related part of the inputs, a cycle consistency lossapplies to the generator, represented as:</p><p><strong><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003652.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure></strong></p><p>Insummary, the loss function of the full objective to optimize <em>D</em> and <em>G</em> is designed as follows:</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003708.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>Thehyperparameter <em>λcls</em>, <em>λrec</em> is used to control therelative importance of domain classification and reconstruction loss. Both <em>D</em> and <em>G</em> will try to minimize the above full objective during the trainingprocessing.</p><p>Animportant advantage and novel aspect of StarGAN is that it can utilize severaldatasets with different types of labels while all existing models only can betrained with a single dataset. To alleviate the problem that label informationis partially known to each dataset, the authors introduce a method named maskvector <em>m</em> to ignore unspecified labelsand focus on the explicitly known label provided by a particular dataset. Themask vector <em>m</em> is represented by ann-dimensional one-hot vector, where n stands for the number of datasets.Therefore, a unified version of the label is made as a vector c(~):</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003742.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>Where <em>ci</em> represents the label of <em>ith</em> dataset. So it solves theproblem of the inconsistent labels on multiple datasets and inability to sharethe label and transfer the feature. When training StarGAN with multipledatasets, the domain label c(~) is applied and the model isto be trained in a multi-task learning setting, where the discriminator triesto minimize only the classification error associated to the known label.</p><p>Beforestarting to implement the model, we should understand the internal constructionof the generator and discriminator. The generator network structure of StarGANis modified and adapted from CycleGAN, composing of two convolutional layerswith the stride size of two for downsampling, six residual blocks, and twotransposed convolutional layers with the stride size of two for upsampling.Moreover, it applies the instance normalization method for the generator butnot for the discriminator. Adapted from PatchGANs, the discriminator isdesigned to classify whether the local image patches are real or fake.</p><p>The twodatasets CelebA and RaFD are used to train and test StarGAN, and try to makethe comparison between StarGAN and some baseline models like DIAT, cycleGAN,and IcGAN, finding the advantage and strength of StarGAN. The qualitativeresults on CelebA show a higher visual quality and preserve the facial identityfeature of an input. Moreover, quantitative result reflects that StarGANobtained the majority of votes for best transferring attributes in all cases.As for the result on RaFD, StarGAN is capable of generating the mostnatural-looking expressions and preserve the personal identity and facialfeatures of the input. Furthermore, the model gets the lowest classificationerror, meaning producing the most realistic facial expression. Also, theparameters required of the model is less than other models, enhancing thescalability of the model. When training model jointly on CelebA and RaFD, ithas confirmed that StarGAN can properly learn features in a dataset andtransfer them to another dataset by using a proper mask vector, achievingexcellent results on image-to-image cross-domain translation.</p><p>Due tothe limited number of test datasets used in the experiment, it is almost notpossible to verify whether the StarGAN model is universal or not. Anotherunfortunate fact is that some properties outside the target domain arefrequently modified. For instance, face attributes would be easily modifiedwhen executing the synthetic facial expression task. For further development ofthis model, we assume that the model will develop towards more accurate andfine-grained target domain generation, and meanwhile ensure the stability of non-targetdomain attributes. However, it also is worthy of recognition that this modelhas achieved relatively excellent improvement and progress on the efficiencyand quality of the image-to-image translation. In particular, the beginning oftraining models with multiple different datasets with various labels created.It is valuable work to enable more researchers to explore and develop excellentimage translation applications across multiple domains.</p><h1 id="Appendix"><a href="#Appendix" class="headerlink" title="Appendix"></a>Appendix</h1><p><a href="">[1]    </a><a href="https://arxiv.org/abs/1711.09020" target="_blank" rel="noopener">StarGAN: Unified Generative Adversarial Networks forMulti-Domain Image-to-Image Translation</a> <a href="https://github.com/yunjey" target="_blank" rel="noopener">Yunjey Choi</a> 1,2, <a href="https://github.com/mjc92" target="_blank" rel="noopener">Minje Choi</a> 1,2, <a href="https://www.facebook.com/munyoung.kim.1291" target="_blank" rel="noopener">MunyoungKim</a> 2,3, <a href="https://www.facebook.com/jungwoo.ha.921" target="_blank" rel="noopener">Jung-Woo Ha</a> 2, <a href="https://www.cse.ust.hk/~hunkim/" target="_blank" rel="noopener">Sung Kim</a> 2,4, and <a href="https://sites.google.com/site/jaegulchoo/" target="_blank" rel="noopener">JaegulChoo</a> 1,2 1 Korea University, 2 Clova AI Research (NAVER Corp.), 3 The College of NewJersey, 4 HKUST <em>IEEEConference on Computer Vision and Pattern Recognition (</em><a href="http://cvpr2018.thecvf.com/" target="_blank" rel="noopener"><em>CVPR</em></a><em>)</em>, 2018 (<strong>Oral</strong>)</p><p><a href="">[2]    The code of this paper is open in </a><a href="https://github.com/yunjey/stargan" target="_blank" rel="noopener">Github</a>.</p><p><a href="">[3]    Z. Liu, P. Luo, X. Wang,and X. Tang. Deep learning face attributes in the wild. In <em>Proceedings of the IEEE International Conference on Computer Vision(ICCV)</em>, 2015.</a></p><p><a href="">[4]    O. Langner, R. Dotsch, G.Bijlstra, D. H. Wigboldus, S. T. Hawk, and A. Van Knippenberg. Presentation andvalidation of the radboud faces database. <em>Cognitionand Emotion</em>, 24(8):1377–1388, 2010.</a></p><p><a href="">[5]    Facial Attribute Transferon CelebA</a><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003857.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure></p><p><a href="">[6]    Facial ExpressionSynthesis on RaFD</a></p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326003931.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;StarGAN-Unified-Generative-Adversarial-Networks-for-Multi-Domain-Image-to-Image-Translation&quot;&gt;&lt;a href=&quot;#StarGAN-Unified-Generative-Ad
+      
+    
+    </summary>
+    
+    
+      <category term="深度学习" scheme="https://joshuaqyh.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="Paper" scheme="https://joshuaqyh.github.io/tags/Paper/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>机器学习 | 支持向量机学习笔记</title>
+    <link href="https://joshuaqyh.github.io/2019/03/25/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0-%E6%94%AF%E6%8C%81%E5%90%91%E9%87%8F%E6%9C%BA%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    <id>https://joshuaqyh.github.io/2019/03/25/机器学习-支持向量机学习笔记/</id>
+    <published>2019-03-25T08:54:42.000Z</published>
+    <updated>2019-03-25T10:55:13.013Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="SVM原理"><a href="#SVM原理" class="headerlink" title="SVM原理"></a>SVM原理</h1><p>假设有两类样本，类别分别为 - 1， 1。空间中存在一个超平面能够划分这两类样本。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190325172141.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190325172206.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190325172307.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190325172327.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190325172555.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h1 id="拉格朗日求解SVM"><a href="#拉格朗日求解SVM" class="headerlink" title="拉格朗日求解SVM"></a>拉格朗日求解SVM</h1><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190325174215.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190325174343.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;SVM原理&quot;&gt;&lt;a href=&quot;#SVM原理&quot; class=&quot;headerlink&quot; title=&quot;SVM原理&quot;&gt;&lt;/a&gt;SVM原理&lt;/h1&gt;&lt;p&gt;假设有两类样本，类别分别为 - 1， 1。空间中存在一个超平面能够划分这两类样本。&lt;/p&gt;
+&lt;figure clas
+      
+    
+    </summary>
+    
+    
+      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>软件工程 | 系分作业二</title>
@@ -62,9 +111,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -116,9 +165,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -1019,11 +1068,11 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="信息安全" scheme="https://joshuaqyh.github.io/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
     
       <category term="Java" scheme="https://joshuaqyh.github.io/tags/Java/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
   </entry>
   
@@ -1049,9 +1098,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="数据结构" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
@@ -1077,9 +1126,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
