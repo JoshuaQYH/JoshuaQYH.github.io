@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://joshuaqyh.github.io/"/>
-  <updated>2019-03-26T03:42:13.121Z</updated>
+  <updated>2019-03-26T13:46:37.880Z</updated>
   <id>https://joshuaqyh.github.io/</id>
   
   <author>
@@ -15,6 +15,63 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Leetcode | Practice 6</title>
+    <link href="https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-6/"/>
+    <id>https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-6/</id>
+    <published>2019-03-26T13:21:05.000Z</published>
+    <updated>2019-03-26T13:46:37.880Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326212552.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>这题目看起来是真的有点迷，中级题目。</p><p>给一个从1到N的数组，对该数组进行重构，使之符合以下两条规则：</p><ol><li>第i个数能够被i整除</li><li>i能够被第i个整除</li></ol><p>我们需要返回能够符合以上两条规则之一或者同时满足的数组的个数。0 &lt; N &lt;= 15</p><p>怎么说好呢，一个数组升序都是满足的。</p><p>emmmm 完全没有思路啊，，我看来得去看看MOOC上浙大的数据结构和北大的算法课。。</p><p>貌似可以用回溯，，回溯在大一时简直就是噩梦，都没有听懂。。。。</p><p>看了大佬的回溯算法，简直有点迷，递归回溯算法。。我先贴个码吧，我先去刷了慕课了。。</p><p>应该是用了递归深度搜索方法，仔细看看真的好妙 啊。</p><p>我还是多看看课程吧，算法渣。。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>&#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">coutArrangement</span><span class="params">(<span class="keyword">int</span> N)</span></span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        visited = <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(N + <span class="number">1</span>, <span class="number">0</span>);</span><br><span class="line">        dfs(N, &amp;ans, <span class="number">1</span>); <span class="comment">// 第 1 个数开始搜索</span></span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;   </span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; visited;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> *ans, <span class="keyword">int</span> pos)</span></span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(pos &gt; n)&#123;</span><br><span class="line">            (*ans)++; <span class="comment">// 找到了一个符合的数组</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>; </span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(!visited[i] &amp;&amp; (i % pos == <span class="number">0</span> || pos % i == <span class="number">0</span>))&#123;</span><br><span class="line">                visited[i] = <span class="number">1</span>; <span class="comment">// 在深度搜索的时候，该位置无法被访问</span></span><br><span class="line">                dfs(n, ans, pos + <span class="number">1</span>);</span><br><span class="line">                visited[i] = <span class="number">0</span>; <span class="comment">// 深层的深度搜索结束了，该位置恢复访问。。</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;figure class=&quot;image-bubble&quot;&gt;
+                &lt;div class=&quot;img-lightbox&quot;&gt;
+                    &lt;div class=&quot;overlay&quot;&gt;&lt;/div&gt;
+                   
+      
+    
+    </summary>
+    
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Leetcode | Practice 5</title>
+    <link href="https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-5/"/>
+    <id>https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-5/</id>
+    <published>2019-03-26T12:36:05.000Z</published>
+    <updated>2019-03-26T13:20:45.134Z</updated>
+    
+    <content type="html"><![CDATA[<p>选一道easy的题来解解闷。。。</p><p>找出数组中的两个数之和等于target。。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326203656.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>思路：</p><ol><li>两重遍历。不过由于数组是升序的，在第一层遍历开始前，先判断一下当前元素和结尾元素之和能否大于等于目标值，如果不行则continue</li><li>给定收尾索引，判断对应位置之和和target的关系。如果相等，则返回，如果大于target，则尾索引变小，如果小于target，则头索引变大。</li></ol><p>思路一实现：</p><p>时间复杂度 O(n^2)</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; numbers, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; result;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//int smallest = numbers[0];</span></span><br><span class="line">        <span class="keyword">int</span> biggest = numbers[numbers.size() - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numbers.size() - <span class="number">1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(biggest + numbers[i] &lt; target)&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; numbers.size(); j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(numbers[i] + numbers[j] == target)&#123;</span><br><span class="line">                    result.push_back(i + <span class="number">1</span>);</span><br><span class="line">                    result.push_back(j + <span class="number">1</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(result.size() == <span class="number">2</span>)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; numbers, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; result;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>; </span><br><span class="line">        <span class="keyword">int</span> j = numbers.size() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; j)&#123;</span><br><span class="line">            <span class="keyword">int</span> sum = numbers[i] + numbers[j];</span><br><span class="line">            <span class="keyword">if</span>(sum == target)&#123;</span><br><span class="line">                result.push_back(i + <span class="number">1</span>);</span><br><span class="line">                result.push_back(j + <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(sum &lt; target)&#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                j --;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;选一道easy的题来解解闷。。。&lt;/p&gt;
+&lt;p&gt;找出数组中的两个数之和等于target。。&lt;/p&gt;
+&lt;figure class=&quot;image-bubble&quot;&gt;
+                &lt;div class=&quot;img-lightbox&quot;&gt;
+              
+      
+    
+    </summary>
+    
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode | Practice 4</title>
@@ -136,9 +193,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -190,9 +247,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -263,9 +320,9 @@
     </summary>
     
     
-      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -455,9 +512,9 @@
     </summary>
     
     
-      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -484,9 +541,9 @@
     
       <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
-      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -515,9 +572,9 @@
     
       <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
-      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -546,9 +603,9 @@
     
       <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
-      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -575,9 +632,9 @@
     
       <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
-      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -604,9 +661,9 @@
     
       <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
-      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -633,9 +690,9 @@
     
       <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
-      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
   </entry>
   
@@ -1093,11 +1150,11 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="信息安全" scheme="https://joshuaqyh.github.io/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
     
       <category term="Java" scheme="https://joshuaqyh.github.io/tags/Java/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
   </entry>
   
@@ -1123,9 +1180,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="数据结构" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
@@ -1176,9 +1233,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     

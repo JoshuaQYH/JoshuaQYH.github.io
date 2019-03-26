@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Leetcode | Practice 5 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="C++,Leetcode">
+    <meta name="description" content="选一道easy的题来解解闷。。。 找出数组中的两个数之和等于target。。                                                                                                            思路：  两重遍历。不过由于数组是升序的，在第一层遍历开始前，先判断一下当前元素和结尾元素之和能否大于等于目">
+<meta name="keywords" content="C++,Leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode | Practice 5">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-5/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="选一道easy的题来解解闷。。。 找出数组中的两个数之和等于target。。                                                                                                            思路：  两重遍历。不过由于数组是升序的，在第一层遍历开始前，先判断一下当前元素和结尾元素之和能否大于等于目">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326203656.png">
+<meta property="og:updated_time" content="2019-03-26T13:20:45.134Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leetcode | Practice 5">
+<meta name="twitter:description" content="选一道easy的题来解解闷。。。 找出数组中的两个数之和等于target。。                                                                                                            思路：  两重遍历。不过由于数组是升序的，在第一层遍历开始前，先判断一下当前元素和结尾元素之和能否大于等于目">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326203656.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Leetcode | Practice 5</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Leetcode | Practice 5</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-26T12:36:05.000Z" itemprop="datePublished" class="page-time">
+  2019-03-26
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-Leetcode-Practice-5" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Leetcode | Practice 5</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-26 20:36:05" datetime="2019-03-26T12:36:05.000Z" itemprop="datePublished">2019-03-26</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>选一道easy的题来解解闷。。。</p>
+<p>找出数组中的两个数之和等于target。。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190326203656.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>思路：</p>
+<ol>
+<li>两重遍历。不过由于数组是升序的，在第一层遍历开始前，先判断一下当前元素和结尾元素之和能否大于等于目标值，如果不行则continue</li>
+<li>给定收尾索引，判断对应位置之和和target的关系。如果相等，则返回，如果大于target，则尾索引变小，如果小于target，则头索引变大。</li>
+</ol>
+<p>思路一实现：</p>
+<p>时间复杂度 O(n^2)</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; numbers, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; result;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//int smallest = numbers[0];</span></span><br><span class="line">        <span class="keyword">int</span> biggest = numbers[numbers.size() - <span class="number">1</span>];</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; numbers.size() - <span class="number">1</span>; i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(biggest + numbers[i] &lt; target)&#123;</span><br><span class="line">                <span class="keyword">continue</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt; numbers.size(); j++)&#123;</span><br><span class="line">                <span class="keyword">if</span>(numbers[i] + numbers[j] == target)&#123;</span><br><span class="line">                    result.push_back(i + <span class="number">1</span>);</span><br><span class="line">                    result.push_back(j + <span class="number">1</span>);</span><br><span class="line">                    <span class="keyword">break</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(result.size() == <span class="number">2</span>)&#123;</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; twoSum(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; numbers, <span class="keyword">int</span> target) &#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; result;</span><br><span class="line">        <span class="keyword">int</span> i = <span class="number">0</span>; </span><br><span class="line">        <span class="keyword">int</span> j = numbers.size() - <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(i &lt; j)&#123;</span><br><span class="line">            <span class="keyword">int</span> sum = numbers[i] + numbers[j];</span><br><span class="line">            <span class="keyword">if</span>(sum == target)&#123;</span><br><span class="line">                result.push_back(i + <span class="number">1</span>);</span><br><span class="line">                result.push_back(j + <span class="number">1</span>);</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(sum &lt; target)&#123;</span><br><span class="line">                i++;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                j --;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2019-03-26T13:20:45.134Z" itemprop="dateUpdated">2019-03-26 21:20:45</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/03/26/Leetcode-Practice-5/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-5/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-5/&title=《Leetcode | Practice 5》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-5/&title=《Leetcode | Practice 5》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-5/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Leetcode | Practice 5》 — KnowMyself&url=https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-5/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-5/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/03/26/Leetcode-Practice-6/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">Leetcode | Practice 6</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/26/Leetcode-Practice-4/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">Leetcode | Practice 4</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-5/&title=《Leetcode | Practice 5》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-5/&title=《Leetcode | Practice 5》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-5/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Leetcode | Practice 5》 — KnowMyself&url=https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-5/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-5/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACKklEQVR42u3aO3LDMAwFQN//0s5MqjSUHwA5Y5OrSoUlclXAxOfxiK/n7/X3fnWtfrN65+qpxzsuDAyMr2Xk28qXX20o2WL1k2FgYJzDyF83iYTXn2+17vXeMDAwMKqvrobpyVoYGBgYSVKa/yY58GFgYGBcM3rls+tN5Alt/mluyMUxMDC+kNFrDPzP/dv7GxgYGB/PeBav5NnkQ1QD64tdYWBgbM1IFkgOefkx8d4iXeE7YWBgfC2jVxSbb67X7CxPZ2BgYGzBqB7yegW4fJVeoxQDA+MERp5S5rEuJ12/IfljwMDAOIeRNwOqx8reVgpjFhgYGEcyckA+YDEZC2s2OzEwMDZi5OEybwy8IyWOWpgYGBiHMXrHuHwreUsgSo8xMDCOYUwOhdVUtjc6hoGBgTE58N0QNAcjaxgYGLsyetW4SUOxOUJxvS4GBsbWjGTJaiEsx+TltuaYBQYGxhaMPH1NWpWTsDtJfTEwMPZm5ElsfrzrtTzzNPhFKouBgbEdo1oIy8NrdZBi8jeAgYFxAiNvAEy2XhjwqgZxDAyMrRl3FfqvQ+comObhHgMDY1PGXQGxFzqrTYLlezAwMLZmVNuZ1fteMlwFY2BgnMCopq/58W4+ipGnzRgYGCcw5sX9eauyF/QxMDAw8pJcEhyrJbnCwAcGBgZGMZhWBztyatSPxcDA2JSRJLHVTb/vgLgMuBgYGJsyegnkfERj3hC9ob+BgYHx6YwfOJz6CHe/5KsAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
