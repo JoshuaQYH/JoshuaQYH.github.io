@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Leetcode | Practice 4 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="C++,Leetcode">
+    <meta name="description" content="Find K Pairs with Smallest Sums给定两个升序整数数组nums1 nums2以及一个整数k。 定义一个数对，一个元素来自nums1 一个来自nums2。 目的是返回k个数对，这些数对的内部元素之和升序存放。 例子如下： 1234Input: nums1 = [1,7,11], nums2 = [2,4,6], k = 3Output: [[1,2],[1,4],[1,6">
+<meta name="keywords" content="C++,Leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode | Practice 4">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-4/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="Find K Pairs with Smallest Sums给定两个升序整数数组nums1 nums2以及一个整数k。 定义一个数对，一个元素来自nums1 一个来自nums2。 目的是返回k个数对，这些数对的内部元素之和升序存放。 例子如下： 1234Input: nums1 = [1,7,11], nums2 = [2,4,6], k = 3Output: [[1,2],[1,4],[1,6">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-26T03:42:13.121Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leetcode | Practice 4">
+<meta name="twitter:description" content="Find K Pairs with Smallest Sums给定两个升序整数数组nums1 nums2以及一个整数k。 定义一个数对，一个元素来自nums1 一个来自nums2。 目的是返回k个数对，这些数对的内部元素之和升序存放。 例子如下： 1234Input: nums1 = [1,7,11], nums2 = [2,4,6], k = 3Output: [[1,2],[1,4],[1,6">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Leetcode | Practice 4</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Leetcode | Practice 4</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-26T02:16:19.000Z" itemprop="datePublished" class="page-time">
+  2019-03-26
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Find-K-Pairs-with-Smallest-Sums"><span class="post-toc-number">1.</span> <span class="post-toc-text">Find K Pairs with Smallest Sums</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-Leetcode-Practice-4" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Leetcode | Practice 4</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-26 10:16:19" datetime="2019-03-26T02:16:19.000Z" itemprop="datePublished">2019-03-26</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="Find-K-Pairs-with-Smallest-Sums"><a href="#Find-K-Pairs-with-Smallest-Sums" class="headerlink" title="Find K Pairs with Smallest Sums"></a>Find K Pairs with Smallest Sums</h1><p>给定两个升序整数数组<code>nums1</code> <code>nums2</code>以及一个整数<code>k</code>。</p>
+<p>定义一个数对，一个元素来自<code>nums1</code> 一个来自<code>nums2</code>。</p>
+<p>目的是返回k个数对，这些数对的内部元素之和升序存放。</p>
+<p>例子如下：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: nums1 = [<span class="number">1</span>,<span class="number">7</span>,<span class="number">11</span>], nums2 = [<span class="number">2</span>,<span class="number">4</span>,<span class="number">6</span>], k = <span class="number">3</span></span><br><span class="line">Output: [[<span class="number">1</span>,<span class="number">2</span>],[<span class="number">1</span>,<span class="number">4</span>],[<span class="number">1</span>,<span class="number">6</span>]] </span><br><span class="line">Explanation: The first <span class="number">3</span> pairs are returned from the sequence: </span><br><span class="line">             [<span class="number">1</span>,<span class="number">2</span>],[<span class="number">1</span>,<span class="number">4</span>],[<span class="number">1</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">2</span>],[<span class="number">7</span>,<span class="number">4</span>],[<span class="number">11</span>,<span class="number">2</span>],[<span class="number">7</span>,<span class="number">6</span>],[<span class="number">11</span>,<span class="number">4</span>],[<span class="number">11</span>,<span class="number">6</span>]</span><br></pre></td></tr></table></figure>
+<p>解题思路：</p>
+<ol>
+<li>初级思路：求出每一个对，然后再找出前K大的对，返回。<ol>
+<li>缺点：时空复杂度都太高。求出每一个对时间复杂度为 $O(m^2)$，找出前K大的对时间复杂度为$O(mlogm)$ 。 </li>
+</ol>
+</li>
+<li>中级思路：使用map容器进行选择。以数对之和为键, 数对数组为值（可能有，map会自动排序，然后输出前k个对。。这种做法结果证明时空占用都挺大的。。</li>
+<li>看看大佬们的分享。使用优先队列来搞，比较快的样子。</li>
+</ol>
+<p>….  最简单的做法， 使用map键的自动排序特性。这个内部实现肯定比直接使用现有高效的排序方式来的慢。。。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">	<span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; kSmallestPairs(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> k) &#123;</span><br><span class="line">		<span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt;&gt; _map;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> iter1 = nums1.begin(); iter1 != nums1.end(); iter1++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">auto</span> iter2 = nums2.begin(); iter2 != nums2.end(); iter2++) &#123;</span><br><span class="line">				<span class="keyword">int</span> sum = *iter1 + *iter2;</span><br><span class="line">				_map[sum].push_back(make_pair(*iter1, *iter2));</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">int</span> num = <span class="number">0</span>;</span><br><span class="line">		<span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; res;</span><br><span class="line">		<span class="keyword">for</span> (<span class="keyword">auto</span> it = _map.begin(); it != _map.end(); it++) &#123;</span><br><span class="line">			<span class="keyword">for</span> (<span class="keyword">auto</span> vec = it-&gt;second.begin(); vec != it-&gt;second.end(); vec++) &#123;</span><br><span class="line">				res.push_back(*vec);</span><br><span class="line">				num++;</span><br><span class="line">				<span class="keyword">if</span> (num == k)</span><br><span class="line">					<span class="keyword">return</span> res;</span><br><span class="line">			&#125;</span><br><span class="line">			<span class="keyword">if</span> (num == k)</span><br><span class="line">				<span class="keyword">return</span> res;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">return</span> res;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	Solution s;</span><br><span class="line">	<span class="keyword">int</span> arr1[<span class="number">3</span>] = &#123; <span class="number">1</span>, <span class="number">7</span>, <span class="number">13</span> &#125;;</span><br><span class="line">	<span class="keyword">int</span> arr2[<span class="number">3</span>] = &#123; <span class="number">2</span>, <span class="number">4</span>, <span class="number">8</span> &#125;;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; nums1;</span><br><span class="line">	<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; nums2;</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">3</span>; i++) &#123;</span><br><span class="line">		nums1.push_back(arr1[i]);</span><br><span class="line">		nums2.push_back(arr2[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; res = s.kSmallestPairs(nums1, nums2, <span class="number">3</span>);</span><br><span class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; res.size(); i++) &#123;</span><br><span class="line">		<span class="built_in">cout</span> &lt;&lt; res[i].first &lt;&lt; <span class="string">" "</span> &lt;&lt; res[i].second &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	system(<span class="string">"pause"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; kSmallestPairs(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums1, <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums2, <span class="keyword">int</span> k) &#123;</span><br><span class="line">        <span class="keyword">if</span> (nums1.empty() || nums2.empty() || k == <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">return</span> &#123;&#125;;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt; result;</span><br><span class="line">        result.reserve(k);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 定义排序方式</span></span><br><span class="line">        <span class="keyword">auto</span> cmp = [&amp;nums1, &amp;nums2](<span class="keyword">const</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&amp; p1, <span class="keyword">const</span> pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&amp; p2) &#123;</span><br><span class="line">            <span class="keyword">return</span> nums1[p1.first] + nums2[p1.second] &gt; nums1[p2.first] + nums2[p2.second];</span><br><span class="line">        &#125;;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 第一个元素是pair对，第二个元素是pair数组，保证某些和相同的对在同一位置</span></span><br><span class="line">        priority_queue&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;, <span class="built_in">vector</span>&lt;pair&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt;&gt;, <span class="keyword">decltype</span>(cmp)&gt; q(cmp);</span><br><span class="line">        <span class="comment">//  ？？？先放数组一的第一个元素进优先队列</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums1.size(); ++i) &#123;</span><br><span class="line">            q.push(make_pair(i, <span class="number">0</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 利用优先队列来筛选目标</span></span><br><span class="line">        <span class="keyword">while</span> (k-- &gt; <span class="number">0</span> &amp;&amp; !q.empty()) &#123;</span><br><span class="line">            <span class="comment">// 返回队首，由于优先特性，返回的是最小的对</span></span><br><span class="line">            <span class="keyword">auto</span> minPair = q.top();</span><br><span class="line">            q.pop();</span><br><span class="line">            <span class="keyword">if</span> (minPair.second + <span class="number">1</span> &lt; nums2.size()) &#123;</span><br><span class="line">                q.push(make_pair(minPair.first, minPair.second + <span class="number">1</span>));</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// 数组尾部替换为新筛选得到的最小对</span></span><br><span class="line">            result.emplace_back(nums1[minPair.first], nums2[minPair.second]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2019-03-26T03:42:13.121Z" itemprop="dateUpdated">2019-03-26 11:42:13</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/03/26/Leetcode-Practice-4/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-4/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-4/&title=《Leetcode | Practice 4》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-4/&title=《Leetcode | Practice 4》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-4/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Leetcode | Practice 4》 — KnowMyself&url=https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-4/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-4/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/26/深度学习-StarGAN-paper-summary/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">深度学习 | StarGAN - paper summary</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-4/&title=《Leetcode | Practice 4》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-4/&title=《Leetcode | Practice 4》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-4/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Leetcode | Practice 4》 — KnowMyself&url=https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-4/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/03/26/Leetcode-Practice-4/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACIElEQVR42u3aS47DIBAFwLn/pT0HsExeNySSoVhFihMoL1r05+8vXtdt3b+9P5n/z/j/ly0MDIzXMq7huh/06bhXcfV4j1QMDIwDGE8RLAmpeQDtBeLx2TAwMDDGz4wZ1ZCa74uBgYFRTU0TavKrHwVcDAyM1zKSJDZPRPNg2tsXAwPjNEYvLP7m81f6GxgYGK9irCrlj6+PyW+nToWBgbE1Y1ULM8fkzYYcjIGBsTcjL/cnYbRXvKumyhgYGBjfaAM0C/35wAcGBsYBjOq1rMrrJclT5TYMDIzDGDPXu+pFsPciMDAwTmDkRbEk1cyDaXW04jEoY2BgHMlIks9ew7Ja+o9Oi4GBsTWj3O1sbdwLzfkrxsDA2JvRK3WtSmXzQ394iRgYGAcwep/LjcaJFDq6FGJgYBzAWNslzA/RaxVMzX1gYGC8kJEUwmaGIWbw0WAHBgbG1oy86ZhvWS2u5Wnwh+smBgbGMYxqQltNcXsvJUqPMTAwjmHkBbLeMzNjZIVGJgYGxqaMPPmsFv17mHIijYGBsTUjvyD2ivi9F1EOuBgYGJsyruLKN8gbpXlD4vF/MDAwtmbMtCFz8Ko0NR84w8DA2I/RayhWk9g8NW0OeWBgYBzAyI8yP85VvT5Gu2BgYGC0EsvFFcEkI8fAwMAoDklUE9dq4xMDA+M0Rp7EjpuUeSs0H1f9SrkNAwPjVYxVtaxVjYRqewADA2Nrxj/PgtYsFAQr7QAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
