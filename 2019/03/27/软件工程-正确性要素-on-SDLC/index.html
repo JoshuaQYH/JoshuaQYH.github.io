@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>软件工程 | 正确性要素 on SDLC | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="软件工程,软件测试">
+    <meta name="description" content="题目要求选择一个测试要素，以你做过的一个软件作品为例，分别讨论该要素在软件生命周期的需求，设计，编程，测试，安装和维护各阶段的测试目标和内容。                                                                                                            回答以我上学期做过的区块链DAPP课程项目">
+<meta name="keywords" content="软件工程,软件测试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件工程 | 正确性要素 on SDLC">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/03/27/软件工程-正确性要素-on-SDLC/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="题目要求选择一个测试要素，以你做过的一个软件作品为例，分别讨论该要素在软件生命周期的需求，设计，编程，测试，安装和维护各阶段的测试目标和内容。                                                                                                            回答以我上学期做过的区块链DAPP课程项目">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327233612.png">
+<meta property="og:updated_time" content="2019-03-27T16:27:44.854Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="软件工程 | 正确性要素 on SDLC">
+<meta name="twitter:description" content="题目要求选择一个测试要素，以你做过的一个软件作品为例，分别讨论该要素在软件生命周期的需求，设计，编程，测试，安装和维护各阶段的测试目标和内容。                                                                                                            回答以我上学期做过的区块链DAPP课程项目">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327233612.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">软件工程 | 正确性要素 on SDLC</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">软件工程 | 正确性要素 on SDLC</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-27T13:47:37.000Z" itemprop="datePublished" class="page-time">
+  2019-03-27
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#题目要求"><span class="post-toc-number">1.</span> <span class="post-toc-text">题目要求</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#回答"><span class="post-toc-number">2.</span> <span class="post-toc-text">回答</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#需求阶段"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">需求阶段</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#设计阶段"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">设计阶段</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#编程阶段"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">编程阶段</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#测试阶段"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">测试阶段</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#安装阶段"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">安装阶段</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#维护阶段"><span class="post-toc-number">2.6.</span> <span class="post-toc-text">维护阶段</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-软件工程-正确性要素-on-SDLC" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">软件工程 | 正确性要素 on SDLC</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-27 21:47:37" datetime="2019-03-27T13:47:37.000Z" itemprop="datePublished">2019-03-27</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="题目要求"><a href="#题目要求" class="headerlink" title="题目要求"></a>题目要求</h1><p>选择一个测试要素，以你做过的一个软件作品为例，分别讨论该要素在软件生命周期的需求，设计，编程，测试，安装和维护各阶段的测试目标和内容。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327233612.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="回答"><a href="#回答" class="headerlink" title="回答"></a>回答</h1><p>以我上学期做过的<a href="https://github.com/JoshuaQYH/MyTrelloDApp" target="_blank" rel="noopener">区块链DAPP课程项目 MyTrello (基于以太坊的去中心化日程管理 Web 应用)</a>为例（主要涉及了两大核心的功能：<strong>团队人员管理和任务驱动协作），</strong> 我选择 <strong>正确性</strong>测试要素进行讨论。该要素在软件生命周期的各个阶段的测试目标和内容总结如下。</p>
+<h2 id="需求阶段"><a href="#需求阶段" class="headerlink" title="需求阶段"></a>需求阶段</h2><p><strong>事件</strong>：定义产品的功能规格说明。</p>
+<p><strong>目标：</strong></p>
+<p> 保证需求分析的正确性以及充分性。具体来讲其目标是保证需求正确反应用户的需要，需求被定义和文档化。</p>
+<p><strong>内容：</strong></p>
+<ol>
+<li>检查需求分析所定义的功能是否反映用户需求。即认真审视以团队为单元，以任务流为驱动，以以太坊智能合约技术为基础的去中心化 <code>web app</code> 的正确性。</li>
+<li>测试需求是否已经被明确定义，以及输出合理规范的需求文档。 即是否产出作为一个团队日程管理所具备的核心功能的需求规格说明书。</li>
+<li>检测产品需求功能是否满足课程要求。</li>
+</ol>
+<h2 id="设计阶段"><a href="#设计阶段" class="headerlink" title="设计阶段"></a>设计阶段</h2><p><strong>事件</strong>：设计符合需求。</p>
+<p><strong>目标</strong>： 对设计阶段产出的文档和架构说明进行评审；当需求分析发生改变时，测试要对修改的部分进行检查，确保设计与需求保持一致。</p>
+<p><strong>内容：</strong></p>
+<ol>
+<li>评估技术选型和架构是否有满足需求。分析选用 <code>solidity</code> 语言编写智能合约是否可靠，使用 <code>solc</code> 编译合约是否合理，使用<code>web.js</code> 来部署调用合约是否妥当，使用<code>react</code>作为前端框架是否足够高效等等。</li>
+<li>评审设计阶段产出的文档，在功能设计上是否符合需求规格。即对比需求文档，从本项目中的<strong>团队管理和任务流驱动</strong>的两个核心功能出发，检查设计的接口是否符合需求，评审设计文档中是否存在着对需求遗漏缺失，理解认知错误的地方，有则修正设计文档。</li>
+</ol>
+<h2 id="编程阶段"><a href="#编程阶段" class="headerlink" title="编程阶段"></a>编程阶段</h2><p><strong>事件</strong>：程序符合设计。</p>
+<p><strong>目标</strong>： 检测编码是否与设计一致，是否正确地实现系统功能需求，编码是否正确地按照既有的标准进行。</p>
+<p><strong>内容</strong>：</p>
+<ol>
+<li>测试编码是否与设计文档定义一致，包括模块化，接口定义，界面设计。即检查智能合约中的接口功能是否与设计文档保持一致，编译、部署、调用合约是否按照设计文档中的规范进行。若未一致，则结合设计文档对现有代码进行修正。</li>
+<li>测试程序的能否正确运行。使用黑盒、白盒测试对本日程管理应用的每个单元模块进行测试。</li>
+</ol>
+<h2 id="测试阶段"><a href="#测试阶段" class="headerlink" title="测试阶段"></a>测试阶段</h2><p><strong>事件：</strong> 功能测试。</p>
+<p><strong>目标：</strong>进行第三方的正式确认测试，检验所开发的系统是否按照用户提出的要求运行。</p>
+<p><strong>内容：</strong></p>
+<p>在一个新的应用系统来进行测试，运行部分或全部系统，确认用户需求被满足。按照用户规定的需求来测试应用功能，检查应用<strong>是否能正常连接以太坊公有测试网络，是否能正常完成团队管理和任务管理这两大功能</strong>，确认产品功能是否正确满足了用户的需求。若未能正确满足，则重新检查修改，以匹配需求。</p>
+<h2 id="安装阶段"><a href="#安装阶段" class="headerlink" title="安装阶段"></a>安装阶段</h2><p><strong>事件</strong>：正确的程序和数据防入产品。</p>
+<p><strong>目标</strong>： 保证被测试系统不存在问题，注重对程序安装的正确性和完整性进行核对。</p>
+<p><strong>内容：</strong></p>
+<p>对程序安装的正确性进行核对。按照系统安装说明手册的步骤进行，确定好测试环境（<code>win10</code>  <code>nodejs</code> <code>metamask</code> ），借助<code>npm</code> 包管理器安装好软件相应的包和环境依赖。使用命令运行项目，在浏览器查看项目的安装情况。若失败，则要寻求相应的解决方案。</p>
+<h2 id="维护阶段"><a href="#维护阶段" class="headerlink" title="维护阶段"></a>维护阶段</h2><p><strong>事件：</strong>修改需求</p>
+<p><strong>目标</strong>：根据软件实际运行情况以及用户的反馈对软件功能或需求进行适当的修正。</p>
+<p><strong>内容</strong>： </p>
+<p>经过多次的使用，对项目一些细节有了新的需求。比如在本日程管理项目中增加事件通知，任务历史记录功能，赋予更加简洁灵活的任务交互操作，修改冗余的功能。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-03-27T16:27:44.854Z" itemprop="dateUpdated">2019-03-28 00:27:44</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/03/27/软件工程-正确性要素-on-SDLC/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/03/27/软件工程-正确性要素-on-SDLC/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件工程/">软件工程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件测试/">软件测试</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/03/27/软件工程-正确性要素-on-SDLC/&title=《软件工程 | 正确性要素 on SDLC》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/03/27/软件工程-正确性要素-on-SDLC/&title=《软件工程 | 正确性要素 on SDLC》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/03/27/软件工程-正确性要素-on-SDLC/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《软件工程 | 正确性要素 on SDLC》 — KnowMyself&url=https://joshuaqyh.github.io/2019/03/27/软件工程-正确性要素-on-SDLC/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/03/27/软件工程-正确性要素-on-SDLC/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/27/软件测试-敏捷宣言四-风险评估/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">软件测试 | 敏捷宣言四-风险评估</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/03/27/软件工程-正确性要素-on-SDLC/&title=《软件工程 | 正确性要素 on SDLC》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/03/27/软件工程-正确性要素-on-SDLC/&title=《软件工程 | 正确性要素 on SDLC》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/03/27/软件工程-正确性要素-on-SDLC/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《软件工程 | 正确性要素 on SDLC》 — KnowMyself&url=https://joshuaqyh.github.io/2019/03/27/软件工程-正确性要素-on-SDLC/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/03/27/软件工程-正确性要素-on-SDLC/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACv0lEQVR42u3a0WrkMAwF0Pn/n+7CPhW6DleSNZ2Fk6fQhsTHA5aQ9HrF19ff6+f95Dq98+f99+u1ceHh4eG1PnO6TqTTJ0+LOz2TbNlpPc9rxsPDw9vm3T24k/t8Dcl2H/+Oh4eH96u859Q2P+6rwQMPDw/v/+U9p7N5QjwPKnh4eHifwEuKEb1Qkb+zmlJfrrXg4eHhxby7zar33L+pv4eHh4dX7Krnx25+3E/eVl4nHh4e3gIvT23n521145INigIGHh4e3lXevABRLQHP0/q8hIGHh4e3wcsXXQ0b1SGAvACR/xcPDw9vj5d/uFf2zUe48o0u/wB4eHh4V3kJKf/7pKzw/IZqyMHDw8Pb4D0nshNSD98bwDq+Bw8PD2+B1yuz5qlwdYwgH70qBBs8PDy8BV5vidVDfFJ6yEse5Vo1Hh4eXpFXTVKT47vZ4I9T80KajoeHh7fASz78XIyoLiiPVOWkOW/a4eHh4V3i9Uqo1YGAahJfTbujAQI8PDy8Ma93uOcjWVVwPs4VteLw8PDwrvLyJfbCQH6IV7csKlXg4eHhrfHyY3cyONULIb1Yh4eHh7fHmy+iN4B1qz2WDGnh4eHh3eUlZYKonjEu9VYLGeVcGw8PD2+Bl7f282fyxDdJ5ZPNOpZx8fDw8C7x8tZ+NQxMirm9IBH9hnh4eHiXeMlnkuXm5dR8PKuaphd6d3h4eHgD3q3yQXLcJyXdPKUuhAQ8PDy8Bd6kGdYrE1cZvcI0Hh4e3l3epM1/q+iQJM29J/Hw8PA2eNUDt1fGnYeWXpqOh4eHt8fLCwS9FDwPG/OW2z9WgoeHh7fG6w1aVftN+XjWtS/i4eHhfQAvf35S7JgHGzw8PLxP4PUGAqq8eVMNDw8P7z283iBUr4SRL7HakHslNQw8PDy8Me9uAyxJwfPN6hWC8fDw8NZ4fwC+4HOoncS4DAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
