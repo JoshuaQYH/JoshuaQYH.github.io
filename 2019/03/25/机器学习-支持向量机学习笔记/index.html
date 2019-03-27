@@ -36,7 +36,17 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190325172555.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190325174215.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190325174343.png">
-<meta property="og:updated_time" content="2019-03-25T10:55:13.013Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327205056.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327205430.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327205832.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327210003.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327210133.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327210251.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327210321.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327210635.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327210600.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327210706.png">
+<meta property="og:updated_time" content="2019-03-27T13:09:52.932Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="机器学习 | 支持向量机学习笔记">
 <meta name="twitter:description" content="SVM原理假设有两类样本，类别分别为 - 1， 1。空间中存在一个超平面能够划分这两类样本。">
@@ -166,7 +176,7 @@
     <aside class="post-widget">
         <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
             <h4>TOC</h4>
-            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SVM原理"><span class="post-toc-number">1.</span> <span class="post-toc-text">SVM原理</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#拉格朗日求解SVM"><span class="post-toc-number">2.</span> <span class="post-toc-text">拉格朗日求解SVM</span></a></li></ol>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#SVM原理"><span class="post-toc-number">1.</span> <span class="post-toc-text">SVM原理</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#求解SVM"><span class="post-toc-number">2.</span> <span class="post-toc-text">求解SVM</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#核函数"><span class="post-toc-number">3.</span> <span class="post-toc-text">核函数</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#软间隔"><span class="post-toc-number">4.</span> <span class="post-toc-text">软间隔</span></a></li></ol>
         </nav>
     </aside>
 
@@ -225,7 +235,7 @@
                 </div>
                 <div class="image-caption"></div>
             </figure>
-<h1 id="拉格朗日求解SVM"><a href="#拉格朗日求解SVM" class="headerlink" title="拉格朗日求解SVM"></a>拉格朗日求解SVM</h1><figure class="image-bubble">
+<h1 id="求解SVM"><a href="#求解SVM" class="headerlink" title="求解SVM"></a>求解SVM</h1><figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
                     <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190325174215.png" alt="" title="">
@@ -239,6 +249,96 @@
                 </div>
                 <div class="image-caption"></div>
             </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327205056.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>梳理一下过程就是：</p>
+<p>我们记初始的目标优化函数为 f(w)。 求 min f(w)。 </p>
+<p>但是这个 min f(w) 真的不太好求，所以我们引入拉格朗日乘子 a，构造了一个拉格朗日函数 L(w, b, a)。</p>
+<p>根据KKT条件可得，当 f(w) = max L(w, b, a);</p>
+<p>所以有 min f(w) = min max L(w, b, a) </p>
+<p>但因为是凸规划问题，不太好求 max L，所以我们把问题转化为  min f(w) = min max L(w, b, a) &gt;= max min L(w, b, a)。 </p>
+<p>所以我们对 w b 求偏导，令其等于0，然后代入L(w, b, a) 得到 min L(w, b, a)：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327205430.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>记上述式子为 g (a) = min L(w, b, a)。</p>
+<p>于是问题转化为 min f(x) = max g(a)。</p>
+<p>所以我们求解 max g(a)，得到 a，然后代入超平面方程得到关于 a， b的模型方程。</p>
+<p>至于 a 我们使用 SMO算法来求解。</p>
+<p>而位移项，我们可以通过支持向量的平均值来计算。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327205832.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="核函数"><a href="#核函数" class="headerlink" title="核函数"></a>核函数</h1><p>引入核函数的作用就是将一些低维空间的数据映射到高维空间，使之在高维空间中得以找到一个超平面进行划分，解决一些样本在低维空间的线性不可分的问题</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327210003.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327210133.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="软间隔"><a href="#软间隔" class="headerlink" title="软间隔"></a>软间隔</h1><p>软间隔的意思就是允许一些样本不满足到超平面的距离大于等于1的约束。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327210251.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327210321.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>引入了软间隔，我们需要重新修改优化的目标函数。</p>
+<p>当然我们需要保证我们最大间隔的约束性质，同时允许一些样本不受约束。建模如公式6.29.</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327210635.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>同样的求解思路是引入拉格朗日乘子，不过这次是引入了两个乘子。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327210600.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190327210706.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<hr>
+<p>上述比较显得较为潦草，碍于个人时间有限，有些地方表达可能不太严谨，但已经大致的描述了SVM的相关概念和原理。</p>
+<p>更为详细的博文请戳这里。<a href="https://blog.csdn.net/v_JULY_v/article/details/7624837" target="_blank" rel="noopener">支持向量机通俗导论（理解SVM的三层境界）</a></p>
 
         </div>
 
@@ -247,7 +347,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-03-25T10:55:13.013Z" itemprop="dateUpdated">2019-03-25 18:55:13</time>
+    Last updated: <time datetime="2019-03-27T13:09:52.932Z" itemprop="dateUpdated">2019-03-27 21:09:52</time>
 </span><br>
 
 
