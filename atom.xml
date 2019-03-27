@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://joshuaqyh.github.io/"/>
-  <updated>2019-03-26T16:41:29.953Z</updated>
+  <updated>2019-03-27T12:39:07.714Z</updated>
   <id>https://joshuaqyh.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>软件测试 | 敏捷宣言四-风险评估</title>
+    <link href="https://joshuaqyh.github.io/2019/03/27/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95-%E6%95%8F%E6%8D%B7%E5%AE%A3%E8%A8%80%E5%9B%9B-%E9%A3%8E%E9%99%A9%E8%AF%84%E4%BC%B0/"/>
+    <id>https://joshuaqyh.github.io/2019/03/27/软件测试-敏捷宣言四-风险评估/</id>
+    <published>2019-03-27T12:38:27.000Z</published>
+    <updated>2019-03-27T12:39:07.714Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><p>在敏捷宣言遵循的12条原则中，挑选一条你最感兴趣的原则进行风险评估。</p><h2 id="风险评估"><a href="#风险评估" class="headerlink" title="风险评估"></a>风险评估</h2><p>在12条原则中，我选择进行阐释的原则是第4条，即：</p><p><strong>在整个项目过程中，业务人员和开发人员每天在一起工作。</strong></p><p>以下是个人评估过程，所阐述的原则简称<strong>原则4</strong>。</p><p><strong>关于风险。</strong>敏捷开发中主要存在着四个维度的风险：分别是人员风险、技术风险，产品风险和过程风险。它们相互联系和同一，决定了软件开发的效率。而其中与原则4相关联的风险就是<strong>人员风险</strong>。</p><p><strong>首先必须明确人员风险是什么。</strong>人员风险主要有：团队成员沟通不畅，对业务不理解，不熟悉，缺乏高效协作；人员变动频繁，缺乏激励，工作氛围低下；成员道德素质、能力素质低下；成员之间存在潜在的矛盾和冲突；缺乏客户介入等。这些风险对团队都具有一定的破坏性，可以通过调整工作模式，工作顺序来进行一定程度上的规避和预防。</p><p><strong>原则4对人员风险的具有一定的规避作用</strong>。在原则4中，它强调的是业务人员和开发人员必须紧密结合，保持高效顺畅的沟通。在项目的整个流程中，开发和业务人员每天一起工作，保证业务和开发工作进度的有效控制和跟踪。由于业务人员和开发人员空间和交流成本的降低，可通过频繁沟通，短会议，及时反馈的方式来解决沟通不畅，缺乏协作的问题。业务人员可以在第一时间识别新的业务需求并快速传达给开发人员，通知制定相应的架构编码任务并实施，而开发人员也可以在第一时间提交业务反馈和业务代码变更的需求，业务人员也可以快速响应开发人员的请求，迅速实现业务的动态灵活调整。</p><p>在高效的协作和响应的敏捷开发工作模式下，团队成员沟通不畅的问题得到有效解决，业务人员能够快速摸清产品的真实需求并制定相应的业务策略，而开发人员能更好的识别业务需求，实现敏捷开发，一定程度避免开发进度过慢甚至失败的局面。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h2 id=&quot;题目&quot;&gt;&lt;a href=&quot;#题目&quot; class=&quot;headerlink&quot; title=&quot;题目&quot;&gt;&lt;/a&gt;题目&lt;/h2&gt;&lt;p&gt;在敏捷宣言遵循的12条原则中，挑选一条你最感兴趣的原则进行风险评估。&lt;/p&gt;
+&lt;h2 id=&quot;风险评估&quot;&gt;&lt;a href=&quot;#风险评估&quot; c
+      
+    
+    </summary>
+    
+    
+      <category term="软件工程" scheme="https://joshuaqyh.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>数据结构 | 字符串string 学习</title>
@@ -223,9 +247,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -277,9 +301,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -350,9 +374,9 @@
     </summary>
     
     
-      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -542,9 +566,9 @@
     </summary>
     
     
-      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -571,9 +595,9 @@
     
       <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
-      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -602,9 +626,9 @@
     
       <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
-      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -633,9 +657,9 @@
     
       <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
-      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -662,9 +686,9 @@
     
       <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
-      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -691,9 +715,9 @@
     
       <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
-      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -720,9 +744,9 @@
     
       <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
-      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
-    
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
   </entry>
   
@@ -1210,9 +1234,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="数据结构" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
@@ -1238,9 +1262,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -1372,9 +1396,9 @@
     
       <category term="信息安全" scheme="https://joshuaqyh.github.io/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
     
-      <category term="加密技术" scheme="https://joshuaqyh.github.io/tags/%E5%8A%A0%E5%AF%86%E6%8A%80%E6%9C%AF/"/>
-    
       <category term="Java" scheme="https://joshuaqyh.github.io/tags/Java/"/>
+    
+      <category term="加密技术" scheme="https://joshuaqyh.github.io/tags/%E5%8A%A0%E5%AF%86%E6%8A%80%E6%9C%AF/"/>
     
   </entry>
   
