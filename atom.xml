@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://joshuaqyh.github.io/"/>
-  <updated>2019-03-27T16:27:44.854Z</updated>
+  <updated>2019-03-29T08:52:28.963Z</updated>
   <id>https://joshuaqyh.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Leetcode | Practice 7</title>
+    <link href="https://joshuaqyh.github.io/2019/03/29/Leetcode-Practice-7/"/>
+    <id>https://joshuaqyh.github.io/2019/03/29/Leetcode-Practice-7/</id>
+    <published>2019-03-29T07:40:47.000Z</published>
+    <updated>2019-03-29T08:52:28.963Z</updated>
+    
+    <content type="html"><![CDATA[<p>如<a href="https://leetcode.com/problems/decoded-string-at-index/" target="_blank" rel="noopener">题</a>。</p><p>题目的要求就是输入一个编码的串S，包含数字和字母，从头开始读取，如果读取到字母，就直接放入结果的解码串，如果读取到数字，就把解码串已有的内容复制几遍。</p><p>最后给定一个数K，返回该位置的字符。</p><p>想来是比较简单的，因为可以直接申请一个string，读到字母就往里头append，读到数字就复制几遍，然后最后按索引输出结果字符就行了。先试试。</p><p>果然有坑！</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">decodeAtIndex</span><span class="params">(<span class="built_in">string</span> S, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> contain = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; S.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(S[i] &gt; <span class="string">'1'</span> &amp;&amp; S[i] &lt;= <span class="string">'9'</span>)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; S[i] - <span class="string">'0'</span>; j++)&#123;</span><br><span class="line">                    contain += contain;</span><br><span class="line">                &#125;    </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                contain.append(<span class="number">1</span>, S[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">stringstream</span> ss;</span><br><span class="line">        ss &lt;&lt; contain[K - <span class="number">1</span>];</span><br><span class="line">        <span class="built_in">string</span> res = ss.str();</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;a2345678999999999999999&quot;, K = 1</span><br><span class="line">Output: &quot;a&quot;</span><br><span class="line">Explanation: </span><br><span class="line">The decoded string is &quot;a&quot; repeated 8301530446056247680 times.  The 1st letter is &quot;a&quot;.</span><br></pre></td></tr></table></figure><p>内存会不够的！！</p><p>得另外确定一个思路，可以考虑一下在复制过程中，直接输出K处的结果。</p><p>emmm 不需要复制字符串，不然内存占用太大了。。</p><p>可以先确定解码后的字符串长度。</p><p>然后再反向遍历初始字符串，然后对解码后的字符串长度进行缩短。知道缩短至长度为K时，输出字符。</p><p>太妙了！（不是我写的，逃。。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">decodeAtIndex</span><span class="params">(<span class="built_in">string</span> S, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> size = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> N = S.size();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Find size = length of decoded string</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">isdigit</span>(S[i]))</span><br><span class="line">                size *= S[i] - <span class="string">'0'</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                size++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = N<span class="number">-1</span>; i &gt;=<span class="number">0</span>; --i) &#123;</span><br><span class="line">            K %= size;</span><br><span class="line">            <span class="keyword">if</span> (K == <span class="number">0</span> &amp;&amp; <span class="built_in">isalpha</span>(S[i]))</span><br><span class="line">                <span class="keyword">return</span> (<span class="built_in">string</span>) <span class="string">""</span> + S[i];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">isdigit</span>(S[i]))</span><br><span class="line">                size /= S[i] - <span class="string">'0'</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                size--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> S;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;如&lt;a href=&quot;https://leetcode.com/problems/decoded-string-at-index/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;题&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;题目的要求就是输入一个编码的串S，包含数字和字母，从
+      
+    
+    </summary>
+    
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
+    
+  </entry>
   
   <entry>
     <title>软件工程 | 正确性要素 on SDLC</title>
@@ -272,9 +298,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -326,9 +352,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -1204,11 +1230,11 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="信息安全" scheme="https://joshuaqyh.github.io/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
     
       <category term="Java" scheme="https://joshuaqyh.github.io/tags/Java/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
   </entry>
   
@@ -1234,9 +1260,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="数据结构" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
@@ -1287,9 +1313,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     

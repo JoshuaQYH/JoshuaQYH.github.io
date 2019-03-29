@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>Leetcode | Practice 7 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="C++,Leetcode">
+    <meta name="description" content="如题。 题目的要求就是输入一个编码的串S，包含数字和字母，从头开始读取，如果读取到字母，就直接放入结果的解码串，如果读取到数字，就把解码串已有的内容复制几遍。 最后给定一个数K，返回该位置的字符。 想来是比较简单的，因为可以直接申请一个string，读到字母就往里头append，读到数字就复制几遍，然后最后按索引输出结果字符就行了。先试试。 果然有坑！ 1234567891011121314151">
+<meta name="keywords" content="C++,Leetcode">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode | Practice 7">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/03/29/Leetcode-Practice-7/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="如题。 题目的要求就是输入一个编码的串S，包含数字和字母，从头开始读取，如果读取到字母，就直接放入结果的解码串，如果读取到数字，就把解码串已有的内容复制几遍。 最后给定一个数K，返回该位置的字符。 想来是比较简单的，因为可以直接申请一个string，读到字母就往里头append，读到数字就复制几遍，然后最后按索引输出结果字符就行了。先试试。 果然有坑！ 1234567891011121314151">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-29T08:52:28.963Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Leetcode | Practice 7">
+<meta name="twitter:description" content="如题。 题目的要求就是输入一个编码的串S，包含数字和字母，从头开始读取，如果读取到字母，就直接放入结果的解码串，如果读取到数字，就把解码串已有的内容复制几遍。 最后给定一个数K，返回该位置的字符。 想来是比较简单的，因为可以直接申请一个string，读到字母就往里头append，读到数字就复制几遍，然后最后按索引输出结果字符就行了。先试试。 果然有坑！ 1234567891011121314151">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">Leetcode | Practice 7</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">Leetcode | Practice 7</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-29T07:40:47.000Z" itemprop="datePublished" class="page-time">
+  2019-03-29
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-Leetcode-Practice-7" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">Leetcode | Practice 7</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-29 15:40:47" datetime="2019-03-29T07:40:47.000Z" itemprop="datePublished">2019-03-29</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>如<a href="https://leetcode.com/problems/decoded-string-at-index/" target="_blank" rel="noopener">题</a>。</p>
+<p>题目的要求就是输入一个编码的串S，包含数字和字母，从头开始读取，如果读取到字母，就直接放入结果的解码串，如果读取到数字，就把解码串已有的内容复制几遍。</p>
+<p>最后给定一个数K，返回该位置的字符。</p>
+<p>想来是比较简单的，因为可以直接申请一个string，读到字母就往里头append，读到数字就复制几遍，然后最后按索引输出结果字符就行了。先试试。</p>
+<p>果然有坑！</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">decodeAtIndex</span><span class="params">(<span class="built_in">string</span> S, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> contain = <span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; S.length(); i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(S[i] &gt; <span class="string">'1'</span> &amp;&amp; S[i] &lt;= <span class="string">'9'</span>)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; S[i] - <span class="string">'0'</span>; j++)&#123;</span><br><span class="line">                    contain += contain;</span><br><span class="line">                &#125;    </span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                contain.append(<span class="number">1</span>, S[i]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">stringstream</span> ss;</span><br><span class="line">        ss &lt;&lt; contain[K - <span class="number">1</span>];</span><br><span class="line">        <span class="built_in">string</span> res = ss.str();</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Input: S = &quot;a2345678999999999999999&quot;, K = 1</span><br><span class="line">Output: &quot;a&quot;</span><br><span class="line">Explanation: </span><br><span class="line">The decoded string is &quot;a&quot; repeated 8301530446056247680 times.  The 1st letter is &quot;a&quot;.</span><br></pre></td></tr></table></figure>
+<p>内存会不够的！！</p>
+<p>得另外确定一个思路，可以考虑一下在复制过程中，直接输出K处的结果。</p>
+<p>emmm 不需要复制字符串，不然内存占用太大了。。</p>
+<p>可以先确定解码后的字符串长度。</p>
+<p>然后再反向遍历初始字符串，然后对解码后的字符串长度进行缩短。知道缩短至长度为K时，输出字符。</p>
+<p>太妙了！（不是我写的，逃。。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">decodeAtIndex</span><span class="params">(<span class="built_in">string</span> S, <span class="keyword">int</span> K)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> size = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> N = S.size();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// Find size = length of decoded string</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; ++i) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">isdigit</span>(S[i]))</span><br><span class="line">                size *= S[i] - <span class="string">'0'</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                size++;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = N<span class="number">-1</span>; i &gt;=<span class="number">0</span>; --i) &#123;</span><br><span class="line">            K %= size;</span><br><span class="line">            <span class="keyword">if</span> (K == <span class="number">0</span> &amp;&amp; <span class="built_in">isalpha</span>(S[i]))</span><br><span class="line">                <span class="keyword">return</span> (<span class="built_in">string</span>) <span class="string">""</span> + S[i];</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (<span class="built_in">isdigit</span>(S[i]))</span><br><span class="line">                size /= S[i] - <span class="string">'0'</span>;</span><br><span class="line">            <span class="keyword">else</span></span><br><span class="line">                size--;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> S;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-03-29T08:52:28.963Z" itemprop="dateUpdated">2019-03-29 16:52:28</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/03/29/Leetcode-Practice-7/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/03/29/Leetcode-Practice-7/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/03/29/Leetcode-Practice-7/&title=《Leetcode | Practice 7》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/03/29/Leetcode-Practice-7/&title=《Leetcode | Practice 7》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/03/29/Leetcode-Practice-7/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Leetcode | Practice 7》 — KnowMyself&url=https://joshuaqyh.github.io/2019/03/29/Leetcode-Practice-7/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/03/29/Leetcode-Practice-7/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/27/软件工程-正确性要素-on-SDLC/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">软件工程 | 正确性要素 on SDLC</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/03/29/Leetcode-Practice-7/&title=《Leetcode | Practice 7》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/03/29/Leetcode-Practice-7/&title=《Leetcode | Practice 7》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/03/29/Leetcode-Practice-7/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《Leetcode | Practice 7》 — KnowMyself&url=https://joshuaqyh.github.io/2019/03/29/Leetcode-Practice-7/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/03/29/Leetcode-Practice-7/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACLElEQVR42u3ay07DQAwF0P7/TweJFVJJem23iMycWSGo0jlZGL8ej/gc3+fnz8/n+pPXvzn765sPBgbGbRnH5Tn7zPMlkmfmd8jvhoGBsQ8jD7J56Dy76PW3568JAwMDo3qt5KKTV4OBgYGRM/IkspoyYmBgYFwzek20vDTNv/HjtTgGBsYNGb3BwN/8/PH5BgYGxr9nHMWTFLR5yO7d4ZfnY2BgLM1473gySROrY4M83cTAwFiVkbfGqhlatUlXLZVP/29gYGAsx0iCY3WRK1/XmA9KMTAwdmD0StbJ28rZeZjGwMBYm9ELoNVWWq9MzWEYGBhrM+ZN/GoJOh85vKjFMTAwlmP0Frnm4TIvnqtFLwYGxnqMvJWfv4lqEdt7NS/mGxgYGMsx8pBavVa1bVcN2RgYGDsw8o/2lrp6Y4PeiBQDA2NVxryJX13IqJa1zdQQAwNjOUbSrK8296vtud4zMTAwdmDky155+Ju353rlLgYGxg6MyfCyOlroLXZEaSUGBsZyjHm47IXj+fgBAwNjT8Yk+XvvaLOKxMDAWJvRC3nVZlzvG5PSOqrFMTAwbs44imcS5XqrG1F5jIGBsTSjujbRGxskQbOaOGJgYOzGmKw7jMJfMbl8EawxMDA2YMwHk3mzrFxVJ+UuBgYGRhyIq6lhb7HjNDXEwMDAKI4kqyPPyX0wMDB2YFSXKiYJZXVgGT0HAwNjaUZvMPCu4rY38uy19jAwMG7I+AITw8xS4I/nbgAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
