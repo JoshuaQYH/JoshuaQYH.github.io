@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://joshuaqyh.github.io/"/>
-  <updated>2019-03-29T08:52:28.963Z</updated>
+  <updated>2019-03-29T12:25:52.690Z</updated>
   <id>https://joshuaqyh.github.io/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据结构 | 二叉树</title>
+    <link href="https://joshuaqyh.github.io/2019/03/29/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84-%E4%BA%8C%E5%8F%89%E6%A0%91/"/>
+    <id>https://joshuaqyh.github.io/2019/03/29/数据结构-二叉树/</id>
+    <published>2019-03-29T08:56:20.000Z</published>
+    <updated>2019-03-29T12:25:52.690Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="非递归实现遍历"><a href="#非递归实现遍历" class="headerlink" title="非递归实现遍历"></a>非递归实现遍历</h1><ul><li><p>前序遍历非递归实现</p><ul><li>使用栈来完成。</li><li>访问左节点，压入右节点。</li><li>左节点为空，弹出右节点。</li></ul></li><li><p>中序遍历非递归实现</p><ul><li>使用栈来完成</li><li>遇到一个节点，将其推入栈，遍历其左子树</li><li>遍历完左子树，弹出栈顶节点并访问</li><li>同时遍历其右节点，重复上述动作。</li></ul></li><li><p>非递归后续遍历二叉树</p><ul><li>从根节点开始，判断栈空还是非空</li><li>沿左路下降。。。</li><li>最难的。。总之就是左右子树访问完毕，才访问根节点</li></ul><p>O(n) </p><p>​</p></li></ul><h1 id="二叉树的搜索"><a href="#二叉树的搜索" class="headerlink" title="二叉树的搜索"></a>二叉树的搜索</h1><ul><li>宽度搜索<ul><li>队列来存储</li><li>类似层序遍历。</li><li>访问当前节点，将左右节点压入队列</li><li>弹出当前节点</li></ul></li></ul><h1 id="存储结构"><a href="#存储结构" class="headerlink" title="存储结构"></a>存储结构</h1><p>使用二叉链表的信息。当前节点，存储左右节点的指针。（还有的保存了parent指针）</p><p>寻找一个指针的父节点。</p><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Node* <span class="title">FindParent</span><span class="params">(Node* root, Node* current)</span></span>&#123;</span><br><span class="line">    Node* tmp;</span><br><span class="line">    <span class="keyword">if</span>(root == <span class="literal">NULL</span>) <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">// root 是否为 current的父节点</span></span><br><span class="line">    <span class="keyword">if</span>(root-&gt;left == current || root-&gt;right == current)&#123;</span><br><span class="line">       <span class="keyword">return</span> root;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(tmp = FindParent(root-&gt;left, current) != <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> tmp;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(tmp = FindParent(root-&gt;right, current) != <span class="literal">NULL</span>)</span><br><span class="line">   <span class="keyword">return</span> tmp;</span><br><span class="line">   <span class="keyword">return</span> <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Node* <span class="title">Tree</span><span class="params">(Node* current)</span></span>&#123;</span><br><span class="line">    <span class="built_in">stack</span>&lt;Node*&gt; s;</span><br><span class="line">    Node* tmp = root;</span><br><span class="line">    s.push(<span class="literal">NULL</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>完全二叉树，用数组层序存储。</p><p>编号为 i 的节点的左节点为 2 i + 1</p><h1 id="二叉搜索树"><a href="#二叉搜索树" class="headerlink" title="二叉搜索树"></a>二叉搜索树</h1><p>快速搜索，时间复杂度为 O(log n )</p><p>其中的构建二叉搜索树比较简单。这里重点记一下，BST删除节点的操作。</p><p>我们使用递归的来删除节点，需要分三种情况：</p><ol><li>节点的左节点为空，直接将右节点复制到删除节点的位置。（不用考虑右节点是否为空）</li><li>如果左节点非空，右节点为空，那就将左节点复制到删除节点的位置。</li><li>如果左右节点都不为空，那就找出左子树中的最右节点，将右子树的根节点拼接到该最右节点的右边。<ol><li>这个方法其实会导致挂接后，整个树的高度过长，影响搜索的效率</li><li>我们可以换另外一种思路，就是找到右子树的最小节点，保存其值，赋值给删除节点，然后删除右子树的最小节点。</li></ol></li></ol><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">removehelp</span><span class="params">(Node* &amp;root, <span class="keyword">int</span> val)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root == <span class="literal">NULL</span>) <span class="built_in">cout</span> &lt;&lt; val &lt;&lt; <span class="string">" is not in the tree \n"</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(val &lt; root-&gt;val)&#123;</span><br><span class="line">        removehelp(root-&gt;left, val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span> <span class="keyword">if</span>(val &gt; root-&gt;val)&#123;</span><br><span class="line">        removehelp(root-&gt;right, val);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123;</span><br><span class="line">        Node* tmp = root;</span><br><span class="line">        <span class="keyword">if</span>(root-&gt;left == <span class="literal">NULL</span>) root = root-&gt;right;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (root-&gt;right == <span class="literal">NULL</span>) root = = root-&gt;left;</span><br><span class="line">        <span class="keyword">else</span>&#123;</span><br><span class="line">            tmp = deletemin(root-&gt;right); <span class="comment">// 找到右子树中最小的那个数 min，并删除</span></span><br><span class="line">            root-&gt;setValue(tmp-&gt;value); <span class="comment">// 将 min中的数赋值给删除的节点的值</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">delete</span> tmp;</span><br><span class="line">        tmp = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function">Node* <span class="title">deletemin</span><span class="params">(Node * &amp;root)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(root-&gt;left != <span class="literal">NULL</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> deletemin(root-&gt;left);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">else</span>&#123; <span class="comment">// 找到右子树中最小的，删除，然后将该节点复制到原先被删除节点的位置</span></span><br><span class="line">        node *tmp = root;</span><br><span class="line">        root = root-&gt;right;</span><br><span class="line">        <span class="keyword">return</span> tmp;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>如何放置BST退化成线性结构？</p><p>允许重复关键码吗？</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;非递归实现遍历&quot;&gt;&lt;a href=&quot;#非递归实现遍历&quot; class=&quot;headerlink&quot; title=&quot;非递归实现遍历&quot;&gt;&lt;/a&gt;非递归实现遍历&lt;/h1&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;前序遍历非递归实现&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用栈来完成。&lt;/li&gt;
+&lt;li&gt;访
+      
+    
+    </summary>
+    
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="数据结构" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+  </entry>
   
   <entry>
     <title>Leetcode | Practice 7</title>
@@ -298,9 +327,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -352,9 +381,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -1230,11 +1259,11 @@
     </summary>
     
     
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
       <category term="信息安全" scheme="https://joshuaqyh.github.io/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
     
       <category term="Java" scheme="https://joshuaqyh.github.io/tags/Java/"/>
-    
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
   </entry>
   
@@ -1260,9 +1289,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
       <category term="数据结构" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
@@ -1313,9 +1342,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
