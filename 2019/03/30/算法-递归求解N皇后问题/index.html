@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>算法 | 递归求解N皇后问题 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="C++,algorithm">
+    <meta name="description" content="问题描述输入一个数N，要求输出满足N皇后规则的所有皇后位置的情况。 利用递归的思想，可以有效的解决这个问题。 我们可以假设前 k - 1行都没有发生冲突，现在需要决定 第 k 行的皇后位置。 我们只需要判断某位置是否与前 k -1行的皇后是否冲突即可，不冲突就可以放置，然后继续下一轮的放置（此处利用递归）。 代码1234567891011121314151617181920212223int qu">
+<meta name="keywords" content="C++,algorithm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法 | 递归求解N皇后问题">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/03/30/算法-递归求解N皇后问题/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="问题描述输入一个数N，要求输出满足N皇后规则的所有皇后位置的情况。 利用递归的思想，可以有效的解决这个问题。 我们可以假设前 k - 1行都没有发生冲突，现在需要决定 第 k 行的皇后位置。 我们只需要判断某位置是否与前 k -1行的皇后是否冲突即可，不冲突就可以放置，然后继续下一轮的放置（此处利用递归）。 代码1234567891011121314151617181920212223int qu">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-03-29T18:38:51.027Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="算法 | 递归求解N皇后问题">
+<meta name="twitter:description" content="问题描述输入一个数N，要求输出满足N皇后规则的所有皇后位置的情况。 利用递归的思想，可以有效的解决这个问题。 我们可以假设前 k - 1行都没有发生冲突，现在需要决定 第 k 行的皇后位置。 我们只需要判断某位置是否与前 k -1行的皇后是否冲突即可，不冲突就可以放置，然后继续下一轮的放置（此处利用递归）。 代码1234567891011121314151617181920212223int qu">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">算法 | 递归求解N皇后问题</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">算法 | 递归求解N皇后问题</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-03-29T18:27:41.000Z" itemprop="datePublished" class="page-time">
+  2019-03-30
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#问题描述"><span class="post-toc-number">1.</span> <span class="post-toc-text">问题描述</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#代码"><span class="post-toc-number">2.</span> <span class="post-toc-text">代码</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-算法-递归求解N皇后问题" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">算法 | 递归求解N皇后问题</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-03-30 02:27:41" datetime="2019-03-29T18:27:41.000Z" itemprop="datePublished">2019-03-30</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h1><p>输入一个数N，要求输出满足N皇后规则的所有皇后位置的情况。</p>
+<p>利用递归的思想，可以有效的解决这个问题。</p>
+<p>我们可以假设前 k - 1行都没有发生冲突，现在需要决定 第 k 行的皇后位置。</p>
+<p>我们只需要判断某位置是否与前 k -1行的皇后是否冲突即可，不冲突就可以放置，然后继续下一轮的放置（此处利用递归）。</p>
+<h1 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h1><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> queenPos[<span class="number">100</span>]; <span class="comment">// 假设最多不超过N个皇后，此处用于存放每一行的皇后的列数</span></span><br><span class="line"><span class="keyword">int</span> N = <span class="number">66</span>;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">NQueen</span><span class="params">(<span class="keyword">int</span> k)</span></span>&#123; <span class="comment">// 假设前 k - 1行已经完毕，需要放置第 k 行</span></span><br><span class="line">    <span class="keyword">if</span>(k == N)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)&#123;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; queenPos[i] &lt;&lt; <span class="string">"-&gt;"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// 确定一个与已经放置的皇后位置不冲突的位置</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; N; i++)&#123;  <span class="comment">// 尝试所有位置，判断是否冲突</span></span><br><span class="line">        <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(j = <span class="number">0</span>; j &lt; k; j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(queenPos[j] == i || <span class="built_in">abs</span>(k - j) != <span class="built_in">abs</span>(i - queenPos[j]))</span><br><span class="line">                <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(j == k)&#123; <span class="comment">// 无冲突</span></span><br><span class="line">            queenPos[k] = i; <span class="comment">// 放置在该位置</span></span><br><span class="line">            NQueen(k+<span class="number">1</span>);     <span class="comment">// 确定下一行</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-03-29T18:38:51.027Z" itemprop="dateUpdated">2019-03-30 02:38:51</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/03/30/算法-递归求解N皇后问题/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/03/30/算法-递归求解N皇后问题/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/03/30/算法-递归求解N皇后问题/&title=《算法 | 递归求解N皇后问题》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/03/30/算法-递归求解N皇后问题/&title=《算法 | 递归求解N皇后问题》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/03/30/算法-递归求解N皇后问题/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《算法 | 递归求解N皇后问题》 — KnowMyself&url=https://joshuaqyh.github.io/2019/03/30/算法-递归求解N皇后问题/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/03/30/算法-递归求解N皇后问题/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/03/29/数据结构-二叉树/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">数据结构 | 二叉树</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/03/30/算法-递归求解N皇后问题/&title=《算法 | 递归求解N皇后问题》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/03/30/算法-递归求解N皇后问题/&title=《算法 | 递归求解N皇后问题》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/03/30/算法-递归求解N皇后问题/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《算法 | 递归求解N皇后问题》 — KnowMyself&url=https://joshuaqyh.github.io/2019/03/30/算法-递归求解N皇后问题/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/03/30/算法-递归求解N皇后问题/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACtUlEQVR42u3a0W7jMAwEwPz/T7evB1xt74pSmgLjpyBJLY0KmAzJ1yu+vv67/n3/6vtXf3t1t6s73K+14cLDw8Mbb/2KcQXLAfdHc8/OV8TDw8N7Dy95uOef3h9KckzzgISHh4f3Obx8+fxQknQZDw8P7+/ykgCwdihJUMHDw8P7HN6kiJAXfPcGhs21Fjw8PLyu3/Rqb/27r4/09/Dw8PDGXfW2hJok2fl32gbbD7vFw8PDO8Bb2+59y3/SBsvvUBwZHh4e3lbersGpXaNa7YE+rIKHh4d3gJe3o5LSQPv43nVYD+vi4eHhHeBNRqnyDbUHtzntxsPDwzvAy8ew5g2qFtx+ioeHh/dbvFEKe8vI778tpcbDw8M79ms9KTck7+RjB2tpd11SwcPDw9vEy9tLk6Q8b6olqXxSPsbDw8M7x8ub8ZPhp3bTbckj+mfg4eHhbeK17as8qU0wawl3kfrj4eHhHeDlgSFKW4M0t03WkyAxGrrCw8PDK3lJ2toWcycBJnn0F0eGh4eHd4C3Ky1uhwballuUNCflEjw8PLxNvLWTaLe19rod2HqIfnh4eHhbeWupapuI56WEdmTh8m54eHh4W3l56ytfeN4GW0uv8fDw8N7Dm4eBteLsPISMSrd4eHh4Y94kUW7LGW0ZYm9YwsPDw9vFS4oRbbrcjlK1FZRkt3h4eHinefkC7UM8wbRjVUXYwMPDwzvMyxntuEDRkVu6Hsq4eHh4eJt4X+U1qZSuDVSNghAeHh7e+/LbxYd4W6LNCxxtcRkPDw/vNC8JBvkJrTX+k+JC+008PDy807xJabU9pl2JexTl8PDw8D6A1zbvc/Da6g97wMPDw/sAXtsM2zsWkCf9eHh4eKd57eM731w7QDAZSrgMDHh4eHhbeWs/+Nty7RpsbTQBDw8P7xjvGwR0AycWKeGEAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
