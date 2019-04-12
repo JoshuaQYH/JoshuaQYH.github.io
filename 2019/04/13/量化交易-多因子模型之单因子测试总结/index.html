@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>量化交易 | 多因子模型之单因子测试总结 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="机器学习,数据分析,数据挖掘,量化交易">
+    <meta name="description" content="单因子测试总结数学模型根据APT套利定价模型，单因子测试的含义就是, 在每一个时间截面上，也就是站在一年中的某一天关注所有股票的下一期收益率 r 和股票当期相应的因子暴露值 x 之间的关系： $$ r  = a x + b $$  也就是在某一个时间点，对每一只股票的收益率和该股票的因子暴露值做一个简单的线性回归，其中  a 为因子的收益率，b 为独立于市场的残差收益率。 《主动投资组合》书中定义">
+<meta name="keywords" content="机器学习,数据分析,数据挖掘,量化交易">
+<meta property="og:type" content="article">
+<meta property="og:title" content="量化交易 | 多因子模型之单因子测试总结">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/04/13/量化交易-多因子模型之单因子测试总结/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="单因子测试总结数学模型根据APT套利定价模型，单因子测试的含义就是, 在每一个时间截面上，也就是站在一年中的某一天关注所有股票的下一期收益率 r 和股票当期相应的因子暴露值 x 之间的关系： $$ r  = a x + b $$  也就是在某一个时间点，对每一只股票的收益率和该股票的因子暴露值做一个简单的线性回归，其中  a 为因子的收益率，b 为独立于市场的残差收益率。 《主动投资组合》书中定义">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="c:/Users/Qiuyh/AppData/Local/Temp/1554951165048.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411112929.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411104316.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411105526.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411110021.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411111930.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411111149.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411112406.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411112016.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411112754.png">
+<meta property="og:updated_time" content="2019-04-12T17:05:39.072Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="量化交易 | 多因子模型之单因子测试总结">
+<meta name="twitter:description" content="单因子测试总结数学模型根据APT套利定价模型，单因子测试的含义就是, 在每一个时间截面上，也就是站在一年中的某一天关注所有股票的下一期收益率 r 和股票当期相应的因子暴露值 x 之间的关系： $$ r  = a x + b $$  也就是在某一个时间点，对每一只股票的收益率和该股票的因子暴露值做一个简单的线性回归，其中  a 为因子的收益率，b 为独立于市场的残差收益率。 《主动投资组合》书中定义">
+<meta name="twitter:image" content="c:/Users/Qiuyh/AppData/Local/Temp/1554951165048.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">量化交易 | 多因子模型之单因子测试总结</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">量化交易 | 多因子模型之单因子测试总结</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-04-12T17:04:33.000Z" itemprop="datePublished" class="page-time">
+  2019-04-13
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#单因子测试总结"><span class="post-toc-number">1.</span> <span class="post-toc-text">单因子测试总结</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数学模型"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">数学模型</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#大概思路"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">大概思路</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#股票收益率计算"><span class="post-toc-number">1.2.1.</span> <span class="post-toc-text">股票收益率计算</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#因子暴露值"><span class="post-toc-number">1.2.2.</span> <span class="post-toc-text">因子暴露值</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#计算夏普率"><span class="post-toc-number">1.2.3.</span> <span class="post-toc-text">计算夏普率</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#共线性筛选"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">共线性筛选</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#分层回测"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">分层回测</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#总体过程"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">总体过程</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-量化交易-多因子模型之单因子测试总结" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">量化交易 | 多因子模型之单因子测试总结</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-04-13 01:04:33" datetime="2019-04-12T17:04:33.000Z" itemprop="datePublished">2019-04-13</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="单因子测试总结"><a href="#单因子测试总结" class="headerlink" title="单因子测试总结"></a>单因子测试总结</h1><h2 id="数学模型"><a href="#数学模型" class="headerlink" title="数学模型"></a>数学模型</h2><p>根据APT套利定价模型，单因子测试的含义就是, 在每一个时间截面上，也就是站在一年中的某一天关注所有股票的下一期收益率 r 和股票当期相应的因子暴露值 x 之间的关系：</p>
+<p>$$ r  = a x + b $$ </p>
+<p>也就是在某一个时间点，对每一只股票的收益率和该股票的因子暴露值做一个简单的线性回归，其中  a 为因子的收益率，b 为独立于市场的残差收益率。</p>
+<p>《主动投资组合》书中定义：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="C:\Users\Qiuyh\AppData\Local\Temp\1554951165048.png" alt="55495116504" title="">
+                </div>
+                <div class="image-caption">55495116504</div>
+            </figure>
+<p>在单因子测试报告中，提出了一种拓展。增加了行业虚拟变量和流通市值，以及相应的因子收益率。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411112929.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="大概思路"><a href="#大概思路" class="headerlink" title="大概思路"></a>大概思路</h2><p>我们就是要利用现有的数据 股票收益率r 和 因子暴露值 x，去进行每一个时间横截面的线性回归，得到 a，b，然后利用这  a x + b = r* 求出因子预测的股票收益率。</p>
+<h3 id="股票收益率计算"><a href="#股票收益率计算" class="headerlink" title="股票收益率计算"></a>股票收益率计算</h3><p>这里得先来了解股票收益率的计算方法</p>
+<p>我们可以通过每一只股票的 K 线数据（get_kdata 的方式获取，如下），我们如果以1天为1期的话，那么有：</p>
+<p>股票收益率  = 第二天股票收盘价格 / 第一天股票收盘价格 - 1  （收盘价格就是下列的 close 字段） </p>
+<p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411104316.png" alt=""></p>
+<p>然后在每个时间截面获取每一个的股票收益率情况，利用成分股的权重，加权求和得到在该时间点上的股票市场整体收益率。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411105526.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="因子暴露值"><a href="#因子暴露值" class="headerlink" title="因子暴露值"></a>因子暴露值</h3><p>每一只股票在每一时刻都有对应的因子暴露值，获取方法如下。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411110021.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>我们需要对因子进行预处理，一般是</p>
+<ol>
+<li>中位数去极值法去除异常值。</li>
+<li>缺失值处理，可剔除或者均值填充。</li>
+<li>z-score 规范化，使之标准差为 1，均值为0。</li>
+</ol>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411111930.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="计算夏普率"><a href="#计算夏普率" class="headerlink" title="计算夏普率"></a>计算夏普率</h3><p>到这里我们可以在每一个时间面上对所有股票的收益率和因子值进行回归，得到 因子收益率 a 和残差收益率 b。</p>
+<p>然后重新预测所有股票的收益率。先对所有成分股的权重求和，然后每个权重除以总权重得到新的权重，使用加权求和的方式计算在该时间点的股票池中的总体收益率。</p>
+<p>在每个时间点上重复上述计算就可以得到一个产品收益率的时间序列。然后就可以计算超额收益率序列，从而计算夏普比率。）这里的无风险收益率一般取 4 % 。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411111149.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>利用上述数据也可以计算 IC值，年化收益率，IR值，t 检验结果等等。</p>
+<h2 id="共线性筛选"><a href="#共线性筛选" class="headerlink" title="共线性筛选"></a>共线性筛选</h2><p>我们使用上述方法可以得到每一个因子的年化夏普率，然后挑选较优的各大类因子，得到一个列表。但此时依旧需要解决因子之间的共线性问题，如果两个因子的线性关系较为明显（相关系数为1正相关，相关系数为-1负相关），我们应该剔除，保留其中一个，或者合成新的因子。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411112406.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>利用相关性矩阵来计算的结果如下。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411112016.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="分层回测"><a href="#分层回测" class="headerlink" title="分层回测"></a>分层回测</h2><p>分层就是将全体股票池按市值等分为大、中、小股票池。然后分别对每个池进行上述的测试。题目里头也有提及到不同市值的股票风格不同，所以觉得这个可能还是有点必要的。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411112754.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="总体过程"><a href="#总体过程" class="headerlink" title="总体过程"></a>总体过程</h2><ol>
+<li>确定测试的开始和结束日期；</li>
+<li>股票日频数据采集，构成股票池；（所有股票的K线时序数据）（此处可按市值进行分层）</li>
+<li>利用K线数据计算所有股票的每期收益率；（收益率时序数据）</li>
+<li>确定候选的测试因子集合；</li>
+<li>获取股票池中每个股票的候选因子，也就是股票对因子的暴露值；（因子时序数据）</li>
+<li>对每个因子进行预处理；</li>
+<li>每一个时间截面（每一天）对当期的因子暴露值和股票的下期收益率进行回归，得到因子收益率和残差收益率。</li>
+<li>利用回归得到的因子收益率和残差收益率和因子暴露值，计算股票的预测收益率</li>
+<li>每个时间截面计算整体股票池的预测收益率，得到一个收益率序列。</li>
+<li>根据收益率序列计算夏普率，筛选较好的因子。</li>
+<li>使用相关性矩阵，剔除相关性较强的因子，得到最后的因子集合。</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2019-04-12T17:05:39.072Z" itemprop="dateUpdated">2019-04-13 01:05:39</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/04/13/量化交易-多因子模型之单因子测试总结/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/04/13/量化交易-多因子模型之单因子测试总结/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据分析/">数据分析</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/量化交易/">量化交易</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/04/13/量化交易-多因子模型之单因子测试总结/&title=《量化交易 | 多因子模型之单因子测试总结》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/04/13/量化交易-多因子模型之单因子测试总结/&title=《量化交易 | 多因子模型之单因子测试总结》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/04/13/量化交易-多因子模型之单因子测试总结/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《量化交易 | 多因子模型之单因子测试总结》 — KnowMyself&url=https://joshuaqyh.github.io/2019/04/13/量化交易-多因子模型之单因子测试总结/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/04/13/量化交易-多因子模型之单因子测试总结/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/04/12/软件工程-系分作业三/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">软件工程 | 系分作业三</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/04/13/量化交易-多因子模型之单因子测试总结/&title=《量化交易 | 多因子模型之单因子测试总结》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/04/13/量化交易-多因子模型之单因子测试总结/&title=《量化交易 | 多因子模型之单因子测试总结》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/04/13/量化交易-多因子模型之单因子测试总结/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《量化交易 | 多因子模型之单因子测试总结》 — KnowMyself&url=https://joshuaqyh.github.io/2019/04/13/量化交易-多因子模型之单因子测试总结/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/04/13/量化交易-多因子模型之单因子测试总结/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADGElEQVR42u3aS27jQAwFwNz/0pltgEyU99gyYDGllSHLra72guDn4yO+Pi+vn575ev+n1b4/c7LOzRc2Njb2Q9gt6ftv82eu71/vIXljYsHGxsbeyr7eVvKyZHPtFmfvSo4YGxsbGzsPNsm2ZmEsXx8bGxsbO2HPGLOEpz1WbGxs7L/Anm0uua4PIjmm/JmX1NKwsbGx356dd0Xf//NL+tvY2NjYb8yehaLzRKINbDcHVGxsbOxF7FnJvh2daVdLnmzTDGxsbOyt7Hywpm3EJviTcn/9335dDRsbG3sROykbDZcLkCcr5H/YLytjY2NjP5z9upJQXpzKw1VScoq+xcbGxl7HbmNdXr5v05g8HWoDKjY2NvZWdts0fV3S0obJWaqDjY2NvY89a5TORnbalkOSZszKUtjY2Nj72LNCfPtkUq6aNYnbQSJsbGzsTeyT9u3sOM5DWnJwRVEJGxsbex07LzC1bde7BjRvGwPCxsbGXsTONzELJ3mwaROSWXqDjY2NvZt9V2PgruQkH/o5aQ9jY2NjP509G16cBaHXjWO2wQwbGxt7B3u23EkxqA2HJ+3hIt/CxsbGfiw7SUKSz+3IzisC3vkAEDY2NvZz2e3W27CUnPEssM2aytjY2Nib2G3i0d5p056TZKYoQmFjY2MvYt8FrrOcEXuWckR1NWxsbOyHs/OS+md8tc+fBL+8PYyNjY29j31esmnbAOfsGxIebGxs7KXstrmbh7eTnvNs+OaXd2FjY2MvYp8kGG1Zp00bTp4pqmjY2NjY69h3tV3b4Jfsp73zy7uwsbGx17FPCvr5iEwycHM+spOkRtjY2Nh/gZ0HhtkmTmCzMhM2Njb2PvbJSE3LyI+pLQ+1QREbGxt7E3sWAE5SlDbNSH57Eg6xsbGxd7Db5u7sZUlaMitIzdrA2NjY2PvYeZBoxzTb9CBvNswGMbGxsbGxZylEEpZOCkZJ4/kogGFjY2MvYidhJvm2Rd5V28fGxsbeyp6VgfIt5s3d6/fOkqL/3MHGxsZexJ6VZmZDPHn74Ro2awZjY2Njr2P/AxbEShWo1HapAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
