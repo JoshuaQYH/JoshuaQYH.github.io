@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>软件工程 | 系分作业三 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="软件工程,系统分析与设计">
+    <meta name="description" content="Student ID：16340186 Name: 邱奕浩  简述瀑布模型、增量模型、螺旋模型（含原型方法），并分析优缺点。（从项目特点、风险特征、人力资源利用角度思考。）瀑布模型 简述： 瀑布模型将软件生命周期各个阶段的活动规定为按顺序相连接的多阶段工作，涵盖需求，设计，编码，测试，到软件发布和维护等阶段，每个阶段都会产生循环反馈，产出的相关成果制品将作为下一阶段活动的输入，若某阶段存在某些问">
+<meta name="keywords" content="软件工程,系统分析与设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件工程 | 系分作业三">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/04/12/软件工程-系分作业三/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="Student ID：16340186 Name: 邱奕浩  简述瀑布模型、增量模型、螺旋模型（含原型方法），并分析优缺点。（从项目特点、风险特征、人力资源利用角度思考。）瀑布模型 简述： 瀑布模型将软件生命周期各个阶段的活动规定为按顺序相连接的多阶段工作，涵盖需求，设计，编码，测试，到软件发布和维护等阶段，每个阶段都会产生循环反馈，产出的相关成果制品将作为下一阶段活动的输入，若某阶段存在某些问">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-04-12T07:54:22.757Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="软件工程 | 系分作业三">
+<meta name="twitter:description" content="Student ID：16340186 Name: 邱奕浩  简述瀑布模型、增量模型、螺旋模型（含原型方法），并分析优缺点。（从项目特点、风险特征、人力资源利用角度思考。）瀑布模型 简述： 瀑布模型将软件生命周期各个阶段的活动规定为按顺序相连接的多阶段工作，涵盖需求，设计，编码，测试，到软件发布和维护等阶段，每个阶段都会产生循环反馈，产出的相关成果制品将作为下一阶段活动的输入，若某阶段存在某些问">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">软件工程 | 系分作业三</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">软件工程 | 系分作业三</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-04-12T03:28:48.000Z" itemprop="datePublished" class="page-time">
+  2019-04-12
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简述瀑布模型、增量模型、螺旋模型（含原型方法），并分析优缺点。（从项目特点、风险特征、人力资源利用角度思考。）"><span class="post-toc-number">1.</span> <span class="post-toc-text">简述瀑布模型、增量模型、螺旋模型（含原型方法），并分析优缺点。（从项目特点、风险特征、人力资源利用角度思考。）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简述统一过程三大特点，与面向对象的方法有什么关系？"><span class="post-toc-number">2.</span> <span class="post-toc-text">简述统一过程三大特点，与面向对象的方法有什么关系？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#简述统一过程四个阶段的划分准则是什么？每个阶段关键的里程碑是什么？"><span class="post-toc-number">3.</span> <span class="post-toc-text">简述统一过程四个阶段的划分准则是什么？每个阶段关键的里程碑是什么？</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#软件企业为什么能按固定节奏生产、固定周期发布软件产品？它给企业项目管理带来哪些好处？"><span class="post-toc-number">4.</span> <span class="post-toc-text">软件企业为什么能按固定节奏生产、固定周期发布软件产品？它给企业项目管理带来哪些好处？</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-软件工程-系分作业三" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">软件工程 | 系分作业三</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-04-12 11:28:48" datetime="2019-04-12T03:28:48.000Z" itemprop="datePublished">2019-04-12</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>Student ID：16340186</p>
+<p>Name: 邱奕浩</p>
+</blockquote>
+<h3 id="简述瀑布模型、增量模型、螺旋模型（含原型方法），并分析优缺点。（从项目特点、风险特征、人力资源利用角度思考。）"><a href="#简述瀑布模型、增量模型、螺旋模型（含原型方法），并分析优缺点。（从项目特点、风险特征、人力资源利用角度思考。）" class="headerlink" title="简述瀑布模型、增量模型、螺旋模型（含原型方法），并分析优缺点。（从项目特点、风险特征、人力资源利用角度思考。）"></a>简述瀑布模型、增量模型、螺旋模型（含原型方法），并分析优缺点。（从项目特点、风险特征、人力资源利用角度思考。）</h3><p><strong>瀑布模型</strong></p>
+<p>简述：</p>
+<p>瀑布模型将软件生命周期各个阶段的活动规定为按顺序相连接的多阶段工作，涵盖需求，设计，编码，测试，到软件发布和维护等阶段，每个阶段都会产生循环反馈，产出的相关成果制品将作为下一阶段活动的输入，若某阶段存在某些问题，需要回退到之前的某个阶段进行修改，然后重新进行流动。</p>
+<p>优点：</p>
+<ul>
+<li>降低软件开发的复杂度，提高软件开发过程透明性；</li>
+<li>提高了软件开发过程的可管理性，适用于规模较小，较为稳定的项目开发；</li>
+<li>各个阶段正确衔接，能够及时发现并纠正开发过程存在的缺陷。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>过分强调过程活动的线性顺序，缺乏灵活性，对前面步骤依赖程度高，流程可逆性差；</li>
+<li>风险控制能力较弱，当某一个阶段产生错误时，需要回归到前几个阶段重新开始；</li>
+<li>鉴于其文档驱动的性质，当阶段之间规定文档较多时，将极大的增加人员和系统的工作量。</li>
+</ul>
+<p><strong>增量模型</strong></p>
+<p>简述：</p>
+<p>增量模型从一组给定的需求开始，将软件项目系统模块化，通过构造一系列可执行的组件模块，分批次地进行分析，设计，构造和测试等增量组件。第一个中间版本满足部分需求，下一个版本又纳入新的更多的需求，每个版本会有相应的子产品交付，依此类推，直到系统完成。</p>
+<p>优点：</p>
+<ul>
+<li>由于其增量组件化的性质，人员分工较为灵活，可以同时进行多个组件的开发，人员利用率较高；</li>
+<li>每个增量组件的交付后会收到用户反馈，增加用户参与度，降低用户使用风险；</li>
+<li>模块化分解项目，提高系统稳定性，适用于规模较大，较为复杂，易变性低的软件开发。</li>
+<li>开发初期不要求投入较大人力资源，可优先推出核心功能，根据市场反映实现下一个增量。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>各个增量组件加入已有的软件体系结构，必须不破坏已有的结构，这要求具备开放式的体系结构；</li>
+<li>需求变化频繁时，增量模型灵活性容易丧失，使得软件过程控制较为复杂；</li>
+<li>必须妥善处理增量组件之间的关系，若增量组件之间关系存在相交等情况，需要全盘系统分析。</li>
+</ul>
+<p><strong>螺旋模型（含原型方法）</strong></p>
+<p>螺旋模型是一种演化软件开发过程模型，兼顾了快速原型的迭代特征和瀑布模型的系统化和严格监控。同时引入了风险分析，使软件在无法排除重大风险时有机会停止。主要步骤有1. 决定目标、方案限制，进行需求计划；2. 评估方案，识别解决风险，进行风险分析，应用原型方法；3. 开发，验证下一级产品，；4. 计划下一阶段。一般适用于大型昂贵的系统级软件系统。</p>
+<p>优点：</p>
+<ul>
+<li>通过原型建立，使得软件开发在每个迭代有最初明确的方向；</li>
+<li>引入风险分析，最大程度地降低软件失败造成损失的可能；</li>
+<li>过程灵活性高，在开发过程易于应对变化；</li>
+<li>多个迭代阶段累计开发成本，易于掌握支出状况。</li>
+</ul>
+<p>缺点：</p>
+<ul>
+<li>过度依赖风险分析经验与技术，一旦风险分析过程出现偏差将导致重大损失；</li>
+<li>只适用于大型软件，过多的风险管理支出将会影响客户的最终收益。</li>
+</ul>
+<hr>
+<h3 id="简述统一过程三大特点，与面向对象的方法有什么关系？"><a href="#简述统一过程三大特点，与面向对象的方法有什么关系？" class="headerlink" title="简述统一过程三大特点，与面向对象的方法有什么关系？"></a>简述统一过程三大特点，与面向对象的方法有什么关系？</h3><p>三大特点：</p>
+<ul>
+<li><strong>以体系为中心。</strong>软件体系结构提供开发的核心架构，要求体系结构有良好弹性，适应变化，易于理解，可重用；</li>
+<li><strong>用例<code>Use Case</code> 和风险相结合驱动</strong>在迭代早起要识别和降低风险，并快速构造满足客户核心需求的产品。</li>
+<li><strong>迭代及增量。统一过程具有周期性，</strong>可量化性，在每一轮迭代开发中进行软件分析，设计，构造，测试和反馈。</li>
+</ul>
+<p>统一过程<code>UP</code>是面向对象设计与开发的重要方法，是迭代，敏捷开发实践的重要代表。</p>
+<hr>
+<h3 id="简述统一过程四个阶段的划分准则是什么？每个阶段关键的里程碑是什么？"><a href="#简述统一过程四个阶段的划分准则是什么？每个阶段关键的里程碑是什么？" class="headerlink" title="简述统一过程四个阶段的划分准则是什么？每个阶段关键的里程碑是什么？"></a><strong>简述统一过程四个阶段的划分准则是什么？每个阶段关键的里程碑是什么？</strong></h3><p>统一过程四个阶段按时间维度分解是：初始阶段，精化阶段，构建阶段和产品阶段。</p>
+<p>其划分准则是：每个阶段结束的时候产生一个里程碑，并在结尾执行一次评估确定该阶段的目标是否满足，如果评估结果令人满意，那么项目进入下一阶段。</p>
+<p>每个阶段的关键里程碑分别是：</p>
+<ul>
+<li><strong>初始阶段：生命周期目标里程碑。</strong>包括重要的文档，如项目构想，原始用力，原始业务风险评估，原始业务案例等。通过对文档的评审确定用例需求理解是否正确，项目风险评估是否合理，阶段计划是否可行，</li>
+<li><strong>精化阶段：生命周期结构里程碑。</strong>包括风险分析文档， 软件体系结构基线，项目计划，可执行的原型，初始版本的用户手册。通过评审确定软件体系结构已经稳定、高风险的业务需求和技术机制已经解决、修订的项目计划可行等。</li>
+<li><strong>构建阶段：初始功能里程碑。</strong>包括可运行的软件产品，用户手册等，决定了产品是否可在测试环境中进行部署。</li>
+<li><strong>产品阶段：产品发布里程碑。</strong> 确定最终目标是否实现，是否应该开始产品下一个版本或下一轮迭代。</li>
+</ul>
+<hr>
+<h3 id="软件企业为什么能按固定节奏生产、固定周期发布软件产品？它给企业项目管理带来哪些好处？"><a href="#软件企业为什么能按固定节奏生产、固定周期发布软件产品？它给企业项目管理带来哪些好处？" class="headerlink" title="软件企业为什么能按固定节奏生产、固定周期发布软件产品？它给企业项目管理带来哪些好处？"></a><strong>软件企业为什么能按固定节奏生产、固定周期发布软件产品？它给企业项目管理带来哪些好处？</strong></h3><p>软件企业采用迭代式的方法来生产，每轮迭代具有固定的周期和明确的里程碑目标，同时软件项目管理人员能够利用软件产品范围的弹性，合理规划软件的范围（20%业务决定80%的满意度），由此软件产品的生产、发布可以按固定节奏和周期进行。</p>
+<p>固定节奏生产，固定周期发布产品有助于企业量化生产过程，个人贡献度，人力资源利用率等数据，以便更好地监督，控制，调整，评估整个生产过程和结果。同时又能及时地收集产品反馈，了解项目的不足，进一步做出项目的优化措施，降低项目风险，提高软件质量。</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-04-12T07:54:22.757Z" itemprop="dateUpdated">2019-04-12 15:54:22</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/04/12/软件工程-系分作业三/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/04/12/软件工程-系分作业三/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统分析与设计/">系统分析与设计</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件工程/">软件工程</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/04/12/软件工程-系分作业三/&title=《软件工程 | 系分作业三》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/04/12/软件工程-系分作业三/&title=《软件工程 | 系分作业三》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/04/12/软件工程-系分作业三/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《软件工程 | 系分作业三》 — KnowMyself&url=https://joshuaqyh.github.io/2019/04/12/软件工程-系分作业三/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/04/12/软件工程-系分作业三/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/04/10/软件工程-软件复杂性分析/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">软件工程 | 软件复杂性分析</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/04/12/软件工程-系分作业三/&title=《软件工程 | 系分作业三》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/04/12/软件工程-系分作业三/&title=《软件工程 | 系分作业三》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/04/12/软件工程-系分作业三/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《软件工程 | 系分作业三》 — KnowMyself&url=https://joshuaqyh.github.io/2019/04/12/软件工程-系分作业三/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/04/12/软件工程-系分作业三/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsUlEQVR42u3aS24dMQwEQN//0g6QVTYz6SYlf4Ca1cPAflZpIdFNfnzEz+ffZ/P+/c3753+fjxsPHh4e3mjpT0/+59/fJNT3zXpnP34DHh4e3jXe++GeLCj/k8mb94uhuKjw8PDwvpWXv3mH5QvFw8PD++28fEFJlDAr3/Hw8PB+Di85iJMlzpDJhXQ9a8HDw8OLeW0D7Cd8vtjfw8PDw1t01fNjN29otd/2uXjw8PDwbvCStn07jDXbpqR8b4NgPDw8vO/itWFrO6S1GU2INh0PDw/vKO9UKys5oGcH/WZb8fDw8O7x2uGqNupta912bCsaGsDDw8M7xGsjifYQz8vr9mfaCAMPDw/vFC+PAPbtqzy2aGORx03Ew8PDu8BrL4C8zM03Yr9ldTMPDw8Pb8HLC+gcsBnbakOQ/2wHHh4e3mVe3s5veZtmWL7ReHh4eF/Jy5/9ldC2r/IG2GNJjYeHh3eNlx/r+SLyqGJTlD9eEnh4eHjXeLOi+dRwVTtKVTTY8PDw8K7xkgj1bGg7G0qo42Y8PDy8C7z219pGVH7E55FEEePi4eHhXeAlraZZa78NhdsS/L24x8PDw7vHm8WsG0Be/s7K9CgLwcPDw7vMm41MJRdAG+kONwsPDw/vAm9/YWya/ZtQYxUE4+Hh4V3g7Re0Kdbb8YWahIeHh7fgJXHDvpjOD/G2oK//Y8DDw8M7xGvBeYMqj4BzZHGB4eHh4R3lzQKF/KDPP89abtHQFR4eHt5R3uzAzQOINqrIC/pjbTA8PDy8EW82ONWW2rMgI78YHleIh4eHd423b9LnJW/Cy+8uPDw8vN/F2yw6v2zaeYB66gEPDw/vGm/zzNizQS48PDy8r+G1Ta/kwmhji7yhVTS98PDw8C7wZrNaefM+KZfb62RW6OPh4eGteX8A8XJf9O7nyagAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

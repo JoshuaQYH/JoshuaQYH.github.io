@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>软件工程 | 软件复杂性分析 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="软件工程,软件测试">
+    <meta name="description" content="软件复杂性概述软件复杂性问题定义 软件复杂性与程序复杂性不一样，软件复杂性是一个更为高层的概念，主要反映为分析，设计，测试，维护和修改软件的困难程度或复杂程度。而软件复杂性也是软件危机产生的最直接原因，人类的思维有限，要明确的认识软件的运行对人类而言有点勉强，我们只能通过定义软件的对象，属性，边界，交互逻辑来描述软件的运行机制。 当软件的运行逻辑条目越来越多时，复杂性呈指数提高，软件复杂性已经远远">
+<meta name="keywords" content="软件工程,软件测试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件工程 | 软件复杂性分析">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/04/10/软件工程-软件复杂性分析/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="软件复杂性概述软件复杂性问题定义 软件复杂性与程序复杂性不一样，软件复杂性是一个更为高层的概念，主要反映为分析，设计，测试，维护和修改软件的困难程度或复杂程度。而软件复杂性也是软件危机产生的最直接原因，人类的思维有限，要明确的认识软件的运行对人类而言有点勉强，我们只能通过定义软件的对象，属性，边界，交互逻辑来描述软件的运行机制。 当软件的运行逻辑条目越来越多时，复杂性呈指数提高，软件复杂性已经远远">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190410113719.png">
+<meta property="og:updated_time" content="2019-04-10T03:39:41.805Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="软件工程 | 软件复杂性分析">
+<meta name="twitter:description" content="软件复杂性概述软件复杂性问题定义 软件复杂性与程序复杂性不一样，软件复杂性是一个更为高层的概念，主要反映为分析，设计，测试，维护和修改软件的困难程度或复杂程度。而软件复杂性也是软件危机产生的最直接原因，人类的思维有限，要明确的认识软件的运行对人类而言有点勉强，我们只能通过定义软件的对象，属性，边界，交互逻辑来描述软件的运行机制。 当软件的运行逻辑条目越来越多时，复杂性呈指数提高，软件复杂性已经远远">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190410113719.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">软件工程 | 软件复杂性分析</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">软件工程 | 软件复杂性分析</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-04-10T02:14:28.000Z" itemprop="datePublished" class="page-time">
+  2019-04-10
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#软件复杂性概述"><span class="post-toc-number">1.</span> <span class="post-toc-text">软件复杂性概述</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#软件结构复杂性"><span class="post-toc-number">2.</span> <span class="post-toc-text">软件结构复杂性</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#软件复杂性控制"><span class="post-toc-number">3.</span> <span class="post-toc-text">软件复杂性控制</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#软件复杂性度量"><span class="post-toc-number">4.</span> <span class="post-toc-text">软件复杂性度量</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-软件工程-软件复杂性分析" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">软件工程 | 软件复杂性分析</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-04-10 10:14:28" datetime="2019-04-10T02:14:28.000Z" itemprop="datePublished">2019-04-10</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="软件复杂性概述"><a href="#软件复杂性概述" class="headerlink" title="软件复杂性概述"></a>软件复杂性概述</h1><p><strong>软件复杂性问题定义</strong></p>
+<p>软件复杂性与程序复杂性不一样，软件复杂性是一个更为高层的概念，主要反映为分析，设计，测试，维护和修改软件的困难程度或复杂程度。而软件复杂性也是软件危机产生的最直接原因，人类的思维有限，要明确的认识软件的运行对人类而言有点勉强，我们只能通过定义软件的对象，属性，边界，交互逻辑来描述软件的运行机制。</p>
+<p>当软件的运行逻辑条目越来越多时，复杂性呈指数提高，软件复杂性已经远远超过人类对复杂性控制的能力，软件隐含错误的概率越来越多，软件可靠性和可维护性越差，甚至可能引发软件项目的失败。软件复杂性是无法避免的，就像软件危机一样，是客观存在的，我们只能尽可能地以某种概率来减轻其不良影响。</p>
+<p>分析，度量和控制软件复杂性是软件可靠性工程急需解决的重要问题，我们可以通过降低由软件设计方法和技巧使用不当而带来的复杂性，以更好地对软件开发过程进行控制。软件复杂性同时也直接关联到对软件开发费用，开发周期和软件内部隐藏错误的评估。</p>
+<p><strong>软件复杂性出现的主要原因</strong> </p>
+<ol>
+<li>软件应用需求的复杂性；</li>
+<li>软件应用框架，结构及模型的复杂性；</li>
+<li>开发环境及应用环境的复杂性；</li>
+<li>软件开发过程的复杂性；</li>
+<li>涉及人力管理的复杂性 </li>
+<li>软件设计与验证的复杂性。</li>
+</ol>
+<h1 id="软件结构复杂性"><a href="#软件结构复杂性" class="headerlink" title="软件结构复杂性"></a>软件结构复杂性</h1><p><strong>软件复杂性的主要体现</strong></p>
+<ol>
+<li>软件结构复杂性</li>
+<li>程序算法复杂性</li>
+</ol>
+<p><strong>软件复杂性形成的根源</strong></p>
+<p>软件设计过程是根源，我们在需要：</p>
+<ol>
+<li>进行概要设计的时候需要对<strong>软件总体模块结构复杂性</strong>进行有效控制；</li>
+<li>在进行详细设计的时候对<strong>模块结构复杂性和模块内部复杂性</strong>进行控制。</li>
+</ol>
+<p>使之保持在一个合理的范围内。</p>
+<p>软件结构复杂性体现为</p>
+<ol>
+<li>模块复杂性：<ol>
+<li>模块内部结构复杂性：<ol>
+<li>McCabe 度量</li>
+<li>Halstead 度量</li>
+</ol>
+</li>
+<li>模块接口复杂性：<ol>
+<li>模块调用关系图</li>
+<li>模块或信息的扇入扇出数来度量</li>
+</ol>
+</li>
+</ol>
+</li>
+<li>总体结构复杂性<ol>
+<li>尚无权威的度量方法</li>
+<li><strong>矛盾</strong>：单个模块划分越小，功能越简单，虽然降低模块内部结构复杂性，但是模块之间联系多，接口 复杂，总体复杂性增加。</li>
+</ol>
+</li>
+</ol>
+<h1 id="软件复杂性控制"><a href="#软件复杂性控制" class="headerlink" title="软件复杂性控制"></a><strong>软件复杂性控制</strong></h1><ul>
+<li>内部模块结构复杂性控制<ul>
+<li>模块隔离。单个模块进行单独的编制，调试，查错，修改 ，测试和维护。模块隔离有助于防止错误蔓延，降低软件复杂性，提高软件可靠性。</li>
+<li>控制模块大小和结构的控制。</li>
+</ul>
+</li>
+<li>总体结构复杂性控制<ul>
+<li>提高模块独立性<ul>
+<li>模块耦合性控制。尽量使用数据耦合，少用 控制耦合，限制公共耦合范围，完全不用内容耦合四个原则。减少耦合性，降低模块复杂性。</li>
+<li>模块高内聚，并能识别低内聚。内聚是指模块功能的相对强度，用于衡量一个模块内部各元素彼此结合的紧密程度，是信息隐蔽和局部化的自然延伸。</li>
+</ul>
+</li>
+<li>保持适当的扇入扇出。扇出量<ul>
+<li>扇出量越大，模块功能宽度越大，模块就越复杂。</li>
+<li>扇出量太小，下级模块进一步分解成若干子模块并合并到上级模块。</li>
+</ul>
+</li>
+<li>简化软件接口<ul>
+<li>接口传递的信息尽量保持简单。</li>
+<li>单入口，单出口。</li>
+<li>避免模块接口之间的病态连接，杜绝引入或引用一个模块内部结构。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>形成软件复杂性的重要原因</strong></p>
+<ol>
+<li>控制结构和数据结构复杂的程序复杂性高；</li>
+<li>转向语句使用不当的程序复杂性高；</li>
+<li>非局部变量较多的程序复杂性高；</li>
+<li>按地址调用参数比按值调用参数的复杂性高；</li>
+<li>模块及过程之间联系密切的程序的复杂性高；</li>
+<li>嵌套深度大的程序的复杂性高；</li>
+<li>循环结构的复杂性比选择结构和顺序结构的复杂性高；</li>
+<li>模块宽度是形成软件复杂性的主要原因。</li>
+</ol>
+<p>软件复杂性度量的基本度量准则集。</p>
+<h1 id="软件复杂性度量"><a href="#软件复杂性度量" class="headerlink" title="软件复杂性度量"></a>软件复杂性度量</h1><p>软件复杂性度量的结果是软件复杂度，是对软件复杂性的定量描述，为软件复杂性的定量分析和控制提供依据，是软件复杂性分析和控制研究的基础。</p>
+<p>软件复杂性度量的根本目的：通过控制软件复杂性来改善和提高软件的可靠性。</p>
+<p>软件复杂性的度量的方法和标准主要分为两大类：</p>
+<ol>
+<li>面向过程的软件复杂性度量：<ol>
+<li>代码语句行度量</li>
+<li>基于FPA（功能点分析）的度量</li>
+<li>Halstead 软件科学度量法！！</li>
+<li>McCabe 结构复杂性度量</li>
+</ol>
+</li>
+<li>面向对象的软件复杂性度量<ol>
+<li>C&amp;K，MOOD</li>
+</ol>
+</li>
+</ol>
+<p>复杂性度量元的分类：</p>
+<ol>
+<li>规模： 命令总数。如line count</li>
+<li>难度：程序出现操作数的数目所决定的量表示。如Halstead 复杂性</li>
+<li>结构：通常与程序结构有关的度量，McCabe 复杂度</li>
+<li>智能度：算法难易程度。</li>
+</ol>
+<p><strong>LineCount 复杂度</strong> （规模度量元）</p>
+<p>统计程序的源代码行数，将其作为程序复杂性的度量。</p>
+<p><strong>Halstead 复杂度</strong>（难度度量元）</p>
+<p>Halstead 复杂度根据程序中语句行的操作符和操作数的数量计<br>算程序复杂性。</p>
+<ul>
+<li>操作符和操作数的量越大，程序结构就越复杂。</li>
+<li>操作符包括语言保留字、函数调用、运算符，也可以包括有关的分隔符等。</li>
+<li>操作数可以是常数和变量等标识符。</li>
+</ul>
+<p>Halstead 复杂度有11种方法，见PPT3.3 P21-22</p>
+<p><strong>McCabe 复杂度</strong> （结构度量元）</p>
+<p>McCabe 对程序流程图PFC进行静态分析，并将其转化为程序控制流图CFG，然后以图论的方法进行严格的结构分析 。</p>
+<p>McCabe 复杂度包括：</p>
+<ol>
+<li><p>环路复杂度</p>
+<ol>
+<li>衡量判定模块的复杂程度。数量上可以表现为程序控制流图(第4章讨论) 中从<br>开始点到终结点的独立路径条数，相当于合理预防错误所需测试的最少路径条数。</li>
+<li>计算公式 ：V(G) = m - n + 2p  m 是G 的边数目；n 是G 的顶点数目；p 是G 的连通分支数</li>
+<li>结构化模块：单入口单出口；非结构化模块：（可选的）多入口多出口。</li>
+<li>当结构化模块程序控制流图增加从出口指向入口的辅助边，形成强连通图。此时强连通图的环路复杂度定义为图的秩数。</li>
+</ol>
+<p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190410113719.png" alt=""></p>
+<p>​</p>
+</li>
+</ol>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-04-10T03:39:41.805Z" itemprop="dateUpdated">2019-04-10 11:39:41</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/04/10/软件工程-软件复杂性分析/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/04/10/软件工程-软件复杂性分析/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件工程/">软件工程</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件测试/">软件测试</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/04/10/软件工程-软件复杂性分析/&title=《软件工程 | 软件复杂性分析》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/04/10/软件工程-软件复杂性分析/&title=《软件工程 | 软件复杂性分析》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/04/10/软件工程-软件复杂性分析/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《软件工程 | 软件复杂性分析》 — KnowMyself&url=https://joshuaqyh.github.io/2019/04/10/软件工程-软件复杂性分析/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/04/10/软件工程-软件复杂性分析/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/04/12/软件工程-系分作业三/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">软件工程 | 系分作业三</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/04/05/算法-认识动态规划/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">算法 | 认识动态规划</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/04/10/软件工程-软件复杂性分析/&title=《软件工程 | 软件复杂性分析》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/04/10/软件工程-软件复杂性分析/&title=《软件工程 | 软件复杂性分析》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/04/10/软件工程-软件复杂性分析/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《软件工程 | 软件复杂性分析》 — KnowMyself&url=https://joshuaqyh.github.io/2019/04/10/软件工程-软件复杂性分析/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/04/10/软件工程-软件复杂性分析/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACrElEQVR42u3au24jMRAEQP3/T/sSBwZ8XnTPkIKC2kiQ9sFisEM15/WKj68fx89v8quej9/3nD1xeODh4eEthv784N8P2Azx+W75eP46Bw8PD+8276836vNQ/nrYM28/HcmY8fDw8D6Ht1nstsPNpxsPDw/vk3nP17av9WRhjYeHh/eZvFMB6/ODT03llawFDw8PL+adWgq/8/OV/T08PDy89a568sJ9fuTm1804v++Mh4eHd4HXRqht68Bs0yuJOYpx4uHh4V3gtX/720VwC9sXAzw8PLx7vE2TU7vsPrUBVkQSeHh4eNd4eWE4de1mc6uYLDw8PLwLvHYB3ZaHWaloWw1em5nDw8PDK3kJI9nEypfF+STmY6vDCDw8PLwFb7YIblsKToUaebHBw8PDu8fbvHb3gFXEkCzQ8fDw8N7Cm/2Lz6dm9qw2/sDDw8N7J68NI/KXeF4S2vPruoeHh4e34M0aTzfL7tnE5Y0Fxdzj4eHhjXjt6zgPXttouA2Io5YCPDw8vAu8vBEqD1s3mHzQeSyCh4eHd4+3aT+dvYdnA11tmOHh4eEd4iWMNhTYNBxsFtP/OQcPDw/vKG8Wzs4+DzPmfR8uHh4e3lFectlm0HvSgYU+Hh4e3gXevUHPAoVka629Cg8PD+8sbx/OJmVjs0mWF7BX/TMeHh7enLfZlMoxszu0vxYpNR4eHt5RXhtAzJql2ju0pQsPDw/vLO+rPJJhzSZrFn/UrQN4eHh4a96mnrThbH5Ouwn3XH7w8PDwbvDyYpBsa7WRRL55lhQGPDw8vHfyZnHqvgDkDQdtPxUeHh7e5/Daba28lWoGqLvJ8PDw8N7OSxbZs8i1vSqKbvHw8PCu8dpoYBZkzMpGu5THw8PDu8078Ic/jnrbTbV8PKsDDw8PLz3zH8C4X/QYbkcUAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://joshuaqyh.github.io/"/>
-  <updated>2019-04-05T09:27:34.162Z</updated>
+  <updated>2019-04-12T07:54:22.757Z</updated>
   <id>https://joshuaqyh.github.io/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>软件工程 | 系分作业三</title>
+    <link href="https://joshuaqyh.github.io/2019/04/12/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B-%E7%B3%BB%E5%88%86%E4%BD%9C%E4%B8%9A%E4%B8%89/"/>
+    <id>https://joshuaqyh.github.io/2019/04/12/软件工程-系分作业三/</id>
+    <published>2019-04-12T03:28:48.000Z</published>
+    <updated>2019-04-12T07:54:22.757Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Student ID：16340186</p><p>Name: 邱奕浩</p></blockquote><h3 id="简述瀑布模型、增量模型、螺旋模型（含原型方法），并分析优缺点。（从项目特点、风险特征、人力资源利用角度思考。）"><a href="#简述瀑布模型、增量模型、螺旋模型（含原型方法），并分析优缺点。（从项目特点、风险特征、人力资源利用角度思考。）" class="headerlink" title="简述瀑布模型、增量模型、螺旋模型（含原型方法），并分析优缺点。（从项目特点、风险特征、人力资源利用角度思考。）"></a>简述瀑布模型、增量模型、螺旋模型（含原型方法），并分析优缺点。（从项目特点、风险特征、人力资源利用角度思考。）</h3><p><strong>瀑布模型</strong></p><p>简述：</p><p>瀑布模型将软件生命周期各个阶段的活动规定为按顺序相连接的多阶段工作，涵盖需求，设计，编码，测试，到软件发布和维护等阶段，每个阶段都会产生循环反馈，产出的相关成果制品将作为下一阶段活动的输入，若某阶段存在某些问题，需要回退到之前的某个阶段进行修改，然后重新进行流动。</p><p>优点：</p><ul><li>降低软件开发的复杂度，提高软件开发过程透明性；</li><li>提高了软件开发过程的可管理性，适用于规模较小，较为稳定的项目开发；</li><li>各个阶段正确衔接，能够及时发现并纠正开发过程存在的缺陷。</li></ul><p>缺点：</p><ul><li>过分强调过程活动的线性顺序，缺乏灵活性，对前面步骤依赖程度高，流程可逆性差；</li><li>风险控制能力较弱，当某一个阶段产生错误时，需要回归到前几个阶段重新开始；</li><li>鉴于其文档驱动的性质，当阶段之间规定文档较多时，将极大的增加人员和系统的工作量。</li></ul><p><strong>增量模型</strong></p><p>简述：</p><p>增量模型从一组给定的需求开始，将软件项目系统模块化，通过构造一系列可执行的组件模块，分批次地进行分析，设计，构造和测试等增量组件。第一个中间版本满足部分需求，下一个版本又纳入新的更多的需求，每个版本会有相应的子产品交付，依此类推，直到系统完成。</p><p>优点：</p><ul><li>由于其增量组件化的性质，人员分工较为灵活，可以同时进行多个组件的开发，人员利用率较高；</li><li>每个增量组件的交付后会收到用户反馈，增加用户参与度，降低用户使用风险；</li><li>模块化分解项目，提高系统稳定性，适用于规模较大，较为复杂，易变性低的软件开发。</li><li>开发初期不要求投入较大人力资源，可优先推出核心功能，根据市场反映实现下一个增量。</li></ul><p>缺点：</p><ul><li>各个增量组件加入已有的软件体系结构，必须不破坏已有的结构，这要求具备开放式的体系结构；</li><li>需求变化频繁时，增量模型灵活性容易丧失，使得软件过程控制较为复杂；</li><li>必须妥善处理增量组件之间的关系，若增量组件之间关系存在相交等情况，需要全盘系统分析。</li></ul><p><strong>螺旋模型（含原型方法）</strong></p><p>螺旋模型是一种演化软件开发过程模型，兼顾了快速原型的迭代特征和瀑布模型的系统化和严格监控。同时引入了风险分析，使软件在无法排除重大风险时有机会停止。主要步骤有1. 决定目标、方案限制，进行需求计划；2. 评估方案，识别解决风险，进行风险分析，应用原型方法；3. 开发，验证下一级产品，；4. 计划下一阶段。一般适用于大型昂贵的系统级软件系统。</p><p>优点：</p><ul><li>通过原型建立，使得软件开发在每个迭代有最初明确的方向；</li><li>引入风险分析，最大程度地降低软件失败造成损失的可能；</li><li>过程灵活性高，在开发过程易于应对变化；</li><li>多个迭代阶段累计开发成本，易于掌握支出状况。</li></ul><p>缺点：</p><ul><li>过度依赖风险分析经验与技术，一旦风险分析过程出现偏差将导致重大损失；</li><li>只适用于大型软件，过多的风险管理支出将会影响客户的最终收益。</li></ul><hr><h3 id="简述统一过程三大特点，与面向对象的方法有什么关系？"><a href="#简述统一过程三大特点，与面向对象的方法有什么关系？" class="headerlink" title="简述统一过程三大特点，与面向对象的方法有什么关系？"></a>简述统一过程三大特点，与面向对象的方法有什么关系？</h3><p>三大特点：</p><ul><li><strong>以体系为中心。</strong>软件体系结构提供开发的核心架构，要求体系结构有良好弹性，适应变化，易于理解，可重用；</li><li><strong>用例<code>Use Case</code> 和风险相结合驱动</strong>在迭代早起要识别和降低风险，并快速构造满足客户核心需求的产品。</li><li><strong>迭代及增量。统一过程具有周期性，</strong>可量化性，在每一轮迭代开发中进行软件分析，设计，构造，测试和反馈。</li></ul><p>统一过程<code>UP</code>是面向对象设计与开发的重要方法，是迭代，敏捷开发实践的重要代表。</p><hr><h3 id="简述统一过程四个阶段的划分准则是什么？每个阶段关键的里程碑是什么？"><a href="#简述统一过程四个阶段的划分准则是什么？每个阶段关键的里程碑是什么？" class="headerlink" title="简述统一过程四个阶段的划分准则是什么？每个阶段关键的里程碑是什么？"></a><strong>简述统一过程四个阶段的划分准则是什么？每个阶段关键的里程碑是什么？</strong></h3><p>统一过程四个阶段按时间维度分解是：初始阶段，精化阶段，构建阶段和产品阶段。</p><p>其划分准则是：每个阶段结束的时候产生一个里程碑，并在结尾执行一次评估确定该阶段的目标是否满足，如果评估结果令人满意，那么项目进入下一阶段。</p><p>每个阶段的关键里程碑分别是：</p><ul><li><strong>初始阶段：生命周期目标里程碑。</strong>包括重要的文档，如项目构想，原始用力，原始业务风险评估，原始业务案例等。通过对文档的评审确定用例需求理解是否正确，项目风险评估是否合理，阶段计划是否可行，</li><li><strong>精化阶段：生命周期结构里程碑。</strong>包括风险分析文档， 软件体系结构基线，项目计划，可执行的原型，初始版本的用户手册。通过评审确定软件体系结构已经稳定、高风险的业务需求和技术机制已经解决、修订的项目计划可行等。</li><li><strong>构建阶段：初始功能里程碑。</strong>包括可运行的软件产品，用户手册等，决定了产品是否可在测试环境中进行部署。</li><li><strong>产品阶段：产品发布里程碑。</strong> 确定最终目标是否实现，是否应该开始产品下一个版本或下一轮迭代。</li></ul><hr><h3 id="软件企业为什么能按固定节奏生产、固定周期发布软件产品？它给企业项目管理带来哪些好处？"><a href="#软件企业为什么能按固定节奏生产、固定周期发布软件产品？它给企业项目管理带来哪些好处？" class="headerlink" title="软件企业为什么能按固定节奏生产、固定周期发布软件产品？它给企业项目管理带来哪些好处？"></a><strong>软件企业为什么能按固定节奏生产、固定周期发布软件产品？它给企业项目管理带来哪些好处？</strong></h3><p>软件企业采用迭代式的方法来生产，每轮迭代具有固定的周期和明确的里程碑目标，同时软件项目管理人员能够利用软件产品范围的弹性，合理规划软件的范围（20%业务决定80%的满意度），由此软件产品的生产、发布可以按固定节奏和周期进行。</p><p>固定节奏生产，固定周期发布产品有助于企业量化生产过程，个人贡献度，人力资源利用率等数据，以便更好地监督，控制，调整，评估整个生产过程和结果。同时又能及时地收集产品反馈，了解项目的不足，进一步做出项目的优化措施，降低项目风险，提高软件质量。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;Student ID：16340186&lt;/p&gt;
+&lt;p&gt;Name: 邱奕浩&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3 id=&quot;简述瀑布模型、增量模型、螺旋模型（含原型方法），并分析优缺点。（从项目特点、风险特征、人力资源利用角度思考。）&quot;&gt;&lt;a h
+      
+    
+    </summary>
+    
+    
+      <category term="软件工程" scheme="https://joshuaqyh.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+    
+      <category term="系统分析与设计" scheme="https://joshuaqyh.github.io/tags/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>软件工程 | 软件复杂性分析</title>
+    <link href="https://joshuaqyh.github.io/2019/04/10/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B-%E8%BD%AF%E4%BB%B6%E5%A4%8D%E6%9D%82%E6%80%A7%E5%88%86%E6%9E%90/"/>
+    <id>https://joshuaqyh.github.io/2019/04/10/软件工程-软件复杂性分析/</id>
+    <published>2019-04-10T02:14:28.000Z</published>
+    <updated>2019-04-10T03:39:41.805Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="软件复杂性概述"><a href="#软件复杂性概述" class="headerlink" title="软件复杂性概述"></a>软件复杂性概述</h1><p><strong>软件复杂性问题定义</strong></p><p>软件复杂性与程序复杂性不一样，软件复杂性是一个更为高层的概念，主要反映为分析，设计，测试，维护和修改软件的困难程度或复杂程度。而软件复杂性也是软件危机产生的最直接原因，人类的思维有限，要明确的认识软件的运行对人类而言有点勉强，我们只能通过定义软件的对象，属性，边界，交互逻辑来描述软件的运行机制。</p><p>当软件的运行逻辑条目越来越多时，复杂性呈指数提高，软件复杂性已经远远超过人类对复杂性控制的能力，软件隐含错误的概率越来越多，软件可靠性和可维护性越差，甚至可能引发软件项目的失败。软件复杂性是无法避免的，就像软件危机一样，是客观存在的，我们只能尽可能地以某种概率来减轻其不良影响。</p><p>分析，度量和控制软件复杂性是软件可靠性工程急需解决的重要问题，我们可以通过降低由软件设计方法和技巧使用不当而带来的复杂性，以更好地对软件开发过程进行控制。软件复杂性同时也直接关联到对软件开发费用，开发周期和软件内部隐藏错误的评估。</p><p><strong>软件复杂性出现的主要原因</strong> </p><ol><li>软件应用需求的复杂性；</li><li>软件应用框架，结构及模型的复杂性；</li><li>开发环境及应用环境的复杂性；</li><li>软件开发过程的复杂性；</li><li>涉及人力管理的复杂性 </li><li>软件设计与验证的复杂性。</li></ol><h1 id="软件结构复杂性"><a href="#软件结构复杂性" class="headerlink" title="软件结构复杂性"></a>软件结构复杂性</h1><p><strong>软件复杂性的主要体现</strong></p><ol><li>软件结构复杂性</li><li>程序算法复杂性</li></ol><p><strong>软件复杂性形成的根源</strong></p><p>软件设计过程是根源，我们在需要：</p><ol><li>进行概要设计的时候需要对<strong>软件总体模块结构复杂性</strong>进行有效控制；</li><li>在进行详细设计的时候对<strong>模块结构复杂性和模块内部复杂性</strong>进行控制。</li></ol><p>使之保持在一个合理的范围内。</p><p>软件结构复杂性体现为</p><ol><li>模块复杂性：<ol><li>模块内部结构复杂性：<ol><li>McCabe 度量</li><li>Halstead 度量</li></ol></li><li>模块接口复杂性：<ol><li>模块调用关系图</li><li>模块或信息的扇入扇出数来度量</li></ol></li></ol></li><li>总体结构复杂性<ol><li>尚无权威的度量方法</li><li><strong>矛盾</strong>：单个模块划分越小，功能越简单，虽然降低模块内部结构复杂性，但是模块之间联系多，接口 复杂，总体复杂性增加。</li></ol></li></ol><h1 id="软件复杂性控制"><a href="#软件复杂性控制" class="headerlink" title="软件复杂性控制"></a><strong>软件复杂性控制</strong></h1><ul><li>内部模块结构复杂性控制<ul><li>模块隔离。单个模块进行单独的编制，调试，查错，修改 ，测试和维护。模块隔离有助于防止错误蔓延，降低软件复杂性，提高软件可靠性。</li><li>控制模块大小和结构的控制。</li></ul></li><li>总体结构复杂性控制<ul><li>提高模块独立性<ul><li>模块耦合性控制。尽量使用数据耦合，少用 控制耦合，限制公共耦合范围，完全不用内容耦合四个原则。减少耦合性，降低模块复杂性。</li><li>模块高内聚，并能识别低内聚。内聚是指模块功能的相对强度，用于衡量一个模块内部各元素彼此结合的紧密程度，是信息隐蔽和局部化的自然延伸。</li></ul></li><li>保持适当的扇入扇出。扇出量<ul><li>扇出量越大，模块功能宽度越大，模块就越复杂。</li><li>扇出量太小，下级模块进一步分解成若干子模块并合并到上级模块。</li></ul></li><li>简化软件接口<ul><li>接口传递的信息尽量保持简单。</li><li>单入口，单出口。</li><li>避免模块接口之间的病态连接，杜绝引入或引用一个模块内部结构。</li></ul></li></ul></li></ul><p><strong>形成软件复杂性的重要原因</strong></p><ol><li>控制结构和数据结构复杂的程序复杂性高；</li><li>转向语句使用不当的程序复杂性高；</li><li>非局部变量较多的程序复杂性高；</li><li>按地址调用参数比按值调用参数的复杂性高；</li><li>模块及过程之间联系密切的程序的复杂性高；</li><li>嵌套深度大的程序的复杂性高；</li><li>循环结构的复杂性比选择结构和顺序结构的复杂性高；</li><li>模块宽度是形成软件复杂性的主要原因。</li></ol><p>软件复杂性度量的基本度量准则集。</p><h1 id="软件复杂性度量"><a href="#软件复杂性度量" class="headerlink" title="软件复杂性度量"></a>软件复杂性度量</h1><p>软件复杂性度量的结果是软件复杂度，是对软件复杂性的定量描述，为软件复杂性的定量分析和控制提供依据，是软件复杂性分析和控制研究的基础。</p><p>软件复杂性度量的根本目的：通过控制软件复杂性来改善和提高软件的可靠性。</p><p>软件复杂性的度量的方法和标准主要分为两大类：</p><ol><li>面向过程的软件复杂性度量：<ol><li>代码语句行度量</li><li>基于FPA（功能点分析）的度量</li><li>Halstead 软件科学度量法！！</li><li>McCabe 结构复杂性度量</li></ol></li><li>面向对象的软件复杂性度量<ol><li>C&amp;K，MOOD</li></ol></li></ol><p>复杂性度量元的分类：</p><ol><li>规模： 命令总数。如line count</li><li>难度：程序出现操作数的数目所决定的量表示。如Halstead 复杂性</li><li>结构：通常与程序结构有关的度量，McCabe 复杂度</li><li>智能度：算法难易程度。</li></ol><p><strong>LineCount 复杂度</strong> （规模度量元）</p><p>统计程序的源代码行数，将其作为程序复杂性的度量。</p><p><strong>Halstead 复杂度</strong>（难度度量元）</p><p>Halstead 复杂度根据程序中语句行的操作符和操作数的数量计<br>算程序复杂性。</p><ul><li>操作符和操作数的量越大，程序结构就越复杂。</li><li>操作符包括语言保留字、函数调用、运算符，也可以包括有关的分隔符等。</li><li>操作数可以是常数和变量等标识符。</li></ul><p>Halstead 复杂度有11种方法，见PPT3.3 P21-22</p><p><strong>McCabe 复杂度</strong> （结构度量元）</p><p>McCabe 对程序流程图PFC进行静态分析，并将其转化为程序控制流图CFG，然后以图论的方法进行严格的结构分析 。</p><p>McCabe 复杂度包括：</p><ol><li><p>环路复杂度</p><ol><li>衡量判定模块的复杂程度。数量上可以表现为程序控制流图(第4章讨论) 中从<br>开始点到终结点的独立路径条数，相当于合理预防错误所需测试的最少路径条数。</li><li>计算公式 ：V(G) = m - n + 2p  m 是G 的边数目；n 是G 的顶点数目；p 是G 的连通分支数</li><li>结构化模块：单入口单出口；非结构化模块：（可选的）多入口多出口。</li><li>当结构化模块程序控制流图增加从出口指向入口的辅助边，形成强连通图。此时强连通图的环路复杂度定义为图的秩数。</li></ol><p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190410113719.png" alt=""></p><p>​</p></li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;软件复杂性概述&quot;&gt;&lt;a href=&quot;#软件复杂性概述&quot; class=&quot;headerlink&quot; title=&quot;软件复杂性概述&quot;&gt;&lt;/a&gt;软件复杂性概述&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;软件复杂性问题定义&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;软件复杂性与程序复杂性不一样，软
+      
+    
+    </summary>
+    
+    
+      <category term="软件工程" scheme="https://joshuaqyh.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+    
+      <category term="软件测试" scheme="https://joshuaqyh.github.io/tags/%E8%BD%AF%E4%BB%B6%E6%B5%8B%E8%AF%95/"/>
+    
+  </entry>
   
   <entry>
     <title>算法 | 认识动态规划</title>
@@ -393,7 +448,7 @@
     <link href="https://joshuaqyh.github.io/2019/03/24/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B-%E7%B3%BB%E5%88%86%E4%BD%9C%E4%B8%9A%E4%BA%8C/"/>
     <id>https://joshuaqyh.github.io/2019/03/24/软件工程-系分作业二/</id>
     <published>2019-03-24T12:17:58.000Z</published>
-    <updated>2019-03-29T15:13:21.617Z</updated>
+    <updated>2019-04-12T03:34:05.713Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>16340186   邱奕浩   电子政务方向</p></blockquote><h1 id="一、-简答题"><a href="#一、-简答题" class="headerlink" title="一、 简答题"></a>一、 简答题</h1><ol><li><strong>用简短的语言给出对分析，设计的理解。</strong></li></ol><ul><li><p><strong>分析</strong>强调的是对问题和需求和调查研究，而不是解决方案。其含义较为广泛，如市场分析，需求分析，面向对象分析等等。</p></li><li><p><strong>设计</strong>强调的是满足需求上的<strong>解决方案</strong>，但不涉及其实现，设计通常不会涉及较为底层细节的描述，更多是描述宏观的事物和策略。</p><p><strong>简单来说分析就是做正确的事，设计就是正确地去做事。</strong>（来自教材《UML和模式应用》P5）、</p><p>​</p></li></ul><ol start="2"><li><p><strong>用一句话描述面向对象分析与设计的优势。</strong></p><p>OOA／D的优势在于能够满足复杂软件功能的分析，设计与实现，同时又有有利于团队成员理解项目和产品的迭代更新。</p><p>​</p></li><li><p><strong>简述 <code>UML</code>（统一建模语言）的作用。考试考哪些图？</strong></p></li></ol><p>   UML是描述，构造和文档化系统制品的可视化语言，是图形化表示法的事实标准，主要用来绘制和展示       与软件（尤其是<code>OO</code>软件）相关的图形和文字，能够形象直观的表达面向对象软件设计中各个部分的逻辑和关联，帮助软件开发人员更好的理解项目设计。</p><p>   考试考的图有：用例图、静态图、行为图、实现图</p><ol start="4"><li><p><strong>从软件本质的角度，解释软件范围（需求）控制的可行性。</strong></p><p>软件的本质特性是复杂性，不可视性，不一致性，可变性。软件范围多数情况下对于客户和开发人员都是相对模糊的，软件的需求设计并不是一开始就能完全确定下来，在后续的开发、测试、运维阶段都会发生一定的变化，并进行不断地迭代更新，不断满足用户日新月异的需求点。</p><p>而根据著名的 <code>２／８</code> 法则，产品初期发展只需要 <code>２０％</code> 的有效核心需求就足以打开市场的大门，后续再进一步扩大软件范围，不断地跟进满足需求，不断完善用户服务和体验，依旧可以创造有价值的软件产品。</p><p>​</p></li></ol><h1 id="二、项目管理实践"><a href="#二、项目管理实践" class="headerlink" title="二、项目管理实践"></a>二、项目管理实践</h1><ol><li><p>看板使用练习（提交看板执行结果贴图，建议使用 <code>Git project</code>）</p><ul><li>使用截图工具（ <code>png</code> 格式输出），展现你团队的任务 <code>Kanban</code></li><li>每个人的任务是明确的。必须一周后可以看到具体结果</li><li>每个人的任务是1-2项</li><li>至少包含一个团队活动任务</li></ul><p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190329231150.png" alt=""></p><p>​</p></li></ol><ol start="2"><li><code>UML</code> 绘图工具练习（提交贴图，必须使用 <code>UMLet</code>）<ul><li>请在 参考书2 或 教材 中选择一个类图（给出参考书页码图号）</li></ul></li></ol><p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190324223826.png" alt=""></p>]]></content>
     
@@ -411,6 +466,8 @@
     
     
       <category term="软件工程" scheme="https://joshuaqyh.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+    
+      <category term="系统分析与设计" scheme="https://joshuaqyh.github.io/tags/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/"/>
     
   </entry>
   
@@ -601,11 +658,11 @@
   </entry>
   
   <entry>
-    <title>概念 | 软件的本质与软件工程科学</title>
-    <link href="https://joshuaqyh.github.io/2019/03/02/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B-%E6%A6%82%E5%BF%B5-%E8%BD%AF%E4%BB%B6%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8E%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B%E7%A7%91%E5%AD%A6/"/>
-    <id>https://joshuaqyh.github.io/2019/03/02/软件工程-概念-软件的本质与软件工程科学/</id>
+    <title>软件工程 | 系分作业一</title>
+    <link href="https://joshuaqyh.github.io/2019/03/02/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B-%E7%B3%BB%E5%88%86%E4%BD%9C%E4%B8%9A%E4%B8%80/"/>
+    <id>https://joshuaqyh.github.io/2019/03/02/软件工程-系分作业一/</id>
     <published>2019-03-02T04:05:54.000Z</published>
-    <updated>2019-03-02T08:48:19.002Z</updated>
+    <updated>2019-04-12T03:32:45.320Z</updated>
     
     <content type="html"><![CDATA[<blockquote><p>以下问题和解答来自 SYSU 16 级系统分析与设计课程 week1 的作业实践。</p><p>Student ID       ： 16340186 </p><p>Student Name :    邱奕浩</p></blockquote><p><strong>Q1: 阐述软件工程的定义。 </strong></p><p>A1： 软件工程一直以来缺乏严格标准的定义，不过很多学者，组织机构都给出了自己的定义，如：</p><ol><li><a href="https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B" target="_blank" rel="noopener"><strong>NATO (1968)</strong></a>: 软件工程是研究和应用如何以系统的，规范化的，可定量的过程化方法去开发和维护软件，以及如何把经过实践验证而证明正确的管理技术和当前最好的技术方法综合起来的一门独立学科。</li><li><a href="https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B" target="_blank" rel="noopener"><strong>IEEE (1993)</strong></a>：软件工程是将系统化的，严格约束化的，量化的工程方法应用于软件的开发，运行，维护过程，即用工程化的方法来打造软件。</li><li><a href="https://baike.baidu.com/item/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/25279" target="_blank" rel="noopener"><strong>《计算机科学技术百科全书》</strong></a>：软件工程是应用计算机科学，数学，逻辑学及管理科学等原理，来开发软件的过程。</li><li><a href="https://zh.wikipedia.org/wiki/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B#%E6%B2%92%E6%9C%89%E9%8A%80%E5%BD%88%E8%88%87%E4%BA%BA%E6%9C%88%E7%A5%9E%E8%A9%B1" target="_blank" rel="noopener"><strong>《信息技术 软件工程术语》</strong></a>: 软件工程是应用计算机科学理论和技术以及工程管理原则和方法，按预算和进度，实现满足用户要求的软件产品的定义、开发、和维护的工程或学科。</li></ol><p>从上述各方的定义中，我们可以得出：</p><ol><li><p>软件工程是一门独立的交叉学科，也是一门独特的工程，综合了理论，工程，技术，管理等方面的知识，同时处于理论与实践水平不断发展的过程。</p></li><li><p>软件工程具有系统化，约束化，规范化，过程化，可量化的特点，具备相应的工程管理原则和方法。</p><p>​</p></li></ol><hr><p><strong>Q2: 解释导致软件危机 ( software crisis ) 的本质原因和表现形式，并述说克服软件危机的方法。 </strong></p><p>A2：</p><ul><li><strong>软件危机的本质原因</strong>：<ul><li>软件的大量需求与软件生产力效率之间的矛盾，</li><li>软件系统的复杂性与软件开发方法之间的矛盾。</li></ul></li></ul><ul><li><p><strong>软件危机的表现形式</strong>：</p><ul><li>软件开发成本日益增长，开发成本往往超出预算<strong>（成本）</strong></li><li>软件开发进度难以控制，项目的开发时间往往超出预定的进度时间表<strong>（时间）</strong></li><li>用户对软件产品不满意的现象经常发生，这是对用户需求的理解不够明确，用户需求多样化的原因<strong>（需求）</strong></li><li>软件产品的质量不可靠，时常存在 Bug <strong>（质量）</strong>  </li><li>软件的可维护性低，数量不断膨胀的软件产品缺乏适当的文档资料 <strong>（维护）</strong></li><li>软件的开发生产率跟不上硬件的发展，计算能力越大，编程问题越大，软件越复杂。<strong>（摩尔定律）</strong></li></ul></li><li><p><strong>克服软件危机的主要方法</strong>：</p><ul><li>软件从业者必须正确认识计算机软件的内涵（软件 ≠ 程序）。</li><li>充分认识到软件开发并不是来自于某种个体劳动的神秘技巧，而是需要依托组织良好，管理严密，协同配合的工程活动。</li><li>采用成熟的软件开发技术和方法，比如<a href="https://zh.wikipedia.org/wiki/%E7%B5%90%E6%A7%8B%E5%8C%96%E7%A8%8B%E5%BC%8F%E8%A8%AD%E8%A8%88" target="_blank" rel="noopener">结构化程序设计</a>，<a href="https://zh.wikipedia.org/wiki/%E6%96%B9%E6%B3%95_(%E9%9B%BB%E8%85%A6%E7%A7%91%E5%AD%B8" target="_blank" rel="noopener">面向对象的开发</a>)，<a href="https://zh.wikipedia.org/wiki/CMM" target="_blank" rel="noopener">CMM</a>，<a href="https://zh.wikipedia.org/wiki/%E7%BB%9F%E4%B8%80%E5%BB%BA%E6%A8%A1%E8%AF%AD%E8%A8%80" target="_blank" rel="noopener">UML</a>等等</li><li>开发和使用适当的软件工具</li><li>从业者的专业素养和知识水平必须不断提升</li></ul><p>IBM大型机之父 Brooks 在其著名论文《<a href="https://zh.wikipedia.org/wiki/%E6%B2%A1%E6%9C%89%E9%93%B6%E5%BC%B9" target="_blank" rel="noopener">没有银弹</a>》中断言：“在10年无法找到解决软件危机的灵丹妙药”，在其另外一著作《<a href="https://zh.wikipedia.org/wiki/%E4%BA%BA%E6%9C%88%E7%A5%9E%E8%AF%9D" target="_blank" rel="noopener">人月神话</a>》提到：开发软件的困难是天生存在的，我们只能渐进式的改善它。在整体工程环境没有改变之前，对克服软件危机所能做的就是<strong>依靠人的素质，培养优秀的软件工程师</strong>。</p><p>​</p></li></ul><hr><p><strong>Q3: 解释一下软件的生命周期的概念。</strong></p><p>A3：软件像一个个生命体一样，具有孕育、诞生、成长、成熟、衰亡的生存过程，即软件的生命周期。软件的生命周期被划分为若干阶段，每个阶段具有明确的任务，从而使规模，结构和管理复杂软件的开发过程得到适当的控制管理。生命周期主要分为以下6个阶段。</p><ol><li><p><strong>可行性分析与计划阶段</strong> </p><ol><li>确定软件开发的总体目标，给出功能，性能，可靠性以及接口等方面的要求，并进行可行性分析。</li><li>估算软件的开发成本，估计可利用的资源，成本，效益，开发进度，进行投资-收益分析，制定开发计划。</li><li>提交可行性分析报告、开发计划等文档。</li></ol></li><li><p><strong>需求分析阶段</strong></p><ol><li>分析用户需求，给出需求的详细定义，确定软件的各项功能，性能需求和设计约束，确定对文档编制的要求。</li><li>提交软件需求说明文档，软件规格说明文档，数据要求说明等文档和初步的用户手册。</li></ol></li><li><p><strong>设计阶段</strong></p><ol><li>概要设计：将需求转化成软件的体系结构，结构中每一组成部分必须是意义明确的模块，每一个模块必须和需求相匹配。</li><li>详细设计：对模块所完成的任务进行详细具体的描述，提供源程序编写的直接依据。</li><li>提交结构设计说明、详细设计说明和测试计划初稿等文档。</li></ol></li><li><p><strong>实现阶段</strong></p><ol><li>完成源程序的编码，编译，调试，得到没有语法错误的程序清单。必须确保程序结构良好，清晰，具有较为良好的可读性，并且与上一设计阶段中的要求相一致。</li><li>根据项目重要性和规模，编写开发进度日报，周报，或月报。</li><li>完成用户手册，操作手册等面向用户的文档编写工作。</li><li>编制初步的测试计划。</li></ol></li><li><p><strong>测试阶段</strong></p><ol><li>全面测试目标软件（包括单元测试，集成测试，系统测试等），并检查审阅已编制好的文档，提交测试分析报告。逐项评价所生产的程序，文档以及开发工作本身，提交项目开发总结报告。</li><li>在这个开发过程中，开发集体需要按月编写进度月报。</li></ol></li><li><p><strong>运行和维护阶段</strong></p><ol><li>用户使用软件之后，必须在运行使用中加以持续的维护，根据用户新提出的需求进行软件功能的扩充，删改，更新和升级。</li><li>软件维护包括改正性维护（用于发现软件错误），适应性维护（适应运行环境的变化）以及完善性维护（增强功能）。</li></ol><p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190302163413.png" alt=""></p><p>​</p></li></ol><hr><p><strong>Q4:  SWEBoK 的 15 个知识域（<a href="https://www.sebokwiki.org/wiki/An_Overview_of_the_SWEBOK_Guide" target="_blank" rel="noopener">An Overview of the SWEBOK Guide</a> 请中文翻译其名称与简短说明）</strong></p><p>A4：SWEBoK  的中文名称为软件工程知识体系( <a href="https://www.computer.org/web/swebok/index" target="_blank" rel="noopener">Software Engineering Body of Knowledge</a>)，是 IEEE Computer Society 构建软件生产的最佳实践与相关知识的框架，用于指导软件工程人才的培养与学科建设。<strong>知识体系分为软件工程实践和基础教育两个部分，共有15个知识域 ( Knowledge Aaras 以下简称 KA )</strong> 。</p><ol><li><strong>软件工程实践(The Practice of Software Engineering) </strong><ol><li><strong>软件需求 (Software Requirements) </strong>：软件需求知识域主要关注软件需求的协商，谈判，分析，明确。，验证等过程。该 KA 是整个 SWEBoK 中最重要的两个领域之一。经业界实践表明，如果软件需求工作没做好，那么整条软件产品线和软件工程项目将变得极其最弱，所谓 ”牵一发而动全身”。</li><li><strong>软件设计 (Software Design) </strong>： 软件设计是定义软件结构，组件，接口，和其他系统特性以及产品结果的过程，该 KA 涵盖了软件的设计过程和目标产品。软件设计在软件生命周期中的主要目的是结合上一阶段的软件需求，做出对软件内部结构，接口和行为的具体描述。和软件需求 KA一样，软件设计KA是 SWEBoK 中最重要的领域之一。</li><li><strong>软件构建 (Software Construction)</strong>： 软件构建实现主要涉及到了详细的代码设计实现，单元测试，集成测试，调试和验证等工作任务。软件构建 KA 包含的相关主题是满足需求和设计约束的软件程序的发展过程，涵盖了软件构造基础，管理软件构建任务，构建方法论，实用的构建思想和软件构造的工具。</li><li><strong>软件测试 (Software Testing) </strong>：软件测试是一项评估软件项目质量以及识别软件缺陷并改善的工作，该 KA 包含了软件测试的基础知识，软件测试的技术，用户界面接口测试，相关的测试措施和实际软件的考虑方法。</li><li><strong>软件维护 (Software Maintenance) </strong>：软件维护 KA 涉及了升级现有软件功能（完善性维护），调整软件适应运行环境的变化（适应性维护），以及更正软件缺陷（改正性维护）等方面的工作。</li><li><strong>软件配置管理 (Software Configuration Management) </strong>： 系统的配置是硬件，固件，软件或他们组合的功能和物理特征。同时配置还可以看作是硬件，固件，软件，或其组合的特定版本的集合。不同的版本有不同的配置，根据特定的构建过程组合在一起，以服务与特定的目的。</li><li><strong>软件工程管理 (Software Engineering Management)</strong> ：软件工程管理包括计划，协调，衡量，报告和控制一个项目，以确保软件的开发和维护是系统化的，有纪律的以及可量化的。</li><li><strong>软件工程过程 (Software Engineering Process) </strong>： 该KA涉及软件生命周期过程的定义，实现，评估，度量，管理和改进。所涵盖的主题包括过程实现和变更，过程定义，过程评估模型和方法，以及过程测量。</li><li><strong>软件工程模型和方法 (Software Engineering Models and Methods) </strong>：该 KA 解决了围绕整个软件生命周期各阶段问题的方法，以及在特定生命周期阶段的其他 KA 所包含的问题的方法。</li><li><strong>软件质量 (Software Quality)</strong>： 软件质量问题是普遍存在于整个软件生命周期的问题，该 KA 关注软件质量的基础，软件质量管理过程，以及实际的考虑。</li><li><strong>软件工程专业实践 (Software Engineering Professional Practice)</strong>：该 KA 的理念是对于软件工程师而言，必须具备的知识，技能和态度，要以一种专业的，负责的，和合乎道德的方法来进行实践。</li></ol></li><li><strong>软件工程教育的需求 (The Educational Requirements of Software Engineering )</strong><ol><li><strong>软件工程经济学 (Software Engineering Economics)</strong>： 该 KA 主要关注的是如何在业务环境中做出决策，以便技术决策与组织的业务目标保持一致。</li><li><strong>计算基础  (Computing Foundations)</strong>：该 KA 涵盖了提供给软件工程实践所需的计算背景的基础主题。包括问题解决技术、抽象、算法和复杂性、编程基础、并行和分布式计算的基础、计算机组织、操作系统和网络通信。</li><li><strong>数学基础 (Mathematical Foundations) </strong>： 该 KA 涵盖了用于软件工程实践所需的数学理论基础，包含的主题有集合、关系、函数、基本的明题和谓词逻辑、证明方法、图、树、离散数学、仿真建模等等。</li><li><strong>工程基础 (Engineering Foundations)</strong>：该KA主要提供了用于软件工程实践所需的工程背景基础，主题涵盖了经验方法和实验技术、统计分析、测量与指标、工程设计、建模与仿真、以及根本原因分析等方面。</li></ol></li></ol><hr><p><strong>Q5： 简单解释 CMMI 的五个级别。</strong></p><p>A5： <a href="https://en.wikipedia.org/wiki/Capability_Maturity_Model_Integration" target="_blank" rel="noopener">CMMI</a> 中文名称为能力成熟度模型集成，是一种过程性的改进训练和评估计划，用于度量一个企业的软件工程能力。其五个级别简单概括如下：</p><ol><li><strong>Level 1 - Initial</strong>：企业运作处于一种无序，自发生产的模式，过程难以预测，控制性差，反应性弱。</li><li><strong>Level 2 - Managed</strong>：企业在管理级的水平上处于有序的，项目化的生产模式，具有明确的流程和较好的项目控制程序。</li><li><strong>Level 3 - Defined</strong>：企业工程水平达到定义级，企业企业管理组织化，流程标准化，体系制度化。</li><li><strong>Level 4 - Quantitatively Managed</strong>：企业管理水平进一步升级，实现数字化管理和控制。</li><li><strong>Level 5 - Optimizing</strong>：在优化级别，企业项目管理达到最高水平，能主动改善业务项目流程，不断实现过程优化。</li></ol><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Characteristics_of_Capability_Maturity_Model.svg/500px-Characteristics_of_Capability_Maturity_Model.svg.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><hr><p><strong>Q6：用自己的语言简述 SWEBok 或 CMMI（ 200 字）。</strong></p><p>SWEBok （软件工程知识体系）是 IEEE Computer Society 提出来的一套构建软件生产的最佳实践与相关知识的框架，用于指导软件工程人才的培养和学科建设。该体系从<strong>软件工程的实践和教育</strong>两个方面切入，就这两个方面划分了15个知识域（KA）。</p><p>在实践方面，知识体系归纳了 11 种知识域：围绕软件生命周期提出了 5 个知识域：软件需求 KA、软件设计 KA、软件实现 KA、软件测试 KA、软件运行维护 KA；结合工程管理的原则，提出了 6 个 KA：软件配置管理 KA、软件工程管理 KA、软件工程过程 KA、软件工程建模与方法 KA、软件质量 KA、软件工程专业实践 KA。</p><p>在教育方面，则是提出了软件工程经济学 KA、计算基础 KA、数学基础 KA、工程基础 KA。</p><p>整套知识体系科学完备，教育 KA 是 实践 KA 的基础和支撑，在实践的探索过程中，又不断地给予教育体系层面的反馈和优化。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190302163103.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><hr><p><strong>完。</strong></p>]]></content>
     
@@ -1405,6 +1462,31 @@
   </entry>
   
   <entry>
+    <title>深度学习 |人脸属性数据集 CelebA</title>
+    <link href="https://joshuaqyh.github.io/2018/12/06/%E4%BA%BA%E8%84%B8%E5%B1%9E%E6%80%A7%E6%95%B0%E6%8D%AE%E9%9B%86CelebA/"/>
+    <id>https://joshuaqyh.github.io/2018/12/06/人脸属性数据集CelebA/</id>
+    <published>2018-12-06T08:26:17.000Z</published>
+    <updated>2019-03-27T13:54:45.928Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="人脸属性数据集CelebA"><a href="#人脸属性数据集CelebA" class="headerlink" title="人脸属性数据集CelebA"></a>人脸属性数据集CelebA</h1><h2 id="CelebA-解释"><a href="#CelebA-解释" class="headerlink" title="CelebA 解释"></a>CelebA 解释</h2><h3 id="数据集基本描述"><a href="#数据集基本描述" class="headerlink" title="数据集基本描述"></a>数据集基本描述</h3><ul><li>10177 个名人</li><li>202599张人脸图片</li><li>40个属性标记</li><li>人脸bbox标注框</li><li>5个人脸特征点坐标 </li></ul><p>由香港中文大学开放提供，网址在<a href="http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html" target="_blank" rel="noopener">这里</a></p><p>网盘文件夹描述如下：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://pic1.zhimg.com/80/v2-e5546e983a24e0e846f11de439068c64_hd.jpg" alt="img" title="">                </div>                <div class="image-caption">img</div>            </figure><ul><li>Anno是bbox、landmark及attribute注释文件；<strong>（标注文件夹）</strong></li><li>Eval是training、validation及testing数据集的划分注释；<strong>（划分描述文件夹）</strong></li><li>Img则是存放相应的人脸图像，<strong>（人脸图片文件夹）</strong></li><li>README.txt是CelebA介绍文件；</li></ul><p>虽然img文件夹提供了多种格式的图片，我们一般只需要用到 .jpg（img_align_celeba.zip)，文件内部的图片都是有排序的。</p><h3 id="标签解释"><a href="#标签解释" class="headerlink" title="标签解释"></a>标签解释</h3><ul><li><strong>人脸标注框</strong></li></ul><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190309145245.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><ul><li><strong>人脸5个特征点</strong>， align代表着图片经过处理对齐。</li></ul><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190309145516.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><ul><li><p>40个特征属性标记</p><p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190309150157.png" alt=""></p><p>每个属性代表的含义是：</p></li></ul><ol><li>5_o_Clock_Shadow：刚长出的双颊胡须</li><li>Arched_Eyebrows：柳叶眉</li><li>Attractive：吸引人的</li><li>Bags_Under_Eyes：眼袋</li><li>Bald：秃头</li><li>Bangs：刘海</li><li>Big_Lips：大嘴唇</li><li>Big_Nose：大鼻子</li><li>Black_Hair：黑发</li><li>Blond_Hair：金发</li><li>Blurry：模糊的</li><li>Brown_Hair：棕发</li><li>Bushy_Eyebrows：浓眉</li><li>Chubby：圆胖的</li><li>Double_Chin：双下巴</li><li>Eyeglasses：眼镜</li><li>Goatee：山羊胡子</li><li>Gray_Hair：灰发或白发</li><li>Heavy_Makeup：浓妆</li><li>High_Cheekbones：高颧骨</li><li>Male：男性</li><li>Mouth_Slightly_Open：微微张开嘴巴</li><li>Mustache：胡子，髭</li><li>Narrow_Eyes：细长的眼睛</li><li>No_Beard：无胡子</li><li>Oval_Face：椭圆形的脸</li><li>Pale_Skin：苍白的皮肤</li><li>Pointy_Nose：尖鼻子</li><li>Receding_Hairline：发际线后移</li><li>Rosy_Cheeks：红润的双颊</li><li>Sideburns：连鬓胡子</li><li>Smiling：微笑</li><li>Straight_Hair：直发</li><li>Wavy_Hair：卷发</li><li>Wearing_Earrings：戴着耳环</li><li>Wearing_Hat：戴着帽子</li><li>Wearing_Lipstick：涂了唇膏</li><li>Wearing_Necklace：戴着项链</li><li>Wearing_Necktie：戴着领带</li><li>Young：年轻人</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;人脸属性数据集CelebA&quot;&gt;&lt;a href=&quot;#人脸属性数据集CelebA&quot; class=&quot;headerlink&quot; title=&quot;人脸属性数据集CelebA&quot;&gt;&lt;/a&gt;人脸属性数据集CelebA&lt;/h1&gt;&lt;h2 id=&quot;CelebA-解释&quot;&gt;&lt;a href=&quot;#
+      
+    
+    </summary>
+    
+    
+      <category term="深度学习" scheme="https://joshuaqyh.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="计算机视觉" scheme="https://joshuaqyh.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Leetcode | 关于树</title>
     <link href="https://joshuaqyh.github.io/2018/12/06/Leetcode-Practice-1/"/>
     <id>https://joshuaqyh.github.io/2018/12/06/Leetcode-Practice-1/</id>
@@ -1429,31 +1511,6 @@
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深度学习 |人脸属性数据集 CelebA</title>
-    <link href="https://joshuaqyh.github.io/2018/12/06/%E4%BA%BA%E8%84%B8%E5%B1%9E%E6%80%A7%E6%95%B0%E6%8D%AE%E9%9B%86CelebA/"/>
-    <id>https://joshuaqyh.github.io/2018/12/06/人脸属性数据集CelebA/</id>
-    <published>2018-12-06T08:26:17.000Z</published>
-    <updated>2019-03-27T13:54:45.928Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="人脸属性数据集CelebA"><a href="#人脸属性数据集CelebA" class="headerlink" title="人脸属性数据集CelebA"></a>人脸属性数据集CelebA</h1><h2 id="CelebA-解释"><a href="#CelebA-解释" class="headerlink" title="CelebA 解释"></a>CelebA 解释</h2><h3 id="数据集基本描述"><a href="#数据集基本描述" class="headerlink" title="数据集基本描述"></a>数据集基本描述</h3><ul><li>10177 个名人</li><li>202599张人脸图片</li><li>40个属性标记</li><li>人脸bbox标注框</li><li>5个人脸特征点坐标 </li></ul><p>由香港中文大学开放提供，网址在<a href="http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html" target="_blank" rel="noopener">这里</a></p><p>网盘文件夹描述如下：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://pic1.zhimg.com/80/v2-e5546e983a24e0e846f11de439068c64_hd.jpg" alt="img" title="">                </div>                <div class="image-caption">img</div>            </figure><ul><li>Anno是bbox、landmark及attribute注释文件；<strong>（标注文件夹）</strong></li><li>Eval是training、validation及testing数据集的划分注释；<strong>（划分描述文件夹）</strong></li><li>Img则是存放相应的人脸图像，<strong>（人脸图片文件夹）</strong></li><li>README.txt是CelebA介绍文件；</li></ul><p>虽然img文件夹提供了多种格式的图片，我们一般只需要用到 .jpg（img_align_celeba.zip)，文件内部的图片都是有排序的。</p><h3 id="标签解释"><a href="#标签解释" class="headerlink" title="标签解释"></a>标签解释</h3><ul><li><strong>人脸标注框</strong></li></ul><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190309145245.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><ul><li><strong>人脸5个特征点</strong>， align代表着图片经过处理对齐。</li></ul><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190309145516.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><ul><li><p>40个特征属性标记</p><p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190309150157.png" alt=""></p><p>每个属性代表的含义是：</p></li></ul><ol><li>5_o_Clock_Shadow：刚长出的双颊胡须</li><li>Arched_Eyebrows：柳叶眉</li><li>Attractive：吸引人的</li><li>Bags_Under_Eyes：眼袋</li><li>Bald：秃头</li><li>Bangs：刘海</li><li>Big_Lips：大嘴唇</li><li>Big_Nose：大鼻子</li><li>Black_Hair：黑发</li><li>Blond_Hair：金发</li><li>Blurry：模糊的</li><li>Brown_Hair：棕发</li><li>Bushy_Eyebrows：浓眉</li><li>Chubby：圆胖的</li><li>Double_Chin：双下巴</li><li>Eyeglasses：眼镜</li><li>Goatee：山羊胡子</li><li>Gray_Hair：灰发或白发</li><li>Heavy_Makeup：浓妆</li><li>High_Cheekbones：高颧骨</li><li>Male：男性</li><li>Mouth_Slightly_Open：微微张开嘴巴</li><li>Mustache：胡子，髭</li><li>Narrow_Eyes：细长的眼睛</li><li>No_Beard：无胡子</li><li>Oval_Face：椭圆形的脸</li><li>Pale_Skin：苍白的皮肤</li><li>Pointy_Nose：尖鼻子</li><li>Receding_Hairline：发际线后移</li><li>Rosy_Cheeks：红润的双颊</li><li>Sideburns：连鬓胡子</li><li>Smiling：微笑</li><li>Straight_Hair：直发</li><li>Wavy_Hair：卷发</li><li>Wearing_Earrings：戴着耳环</li><li>Wearing_Hat：戴着帽子</li><li>Wearing_Lipstick：涂了唇膏</li><li>Wearing_Necklace：戴着项链</li><li>Wearing_Necktie：戴着领带</li><li>Young：年轻人</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;人脸属性数据集CelebA&quot;&gt;&lt;a href=&quot;#人脸属性数据集CelebA&quot; class=&quot;headerlink&quot; title=&quot;人脸属性数据集CelebA&quot;&gt;&lt;/a&gt;人脸属性数据集CelebA&lt;/h1&gt;&lt;h2 id=&quot;CelebA-解释&quot;&gt;&lt;a href=&quot;#
-      
-    
-    </summary>
-    
-    
-      <category term="深度学习" scheme="https://joshuaqyh.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="计算机视觉" scheme="https://joshuaqyh.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
     
   </entry>
   
