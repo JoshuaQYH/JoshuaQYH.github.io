@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://joshuaqyh.github.io/"/>
-  <updated>2019-04-12T17:05:39.072Z</updated>
+  <updated>2019-04-12T18:48:33.357Z</updated>
   <id>https://joshuaqyh.github.io/</id>
   
   <author>
@@ -21,9 +21,9 @@
     <link href="https://joshuaqyh.github.io/2019/04/13/%E9%87%8F%E5%8C%96%E4%BA%A4%E6%98%93-%E5%A4%9A%E5%9B%A0%E5%AD%90%E6%A8%A1%E5%9E%8B%E4%B9%8B%E5%8D%95%E5%9B%A0%E5%AD%90%E6%B5%8B%E8%AF%95%E6%80%BB%E7%BB%93/"/>
     <id>https://joshuaqyh.github.io/2019/04/13/量化交易-多因子模型之单因子测试总结/</id>
     <published>2019-04-12T17:04:33.000Z</published>
-    <updated>2019-04-12T17:05:39.072Z</updated>
+    <updated>2019-04-12T18:48:33.357Z</updated>
     
-    <content type="html"><![CDATA[<h1 id="单因子测试总结"><a href="#单因子测试总结" class="headerlink" title="单因子测试总结"></a>单因子测试总结</h1><h2 id="数学模型"><a href="#数学模型" class="headerlink" title="数学模型"></a>数学模型</h2><p>根据APT套利定价模型，单因子测试的含义就是, 在每一个时间截面上，也就是站在一年中的某一天关注所有股票的下一期收益率 r 和股票当期相应的因子暴露值 x 之间的关系：</p><p>$$ r  = a x + b $$ </p><p>也就是在某一个时间点，对每一只股票的收益率和该股票的因子暴露值做一个简单的线性回归，其中  a 为因子的收益率，b 为独立于市场的残差收益率。</p><p>《主动投资组合》书中定义：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="C:\Users\Qiuyh\AppData\Local\Temp\1554951165048.png" alt="55495116504" title="">                </div>                <div class="image-caption">55495116504</div>            </figure><p>在单因子测试报告中，提出了一种拓展。增加了行业虚拟变量和流通市值，以及相应的因子收益率。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411112929.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h2 id="大概思路"><a href="#大概思路" class="headerlink" title="大概思路"></a>大概思路</h2><p>我们就是要利用现有的数据 股票收益率r 和 因子暴露值 x，去进行每一个时间横截面的线性回归，得到 a，b，然后利用这  a x + b = r* 求出因子预测的股票收益率。</p><h3 id="股票收益率计算"><a href="#股票收益率计算" class="headerlink" title="股票收益率计算"></a>股票收益率计算</h3><p>这里得先来了解股票收益率的计算方法</p><p>我们可以通过每一只股票的 K 线数据（get_kdata 的方式获取，如下），我们如果以1天为1期的话，那么有：</p><p>股票收益率  = 第二天股票收盘价格 / 第一天股票收盘价格 - 1  （收盘价格就是下列的 close 字段） </p><p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411104316.png" alt=""></p><p>然后在每个时间截面获取每一个的股票收益率情况，利用成分股的权重，加权求和得到在该时间点上的股票市场整体收益率。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411105526.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h3 id="因子暴露值"><a href="#因子暴露值" class="headerlink" title="因子暴露值"></a>因子暴露值</h3><p>每一只股票在每一时刻都有对应的因子暴露值，获取方法如下。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411110021.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>我们需要对因子进行预处理，一般是</p><ol><li>中位数去极值法去除异常值。</li><li>缺失值处理，可剔除或者均值填充。</li><li>z-score 规范化，使之标准差为 1，均值为0。</li></ol><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411111930.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h3 id="计算夏普率"><a href="#计算夏普率" class="headerlink" title="计算夏普率"></a>计算夏普率</h3><p>到这里我们可以在每一个时间面上对所有股票的收益率和因子值进行回归，得到 因子收益率 a 和残差收益率 b。</p><p>然后重新预测所有股票的收益率。先对所有成分股的权重求和，然后每个权重除以总权重得到新的权重，使用加权求和的方式计算在该时间点的股票池中的总体收益率。</p><p>在每个时间点上重复上述计算就可以得到一个产品收益率的时间序列。然后就可以计算超额收益率序列，从而计算夏普比率。）这里的无风险收益率一般取 4 % 。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411111149.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>利用上述数据也可以计算 IC值，年化收益率，IR值，t 检验结果等等。</p><h2 id="共线性筛选"><a href="#共线性筛选" class="headerlink" title="共线性筛选"></a>共线性筛选</h2><p>我们使用上述方法可以得到每一个因子的年化夏普率，然后挑选较优的各大类因子，得到一个列表。但此时依旧需要解决因子之间的共线性问题，如果两个因子的线性关系较为明显（相关系数为1正相关，相关系数为-1负相关），我们应该剔除，保留其中一个，或者合成新的因子。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411112406.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>利用相关性矩阵来计算的结果如下。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411112016.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h2 id="分层回测"><a href="#分层回测" class="headerlink" title="分层回测"></a>分层回测</h2><p>分层就是将全体股票池按市值等分为大、中、小股票池。然后分别对每个池进行上述的测试。题目里头也有提及到不同市值的股票风格不同，所以觉得这个可能还是有点必要的。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411112754.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h2 id="总体过程"><a href="#总体过程" class="headerlink" title="总体过程"></a>总体过程</h2><ol><li>确定测试的开始和结束日期；</li><li>股票日频数据采集，构成股票池；（所有股票的K线时序数据）（此处可按市值进行分层）</li><li>利用K线数据计算所有股票的每期收益率；（收益率时序数据）</li><li>确定候选的测试因子集合；</li><li>获取股票池中每个股票的候选因子，也就是股票对因子的暴露值；（因子时序数据）</li><li>对每个因子进行预处理；</li><li>每一个时间截面（每一天）对当期的因子暴露值和股票的下期收益率进行回归，得到因子收益率和残差收益率。</li><li>利用回归得到的因子收益率和残差收益率和因子暴露值，计算股票的预测收益率</li><li>每个时间截面计算整体股票池的预测收益率，得到一个收益率序列。</li><li>根据收益率序列计算夏普率，筛选较好的因子。</li><li>使用相关性矩阵，剔除相关性较强的因子，得到最后的因子集合。</li></ol>]]></content>
+    <content type="html"><![CDATA[<h1 id="单因子测试总结"><a href="#单因子测试总结" class="headerlink" title="单因子测试总结"></a>单因子测试总结</h1><h2 id="数学模型"><a href="#数学模型" class="headerlink" title="数学模型"></a>数学模型</h2><p>根据APT套利定价模型，单因子测试的含义就是, 在每一个时间截面上，也就是站在一年中的某一天关注所有股票的下一期收益率 r 和股票当期相应的因子暴露值 x 之间的关系：</p><p>$$ r  = a x + b $$ </p><p>也就是在某一个时间点，对每一只股票的收益率和该股票的因子暴露值做一个简单的线性回归，其中  a 为因子的收益率，b 为独立于市场的残差收益率。</p><p>《主动投资组合》书中定义：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190413012250.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>在单因子测试报告中，提出了一种拓展。增加了行业虚拟变量和流通市值，以及相应的因子收益率。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411112929.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h2 id="大概思路"><a href="#大概思路" class="headerlink" title="大概思路"></a>大概思路</h2><p>我们就是要利用现有的数据 股票收益率r 和 因子暴露值 x，去进行每一个时间横截面的线性回归，得到 a，b，然后利用这  a x + b = r* 求出因子预测的股票收益率。</p><h3 id="股票收益率计算"><a href="#股票收益率计算" class="headerlink" title="股票收益率计算"></a>股票收益率计算</h3><p>这里得先来了解股票收益率的计算方法</p><p>我们可以通过每一只股票的 K 线数据（get_kdata 的方式获取，如下），我们如果以1天为1期的话，那么有：</p><p>股票收益率  = 第二天股票收盘价格 / 第一天股票收盘价格 - 1  （收盘价格就是下列的 close 字段） </p><p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411104316.png" alt=""></p><p>然后在每个时间截面获取每一个的股票收益率情况，利用成分股的权重，加权求和得到在该时间点上的股票市场整体收益率。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411105526.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h3 id="因子暴露值"><a href="#因子暴露值" class="headerlink" title="因子暴露值"></a>因子暴露值</h3><p>每一只股票在每一时刻都有对应的因子暴露值，获取方法如下。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411110021.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>我们需要对因子进行预处理，一般是</p><ol><li>中位数去极值法去除异常值。</li><li>缺失值处理，可剔除或者均值填充。</li><li>z-score 规范化，使之标准差为 1，均值为0。</li></ol><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411111930.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h3 id="计算夏普率"><a href="#计算夏普率" class="headerlink" title="计算夏普率"></a>计算夏普率</h3><p>到这里我们可以在每一个时间面上对所有股票的收益率和因子值进行回归，得到 因子收益率 a 和残差收益率 b。</p><p>然后重新预测所有股票的收益率。先对所有成分股的权重求和，然后每个权重除以总权重得到新的权重，使用加权求和的方式计算在该时间点的股票池中的总体收益率。</p><p>在每个时间点上重复上述计算就可以得到一个产品收益率的时间序列。然后就可以计算超额收益率序列，从而计算夏普比率。）这里的无风险收益率一般取 4 % 。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411111149.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>利用上述数据也可以计算 IC值，年化收益率，IR值，t 检验结果等等。</p><blockquote><p>更新补充：</p><p>由于是每一个月初开始调仓（近似于买入卖出股票），那么我们就可以把每一期预测的周期视为一个月。一年划分成十二个时间截面来回归。回归的自变量是月初当天的每个股票对应的因子，因变量是这一个月内的日平均收益率或者日平均对数收益率（计算方法是月末-月初/月初股票的收盘价格）。接着拟合十二个回归模型。</p><p>接下来计算超额收益率平均值思路是：</p><p>在每一个拟合好的时间模型上，计算每只股票的收益率，然后通过个股权重，加权组合求得当月股票池的总平均收益率。然后使用这12个月的时序产品总平均收益率序列，作为产品收益率序列数据来计算夏普比率。此时 n = 12</p><p>思路主要来自于<a href="https://zhuanlan.zhihu.com/p/21275919" target="_blank" rel="noopener">知乎文章</a></p><p>个人理解：emmm 不就是使用月初因子作为训练数据，平均收益率作为训练标签，使用线性回归模型进行拟合么。应该可以引入惩罚项吧？或者使用其他机器学习模型来训练？？</p></blockquote><h2 id="共线性筛选"><a href="#共线性筛选" class="headerlink" title="共线性筛选"></a>共线性筛选</h2><p>我们使用上述方法可以得到每一个因子的年化夏普率，然后挑选较优的各大类因子，得到一个列表。但此时依旧需要解决因子之间的共线性问题，如果两个因子的线性关系较为明显（相关系数为1正相关，相关系数为-1负相关），我们应该剔除，保留其中一个，或者合成新的因子。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411112406.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>利用相关性矩阵来计算的结果如下。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411112016.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h2 id="分层回测"><a href="#分层回测" class="headerlink" title="分层回测"></a>分层回测</h2><p>分层就是将全体股票池按市值等分为大、中、小股票池。然后分别对每个池进行上述的测试。题目里头也有提及到不同市值的股票风格不同，所以觉得这个可能还是有点必要的。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411112754.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h2 id="总体过程"><a href="#总体过程" class="headerlink" title="总体过程"></a>总体过程</h2><ol><li>确定测试的开始和结束日期；</li><li>股票日频数据采集，构成股票池；（所有股票的K线时序数据）（此处可按市值进行分层）</li><li>利用K线数据计算所有股票的每期收益率；（收益率时序数据）</li><li>确定候选的测试因子集合；</li><li>获取股票池中每个股票的候选因子，也就是股票对因子的暴露值；（因子时序数据）</li><li>对每个因子进行预处理；</li><li>每一个时间截面（每一天）对当期的因子暴露值和股票的下期收益率进行回归，得到因子收益率和残差收益率。</li><li>利用回归得到的因子收益率和残差收益率和因子暴露值，计算股票的预测收益率</li><li>每个时间截面计算整体股票池的预测收益率，得到一个收益率序列。</li><li>根据收益率序列计算夏普率，筛选较好的因子。</li><li>使用相关性矩阵，剔除相关性较强的因子，得到最后的因子集合。</li></ol>]]></content>
     
     <summary type="html">
     
@@ -35,9 +35,9 @@
     </summary>
     
     
-      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -647,9 +647,9 @@
     </summary>
     
     
-      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -839,9 +839,9 @@
     </summary>
     
     
-      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -868,9 +868,9 @@
     
       <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
-      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -899,9 +899,9 @@
     
       <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
-      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -930,9 +930,9 @@
     
       <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
-      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -959,9 +959,9 @@
     
       <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
-      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -988,9 +988,9 @@
     
       <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
-      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
     
@@ -1017,9 +1017,9 @@
     
       <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
-      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
-    
       <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
+    
+      <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
   </entry>
   
@@ -1491,6 +1491,31 @@
   </entry>
   
   <entry>
+    <title>深度学习 |人脸属性数据集 CelebA</title>
+    <link href="https://joshuaqyh.github.io/2018/12/06/%E4%BA%BA%E8%84%B8%E5%B1%9E%E6%80%A7%E6%95%B0%E6%8D%AE%E9%9B%86CelebA/"/>
+    <id>https://joshuaqyh.github.io/2018/12/06/人脸属性数据集CelebA/</id>
+    <published>2018-12-06T08:26:17.000Z</published>
+    <updated>2019-03-27T13:54:45.928Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="人脸属性数据集CelebA"><a href="#人脸属性数据集CelebA" class="headerlink" title="人脸属性数据集CelebA"></a>人脸属性数据集CelebA</h1><h2 id="CelebA-解释"><a href="#CelebA-解释" class="headerlink" title="CelebA 解释"></a>CelebA 解释</h2><h3 id="数据集基本描述"><a href="#数据集基本描述" class="headerlink" title="数据集基本描述"></a>数据集基本描述</h3><ul><li>10177 个名人</li><li>202599张人脸图片</li><li>40个属性标记</li><li>人脸bbox标注框</li><li>5个人脸特征点坐标 </li></ul><p>由香港中文大学开放提供，网址在<a href="http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html" target="_blank" rel="noopener">这里</a></p><p>网盘文件夹描述如下：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://pic1.zhimg.com/80/v2-e5546e983a24e0e846f11de439068c64_hd.jpg" alt="img" title="">                </div>                <div class="image-caption">img</div>            </figure><ul><li>Anno是bbox、landmark及attribute注释文件；<strong>（标注文件夹）</strong></li><li>Eval是training、validation及testing数据集的划分注释；<strong>（划分描述文件夹）</strong></li><li>Img则是存放相应的人脸图像，<strong>（人脸图片文件夹）</strong></li><li>README.txt是CelebA介绍文件；</li></ul><p>虽然img文件夹提供了多种格式的图片，我们一般只需要用到 .jpg（img_align_celeba.zip)，文件内部的图片都是有排序的。</p><h3 id="标签解释"><a href="#标签解释" class="headerlink" title="标签解释"></a>标签解释</h3><ul><li><strong>人脸标注框</strong></li></ul><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190309145245.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><ul><li><strong>人脸5个特征点</strong>， align代表着图片经过处理对齐。</li></ul><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190309145516.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><ul><li><p>40个特征属性标记</p><p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190309150157.png" alt=""></p><p>每个属性代表的含义是：</p></li></ul><ol><li>5_o_Clock_Shadow：刚长出的双颊胡须</li><li>Arched_Eyebrows：柳叶眉</li><li>Attractive：吸引人的</li><li>Bags_Under_Eyes：眼袋</li><li>Bald：秃头</li><li>Bangs：刘海</li><li>Big_Lips：大嘴唇</li><li>Big_Nose：大鼻子</li><li>Black_Hair：黑发</li><li>Blond_Hair：金发</li><li>Blurry：模糊的</li><li>Brown_Hair：棕发</li><li>Bushy_Eyebrows：浓眉</li><li>Chubby：圆胖的</li><li>Double_Chin：双下巴</li><li>Eyeglasses：眼镜</li><li>Goatee：山羊胡子</li><li>Gray_Hair：灰发或白发</li><li>Heavy_Makeup：浓妆</li><li>High_Cheekbones：高颧骨</li><li>Male：男性</li><li>Mouth_Slightly_Open：微微张开嘴巴</li><li>Mustache：胡子，髭</li><li>Narrow_Eyes：细长的眼睛</li><li>No_Beard：无胡子</li><li>Oval_Face：椭圆形的脸</li><li>Pale_Skin：苍白的皮肤</li><li>Pointy_Nose：尖鼻子</li><li>Receding_Hairline：发际线后移</li><li>Rosy_Cheeks：红润的双颊</li><li>Sideburns：连鬓胡子</li><li>Smiling：微笑</li><li>Straight_Hair：直发</li><li>Wavy_Hair：卷发</li><li>Wearing_Earrings：戴着耳环</li><li>Wearing_Hat：戴着帽子</li><li>Wearing_Lipstick：涂了唇膏</li><li>Wearing_Necklace：戴着项链</li><li>Wearing_Necktie：戴着领带</li><li>Young：年轻人</li></ol>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;人脸属性数据集CelebA&quot;&gt;&lt;a href=&quot;#人脸属性数据集CelebA&quot; class=&quot;headerlink&quot; title=&quot;人脸属性数据集CelebA&quot;&gt;&lt;/a&gt;人脸属性数据集CelebA&lt;/h1&gt;&lt;h2 id=&quot;CelebA-解释&quot;&gt;&lt;a href=&quot;#
+      
+    
+    </summary>
+    
+    
+      <category term="深度学习" scheme="https://joshuaqyh.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="计算机视觉" scheme="https://joshuaqyh.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Leetcode | 关于树</title>
     <link href="https://joshuaqyh.github.io/2018/12/06/Leetcode-Practice-1/"/>
     <id>https://joshuaqyh.github.io/2018/12/06/Leetcode-Practice-1/</id>
@@ -1515,31 +1540,6 @@
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>深度学习 |人脸属性数据集 CelebA</title>
-    <link href="https://joshuaqyh.github.io/2018/12/06/%E4%BA%BA%E8%84%B8%E5%B1%9E%E6%80%A7%E6%95%B0%E6%8D%AE%E9%9B%86CelebA/"/>
-    <id>https://joshuaqyh.github.io/2018/12/06/人脸属性数据集CelebA/</id>
-    <published>2018-12-06T08:26:17.000Z</published>
-    <updated>2019-03-27T13:54:45.928Z</updated>
-    
-    <content type="html"><![CDATA[<h1 id="人脸属性数据集CelebA"><a href="#人脸属性数据集CelebA" class="headerlink" title="人脸属性数据集CelebA"></a>人脸属性数据集CelebA</h1><h2 id="CelebA-解释"><a href="#CelebA-解释" class="headerlink" title="CelebA 解释"></a>CelebA 解释</h2><h3 id="数据集基本描述"><a href="#数据集基本描述" class="headerlink" title="数据集基本描述"></a>数据集基本描述</h3><ul><li>10177 个名人</li><li>202599张人脸图片</li><li>40个属性标记</li><li>人脸bbox标注框</li><li>5个人脸特征点坐标 </li></ul><p>由香港中文大学开放提供，网址在<a href="http://mmlab.ie.cuhk.edu.hk/projects/CelebA.html" target="_blank" rel="noopener">这里</a></p><p>网盘文件夹描述如下：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://pic1.zhimg.com/80/v2-e5546e983a24e0e846f11de439068c64_hd.jpg" alt="img" title="">                </div>                <div class="image-caption">img</div>            </figure><ul><li>Anno是bbox、landmark及attribute注释文件；<strong>（标注文件夹）</strong></li><li>Eval是training、validation及testing数据集的划分注释；<strong>（划分描述文件夹）</strong></li><li>Img则是存放相应的人脸图像，<strong>（人脸图片文件夹）</strong></li><li>README.txt是CelebA介绍文件；</li></ul><p>虽然img文件夹提供了多种格式的图片，我们一般只需要用到 .jpg（img_align_celeba.zip)，文件内部的图片都是有排序的。</p><h3 id="标签解释"><a href="#标签解释" class="headerlink" title="标签解释"></a>标签解释</h3><ul><li><strong>人脸标注框</strong></li></ul><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190309145245.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><ul><li><strong>人脸5个特征点</strong>， align代表着图片经过处理对齐。</li></ul><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190309145516.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><ul><li><p>40个特征属性标记</p><p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190309150157.png" alt=""></p><p>每个属性代表的含义是：</p></li></ul><ol><li>5_o_Clock_Shadow：刚长出的双颊胡须</li><li>Arched_Eyebrows：柳叶眉</li><li>Attractive：吸引人的</li><li>Bags_Under_Eyes：眼袋</li><li>Bald：秃头</li><li>Bangs：刘海</li><li>Big_Lips：大嘴唇</li><li>Big_Nose：大鼻子</li><li>Black_Hair：黑发</li><li>Blond_Hair：金发</li><li>Blurry：模糊的</li><li>Brown_Hair：棕发</li><li>Bushy_Eyebrows：浓眉</li><li>Chubby：圆胖的</li><li>Double_Chin：双下巴</li><li>Eyeglasses：眼镜</li><li>Goatee：山羊胡子</li><li>Gray_Hair：灰发或白发</li><li>Heavy_Makeup：浓妆</li><li>High_Cheekbones：高颧骨</li><li>Male：男性</li><li>Mouth_Slightly_Open：微微张开嘴巴</li><li>Mustache：胡子，髭</li><li>Narrow_Eyes：细长的眼睛</li><li>No_Beard：无胡子</li><li>Oval_Face：椭圆形的脸</li><li>Pale_Skin：苍白的皮肤</li><li>Pointy_Nose：尖鼻子</li><li>Receding_Hairline：发际线后移</li><li>Rosy_Cheeks：红润的双颊</li><li>Sideburns：连鬓胡子</li><li>Smiling：微笑</li><li>Straight_Hair：直发</li><li>Wavy_Hair：卷发</li><li>Wearing_Earrings：戴着耳环</li><li>Wearing_Hat：戴着帽子</li><li>Wearing_Lipstick：涂了唇膏</li><li>Wearing_Necklace：戴着项链</li><li>Wearing_Necktie：戴着领带</li><li>Young：年轻人</li></ol>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;h1 id=&quot;人脸属性数据集CelebA&quot;&gt;&lt;a href=&quot;#人脸属性数据集CelebA&quot; class=&quot;headerlink&quot; title=&quot;人脸属性数据集CelebA&quot;&gt;&lt;/a&gt;人脸属性数据集CelebA&lt;/h1&gt;&lt;h2 id=&quot;CelebA-解释&quot;&gt;&lt;a href=&quot;#
-      
-    
-    </summary>
-    
-    
-      <category term="深度学习" scheme="https://joshuaqyh.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
-    
-      <category term="计算机视觉" scheme="https://joshuaqyh.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/"/>
     
   </entry>
   

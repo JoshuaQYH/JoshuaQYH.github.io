@@ -20,16 +20,16 @@
     <meta name="theme-color" content="#3F51B5">
     
     
-    <meta name="keywords" content="机器学习,数据分析,数据挖掘,量化交易">
+    <meta name="keywords" content="数据分析,机器学习,数据挖掘,量化交易">
     <meta name="description" content="单因子测试总结数学模型根据APT套利定价模型，单因子测试的含义就是, 在每一个时间截面上，也就是站在一年中的某一天关注所有股票的下一期收益率 r 和股票当期相应的因子暴露值 x 之间的关系： $$ r  = a x + b $$  也就是在某一个时间点，对每一只股票的收益率和该股票的因子暴露值做一个简单的线性回归，其中  a 为因子的收益率，b 为独立于市场的残差收益率。 《主动投资组合》书中定义">
-<meta name="keywords" content="机器学习,数据分析,数据挖掘,量化交易">
+<meta name="keywords" content="数据分析,机器学习,数据挖掘,量化交易">
 <meta property="og:type" content="article">
 <meta property="og:title" content="量化交易 | 多因子模型之单因子测试总结">
 <meta property="og:url" content="https://joshuaqyh.github.io/2019/04/13/量化交易-多因子模型之单因子测试总结/index.html">
 <meta property="og:site_name" content="KnowMyself">
 <meta property="og:description" content="单因子测试总结数学模型根据APT套利定价模型，单因子测试的含义就是, 在每一个时间截面上，也就是站在一年中的某一天关注所有股票的下一期收益率 r 和股票当期相应的因子暴露值 x 之间的关系： $$ r  = a x + b $$  也就是在某一个时间点，对每一只股票的收益率和该股票的因子暴露值做一个简单的线性回归，其中  a 为因子的收益率，b 为独立于市场的残差收益率。 《主动投资组合》书中定义">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="c:/Users/Qiuyh/AppData/Local/Temp/1554951165048.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190413012250.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411112929.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411104316.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411105526.png">
@@ -39,11 +39,11 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411112406.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411112016.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190411112754.png">
-<meta property="og:updated_time" content="2019-04-12T17:05:39.072Z">
+<meta property="og:updated_time" content="2019-04-12T18:48:33.357Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="量化交易 | 多因子模型之单因子测试总结">
 <meta name="twitter:description" content="单因子测试总结数学模型根据APT套利定价模型，单因子测试的含义就是, 在每一个时间截面上，也就是站在一年中的某一天关注所有股票的下一期收益率 r 和股票当期相应的因子暴露值 x 之间的关系： $$ r  = a x + b $$  也就是在某一个时间点，对每一只股票的收益率和该股票的因子暴露值做一个简单的线性回归，其中  a 为因子的收益率，b 为独立于市场的残差收益率。 《主动投资组合》书中定义">
-<meta name="twitter:image" content="c:/Users/Qiuyh/AppData/Local/Temp/1554951165048.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190413012250.png">
     
         <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
     
@@ -130,7 +130,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -199,9 +199,9 @@
 <figure class="image-bubble">
                 <div class="img-lightbox">
                     <div class="overlay"></div>
-                    <img src="C:\Users\Qiuyh\AppData\Local\Temp\1554951165048.png" alt="55495116504" title="">
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190413012250.png" alt="" title="">
                 </div>
-                <div class="image-caption">55495116504</div>
+                <div class="image-caption"></div>
             </figure>
 <p>在单因子测试报告中，提出了一种拓展。增加了行业虚拟变量和流通市值，以及相应的因子收益率。</p>
 <figure class="image-bubble">
@@ -256,6 +256,14 @@
                 <div class="image-caption"></div>
             </figure>
 <p>利用上述数据也可以计算 IC值，年化收益率，IR值，t 检验结果等等。</p>
+<blockquote>
+<p>更新补充：</p>
+<p>由于是每一个月初开始调仓（近似于买入卖出股票），那么我们就可以把每一期预测的周期视为一个月。一年划分成十二个时间截面来回归。回归的自变量是月初当天的每个股票对应的因子，因变量是这一个月内的日平均收益率或者日平均对数收益率（计算方法是月末-月初/月初股票的收盘价格）。接着拟合十二个回归模型。</p>
+<p>接下来计算超额收益率平均值思路是：</p>
+<p>在每一个拟合好的时间模型上，计算每只股票的收益率，然后通过个股权重，加权组合求得当月股票池的总平均收益率。然后使用这12个月的时序产品总平均收益率序列，作为产品收益率序列数据来计算夏普比率。此时 n = 12</p>
+<p>思路主要来自于<a href="https://zhuanlan.zhihu.com/p/21275919" target="_blank" rel="noopener">知乎文章</a></p>
+<p>个人理解：emmm 不就是使用月初因子作为训练数据，平均收益率作为训练标签，使用线性回归模型进行拟合么。应该可以引入惩罚项吧？或者使用其他机器学习模型来训练？？</p>
+</blockquote>
 <h2 id="共线性筛选"><a href="#共线性筛选" class="headerlink" title="共线性筛选"></a>共线性筛选</h2><p>我们使用上述方法可以得到每一个因子的年化夏普率，然后挑选较优的各大类因子，得到一个列表。但此时依旧需要解决因子之间的共线性问题，如果两个因子的线性关系较为明显（相关系数为1正相关，相关系数为-1负相关），我们应该剔除，保留其中一个，或者合成新的因子。</p>
 <figure class="image-bubble">
                 <div class="img-lightbox">
@@ -301,7 +309,7 @@
     <div class="content">
         
 <span class="post-time">
-    最終更新：<time datetime="2019-04-12T17:05:39.072Z" itemprop="dateUpdated">2019-04-13 01:05:39</time>
+    Last updated: <time datetime="2019-04-12T18:48:33.357Z" itemprop="dateUpdated">2019-04-13 02:48:33</time>
 </span><br>
 
 
@@ -434,7 +442,7 @@
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
         </p>
     </div>
     <div class="bottom">
