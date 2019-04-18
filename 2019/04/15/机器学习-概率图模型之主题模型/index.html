@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>机器学习 | 概率图模型之主题模型 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="机器学习,数据挖掘">
+    <meta name="description" content="主题模型概述主题模型也是话题模型，是一族生成式有向图模型，主要应用于处理离散数据（如文本），在信息检索和自然语言处理中广泛应用。 例：给定一组主题，存在多个词汇，我们需要通过主题模型来挖掘每个词汇属于某个主题的概率分布情况。 在认识主题模型之前，我们先知道有词，文档，主题这些概念。我们需要通过文档内部的词，推测出文档属于各主体的概率分布情况。需要注意的是，文档可以属于任何主题，只不过某些不相关的主">
+<meta name="keywords" content="机器学习,数据挖掘">
+<meta property="og:type" content="article">
+<meta property="og:title" content="机器学习 | 概率图模型之主题模型">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/04/15/机器学习-概率图模型之主题模型/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="主题模型概述主题模型也是话题模型，是一族生成式有向图模型，主要应用于处理离散数据（如文本），在信息检索和自然语言处理中广泛应用。 例：给定一组主题，存在多个词汇，我们需要通过主题模型来挖掘每个词汇属于某个主题的概率分布情况。 在认识主题模型之前，我们先知道有词，文档，主题这些概念。我们需要通过文档内部的词，推测出文档属于各主体的概率分布情况。需要注意的是，文档可以属于任何主题，只不过某些不相关的主">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190415171049.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190415171404.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190415172609.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190415172702.png">
+<meta property="og:updated_time" content="2019-04-15T09:27:47.219Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="机器学习 | 概率图模型之主题模型">
+<meta name="twitter:description" content="主题模型概述主题模型也是话题模型，是一族生成式有向图模型，主要应用于处理离散数据（如文本），在信息检索和自然语言处理中广泛应用。 例：给定一组主题，存在多个词汇，我们需要通过主题模型来挖掘每个词汇属于某个主题的概率分布情况。 在认识主题模型之前，我们先知道有词，文档，主题这些概念。我们需要通过文档内部的词，推测出文档属于各主体的概率分布情况。需要注意的是，文档可以属于任何主题，只不过某些不相关的主">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190415171049.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">机器学习 | 概率图模型之主题模型</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">机器学习 | 概率图模型之主题模型</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-04-15T08:27:37.000Z" itemprop="datePublished" class="page-time">
+  2019-04-15
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#主题模型概述"><span class="post-toc-number">1.</span> <span class="post-toc-text">主题模型概述</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#前导知识"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">前导知识</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文本建模"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">文本建模</span></a></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-机器学习-概率图模型之主题模型" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">机器学习 | 概率图模型之主题模型</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-04-15 16:27:37" datetime="2019-04-15T08:27:37.000Z" itemprop="datePublished">2019-04-15</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h2 id="主题模型概述"><a href="#主题模型概述" class="headerlink" title="主题模型概述"></a>主题模型概述</h2><p>主题模型也是话题模型，是一族生成式有向图模型，主要应用于处理离散数据（如文本），在信息检索和自然语言处理中广泛应用。</p>
+<p>例：给定一组主题，存在多个词汇，我们需要通过主题模型来挖掘每个词汇属于某个主题的概率分布情况。</p>
+<p>在认识主题模型之前，我们先知道有词，文档，主题这些概念。我们需要通过文档内部的词，推测出文档属于各主体的概率分布情况。需要注意的是，文档可以属于任何主题，只不过某些不相关的主题的概率近似或者等于0。</p>
+<p>主题模型的目标</p>
+<ol>
+<li>降维：一个文档可以用几个主题来描述，而不是许多单词。</li>
+<li>发现隐藏主题：在人为归纳的基础上，挖掘出新的主题。</li>
+<li>帮助理解标注文档：文档标注工作自动化。</li>
+</ol>
+<p>推测的算法可以有监督和无监督算法。典型模型有<strong>隐迪利克雷分配模型（LDA）。</strong></p>
+<h3 id="前导知识"><a href="#前导知识" class="headerlink" title="前导知识"></a>前导知识</h3><p>在理解模型之前可以先了解一些常用分布及其概率质量函数。</p>
+<ol>
+<li>伯努利分布。</li>
+<li>二项式分布。</li>
+<li>多项式分布。</li>
+</ol>
+<p>伯努利分布是为了描述一个只能发生两种结果的事件的概率分布情况。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> k == <span class="number">1</span>:</span><br><span class="line">	f = p</span><br><span class="line"><span class="keyword">elif</span> k == <span class="number">0</span></span><br><span class="line">   	f = <span class="number">1</span> - p</span><br><span class="line">k 表示事件发生结果变量，f表示概率质量函数，p表示概率。</span><br><span class="line">精简表达概率质量函数，结果为 f(k; p) = pk + (<span class="number">1</span> - p)(<span class="number">1</span>- k)</span><br></pre></td></tr></table></figure>
+<p>二项式分布是为了描述一个二元事件连续发生多次时概率分布的情况。<a href="https://zh.wikipedia.org/wiki/%E4%BA%8C%E9%A0%85%E5%88%86%E4%BD%88" target="_blank" rel="noopener">wiki</a>，但事件发生次数为1次的时候，等于伯努利分布。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190415171049.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>多项式分布是二项分布的推广。二项分布每次事件发生的情况只有两种，而多项式分布却有 k 种。（k &gt; 0）<a href="https://en.wikipedia.org/wiki/Multinomial_distribution" target="_blank" rel="noopener">wiki</a></p>
+<p>当事件发生 n 次后，每种情况发生的次数已知，概率质量函数结果如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190415171404.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="文本建模"><a href="#文本建模" class="headerlink" title="文本建模"></a>文本建模</h3><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190415172609.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190415172702.png" alt=""></p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-04-15T09:27:47.219Z" itemprop="dateUpdated">2019-04-15 17:27:47</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/04/15/机器学习-概率图模型之主题模型/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/04/15/机器学习-概率图模型之主题模型/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/04/15/机器学习-概率图模型之主题模型/&title=《机器学习 | 概率图模型之主题模型》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/04/15/机器学习-概率图模型之主题模型/&title=《机器学习 | 概率图模型之主题模型》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/04/15/机器学习-概率图模型之主题模型/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《机器学习 | 概率图模型之主题模型》 — KnowMyself&url=https://joshuaqyh.github.io/2019/04/15/机器学习-概率图模型之主题模型/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/04/15/机器学习-概率图模型之主题模型/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2019/04/18/论文summary注意事项/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">论文summary注意事项</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/04/13/量化交易-多因子模型之单因子测试总结/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">量化交易 | 多因子模型之单因子测试总结</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/04/15/机器学习-概率图模型之主题模型/&title=《机器学习 | 概率图模型之主题模型》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/04/15/机器学习-概率图模型之主题模型/&title=《机器学习 | 概率图模型之主题模型》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/04/15/机器学习-概率图模型之主题模型/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《机器学习 | 概率图模型之主题模型》 — KnowMyself&url=https://joshuaqyh.github.io/2019/04/15/机器学习-概率图模型之主题模型/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/04/15/机器学习-概率图模型之主题模型/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACr0lEQVR42u3aQY7DIAwF0N7/0jMH6CT9tnEni5dVFVXAoxK4H16v+PkZP++tXfVy3/tr48HDw8M7OvT3ju8HnQzxvv2r1q7GcD+VeHh4eHu8+2U6aqjIyLeBZDou3+Ph4eE9gJdsD/fgZPqS8eDh4eE9n3cPyLeH6hC/tDHg4eHhFXlJKZxsDHk4W/3metaCh4eHF/OqHT/h88r5Hh4eHt7ahYA8aMg3m2ov0Tjx8PDwFnjVRTk/EsuL494YCsdjeHh4eEd5vQC3OvT5ta1q4DvKp/Hw8PCCb05C2xw8GXR+BSHqHg8PD2/A6xWvSZ2exxb5dYHyxOHh4eGtrcm9ECFZoHtvqtewPkwEHh4e3ld48wBicmSVDBoPDw/vObxqmVvF54dYeeH+oR08PDy8o7x8ga4e+U8mpVpAl++U4eHh4Q141UP9/ALWK3iq/eZbCx4eHt4er7zIHgpbe4V1cgz2x++Gh4eHt8DrHYNVM4+Nz+WdBw8PD+8oL4lce5ex8jOpPMCNXHh4eHjLvB7gvvjeO1qLph4PDw9vmVeNaPPINR/WpEc8PDy87/DOFsTJ+/lBV3k7wcPDwzvKywvoSXCQbD/VKwjRnwE8PDy8Bd72EPP3k2O26GfAw8PDO8SbFLtVTB465MX9h98NDw8Pb4GXl6RJ5FptrXq5anT1Cg8PD+8Qr3dANVnWk1i2N61/tICHh4e3wKsGtfk201uxJyX1hwAXDw8P7xDvp/jkBW4ezua8fDx4eHh4e7z8mYQOSVnci48PJDF4eHh4LV6yGcwX9F6QcWBjwMPDw1vjJRcLkl1lctVgHoJcRhJ4eHh4/8SbT8Re8Y2Hh4f3TF5vEc+Psu6ntVru4+Hh4W3zektzrxTuTVwv8MXDw8Pb4M0X62rT1SK+d7kBDw8Pb4H3C+QNu2B0vqeqAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

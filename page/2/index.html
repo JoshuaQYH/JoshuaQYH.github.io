@@ -152,6 +152,103 @@
     <ul class="post-list">
     
         <li class="post-list-item fade">
+            <article id="post-leetcode-practice-3" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-03-18 01:46:35" datetime="2019-03-17T17:46:35.000Z" itemprop="datePublished">2019-03-18</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/03/18/leetcode-practice-3/">Leetcode | Practice 3</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        本次题目来自链接
+题目大意是：
+给出一个数组，相当于一堆卡牌，每个元素相当于一张牌，每次从卡牌中抽出一张牌，离开牌堆后，下一张牌需要放在牌底。在这种规则下，我们需要确定牌的顺序，来保证这些牌的抽走顺序是升序的。
+代码虽然不难，但是思路必须抓得清，我们很容易被把牌塞回牌底这一动作迷惑，其实我们可以把它看作是跳过这一张牌，将其留在原来的位置，然后抽取下一张牌。我们需要做的就是给升序后的数组的每一...
+    
+
+        <a href="/2019/03/18/leetcode-practice-3/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-深度学习-训练中存在的问题" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-03-14 16:23:24" datetime="2019-03-14T08:23:24.000Z" itemprop="datePublished">2019-03-14</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/03/14/深度学习-训练中存在的问题/">深度学习-训练中存在的问题和策略</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        梯度爆炸和消失在求解梯度时，通过链式法则可以使用多个中间梯度来表示初始梯度，在多层网络中，如果多个中间梯度都大于1，那么最后计算得到的梯度将远大于一，故存在梯度爆炸；
+如果许多中间梯度都大于1，那么最后计算的到梯度将近乎0，故存在梯度消失。
+
+                
+                    
+                    
+                ...
+    
+
+        <a href="/2019/03/14/深度学习-训练中存在的问题/" class="post-more waves-effect waves-button">
+            Continue reading...
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
             <article id="post-Leetcode-Practice-2" class="article-card article-type-post" itemprop="blogPost">
 
     <div class="post-meta">
@@ -1048,109 +1145,6 @@ K 值如何选择
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/python/">python</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据可视化/">数据可视化</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-数据结构-堆栈-C语言实现顺序存储和链式存储" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-02-09 23:06:33" datetime="2019-02-09T15:06:33.000Z" itemprop="datePublished">2019-02-09</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/02/09/数据结构-堆栈-C语言实现顺序存储和链式存储/">堆栈——C语言实现顺序存储和链式存储</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        堆栈的顺序存储实现堆栈的顺序存储实现其实是利用了定长数组来模拟堆栈先进后出的规则，由此决定了堆栈的固定容量, 同时需要两个头尾指针来指示栈顶和栈底的位置。
-以下展示各部分的代码实现。
-
-定义结构体
-
-1234567typedef int Position;struct QNode &#123;    ElementType *Data;     /* 存储元素的数组 */    Positi...
-    
-
-        <a href="/2019/02/09/数据结构-堆栈-C语言实现顺序存储和链式存储/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-CH3-Vector-Spaces-and-Subspaces" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-02-09 15:28:03" datetime="2019-02-09T07:28:03.000Z" itemprop="datePublished">2019-02-09</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/02/09/CH3-Vector-Spaces-and-Subspaces/">CH3 | Vector Spaces and Subspaces</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        向量空间向量空间定义一个空间 $R^n$ 包含着 所有的 n 维的列向量 v，那么该空间就是向量空间。
-
-                
-                    
-                    
-                
-                
-            
-还有三种特殊的向量空间 M、F、Z。
-子空间
-               ...
-    
-
-        <a href="/2019/02/09/CH3-Vector-Spaces-and-Subspaces/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/线性代数/">线性代数</a></li></ul>
 
     </div>
     
