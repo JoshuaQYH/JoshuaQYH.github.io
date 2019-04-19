@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://joshuaqyh.github.io/"/>
-  <updated>2019-04-18T06:56:40.082Z</updated>
+  <updated>2019-04-19T03:41:47.549Z</updated>
   <id>https://joshuaqyh.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>软件工程 | Scrum开发框架入门学习</title>
+    <link href="https://joshuaqyh.github.io/2019/04/19/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B-Scrum%E5%BC%80%E5%8F%91%E6%A1%86%E6%9E%B6%E5%85%A5%E9%97%A8%E5%AD%A6%E4%B9%A0/"/>
+    <id>https://joshuaqyh.github.io/2019/04/19/软件工程-Scrum开发框架入门学习/</id>
+    <published>2019-04-19T02:11:27.000Z</published>
+    <updated>2019-04-19T03:41:47.549Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Scrum-概述"><a href="#Scrum-概述" class="headerlink" title="Scrum 概述"></a>Scrum 概述</h1><p><code>Scrum</code>是一种开发框架，不是方法学！！是关于制定开发流程和人员事项的，内容无法干涉。</p><h2 id="产品-backlog"><a href="#产品-backlog" class="headerlink" title="产品 backlog"></a>产品 backlog</h2><p>产品 <code>backlog</code> 从根本上说，就是一个需求，或故事，或特性组成的列表，按<strong>重要性级别进行排序</strong>。</p><p><code>backlog</code>当中包括的是一个个的故事<code>story</code> ,有时也称为<code>backlog</code> 条目。</p><p>一个故事包括一些字段：</p><ul><li><code>ID</code>：同一标识符，自增长的数字。</li><li><code>Name</code>: 简短的，描述性的故事名。</li><li><code>Importance</code>: 重要性，评价该项目的优先级。</li><li><code>Initial estimate</code>: 初始估算。跟其他故事相比，完成该项故事所需要的工作量。单位一般描述为故事点<code>story point</code> </li><li><code>how to demo</code>: 如何演示。大略描述了故事应该如何在sprint演示上进行示范。</li><li><code>Notes</code>：注解。相关信息，解释说明和对其他资料的引用。</li></ul><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190419110312.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>要注意产品 <code>backlog</code>停留在业务层面！</p><h2 id="Sprint-计划"><a href="#Sprint-计划" class="headerlink" title="Sprint 计划"></a>Sprint 计划</h2><p>！ 计划开始之前是 产品 <code>backlog</code> 必须存在。</p><p><code>sprint</code>计划会议是为了团队 获得充足的信息，能够在几个星期内不受干扰地工作，增强产品负责人的自信心。</p><p><code>Sprint</code> 计划会议产生的成果：</p><ul><li><code>sprint</code> 目标</li><li>团队成员名单，以及投入程度</li><li><code>sprint backlog</code>。即<code>sprint</code> 中包括的故事列表。</li><li>确定好<code>sprint</code>演示日期。</li><li>确定好时间地点。供举行每日<code>scrum</code>会议。</li></ul><p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190419113236.png" alt=""></p><p>产品负责人必须参加！产品负责人的职责：</p><ol><li>会议达成的目标</li><li>组织团队讨论故事</li><li>估算时间。</li></ol><p>上述忽视了第四个变量——质量。质量分为内部和外部质量。</p><ul><li>外部质量是系统用户可以感知的。运行缓慢、让人迷糊的用户界面就属于外部质量低劣。</li><li>内部质量一般指用户看不到的要素，它们对系统的可维护性有深远影响。可维护性包括系统设计的一致性、测试覆盖率、代码可读性和重构等等。</li></ul><p>内部质量不可让步，内部质量决定上层基础。</p><h3 id="Spring-计划会议日程"><a href="#Spring-计划会议日程" class="headerlink" title="Spring 计划会议日程"></a>Spring 计划会议日程</h3><ul><li>目标</li><li>故事</li><li>估算</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;Scrum-概述&quot;&gt;&lt;a href=&quot;#Scrum-概述&quot; class=&quot;headerlink&quot; title=&quot;Scrum 概述&quot;&gt;&lt;/a&gt;Scrum 概述&lt;/h1&gt;&lt;p&gt;&lt;code&gt;Scrum&lt;/code&gt;是一种开发框架，不是方法学！！是关于制定开发流程和人员事
+      
+    
+    </summary>
+    
+    
+      <category term="软件工程" scheme="https://joshuaqyh.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+    
+      <category term="系统分析" scheme="https://joshuaqyh.github.io/tags/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90/"/>
+    
+  </entry>
   
   <entry>
     <title>论文summary注意事项</title>
@@ -167,9 +192,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
   </entry>
   
@@ -193,9 +218,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
   </entry>
   
@@ -222,9 +247,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
   </entry>
   
@@ -249,9 +274,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
   </entry>
   
@@ -568,9 +593,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -622,9 +647,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -1500,11 +1525,11 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="信息安全" scheme="https://joshuaqyh.github.io/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
     
       <category term="Java" scheme="https://joshuaqyh.github.io/tags/Java/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
   </entry>
   
@@ -1530,9 +1555,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="数据结构" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
@@ -1558,9 +1583,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
