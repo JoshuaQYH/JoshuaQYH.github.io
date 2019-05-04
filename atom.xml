@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://joshuaqyh.github.io/"/>
-  <updated>2019-04-19T03:41:47.549Z</updated>
+  <updated>2019-05-04T12:00:08.955Z</updated>
   <id>https://joshuaqyh.github.io/</id>
   
   <author>
@@ -15,6 +15,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>深度学习 | 利用focal loss来解决样本不均衡的问题</title>
+    <link href="https://joshuaqyh.github.io/2019/05/04/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E5%88%A9%E7%94%A8focal-loss%E6%9D%A5%E8%A7%A3%E5%86%B3%E6%A0%B7%E6%9C%AC%E4%B8%8D%E5%9D%87%E8%A1%A1%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+    <id>https://joshuaqyh.github.io/2019/05/04/深度学习-利用focal-loss来解决样本不均衡的问题/</id>
+    <published>2019-05-04T11:18:14.000Z</published>
+    <updated>2019-05-04T12:00:08.955Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="focal-loss-简述"><a href="#focal-loss-简述" class="headerlink" title="focal loss 简述"></a>focal loss 简述</h1><p>论文地址来自<a href="https://arxiv.org/pdf/1708.02002v2.pdf" target="_blank" rel="noopener">arxiv</a></p><p>先放focal loss（FL）和cross entropy（CE）两个函数的数学定义。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190504194213.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190504194241.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>focal loss 称为焦点损失函数，通过改进标准的二元交叉熵损失函数来控制对正负样本的训练，为了解决在one-stage目标检测中正负样本严重不均衡的一种策略。该损失函数的设计思想类似于boosting，降低容易分类的负样本对损失函数的影响，注重较难分类的正样本的训练。</p><p>在常规的交叉熵函数的基础上，添加一个系数项，当较容易训练负样本的预测分数较高时，其计算所得的loss将变小，而较难训练的正样本则计算得到更大的loss值，但整体来看计算得到的总loss值比标准的交叉熵计算得到得结果loss更小。从下图曲线得以看出。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190504193353.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h1 id="公式探讨"><a href="#公式探讨" class="headerlink" title="公式探讨"></a>公式探讨</h1><p>当我们考虑类别的比重不相同时，我们可以给各个类别添加一个权重常数$\alpha$ ，比如正样本权重为0.8，则负样本就为0.2，然后该权重常数乘以对应类别的交叉熵计算中得以生效。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190504194446.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>这样就能够平衡正负样本的重要性。但是要解决简单分类和困难分类样本的问题则需要依赖 $\lambda$, $\lambda$ 越大，损失值计算结果越小，这能够实现对容易样本降低权重的平滑调节。对于物体检测，实验发现 $\lambda = 2$时最优。</p><p>个人认为该损失函数的设计思想可以应用于其他同样有样本不均衡特点的分类任务。</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;focal-loss-简述&quot;&gt;&lt;a href=&quot;#focal-loss-简述&quot; class=&quot;headerlink&quot; title=&quot;focal loss 简述&quot;&gt;&lt;/a&gt;focal loss 简述&lt;/h1&gt;&lt;p&gt;论文地址来自&lt;a href=&quot;https://arx
+      
+    
+    </summary>
+    
+    
+      <category term="深度学习" scheme="https://joshuaqyh.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>软件工程 | Scrum开发框架入门学习</title>
@@ -192,9 +215,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
   </entry>
   
@@ -218,9 +241,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
   </entry>
   
@@ -247,9 +270,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
   </entry>
   
@@ -274,9 +297,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
   </entry>
   
@@ -593,9 +616,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -647,9 +670,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -1525,11 +1548,11 @@
     </summary>
     
     
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
       <category term="信息安全" scheme="https://joshuaqyh.github.io/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
     
       <category term="Java" scheme="https://joshuaqyh.github.io/tags/Java/"/>
-    
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
   </entry>
   
@@ -1555,9 +1578,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
       <category term="数据结构" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
@@ -1583,9 +1606,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -1717,9 +1740,9 @@
     
       <category term="信息安全" scheme="https://joshuaqyh.github.io/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
     
-      <category term="加密技术" scheme="https://joshuaqyh.github.io/tags/%E5%8A%A0%E5%AF%86%E6%8A%80%E6%9C%AF/"/>
-    
       <category term="Java" scheme="https://joshuaqyh.github.io/tags/Java/"/>
+    
+      <category term="加密技术" scheme="https://joshuaqyh.github.io/tags/%E5%8A%A0%E5%AF%86%E6%8A%80%E6%9C%AF/"/>
     
   </entry>
   
