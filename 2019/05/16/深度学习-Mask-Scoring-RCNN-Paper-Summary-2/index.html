@@ -32,7 +32,7 @@
 <meta property="og:image" content="file:///C:/Users/Qiuyh/AppData/Local/Temp/msohtmlclip1/01/clip_image008.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190516221225.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190516221154.png">
-<meta property="og:updated_time" content="2019-05-16T14:12:51.546Z">
+<meta property="og:updated_time" content="2019-05-16T14:45:33.589Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="深度学习 | Mask Scoring RCNN Paper Summary-2">
 <meta name="twitter:description" content="Mask Scoring R-CNNSummary​    The instance segmentation task pursues the accurate classification on pixel-level in object detection. It requires more detailed labels and more delicate network structur">
@@ -200,7 +200,8 @@
 <p>​    The authors conducted extensive experiments on the COCO dataset with 80 object categories,and used COCO evaluation metrics <strong>AP </strong>to report the results. The experiment’s results on <strong>different backbone networks including ResNet-18/50/101 and the same framework (FPN)</strong> demonstrates that adding MaskIoU head is able to <strong>bring noticeable and stable AP improvements</strong> in instance segmentation and the method is <strong>insensitive to different backbone networks.</strong>Furthermore, the authors reported the results on <strong>the same backbone (ResNet-101) and different frameworks</strong> including Faster R-CNN, FPN, DCN+FPN, proving that the proposed MaskIoU head brings consistent improvement.</p>
 <p>​    To evaluate the MaskIoU method comprehensively, the authors used ResNet-18 FPN forall the ablation study experiments. First, the study on different design choices of MaskIoU head input (Fig .2) shows that the best plan is <strong>concatenating the target score map and RoI feature</strong> <strong>obtains the best results</strong>,so it is used as the default choice. Besides, the authors also explored the choices of the training target and found that <strong>the strategy of learning the MaskIoU of the target category gets the best performance</strong>.</p>
 <p>Finally, they discussed how to selecttraining samples and the results show that<strong>training using all examples</strong> without the box-level IoU threshold filterobtains the best performance. </p>
-<p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190516221154.png" alt="">Fig.2 Different design choices of the MaskIoU head input.</p>
+<p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190516221154.png" alt=""></p>
+<p>Fig.2 Different design choices of the MaskIoU head input.</p>
 <p>For further discussion, the experiments show MaskIoU predictions <strong>have good correlation with the ground truth</strong>.And the upper bound performance of the model is discussed and it outperforms Mask R-CNN consistently, which gets <strong>about 2% MaskIoU AP increase</strong> and still have a room to improve. In addition, the MaskIoU head has <strong>a small 0.39G FLOPs model size</strong> for every proposal. Even better, <strong>the computation cost of MaskIoU is negligible.</strong> </p>
 <p>The MaskIoU head, proposed in this paper, effectively achieves the alignment of mask scores with MaskIoU and surpasses the state-of-the-art methods. It also can easily be applied to other instance segmentation networks and is a new direction to improve instance segmentation. Nonetheless,MS R-CNN is still a lot of room to explore and extend. Find a more effective loss function to help to improve the performance of small objects segmentation is a noteworthy direction. Besides, how to reduce the network branch or make network parallel based on the MaskIoU regression is worth considering for the tradeoff between precision and speed.   </p>
 
@@ -211,7 +212,7 @@
     <div class="content">
         
 <span class="post-time">
-    Last updated: <time datetime="2019-05-16T14:12:51.546Z" itemprop="dateUpdated">2019-05-16 22:12:51</time>
+    Last updated: <time datetime="2019-05-16T14:45:33.589Z" itemprop="dateUpdated">2019-05-16 22:45:33</time>
 </span><br>
 
 
