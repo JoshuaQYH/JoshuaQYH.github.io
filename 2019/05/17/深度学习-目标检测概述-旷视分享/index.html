@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>深度学习 | 目标检测概述-旷视分享 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="深度学习,计算机视觉">
+    <meta name="description" content="目标检测概述思维导图内容来自旷视科技R talk，全文见知乎链接。">
+<meta name="keywords" content="深度学习,计算机视觉">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习 | 目标检测概述-旷视分享">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/05/17/深度学习-目标检测概述-旷视分享/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="目标检测概述思维导图内容来自旷视科技R talk，全文见知乎链接。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/%E6%97%B7%E8%A7%86%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%A6%82%E8%BF%B0.png">
+<meta property="og:updated_time" content="2019-05-16T17:54:13.605Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深度学习 | 目标检测概述-旷视分享">
+<meta name="twitter:description" content="目标检测概述思维导图内容来自旷视科技R talk，全文见知乎链接。">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/%E6%97%B7%E8%A7%86%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%A6%82%E8%BF%B0.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">深度学习 | 目标检测概述-旷视分享</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">深度学习 | 目标检测概述-旷视分享</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-05-16T17:51:00.000Z" itemprop="datePublished" class="page-time">
+  2019-05-17
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#目标检测概述"><span class="post-toc-number">1.</span> <span class="post-toc-text">目标检测概述</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-深度学习-目标检测概述-旷视分享" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">深度学习 | 目标检测概述-旷视分享</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-05-17 01:51:00" datetime="2019-05-16T17:51:00.000Z" itemprop="datePublished">2019-05-17</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="目标检测概述"><a href="#目标检测概述" class="headerlink" title="目标检测概述"></a>目标检测概述</h1><p>思维导图内容来自旷视科技R talk，全文见<a href="https://zhuanlan.zhihu.com/p/38154492" target="_blank" rel="noopener">知乎链接</a>。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/%E6%97%B7%E8%A7%86%E7%9B%AE%E6%A0%87%E6%A3%80%E6%B5%8B%E6%A6%82%E8%BF%B0.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-05-16T17:54:13.605Z" itemprop="dateUpdated">2019-05-17 01:54:13</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/05/17/深度学习-目标检测概述-旷视分享/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/05/17/深度学习-目标检测概述-旷视分享/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/计算机视觉/">计算机视觉</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/05/17/深度学习-目标检测概述-旷视分享/&title=《深度学习 | 目标检测概述-旷视分享》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/05/17/深度学习-目标检测概述-旷视分享/&title=《深度学习 | 目标检测概述-旷视分享》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/05/17/深度学习-目标检测概述-旷视分享/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深度学习 | 目标检测概述-旷视分享》 — KnowMyself&url=https://joshuaqyh.github.io/2019/05/17/深度学习-目标检测概述-旷视分享/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/05/17/深度学习-目标检测概述-旷视分享/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/05/16/深度学习-Mask-Scoring-RCNN-Paper-Summary-2/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">深度学习 | Mask Scoring RCNN Paper Summary-2</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/05/17/深度学习-目标检测概述-旷视分享/&title=《深度学习 | 目标检测概述-旷视分享》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/05/17/深度学习-目标检测概述-旷视分享/&title=《深度学习 | 目标检测概述-旷视分享》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/05/17/深度学习-目标检测概述-旷视分享/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深度学习 | 目标检测概述-旷视分享》 — KnowMyself&url=https://joshuaqyh.github.io/2019/05/17/深度学习-目标检测概述-旷视分享/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/05/17/深度学习-目标检测概述-旷视分享/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACu0lEQVR42u3a0WrcQAwF0Pz/T7fQp0LYzb2SlaZw/BSyG1tnAjOypI+P+Pr15/r8m7+vz9989enmbz8uLjw8PLxR6PmDk0DfL1C+WO/vEMWAh4eHd8bLb5c/LD9CkkiSQwIPDw/vp/Ha4yS/Z5Iu4+Hh4f2PvGS7bwsH+QLh4eHh/TRenha3+Hyjb9Pxh2steHh4eJOMt05n/9XPh/09PDw8vEVXfVN+nY0ItCWPL6LFw8PDO+DNGlF50py0smbjC8VIFh4eHt6jvORlPk923wfdjgLkpYeXd8PDw8M7420wmwZYXopt48TDw8O74yWhtEWE9sB4n75vDg88PDy8C9516TYvSbRHS1QEwcPDwzvgJUXbduNuG/9FvXmkwMPDw7vmzYoIbbsrX6ZNcRkPDw/vgpds1rNUezaGlYws5NHi4eHh3fGiWu9iW0926dndvogQDw8P75i3R7YLUfToZkUKPDw8vANenvK2YwHJEmwOnvrfgIeHh/cQbzYylQc9a3q1yffLGPDw8PAOeEnRdlY+aFtr+V/Vw154eHh4B7x9FroZwJoNDcyOFjw8PLw9L2/8t7w89HZR6mIEHh4e3qO8WWOsXY5ZoJtm2GqkAA8PD+8tr01Y82T3qQ7UaqQADw8P74zXhjurecyaYe1wAx4eHt738PZbdhvWbBirXQg8PDy8C17+Yp8XJoabeLxk7WABHh4e3rO8drNuS7pt0ysf0oqGwPDw8PCOeXkLKm/et4XdTYn5i4MBDw8P7yFefs3GsPZNrFmBuEbi4eHhLd7Z28MgKfvOShJtWeTlU/Dw8PDOeMVL/qJgkQ8EzIq/eHh4eD+Nl2zE+af5mELebKvfBvDw8PC+hdcGkY8m5M8txsXw8PDwznib7b4tHLSMzRPx8PDwLnizwaa2TdWm5vlB8sCFh4eHl37zN7M0nHG0bMkMAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
