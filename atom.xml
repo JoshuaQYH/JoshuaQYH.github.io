@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://joshuaqyh.github.io/"/>
-  <updated>2019-05-16T17:54:13.605Z</updated>
+  <updated>2019-05-17T05:32:22.702Z</updated>
   <id>https://joshuaqyh.github.io/</id>
   
   <author>
@@ -15,6 +15,49 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>软件工程 | 系分作业五</title>
+    <link href="https://joshuaqyh.github.io/2019/05/17/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B-%E7%B3%BB%E5%88%86%E4%BD%9C%E4%B8%9A%E4%BA%94/"/>
+    <id>https://joshuaqyh.github.io/2019/05/17/软件工程-系分作业五/</id>
+    <published>2019-05-17T05:32:22.000Z</published>
+    <updated>2019-05-17T05:32:22.702Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>软件工程 | 系分作业四</title>
+    <link href="https://joshuaqyh.github.io/2019/05/17/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B-%E7%B3%BB%E5%88%86%E4%BD%9C%E4%B8%9A%E5%9B%9B/"/>
+    <id>https://joshuaqyh.github.io/2019/05/17/软件工程-系分作业四/</id>
+    <published>2019-05-17T05:32:11.000Z</published>
+    <updated>2019-05-17T17:47:01.084Z</updated>
+    
+    <content type="html"><![CDATA[<blockquote><p>Student ID： 16340186</p><p>Name： 邱奕浩</p></blockquote><h2 id="一、简单题"><a href="#一、简单题" class="headerlink" title="一、简单题"></a>一、简单题</h2><h3 id="1-用例的概念"><a href="#1-用例的概念" class="headerlink" title="1. 用例的概念"></a>1. 用例的概念</h3><p>用例就是一组相关的成功和失败场景的集合，用来描述参与者如何使用系统实现其目标。</p><p>需要注意的是，用例是文本文档，而非图形。</p><h3 id="2-用例和场景的关系？什么是主场景或Happy-path？"><a href="#2-用例和场景的关系？什么是主场景或Happy-path？" class="headerlink" title="2. 用例和场景的关系？什么是主场景或Happy path？"></a>2. <strong>用例和场景的关系？什么是主场景或Happy path？</strong></h3><p>场景是参与者与系统交互的特定过程，也称为用例实例，是使用系统一个特定用例的一条执行路径；用例通常包括了一系列的场景：主场景或其他可选场景。</p><p>主场景指的是最常用的一个主要的基础业务场景，能够基本满足<code>Actors</code>需求以及实现其基本目标。</p><h3 id="3-用例有哪些形式？"><a href="#3-用例有哪些形式？" class="headerlink" title="3.用例有哪些形式？"></a>3.<strong>用例有哪些形式？</strong></h3><p>用例主要有以下三种常用的形式：</p><ul><li>摘要：简洁的一段式概要，通常应用于主场景的描述，一般在早期需求分析过程中为快速了解主题和范围而使用。</li><li>非正式的段落格式：用几个段落的文字覆盖不同场景。</li><li>详述：详细编写所有的步骤和各种变化，同时具有补充部分，如前置条件和成功保证。</li></ul><h3 id="4-对于复杂业务，为什么编制完整用例非常难？"><a href="#4-对于复杂业务，为什么编制完整用例非常难？" class="headerlink" title="4.对于复杂业务，为什么编制完整用例非常难？"></a>4.<strong>对于复杂业务，为什么编制完整用例非常难？</strong></h3><p>对于复杂的业务，将会涉及到诸多的复杂场景，每个场景之间可能还有依赖关系，所以编写完整准确的用例将会非常难。但是编写完整的用例仍具有重要意义，流程清晰有利于后续业务的增添删改。</p><h3 id="5-什么是用例图？"><a href="#5-什么是用例图？" class="headerlink" title="5. 什么是用例图？"></a>5. <strong>什么是用例图？</strong></h3><p>用例图是一种优秀的系统语境图，用例图能够展示系统边界与边界之外的事物以及系统如何被使用。</p><h3 id="6-用例图的基本符号与元素？"><a href="#6-用例图的基本符号与元素？" class="headerlink" title="6.用例图的基本符号与元素？"></a>6.<strong>用例图的基本符号与元素？</strong></h3><p>基本符号如下：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190517143928.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>主要元素有：</p><ul><li>参与者 <code>Actors</code></li><li>系统边界</li><li>用例 <code>Use Case</code></li><li>关系</li></ul><h3 id="7-用例图的画法与步骤"><a href="#7-用例图的画法与步骤" class="headerlink" title="7. 用例图的画法与步骤"></a>7. <strong>用例图的画法与步骤</strong></h3><p>一个简单而完整的用例图的画法和步骤组织如下：</p><ol><li><p><strong>选择系统边界。</strong>确定用例图的中待研究的系统，使用一个<code>System</code>框来表示它，同时为其正确命名，如<code>Hotel Reservation System</code>。如下图：</p><p><img src="C:\Users\Qiuyh\AppData\Local\Temp\1558075811698.png" alt="55807581169"></p></li><li><p><strong>识别和确定系统的参与者和目标</strong>。这包括明确系统的主要参与者以及识别系统所依赖的外部系统。主要参与者使用<code>actor</code>符号表示，通常放在<code>system</code>框的左边；使用<code>Neighbourssystem</code>框表示用例所依赖的外部系统、服务、设备等，使用构造性识别。如下图：</p><p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190517145630.png" alt=""></p></li><li><p><strong>识别用例以及处理好用例之间的关系。</strong> 用例包括用户级别的用例和子功能级别的用例。前者以主要参与者的目标驱动，涉及主要参与者的业务事件；后者具备业务复用和扩展创新的特征。我们需要正确表示用例和子用例之间的关系表示。我们使用<code>&lt;&lt;include&gt;&gt;</code> 表示子用例是父用例的一部分，箭头指向子用例，<code>&lt;&lt;extend&gt;&gt;</code></p><p>箭头指向父用例，箭头表示依赖关系。例子如下：</p><p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190517151421.png" alt=""></p><p>这些用例及其连线都需要放置在<code>System</code>框中。</p></li><li><p><strong>确定参与者之间的关系</strong>，即泛化关系。</p><p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190517153733.png" alt=""></p><p>​</p></li><li><p>确立<code>Actor</code>和<code>Use Cases</code>之间的关联，使用无方向连线，表示两者之间双向交互的关系。如下图：</p></li></ol><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190517151612.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><ol start="5"><li>最终的结果大致如下图：</li></ol><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190517151830.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h3 id="8-用例图给利益相关人与开发者的价值有哪些？"><a href="#8-用例图给利益相关人与开发者的价值有哪些？" class="headerlink" title="8.用例图给利益相关人与开发者的价值有哪些？"></a>8.<strong>用例图给利益相关人与开发者的价值有哪些？</strong></h3><p>用例图对于利益相关人来说，可以直观地看到系统的运行过程和结果，以及相对应的用户功能使用体验。</p><p>对开发者来说，用例图是反映系统和参与者交互的过程，是设计者的用例模型可视化表示，，能直观的向开发者表达系统逻辑，是良好的交流工具。</p><h2 id="二、建模练习题"><a href="#二、建模练习题" class="headerlink" title="二、建模练习题"></a>二、建模练习题</h2><ul><li>选择<code>2-3</code>个你熟悉的类似业务的在线服务系统（或移动 <code>APP</code>），如定旅馆（携程、去哪儿等）、定电影票、背单词APP等，分别绘制它们用例图。并满足以下要求：<ul><li>请使用用户的视角，描述用户目标或系统提供的服务</li><li>粒度达到子用例级别，并用<code>include</code> 和 <code>exclude</code> 关联它们</li><li>请用色彩标注出你认为创新（区别于竞争对手的）用例或子用例</li><li>尽可能识别外部系统和服务</li></ul></li></ul><p>以携程预订火车票的服务系统以及美团外卖订餐系统为例，进行用例图的绘制。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190518014619.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190518012238.png" alt=""></p><ul><li><p>回答下列问题：</p><ol><li><p>为什么相似系统的用例图是相似的？</p><p><strong>因为对于相似的系统具备相似的基本业务流程和场景，对应的参与者的功能需求是基本一致的，因此用例图是相似的。</strong></p></li><li><p>如果是定旅馆业务，请对比 <code>Asg_RH</code> 用例图，简述如何利用不同时代、不同地区产品的用例图，展现、突出创新业务和技术。</p><p>非订旅馆业务，此处不作解答。</p></li><li><p>如何利用用例图定位创新思路（业务创新、或技术创新、或商业模式创新）在系统中的作用。</p><p>使用<strong>鲜明的颜色背景</strong>表示创新点的相关用例进行标注。</p></li><li><p>请使用 <code>SCRUM</code> 方法，选择一个用例图，编制某定旅馆开发的需求<code>（backlog）</code>开发计划表。</p><p>使用<code>Asg_RH</code>的用例图进行编制。</p><p>| ID   | Name         | Imp  | Est  | How to demo                              | Notes              |<br>| —- | ———— | —- | —- | —————————————- | —————— |<br>| 1    | 搜寻酒店     | 10   | 6    | 定位酒店城市，具体地点，目标酒店信息陈列 | 选做智能输入匹配   |<br>| 2    | 预订酒店房间 | 20   | 10   | 选择房间类型，填写入住退订时间           | 步骤先后进入       |<br>| 3    | 搜索结果排序 | 15   | 7    | 按匹配，评分、价格，距离等不同方式排序   | 优先按匹配方式显示 |<br>| 4    | 支付确认订单 | 10   | 3    | 接入外部支付系统付款，确认订单           | 微信，支付宝支付等 |<br>| 5    | 订单管理     | 10   | 5    | 订单浏览，增删改查                       | 用户相关           |</p></li><li><p>根据任务<code>4</code>，参考 <a href="https://www.ibm.com/developerworks/cn/rational/edge/09/mar09/collaris_dekker/index.html" target="_blank" rel="noopener">使用用例点估算软件成本</a>，给出项目用例点的估算</p></li></ol></li></ul><table><thead><tr><th>用例</th><th>#业务</th><th>#计算</th><th>原因</th><th>UC比重</th></tr></thead><tbody><tr><td>搜寻酒店</td><td>3</td><td>2</td><td></td><td>简单</td></tr><tr><td>预订酒店房间</td><td>6</td><td>4</td><td></td><td>平均</td></tr><tr><td>搜索结果排序</td><td>4</td><td>5</td><td></td><td>简单</td></tr><tr><td>支付确认订单</td><td>4</td><td>3</td><td></td><td>简单</td></tr><tr><td>订单管理</td><td>2</td><td>3</td><td></td><td>简单</td></tr></tbody></table><p>  ​</p><p>  ​</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;blockquote&gt;
+&lt;p&gt;Student ID： 16340186&lt;/p&gt;
+&lt;p&gt;Name： 邱奕浩&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2 id=&quot;一、简单题&quot;&gt;&lt;a href=&quot;#一、简单题&quot; class=&quot;headerlink&quot; title=&quot;一、简单题&quot;&gt;&lt;/a
+      
+    
+    </summary>
+    
+    
+      <category term="软件工程" scheme="https://joshuaqyh.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+    
+      <category term="系统分析与设计" scheme="https://joshuaqyh.github.io/tags/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>深度学习 | 目标检测概述-旷视分享</title>
@@ -273,9 +316,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
   </entry>
   
@@ -299,9 +342,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
   </entry>
   
@@ -328,9 +371,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
   </entry>
   
@@ -355,9 +398,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
   </entry>
   
@@ -410,9 +453,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -519,9 +562,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -550,9 +593,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -577,9 +620,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -686,9 +729,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -740,9 +783,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -1034,13 +1077,13 @@
     </summary>
     
     
-      <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
-    
       <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
+    
+      <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
   </entry>
   
@@ -1065,13 +1108,13 @@
     </summary>
     
     
-      <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
-    
       <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
+    
+      <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
   </entry>
   
@@ -1096,13 +1139,13 @@
     </summary>
     
     
-      <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
-    
       <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
+    
+      <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
   </entry>
   
@@ -1125,13 +1168,13 @@
     </summary>
     
     
-      <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
-    
       <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
+    
+      <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
   </entry>
   
@@ -1154,13 +1197,13 @@
     </summary>
     
     
-      <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
-    
       <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
     
       <category term="数据挖掘" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E6%8C%96%E6%8E%98/"/>
+    
+      <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
   </entry>
   
@@ -1183,11 +1226,11 @@
     </summary>
     
     
-      <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
-    
       <category term="数据分析" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E5%88%86%E6%9E%90/"/>
     
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
   </entry>
   
@@ -1430,9 +1473,9 @@
     
       <category term="人工智能" scheme="https://joshuaqyh.github.io/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
     
-      <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
-    
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
   </entry>
   
@@ -1458,9 +1501,9 @@
     
       <category term="人工智能" scheme="https://joshuaqyh.github.io/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
     
-      <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
-    
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
   </entry>
   
@@ -1606,11 +1649,11 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+      <category term="信息安全" scheme="https://joshuaqyh.github.io/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
     
       <category term="Java" scheme="https://joshuaqyh.github.io/tags/Java/"/>
     
-      <category term="信息安全" scheme="https://joshuaqyh.github.io/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
   </entry>
   
@@ -1636,9 +1679,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="数据结构" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
@@ -1689,9 +1732,9 @@
     </summary>
     
     
-      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
-    
       <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
+      <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -1794,9 +1837,9 @@
     </summary>
     
     
-      <category term="Java" scheme="https://joshuaqyh.github.io/tags/Java/"/>
-    
       <category term="信息安全" scheme="https://joshuaqyh.github.io/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+      <category term="Java" scheme="https://joshuaqyh.github.io/tags/Java/"/>
     
   </entry>
   
@@ -1947,9 +1990,9 @@
     
       <category term="人工智能" scheme="https://joshuaqyh.github.io/tags/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/"/>
     
-      <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
-    
       <category term="机器学习" scheme="https://joshuaqyh.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+      <category term="python" scheme="https://joshuaqyh.github.io/tags/python/"/>
     
   </entry>
   
