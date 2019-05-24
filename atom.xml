@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://joshuaqyh.github.io/"/>
-  <updated>2019-05-18T12:57:09.562Z</updated>
+  <updated>2019-05-24T04:49:58.966Z</updated>
   <id>https://joshuaqyh.github.io/</id>
   
   <author>
@@ -15,6 +15,31 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>软件工程 | 领域模型入门</title>
+    <link href="https://joshuaqyh.github.io/2019/05/24/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B-%E9%A2%86%E5%9F%9F%E6%A8%A1%E5%9E%8B%E5%85%A5%E9%97%A8/"/>
+    <id>https://joshuaqyh.github.io/2019/05/24/软件工程-领域模型入门/</id>
+    <published>2019-05-24T02:52:22.000Z</published>
+    <updated>2019-05-24T04:49:58.966Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="领域模型初步认识"><a href="#领域模型初步认识" class="headerlink" title="领域模型初步认识"></a>领域模型初步认识</h1><p>领域模型是常见的业务建模过程中的一个重要制品，那么领域模型在UP中制品地位如何？请看下图。</p><p>&lt;img src=”<a href="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524105602.png&quot;/" target="_blank" rel="noopener">https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524105602.png&quot;/</a> align=’center’&gt;</p><p>下面给出一个实例，我们从下图可知道，领域建模通常可以用UML类图的形式来表达。我们通常会提炼出领域内的几个重要概念类。</p><p>而确定一组概念类则是面向对象分析的核心。</p><p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524110030.png"></p><p>我们可以看到，领域模型涵盖了概念，关联和属性，是一种可视化的字典。</p><p>概念：描述概念类的名称</p><p>属性：概念类包含的属性</p><p>关联：表示不同概念类之间的关联关系</p><h1 id="领域模型的概念"><a href="#领域模型的概念" class="headerlink" title="领域模型的概念"></a>领域模型的概念</h1><p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524110537.png"></p><p>概念类是领域模型中的一个核心组件。表示领域中的思想，事物或对象。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524111233.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>我们必须认识的是，领域建模虽然使用了UML类图来进行设计，但是领域模型却不是设计模型，是一种业务模型，它对设计模型有所启发。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524111518.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h1 id="创建领域模型"><a href="#创建领域模型" class="headerlink" title="创建领域模型"></a>创建领域模型</h1><h2 id="找到概念类"><a href="#找到概念类" class="headerlink" title="找到概念类"></a>找到概念类</h2><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524112121.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>概念类名必须是<strong>名词</strong> 。</p><p> 经过一番查找，我们可以大致确定一些概念类，并简单绘制。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524113641.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h2 id="确定属性"><a href="#确定属性" class="headerlink" title="确定属性"></a>确定属性</h2><p>一个对象里头包含的值就是属性。属性有普通属性和推导属性。</p><p>关于推导属性的界定，我们可以通过一个例子来理解。</p><p>比如在前端开发中，对于用户可见的一些数值，有时是需要在后端经过<strong>较为复杂的计算</strong>得到的，这些数值对应的属性就是推导属性。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524113813.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h2 id="确定描述类"><a href="#确定描述类" class="headerlink" title="确定描述类"></a>确定描述类</h2><p>在“描述”类的过程是简化一个类的过程。</p><p>以下给出一个简单的实例：</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524114023.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>简单来说就是一个类里头如果有某一个属性较为复杂，那么我们就可以将这个属性抽象建模为一个新的描述类，搭配原来的类来对对象进行描述。</p><h2 id="确定关联"><a href="#确定关联" class="headerlink" title="确定关联"></a>确定关联</h2><p>关联表示的是类之间的关系，表示有意义或值得关注的连接，但是我们应该避免加入大量关联。</p><p>关联的可视化形式是类之间的一条连线，同时有以首字母大写的关联名称。</p><h3 id="关联名称"><a href="#关联名称" class="headerlink" title="关联名称"></a>关联名称</h3><p>名称的命名规则需要注意：以“类名 + 动词短语 + 类名”的格式命名。（但有时并不这样命名。。）</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524124608.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><h3 id="关联的多重性"><a href="#关联的多重性" class="headerlink" title="关联的多重性"></a>关联的多重性</h3><p>应用关联线的时，我们需要明确关联两个类之间的多重性。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524124732.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>在某些复杂的情况之下，两个类还有多重关联。</p><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="C:\Users\Qiuyh\AppData\Roaming\Typora\typora-user-images\1558673328661.png" alt="1558673328661" title="">                </div>                <div class="image-caption">1558673328661</div>            </figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;h1 id=&quot;领域模型初步认识&quot;&gt;&lt;a href=&quot;#领域模型初步认识&quot; class=&quot;headerlink&quot; title=&quot;领域模型初步认识&quot;&gt;&lt;/a&gt;领域模型初步认识&lt;/h1&gt;&lt;p&gt;领域模型是常见的业务建模过程中的一个重要制品，那么领域模型在UP中制品地位如何？请看下图。&lt;
+      
+    
+    </summary>
+    
+    
+      <category term="软件工程" scheme="https://joshuaqyh.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
+    
+      <category term="系统分析与设计" scheme="https://joshuaqyh.github.io/tags/%E7%B3%BB%E7%BB%9F%E5%88%86%E6%9E%90%E4%B8%8E%E8%AE%BE%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>软件工程 | 系分作业五</title>

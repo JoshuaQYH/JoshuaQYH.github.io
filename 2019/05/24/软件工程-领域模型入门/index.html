@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>软件工程 | 领域模型入门 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="软件工程,系统分析与设计">
+    <meta name="description" content="领域模型初步认识领域模型是常见的业务建模过程中的一个重要制品，那么领域模型在UP中制品地位如何？请看下图。 &amp;lt;img src=”https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524105602.png&amp;quot;/ align=’center’&amp;gt; 下面给出一个实例，我们从下图可知道，领域建模通">
+<meta name="keywords" content="软件工程,系统分析与设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件工程 | 领域模型入门">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/05/24/软件工程-领域模型入门/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="领域模型初步认识领域模型是常见的业务建模过程中的一个重要制品，那么领域模型在UP中制品地位如何？请看下图。 &amp;lt;img src=”https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524105602.png&amp;quot;/ align=’center’&amp;gt; 下面给出一个实例，我们从下图可知道，领域建模通">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524110030.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524110537.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524111233.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524111518.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524112121.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524113641.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524113813.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524114023.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524124608.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524124732.png">
+<meta property="og:image" content="c:/Users/Qiuyh/AppData/Roaming/Typora/typora-user-images/1558673328661.png">
+<meta property="og:updated_time" content="2019-05-24T04:49:58.966Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="软件工程 | 领域模型入门">
+<meta name="twitter:description" content="领域模型初步认识领域模型是常见的业务建模过程中的一个重要制品，那么领域模型在UP中制品地位如何？请看下图。 &amp;lt;img src=”https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524105602.png&amp;quot;/ align=’center’&amp;gt; 下面给出一个实例，我们从下图可知道，领域建模通">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524110030.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">软件工程 | 领域模型入门</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">软件工程 | 领域模型入门</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-05-24T02:52:22.000Z" itemprop="datePublished" class="page-time">
+  2019-05-24
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#领域模型初步认识"><span class="post-toc-number">1.</span> <span class="post-toc-text">领域模型初步认识</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#领域模型的概念"><span class="post-toc-number">2.</span> <span class="post-toc-text">领域模型的概念</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#创建领域模型"><span class="post-toc-number">3.</span> <span class="post-toc-text">创建领域模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#找到概念类"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">找到概念类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#确定属性"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">确定属性</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#确定描述类"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">确定描述类</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#确定关联"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">确定关联</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关联名称"><span class="post-toc-number">3.4.1.</span> <span class="post-toc-text">关联名称</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关联的多重性"><span class="post-toc-number">3.4.2.</span> <span class="post-toc-text">关联的多重性</span></a></li></ol></li></ol></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-软件工程-领域模型入门" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">软件工程 | 领域模型入门</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-05-24 10:52:22" datetime="2019-05-24T02:52:22.000Z" itemprop="datePublished">2019-05-24</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <h1 id="领域模型初步认识"><a href="#领域模型初步认识" class="headerlink" title="领域模型初步认识"></a>领域模型初步认识</h1><p>领域模型是常见的业务建模过程中的一个重要制品，那么领域模型在UP中制品地位如何？请看下图。</p>
+<p>&lt;img src=”<a href="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524105602.png&quot;/" target="_blank" rel="noopener">https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524105602.png&quot;/</a> align=’center’&gt;</p>
+<p>下面给出一个实例，我们从下图可知道，领域建模通常可以用UML类图的形式来表达。我们通常会提炼出领域内的几个重要概念类。</p>
+<p>而确定一组概念类则是面向对象分析的核心。</p>
+<p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524110030.png"></p>
+<p>我们可以看到，领域模型涵盖了概念，关联和属性，是一种可视化的字典。</p>
+<p>概念：描述概念类的名称</p>
+<p>属性：概念类包含的属性</p>
+<p>关联：表示不同概念类之间的关联关系</p>
+<h1 id="领域模型的概念"><a href="#领域模型的概念" class="headerlink" title="领域模型的概念"></a>领域模型的概念</h1><p><img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524110537.png"></p>
+<p>概念类是领域模型中的一个核心组件。表示领域中的思想，事物或对象。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524111233.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>我们必须认识的是，领域建模虽然使用了UML类图来进行设计，但是领域模型却不是设计模型，是一种业务模型，它对设计模型有所启发。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524111518.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h1 id="创建领域模型"><a href="#创建领域模型" class="headerlink" title="创建领域模型"></a>创建领域模型</h1><h2 id="找到概念类"><a href="#找到概念类" class="headerlink" title="找到概念类"></a>找到概念类</h2><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524112121.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>概念类名必须是<strong>名词</strong> 。</p>
+<p> 经过一番查找，我们可以大致确定一些概念类，并简单绘制。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524113641.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="确定属性"><a href="#确定属性" class="headerlink" title="确定属性"></a>确定属性</h2><p>一个对象里头包含的值就是属性。属性有普通属性和推导属性。</p>
+<p>关于推导属性的界定，我们可以通过一个例子来理解。</p>
+<p>比如在前端开发中，对于用户可见的一些数值，有时是需要在后端经过<strong>较为复杂的计算</strong>得到的，这些数值对应的属性就是推导属性。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524113813.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h2 id="确定描述类"><a href="#确定描述类" class="headerlink" title="确定描述类"></a>确定描述类</h2><p>在“描述”类的过程是简化一个类的过程。</p>
+<p>以下给出一个简单的实例：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524114023.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>简单来说就是一个类里头如果有某一个属性较为复杂，那么我们就可以将这个属性抽象建模为一个新的描述类，搭配原来的类来对对象进行描述。</p>
+<h2 id="确定关联"><a href="#确定关联" class="headerlink" title="确定关联"></a>确定关联</h2><p>关联表示的是类之间的关系，表示有意义或值得关注的连接，但是我们应该避免加入大量关联。</p>
+<p>关联的可视化形式是类之间的一条连线，同时有以首字母大写的关联名称。</p>
+<h3 id="关联名称"><a href="#关联名称" class="headerlink" title="关联名称"></a>关联名称</h3><p>名称的命名规则需要注意：以“类名 + 动词短语 + 类名”的格式命名。（但有时并不这样命名。。）</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524124608.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<h3 id="关联的多重性"><a href="#关联的多重性" class="headerlink" title="关联的多重性"></a>关联的多重性</h3><p>应用关联线的时，我们需要明确关联两个类之间的多重性。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190524124732.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>在某些复杂的情况之下，两个类还有多重关联。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="C:\Users\Qiuyh\AppData\Roaming\Typora\typora-user-images\1558673328661.png" alt="1558673328661" title="">
+                </div>
+                <div class="image-caption">1558673328661</div>
+            </figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最終更新：<time datetime="2019-05-24T04:49:58.966Z" itemprop="dateUpdated">2019-05-24 12:49:58</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/05/24/软件工程-领域模型入门/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/05/24/软件工程-领域模型入门/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统分析与设计/">系统分析与设计</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件工程/">软件工程</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/05/24/软件工程-领域模型入门/&title=《软件工程 | 领域模型入门》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/05/24/软件工程-领域模型入门/&title=《软件工程 | 领域模型入门》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/05/24/软件工程-领域模型入门/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《软件工程 | 领域模型入门》 — KnowMyself&url=https://joshuaqyh.github.io/2019/05/24/软件工程-领域模型入门/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/05/24/软件工程-领域模型入门/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/05/18/软件工程-系分作业五/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">软件工程 | 系分作业五</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/05/24/软件工程-领域模型入门/&title=《软件工程 | 领域模型入门》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/05/24/软件工程-领域模型入门/&title=《软件工程 | 领域模型入门》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/05/24/软件工程-领域模型入门/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《软件工程 | 领域模型入门》 — KnowMyself&url=https://joshuaqyh.github.io/2019/05/24/软件工程-领域模型入门/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/05/24/软件工程-领域模型入门/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACs0lEQVR42u3aUW4CMQwFQO5/aXoAWHi2Y6DS7BcCCpmtFJsX327xdX+4Hl9N3v/4uPfq4QsPDw9vvPSrj06W8vqv8uer33j1mXh4eHh7vKsdNdmUky+u7tuv15CsGQ8PD+/XeHkrnN+U/D14eHh4/4tXxbxutSdBBh4eHt53efPWNgl582Ci17jj4eHhfYaXnyL9zuOV8z08PDy88al6suEm78wHDnpl4HINeHh4eAu8fMPNG+4kbujhq+vEw8PD+zwvLwzJM72RgmpheLIGPDw8vAXeZFCg99u/yqgGvuU5BTw8PLyY1zukrx5oVQOLhBetFg8PD2+N1zteqo5M5UtMykC0Wjw8PLwFXjVc6JWBySBC/kz0r8LDw8Mb86r6+aBAgumVhGgyAg8PD2/MS7bX/Md/bwQhx+fNPR4eHt4e75MH+b1gtzf+hYeHh7fHqx7/V4Pd6qDAqZECPDw8vD3eJGwt3LMgok1uR/kfgIeHh7fMqyKr4wV5oJCsJwp58fDw8NZ4vVGqQgRwiFQtWnh4eHjbvDwU6C06b8rz0YQ3B2Z4eHh4y7zk2CkH54FFXmbyVhsPDw/vW7xo8z1aJG6t67KQ4OHh4a3xeiFCvrlHwcEgtojmIPDw8PAO8ZKSMG9578FV/d5qhIGHh4d3lpd8xHwkK2nK89A2CVDw8PDwtnkbYwG9Njq/BYXRKzw8PLw13qRg5Af/pwLccsqLh4eHdxTWiwwmG3oeW+TN+pPRATw8PLyjvLN7bDVWSIYSqo8LR2J4eHh4A15eDJJ7k7fdZ9v6yxXi4eHhrfGqcWpSBnoxcbUtjgoDHh4e3s/wqqFDXhImty+aLMDDw8P7IK/acE8C2UkggoeHh7fNO9X4zkes8hsUFTA8PDy8Bd6BH/zxX+WLTnb4w+NZeHh4eO+//Q8M7btg/22XugAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
