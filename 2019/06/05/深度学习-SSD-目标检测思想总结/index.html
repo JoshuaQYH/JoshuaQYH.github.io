@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>深度学习 | SSD 目标检测思想总结 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="深度学习">
+    <meta name="description" content="本文不赘述SSD的算法流程，主要总结SSD的几处重点做总结。  多尺度特征图进行预测  SSD使用多个尺度的特征图进行检测，其目的是使用大的特征图检测相对较小的目标，小的特征图主要负责检测大的目标。 那么问题来了，大的特征图对检测较大目标的贡献是否大于小的特征图呢。 应该不会，模型给每个单元设置了一个比较小的先验框，并不是很大，先验框的感受野并不会占图片太大的比例，即便是偏移值也不会偏移较大。">
+<meta name="keywords" content="深度学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习 | SSD 目标检测思想总结">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/06/05/深度学习-SSD-目标检测思想总结/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="本文不赘述SSD的算法流程，主要总结SSD的几处重点做总结。  多尺度特征图进行预测  SSD使用多个尺度的特征图进行检测，其目的是使用大的特征图检测相对较小的目标，小的特征图主要负责检测大的目标。 那么问题来了，大的特征图对检测较大目标的贡献是否大于小的特征图呢。 应该不会，模型给每个单元设置了一个比较小的先验框，并不是很大，先验框的感受野并不会占图片太大的比例，即便是偏移值也不会偏移较大。">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-04T17:44:25.732Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深度学习 | SSD 目标检测思想总结">
+<meta name="twitter:description" content="本文不赘述SSD的算法流程，主要总结SSD的几处重点做总结。  多尺度特征图进行预测  SSD使用多个尺度的特征图进行检测，其目的是使用大的特征图检测相对较小的目标，小的特征图主要负责检测大的目标。 那么问题来了，大的特征图对检测较大目标的贡献是否大于小的特征图呢。 应该不会，模型给每个单元设置了一个比较小的先验框，并不是很大，先验框的感受野并不会占图片太大的比例，即便是偏移值也不会偏移较大。">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">深度学习 | SSD 目标检测思想总结</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="输入感兴趣的关键字">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">深度学习 | SSD 目标检测思想总结</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-06-04T17:10:06.000Z" itemprop="datePublished" class="page-time">
+  2019-06-05
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-深度学习-SSD-目标检测思想总结" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">深度学习 | SSD 目标检测思想总结</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-06-05 01:10:06" datetime="2019-06-04T17:10:06.000Z" itemprop="datePublished">2019-06-05</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>本文不赘述SSD的算法流程，主要总结SSD的几处重点做总结。</p>
+<ul>
+<li><strong>多尺度特征图进行预测</strong></li>
+</ul>
+<p>SSD使用多个尺度的特征图进行检测，其目的是使用大的特征图检测相对较小的目标，小的特征图主要负责检测大的目标。</p>
+<p>那么问题来了，大的特征图对检测较大目标的贡献是否大于小的特征图呢。</p>
+<p>应该不会，模型给每个单元设置了一个比较小的先验框，并不是很大，先验框的感受野并不会占图片太大的比例，即便是偏移值也不会偏移较大。</p>
+<ul>
+<li><strong>采用卷积层进行预测</strong></li>
+</ul>
+<p>与YOLO层最后采用全连接不同，SSD直接采用卷积后的特征图来代表检测值。</p>
+<ul>
+<li><strong>设置先验框。</strong></li>
+</ul>
+<p>基于anchor的理念，在每个单元设置尺度或者长宽比不同的先验框，对于每一个先验框都有对应的一套检测值（边界框的中心位置和相对先验框位置偏移量，以及边界框的偏移量）。在实验中，先验框的数目高达9000+。</p>
+<ul>
+<li><strong>hard negative mining 解决正负样本不均衡的问题</strong> </li>
+</ul>
+<p>anchor的方法的坏处就是会cover许多背景，这些背景属于负样本，在训练过程中将会造成样本严重不均衡的问题。后续提出的focal loss对缓解该问题有一定的帮助，而SSD算法则是采用的hard negative mining的技术，对负样本进行抽样，抽样时按照置信度误差（置信度为0~1，误差越大，置信度越小）进行降序排列，选取误差较大的top - k 作为训练的负样本，以保证正负样本的比例接近1：3，减少负样本的数目。</p>
+<ul>
+<li><strong>先验框匹配原则。</strong> <ul>
+<li>ground truth box 与 IOU最大的先验框匹配，这个得到匹配的先验框被成为正样本先验框，但是gt box毕竟数目很少，会有很多的先验框作为负样本。</li>
+<li>除了使用困难样本挖掘技术之外，SSD增加了一条匹配原则，就是某个负样本先验框如果与gt box 的IOU的大于某个阈值（一般为0.5）的话，那么这个负样本就被认为是正样本。</li>
+</ul>
+</li>
+</ul>
+<p>其实第一条原则只是第二条原则的一个特例而已，一般来说，有了第二个原则，那么第一个原则就成立了（不过实际代码还是都实现了这两个原则）。</p>
+<p>问题又来了，这样匹配就会出现一个gt box对应多个先验框，这样一个gt box就会有多个预测框。我们使用NMS（非最大化抑制）来去除重复多余的框。</p>
+<ul>
+<li><strong>数据扩增</strong></li>
+</ul>
+<p>主要采用的技术有水平翻转（horizontal flip），随机裁剪加颜色扭曲（random crop &amp; color distortion），随机采集块域（Randomly sample a patch）（获取小目标训练样本），</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    最后更新时间：<time datetime="2019-06-04T17:44:25.732Z" itemprop="dateUpdated">2019-06-05 01:44:25</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/06/05/深度学习-SSD-目标检测思想总结/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/06/05/深度学习-SSD-目标检测思想总结/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/06/05/深度学习-SSD-目标检测思想总结/&title=《深度学习 | SSD 目标检测思想总结》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/06/05/深度学习-SSD-目标检测思想总结/&title=《深度学习 | SSD 目标检测思想总结》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/06/05/深度学习-SSD-目标检测思想总结/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深度学习 | SSD 目标检测思想总结》 — KnowMyself&url=https://joshuaqyh.github.io/2019/06/05/深度学习-SSD-目标检测思想总结/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/06/05/深度学习-SSD-目标检测思想总结/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/06/04/论文-云系统中基于协同多种群优化算法的多目标工作流调度/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">工作流 | 云系统中基于协同多种群优化算法的多目标工作流调度</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>博客内容遵循 <a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh">知识共享 署名 - 非商业性 - 相同方式共享 4.0 国际协议</a></span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/06/05/深度学习-SSD-目标检测思想总结/&title=《深度学习 | SSD 目标检测思想总结》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/06/05/深度学习-SSD-目标检测思想总结/&title=《深度学习 | SSD 目标检测思想总结》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/06/05/深度学习-SSD-目标检测思想总结/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深度学习 | SSD 目标检测思想总结》 — KnowMyself&url=https://joshuaqyh.github.io/2019/06/05/深度学习-SSD-目标检测思想总结/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/06/05/深度学习-SSD-目标检测思想总结/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACs0lEQVR42u3aQW7jMBAEwPz/09nzwiule0Z0vEDpZBgWxeJBHPfw6yu+vl+uq+/vr/u77p/4+pvHLjw8PLz11JMJvX5/P3L7/dWz8jnj4eHhneZdTW42dHJvTrof/wcLHh4e3ofx7se5/6adLh4eHt7/y5stQfK6vy+78fDw8D6Nl5fIbdR7vxx5RHs8a8HDw8OLeXkX6XM+H+nv4eHh4a276puIdhZVzLaBy9ni4eHhHeDty+Wk/d+2wRJwMk88PDy8E7xZDNEGrPlBgf3G8Ne9eHh4eAd4s3ZX3riaRQz5AawinsDDw8N7lDf8kz/aNmYzWTXq8PDw8A7w2mnN2LNQYxNM4OHh4Z3g5RNNHjZrhuVFc71V4OHh4R3gzaLVWRndtsTaLQEPDw/vnbxNJJFvJJuR820JDw8P7zRvM1zeEstHyBty0QaDh4eH90u8/EXfHkfYFNlJSIGHh4d3jjcLI5KYNTlk0EYPxbaEh4eHd4A3K5fb5lZ7UGAWJUdLhoeHh/cQb7YS7abSHhTIo4offo+Hh4d3mPdsHJCHHTNwFEPj4eHhPcprY4XZFJNwoX16dOgKDw8P7wAvKUk3j2kPXc0yhDrGxcPDw1vwNk2pZKKzxUruiuaMh4eHd4D3bMs/j1bz41az4v4fWQseHh7eMV7b7M+PZ+0Xrl0CPDw8vPfzElj74t6XyHmpjYeHh/ceXhvv5q39tlU2uy7DXDw8PLyHeN/llcev7ZGsfIsqlhUPDw/vAK994ebRQx4r5NFw8rkotfHw8PAWvDbGzQvldvxNCf5YSo2Hh4cX89qXcgtIyu59AHGZteDh4eF9DK8NHXLYZivCw8PD+0xe2+yfBbKzyAMPDw/vPby2+dSGF/kiJuB86fHw8PBO8GZ/+DdhRP6izwPfx85q4eHh4d1dfwD/tYi92R1izAAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
