@@ -118,7 +118,7 @@
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
                 <i class="icon icon-lg icon-chevron-left"></i>
             </a>
-            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="検索">
             <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
                 <i class="icon icon-lg icon-search"></i>
             </a>
@@ -150,6 +150,121 @@
 <div class="container body-wrap">
 
     <ul class="post-list">
+    
+        <li class="post-list-item fade">
+            <article id="post-数据结构-二叉树" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-03-29 16:56:20" datetime="2019-03-29T08:56:20.000Z" itemprop="datePublished">2019-03-29</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/03/29/数据结构-二叉树/">数据结构 | 二叉树</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        非递归实现遍历
+前序遍历非递归实现
+
+使用栈来完成。
+访问左节点，压入右节点。
+左节点为空，弹出右节点。
+
+
+中序遍历非递归实现
+
+使用栈来完成
+遇到一个节点，将其推入栈，遍历其左子树
+遍历完左子树，弹出栈顶节点并访问
+同时遍历其右节点，重复上述动作。
+
+
+非递归后续遍历二叉树
+
+从根节点开始，判断栈空还是非空
+沿左路下降。。。
+最难的。。总之就是左右子树访问完毕，才访问根节点
+
+O(n) ...
+    
+
+        <a href="/2019/03/29/数据结构-二叉树/" class="post-more waves-effect waves-button">
+            続きを読む…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据结构/">数据结构</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
+    
+        <li class="post-list-item fade">
+            <article id="post-Leetcode-Practice-7" class="article-card article-type-post" itemprop="blogPost">
+
+    <div class="post-meta">
+        <time class="post-time" title="2019-03-29 15:40:47" datetime="2019-03-29T07:40:47.000Z" itemprop="datePublished">2019-03-29</time>
+
+        
+
+
+    </div>
+
+    
+
+
+  
+    <h3 class="post-title" itemprop="name">
+      <a class="post-title-link" href="/2019/03/29/Leetcode-Practice-7/">Leetcode | Practice 7</a>
+    </h3>
+  
+
+
+
+
+    <div class="post-content" id="post-content" itemprop="postContent">
+
+    
+        如题。
+题目的要求就是输入一个编码的串S，包含数字和字母，从头开始读取，如果读取到字母，就直接放入结果的解码串，如果读取到数字，就把解码串已有的内容复制几遍。
+最后给定一个数K，返回该位置的字符。
+想来是比较简单的，因为可以直接申请一个string，读到字母就往里头append，读到数字就复制几遍，然后最后按索引输出结果字符就行了。先试试。
+果然有坑！
+1234567891011121314...
+    
+
+        <a href="/2019/03/29/Leetcode-Practice-7/" class="post-more waves-effect waves-button">
+            続きを読む…
+        </a>
+    </div>
+    
+    <div class="post-footer">
+        
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/C/">C++</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Leetcode/">Leetcode</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/algorithm/">algorithm</a></li></ul>
+
+    </div>
+    
+</article>
+
+        </li>
     
         <li class="post-list-item fade">
             <article id="post-软件工程-正确性要素-on-SDLC" class="article-card article-type-post" itemprop="blogPost">
@@ -189,7 +304,7 @@
     
 
         <a href="/2019/03/27/软件工程-正确性要素-on-SDLC/" class="post-more waves-effect waves-button">
-            Continue reading...
+            続きを読む…
         </a>
     </div>
     
@@ -237,7 +352,7 @@
     
 
         <a href="/2019/03/27/软件测试-敏捷宣言四-风险评估/" class="post-more waves-effect waves-button">
-            Continue reading...
+            続きを読む…
         </a>
     </div>
     
@@ -288,7 +403,7 @@
     
 
         <a href="/2019/03/26/数据结构-字符串string-学习/" class="post-more waves-effect waves-button">
-            Continue reading...
+            続きを読む…
         </a>
     </div>
     
@@ -345,7 +460,7 @@ i能够被第i个整除
     
 
         <a href="/2019/03/26/Leetcode-Practice-6/" class="post-more waves-effect waves-button">
-            Continue reading...
+            続きを読む…
         </a>
     </div>
     
@@ -400,7 +515,7 @@ i能够被第i个整除
     
 
         <a href="/2019/03/26/Leetcode-Practice-5/" class="post-more waves-effect waves-button">
-            Continue reading...
+            続きを読む…
         </a>
     </div>
     
@@ -448,7 +563,7 @@ i能够被第i个整除
     
 
         <a href="/2019/03/26/Leetcode-Practice-4/" class="post-more waves-effect waves-button">
-            Continue reading...
+            続きを読む…
         </a>
     </div>
     
@@ -492,7 +607,7 @@ i能够被第i个整除
     
 
         <a href="/2019/03/26/深度学习-StarGAN-paper-summary/" class="post-more waves-effect waves-button">
-            Continue reading...
+            続きを読む…
         </a>
     </div>
     
@@ -547,7 +662,7 @@ i能够被第i个整除
     
 
         <a href="/2019/03/25/机器学习-支持向量机学习笔记/" class="post-more waves-effect waves-button">
-            Continue reading...
+            続きを読む…
         </a>
     </div>
     
@@ -601,7 +716,7 @@ i能够被第i个整除
     
 
         <a href="/2019/03/24/软件工程-系分作业二/" class="post-more waves-effect waves-button">
-            Continue reading...
+            続きを読む…
         </a>
     </div>
     
@@ -648,7 +763,7 @@ i能够被第i个整除
     
 
         <a href="/2019/03/18/leetcode-practice-3/" class="post-more waves-effect waves-button">
-            Continue reading...
+            続きを読む…
         </a>
     </div>
     
@@ -698,7 +813,7 @@ i能够被第i个整除
     
 
         <a href="/2019/03/14/深度学习-训练中存在的问题/" class="post-more waves-effect waves-button">
-            Continue reading...
+            続きを読む…
         </a>
     </div>
     
@@ -748,7 +863,7 @@ URL:https://leetcode.com/problems/construct-binary-search-tree-from-preorder-tra
     
 
         <a href="/2019/03/14/Leetcode-Practice-2/" class="post-more waves-effect waves-button">
-            Continue reading...
+            続きを読む…
         </a>
     </div>
     
@@ -799,7 +914,7 @@ URL:https://leetcode.com/problems/construct-binary-search-tree-from-preorder-tra
     
 
         <a href="/2019/03/08/软件工程-软件质量标准/" class="post-more waves-effect waves-button">
-            Continue reading...
+            続きを読む…
         </a>
     </div>
     
@@ -843,7 +958,7 @@ URL:https://leetcode.com/problems/construct-binary-search-tree-from-preorder-tra
     
 
         <a href="/2019/03/08/深度学习-模型优化策略/" class="post-more waves-effect waves-button">
-            Continue reading...
+            続きを読む…
         </a>
     </div>
     
@@ -891,7 +1006,7 @@ URL:https://leetcode.com/problems/construct-binary-search-tree-from-preorder-tra
     
 
         <a href="/2019/03/05/机器学习-PageRank-算法和简单应用/" class="post-more waves-effect waves-button">
-            Continue reading...
+            続きを読む…
         </a>
     </div>
     
@@ -948,7 +1063,7 @@ URL:https://leetcode.com/problems/construct-binary-search-tree-from-preorder-tra
     
 
         <a href="/2019/03/03/阐释原型方法对软件生命周期各阶段的支持/" class="post-more waves-effect waves-button">
-            Continue reading...
+            続きを読む…
         </a>
     </div>
     
@@ -1000,7 +1115,7 @@ NATO (1968): 软件工程是研究和应用如何以系统的，规范化的，�
     
 
         <a href="/2019/03/02/软件工程-系分作业一/" class="post-more waves-effect waves-button">
-            Continue reading...
+            続きを読む…
         </a>
     </div>
     
@@ -1048,121 +1163,13 @@ NATO (1968): 软件工程是研究和应用如何以系统的，规范化的，�
     
 
         <a href="/2019/03/01/软件工程-核心概念/" class="post-more waves-effect waves-button">
-            Continue reading...
+            続きを読む…
         </a>
     </div>
     
     <div class="post-footer">
         
 	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件工程/">软件工程</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-机器学习-神经网络推导-前向-反向" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-02-28 10:44:48" datetime="2019-02-28T02:44:48.000Z" itemprop="datePublished">2019-02-28</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/02/28/机器学习-神经网络推导-前向-反向/">机器学习 | 神经网络推导-前向&amp;反向</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        
- 以下BP神经网络推导过程是来自于NTU的李宏毅老师的ML课程。过程相当易懂，很好理解。为避免忘记，在此记录一下。视频推导链接如下（需要fq）:
-https://www.youtube.com/watch?v=ibJpTrp5mcE
-
-
-                
-                    
-                    
-                
- ...
-    
-
-        <a href="/2019/02/28/机器学习-神经网络推导-前向-反向/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
-
-    </div>
-    
-</article>
-
-        </li>
-    
-        <li class="post-list-item fade">
-            <article id="post-机器学习-线性模型-手写推导和求解" class="article-card article-type-post" itemprop="blogPost">
-
-    <div class="post-meta">
-        <time class="post-time" title="2019-02-26 02:02:44" datetime="2019-02-25T18:02:44.000Z" itemprop="datePublished">2019-02-26</time>
-
-        
-
-
-    </div>
-
-    
-
-
-  
-    <h3 class="post-title" itemprop="name">
-      <a class="post-title-link" href="/2019/02/26/机器学习-线性模型-手写推导和求解/">机器学习 | 线性模型-手写推导和求解</a>
-    </h3>
-  
-
-
-
-
-    <div class="post-content" id="post-content" itemprop="postContent">
-
-    
-        写的好草啊，虽然这个有点简单，但如果涉及到对数回归就会相对麻烦一点了，这次就先这样，下次要更加规范一点：
-
-字体不要太草
-公式符号要特别标明
-
-下面是简单记录模型的含义，以及如何利用梯度下降法来求解最小二乘法的问题。
-
-                
-                    
-                    
-                
-           ...
-    
-
-        <a href="/2019/02/26/机器学习-线性模型-手写推导和求解/" class="post-more waves-effect waves-button">
-            Continue reading...
-        </a>
-    </div>
-    
-    <div class="post-footer">
-        
-	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据挖掘/">数据挖掘</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/机器学习/">机器学习</a></li></ul>
 
     </div>
     
@@ -1199,7 +1206,7 @@ https://www.youtube.com/watch?v=ibJpTrp5mcE
             
                 <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
             
-            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+            <span>このブログの内容物は<a rel="license" href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.ja">クリエイティブ・コモンズ 表示 - 非営利 - 継承 4.0 国際ライセンスの下に提供されています</a></span>
         </p>
     </div>
     <div class="bottom">
