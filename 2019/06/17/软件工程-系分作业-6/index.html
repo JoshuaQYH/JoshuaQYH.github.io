@@ -1,0 +1,530 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>软件工程 | 系分作业六 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="软件工程,系统分析与设计">
+    <meta name="description" content="练习资源：Asg-RH.pdf 使用 UMLet 建模  1、使用类图，分别对 Asg_RH 文档中 Make Reservation 用例以及 Payment 用例开展领域建模。然后，根据上述模型，给出建议的数据表以及主要字段，特别是主键和外键 注意事项： 对象必须是名词、特别是技术名词、报表、描述类的处理； 关联必须有多重性、部分有名称与导航方向 属性要注意计算字段   数据建模，为了简化描述">
+<meta name="keywords" content="软件工程,系统分析与设计">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件工程 | 系分作业六">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/06/17/软件工程-系分作业-6/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="练习资源：Asg-RH.pdf 使用 UMLet 建模  1、使用类图，分别对 Asg_RH 文档中 Make Reservation 用例以及 Payment 用例开展领域建模。然后，根据上述模型，给出建议的数据表以及主要字段，特别是主键和外键 注意事项： 对象必须是名词、特别是技术名词、报表、描述类的处理； 关联必须有多重性、部分有名称与导航方向 属性要注意计算字段   数据建模，为了简化描述">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190617112004.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190617113924.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190617131828.png">
+<meta property="og:updated_time" content="2019-06-17T05:18:37.732Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="软件工程 | 系分作业六">
+<meta name="twitter:description" content="练习资源：Asg-RH.pdf 使用 UMLet 建模  1、使用类图，分别对 Asg_RH 文档中 Make Reservation 用例以及 Payment 用例开展领域建模。然后，根据上述模型，给出建议的数据表以及主要字段，特别是主键和外键 注意事项： 对象必须是名词、特别是技术名词、报表、描述类的处理； 关联必须有多重性、部分有名称与导航方向 属性要注意计算字段   数据建模，为了简化描述">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190617112004.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">软件工程 | 系分作业六</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">软件工程 | 系分作业六</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-06-17T02:20:18.000Z" itemprop="datePublished" class="page-time">
+  2019-06-17
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+
+<article id="post-软件工程-系分作业-6" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">软件工程 | 系分作业六</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-06-17 10:20:18" datetime="2019-06-17T02:20:18.000Z" itemprop="datePublished">2019-06-17</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>练习资源：<a href="https://sysu-swsad.github.io/swad-guide/material/Asg_RH.pdf" target="_blank" rel="noopener">Asg-RH.pdf</a></p>
+<p>使用 <strong>UMLet</strong> 建模</p>
+<ul>
+<li>1、使用类图，分别对 Asg_RH 文档中 Make Reservation 用例以及 Payment 用例开展领域建模。然后，根据上述模型，给出建议的数据表以及主要字段，特别是主键和外键<ul>
+<li>注意事项：<ul>
+<li>对象必须是名词、特别是技术名词、报表、描述类的处理；</li>
+<li>关联必须有多重性、部分有名称与导航方向</li>
+<li>属性要注意计算字段</li>
+</ul>
+</li>
+<li>数据建模，为了简化描述仅需要给出表清单，例如：<ul>
+<li>Hotel（ID/Key，Name，LoctionID/Fkey，Address…..）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<hr>
+<p>针对Ags_RH文档中的 Make Reservations 用例开展领域建模，结果如下：</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190617112004.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>数据库表：</p>
+<ul>
+<li>Traveller(<code>TraellerID/Key</code>, fullName, email)</li>
+<li>Hotel(<code>HotelID/Key</code>, <code>CityID/FKey</code>,<code>RoomID/FKey</code>, hotelName, address, starRating)</li>
+<li>City(<code>CityID/Key</code>, locCode,geoCode,isFavourite, isCapical,regional, town)</li>
+<li>Room(<code>RoomID/Key</code>,<code>RoomDetailsID/FKey</code>, <code>RoomReservedItemID/FKey</code>, type, price, reservedDate, isAvaliable, reservedNum, totalNum)</li>
+<li>RoomDetails(<code>RoomDetailsID/Key</code>, type, price, totalNum, reservedNum, breif_intro)</li>
+<li>RoomReservedItem(<code>RoomReservedItemID/Key</code>,  type, checkInDate, numOfNight, numOfReservedRooms, numOfAdults, numOfChildrens, ageOfChildren, reserverName, specialRequirement, isSmoking, totalPrice)</li>
+</ul>
+<hr>
+<p> 针对 Payment 用例开展领域建模。</p>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190617113924.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>数据库表：</p>
+<ul>
+<li>CardHolder(<code>userID/Key</code>, <code>reservedItemID/FKey</code>,<code>adressDetailsID/Fkey</code>, <code>CreditCardID/Fkey</code>, email, name)</li>
+<li>AddressDetails(<code>addressDetailsID/Key</code>, firstName, lastName, addressList, city, countyState, country, postCode, daytimeTelephone, eveningTelephone)</li>
+<li>CreditCard(<code>CreditCardID/Key</code>,  <code>paymentID/FKey</code>, type)</li>
+<li>Payment(<code>paymentID/Key</code>, totalPrice)</li>
+<li>ReservedItem(<code>reservedItemID/Key</code>, <code>paymentID/FKey</code>, hotelName, checkInDate, numOfNights)</li>
+</ul>
+<hr>
+<p>2、使用 UML State Model，对每个订单对象生命周期建模</p>
+<ul>
+<li>建模对象： 参考 Asg_RH 文档， 对 Reservation/Order 对象建模。</li>
+<li>建模要求： 参考练习不能提供足够信息帮助你对订单对象建模，请参考现在 定旅馆 的旅游网站，尽可能分析围绕订单发生的各种情况，直到订单通过销售事件（柜台销售）结束订单。</li>
+</ul>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190617131828.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-06-17T05:18:37.732Z" itemprop="dateUpdated">2019-06-17 13:18:37</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/06/17/软件工程-系分作业-6/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/06/17/软件工程-系分作业-6/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/系统分析与设计/">系统分析与设计</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/软件工程/">软件工程</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/06/17/软件工程-系分作业-6/&title=《软件工程 | 系分作业六》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/06/17/软件工程-系分作业-6/&title=《软件工程 | 系分作业六》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/06/17/软件工程-系分作业-6/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《软件工程 | 系分作业六》 — KnowMyself&url=https://joshuaqyh.github.io/2019/06/17/软件工程-系分作业-6/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/06/17/软件工程-系分作业-6/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/06/15/深度学习-常用pytorch代码片段/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">深度学习 | 常用pytorch代码片段 </h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/06/17/软件工程-系分作业-6/&title=《软件工程 | 系分作业六》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/06/17/软件工程-系分作业-6/&title=《软件工程 | 系分作业六》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/06/17/软件工程-系分作业-6/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《软件工程 | 系分作业六》 — KnowMyself&url=https://joshuaqyh.github.io/2019/06/17/软件工程-系分作业-6/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/06/17/软件工程-系分作业-6/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACxElEQVR42u3awW6DMBAE0P7/T6dST5UqyMzapjk8TlFEwI8D3szu11d8vH6O359/f/P3nKtv7q9wf6+r8zcceHh4eKOlXx33C02WnlwnAd+zL6+Ah4eHd4yXvKDzzWN2nautJX/ceHh4eJ/GK17Hy+DZRoWHh4f3abwZfuWlPyvN8fDw8J7hJYtrN4NZ1JvEuEeyFjw8PLyu+q0bYP/7+Xh/Dw8PD2/UVc8DiPvPs1J7fYV4eHh4J3hJ236l3ZUX2clQVzKaEM0y4OHh4S3w2j/5u17ibT18H0xcPmI8PDy8A7zZz/LCem9JPYuJ8fDw8E7wZqFtOwSwEi4kfwCKvwR4eHh4C7y2XJ6Fs3mskI8OJFsIHh4e3jleG5KuwJJyud1+Lu+Lh4eHd4CXV9wrRXN7/aTEbzcbPDw8vBO8dtozGReYNczyhebjC3h4eHjneEkAMRuZWnnpr7TQ8PDw8E7wZuNN+YPIS/DkFV+X1Hh4eHiP8FbiifaF3o5qDQNcPDw8vK28WYO/jRhm0cOshYaHh4f3DC8plPNbtmfW7at4+8HDw8M7wZvFpvlS2jPbqDeKcfHw8PA28fJF73rFtxHGbA14eHh4p3l5nLpeds+2k/a3b26Jh4eHt8DLs4rZOW3s2w4TRHg8PDy8R3j5jWfxQT6g0AbNb4au8PDw8DbxZj9eaYMlj3V2zrZng4eHhxe8LdtFJFvFyqBVvpG82a7w8PDwHuElzaf8lgl41wBWtDHg4eHhLfBe5dF2l2bINiZ+M3SFh4eHt5W3KzzNF71ru6rbYHh4eHhbecmC2pJ69shmsUgRRuDh4eFt5eWbQR5AtEXwbCPBw8PD+3xeG8ueiHGT8QU8PDy8T+DV5Ww8ItCW70U5joeHh3eM17ay8pi1bVPNfnv5UPDw8PAO8FYi17z8nQ0T5FvIsLOHh4eH1/G+Afryac4ki1K9AAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
