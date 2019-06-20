@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>深度学习 | 如何提升模型的效率？ | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="深度学习">
+    <meta name="description" content="现在深度学习模型的应用仍存在许多瓶颈，模型速度，内存占用，能耗等。 我们的追求就是在保证模型效果的前提之下，保证速度更快，占用内存更少，能耗更少。 接下来介绍几种提升模型效率的方法。 Factorizationlow-rank 矩阵分解（2D） low-rank 张量分解（3D） canonical polyadic分解（4D） 有效性？ 局限性：在原来已训练好的模型上进行改进，减少计算量，但模型">
+<meta name="keywords" content="深度学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习 | 如何提升模型的效率？">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/06/20/深度学习-如何提升模型的效率？/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="现在深度学习模型的应用仍存在许多瓶颈，模型速度，内存占用，能耗等。 我们的追求就是在保证模型效果的前提之下，保证速度更快，占用内存更少，能耗更少。 接下来介绍几种提升模型效率的方法。 Factorizationlow-rank 矩阵分解（2D） low-rank 张量分解（3D） canonical polyadic分解（4D） 有效性？ 局限性：在原来已训练好的模型上进行改进，减少计算量，但模型">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-06-20T13:54:32.526Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深度学习 | 如何提升模型的效率？">
+<meta name="twitter:description" content="现在深度学习模型的应用仍存在许多瓶颈，模型速度，内存占用，能耗等。 我们的追求就是在保证模型效果的前提之下，保证速度更快，占用内存更少，能耗更少。 接下来介绍几种提升模型效率的方法。 Factorizationlow-rank 矩阵分解（2D） low-rank 张量分解（3D） canonical polyadic分解（4D） 有效性？ 局限性：在原来已训练好的模型上进行改进，减少计算量，但模型">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">深度学习 | 如何提升模型的效率？</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">深度学习 | 如何提升模型的效率？</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-06-20T08:25:30.000Z" itemprop="datePublished" class="page-time">
+  2019-06-20
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Factorization"><span class="post-toc-number">1.</span> <span class="post-toc-text">Factorization</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Knowledge-transfer"><span class="post-toc-number">2.</span> <span class="post-toc-text">Knowledge transfer</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Pruning"><span class="post-toc-number">3.</span> <span class="post-toc-text">Pruning</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Quantization"><span class="post-toc-number">4.</span> <span class="post-toc-text">Quantization</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#New-model-design"><span class="post-toc-number">5.</span> <span class="post-toc-text">New model design</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-深度学习-如何提升模型的效率？" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">深度学习 | 如何提升模型的效率？</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-06-20 16:25:30" datetime="2019-06-20T08:25:30.000Z" itemprop="datePublished">2019-06-20</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>现在深度学习模型的应用仍存在许多瓶颈，模型速度，内存占用，能耗等。</p>
+<p>我们的追求就是在保证模型效果的前提之下，保证速度更快，占用内存更少，能耗更少。</p>
+<p>接下来介绍几种提升模型效率的方法。</p>
+<h3 id="Factorization"><a href="#Factorization" class="headerlink" title="Factorization"></a>Factorization</h3><p>low-rank 矩阵分解（2D）</p>
+<p>low-rank 张量分解（3D）</p>
+<p>canonical polyadic分解（4D）</p>
+<p>有效性？</p>
+<p>局限性：在原来已训练好的模型上进行改进，减少计算量，但模型体积仍然较大。</p>
+<h3 id="Knowledge-transfer"><a href="#Knowledge-transfer" class="headerlink" title="Knowledge transfer"></a>Knowledge transfer</h3><p>distillation network: soft label for teaching.</p>
+<p>transfer mid-level  information: gram matrix to transfer knowledge。</p>
+<h3 id="Pruning"><a href="#Pruning" class="headerlink" title="Pruning"></a>Pruning</h3><p>对某些重要性不强的kernel或者fc神经元进行剔除，然后重新进行训练。</p>
+<p>通道剪枝：剔除每一层中不太重要的特征通道。可以通过一个缩放因子来决定整个特征图的重要性。</p>
+<p>局限性 ：减少模型参数量，模型体积小，但是加速不明显，可并行性较低。</p>
+<h3 id="Quantization"><a href="#Quantization" class="headerlink" title="Quantization"></a>Quantization</h3><p>XNOR-Net</p>
+<p>对卷积核和输入进行量化（如二值化），比如浮点数转为0，1，-1这些存储空间小，运算速度快的数值。实现缩小模型体积的同时加快运算。</p>
+<p>不过这一 量化过程都是发生在推断的过程，或者说前向传播的过程，但是更新模型参数的时候，反向传播时不能进行二值化，但是在训练时加速不明显，没有对梯度进行量化。</p>
+<p>DoReFa-net</p>
+<p>对feature map，kernel size，grad进行量化 。但是这三种量化策略不同，不是简单的二值量化。</p>
+<p>量化时会导致产生必要的noise，如果在量化之前添加一些noise的话，可能提升性能。</p>
+<h3 id="New-model-design"><a href="#New-model-design" class="headerlink" title="New model design"></a>New model design</h3><p>SqueezeNet</p>
+<p>使用 1 * 1 卷积 + skip connection减少模型通道数。</p>
+<p>MobileNet</p>
+<p>depth-wise / 1* 1 point-wise 卷积减少feature map计算量和参数量。</p>
+<p>MobileNet v2:</p>
+<p>使用了1*1 conv/ relu6 / dwise residual block</p>
+<p>ShuffleNet：</p>
+<p>channel shuffle / group conv / dw conv</p>
+<p>shuffle 策略？？</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-06-20T13:54:32.526Z" itemprop="dateUpdated">2019-06-20 21:54:32</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/06/20/深度学习-如何提升模型的效率？/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/06/20/深度学习-如何提升模型的效率？/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/06/20/深度学习-如何提升模型的效率？/&title=《深度学习 | 如何提升模型的效率？》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/06/20/深度学习-如何提升模型的效率？/&title=《深度学习 | 如何提升模型的效率？》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/06/20/深度学习-如何提升模型的效率？/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深度学习 | 如何提升模型的效率？》 — KnowMyself&url=https://joshuaqyh.github.io/2019/06/20/深度学习-如何提升模型的效率？/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/06/20/深度学习-如何提升模型的效率？/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/06/17/软件工程-系分作业-6/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">软件工程 | 系分作业六</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/06/20/深度学习-如何提升模型的效率？/&title=《深度学习 | 如何提升模型的效率？》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/06/20/深度学习-如何提升模型的效率？/&title=《深度学习 | 如何提升模型的效率？》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/06/20/深度学习-如何提升模型的效率？/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深度学习 | 如何提升模型的效率？》 — KnowMyself&url=https://joshuaqyh.github.io/2019/06/20/深度学习-如何提升模型的效率？/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/06/20/深度学习-如何提升模型的效率？/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACuElEQVR42u3aQW7jMBAEwPz/09nrAl7J3TNi4gWKJ0NxLBYP4qg5X1/x+P5rvF5P/jf5zdfPV399eODh4eEtpv469lO5WpT76/kdr76Ph4eHd5p3/0DfPL6T7ycbQPsdPDw8vE/mbcr0WWmOh4eH9z/yZqMtuNtlxcPDw/tJXj6hpDhOSudNHHwka8HDw8OLeZvy97c+Hznfw8PDw1ufqrel7Wxr2W8Dl/fFw8PDO8Bry9n7W85atfLiezZPPDw8vJ/ntS/8OebExvCPOeDh4eEd5rVha75hzH4zL9nr9BcPDw9vxLsvXvO/bhoF8iUebgl4eHh4B3ibXWUTT+Sl/KzVAA8PD+8cb3PctSnNk3vlV+rzPTw8PLwFbzbdWZibY/JfvlwyPDw8vAO82XHX7EoeZLQFdPEygIeHh/cQb1M0b47T2qar4QaDh4eHd4w3C2STI6t9C1cSlxSnfHh4eHgP8fYHVPvl2GwDb94S8PDw8A7wZodh+VFZi8lL6jexBR4eHt4xXh4xJMf/7fbQTrrA4+Hh4T3Km5WqyfU8PmjBRXMYHh4e3jHevpCdRRWzraUox/Hw8PAO8B7o0orf+vOYI2m02iw9Hh4e3obX/mhSXudl+gxQzBkPDw/vAG+Y+46CibbsbkvwepPAw8PDW/D2jVabFoH9MVvddIWHh4f3EC85xMpL2KTI3oS/RaMDHh4e3jFeHq1u4oa8QWE2Lt8V8PDw8B7ifZdjE63mD/Q2jKg7I/Dw8PAWvPaBm8Sy+9aBzee27QAPDw9vxmsDiDYyaB/6sxK8SKnx8PDwHuK1D/p8aWZBbb53vZknHh4e3gfw8od7G220BXq0HHh4eHgfw9uEF08FtdHmgYeHh3eMNwsLksVqI4bNthF1RuDh4eGtecNerbK8zoOJzSHcE71aeHh4eDfjDzcCc6hBhpmNAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
