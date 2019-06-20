@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>深度学习 | ArcFace 人脸识别论文解读 | KnowMyself | QiuYH&#39;s Blog</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="深度学习">
+    <meta name="description" content="在阅读论文过程中的一些简单笔记，记下一些重点和方法。 论文：ArcFace: Additive Angular Margin Loss for Deep Face Recognition Introduction目前人脸识别的研究主要分为两条主线：  训练一个多分类器  softmax-loss-based methods；  学习得到一个图嵌入向量，如triplet-loss-based，通过高">
+<meta name="keywords" content="深度学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深度学习 | ArcFace 人脸识别论文解读">
+<meta property="og:url" content="https://joshuaqyh.github.io/2019/06/20/深度学习-ArcFace-人脸识别论文解读/index.html">
+<meta property="og:site_name" content="KnowMyself">
+<meta property="og:description" content="在阅读论文过程中的一些简单笔记，记下一些重点和方法。 论文：ArcFace: Additive Angular Margin Loss for Deep Face Recognition Introduction目前人脸识别的研究主要分为两条主线：  训练一个多分类器  softmax-loss-based methods；  学习得到一个图嵌入向量，如triplet-loss-based，通过高">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190620231824.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190620233347.png">
+<meta property="og:updated_time" content="2019-06-20T15:46:37.769Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深度学习 | ArcFace 人脸识别论文解读">
+<meta name="twitter:description" content="在阅读论文过程中的一些简单笔记，记下一些重点和方法。 论文：ArcFace: Additive Angular Margin Loss for Deep Face Recognition Introduction目前人脸识别的研究主要分为两条主线：  训练一个多分类器  softmax-loss-based methods；  学习得到一个图嵌入向量，如triplet-loss-based，通过高">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190620231824.png">
+    
+        <link rel="alternate" type="application/atom+xml" title="KnowMyself" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu" class="hide">
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">Qiuyihao</h5>
+          <a href="mailto:576261090@qq.com" title="576261090@qq.com" class="mail">576261090@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/">
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives">
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/tags">
+                <i class="icon icon-lg icon-tags"></i>
+                Tags
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/categories">
+                <i class="icon icon-lg icon-th-list"></i>
+                Categories
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/JoshuaQYH" target="_blank">
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">深度学习 | ArcFace 人脸识别论文解读</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="Search">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">深度学习 | ArcFace 人脸识别论文解读</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2019-06-20T14:31:30.000Z" itemprop="datePublished" class="page-time">
+  2019-06-20
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Introduction"><span class="post-toc-number">1.</span> <span class="post-toc-text">Introduction</span></a></li><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Approach"><span class="post-toc-number">2.</span> <span class="post-toc-text">Approach</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-深度学习-ArcFace-人脸识别论文解读" class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">深度学习 | ArcFace 人脸识别论文解读</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2019-06-20 22:31:30" datetime="2019-06-20T14:31:30.000Z" itemprop="datePublished">2019-06-20</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style="display:none">
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <p>在阅读论文过程中的一些简单笔记，记下一些重点和方法。</p>
+<p>论文：<code>ArcFace: Additive Angular Margin Loss for Deep Face Recognition</code></p>
+<h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>目前人脸识别的研究主要分为两条主线：</p>
+<ol>
+<li><p>训练一个多分类器  <code>softmax-loss-based methods</code>；</p>
+</li>
+<li><p>学习得到一个图嵌入向量，如<code>triplet-loss-based</code>，通过高内聚，低外聚的原则来区分； </p>
+</li>
+</ol>
+<p>不过这两种方法都存在一定的局限和缺点。</p>
+<ol>
+<li>softmax-loss-based: 当人脸类别数目增加的时候，线性变换矩阵的大小线性增加，同时学习到的特征仅仅适用于闭集分类问题，而不适合开集人脸识别问题。</li>
+<li>triplet-loss-based: 如果人脸数据较多的时候，为了组成足够的三元组来训练时，将会导致组合爆炸，而且semi-hard样本挖掘对于训练有效的模型将是一个困难的问题。</li>
+</ol>
+<p>现有的模型：<br>Sphereface 引入了一个重要的idea： angular margin，但是在loss中添加了许多近似值，并且加了softmax loss（为了训练稳定），但softmax loss在训练过程中会产生梯度统治的情况；<br>cosFace则是直接添加了余弦距离惩罚到目标对数上，虽然比sphereface取得了更好的性能，并且实现简单，减轻了联合训练中softmax loss的压力。</p>
+<p>本文提出的方法 Additive Angular margin loss（arcface）有效地提升了模型的判别能力，同时也稳定了模型的训练。</p>
+<h1 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h1><figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190620231824.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<figure class="image-bubble">
+                <div class="img-lightbox">
+                    <div class="overlay"></div>
+                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190620233347.png" alt="" title="">
+                </div>
+                <div class="image-caption"></div>
+            </figure>
+<p>仔细梳理一下上面的伪代码，整理如下：</p>
+<p>算法输入：特征缩放尺度 s，间隔参数 m，类别 n，真实值ID gt；</p>
+<p>算法流程：</p>
+<ol>
+<li>对经过第一个全连接层fc的输入（一维特征）进行 L2 归一化</li>
+<li>对第一个全连接层fc的权重进行L2归一化</li>
+<li>使用归一化后的数据完成第一个fc的计算得到 fc7，该fc没有偏置项，保证运算结果在[0~1]</li>
+<li>计算 gt 所在位置的fc7的值，位于[0,1]之间, 利用该值作为余弦值，计算反余弦值得到真实类别所在位置的x和w之间的theta。</li>
+<li>添加惩罚角度m到theta，返回余弦值 cos(theta + m)-cos(theta)，替代原来fc gt位置的值，得到 fc7</li>
+<li>fc7 * s = fc7</li>
+<li>softmax + CE loss</li>
+</ol>
+<p>到这里就可以去实现算法啦！等写完复现代码就来更新。</p>
+<p>原理啥的暂时先不管~</p>
+
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    Last updated: <time datetime="2019-06-20T15:46:37.769Z" itemprop="dateUpdated">2019-06-20 23:46:37</time>
+</span><br>
+
+
+        
+        Thanks for your reading  :) | URL <a href="/2019/06/20/深度学习-ArcFace-人脸识别论文解读/" target="_blank" rel="external">https://joshuaqyh.github.io/2019/06/20/深度学习-ArcFace-人脸识别论文解读/</a>
+        
+    </div>
+    
+    <footer>
+        <a href="https://joshuaqyh.github.io">
+            <img src="/img/avatar.jpg" alt="Qiuyihao">
+            Qiuyihao
+        </a>
+    </footer>
+</blockquote>
+
+        
+
+
+        <div class="post-footer">
+            
+	<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/深度学习/">深度学习</a></li></ul>
+
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/06/20/深度学习-ArcFace-人脸识别论文解读/&title=《深度学习 | ArcFace 人脸识别论文解读》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/06/20/深度学习-ArcFace-人脸识别论文解读/&title=《深度学习 | ArcFace 人脸识别论文解读》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/06/20/深度学习-ArcFace-人脸识别论文解读/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深度学习 | ArcFace 人脸识别论文解读》 — KnowMyself&url=https://joshuaqyh.github.io/2019/06/20/深度学习-ArcFace-人脸识别论文解读/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/06/20/深度学习-ArcFace-人脸识别论文解读/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2019/06/20/深度学习-如何提升模型的效率？/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">深度学习 | 如何提升模型的效率？</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style="display:none">
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style="display:none">
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>This blog is licensed under a <a rel="license" href="https://creativecommons.org/licenses/by/4.0/">Creative Commons Attribution 4.0 International License</a>.</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>Qiuyihao &copy; 2017 - 2019</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://joshuaqyh.github.io/2019/06/20/深度学习-ArcFace-人脸识别论文解读/&title=《深度学习 | ArcFace 人脸识别论文解读》 — KnowMyself&pic=https://joshuaqyh.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://joshuaqyh.github.io/2019/06/20/深度学习-ArcFace-人脸识别论文解读/&title=《深度学习 | ArcFace 人脸识别论文解读》 — KnowMyself&source=Here are some records for life and study." data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://joshuaqyh.github.io/2019/06/20/深度学习-ArcFace-人脸识别论文解读/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《深度学习 | ArcFace 人脸识别论文解读》 — KnowMyself&url=https://joshuaqyh.github.io/2019/06/20/深度学习-ArcFace-人脸识别论文解读/&via=https://joshuaqyh.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://joshuaqyh.github.io/2019/06/20/深度学习-ArcFace-人脸识别论文解读/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAPYAAAD2CAAAAADAeSUUAAADMElEQVR42u3aQW7jMAwF0N7/0h1gVgNM6/xPukCtPK2MNJH1pAVLUh8f8fj8O/59/nd8953/n6/nv57z/2/m8w8HNjY29kPYn5fju5ddb8f1gr57y2xTro/k27dgY2NjH8dOgtb1Flwvt/2knTO3YGNjY78zu11uHmCSDd1sGTY2NjZ2kjzkIS1PSzbFLGxsbOx3YyehZRZU7m0S5CHwtloaNjY29q9nzxq9v/P5x/vb2NjY2L+M/Tka+2AzS2muQ2OxfmxsbOyD2G3x6K6NyBmzz6NUChsbG/tQdtvuzbevZbQNhvxaDzY2NvZJ7LYZ0JLaElV+0adtBrzIwLCxsbEfy95c02mLRLOGa9sGaI8QGxsb++ns9p/+fShKFjfMqPLDwMbGxj6InQeqWRmobRi3zd1VaoSNjY19BLttjv7EtZ58JXkAe3Gc2NjY2Iey923U2XWcvBWxaV1gY2NjvzN7c60nTz/a0v+qaYGNjY19EHuz6E0zeDZb3vqtzxwbGxv7sezNgtoU4i5k3qJ4cc7Y2NjYB7FnhaHZcxtsZuWqF2/HxsbGPojdXtzJm7izIlRSzGrbvXUMx8bGxn4gewaetRmSULfZsjp6Y2NjYz+cnf9sVu7JS1Gb/kabPmFjY2OfxN68si3rtDNsQlcUVrGxsbGPYCeBKpl0VrJv/9quNionYWNjYx/BzrufRQN18f19rwMbGxv7fdjtKzehpS0ntezhGrCxsbEPZedBqy3u5O3ku9oDL7YVGxsb+1B2Dm6v6STbkR9AO7CxsbHPY7dl+s1FnDZE3ZUaRekHNjY29mPZs4J+XnyfpQ2zIlGyQdjY2NjnsfMEIElREuSsmLUJul/MiY2NjX0Quy0A7dOPPSwf9W+xsbGxH8ielWbydGKflmyKX8NUBBsbG/tR7DYY3FUqasv9+XqwsbGx35PdlpaSnduEq/YaZRLAvpgBGxsb+zh2Xh6axca7GrdRoR8bGxsbO76as2kG5MEm2e46rGJjY2O/JTtvrCZztktv2xIvZsbGxsY+jt1ewbyrxN+2eGdbX3e5sbGxsR/FnpVm9iWnn/h8s2XY2NjYD2T/AdrFZBdUIUPwAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: false };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+<!-- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+});
+</script>
+
+<script async src="//cdn.bootcss.com/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '唉要去哪里了！';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

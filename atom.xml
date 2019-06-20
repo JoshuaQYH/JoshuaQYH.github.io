@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://joshuaqyh.github.io/"/>
-  <updated>2019-06-20T13:54:32.526Z</updated>
+  <updated>2019-06-20T15:46:37.769Z</updated>
   <id>https://joshuaqyh.github.io/</id>
   
   <author>
@@ -17,11 +17,36 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>深度学习 | ArcFace 人脸识别论文解读</title>
+    <link href="https://joshuaqyh.github.io/2019/06/20/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-ArcFace-%E4%BA%BA%E8%84%B8%E8%AF%86%E5%88%AB%E8%AE%BA%E6%96%87%E8%A7%A3%E8%AF%BB/"/>
+    <id>https://joshuaqyh.github.io/2019/06/20/深度学习-ArcFace-人脸识别论文解读/</id>
+    <published>2019-06-20T14:31:30.000Z</published>
+    <updated>2019-06-20T15:46:37.769Z</updated>
+    
+    <content type="html"><![CDATA[<p>在阅读论文过程中的一些简单笔记，记下一些重点和方法。</p><p>论文：<code>ArcFace: Additive Angular Margin Loss for Deep Face Recognition</code></p><h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><p>目前人脸识别的研究主要分为两条主线：</p><ol><li><p>训练一个多分类器  <code>softmax-loss-based methods</code>；</p></li><li><p>学习得到一个图嵌入向量，如<code>triplet-loss-based</code>，通过高内聚，低外聚的原则来区分； </p></li></ol><p>不过这两种方法都存在一定的局限和缺点。</p><ol><li>softmax-loss-based: 当人脸类别数目增加的时候，线性变换矩阵的大小线性增加，同时学习到的特征仅仅适用于闭集分类问题，而不适合开集人脸识别问题。</li><li>triplet-loss-based: 如果人脸数据较多的时候，为了组成足够的三元组来训练时，将会导致组合爆炸，而且semi-hard样本挖掘对于训练有效的模型将是一个困难的问题。</li></ol><p>现有的模型：<br>Sphereface 引入了一个重要的idea： angular margin，但是在loss中添加了许多近似值，并且加了softmax loss（为了训练稳定），但softmax loss在训练过程中会产生梯度统治的情况；<br>cosFace则是直接添加了余弦距离惩罚到目标对数上，虽然比sphereface取得了更好的性能，并且实现简单，减轻了联合训练中softmax loss的压力。</p><p>本文提出的方法 Additive Angular margin loss（arcface）有效地提升了模型的判别能力，同时也稳定了模型的训练。</p><h1 id="Approach"><a href="#Approach" class="headerlink" title="Approach"></a>Approach</h1><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190620231824.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><figure class="image-bubble">                <div class="img-lightbox">                    <div class="overlay"></div>                    <img src="https://raw.githubusercontent.com/JoshuaQYH/blogImage/master/img/20190620233347.png" alt="" title="">                </div>                <div class="image-caption"></div>            </figure><p>仔细梳理一下上面的伪代码，整理如下：</p><p>算法输入：特征缩放尺度 s，间隔参数 m，类别 n，真实值ID gt；</p><p>算法流程：</p><ol><li>对经过第一个全连接层fc的输入（一维特征）进行 L2 归一化</li><li>对第一个全连接层fc的权重进行L2归一化</li><li>使用归一化后的数据完成第一个fc的计算得到 fc7，该fc没有偏置项，保证运算结果在[0~1]</li><li>计算 gt 所在位置的fc7的值，位于[0,1]之间, 利用该值作为余弦值，计算反余弦值得到真实类别所在位置的x和w之间的theta。</li><li>添加惩罚角度m到theta，返回余弦值 cos(theta + m)-cos(theta)，替代原来fc gt位置的值，得到 fc7</li><li>fc7 * s = fc7</li><li>softmax + CE loss</li></ol><p>到这里就可以去实现算法啦！等写完复现代码就来更新。</p><p>原理啥的暂时先不管~</p>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;在阅读论文过程中的一些简单笔记，记下一些重点和方法。&lt;/p&gt;
+&lt;p&gt;论文：&lt;code&gt;ArcFace: Additive Angular Margin Loss for Deep Face Recognition&lt;/code&gt;&lt;/p&gt;
+&lt;h1 id=&quot;Introductio
+      
+    
+    </summary>
+    
+    
+      <category term="深度学习" scheme="https://joshuaqyh.github.io/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>深度学习 | 如何提升模型的效率？</title>
     <link href="https://joshuaqyh.github.io/2019/06/20/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0-%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E6%A8%A1%E5%9E%8B%E7%9A%84%E6%95%88%E7%8E%87%EF%BC%9F/"/>
     <id>https://joshuaqyh.github.io/2019/06/20/深度学习-如何提升模型的效率？/</id>
     <published>2019-06-20T08:25:30.000Z</published>
-    <updated>2019-06-20T13:54:32.526Z</updated>
+    <updated>2019-06-20T14:31:03.283Z</updated>
     
     <content type="html"><![CDATA[<p>现在深度学习模型的应用仍存在许多瓶颈，模型速度，内存占用，能耗等。</p><p>我们的追求就是在保证模型效果的前提之下，保证速度更快，占用内存更少，能耗更少。</p><p>接下来介绍几种提升模型效率的方法。</p><h3 id="Factorization"><a href="#Factorization" class="headerlink" title="Factorization"></a>Factorization</h3><p>low-rank 矩阵分解（2D）</p><p>low-rank 张量分解（3D）</p><p>canonical polyadic分解（4D）</p><p>有效性？</p><p>局限性：在原来已训练好的模型上进行改进，减少计算量，但模型体积仍然较大。</p><h3 id="Knowledge-transfer"><a href="#Knowledge-transfer" class="headerlink" title="Knowledge transfer"></a>Knowledge transfer</h3><p>distillation network: soft label for teaching.</p><p>transfer mid-level  information: gram matrix to transfer knowledge。</p><h3 id="Pruning"><a href="#Pruning" class="headerlink" title="Pruning"></a>Pruning</h3><p>对某些重要性不强的kernel或者fc神经元进行剔除，然后重新进行训练。</p><p>通道剪枝：剔除每一层中不太重要的特征通道。可以通过一个缩放因子来决定整个特征图的重要性。</p><p>局限性 ：减少模型参数量，模型体积小，但是加速不明显，可并行性较低。</p><h3 id="Quantization"><a href="#Quantization" class="headerlink" title="Quantization"></a>Quantization</h3><p>XNOR-Net</p><p>对卷积核和输入进行量化（如二值化），比如浮点数转为0，1，-1这些存储空间小，运算速度快的数值。实现缩小模型体积的同时加快运算。</p><p>不过这一 量化过程都是发生在推断的过程，或者说前向传播的过程，但是更新模型参数的时候，反向传播时不能进行二值化，但是在训练时加速不明显，没有对梯度进行量化。</p><p>DoReFa-net</p><p>对feature map，kernel size，grad进行量化 。但是这三种量化策略不同，不是简单的二值量化。</p><p>量化时会导致产生必要的noise，如果在量化之前添加一些noise的话，可能提升性能。</p><h3 id="New-model-design"><a href="#New-model-design" class="headerlink" title="New model design"></a>New model design</h3><p>SqueezeNet</p><p>使用 1 * 1 卷积 + skip connection减少模型通道数。</p><p>MobileNet</p><p>depth-wise / 1* 1 point-wise 卷积减少feature map计算量和参数量。</p><p>MobileNet v2:</p><p>使用了1*1 conv/ relu6 / dwise residual block</p><p>ShuffleNet：</p><p>channel shuffle / group conv / dw conv</p><p>shuffle 策略？？</p>]]></content>
     
@@ -165,9 +190,9 @@
     </summary>
     
     
-      <category term="软件工程" scheme="https://joshuaqyh.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
-    
       <category term="工作流技术导论" scheme="https://joshuaqyh.github.io/tags/%E5%B7%A5%E4%BD%9C%E6%B5%81%E6%8A%80%E6%9C%AF%E5%AF%BC%E8%AE%BA/"/>
+    
+      <category term="软件工程" scheme="https://joshuaqyh.github.io/tags/%E8%BD%AF%E4%BB%B6%E5%B7%A5%E7%A8%8B/"/>
     
   </entry>
   
@@ -508,9 +533,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
   </entry>
   
@@ -534,9 +559,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
   </entry>
   
@@ -563,9 +588,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
   </entry>
   
@@ -590,9 +615,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
   </entry>
   
@@ -645,9 +670,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -754,9 +779,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -785,9 +810,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -812,9 +837,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -921,9 +946,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -975,9 +1000,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
@@ -1841,11 +1866,11 @@
     </summary>
     
     
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
+    
       <category term="信息安全" scheme="https://joshuaqyh.github.io/tags/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
     
       <category term="Java" scheme="https://joshuaqyh.github.io/tags/Java/"/>
-    
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
   </entry>
   
@@ -1871,9 +1896,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
       <category term="数据结构" scheme="https://joshuaqyh.github.io/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
     
@@ -1899,9 +1924,9 @@
     </summary>
     
     
-      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
-    
       <category term="C++" scheme="https://joshuaqyh.github.io/tags/C/"/>
+    
+      <category term="algorithm" scheme="https://joshuaqyh.github.io/tags/algorithm/"/>
     
       <category term="Leetcode" scheme="https://joshuaqyh.github.io/tags/Leetcode/"/>
     
